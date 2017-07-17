@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
+#import "LoginHomeVC.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) AVAudioPlayer *player;
@@ -25,7 +27,15 @@ BMKMapManager* _mapManager;
     //注册第三方：微信，百度地图
     [self addThirthPart:launchOptions];
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = UIColorFromRGB(0xf2f2f2);
     
+    LoginHomeVC *vc_login = [LoginHomeVC new];
+    UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:vc_login];
+    self.window.rootViewController = t_nav;
+
+    
+    [self.window makeKeyAndVisible];
     
     
     return YES;

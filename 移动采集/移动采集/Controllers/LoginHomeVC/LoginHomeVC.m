@@ -7,14 +7,16 @@
 //
 
 #import "LoginHomeVC.h"
-#import "PhoneLoginVC.h"
+
 #import <AFNetworking.h>
 
-#import <WXApi.h>
-#import "ShareFun.h"
 #import "LoginAPI.h"
-#import "CommonAPI.h"
-#import "AppDelegate.h"
+//#import "CommonAPI.h"
+
+//#import "PhoneLoginVC.h"
+
+
+
 
 
 @interface LoginHomeVC ()
@@ -80,7 +82,6 @@
     }else{
         
         SendAuthReq *req =[[SendAuthReq alloc]init];
-        
         req.scope = @"snsapi_userinfo" ;
         req.state = @"wxlogin" ;
         req.openID = WEIXIN_APP_ID;
@@ -93,31 +94,31 @@
 
 - (IBAction)handleLoginOfVisitorAction:(id)sender {
 
-//    LoginVisitorManger *manger = [LoginVisitorManger new];
-//    manger.isNeedShowHud = NO;
-//    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//    
-//        if (manger.responseModel.code == CODE_SUCCESS) {
-//            //归档用户
-//            [UserModel setUserModel:manger.userModel];
-//            /*********** 存储token值用于后面的请求 ************/
-//            [ShareValue sharedDefault].token = manger.userModel.token;
-//            /*********** 全局为统一的Url添加token ************/
-//            [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
-//            
-//            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.5f *NSEC_PER_SEC);
-//            dispatch_after(time, dispatch_get_main_queue(), ^{
-//                /*********** 切换到首页界面 ************/
-//                [ApplicationDelegate initAKTabBarController];
-//                ApplicationDelegate.window.rootViewController = ApplicationDelegate.vc_tabBar;
-//            });
-//            
-//        }
-//        
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//       
-//        
-//    }];
+    LoginVisitorManger *manger = [LoginVisitorManger new];
+    manger.isNeedShowHud = NO;
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+    
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            //归档用户
+            [UserModel setUserModel:manger.userModel];
+            /*********** 存储token值用于后面的请求 ************/
+            [ShareValue sharedDefault].token = manger.userModel.token;
+            /*********** 全局为统一的Url添加token ************/
+            [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
+            
+            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.5f *NSEC_PER_SEC);
+            dispatch_after(time, dispatch_get_main_queue(), ^{
+                /*********** 切换到首页界面 ************/
+                [ApplicationDelegate initAKTabBarController];
+                ApplicationDelegate.window.rootViewController = ApplicationDelegate.vc_tabBar;
+            });
+            
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+       
+        
+    }];
     
 }
 
@@ -131,7 +132,6 @@
 }
 
 - (void)getOpenidAndTokenFromWxCode:(NSString*)code {
-    
     WS(weakSelf);
     
     LRShowHUD *hud = [LRShowHUD showActivityLoading:@"登录中..." inView:nil config:nil];
@@ -148,8 +148,7 @@
         
         if (responseObject == nil) {
             
-            [hud hide];
-            [ShowHUD showError:@"微信授权错误,请重试!" duration:1.5f inView:self.view config:nil];
+            [LRShowHUD showError:@"微信授权错误,请重试!" duration:1.5f inView:self.view config:nil];
             
             return ;
             
@@ -167,30 +166,27 @@
          unionid	 当且仅当该移动应用已获得该用户的userinfo授权时，才会出现该字段
          */
         
+        NSString* unionid=[dic valueForKey:@"unionid"];
         
-//        [ShareValue sharedDefault].unionid  = [dic valueForKey:@"unionid"];
-//        
-//        NSString* unionid=[dic valueForKey:@"unionid"];
-//        
-//        
-//        LoginManger *t_loginManger = [[LoginManger alloc] init];
-//        t_loginManger.openId = unionid;
-//        [t_loginManger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//            
-//            [hud hide];
-//            
-//            if(t_loginManger.responseModel.code == CODE_SUCCESS){
-//                [ShareValue sharedDefault].phone = t_loginManger.phone;
-//                
-//                PhoneLoginVC *t_vc = [PhoneLoginVC new];
-//                t_vc.phone = [ShareValue sharedDefault].phone;
-//                [strongSelf.navigationController pushViewController:t_vc animated:YES];
-//            }
-//            
-//        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//            [hud hide];
-//            
-//        }];
+        
+        LoginManger *t_loginManger = [[LoginManger alloc] init];
+        t_loginManger.openId = unionid;
+        [t_loginManger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+            [hud hide];
+            
+            if(t_loginManger.responseModel.code == CODE_SUCCESS){
+                [ShareValue sharedDefault].phone = t_loginManger.phone;
+                
+                PhoneLoginVC *t_vc = [PhoneLoginVC new];
+                t_vc.phone = [ShareValue sharedDefault].phone;
+                [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            }
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [hud hide];
+            
+        }];
         
 
 //        NSString* accessToken = [dic valueForKey:@"access_token"];
@@ -216,7 +212,7 @@
         
         if (responseObject == nil) {
             
-            [ShowHUD showError:@"微信授权错误,请重试!" duration:1.5f inView:self.view config:nil];
+            [LRShowHUD showError:@"微信授权错误,请重试!" duration:1.5f inView:self.view config:nil];
             
             return ;
             
@@ -226,12 +222,10 @@
         //开发人员拿到相关微信用户信息后， 需要与后台对接，进行登录
         LxPrintf(@"login success dic  ==== %@",dic);
         
-        PhoneLoginVC *t_vc = [PhoneLoginVC new];
-        [weakSelf.navigationController pushViewController:t_vc animated:YES];
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         LxPrintf(@"error %ld",(long)error.code);
     }];
+    
 }
 
 
@@ -244,7 +238,6 @@
 }
 
 - (void)dealloc{
-
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_WX_LOGIN_SUCCESS object:nil];
     LxPrintf(@"LoginHomeVC dealloc");
 

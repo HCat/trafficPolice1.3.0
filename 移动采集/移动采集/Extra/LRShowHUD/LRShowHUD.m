@@ -83,8 +83,6 @@
         view = [UIApplication sharedApplication].keyWindow;
     }
     
-    [MBProgressHUD hideAllHUDsForView:view animated:yes];
-    
     LRShowHUD *showHud     = [[LRShowHUD alloc] initWithView:view];
     showHud.hud.mode = MBProgressHUDModeText;
     
@@ -253,6 +251,11 @@
            inView:(nullable UIView *)view
            config:(nullable ConfigShowHUDBlock)config{
     
+    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
+    if (progressHUD) {
+        [progressHUD hideAnimated:YES];
+    }
+    
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
          return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-fail"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
@@ -284,6 +287,11 @@
              inView:(nullable UIView *)view
              config:(nullable ConfigShowHUDBlock)config{
     
+    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
+    if (progressHUD) {
+        [progressHUD hideAnimated:YES];
+    }
+    
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-success"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
@@ -314,6 +322,11 @@
            duration:(NSTimeInterval)duration
              inView:(nullable UIView *)view
              config:(nullable ConfigShowHUDBlock)config{
+    
+    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
+    if (progressHUD) {
+        [progressHUD hideAnimated:YES];
+    }
 
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-warning"]];
@@ -327,6 +340,11 @@
 }
 
 #pragma mark - 隐藏
+
+- (void)hide{
+
+    [self hideAnimated:YES];
+}
 
 - (void)hideAnimated:(BOOL)isNeedAnimated{
 

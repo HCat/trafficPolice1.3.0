@@ -38,12 +38,22 @@
 #import <Foundation/Foundation.h>
 
 #import <LxDBAnything.h>
+#import <NSObject+YYModel.h>
+
+#import "AppDelegate.h"
 
 #import "NoticeMacro.h"
 #import "UtilsMacro.h"
 #import "SDKMacro.h"
+#import "UserDefaultMacro.h"
+#import "URLMacro.h"
+#import "URLErrorMacro.h"
 
 #import "LRShowHUD.h"
+#import "ShareFun.h"
+#import "ShareValue.h"
+
+
 
 
 #endif

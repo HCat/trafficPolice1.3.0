@@ -268,6 +268,12 @@ typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)();
 
 
 #pragma mark - 隐藏
+
+/**
+ 隐藏MBProgressHUD,默认动画隐藏
+ */
+- (void)hide;
+
 /**
  隐藏MBProgressHUD
  

@@ -19,10 +19,12 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import "AKTabBarController.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate,BMKGeneralDelegate,JPUSHRegisterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) AKTabBarController *vc_tabBar;
 
 @end
 
