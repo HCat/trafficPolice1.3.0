@@ -1,0 +1,22 @@
+platform :ios, '8.0'
+
+target '移动采集' do
+
+pod 'SDWebImage'
+pod 'YYKit'
+pod 'YTKNetwork'
+pod 'IQKeyboardManager'
+pod 'MBProgressHUD'
+pod 'LxDBAnything'
+pod 'MJRefresh'
+pod 'AMScrollingNavbar', '~> 1.5.1’
+pod 'TOCropViewController'
+pod 'LLSimpleCamera'
+pod 'PureLayout'
+pod 'Masonry'
+pod 'JPush'
+pod 'BaiduMapKit'
+pod 'WechatOpenSDK'
+
+
+end

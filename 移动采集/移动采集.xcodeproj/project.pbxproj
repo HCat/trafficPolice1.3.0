@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */; };
+		CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */; };
+		CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE0B558F1F1CA5F0003CF361 /* police.m4a */; };
+		CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */; };
+		CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */; };
+		CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9CF1F1C6CBB00AC515C /* main.m */; };
+		CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */; };
+		CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */; };
+		CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */; };
+		CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9F31F1C873E00AC515C /* LoginHomeVC.xib */; };
+		CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F81F1C896400AC515C /* BaseViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
+		9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-移动采集.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0B55891F1C9B98003CF361 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
+		CE0B558A1F1C9B98003CF361 /* LRSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSingleton.h; sourceTree = "<group>"; };
+		CE0B558B1F1C9B98003CF361 /* SDKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKMacro.h; sourceTree = "<group>"; };
+		CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CE0B558E1F1CA54D003CF361 /* 移动采集.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "移动采集.entitlements"; sourceTree = "<group>"; };
+		CE0B558F1F1CA5F0003CF361 /* police.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = police.m4a; sourceTree = "<group>"; };
+		CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LRShowHUD.bundle; sourceTree = "<group>"; };
+		CE0B55931F1CA8D0003CF361 /* LRShowHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShowHUD.h; sourceTree = "<group>"; };
+		CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShowHUD.m; sourceTree = "<group>"; };
+		CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动采集.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE5E9CF1F1C6CBB00AC515C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEE5E9DF1F1C6CBB00AC515C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEE5E9E51F1C6D2C00AC515C /* trafficPolice.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trafficPolice.pch; sourceTree = "<group>"; };
+		CEE5E9F11F1C873E00AC515C /* LoginHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginHomeVC.h; sourceTree = "<group>"; };
+		CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHomeVC.m; sourceTree = "<group>"; };
+		CEE5E9F31F1C873E00AC515C /* LoginHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginHomeVC.xib; sourceTree = "<group>"; };
+		CEE5E9F71F1C896400AC515C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		CEE5E9F81F1C896400AC515C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		CEE5E9FA1F1C8AED00AC515C /* NoticeMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeMacro.h; sourceTree = "<group>"; };
+		E384A29CA989121023ADC96A /* Pods-移动采集.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.release.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEE5E9C81F1C6CBB00AC515C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */,
+				A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		928AD146C056B058ED0A1C9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */,
+				9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA7554399BFE24231C224118 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */,
+				E384A29CA989121023ADC96A /* Pods-移动采集.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE0B55911F1CA8D0003CF361 /* LRShowHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */,
+				CE0B55931F1CA8D0003CF361 /* LRShowHUD.h */,
+				CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */,
+			);
+			path = LRShowHUD;
+			sourceTree = "<group>";
+		};
+		CEE5E9C21F1C6CBB00AC515C = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9CD1F1C6CBB00AC515C /* 移动采集 */,
+				CEE5E9CC1F1C6CBB00AC515C /* Products */,
+				CA7554399BFE24231C224118 /* Pods */,
+				928AD146C056B058ED0A1C9A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CEE5E9CC1F1C6CBB00AC515C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEE5E9CD1F1C6CBB00AC515C /* 移动采集 */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B558F1F1CA5F0003CF361 /* police.m4a */,
+				CE0B558E1F1CA54D003CF361 /* 移动采集.entitlements */,
+				CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */,
+				CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */,
+				CEE5E9E61F1C819F00AC515C /* API */,
+				CEE5E9EB1F1C819F00AC515C /* Models */,
+				CEE5E9ED1F1C819F00AC515C /* Views */,
+				CEE5E9E81F1C819F00AC515C /* Controllers */,
+				CEE5E9EC1F1C819F00AC515C /* Tools */,
+				CEE5E9EA1F1C819F00AC515C /* Macro */,
+				CEE5E9E71F1C819F00AC515C /* Category */,
+				CEE5E9E91F1C819F00AC515C /* Extra */,
+				CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */,
+				CEE5E9DF1F1C6CBB00AC515C /* Info.plist */,
+				CEE5E9CE1F1C6CBB00AC515C /* Supporting Files */,
+			);
+			path = "移动采集";
+			sourceTree = "<group>";
+		};
+		CEE5E9CE1F1C6CBB00AC515C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9E51F1C6D2C00AC515C /* trafficPolice.pch */,
+				CEE5E9CF1F1C6CBB00AC515C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEE5E9E61F1C819F00AC515C /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CEE5E9E71F1C819F00AC515C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CEE5E9E81F1C819F00AC515C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9F01F1C872800AC515C /* LoginHomeVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEE5E9E91F1C819F00AC515C /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B55911F1CA8D0003CF361 /* LRShowHUD */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		CEE5E9EA1F1C819F00AC515C /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B55891F1C9B98003CF361 /* UtilsMacro.h */,
+				CE0B558A1F1C9B98003CF361 /* LRSingleton.h */,
+				CE0B558B1F1C9B98003CF361 /* SDKMacro.h */,
+				CEE5E9FA1F1C8AED00AC515C /* NoticeMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		CEE5E9EB1F1C819F00AC515C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CEE5E9EC1F1C819F00AC515C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9F61F1C895D00AC515C /* BaseViewController */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		CEE5E9ED1F1C819F00AC515C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CEE5E9F01F1C872800AC515C /* LoginHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9F11F1C873E00AC515C /* LoginHomeVC.h */,
+				CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */,
+				CEE5E9F31F1C873E00AC515C /* LoginHomeVC.xib */,
+			);
+			path = LoginHomeVC;
+			sourceTree = "<group>";
+		};
+		CEE5E9F61F1C895D00AC515C /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5E9F71F1C896400AC515C /* BaseViewController.h */,
+				CEE5E9F81F1C896400AC515C /* BaseViewController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEE5E9CA1F1C6CBB00AC515C /* 移动采集 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEE5E9E21F1C6CBB00AC515C /* Build configuration list for PBXNativeTarget "移动采集" */;
+			buildPhases = (
+				0BA2B41736D1430BF42D91C2 /* [CP] Check Pods Manifest.lock */,
+				CEE5E9C71F1C6CBB00AC515C /* Sources */,
+				CEE5E9C81F1C6CBB00AC515C /* Frameworks */,
+				CEE5E9C91F1C6CBB00AC515C /* Resources */,
+				8C6938FA509F1CFA37BDA4D3 /* [CP] Embed Pods Frameworks */,
+				83E81BE540B1B99A350135D2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "移动采集";
+			productName = "移动采集";
+			productReference = CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEE5E9C31F1C6CBB00AC515C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Hcat;
+				TargetAttributes = {
+					CEE5E9CA1F1C6CBB00AC515C = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = XYWLXM32EU;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CEE5E9C61F1C6CBB00AC515C /* Build configuration list for PBXProject "移动采集" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEE5E9C21F1C6CBB00AC515C;
+			productRefGroup = CEE5E9CC1F1C6CBB00AC515C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEE5E9CA1F1C6CBB00AC515C /* 移动采集 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEE5E9C91F1C6CBB00AC515C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
+				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
+				CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */,
+				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BA2B41736D1430BF42D91C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		83E81BE540B1B99A350135D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-移动采集/Pods-移动采集-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C6938FA509F1CFA37BDA4D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-移动采集/Pods-移动采集-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEE5E9C71F1C6CBB00AC515C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
+				CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */,
+				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
+				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
+				CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEE5E9E01F1C6CBB00AC515C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/trafficPolice.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEE5E9E11F1C6CBB00AC515C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/trafficPolice.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEE5E9E31F1C6CBB00AC515C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
+				DEVELOPMENT_TEAM = XYWLXM32EU;
+				INFOPLIST_FILE = "移动采集/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CEE5E9E41F1C6CBB00AC515C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E384A29CA989121023ADC96A /* Pods-移动采集.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
+				DEVELOPMENT_TEAM = XYWLXM32EU;
+				INFOPLIST_FILE = "移动采集/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEE5E9C61F1C6CBB00AC515C /* Build configuration list for PBXProject "移动采集" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE5E9E01F1C6CBB00AC515C /* Debug */,
+				CEE5E9E11F1C6CBB00AC515C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEE5E9E21F1C6CBB00AC515C /* Build configuration list for PBXNativeTarget "移动采集" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE5E9E31F1C6CBB00AC515C /* Debug */,
+				CEE5E9E41F1C6CBB00AC515C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEE5E9C31F1C6CBB00AC515C /* Project object */;
+}
