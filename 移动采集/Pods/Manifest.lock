@@ -26,6 +26,7 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - PureLayout (3.0.2)
+  - Reachability (3.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - PureLayout
+  - Reachability
   - SDWebImage
   - TOCropViewController
   - WechatOpenSDK
@@ -67,12 +69,13 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
   WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
   YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 3a88963695349a646a88f34897edfd61409c0c86
+PODFILE CHECKSUM: 77a787ee01e878f19a5de74222c62f81f83c1e3d
 
 COCOAPODS: 1.2.1

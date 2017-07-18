@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, IllegalType) {
 
 LRSingletonH(Default)
 
+@property (nonatomic, copy) NSString *unionid;  //微信unionid
 @property (nonatomic, copy) NSString *token;    //token值
 @property (nonatomic, copy) NSString *phone;    //登录返回的手机号码
 

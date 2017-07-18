@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^NetworkChangeBlock)();
-
 @interface BaseViewController : UIViewController
 
-@property (nonatomic,copy) NetworkChangeBlock networkChangeBlock;
+
 
 @end

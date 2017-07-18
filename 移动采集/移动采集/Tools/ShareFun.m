@@ -226,6 +226,7 @@
     return folderSize/(1024.0*1024.0);
 }
 
+
 #pragma mark - 注销需要执行的操作
 + (void)LoginOut{
     

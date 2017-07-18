@@ -16,19 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unNetworkSwitchNetwork) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];
-    
+   
     // Do any additional setup after loading the view.
-}
-
-#pragma mark - 无网络切换到有网络时候的监听
-
--(void)unNetworkSwitchNetwork{
-
-    if (self.networkChangeBlock) {
-        self.networkChangeBlock();
-    }
-
 }
 
 
@@ -40,7 +29,7 @@
 }
 
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+   
 
 }
 

@@ -8,8 +8,22 @@
 
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
+#import <YTKNetwork.h>
+#import "LSStatusBarHUD.h"
+
+
+#import "LRBaseRequest.h"
+#import "NetWorkHelper.h"
+
 
 #import "LoginHomeVC.h"
+#import "MainHomeVC.h"
+#import "ListHomeVC.h"
+#import "MessageHomeVC.h"
+#import "UserHomeVC.h"
+
+#import "UserModel.h"
+
 
 @interface AppDelegate ()
 
@@ -23,22 +37,52 @@ BMKMapManager* _mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-    //注册第三方：微信，百度地图
+    [self commonConfig];
     [self addThirthPart:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = UIColorFromRGB(0xf2f2f2);
     
-    LoginHomeVC *vc_login = [LoginHomeVC new];
-    UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:vc_login];
-    self.window.rootViewController = t_nav;
-
+    if ([ShareValue sharedDefault].token) {
+        
+        [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        } seq:0];
+        [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
+        
+        [self initAKTabBarController];
+        self.window.rootViewController = self.vc_tabBar;
+        
+    }else{
+        LoginHomeVC *vc_login = [LoginHomeVC new];
+        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:vc_login];
+        self.window.rootViewController = t_nav;
+    }
     
     [self.window makeKeyAndVisible];
     
     
     return YES;
+}
+
+#pragma mark - 通用配置
+
+-(void)commonConfig{
+    
+    //设置导航栏
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x4281E8)];
+    [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    if([[UIDevice currentDevice].systemVersion floatValue] >= 8 && [UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)]) {
+        [UINavigationBar appearance].translucent = NO;
+    }
+    
+    [[NetWorkHelper sharedDefault] startNotification];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReconnection) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];
+    
+    //配置统一的网络基地址
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = Base_URL;
+    
 }
 
 #pragma mark - 第三方SDK接入
@@ -89,6 +133,85 @@ BMKMapManager* _mapManager;
             advertisingIdentifier:nil];
     
 }
+
+#pragma mark - 初始化Tabbar
+
+-(void)initAKTabBarController{
+    
+    if (_vc_tabBar == nil) {
+        
+        self.vc_tabBar = [[AKTabBarController alloc]initWithTabBarHeight:50];
+        [_vc_tabBar setTabTitleIsHidden:NO];
+        [_vc_tabBar setTabEdgeColor:[UIColor clearColor]];
+        [_vc_tabBar setIconGlossyIsHidden:YES];
+        [_vc_tabBar setIconShadowOffset:CGSizeZero];
+        [_vc_tabBar setTabColors:@[[UIColor clearColor],[UIColor clearColor]]];
+        [_vc_tabBar setSelectedTabColors:@[[UIColor clearColor],[UIColor clearColor]]];
+        [_vc_tabBar setBackgroundImageName:@"tabbar_bg"];
+        [_vc_tabBar setSelectedBackgroundImageName:@"tabbar_bg"];
+        [_vc_tabBar setTextColor:UIColorFromRGB(0xbbbbbb)];
+        [_vc_tabBar setSelectedTextColor:UIColorFromRGB(0x4281e8)];
+        [_vc_tabBar setTabStrokeColor:[UIColor clearColor]];
+        [_vc_tabBar setTabInnerStrokeColor:[UIColor clearColor]];
+        [_vc_tabBar setMinimumHeightToDisplayTitle:50];
+        [_vc_tabBar setTextFont:[UIFont systemFontOfSize:11.f]];
+        [_vc_tabBar setTopEdgeColor:[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1]];
+        
+        
+        MainHomeVC *t_vc_main = [MainHomeVC new];
+        UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];
+        
+        ListHomeVC *t_vc_list = [ListHomeVC new];
+        UINavigationController *t_nav_list = [[UINavigationController alloc] initWithRootViewController:t_vc_list];
+        
+        MessageHomeVC *t_vc_message = [MessageHomeVC new];
+        UINavigationController *t_nav_message = [[UINavigationController alloc] initWithRootViewController:t_vc_message];
+        
+        UserHomeVC *t_vc_user = [UserHomeVC new];
+        UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
+        
+        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_list,t_nav_message,t_nav_user]mutableCopy]];
+        
+    }
+    
+}
+
+#pragma mark - 网络改变监听
+
+- (void)networkReconnection{
+    
+    BOOL ret = [_mapManager start:BAIDUMAP_APP_KEY generalDelegate:self];
+    if (!ret) {
+        LxPrintf(@"manager start failed!");
+    }
+    [[LocationHelper sharedDefault] startLocation];
+
+}
+
+#pragma mark - 屏幕旋转
+
+//此方法会在设备横竖屏变化的时候调用
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    
+    //   NSLog(@"方向  =============   %ld", _allowRotate);
+    if (_allowRotate == 1) {
+        return UIInterfaceOrientationMaskAll;
+    }else{
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+
+// 返回是否支持设备自动旋转
+- (BOOL)shouldAutorotate
+{
+    if (_allowRotate == 1) {
+        return YES;
+    }
+    return NO;
+}
+
 
 #pragma mark - 微信相关
 
@@ -143,8 +266,8 @@ BMKMapManager* _mapManager;
         if (0 == nErrCode) {  //成功。
             if ([@"wxlogin" isEqualToString:strState]) {
                 NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:SendRsp.code, @"code", nil];
-                
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WX_LOGIN_SUCCESS object:nil userInfo:dict];
+                
             }
         }else{ //失败
             LxPrintf(@"error %@",resp.errStr);
@@ -261,7 +384,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    
+    [[LocationHelper sharedDefault] stopLocation];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }

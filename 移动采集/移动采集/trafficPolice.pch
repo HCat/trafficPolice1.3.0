@@ -39,6 +39,7 @@
 
 #import <LxDBAnything.h>
 #import <NSObject+YYModel.h>
+#import "Reachability.h"
 
 #import "AppDelegate.h"
 
@@ -52,6 +53,7 @@
 #import "LRShowHUD.h"
 #import "ShareFun.h"
 #import "ShareValue.h"
+#import "LocationHelper.h"
 
 
 

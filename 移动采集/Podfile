@@ -17,6 +17,7 @@ pod 'Masonry'
 pod 'JPush'
 pod 'BaiduMapKit'
 pod 'WechatOpenSDK'
+pod 'Reachability'
 
 
 end
