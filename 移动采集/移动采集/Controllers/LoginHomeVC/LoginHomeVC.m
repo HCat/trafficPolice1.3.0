@@ -56,7 +56,6 @@
     
     WS(weakSelf);
     CommonValidVisitorManger *manger = [[CommonValidVisitorManger alloc] init];
-    manger.isNeedShowHud = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         
@@ -91,12 +90,15 @@
 - (IBAction)handleLoginOfVisitorAction:(id)sender {
 
     LoginVisitorManger *manger = [LoginVisitorManger new];
-    manger.isNeedShowHud = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
     
         if (manger.responseModel.code == CODE_SUCCESS) {
-            //归档用户
+            
+            /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
+            [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                
+            } seq:0];
             /*********** 存储token值用于后面的请求 ************/
             [ShareValue sharedDefault].token = manger.userModel.token;
             /*********** 全局为统一的Url添加token ************/

@@ -193,6 +193,16 @@
 
 #pragma mark - 投诉建议API
 
+@implementation CommonAdviceParam
+
+//黑名单，不被转换
++ (NSArray *)modelPropertyBlacklist {
+    return @[@"files"];
+}
+
+@end
+
+
 @implementation CommonAdviceManger
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
@@ -201,10 +211,26 @@
     return URL_COMMON_ADVICE;
 }
 
+//请求方式
+- (YTKRequestMethod)requestMethod
+{
+    return YTKRequestMethodPOST;
+}
+
+//上传图片
+- (AFConstructingBlock)constructingBodyBlock {
+    return ^(id<AFMultipartFormData> formData) {
+        for (ImageFileInfo *filesImage in self.param.files){
+            [formData appendPartWithFileData:filesImage.fileData name:filesImage.name fileName:filesImage.fileName mimeType:filesImage.mimeType];
+        }
+        
+    };
+}
+
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"msg":_msg};
+    return self.param.modelToJSONObject;
 }
 
 //返回参数

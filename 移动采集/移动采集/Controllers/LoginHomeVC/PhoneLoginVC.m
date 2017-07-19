@@ -94,7 +94,6 @@
     
 }
 
-#pragma mark - set && get 
 
 #pragma mark - set && get
 
@@ -154,7 +153,7 @@
         [hud hide];
         
         if (manger.responseModel.code == CODE_SUCCESS) {
-            //归档用户
+            /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 
@@ -190,9 +189,6 @@
 #pragma mark - 实时监听UITextField内容的变化
 
 -(void)passConTextChange:(id)sender{
-    UITextField* textField = (UITextField*)sender;
-    LxDBAnyVar(textField.text);
-
     if (_tf_phone.text.length > 0 && _tf_code.text.length > 0) {
         self.isCanCommit = YES;
     }else{

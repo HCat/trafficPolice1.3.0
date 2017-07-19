@@ -25,7 +25,6 @@
             
             _name = name; //对应网站上[upload.php中]处理文件的[字段"file"]
             
-         
             //self.image = image;
             LxPrintf(@"压缩成jpg之前Image尺寸是(宽：%f 长：%f)",image.size.width,image.size.height);
             _fileData = UIImageJPEGRepresentation(image, 1.0);

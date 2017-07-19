@@ -12,6 +12,32 @@
 		CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE0B558F1F1CA5F0003CF361 /* police.m4a */; };
 		CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */; };
 		CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */; };
+		CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */; };
+		CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */; };
+		CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9041F1F4272005CC5BD /* AccidentListModel.m */; };
+		CE42B9081F1F42B9005CC5BD /* AccidentCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9071F1F42B9005CC5BD /* AccidentCountModel.m */; };
+		CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B90A1F1F42D4005CC5BD /* AccidentDetailModel.m */; };
+		CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B90D1F1F45BF005CC5BD /* AccidentPicListModel.m */; };
+		CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9101F1F45E2005CC5BD /* AccidentModel.m */; };
+		CE42B9141F1F4694005CC5BD /* FastAccidentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9131F1F4694005CC5BD /* FastAccidentDetailModel.m */; };
+		CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9161F1F46DC005CC5BD /* IllegalParkAPI.m */; };
+		CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9181F1F46DC005CC5BD /* IllegalThroughAPI.m */; };
+		CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B91C1F1F48DB005CC5BD /* IllegalParkListModel.m */; };
+		CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B91E1F1F48DB005CC5BD /* IllegalParkDetailModel.m */; };
+		CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9221F1F4901005CC5BD /* IllegalCollectModel.m */; };
+		CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9251F1F4968005CC5BD /* IllegalThroughSecDetailModel.m */; };
+		CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9281F1F49A5005CC5BD /* VideoColectAPI.m */; };
+		CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B92C1F1F4AE4005CC5BD /* ArtAnimationRecordView.m */; };
+		CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B92E1F1F4AE4005CC5BD /* ArtPlayerView.m */; };
+		CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9301F1F4AE4005CC5BD /* ArtVideoModel.m */; };
+		CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9321F1F4AE4005CC5BD /* ArtVideoUtil.m */; };
+		CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9341F1F4AE4005CC5BD /* NSString+ALi.m */; };
+		CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B93B1F1F4B6D005CC5BD /* VideoColectListModel.m */; };
+		CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B93E1F1F4BCF005CC5BD /* IdentifyAPI.m */; };
+		CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9411F1F4BE3005CC5BD /* IdentifyModel.m */; };
+		CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9441F1F4D13005CC5BD /* PartyModel.m */; };
+		CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9461F1F4D13005CC5BD /* PartyFactory.m */; };
+		CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B94A1F1F594E005CC5BD /* PowerAPI.m */; };
 		CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */; };
 		CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */; };
 		CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */; };
@@ -79,6 +105,58 @@
 		CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LRShowHUD.bundle; sourceTree = "<group>"; };
 		CE0B55931F1CA8D0003CF361 /* LRShowHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShowHUD.h; sourceTree = "<group>"; };
 		CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShowHUD.m; sourceTree = "<group>"; };
+		CE42B8FD1F1F3E16005CC5BD /* AccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAPI.h; sourceTree = "<group>"; };
+		CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentAPI.m; sourceTree = "<group>"; };
+		CE42B8FF1F1F3E16005CC5BD /* FastAccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentAPI.h; sourceTree = "<group>"; };
+		CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastAccidentAPI.m; sourceTree = "<group>"; };
+		CE42B9031F1F4272005CC5BD /* AccidentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentListModel.h; sourceTree = "<group>"; };
+		CE42B9041F1F4272005CC5BD /* AccidentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentListModel.m; sourceTree = "<group>"; };
+		CE42B9061F1F42B9005CC5BD /* AccidentCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentCountModel.h; sourceTree = "<group>"; };
+		CE42B9071F1F42B9005CC5BD /* AccidentCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentCountModel.m; sourceTree = "<group>"; };
+		CE42B9091F1F42D4005CC5BD /* AccidentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentDetailModel.h; sourceTree = "<group>"; };
+		CE42B90A1F1F42D4005CC5BD /* AccidentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentDetailModel.m; sourceTree = "<group>"; };
+		CE42B90C1F1F45BF005CC5BD /* AccidentPicListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentPicListModel.h; sourceTree = "<group>"; };
+		CE42B90D1F1F45BF005CC5BD /* AccidentPicListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentPicListModel.m; sourceTree = "<group>"; };
+		CE42B90F1F1F45E2005CC5BD /* AccidentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentModel.h; sourceTree = "<group>"; };
+		CE42B9101F1F45E2005CC5BD /* AccidentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentModel.m; sourceTree = "<group>"; };
+		CE42B9121F1F4694005CC5BD /* FastAccidentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentDetailModel.h; sourceTree = "<group>"; };
+		CE42B9131F1F4694005CC5BD /* FastAccidentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastAccidentDetailModel.m; sourceTree = "<group>"; };
+		CE42B9151F1F46DC005CC5BD /* IllegalParkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkAPI.h; sourceTree = "<group>"; };
+		CE42B9161F1F46DC005CC5BD /* IllegalParkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkAPI.m; sourceTree = "<group>"; };
+		CE42B9171F1F46DC005CC5BD /* IllegalThroughAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalThroughAPI.h; sourceTree = "<group>"; };
+		CE42B9181F1F46DC005CC5BD /* IllegalThroughAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalThroughAPI.m; sourceTree = "<group>"; };
+		CE42B91B1F1F48DB005CC5BD /* IllegalParkListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkListModel.h; sourceTree = "<group>"; };
+		CE42B91C1F1F48DB005CC5BD /* IllegalParkListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkListModel.m; sourceTree = "<group>"; };
+		CE42B91D1F1F48DB005CC5BD /* IllegalParkDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkDetailModel.h; sourceTree = "<group>"; };
+		CE42B91E1F1F48DB005CC5BD /* IllegalParkDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkDetailModel.m; sourceTree = "<group>"; };
+		CE42B9211F1F4901005CC5BD /* IllegalCollectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalCollectModel.h; sourceTree = "<group>"; };
+		CE42B9221F1F4901005CC5BD /* IllegalCollectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalCollectModel.m; sourceTree = "<group>"; };
+		CE42B9241F1F4968005CC5BD /* IllegalThroughSecDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalThroughSecDetailModel.h; sourceTree = "<group>"; };
+		CE42B9251F1F4968005CC5BD /* IllegalThroughSecDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalThroughSecDetailModel.m; sourceTree = "<group>"; };
+		CE42B9271F1F49A5005CC5BD /* VideoColectAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoColectAPI.h; sourceTree = "<group>"; };
+		CE42B9281F1F49A5005CC5BD /* VideoColectAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoColectAPI.m; sourceTree = "<group>"; };
+		CE42B92B1F1F4AE4005CC5BD /* ArtAnimationRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtAnimationRecordView.h; sourceTree = "<group>"; };
+		CE42B92C1F1F4AE4005CC5BD /* ArtAnimationRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtAnimationRecordView.m; sourceTree = "<group>"; };
+		CE42B92D1F1F4AE4005CC5BD /* ArtPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtPlayerView.h; sourceTree = "<group>"; };
+		CE42B92E1F1F4AE4005CC5BD /* ArtPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtPlayerView.m; sourceTree = "<group>"; };
+		CE42B92F1F1F4AE4005CC5BD /* ArtVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoModel.h; sourceTree = "<group>"; };
+		CE42B9301F1F4AE4005CC5BD /* ArtVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoModel.m; sourceTree = "<group>"; };
+		CE42B9311F1F4AE4005CC5BD /* ArtVideoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoUtil.h; sourceTree = "<group>"; };
+		CE42B9321F1F4AE4005CC5BD /* ArtVideoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoUtil.m; sourceTree = "<group>"; };
+		CE42B9331F1F4AE4005CC5BD /* NSString+ALi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ALi.h"; sourceTree = "<group>"; };
+		CE42B9341F1F4AE4005CC5BD /* NSString+ALi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ALi.m"; sourceTree = "<group>"; };
+		CE42B93A1F1F4B6D005CC5BD /* VideoColectListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoColectListModel.h; sourceTree = "<group>"; };
+		CE42B93B1F1F4B6D005CC5BD /* VideoColectListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoColectListModel.m; sourceTree = "<group>"; };
+		CE42B93D1F1F4BCF005CC5BD /* IdentifyAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyAPI.h; sourceTree = "<group>"; };
+		CE42B93E1F1F4BCF005CC5BD /* IdentifyAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyAPI.m; sourceTree = "<group>"; };
+		CE42B9401F1F4BE3005CC5BD /* IdentifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyModel.h; sourceTree = "<group>"; };
+		CE42B9411F1F4BE3005CC5BD /* IdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyModel.m; sourceTree = "<group>"; };
+		CE42B9431F1F4D13005CC5BD /* PartyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyModel.h; sourceTree = "<group>"; };
+		CE42B9441F1F4D13005CC5BD /* PartyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyModel.m; sourceTree = "<group>"; };
+		CE42B9451F1F4D13005CC5BD /* PartyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyFactory.h; sourceTree = "<group>"; };
+		CE42B9461F1F4D13005CC5BD /* PartyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyFactory.m; sourceTree = "<group>"; };
+		CE42B9491F1F594E005CC5BD /* PowerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerAPI.h; sourceTree = "<group>"; };
+		CE42B94A1F1F594E005CC5BD /* PowerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerAPI.m; sourceTree = "<group>"; };
 		CE57F7831F1DF65C00CA9FCF /* MessageHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHomeVC.h; sourceTree = "<group>"; };
 		CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHomeVC.m; sourceTree = "<group>"; };
 		CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageHomeVC.xib; sourceTree = "<group>"; };
@@ -227,6 +305,23 @@
 			path = LRShowHUD;
 			sourceTree = "<group>";
 		};
+		CE42B92A1F1F4AE4005CC5BD /* LRVideoView */ = {
+			isa = PBXGroup;
+			children = (
+				CE42B92B1F1F4AE4005CC5BD /* ArtAnimationRecordView.h */,
+				CE42B92C1F1F4AE4005CC5BD /* ArtAnimationRecordView.m */,
+				CE42B92D1F1F4AE4005CC5BD /* ArtPlayerView.h */,
+				CE42B92E1F1F4AE4005CC5BD /* ArtPlayerView.m */,
+				CE42B92F1F1F4AE4005CC5BD /* ArtVideoModel.h */,
+				CE42B9301F1F4AE4005CC5BD /* ArtVideoModel.m */,
+				CE42B9311F1F4AE4005CC5BD /* ArtVideoUtil.h */,
+				CE42B9321F1F4AE4005CC5BD /* ArtVideoUtil.m */,
+				CE42B9331F1F4AE4005CC5BD /* NSString+ALi.h */,
+				CE42B9341F1F4AE4005CC5BD /* NSString+ALi.m */,
+			);
+			path = LRVideoView;
+			sourceTree = "<group>";
+		};
 		CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +423,7 @@
 		CEAA96E71F1CE6DE00741A6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE42B92A1F1F4AE4005CC5BD /* LRVideoView */,
 				CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */,
 				CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */,
 			);
@@ -341,6 +437,34 @@
 				CEAA96EB1F1CE70800741A6F /* UserModel.m */,
 				CE6915751F1DED15008911A6 /* ImageFileInfo.h */,
 				CE6915761F1DED15008911A6 /* ImageFileInfo.m */,
+				CE42B9031F1F4272005CC5BD /* AccidentListModel.h */,
+				CE42B9041F1F4272005CC5BD /* AccidentListModel.m */,
+				CE42B90F1F1F45E2005CC5BD /* AccidentModel.h */,
+				CE42B9101F1F45E2005CC5BD /* AccidentModel.m */,
+				CE42B90C1F1F45BF005CC5BD /* AccidentPicListModel.h */,
+				CE42B90D1F1F45BF005CC5BD /* AccidentPicListModel.m */,
+				CE42B9091F1F42D4005CC5BD /* AccidentDetailModel.h */,
+				CE42B90A1F1F42D4005CC5BD /* AccidentDetailModel.m */,
+				CE42B9061F1F42B9005CC5BD /* AccidentCountModel.h */,
+				CE42B9071F1F42B9005CC5BD /* AccidentCountModel.m */,
+				CE42B9121F1F4694005CC5BD /* FastAccidentDetailModel.h */,
+				CE42B9131F1F4694005CC5BD /* FastAccidentDetailModel.m */,
+				CE42B9211F1F4901005CC5BD /* IllegalCollectModel.h */,
+				CE42B9221F1F4901005CC5BD /* IllegalCollectModel.m */,
+				CE42B91B1F1F48DB005CC5BD /* IllegalParkListModel.h */,
+				CE42B91C1F1F48DB005CC5BD /* IllegalParkListModel.m */,
+				CE42B91D1F1F48DB005CC5BD /* IllegalParkDetailModel.h */,
+				CE42B91E1F1F48DB005CC5BD /* IllegalParkDetailModel.m */,
+				CE42B9241F1F4968005CC5BD /* IllegalThroughSecDetailModel.h */,
+				CE42B9251F1F4968005CC5BD /* IllegalThroughSecDetailModel.m */,
+				CE42B93A1F1F4B6D005CC5BD /* VideoColectListModel.h */,
+				CE42B93B1F1F4B6D005CC5BD /* VideoColectListModel.m */,
+				CE42B9401F1F4BE3005CC5BD /* IdentifyModel.h */,
+				CE42B9411F1F4BE3005CC5BD /* IdentifyModel.m */,
+				CE42B9431F1F4D13005CC5BD /* PartyModel.h */,
+				CE42B9441F1F4D13005CC5BD /* PartyModel.m */,
+				CE42B9451F1F4D13005CC5BD /* PartyFactory.h */,
+				CE42B9461F1F4D13005CC5BD /* PartyFactory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +476,20 @@
 				CEAA97011F1CEFE800741A6F /* LoginAPI.m */,
 				CE69154E1F1DD590008911A6 /* CommonAPI.h */,
 				CE69154F1F1DD590008911A6 /* CommonAPI.m */,
+				CE42B8FD1F1F3E16005CC5BD /* AccidentAPI.h */,
+				CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */,
+				CE42B8FF1F1F3E16005CC5BD /* FastAccidentAPI.h */,
+				CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */,
+				CE42B9151F1F46DC005CC5BD /* IllegalParkAPI.h */,
+				CE42B9161F1F46DC005CC5BD /* IllegalParkAPI.m */,
+				CE42B9171F1F46DC005CC5BD /* IllegalThroughAPI.h */,
+				CE42B9181F1F46DC005CC5BD /* IllegalThroughAPI.m */,
+				CE42B9271F1F49A5005CC5BD /* VideoColectAPI.h */,
+				CE42B9281F1F49A5005CC5BD /* VideoColectAPI.m */,
+				CE42B93D1F1F4BCF005CC5BD /* IdentifyAPI.h */,
+				CE42B93E1F1F4BCF005CC5BD /* IdentifyAPI.m */,
+				CE42B9491F1F594E005CC5BD /* PowerAPI.h */,
+				CE42B94A1F1F594E005CC5BD /* PowerAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -663,48 +801,74 @@
 				CEAA97191F1CF15900741A6F /* UINavigationBar+Awesome.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CEAA97361F1CF25B00741A6F /* AKTabBarView.m in Sources */,
+				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
+				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
+				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */,
 				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
 				CEAA97351F1CF25B00741A6F /* AKTabBarController.m in Sources */,
+				CE42B9141F1F4694005CC5BD /* FastAccidentDetailModel.m in Sources */,
 				CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */,
 				CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */,
 				CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */,
+				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
+				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
+				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
+				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
 				CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
+				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
 				CEAA971A1F1CF15900741A6F /* UINavigationBar+BarItem.m in Sources */,
 				CEAA96FA1F1CE97B00741A6F /* YTKUrlArgumentsFilter.m in Sources */,
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
+				CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
+				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
+				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
+				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
 				CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
+				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
+				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
+				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
+				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,
 				CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */,
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
+				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
 				CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */,
 				CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */,
+				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
 				CEAA97181F1CF15900741A6F /* UIButton+NoRepeatClick.m in Sources */,
 				CEAA96F71F1CE97B00741A6F /* BaseModel.m in Sources */,
+				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
+				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
 				CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */,
+				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
+				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
+				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
 				CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */,
+				CE42B9081F1F42B9005CC5BD /* AccidentCountModel.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
+				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
