@@ -38,6 +38,17 @@
 		CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9441F1F4D13005CC5BD /* PartyModel.m */; };
 		CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9461F1F4D13005CC5BD /* PartyFactory.m */; };
 		CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B94A1F1F594E005CC5BD /* PowerAPI.m */; };
+		CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464CE1F2189E20056A9EB /* FXBlurView.m */; };
+		CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D01F2189E20056A9EB /* SRAlertView.m */; };
+		CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D51F218A530056A9EB /* HSUpdateApp.m */; };
+		CE555F551F203BBC00829124 /* UIView+XBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F471F203BBC00829124 /* UIView+XBExtension.m */; };
+		CE555F561F203BBC00829124 /* XBSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */; };
+		CE555F571F203BBC00829124 /* XBSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */; };
+		CE555F581F203BBC00829124 /* XBMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F511F203BBC00829124 /* XBMeHeaderView.m */; };
+		CE555F591F203BBC00829124 /* XBMeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F521F203BBC00829124 /* XBMeHeaderView.xib */; };
+		CE555F5A1F203BBC00829124 /* XBSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F541F203BBC00829124 /* XBSettingCell.m */; };
+		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
+		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
 		CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */; };
 		CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */; };
 		CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */; };
@@ -157,6 +168,27 @@
 		CE42B9461F1F4D13005CC5BD /* PartyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyFactory.m; sourceTree = "<group>"; };
 		CE42B9491F1F594E005CC5BD /* PowerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerAPI.h; sourceTree = "<group>"; };
 		CE42B94A1F1F594E005CC5BD /* PowerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerAPI.m; sourceTree = "<group>"; };
+		CE4464CD1F2189E20056A9EB /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		CE4464CE1F2189E20056A9EB /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		CE4464CF1F2189E20056A9EB /* SRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertView.h; sourceTree = "<group>"; };
+		CE4464D01F2189E20056A9EB /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
+		CE4464D41F218A530056A9EB /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
+		CE4464D51F218A530056A9EB /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
+		CE555F461F203BBC00829124 /* UIView+XBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XBExtension.h"; sourceTree = "<group>"; };
+		CE555F471F203BBC00829124 /* UIView+XBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XBExtension.m"; sourceTree = "<group>"; };
+		CE555F491F203BBC00829124 /* XBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConst.h; sourceTree = "<group>"; };
+		CE555F4B1F203BBC00829124 /* XBSettingItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingItemModel.h; sourceTree = "<group>"; };
+		CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingItemModel.m; sourceTree = "<group>"; };
+		CE555F4D1F203BBC00829124 /* XBSettingSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingSectionModel.h; sourceTree = "<group>"; };
+		CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingSectionModel.m; sourceTree = "<group>"; };
+		CE555F501F203BBC00829124 /* XBMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMeHeaderView.h; sourceTree = "<group>"; };
+		CE555F511F203BBC00829124 /* XBMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMeHeaderView.m; sourceTree = "<group>"; };
+		CE555F521F203BBC00829124 /* XBMeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBMeHeaderView.xib; sourceTree = "<group>"; };
+		CE555F531F203BBC00829124 /* XBSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingCell.h; sourceTree = "<group>"; };
+		CE555F541F203BBC00829124 /* XBSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingCell.m; sourceTree = "<group>"; };
+		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
+		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
+		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
 		CE57F7831F1DF65C00CA9FCF /* MessageHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHomeVC.h; sourceTree = "<group>"; };
 		CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHomeVC.m; sourceTree = "<group>"; };
 		CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageHomeVC.xib; sourceTree = "<group>"; };
@@ -322,6 +354,85 @@
 			path = LRVideoView;
 			sourceTree = "<group>";
 		};
+		CE4464CB1F2189E20056A9EB /* SRAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4464CC1F2189E20056A9EB /* FXBlurView */,
+				CE4464CF1F2189E20056A9EB /* SRAlertView.h */,
+				CE4464D01F2189E20056A9EB /* SRAlertView.m */,
+			);
+			path = SRAlertView;
+			sourceTree = "<group>";
+		};
+		CE4464CC1F2189E20056A9EB /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4464CD1F2189E20056A9EB /* FXBlurView.h */,
+				CE4464CE1F2189E20056A9EB /* FXBlurView.m */,
+			);
+			path = FXBlurView;
+			sourceTree = "<group>";
+		};
+		CE4464D31F218A530056A9EB /* HSUpdateApp */ = {
+			isa = PBXGroup;
+			children = (
+				CE4464D41F218A530056A9EB /* HSUpdateApp.h */,
+				CE4464D51F218A530056A9EB /* HSUpdateApp.m */,
+			);
+			path = HSUpdateApp;
+			sourceTree = "<group>";
+		};
+		CE555F441F203BBC00829124 /* XBSettingController */ = {
+			isa = PBXGroup;
+			children = (
+				CE555F451F203BBC00829124 /* Category */,
+				CE555F481F203BBC00829124 /* Const */,
+				CE555F4A1F203BBC00829124 /* Model */,
+				CE555F4F1F203BBC00829124 /* View */,
+			);
+			path = XBSettingController;
+			sourceTree = "<group>";
+		};
+		CE555F451F203BBC00829124 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CE555F461F203BBC00829124 /* UIView+XBExtension.h */,
+				CE555F471F203BBC00829124 /* UIView+XBExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CE555F481F203BBC00829124 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				CE555F491F203BBC00829124 /* XBConst.h */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		CE555F4A1F203BBC00829124 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE555F4B1F203BBC00829124 /* XBSettingItemModel.h */,
+				CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */,
+				CE555F4D1F203BBC00829124 /* XBSettingSectionModel.h */,
+				CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE555F4F1F203BBC00829124 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE555F501F203BBC00829124 /* XBMeHeaderView.h */,
+				CE555F511F203BBC00829124 /* XBMeHeaderView.m */,
+				CE555F521F203BBC00829124 /* XBMeHeaderView.xib */,
+				CE555F531F203BBC00829124 /* XBSettingCell.h */,
+				CE555F541F203BBC00829124 /* XBSettingCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +478,9 @@
 				CE6915611F1DDA01008911A6 /* UserHomeVC.h */,
 				CE6915621F1DDA01008911A6 /* UserHomeVC.m */,
 				CE6915631F1DDA01008911A6 /* UserHomeVC.xib */,
+				CE555F5B1F20568100829124 /* UserSetVC.h */,
+				CE555F5C1F20568100829124 /* UserSetVC.m */,
+				CE555F5D1F20568100829124 /* UserSetVC.xib */,
 			);
 			path = UserHomeVC;
 			sourceTree = "<group>";
@@ -593,6 +707,9 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE4464D31F218A530056A9EB /* HSUpdateApp */,
+				CE4464CB1F2189E20056A9EB /* SRAlertView */,
+				CE555F441F203BBC00829124 /* XBSettingController */,
 				CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */,
 				CEAA97241F1CF25B00741A6F /* AKTabBarController */,
 				CEAA96DC1F1CE13200741A6F /* SAMKeychain */,
@@ -732,10 +849,12 @@
 				CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
+				CE555F591F203BBC00829124 /* XBMeHeaderView.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */,
 				CEAA97341F1CF25B00741A6F /* AKTabBarController.bundle in Resources */,
+				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
 				CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */,
 				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
@@ -808,6 +927,7 @@
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */,
+				CE555F5A1F203BBC00829124 /* XBSettingCell.m in Sources */,
 				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
 				CEAA97351F1CF25B00741A6F /* AKTabBarController.m in Sources */,
@@ -820,13 +940,16 @@
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
+				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
 				CEAA971A1F1CF15900741A6F /* UINavigationBar+BarItem.m in Sources */,
 				CEAA96FA1F1CE97B00741A6F /* YTKUrlArgumentsFilter.m in Sources */,
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
+				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */,
+				CE555F561F203BBC00829124 /* XBSettingItemModel.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
@@ -840,6 +963,7 @@
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */,
+				CE555F551F203BBC00829124 /* UIView+XBExtension.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
@@ -855,9 +979,12 @@
 				CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */,
 				CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */,
 				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
+				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
 				CEAA97181F1CF15900741A6F /* UIButton+NoRepeatClick.m in Sources */,
 				CEAA96F71F1CE97B00741A6F /* BaseModel.m in Sources */,
+				CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */,
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
+				CE555F571F203BBC00829124 /* XBSettingSectionModel.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
 				CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
@@ -869,6 +996,7 @@
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
+				CE555F581F203BBC00829124 /* XBMeHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

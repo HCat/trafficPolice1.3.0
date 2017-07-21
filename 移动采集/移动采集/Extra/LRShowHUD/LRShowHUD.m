@@ -210,7 +210,7 @@
     }
     
     LRShowHUD *showHud     = [[LRShowHUD alloc] initWithView:view];
-    showHud.hud.mode = MBProgressHUDModeIndeterminate;
+    showHud.hud.mode = MBProgressHUDModeCustomView;
     
     //默认配置
     [showHud setUpCommonConfig:nil];
@@ -257,7 +257,7 @@
     }
     
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
-         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-fail"]];
+         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-fail"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
         
         [showhud setUpCommonConfig:text];
@@ -293,7 +293,7 @@
     }
     
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
-        return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-success"]];
+        return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-success"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
         
         [showhud setUpCommonConfig:text];
@@ -329,7 +329,7 @@
     }
 
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
-        return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/hud-warning"]];
+        return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-warning"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
         
         [showhud setUpCommonConfig:text];
