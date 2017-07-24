@@ -14,6 +14,7 @@
 		CE0C358A1F25D75000405A99 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE0C35891F25D75000405A99 /* police.m4a */; };
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
+		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
 		CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */; };
 		CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */; };
 		CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9041F1F4272005CC5BD /* AccidentListModel.m */; };
@@ -122,6 +123,8 @@
 		CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingItemModel.m; sourceTree = "<group>"; };
 		CE0C358F1F25ED8600405A99 /* LRSettingSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingSectionModel.h; sourceTree = "<group>"; };
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
+		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
+		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
 		CE42B8FD1F1F3E16005CC5BD /* AccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAPI.h; sourceTree = "<group>"; };
 		CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentAPI.m; sourceTree = "<group>"; };
 		CE42B8FF1F1F3E16005CC5BD /* FastAccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentAPI.h; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 				CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */,
 				CE0C358F1F25ED8600405A99 /* LRSettingSectionModel.h */,
 				CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */,
+				CE0C35921F25F9A200405A99 /* LRSettingCell.h */,
+				CE0C35931F25F9A200405A99 /* LRSettingCell.m */,
 			);
 			path = LRDefaultSettingVC;
 			sourceTree = "<group>";
@@ -983,6 +988,7 @@
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */,
 				CE555F551F203BBC00829124 /* UIView+XBExtension.m in Sources */,
+				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,

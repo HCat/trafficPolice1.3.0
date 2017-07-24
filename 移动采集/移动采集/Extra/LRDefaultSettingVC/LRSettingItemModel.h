@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, LRSettingAccessoryType) {
 
 
 
-@interface XBSettingItemModel : NSObject
+@interface LRSettingItemModel : NSObject
 @property (nonatomic,copy)   NSString  *funcName;     /**<      功能名称*/
 @property (nonatomic,strong) UIImage *img;            /**< 功能图片  */
 @property (nonatomic,copy)   NSString *detailText;    /**< 更多信息-提示文字  */
