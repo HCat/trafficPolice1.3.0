@@ -11,13 +11,11 @@ pod 'LxDBAnything'
 pod 'MJRefresh'
 pod 'AMScrollingNavbar', '~> 1.5.1’
 pod 'TOCropViewController'
-pod 'LLSimpleCamera'
 pod 'PureLayout'
 pod 'Masonry'
 pod 'JPush'
 pod 'BaiduMapKit'
 pod 'WechatOpenSDK'
 pod 'Reachability'
-
 
 end

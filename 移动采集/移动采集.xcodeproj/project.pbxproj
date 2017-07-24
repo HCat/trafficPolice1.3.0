@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */; };
 		CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */; };
-		CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE0B558F1F1CA5F0003CF361 /* police.m4a */; };
 		CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */; };
 		CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */; };
+		CE0C358A1F25D75000405A99 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = CE0C35891F25D75000405A99 /* police.m4a */; };
+		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
+		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */; };
 		CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */; };
 		CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9041F1F4272005CC5BD /* AccidentListModel.m */; };
@@ -112,10 +114,14 @@
 		CE0B558B1F1C9B98003CF361 /* SDKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKMacro.h; sourceTree = "<group>"; };
 		CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CE0B558E1F1CA54D003CF361 /* 移动采集.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "移动采集.entitlements"; sourceTree = "<group>"; };
-		CE0B558F1F1CA5F0003CF361 /* police.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = police.m4a; sourceTree = "<group>"; };
 		CE0B55921F1CA8D0003CF361 /* LRShowHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LRShowHUD.bundle; sourceTree = "<group>"; };
 		CE0B55931F1CA8D0003CF361 /* LRShowHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRShowHUD.h; sourceTree = "<group>"; };
 		CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRShowHUD.m; sourceTree = "<group>"; };
+		CE0C35891F25D75000405A99 /* police.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = police.m4a; sourceTree = "<group>"; };
+		CE0C358C1F25ED6800405A99 /* LRSettingItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingItemModel.h; sourceTree = "<group>"; };
+		CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingItemModel.m; sourceTree = "<group>"; };
+		CE0C358F1F25ED8600405A99 /* LRSettingSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingSectionModel.h; sourceTree = "<group>"; };
+		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE42B8FD1F1F3E16005CC5BD /* AccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAPI.h; sourceTree = "<group>"; };
 		CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentAPI.m; sourceTree = "<group>"; };
 		CE42B8FF1F1F3E16005CC5BD /* FastAccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentAPI.h; sourceTree = "<group>"; };
@@ -335,6 +341,17 @@
 				CE0B55941F1CA8D0003CF361 /* LRShowHUD.m */,
 			);
 			path = LRShowHUD;
+			sourceTree = "<group>";
+		};
+		CE0C358B1F25ED3D00405A99 /* LRDefaultSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE0C358C1F25ED6800405A99 /* LRSettingItemModel.h */,
+				CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */,
+				CE0C358F1F25ED8600405A99 /* LRSettingSectionModel.h */,
+				CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */,
+			);
+			path = LRDefaultSettingVC;
 			sourceTree = "<group>";
 		};
 		CE42B92A1F1F4AE4005CC5BD /* LRVideoView */ = {
@@ -664,7 +681,7 @@
 		CEE5E9CD1F1C6CBB00AC515C /* 移动采集 */ = {
 			isa = PBXGroup;
 			children = (
-				CE0B558F1F1CA5F0003CF361 /* police.m4a */,
+				CE0C35891F25D75000405A99 /* police.m4a */,
 				CE0B558E1F1CA54D003CF361 /* 移动采集.entitlements */,
 				CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */,
 				CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */,
@@ -707,6 +724,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE0C358B1F25ED3D00405A99 /* LRDefaultSettingVC */,
 				CE4464D31F218A530056A9EB /* HSUpdateApp */,
 				CE4464CB1F2189E20056A9EB /* SRAlertView */,
 				CE555F441F203BBC00829124 /* XBSettingController */,
@@ -850,9 +868,9 @@
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
 				CE555F591F203BBC00829124 /* XBMeHeaderView.xib in Resources */,
+				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
-				CE0B55901F1CA5F0003CF361 /* police.m4a in Resources */,
 				CEAA97341F1CF25B00741A6F /* AKTabBarController.bundle in Resources */,
 				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
 				CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */,
@@ -945,6 +963,7 @@
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
 				CEAA971A1F1CF15900741A6F /* UINavigationBar+BarItem.m in Sources */,
+				CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */,
 				CEAA96FA1F1CE97B00741A6F /* YTKUrlArgumentsFilter.m in Sources */,
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
@@ -982,6 +1001,7 @@
 				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
 				CEAA97181F1CF15900741A6F /* UIButton+NoRepeatClick.m in Sources */,
 				CEAA96F71F1CE97B00741A6F /* BaseModel.m in Sources */,
+				CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */,
 				CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */,
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
 				CE555F571F203BBC00829124 /* XBSettingSectionModel.m in Sources */,

@@ -11,6 +11,9 @@
 
 #define ITUNESAPPID @"1252501276"
 
+#define DefaultBGColor UIColorFromRGB(0xf2f2f2)
+#define DefaultNavColor UIColorFromRGB(0x333741)
+
 #define WS(__KEY)  __weak typeof(self)__KEY = self
 #define SW(__SW,__WS)  __strong typeof(__WS)__SW = __WS
 
@@ -71,6 +74,7 @@
 #define SIMULATOR 0
 #endif
 
+//代码执行时间
 #define TICK   NSDate *startTime = [NSDate date];
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow]);
 

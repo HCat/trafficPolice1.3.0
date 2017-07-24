@@ -48,10 +48,10 @@
 + (UserModel *)getUserModel;
 
 //获取列表权限
-+ (BOOL)isPermissionForAccidentList;        //事故权限
-+ (BOOL)isPermissionForFastAccidentList;    //快处权限
-+ (BOOL)isPermissionForIllegalList;         //违章权限
-+ (BOOL)isPermissionForThroughList;         //闯禁令权限
-+ (BOOL)isPermissionForVideoCollectList;    //视频录入权限
++ (BOOL)isPermissionForAccidentList;        //事故权限列表
++ (BOOL)isPermissionForFastAccidentList;    //快处权限列表
++ (BOOL)isPermissionForIllegalList;         //违章权限列表
++ (BOOL)isPermissionForThroughList;         //闯禁令权限列表
++ (BOOL)isPermissionForVideoCollectList;    //视频录入权限列表
  
 @end

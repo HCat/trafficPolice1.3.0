@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>LLSimpleCamera.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,32 +77,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0045AA8D7C4FF15F33BFA9DA45B0AE84</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0F4589C203643D482ADD9D9B72F0B5AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1A69C8AC974152A549ED8DA702B113ED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>262F2BFF9131247E1E0F1A679073DD14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3C43E58F8D6E3EBB8EC090E6AB93D7A4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>47BE350D102497D2F56A19E6CBD16118</key>
+		<key>10577E77E84E9C8207405E4A3774B8C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,27 +112,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA9EA5A6A593D853638571F91F8CF8A3</key>
+		<key>9E4656E81842CE17BFBB46BE14F4D95E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5A1916E801503788A3B4C847F43FA45</key>
+		<key>C8C7CFA95FE4E11E7F847EC1B26C17C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC5D71632DF539F69C7FCD5F0A3130E4</key>
+		<key>CF7C2E6989144CE1EC2147770242F4FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C839E4C19063D1523073BF07C750364F</key>
+		<key>D46A4B005DA499375BC34E16BE0E245C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DABBD9749473084F65319B5C75E4AE26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F7A4B860C5052FBC7A438920F43019B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA2DCBDAFD5ABFA21BCD95EFE0CE88B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

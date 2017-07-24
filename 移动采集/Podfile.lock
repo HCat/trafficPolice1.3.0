@@ -20,7 +20,6 @@ PODS:
   - JCore (1.1.5)
   - JPush (3.0.6):
     - JCore (~> 1.1.1)
-  - LLSimpleCamera (5.0.0)
   - LxDBAnything (1.1.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
@@ -43,7 +42,6 @@ DEPENDENCIES:
   - BaiduMapKit
   - IQKeyboardManager
   - JPush
-  - LLSimpleCamera
   - LxDBAnything
   - Masonry
   - MBProgressHUD
@@ -63,7 +61,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   JCore: 9bd9c770c877c583d98b90a68792b8361974c231
   JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
-  LLSimpleCamera: 7175ccb81be71c83d79933089322eb662b1f0327
   LxDBAnything: 154a2ad1ae32e70355d886b5443260543bb60c71
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -76,6 +73,6 @@ SPEC CHECKSUMS:
   YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 77a787ee01e878f19a5de74222c62f81f83c1e3d
+PODFILE CHECKSUM: a70bfd72f40df35ac94741a96024441de1005e80
 
 COCOAPODS: 1.2.1

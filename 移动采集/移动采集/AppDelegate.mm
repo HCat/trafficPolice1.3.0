@@ -41,7 +41,7 @@ BMKMapManager* _mapManager;
     [self addThirthPart:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = UIColorFromRGB(0xf2f2f2);
+    self.window.backgroundColor = DefaultBGColor;
     
     if ([ShareValue sharedDefault].token) {
         
@@ -70,7 +70,7 @@ BMKMapManager* _mapManager;
     
     //设置导航栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x4281E8)];
+    [[UINavigationBar appearance] setBarTintColor:DefaultNavColor];
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     if([[UIDevice currentDevice].systemVersion floatValue] >= 8 && [UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)]) {
         [UINavigationBar appearance].translucent = NO;
@@ -149,8 +149,8 @@ BMKMapManager* _mapManager;
         [_vc_tabBar setSelectedTabColors:@[[UIColor clearColor],[UIColor clearColor]]];
         [_vc_tabBar setBackgroundImageName:@"tabbar_bg"];
         [_vc_tabBar setSelectedBackgroundImageName:@"tabbar_bg"];
-        [_vc_tabBar setTextColor:UIColorFromRGB(0xbbbbbb)];
-        [_vc_tabBar setSelectedTextColor:UIColorFromRGB(0x4281e8)];
+        [_vc_tabBar setTextColor:UIColorFromRGB(0xb5bdd2)];
+        [_vc_tabBar setSelectedTextColor:UIColorFromRGB(0x253254)];
         [_vc_tabBar setTabStrokeColor:[UIColor clearColor]];
         [_vc_tabBar setTabInnerStrokeColor:[UIColor clearColor]];
         [_vc_tabBar setMinimumHeightToDisplayTitle:50];
@@ -193,22 +193,14 @@ BMKMapManager* _mapManager;
 //此方法会在设备横竖屏变化的时候调用
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
+   return UIInterfaceOrientationMaskPortrait;
     
-    //   NSLog(@"方向  =============   %ld", _allowRotate);
-    if (_allowRotate == 1) {
-        return UIInterfaceOrientationMaskAll;
-    }else{
-        return UIInterfaceOrientationMaskPortrait;
-    }
 }
 
 
 // 返回是否支持设备自动旋转
 - (BOOL)shouldAutorotate
 {
-    if (_allowRotate == 1) {
-        return YES;
-    }
     return NO;
 }
 
@@ -281,11 +273,9 @@ BMKMapManager* _mapManager;
                 [alert show];
                 
             }
-            
         }
     }
 }
-
 
 #pragma mark - jpush相关
 
@@ -315,9 +305,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *sound = [aps objectForKey:@"sound"];
         
         if ([sound containsString:@"police"]) {
+            
             NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
             self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
-            self.player.numberOfLoops = 0;
+            self.player.numberOfLoops = 1000;
             self.player.volume = 1.0;
             [self.player play];
         }
@@ -334,13 +325,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        
         [JPUSHService handleRemoteNotification:userInfo];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RECEIVENOTIFICATION_SUCCESS object:userInfo];
         
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        NSString *sound = [aps objectForKey:@"sound"];
         
-        
-        
-       
+        if ([sound containsString:@"police"]) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
+            self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
+            self.player.numberOfLoops = 1000;
+            self.player.volume = 1.0;
+            [self.player play];
+        }
+    
     }
     completionHandler();  // 系统要求执行这个方法
 }

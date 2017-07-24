@@ -37,7 +37,7 @@
     _tf_phone.text = _phone;
     
     _btn_countDown.durationOfCountDown = 60;
-    _btn_countDown.originalBGColor = UIColorFromRGB(0x467AE3);
+    _btn_countDown.originalBGColor = DefaultNavColor;
     _btn_countDown.processBGColor = UIColorFromRGB(0xe2e2e2);
     _btn_countDown.processFont = [UIFont systemFontOfSize:12.f];
     _btn_countDown.originalFont = [UIFont systemFontOfSize:15.f];
@@ -104,7 +104,7 @@
         [_btn_commit setBackgroundColor:UIColorFromRGB(0xe6e6e6)];
     }else{
         _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0x4281E8)];
+        [_btn_commit setBackgroundColor:DefaultNavColor];
     }
 }
 

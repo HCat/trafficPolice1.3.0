@@ -1,14 +1,15 @@
 //
-//  XBSettingSectionModel.h
-//  xiu8iOS
+//  LRSettingSectionModel.h
+//  移动采集
 //
-//  Created by XB on 15/9/18.
-//  Copyright (c) 2015年 xiu8. All rights reserved.
+//  Created by hcat on 2017/7/24.
+//  Copyright © 2017年 Hcat. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
-@interface XBSettingSectionModel : NSObject
+@interface LRSettingSectionModel : NSObject
 
 @property (nonatomic,copy)   NSString  *sectionHeaderName; /**< 传空表示分组无名称*/
 
