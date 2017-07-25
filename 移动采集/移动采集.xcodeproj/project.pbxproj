@@ -44,12 +44,14 @@
 		CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464CE1F2189E20056A9EB /* FXBlurView.m */; };
 		CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D01F2189E20056A9EB /* SRAlertView.m */; };
 		CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D51F218A530056A9EB /* HSUpdateApp.m */; };
-		CE555F551F203BBC00829124 /* UIView+XBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F471F203BBC00829124 /* UIView+XBExtension.m */; };
-		CE555F561F203BBC00829124 /* XBSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */; };
-		CE555F571F203BBC00829124 /* XBSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */; };
-		CE555F581F203BBC00829124 /* XBMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F511F203BBC00829124 /* XBMeHeaderView.m */; };
-		CE555F591F203BBC00829124 /* XBMeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F521F203BBC00829124 /* XBMeHeaderView.xib */; };
-		CE555F5A1F203BBC00829124 /* XBSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F541F203BBC00829124 /* XBSettingCell.m */; };
+		CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BB31F272A920025A20C /* FeedbackVC.m */; };
+		CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BB41F272A920025A20C /* FeedbackVC.xib */; };
+		CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BB81F272F3B0025A20C /* FeedbackHeadView.m */; };
+		CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BB91F272F3B0025A20C /* FeedbackHeadView.xib */; };
+		CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BBD1F272F810025A20C /* FeedbackFootView.m */; };
+		CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BBE1F272F810025A20C /* FeedbackFootView.xib */; };
+		CE450BC41F2730160025A20C /* FSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC31F2730160025A20C /* FSTextView.m */; };
+		CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
 		CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */; };
@@ -183,18 +185,19 @@
 		CE4464D01F2189E20056A9EB /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
 		CE4464D41F218A530056A9EB /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
 		CE4464D51F218A530056A9EB /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
-		CE555F461F203BBC00829124 /* UIView+XBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XBExtension.h"; sourceTree = "<group>"; };
-		CE555F471F203BBC00829124 /* UIView+XBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XBExtension.m"; sourceTree = "<group>"; };
-		CE555F491F203BBC00829124 /* XBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBConst.h; sourceTree = "<group>"; };
-		CE555F4B1F203BBC00829124 /* XBSettingItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingItemModel.h; sourceTree = "<group>"; };
-		CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingItemModel.m; sourceTree = "<group>"; };
-		CE555F4D1F203BBC00829124 /* XBSettingSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingSectionModel.h; sourceTree = "<group>"; };
-		CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingSectionModel.m; sourceTree = "<group>"; };
-		CE555F501F203BBC00829124 /* XBMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMeHeaderView.h; sourceTree = "<group>"; };
-		CE555F511F203BBC00829124 /* XBMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMeHeaderView.m; sourceTree = "<group>"; };
-		CE555F521F203BBC00829124 /* XBMeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBMeHeaderView.xib; sourceTree = "<group>"; };
-		CE555F531F203BBC00829124 /* XBSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSettingCell.h; sourceTree = "<group>"; };
-		CE555F541F203BBC00829124 /* XBSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSettingCell.m; sourceTree = "<group>"; };
+		CE450BB21F272A920025A20C /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
+		CE450BB31F272A920025A20C /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
+		CE450BB41F272A920025A20C /* FeedbackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
+		CE450BB71F272F3B0025A20C /* FeedbackHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackHeadView.h; sourceTree = "<group>"; };
+		CE450BB81F272F3B0025A20C /* FeedbackHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackHeadView.m; sourceTree = "<group>"; };
+		CE450BB91F272F3B0025A20C /* FeedbackHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackHeadView.xib; sourceTree = "<group>"; };
+		CE450BBC1F272F810025A20C /* FeedbackFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackFootView.h; sourceTree = "<group>"; };
+		CE450BBD1F272F810025A20C /* FeedbackFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackFootView.m; sourceTree = "<group>"; };
+		CE450BBE1F272F810025A20C /* FeedbackFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackFootView.xib; sourceTree = "<group>"; };
+		CE450BC21F2730160025A20C /* FSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTextView.h; sourceTree = "<group>"; };
+		CE450BC31F2730160025A20C /* FSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTextView.m; sourceTree = "<group>"; };
+		CE450BC61F2741050025A20C /* BaseImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageCollectionCell.h; sourceTree = "<group>"; };
+		CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageCollectionCell.m; sourceTree = "<group>"; };
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
 		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
 		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
@@ -404,55 +407,38 @@
 			path = HSUpdateApp;
 			sourceTree = "<group>";
 		};
-		CE555F441F203BBC00829124 /* XBSettingController */ = {
+		CE450BB11F272A770025A20C /* FeedbackVC */ = {
 			isa = PBXGroup;
 			children = (
-				CE555F451F203BBC00829124 /* Category */,
-				CE555F481F203BBC00829124 /* Const */,
-				CE555F4A1F203BBC00829124 /* Model */,
-				CE555F4F1F203BBC00829124 /* View */,
+				CE450BB71F272F3B0025A20C /* FeedbackHeadView.h */,
+				CE450BB81F272F3B0025A20C /* FeedbackHeadView.m */,
+				CE450BB91F272F3B0025A20C /* FeedbackHeadView.xib */,
+				CE450BBC1F272F810025A20C /* FeedbackFootView.h */,
+				CE450BBD1F272F810025A20C /* FeedbackFootView.m */,
+				CE450BBE1F272F810025A20C /* FeedbackFootView.xib */,
+				CE450BB21F272A920025A20C /* FeedbackVC.h */,
+				CE450BB31F272A920025A20C /* FeedbackVC.m */,
+				CE450BB41F272A920025A20C /* FeedbackVC.xib */,
 			);
-			path = XBSettingController;
+			path = FeedbackVC;
 			sourceTree = "<group>";
 		};
-		CE555F451F203BBC00829124 /* Category */ = {
+		CE450BC11F2730160025A20C /* FSTextView */ = {
 			isa = PBXGroup;
 			children = (
-				CE555F461F203BBC00829124 /* UIView+XBExtension.h */,
-				CE555F471F203BBC00829124 /* UIView+XBExtension.m */,
+				CE450BC21F2730160025A20C /* FSTextView.h */,
+				CE450BC31F2730160025A20C /* FSTextView.m */,
 			);
-			path = Category;
+			path = FSTextView;
 			sourceTree = "<group>";
 		};
-		CE555F481F203BBC00829124 /* Const */ = {
+		CE450BC51F2740B20025A20C /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				CE555F491F203BBC00829124 /* XBConst.h */,
+				CE450BC61F2741050025A20C /* BaseImageCollectionCell.h */,
+				CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */,
 			);
-			path = Const;
-			sourceTree = "<group>";
-		};
-		CE555F4A1F203BBC00829124 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CE555F4B1F203BBC00829124 /* XBSettingItemModel.h */,
-				CE555F4C1F203BBC00829124 /* XBSettingItemModel.m */,
-				CE555F4D1F203BBC00829124 /* XBSettingSectionModel.h */,
-				CE555F4E1F203BBC00829124 /* XBSettingSectionModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE555F4F1F203BBC00829124 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CE555F501F203BBC00829124 /* XBMeHeaderView.h */,
-				CE555F511F203BBC00829124 /* XBMeHeaderView.m */,
-				CE555F521F203BBC00829124 /* XBMeHeaderView.xib */,
-				CE555F531F203BBC00829124 /* XBSettingCell.h */,
-				CE555F541F203BBC00829124 /* XBSettingCell.m */,
-			);
-			path = View;
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */ = {
@@ -497,6 +483,7 @@
 		CE69154D1F1DD52B008911A6 /* UserHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE450BB11F272A770025A20C /* FeedbackVC */,
 				CE6915611F1DDA01008911A6 /* UserHomeVC.h */,
 				CE6915621F1DDA01008911A6 /* UserHomeVC.m */,
 				CE6915631F1DDA01008911A6 /* UserHomeVC.xib */,
@@ -729,10 +716,10 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE450BC11F2730160025A20C /* FSTextView */,
 				CE0C358B1F25ED3D00405A99 /* LRDefaultSettingVC */,
 				CE4464D31F218A530056A9EB /* HSUpdateApp */,
 				CE4464CB1F2189E20056A9EB /* SRAlertView */,
-				CE555F441F203BBC00829124 /* XBSettingController */,
 				CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */,
 				CEAA97241F1CF25B00741A6F /* AKTabBarController */,
 				CEAA96DC1F1CE13200741A6F /* SAMKeychain */,
@@ -759,6 +746,7 @@
 		CEE5E9EC1F1C819F00AC515C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				CE450BC51F2740B20025A20C /* BaseView */,
 				CEAA96EE1F1CE97B00741A6F /* BaseNetwork */,
 				CEE5E9F61F1C895D00AC515C /* BaseViewController */,
 				CEAA96D91F1CDFE300741A6F /* ShareFun.h */,
@@ -872,8 +860,9 @@
 				CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
-				CE555F591F203BBC00829124 /* XBMeHeaderView.xib in Resources */,
+				CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
+				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CEAA97341F1CF25B00741A6F /* AKTabBarController.bundle in Resources */,
@@ -882,6 +871,7 @@
 				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
+				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,7 +940,6 @@
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */,
-				CE555F5A1F203BBC00829124 /* XBSettingCell.m in Sources */,
 				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
 				CEAA97351F1CF25B00741A6F /* AKTabBarController.m in Sources */,
@@ -973,7 +962,6 @@
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */,
-				CE555F561F203BBC00829124 /* XBSettingItemModel.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
@@ -987,10 +975,10 @@
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */,
-				CE555F551F203BBC00829124 /* UIView+XBExtension.m in Sources */,
 				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
+				CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,
@@ -999,6 +987,7 @@
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
+				CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
 				CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */,
@@ -1010,7 +999,7 @@
 				CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */,
 				CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */,
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
-				CE555F571F203BBC00829124 /* XBSettingSectionModel.m in Sources */,
+				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
 				CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
@@ -1020,9 +1009,10 @@
 				CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */,
 				CE42B9081F1F42B9005CC5BD /* AccidentCountModel.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
+				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
-				CE555F581F203BBC00829124 /* XBMeHeaderView.m in Sources */,
+				CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1115,7 +1105,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

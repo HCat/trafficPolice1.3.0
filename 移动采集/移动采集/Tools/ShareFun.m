@@ -232,6 +232,7 @@
     
     [LRBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
+    [ShareValue sharedDefault].phone = nil;
     [UserModel setUserModel:nil];
     
     ApplicationDelegate.vc_tabBar = nil;

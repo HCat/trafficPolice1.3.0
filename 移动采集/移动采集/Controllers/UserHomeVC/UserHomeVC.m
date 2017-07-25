@@ -7,16 +7,22 @@
 //
 
 #import "UserHomeVC.h"
-#import "XBConst.h"
-#import "XBSettingCell.h"
-#import "XBSettingItemModel.h"
-#import "XBSettingSectionModel.h"
+
+#import "LRSettingCell.h"
+#import "LRSettingItemModel.h"
+#import "LRSettingSectionModel.h"
+
 #import "UserSetVC.h"
+#import "UserModel.h"
 
 @interface UserHomeVC ()
 
 @property (nonatomic,strong) NSArray  *sectionArray; /**< section模型数组*/
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
+@property (nonatomic,strong) NSMutableArray *mArr_items;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height_table;
+
 
 @end
 
@@ -25,71 +31,87 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的";
+    self.mArr_items = [NSMutableArray array];
+    [_tb_content setSeparatorInset:UIEdgeInsetsMake(0, 47, 0, 0)];
+    [_tb_content setLayoutMargins:UIEdgeInsetsMake(0, 47, 0, 0)];
     [self setupSections];
 }
 
 #pragma mark - setUp
 
-- (void)setupSections
-{
-    //************************************section1
-    WS(weakSelf);
-    XBSettingItemModel *item1 = [[XBSettingItemModel alloc]init];
-    item1.funcName = @"事故处理";
-    item1.img = [UIImage imageNamed:@"list_accident"];
-    item1.executeCode = ^{
-        LxPrintf(@"事故处理");
+- (void)setupSections{
+   
+    if ([UserModel isPermissionForAccidentList]) {
         
-    };
-    item1.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+        LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
+        item1.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item1.funcName = @"事故处理";
+        item1.img = [UIImage imageNamed:@"list_accident"];
+        item1.executeCode = ^{
+            LxPrintf(@"事故处理");
+            
+        };
+        [self.mArr_items addObject:item1];
+
+    }
     
+    if ([UserModel isPermissionForFastAccidentList]) {
+        LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
+        item2.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item2.funcName = @"快处事故处理";
+        item2.img = [UIImage imageNamed:@"list_fastAccident"];
+        item2.executeCode = ^{
+            LxPrintf(@"快处事故处理");
+            
+        };
+        [self.mArr_items addObject:item2];
+    }
+
+    if ([UserModel isPermissionForIllegalList]) {
+        LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
+        item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item3.funcName = @"违法停车处理";
+        item3.img = [UIImage imageNamed:@"list_illegalPark"];
+        item3.executeCode = ^{
+            LxPrintf(@"违法停车处理");
+            
+        };
+        [self.mArr_items addObject:item3];
+    }
     
-    XBSettingItemModel *item2 = [[XBSettingItemModel alloc]init];
-    item2.funcName = @"快处事故处理";
-    item2.img = [UIImage imageNamed:@"list_fastAccident"];
-    item2.executeCode = ^{
-        LxPrintf(@"快处事故处理");
-        
-    };
-    item2.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+    if ([UserModel isPermissionForThroughList]) {
+        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item4.funcName = @"闯禁令违法行为采集";
+        item4.img = [UIImage imageNamed:@"list_through"];
+        item4.executeCode = ^{
+            LxPrintf(@"闯禁令违法行为采集");
+            
+        };
+        [self.mArr_items addObject:item4];
+    }
     
+    if ([UserModel isPermissionForVideoCollectList]) {
+        LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
+        item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item5.funcName = @"警情视频采集";
+        item5.img = [UIImage imageNamed:@"list_video"];
+        item5.executeCode = ^{
+            LxPrintf(@"警情视频采集");
+            
+            
+        };
+        [self.mArr_items addObject:item5];
+    }
     
-    XBSettingItemModel *item3 = [[XBSettingItemModel alloc]init];
-    item3.funcName = @"违法停车处理";
-    item3.img = [UIImage imageNamed:@"list_illegalPark"];
-    item3.executeCode = ^{
-        LxPrintf(@"违法停车处理");
-        
-    };
-    item3.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
+    self.layout_height_table.constant = self.mArr_items.count * 49;
+    [self.view layoutIfNeeded];
     
-    
-    XBSettingItemModel *item4 = [[XBSettingItemModel alloc]init];
-    item4.funcName = @"闯禁令违法行为采集";
-    item4.img = [UIImage imageNamed:@"list_through"];
-    item4.executeCode = ^{
-        LxPrintf(@"闯禁令违法行为采集");
-       
-        
-    };
-    item4.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
-    
-    XBSettingItemModel *item5 = [[XBSettingItemModel alloc]init];
-    item5.funcName = @"警情视频采集";
-    item5.img = [UIImage imageNamed:@"list_video"];
-    item5.executeCode = ^{
-        LxPrintf(@"警情视频采集");
-      
-        
-    };
-    item5.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
-    
-    
-    XBSettingSectionModel *section1 = [[XBSettingSectionModel alloc]init];
+    LRSettingSectionModel *section1 = [[LRSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 0;
     
     section1.sectionHeaderBgColor = [UIColor clearColor];
-    section1.itemArray = @[item1,item2,item3,item4,item5];
+    section1.itemArray = self.mArr_items;
     
     self.sectionArray = @[section1];
 }
@@ -101,7 +123,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    XBSettingSectionModel *sectionModel = self.sectionArray[section];
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
     return sectionModel.itemArray.count;
 }
 
@@ -110,12 +132,12 @@
     
     static NSString *identifier = @"setting";
     
-    XBSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
-    XBSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
+    LRSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
+    LRSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
     
-    XBSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    LRSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[XBSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LRSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.item = itemModel;
@@ -130,25 +152,28 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    XBSettingSectionModel *sectionModel = self.sectionArray[section];
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
     return sectionModel.sectionHeaderName;
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    XBSettingSectionModel *sectionModel = self.sectionArray[section];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
     return sectionModel.sectionHeaderHeight;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    XBSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
-    XBSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
+    LRSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
+    LRSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
     if (itemModel.executeCode) {
         itemModel.executeCode();
     }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [cell setSeparatorInset:UIEdgeInsetsMake(0, 47, 0, 0)];
+    [cell setLayoutMargins:UIEdgeInsetsMake(0, 47, 0, 0)];
 }
 
 #pragma mark - buttonMethods
@@ -174,6 +199,7 @@
 - (NSString *)tabTitle{
     return NSLocalizedString(@"我的", nil);
 }
+
 
 #pragma mark - dealloc
 

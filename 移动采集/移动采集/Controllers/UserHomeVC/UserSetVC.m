@@ -7,10 +7,10 @@
 //
 
 #import "UserSetVC.h"
-#import "XBConst.h"
-#import "XBSettingCell.h"
-#import "XBSettingItemModel.h"
-#import "XBSettingSectionModel.h"
+
+#import "LRSettingCell.h"
+#import "LRSettingItemModel.h"
+#import "LRSettingSectionModel.h"
 
 #import "UserModel.h"
 #import "HSUpdateApp.h"
@@ -18,7 +18,8 @@
 
 @interface UserSetVC ()
 
-@property (nonatomic,strong) NSArray  *sectionArray; /**< section模型数组*/
+@property (nonatomic,strong) NSArray  *sectionArray;
+
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 
 @property (nonatomic,copy) NSString *storeVersion;
@@ -31,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
+    [_tb_content setSeparatorInset:UIEdgeInsetsZero];
+    [_tb_content setLayoutMargins:UIEdgeInsetsZero];
     [self setupSections];
 }
 
@@ -38,87 +41,93 @@
 
 - (void)setupSections
 {
-    //************************************section1
+    
     WS(weakSelf);
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     
-    XBSettingItemModel *item1 = [[XBSettingItemModel alloc]init];
+    LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
     item1.funcName = @"用户名";
     item1.detailText = [UserModel getUserModel].name;
-    item1.accessoryType = XBSettingAccessoryTypeNone;
+    item1.accessoryType = LRSettingAccessoryTypeNone;
     
     
-    XBSettingItemModel *item2 = [[XBSettingItemModel alloc]init];
+    LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
     item2.funcName = @"手机号码";
     item2.detailText = [UserModel getUserModel].phone;
-    item2.accessoryType = XBSettingAccessoryTypeNone;
+    item2.accessoryType = LRSettingAccessoryTypeNone;
     
     
-    XBSettingItemModel *item3 = [[XBSettingItemModel alloc]init];
+    LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
+    item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
     item3.funcName = @"版本更新";
     item3.detailText = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     item3.executeCode = ^{
-        LxPrintf(@"版本更新");
+    
+        [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+            
+            if (isUpdate == YES) {
+                
+                weakSelf.storeVersion = storeVersion;
+                weakSelf.openUrl = openUrl;
+                
+                [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:[NSString stringWithFormat:@"发现新的版本(V%@),是否更新？",weakSelf.storeVersion] leftActionTitle:@"取消" rightActionTitle:@"更新" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
+                    if (actionType == AlertViewActionTypeRight) {
+                        NSURL *url = [NSURL URLWithString:weakSelf.openUrl];
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                    
+                }];
+            
+            }else{
+                
+                [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:@"当前版本是最新版本" leftActionTitle:nil rightActionTitle:@"确定" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
+                    
+                }];
+        
+            }
+        
+        }];
         
     };
-    item3.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
-    
     
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     float folderSize = [ShareFun folderSizeAtPath:documentPath];
     
-    XBSettingItemModel *item4 = [[XBSettingItemModel alloc]init];
+    LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+    item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
     item4.funcName = @"清除缓存";
     item4.detailText = [NSString stringWithFormat:@"%.2fM", folderSize];
     
     item4.executeCode = ^{
         LxPrintf(@"清除缓存");
         SW(strongSelf, weakSelf);
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-            LxPrintf(@"%@", cachPath);
-            
-            NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
-            LxPrintf(@"files :%lu",(unsigned long)[files count]);
-            for (NSString *p in files) {
-                NSError *error;
-                NSString *path = [cachPath stringByAppendingPathComponent:p];
-                if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-                }
-            }
-            
-            [strongSelf performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
-        });
+        [strongSelf clearCache];
         
     };
-    item4.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
-    
-    
-    XBSettingItemModel *item5 = [[XBSettingItemModel alloc]init];
+    LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
+    item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
     item5.funcName = @"意见反馈";
     item5.executeCode = ^{
         LxPrintf(@"意见反馈");
         
         
     };
-    item5.accessoryType = XBSettingAccessoryTypeDisclosureIndicator;
     
     
-    XBSettingSectionModel *section1 = [[XBSettingSectionModel alloc]init];
+    LRSettingSectionModel *section1 = [[LRSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 10;
     
     section1.sectionHeaderBgColor = [UIColor clearColor];
     section1.itemArray = @[item1,item2];
     
-    XBSettingSectionModel *section2 = [[XBSettingSectionModel alloc]init];
+    LRSettingSectionModel *section2 = [[LRSettingSectionModel alloc]init];
     section2.sectionHeaderHeight = 10;
     
     section2.sectionHeaderBgColor = [UIColor clearColor];
     section2.itemArray = @[item3,item4];
     
-    XBSettingSectionModel *section3 = [[XBSettingSectionModel alloc]init];
+    LRSettingSectionModel *section3 = [[LRSettingSectionModel alloc]init];
     section3.sectionHeaderHeight = 10;
     
     section3.sectionHeaderBgColor = [UIColor clearColor];
@@ -127,20 +136,39 @@
     self.sectionArray = @[section1,section2,section3];
 }
 
--(void)clearCacheSuccess
-{
-    LxPrintf(@"清理成功");
-    XBSettingSectionModel *sectionModel = self.sectionArray[1];
-    XBSettingItemModel *itemModel = sectionModel.itemArray[1];
-    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    float t_folderSize = [ShareFun folderSizeAtPath:documentPath];
-    itemModel.detailText = [NSString stringWithFormat:@"%.2fM", t_folderSize];
-    [_tb_content reloadData];
-    
-    [LRShowHUD showSuccess:@"缓存清理成功" duration:1.5f inView:self.view config:nil];
-    
-}
+#pragma mark - 清除缓存
 
+- (void)clearCache{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        LxPrintf(@"%@", cachPath);
+        
+        NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+        LxPrintf(@"files :%lu",(unsigned long)[files count]);
+        for (NSString *p in files) {
+            NSError *error;
+            NSString *path = [cachPath stringByAppendingPathComponent:p];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            LxPrintf(@"清理成功");
+            LRSettingSectionModel *sectionModel = self.sectionArray[1];
+            LRSettingItemModel *itemModel = sectionModel.itemArray[1];
+            NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+            float t_folderSize = [ShareFun folderSizeAtPath:documentPath];
+            itemModel.detailText = [NSString stringWithFormat:@"%.2fM", t_folderSize];
+            [_tb_content reloadData];
+            
+            [LRShowHUD showSuccess:@"缓存清理成功" duration:1.5f inView:self.view config:nil];
+        });
+    
+    });
+
+}
 
 #pragma mark - Table view data source
 
@@ -149,7 +177,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    XBSettingSectionModel *sectionModel = self.sectionArray[section];
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
     return sectionModel.itemArray.count;
 }
 
@@ -158,12 +186,12 @@
     
     static NSString *identifier = @"setting";
     
-    XBSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
-    XBSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
+    LRSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
+    LRSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
     
-    XBSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    LRSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[XBSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LRSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     if (indexPath.section == 0) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -177,22 +205,40 @@
 }
 
 #pragma - mark UITableViewDelegate
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 49;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    XBSettingSectionModel *sectionModel = self.sectionArray[section];
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
     return sectionModel.sectionHeaderHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    XBSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
-    XBSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
+    LRSettingSectionModel *sectionModel = self.sectionArray[indexPath.section];
+    LRSettingItemModel *itemModel = sectionModel.itemArray[indexPath.row];
     if (itemModel.executeCode) {
         itemModel.executeCode();
     }
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [cell setSeparatorInset:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
+}
+
+
+#pragma mark - btnAction
+
+- (IBAction)handleBtnQuitClicked:(id)sender {
+    
+    [ShareFun LoginOut];
+    
+}
 
 #pragma mark -dealloc
 
