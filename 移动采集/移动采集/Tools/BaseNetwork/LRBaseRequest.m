@@ -8,6 +8,12 @@
 
 #import "LRBaseRequest.h"
 
+@interface LRBaseRequest()
+
+@property(nonatomic,strong) LRShowHUD *hud;
+
+@end
+
 
 @implementation LRBaseRequest
 
@@ -17,6 +23,7 @@
     if(self = [super init]){
         _isLog = YES;
         _isNeedShowHud = NO;
+        _isNeedLoadHud = NO;
     
     };
 
@@ -32,6 +39,10 @@
 //请求方式，默认为GET请求
 - (YTKRequestMethod)requestMethod
 {
+    if (_isNeedLoadHud) {
+        self.hud = [LRShowHUD showWhiteLoadingWithText:_loadingMessage inView:_v_showHud config:nil];
+    }
+    
     return YTKRequestMethodGET;
 }
 
@@ -39,6 +50,8 @@
 //请求寄存器，默认为http
 - (YTKRequestSerializerType)requestSerializerType
 {
+    
+    
     return YTKRequestSerializerTypeHTTP;
 }
 
@@ -65,6 +78,9 @@
 - (void)requestCompleteFilter{
     
     [super requestCompleteFilter];
+    if (self.hud) {
+        [self.hud hide];
+    }
     
     self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
     
@@ -94,9 +110,8 @@
             if (_successMessage) {
                 
                 if (_successMessage.length != 0) {
-                    
                     [LRShowHUD showSuccess:_successMessage duration:1.2f inView:self.v_showHud];
-                    
+
                 }
                 
             }else{
@@ -115,6 +130,10 @@
 
 - (void)requestFailedFilter {
     [super requestFailedFilter];
+    
+    if (self.hud) {
+        [self.hud hide];
+    }
     
     if (_isLog) {
         

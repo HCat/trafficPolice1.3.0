@@ -16,4 +16,6 @@
 @property (nonatomic,assign) BOOL isNeedTitle;
 
 
+- (void)setMoreImageView;
+
 @end

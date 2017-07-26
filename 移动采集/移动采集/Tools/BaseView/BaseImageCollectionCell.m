@@ -12,6 +12,7 @@
 
 @property(nonatomic,strong) NSLayoutConstraint * layout_image_bottom;
 @property(nonatomic,strong) NSLayoutConstraint * layout_imageWithLb;
+@property(nonatomic,strong) CAShapeLayer *border;
 
 @end
 
@@ -23,7 +24,8 @@
     if(self = [super initWithFrame:frame]){
         
         [self imageView];
-        
+        self.layer.masksToBounds = YES;
+        self.layer.cornerRadius = 5.0f;
 
     }
     
@@ -37,7 +39,7 @@
         _imageView = [UIImageView new];
         [self.contentView addSubview:_imageView];
         [_imageView configureForAutoLayout];
-        [_imageView autoPinEdgesToSuperviewMarginsExcludingEdge:ALEdgeBottom];
+        [_imageView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeBottom];
     
     }
     
@@ -50,7 +52,7 @@
         _lb_title = [UILabel new];
         [self.contentView addSubview:_lb_title];
         [_lb_title configureForAutoLayout];
-        [_lb_title autoPinEdgesToSuperviewMarginsExcludingEdge:ALEdgeTop];
+        [_lb_title autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
         
     }
 
@@ -70,6 +72,11 @@
         }
         
     }else{
+        if (_border) {
+            [_border removeFromSuperlayer];
+        }
+        
+        self.layer.cornerRadius = 5.0f;
         
         if (!self.layout_image_bottom) {
             self.layout_image_bottom =  [_imageView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
@@ -79,5 +86,33 @@
 
 }
 
+- (void)setMoreImageView{
+    
+    self.isNeedTitle = NO;
+    
+    self.layer.cornerRadius = 0.0f;
+    
+    self.border = [CAShapeLayer layer];
+    
+    _border.strokeColor = UIColorFromRGB(0xcccccc).CGColor;
+    
+    _border.fillColor = nil;
+    
+    _border.path = [UIBezierPath bezierPathWithRect:self.contentView.bounds].CGPath;
+    
+    _border.frame = self.contentView.bounds;
+    
+    _border.lineWidth = 1.f;
+    
+    _border.lineCap = @"square";
+    
+    _border.lineDashPattern = @[@5, @4];
+    
+    [_imageView.layer addSublayer:_border];
+    
+    _imageView.image = [UIImage imageNamed:@"icon_takePhoto.png"];
+    [_imageView setContentMode:UIViewContentModeCenter];
+    
+}
 
 @end

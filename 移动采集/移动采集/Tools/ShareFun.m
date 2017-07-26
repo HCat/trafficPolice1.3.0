@@ -10,6 +10,8 @@
 
 #import "SAMKeychain.h"
 #import "SAMKeychainQuery.h"
+#import "HSUpdateApp.h"
+#import "SRAlertView.h"
 
 #import "UserModel.h"
 #import "LoginHomeVC.h"
@@ -198,12 +200,14 @@
 }
 
 #pragma mark - 获取缓存目录
+
 + (NSString *)getCacheSubPath:(NSString *)dirName {
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     return [documentPath stringByAppendingPathComponent:dirName];
 }
 
 #pragma mark - 单个文件的大小
+
 + (long long) fileSizeAtPath:(NSString*) filePath{
     NSFileManager* manager = [NSFileManager defaultManager];
     if ([manager fileExistsAtPath:filePath]){
@@ -213,6 +217,7 @@
 }
 
 #pragma mark - 遍历文件夹获得文件夹大小，返回多少M
+
 + (float ) folderSizeAtPath:(NSString*) folderPath{
     NSFileManager* manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:folderPath]) return 0;
@@ -228,6 +233,7 @@
 
 
 #pragma mark - 注销需要执行的操作
+
 + (void)LoginOut{
     
     [LRBaseRequest clearRequestFilters];
@@ -241,5 +247,34 @@
     ApplicationDelegate.window.rootViewController = t_nav;
     
 }
+
+#pragma mark - 监测版本是否可以更新
++ (void)checkForVersionUpdates{
+
+    [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+        
+        if (isUpdate == YES) {
+            
+            [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:[NSString stringWithFormat:@"发现新的版本(V%@),是否更新？",storeVersion] leftActionTitle:@"取消" rightActionTitle:@"更新" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
+                if (actionType == AlertViewActionTypeRight) {
+                    NSURL *url = [NSURL URLWithString:openUrl];
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+                
+            }];
+            
+        }else{
+            
+            [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:@"当前版本是最新版本" leftActionTitle:nil rightActionTitle:@"确定" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
+                
+            }];
+            
+        }
+        
+    }];
+
+}
+
+
 
 @end

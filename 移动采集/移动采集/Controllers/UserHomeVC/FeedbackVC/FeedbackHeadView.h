@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSTextView.h"
 
 @interface FeedbackHeadView : UICollectionReusableView
+
+@property (weak, nonatomic) IBOutlet FSTextView *textView;
+@property (nonatomic,assign,readonly) BOOL isCanCommit;
 
 @end

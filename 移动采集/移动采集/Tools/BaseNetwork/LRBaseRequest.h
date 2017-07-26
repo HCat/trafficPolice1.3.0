@@ -19,6 +19,8 @@
 @property (nonatomic,assign) BOOL isNeedShowHud;        //是否需要提示信息, 默认是YES
 @property (nonatomic,strong) UIView *v_showHud;         //用于提示框加载到对应的视图上面
 
+@property (nonatomic,assign) BOOL isNeedLoadHud;        //是否需要加载HUD
+@property (nonatomic,copy) NSString *loadingMessage;    //加载的信息
 @property (nonatomic,copy) NSString *successMessage;    //成功的提示信息
 @property (nonatomic,copy) NSString *failMessage;       //失败的提示信息
 

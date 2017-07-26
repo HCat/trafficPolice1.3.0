@@ -7,12 +7,12 @@
 //
 
 #import "FeedbackHeadView.h"
-#import "FSTextView.h"
+#import "CALayer+Additions.h"
 
 @interface FeedbackHeadView ()
 
-@property (weak, nonatomic) IBOutlet FSTextView *textView;
 
+@property (nonatomic,assign,readwrite) BOOL isCanCommit;
 
 @end
 
@@ -36,15 +36,14 @@
 }
 
 #pragma mark - 实时监听UITextView内容的变化
-
+//只能监听键盘输入时的变化(setText: 方式无法监听),如果想修复可以参考http://www.jianshu.com/p/75355acdd058
 - (void)textViewDidChange:(FSTextView *)textView{
     
     if(textView.formatText.length == 0){
-        
-        
+        self.isCanCommit = NO;
     }else{
         
-        
+        self.isCanCommit = YES;
     }
     
 }

@@ -44,4 +44,7 @@
 //注销需要执行的操作
 + (void)LoginOut;
 
+//监测版本是否可以更新
++ (void)checkForVersionUpdates;
+
 @end

@@ -230,6 +230,23 @@
 }
 
 
+#pragma mark - 初始化白色转圈的HUD
+
++ (instancetype)showWhiteLoadingWithText:(NSString*)text inView:(UIView*)view config:(ConfigShowHUDBlock)config
+{
+    LRShowHUD *hud = [LRShowHUD showCustomView:^UIView *{
+        return [LRShowHUD showAnimatedWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/loading_white"]];
+    } inView:view  config:^(LRShowHUD * _Nullable showhud) {
+        [showhud setUpCommonConfig:text];
+        
+    }];
+    
+    if (config) {
+        config(hud);
+    }
+    
+    return hud;
+}
 
 #pragma mark - 显示错误的HUD
 
@@ -251,17 +268,15 @@
            inView:(nullable UIView *)view
            config:(nullable ConfigShowHUDBlock)config{
     
-    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
-    if (progressHUD) {
-        [progressHUD hideAnimated:YES];
-    }
-    
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
          return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-fail"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
-        
         [showhud setUpCommonConfig:text];
     }];
+    
+    if (config) {
+        config(hud);
+    }
     
     [hud hideAnimated:YES afterDelay:duration];
     
@@ -287,17 +302,16 @@
              inView:(nullable UIView *)view
              config:(nullable ConfigShowHUDBlock)config{
     
-    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
-    if (progressHUD) {
-        [progressHUD hideAnimated:YES];
-    }
-    
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-success"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
         
         [showhud setUpCommonConfig:text];
     }];
+    
+    if (config) {
+        config(hud);
+    }
     
     [hud hideAnimated:YES afterDelay:duration];
     
@@ -323,19 +337,39 @@
              inView:(nullable UIView *)view
              config:(nullable ConfigShowHUDBlock)config{
     
-    MBProgressHUD *progressHUD = [MBProgressHUD HUDForView:view];
-    if (progressHUD) {
-        [progressHUD hideAnimated:YES];
-    }
-
     LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/hud-warning"]];
     } inView:view config:^(LRShowHUD * _Nullable showhud) {
         
         [showhud setUpCommonConfig:text];
+        
     }];
     
+    if (config) {
+        config(hud);
+    }
+    
     [hud hideAnimated:YES afterDelay:duration];
+    
+}
+
+#pragma mark - 转圈圈动画
+
++ (UIImageView *)showAnimatedWithImage:(UIImage*)image
+{
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 1;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.removedOnCompletion = NO;//保证切换到其他页面或进入后台再回来动画继续执行
+    rotationAnimation.repeatCount = CGFLOAT_MAX;
+    
+    [imageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
+    return imageView;
     
 }
 

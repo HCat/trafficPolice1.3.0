@@ -13,17 +13,15 @@
 #import "LRSettingSectionModel.h"
 
 #import "UserModel.h"
-#import "HSUpdateApp.h"
-#import "SRAlertView.h"
+
+#import "FeedbackVC.h"
+
 
 @interface UserSetVC ()
 
 @property (nonatomic,strong) NSArray  *sectionArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
-
-@property (nonatomic,copy) NSString *storeVersion;
-@property (nonatomic,copy) NSString *openUrl;
 
 @end
 
@@ -62,32 +60,8 @@
     item3.funcName = @"版本更新";
     item3.detailText = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     item3.executeCode = ^{
-    
-        [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
-            
-            if (isUpdate == YES) {
-                
-                weakSelf.storeVersion = storeVersion;
-                weakSelf.openUrl = openUrl;
-                
-                [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:[NSString stringWithFormat:@"发现新的版本(V%@),是否更新？",weakSelf.storeVersion] leftActionTitle:@"取消" rightActionTitle:@"更新" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
-                    if (actionType == AlertViewActionTypeRight) {
-                        NSURL *url = [NSURL URLWithString:weakSelf.openUrl];
-                        [[UIApplication sharedApplication] openURL:url];
-                    }
-                    
-                }];
-            
-            }else{
-                
-                [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:@"当前版本是最新版本" leftActionTitle:nil rightActionTitle:@"确定" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
-                    
-                }];
-        
-            }
-        
-        }];
-        
+        LxPrintf(@"版本更新");
+        [ShareFun checkForVersionUpdates];
     };
     
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
@@ -110,8 +84,9 @@
     item5.funcName = @"意见反馈";
     item5.executeCode = ^{
         LxPrintf(@"意见反馈");
-        
-        
+        SW(strongSelf, weakSelf);
+        FeedbackVC *t_vc = [FeedbackVC new];
+        [strongSelf.navigationController pushViewController:t_vc animated:YES];
     };
     
     

@@ -146,6 +146,26 @@ typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)();
 
 
 
+#pragma mark - 显示自定义视图的HUD
+
+/**
+ 显示自定义视图的HUD
+ 
+ @param viewBlock       自定义视图
+ @param view            展示的View 如果传nil，则展示在keyWindow层上
+ @param config          MBProgressHUD的属性配置，默认在LRShowHUD.m中有进行配置，如果需要另外配置则在block中进行配置
+ */
+
++ (nonnull instancetype)showCustomView:(nullable ConfigShowHUDCustomViewBlock)viewBlock
+                                inView:(nullable UIView *)view
+                                config:(nullable ConfigShowHUDBlock)config;
+
+#pragma mark - 初始化白色转圈的HUD
+
++ (nonnull instancetype)showWhiteLoadingWithText:(nullable NSString*)text
+                                          inView:(nullable UIView *)view
+                                          config:(nullable ConfigShowHUDBlock)config;
+
 
 #pragma mark - 显示错误的HUD
 
@@ -289,6 +309,9 @@ typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)();
  @param delay                 延迟时间
  */
 - (void)hideAnimated:(BOOL)isNeedAnimated afterDelay:(NSTimeInterval)delay;
+
+
+
 
 
 @end

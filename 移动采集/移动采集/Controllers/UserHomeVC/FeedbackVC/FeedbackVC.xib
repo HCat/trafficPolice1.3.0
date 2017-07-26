@@ -35,7 +35,7 @@
                     </connections>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="QDy-oa-Dt8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Kd-nF-vVm"/>
                 <constraint firstAttribute="trailing" secondItem="QDy-oa-Dt8" secondAttribute="trailing" id="JRq-LC-nXe"/>
