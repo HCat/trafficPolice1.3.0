@@ -157,6 +157,67 @@
     return strApplicationUUID;
 }
 
+#pragma mark - 高亮文字中部分文字
+
++ (NSMutableAttributedString *)highlightNummerInString:(NSString *)originString{
+    
+    //生成 NSAttributedString 子类 NSMutableAttributedString 的对象，这个NSMutableAttributedString才是可变的
+    NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:originString];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    [paragraphStyle setLineSpacing:5];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[NSParagraphStyleAttributeName] = paragraphStyle;
+    [attribut addAttributes:dic range:NSMakeRange(0, attribut.length)];
+    
+    NSCharacterSet *numbers=[[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    NSArray *setArr = [originString componentsSeparatedByCharactersInSet:numbers];
+    NSString *temSting = originString;
+    NSInteger location = 0;
+    for (NSString *str_sub in setArr) {
+        if (![str_sub isEqualToString:@""]) {
+            NSRange numRange = [temSting rangeOfString:str_sub];
+            location = location+numRange.location;
+            
+            /*
+             * 这里要注意了，这里有两个方法，一个是改变单个属性用的，比如你只想改变字体，或者只是想改变显示的颜色用第一个方法就可以了，但是如果你同时想改变字体和颜色就应该用下面的方法
+             - (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;
+             - (void)addAttributes:(NSDictionary<NSString *, id> *)attrs range:(NSRange)range;
+             */
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            //改变显示的颜色，还有很多属性，大家可以自行看文档
+            dic[NSForegroundColorAttributeName] = UIColorFromRGB(0xf14827);
+            //改变字体的大小
+            dic[NSFontAttributeName] = [UIFont systemFontOfSize:16];
+            //改变背景颜色
+            //            dic[NSBackgroundColorAttributeName] = [UIColor grayColor];
+            //            dic[NSParagraphStyleAttributeName] = paragraphStyle;
+            //赋值
+            NSRange numRange2 = NSMakeRange(location, numRange.length);
+            [attribut addAttributes:dic range:numRange2];
+            location = location+numRange.length;
+            temSting = [temSting substringFromIndex:numRange.location+numRange.length];
+            
+        }
+        
+    }
+    
+    return attribut;
+    
+}
+
++ (NSMutableAttributedString *)highlightInString:(NSString *)originString withSubString:(NSString *)subString{
+    
+    NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:originString];
+    
+    NSRange range1=[[attribut string]rangeOfString:subString];
+    [attribut addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf05563) range:range1];
+    
+    return attribut;
+    
+}
+
 #pragma mark - 通过UIView获取UIViewController
 
 + (UIViewController *)findViewController:(UIView *)sourceView withClass:(Class)classVC{

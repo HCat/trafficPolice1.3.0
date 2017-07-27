@@ -78,12 +78,8 @@ static NSString *const footId = @"FeedbackFootViewID";
 
     CommonAdviceManger * manger = [[CommonAdviceManger alloc] init];
     manger.param = param;
-    manger.isNeedShowHud = YES;
-    manger.isNeedLoadHud = YES;
-    manger.loadingMessage = @"提交中...";
-    manger.successMessage = @"提交成功";
-    manger.failMessage = @"提交失败";
-    
+    [manger configLoadingTitle:@"提交"];
+   
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {

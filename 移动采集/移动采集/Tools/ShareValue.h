@@ -35,7 +35,7 @@ LRSingletonH(Default)
 @property (nonatomic, copy) NSString *token;    //token值
 @property (nonatomic, copy) NSString *phone;    //登录返回的手机号码
 
-@property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes; //事故通用值
+@property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值
 
 

@@ -25,7 +25,9 @@
 @property (nonatomic,copy)   NSArray  * files;                //事故图片 列表，最多可上传30张
 @property (nonatomic,copy)   NSString * remarks;              //违停图片名称  违章图片名称，字符串列表。和图片一对一，名称统一命名，车牌近照（一张）、违停照片（可多张）
 @property (nonatomic,copy)   NSString * taketimes;            //拍照时间 拍照时间，字符串列表，格式yyyy-MM-dd HH:mm:ss，和图片一对一
-
+//两个参数同时不为空才有效，没有则不填
+@property (nonatomic,copy)   NSString * cutImageUrl;          //裁剪近照url
+@property (nonatomic,copy)   NSString * taketime;             //裁剪时间
 
 @end
 

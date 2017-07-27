@@ -23,6 +23,10 @@
 //获取唯一标识符
 + (NSString *)getUniqueDeviceIdentifierAsString;
 
+//高亮一段NSSting中的数字部分
++ (NSMutableAttributedString *)highlightNummerInString:(NSString *)originString;
++ (NSMutableAttributedString *)highlightInString:(NSString *)originString withSubString:(NSString *)subString;
+
 //通过UIView获取UIViewController
 + (UIViewController *)findViewController:(UIView *)sourceView withClass:(Class)classVC;
 

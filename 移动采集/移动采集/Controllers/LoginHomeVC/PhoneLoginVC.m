@@ -37,8 +37,8 @@
     _tf_phone.text = _phone;
     
     _btn_countDown.durationOfCountDown = 60;
-    _btn_countDown.originalBGColor = DefaultNavColor;
-    _btn_countDown.processBGColor = UIColorFromRGB(0xe2e2e2);
+    _btn_countDown.originalBGColor = DefaultBtnColor;
+    _btn_countDown.processBGColor = DefaultBtnNuableColor;
     _btn_countDown.processFont = [UIFont systemFontOfSize:12.f];
     _btn_countDown.originalFont = [UIFont systemFontOfSize:15.f];
     WS(weakSelf);
@@ -101,10 +101,10 @@
     _isCanCommit = isCanCommit;
     if (_isCanCommit == NO) {
         _btn_commit.enabled = NO;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0xe6e6e6)];
+        [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
     }else{
         _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:DefaultNavColor];
+        [_btn_commit setBackgroundColor:DefaultBtnColor];
     }
 }
 
@@ -144,11 +144,8 @@
     
     LoginCheckManger *manger = [LoginCheckManger new];
     manger.param = param;
-    manger.isNeedShowHud = YES;
-    manger.isNeedLoadHud = YES;
-    manger.loadingMessage = @"登录中...";
-    manger.successMessage = @"登录成功!";
-    
+    [manger configLoadingTitle:@"登录"];
+   
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
     
         if (manger.responseModel.code == CODE_SUCCESS) {

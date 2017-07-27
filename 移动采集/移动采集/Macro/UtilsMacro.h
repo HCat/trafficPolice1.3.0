@@ -13,6 +13,8 @@
 
 #define DefaultBGColor UIColorFromRGB(0xf2f2f2)
 #define DefaultNavColor UIColorFromRGB(0x333741)
+#define DefaultBtnColor UIColorFromRGB(0x6d727d)
+#define DefaultBtnNuableColor UIColorFromRGB(0xe2e2e2)
 
 #define WS(__KEY)  __weak typeof(self)__KEY = self
 #define SW(__SW,__WS)  __strong typeof(__WS)__SW = __WS

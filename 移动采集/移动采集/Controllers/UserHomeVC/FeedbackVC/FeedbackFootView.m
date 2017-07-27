@@ -28,10 +28,10 @@
     _isCanCommit = isCanCommit;
     if (_isCanCommit == NO) {
         _btn_commit.enabled = NO;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0xe6e6e6)];
+        [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
     }else{
         _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:DefaultNavColor];
+        [_btn_commit setBackgroundColor:DefaultBtnColor];
     }
     
 }

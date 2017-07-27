@@ -17,6 +17,9 @@
 
 @property (nonatomic,strong) NSArray *arr_items;
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_location;
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_collection_top; //用于适配不同屏幕大小
 
 @end
@@ -35,6 +38,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     //定位
     [[LocationHelper sharedDefault] startLocation];
     
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
     
     if (IS_IPHONE_4_OR_LESS) {
@@ -189,6 +193,32 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 {
     return 1.0f;
 }
+
+#pragma mark - buttonActions
+
+- (IBAction)handleBtnQrCodeClicked:(id)sender {
+    
+    
+}
+
+- (IBAction)handleBtnLocationClicked:(id)sender {
+    [[LocationHelper sharedDefault] startLocation];
+}
+
+- (IBAction)handlleBtnSearchClicked:(id)sender {
+    
+    
+}
+
+
+#pragma mark - 
+
+-(void)locationChange{
+    
+    [self.btn_location setTitle:[LocationHelper sharedDefault].city forState:UIControlStateNormal];
+    
+}
+
 
 #pragma mark - AKTabBar Method
 

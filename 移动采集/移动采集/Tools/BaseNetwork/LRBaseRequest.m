@@ -167,4 +167,13 @@
 
 }
 
+- (void)configLoadingTitle:(NSString *)title{
+    
+    _isNeedLoadHud = YES;
+    _isNeedShowHud = YES;
+    self.loadingMessage =  [NSString stringWithFormat:@"%@中..",title];
+    self.successMessage =  [NSString stringWithFormat:@"%@成功",title];
+    self.failMessage    =  [NSString stringWithFormat:@"%@失败",title];
+}
+
 @end

@@ -32,6 +32,7 @@
 @property (nonatomic, copy) NSString *vehicleType;  //车辆类型
 @property (nonatomic, copy) NSString *name;         //姓名，或者车辆所有人
 @property (nonatomic, copy) NSString *idNo;         //证件号码
+@property (nonatomic, copy) NSString *cutImageUrl;  //车牌号近照路径
 
 @end
 
