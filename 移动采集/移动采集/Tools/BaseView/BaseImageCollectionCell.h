@@ -15,6 +15,8 @@
 @property (nonatomic,strong) UILabel *lb_title;
 @property (nonatomic,assign) BOOL isNeedTitle;
 
+@property(nonatomic,strong) NSLayoutConstraint * layout_imageWithLb;
+
 
 - (void)setMoreImageView;
 

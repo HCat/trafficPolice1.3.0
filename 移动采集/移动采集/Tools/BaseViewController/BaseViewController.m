@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.view.backgroundColor = DefaultBGColor;
     // Do any additional setup after loading the view.
 }
 

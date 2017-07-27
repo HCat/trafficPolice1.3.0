@@ -160,7 +160,9 @@ typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)();
                                 inView:(nullable UIView *)view
                                 config:(nullable ConfigShowHUDBlock)config;
 
-#pragma mark - 初始化白色转圈的HUD
+
+
+#pragma mark - 显示白色转圈的HUD
 
 + (nonnull instancetype)showWhiteLoadingWithText:(nullable NSString*)text
                                           inView:(nullable UIView *)view

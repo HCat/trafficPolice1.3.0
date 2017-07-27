@@ -12,8 +12,6 @@
 #pragma mark - Screen Frame
 
 #define SCREEN_BOUNDS          [UIScreen mainScreen].bounds
-#define SCREEN_WIDTH           [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT          [UIScreen mainScreen].bounds.size.height
 #define SCREEN_ADJUST(Value)   SCREEN_WIDTH * (Value) / 375.0f
 
 #pragma mark - Color

@@ -230,12 +230,12 @@
 }
 
 
-#pragma mark - 初始化白色转圈的HUD
+#pragma mark - 显示白色转圈的HUD
 
 + (instancetype)showWhiteLoadingWithText:(NSString*)text inView:(UIView*)view config:(ConfigShowHUDBlock)config
 {
     LRShowHUD *hud = [LRShowHUD showCustomView:^UIView *{
-        return [LRShowHUD showAnimatedWithImage:[UIImage imageNamed:@"ShowHUDUntil.bundle/loading_white"]];
+        return [LRShowHUD showAnimatedWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/loading_white"]];
     } inView:view  config:^(LRShowHUD * _Nullable showhud) {
         [showhud setUpCommonConfig:text];
         

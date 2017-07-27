@@ -39,10 +39,6 @@
 //请求方式，默认为GET请求
 - (YTKRequestMethod)requestMethod
 {
-    if (_isNeedLoadHud) {
-        self.hud = [LRShowHUD showWhiteLoadingWithText:_loadingMessage inView:_v_showHud config:nil];
-    }
-    
     return YTKRequestMethodGET;
 }
 
@@ -50,8 +46,9 @@
 //请求寄存器，默认为http
 - (YTKRequestSerializerType)requestSerializerType
 {
-    
-    
+    if (_isNeedLoadHud) {
+        self.hud = [LRShowHUD showWhiteLoadingWithText:_loadingMessage inView:_v_showHud config:nil];
+    }
     return YTKRequestSerializerTypeHTTP;
 }
 
@@ -78,6 +75,7 @@
 - (void)requestCompleteFilter{
     
     [super requestCompleteFilter];
+    
     if (self.hud) {
         [self.hud hide];
     }

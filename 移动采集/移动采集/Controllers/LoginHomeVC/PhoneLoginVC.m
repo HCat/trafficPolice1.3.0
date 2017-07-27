@@ -142,16 +142,15 @@
     param.equipmentId = [ShareFun getUniqueDeviceIdentifierAsString];
     param.platform = @"ios";
     
-    LRShowHUD * hud = [LRShowHUD showActivityLoading:@"登录中..." inView:self.view config:nil];
-    
     LoginCheckManger *manger = [LoginCheckManger new];
     manger.param = param;
     manger.isNeedShowHud = YES;
+    manger.isNeedLoadHud = YES;
+    manger.loadingMessage = @"登录中...";
     manger.successMessage = @"登录成功!";
+    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
     
-        [hud hide];
-        
         if (manger.responseModel.code == CODE_SUCCESS) {
             /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
@@ -173,8 +172,6 @@
      }
     
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        [hud hide];
         
     }];
     

@@ -11,7 +11,7 @@
 @interface BaseImageCollectionCell()
 
 @property(nonatomic,strong) NSLayoutConstraint * layout_image_bottom;
-@property(nonatomic,strong) NSLayoutConstraint * layout_imageWithLb;
+
 @property(nonatomic,strong) CAShapeLayer *border;
 
 @end
@@ -50,9 +50,12 @@
 
     if (!_lb_title) {
         _lb_title = [UILabel new];
+        _lb_title.textAlignment = NSTextAlignmentCenter;
+        _lb_title.font = [UIFont systemFontOfSize:14.f];
         [self.contentView addSubview:_lb_title];
         [_lb_title configureForAutoLayout];
-        [_lb_title autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
+        [_lb_title autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+        [_lb_title autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
         
     }
 
@@ -69,15 +72,16 @@
         
         if (!self.layout_imageWithLb) {
             self.layout_imageWithLb = [_lb_title autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_imageView];
+            [_imageView autoMatchDimension:ALDimensionHeight toDimension:ALDimensionWidth ofView:_imageView];
+            
         }
         
     }else{
+        
         if (_border) {
             [_border removeFromSuperlayer];
         }
-        
-        self.layer.cornerRadius = 5.0f;
-        
+    
         if (!self.layout_image_bottom) {
             self.layout_image_bottom =  [_imageView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
         }

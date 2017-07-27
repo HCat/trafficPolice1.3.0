@@ -47,6 +47,14 @@
 //解档
 + (UserModel *)getUserModel;
 
+//获取录入权限
++ (BOOL)isPermissionForAccident;        //事故录入权限
++ (BOOL)isPermissionForFastAccident;    //快处录入权限
++ (BOOL)isPermissionForIllegal;         //违章录入权限
++ (BOOL)isPermissionForThrough;         //闯禁令录入权限
++ (BOOL)isPermissionForVideoCollect;    //视频录入权限
+
+
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;        //事故权限列表
 + (BOOL)isPermissionForFastAccidentList;    //快处权限列表

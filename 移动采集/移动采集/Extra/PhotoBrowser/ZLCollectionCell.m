@@ -29,7 +29,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    static int i = 0;
+    //static int i = 0;
     //NSLog(@"%d", i++);
     self.imageView.frame = self.bounds;
     self.btnSelect.frame = CGRectMake(GetViewWidth(self.contentView)-26, 5, 23, 23);

@@ -35,8 +35,89 @@
     return userModel;
 }
 
+#pragma mark - 获取事故录入权限
 
-#pragma mark - 获取事故权限
++ (BOOL)isPermissionForAccident{
+
+    NSString *match = @"NORMAL_ACCIDENT_ADD";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+
+}
+
+#pragma mark - 获取快处录入权限
+
++ (BOOL)isPermissionForFastAccident{
+    
+    NSString *match = @"FAST_ACCIDENT_ADD";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取违停录入权限
+
++ (BOOL)isPermissionForIllegal{
+    
+    NSString *match = @"ILLEGAL_PARKING";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取闯禁令录入权限
+
++ (BOOL)isPermissionForThrough{
+    
+    NSString *match = @"ILLEGAL_THROUGH";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
+#pragma mark - 获取视频录入权限
+
++ (BOOL)isPermissionForVideoCollect{
+    
+    NSString *match = @"VIDEO_COLLECT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
+#pragma mark - 获取事故权限列表
 
 + (BOOL)isPermissionForAccidentList{
     
@@ -51,7 +132,7 @@
     return NO;
 }
 
-#pragma mark - 获取快处权限
+#pragma mark - 获取快处权限列表
 
 + (BOOL)isPermissionForFastAccidentList{
     
@@ -66,7 +147,7 @@
     return NO;
 }
 
-#pragma mark - 获取违停权限
+#pragma mark - 获取违停权限列表
 
 + (BOOL)isPermissionForIllegalList{
     
@@ -82,7 +163,7 @@
     
 }
 
-#pragma mark - 获取闯禁令权限
+#pragma mark - 获取闯禁令权限列表
 
 + (BOOL)isPermissionForThroughList{
     
@@ -98,7 +179,7 @@
     
 }
 
-#pragma mark - 获取警情权限
+#pragma mark - 获取警情权限列表
 
 + (BOOL)isPermissionForVideoCollectList{
     

@@ -80,6 +80,7 @@ static NSString *const footId = @"FeedbackFootViewID";
     manger.param = param;
     manger.isNeedShowHud = YES;
     manger.isNeedLoadHud = YES;
+    manger.loadingMessage = @"提交中...";
     manger.successMessage = @"提交成功";
     manger.failMessage = @"提交失败";
     
@@ -168,6 +169,7 @@ static NSString *const footId = @"FeedbackFootViewID";
         
     } else {
         cell.isNeedTitle = NO;
+        cell.layer.cornerRadius = 5.0f;
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         ImageFileInfo *imageInfo = _arr_photos[indexPath.row];
         cell.imageView.image = imageInfo.image;
