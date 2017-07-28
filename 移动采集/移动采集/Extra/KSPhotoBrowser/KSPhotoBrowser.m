@@ -8,11 +8,14 @@
 
 #import "KSPhotoBrowser.h"
 #import "KSPhotoView.h"
+#import "UIButton+Block.h"
+#import "UIButton+NoRepeatClick.h"
 
-#if __has_include(<YYWebImage/YYWebImage.h>)
-#import <YYWebImage/YYWebImage.h>
+#if __has_include(<YYKit/UIImageView+YYWebImage.h>)
+#import <YYKit/UIImageView+YYWebImage.h>
+#import <YYKit/UIImage+YYAdd.h>
 #else
-#import "YYWebImage.h"
+#import "UIImageView+YYWebImage.h"
 #endif
 
 static const NSTimeInterval kAnimationDuration = 0.3;
@@ -113,6 +116,15 @@ static Class imageManagerClass = nil;
         [self.view addSubview:_pageLabel];
     }
     
+    UIButton *trachBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    trachBtn.isIgnore = YES;
+    trachBtn.frame = CGRectMake(ScreenWidth - 40, ScreenHeight - 40, 18, 18);
+    [trachBtn setImage:[UIImage imageNamed:@"btn_trash_photoBrowser"] forState:UIControlStateNormal];
+    [trachBtn addTarget:self action:@selector(trachBtn) forControlEvents:UIControlEventTouchUpInside];
+    [trachBtn setEnlargeEdgeWithTop:25.f right:25.f bottom:25.f left:25.f];
+    trachBtn.hidden = !_isShowDeleteBtn;
+    [self.view addSubview:trachBtn];
+    
     CGSize contentSize = CGSizeMake(rect.size.width * _photoItems.count, rect.size.height);
     _scrollView.contentSize = contentSize;
     
@@ -192,6 +204,50 @@ static Class imageManagerClass = nil;
 
 // MARK: - Private
 
+- (void)trachBtn{
+    
+    NSInteger count = _photoItems.count;
+    
+    if (_currentPage > count - 1 ) {
+        _currentPage = count - 1;
+    }
+    
+    [_photoItems removeObjectAtIndex:_currentPage];
+    
+    for (KSPhotoView *t_photoview in _visibleItemViews) {
+        [t_photoview removeFromSuperview];
+    }
+    [_visibleItemViews removeAllObjects];
+    
+    
+    
+    CGRect rect = self.view.bounds;
+    rect.origin.x -= kKSPhotoViewPadding;
+    rect.size.width += 2 * kKSPhotoViewPadding;
+    
+    CGSize contentSize = CGSizeMake(rect.size.width * _photoItems.count, rect.size.height);
+    _scrollView.contentSize = contentSize;
+    
+    CGPoint contentOffset = CGPointMake(_scrollView.frame.size.width*_currentPage, 0);
+    [_scrollView setContentOffset:contentOffset animated:NO];
+    [self scrollViewDidScroll:_scrollView];
+    
+    if (_currentPage == count - 1) {
+        _pageLabel.text = [NSString stringWithFormat:@"%zd/%zd", _currentPage,_photoItems.count];
+    }else{
+        _pageLabel.text = [NSString stringWithFormat:@"%zd/%zd", _currentPage+1,_photoItems.count];
+    }
+    
+    
+    if (_photoItems.count == 0) {
+        // 来到这里说明没有图片，退出预览
+        [self dismissViewControllerAnimated:NO completion:nil];
+    };
+    
+    
+
+}
+
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
@@ -214,6 +270,7 @@ static Class imageManagerClass = nil;
     }
     photoView.tag = -1;
     return photoView;
+    
 }
 
 - (void)updateReusableItemViews {
@@ -232,6 +289,7 @@ static Class imageManagerClass = nil;
 
 - (void)configItemViews {
     NSInteger page = _scrollView.contentOffset.x / _scrollView.frame.size.width + 0.5;
+    LxPrintf(@"当前页page:%ld",page);
     for (NSInteger i = page - 1; i <= page + 1; i++) {
         if (i < 0 || i >= _photoItems.count) {
             continue;
@@ -405,7 +463,7 @@ static Class imageManagerClass = nil;
 
 - (void)blurBackgroundWithImage:(UIImage *)image animated:(BOOL)animated {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *blurImage = [image yy_imageByBlurDark];
+        UIImage *blurImage = [image imageByBlurDark];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (animated) {
                 [UIView animateWithDuration:kAnimationDuration animations:^{

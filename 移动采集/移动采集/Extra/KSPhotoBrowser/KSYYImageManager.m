@@ -8,10 +8,10 @@
 
 #import "KSYYImageManager.h"
 
-#if __has_include(<YYWebImage/YYWebImage.h>)
-#import <YYWebImage/YYWebImage.h>
+#if __has_include(<YYKit/UIImageView+YYWebImage.h>)
+#import <YYKit/UIImageView+YYWebImage.h>
 #else
-#import "YYWebImage.h"
+#import "UIimageView+YYWebImage.h"
 #endif
 
 @implementation KSYYImageManager
@@ -33,11 +33,11 @@
             completion(image, url, success, error);
         }
     };
-    [imageView yy_setImageWithURL:imageURL placeholder:placeholder options:kNilOptions progress:progressBlock transform:nil completion:completionBlock];
+    [imageView setImageWithURL:imageURL placeholder:placeholder options:kNilOptions progress:progressBlock transform:nil completion:completionBlock];
 }
 
 - (void)cancelImageRequestForImageView:(UIImageView *)imageView {
-    [imageView yy_cancelCurrentImageRequest];
+    [imageView cancelCurrentImageRequest];
 }
 
 - (UIImage *)imageFromMemoryForURL:(NSURL *)url {

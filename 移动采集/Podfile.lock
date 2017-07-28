@@ -16,7 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AMScrollingNavbar (1.5.1)
   - BaiduMapKit (3.3.2)
-  - IQKeyboardManager (4.0.10)
+  - IQKeyboardManager (4.0.11)
   - JCore (1.1.5)
   - JPush (3.0.6):
     - JCore (~> 1.1.1)
@@ -30,7 +30,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - TOCropViewController (2.0.12)
-  - WechatOpenSDK (1.7.8)
+  - WechatOpenSDK (1.7.9)
   - YTKNetwork (2.0.3):
     - AFNetworking (~> 3.0)
   - YYKit (1.0.9):
@@ -58,7 +58,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMScrollingNavbar: 767ed2db60d927a809bddff5d01b739b7020b12b
   BaiduMapKit: 5118390d63b375483bd64c963e8e32a40fd9ddb5
-  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   JCore: 9bd9c770c877c583d98b90a68792b8361974c231
   JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   LxDBAnything: 154a2ad1ae32e70355d886b5443260543bb60c71
@@ -69,7 +69,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
-  WechatOpenSDK: ad1e7be1b66416df847ac50830c798b70c9e365e
+  WechatOpenSDK: 1fe7e3b07db860d6a936c3ff4a5aba6b890958d9
   YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 

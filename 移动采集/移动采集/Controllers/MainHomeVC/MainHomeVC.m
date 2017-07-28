@@ -9,6 +9,7 @@
 #import "MainHomeVC.h"
 #import "BaseImageCollectionCell.h"
 #import "UserModel.h"
+#import "IllegalParkVC.h"
 
 @interface MainHomeVC ()
 
@@ -163,8 +164,33 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 //选中时的操作
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    NSDictionary *t_dic = [_arr_items objectAtIndex:indexPath.row];
+    NSString *t_title = [t_dic objectForKey:@"title"];
     
-    
+    if ([t_title isEqualToString:@"违停录入"]) {
+        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+        t_vc.illegalType = IllegalTypePark;
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+        
+    }else if ([t_title isEqualToString:@"闯禁令录入"]){
+        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+        t_vc.illegalType = IllegalTypeThrough;
+        [self.navigationController pushViewController:t_vc animated:YES];
+    }else if ([t_title isEqualToString:@"事故录入"]){
+        
+    }else if ([t_title isEqualToString:@"快处录入"]){
+        
+    }else if ([t_title isEqualToString:@"视频录入"]){
+        
+    }else if ([t_title isEqualToString:@"重点车辆"]){
+        
+    }else if ([t_title isEqualToString:@"勤务指挥"]){
+        
+    }else if ([t_title isEqualToString:@"路面实况"]){
+        
+    }
+
 }
 
 #pragma mark - UICollectionView Delegate FlowLayout

@@ -43,6 +43,7 @@ typedef NS_ENUM(NSUInteger, KSPhotoBrowserImageLoadingStyle) {
 @property (nonatomic, assign) KSPhotoBrowserPageIndicatorStyle pageindicatorStyle;
 @property (nonatomic, assign) KSPhotoBrowserImageLoadingStyle loadingStyle;
 @property (nonatomic, assign) BOOL bounces;
+@property (nonatomic, assign) BOOL isShowDeleteBtn;
 @property (nonatomic, weak) id<KSPhotoBrowserDelegate> delegate;
 
 + (instancetype)browserWithPhotoItems:(NSArray<KSPhotoItem *> *)photoItems selectedIndex:(NSUInteger)selectedIndex;

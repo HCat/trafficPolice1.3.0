@@ -10,10 +10,10 @@
 
 @interface KSPhotoItem ()
 
-@property (nonatomic, strong, readwrite) UIView *sourceView;
+@property (nonatomic, strong, readwrite) UIView  *sourceView;
 @property (nonatomic, strong, readwrite) UIImage *thumbImage;
 @property (nonatomic, strong, readwrite) UIImage *image;
-@property (nonatomic, strong, readwrite) NSURL *imageUrl;
+@property (nonatomic, strong, readwrite) NSURL   *imageUrl;
 
 @end
 
@@ -26,7 +26,7 @@
     if (self) {
         _sourceView = view;
         _thumbImage = image;
-        _imageUrl = url;
+        _imageUrl   = url;
     }
     return self;
 }
@@ -45,8 +45,8 @@
     if (self) {
         _sourceView = view;
         _thumbImage = image;
-        _imageUrl = nil;
-        _image = image;
+        _imageUrl   = nil;
+        _image      = image;
     }
     return self;
 }
@@ -56,8 +56,8 @@
                           imageUrl:(NSURL *)url
 {
     return [[KSPhotoItem alloc] initWithSourceView:view
-                                    thumbImage:image
-                                      imageUrl:url];
+                                        thumbImage:image
+                                          imageUrl:url];
 }
 
 + (instancetype)itemWithSourceView:(UIImageView *)view

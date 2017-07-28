@@ -141,6 +141,7 @@
 		CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA972F1F1CF25B00741A6F /* UINavigationController+AKTabBarController.m */; };
 		CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */; };
 		CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */; };
+		CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */; };
 		CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9CF1F1C6CBB00AC515C /* main.m */; };
 		CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */; };
 		CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */; };
@@ -409,6 +410,8 @@
 		CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AKTabBarController.m"; sourceTree = "<group>"; };
 		CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlaceholderView.h; sourceTree = "<group>"; };
 		CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlaceholderView.m; sourceTree = "<group>"; };
+		CED6F5CC1F2B240D000D1293 /* KSSDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSDImageManager.h; sourceTree = "<group>"; };
+		CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSDImageManager.m; sourceTree = "<group>"; };
 		CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动采集.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE5E9CF1F1C6CBB00AC515C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1083,6 +1086,8 @@
 				CEFEFD1A1F29ED8100C33CBD /* KSProgressLayer.m */,
 				CEFEFD1B1F29ED8100C33CBD /* KSYYImageManager.h */,
 				CEFEFD1C1F29ED8100C33CBD /* KSYYImageManager.m */,
+				CED6F5CC1F2B240D000D1293 /* KSSDImageManager.h */,
+				CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */,
 			);
 			path = KSPhotoBrowser;
 			sourceTree = "<group>";
@@ -1354,6 +1359,7 @@
 				CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
+				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
 				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
 				CE5C39001F28606B0055C945 /* ZLForceTouchPreviewController.m in Sources */,

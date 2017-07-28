@@ -23,7 +23,7 @@
         self.cornerRadius = 20;
         self.fillColor = [UIColor clearColor].CGColor;
         self.strokeColor = [UIColor whiteColor].CGColor;
-        self.lineWidth = 4;
+        self.lineWidth = 3;
         self.lineCap = kCALineCapRound;
         self.strokeStart = 0;
         self.strokeEnd = 0.01;

@@ -19,11 +19,13 @@
 
 #import "IllegalParkAPI.h"
 #import "IllegalThroughAPI.h"
-#import "LLPhotoBrowser.h"
+#import "KSPhotoBrowser.h"
+#import "KSSDImageManager.h"
+//#import "LLPhotoBrowser.h"
 #import "SRAlertView.h"
-#import "IllegalSecSaveVC.h"
+//#import "IllegalSecSaveVC.h"
 
-@interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,KSPhotoBrowserDelegate>
 
 
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
@@ -290,7 +292,10 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
    
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 5.f;
     cell.isNeedTitle = YES;
+    cell.layout_imageWithLb.constant = 10.f;
     
     if (indexPath.row == self.arr_upImages.count) {
         
@@ -863,85 +868,113 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     for (int i = 0; i < [_arr_upImages count]; i++) {
         if ([_arr_upImages[i] isKindOfClass:[NSMutableDictionary class]]) {
-            [t_arr addObject:_arr_upImages[i]];
+            
+            BaseImageCollectionCell *cell = (BaseImageCollectionCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+
+            
+            NSDictionary *t_dic = _arr_upImages[i];
+            ImageFileInfo *info = t_dic[@"files"];
+            if (info) {
+                KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView image:info.image];
+                [t_arr addObject:item];
+            }else{
+                NSString *t_str = t_dic[@"cutImageUrl"];
+                if (t_str) {
+                    KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView imageUrl:[NSURL URLWithString:t_str]];
+                    [t_arr addObject:item];
+                }
+            }
+        
         }
     }
     
     WS(weakSelf);
     
-    LLPhotoBrowser *photoBrowser = [[LLPhotoBrowser alloc] initWithupImages:t_arr currentIndex:index];
+    KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:index];
+    [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+    [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+    browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+    browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+    browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+    browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+    browser.bounces             = NO;
+    browser.isShowDeleteBtn     = YES;
+    [browser showFromViewController:self];
     
-    //在图片浏览器中点击删除按钮的操作
-    photoBrowser.deleteBlock = ^(NSMutableDictionary *deleteImage) {
-        
-        SW(strongSelf, weakSelf);
-        
-        for (int i = 0; i < [_arr_upImages count]; i++) {
-            
-            if ([strongSelf.arr_upImages[i] isKindOfClass:[NSMutableDictionary class]]) {
-                
-                NSMutableDictionary *t_dic = strongSelf.arr_upImages[i];
-                
-                NSString *t_str = [t_dic objectForKey:@"remarks"];
-                
-                if ([t_str isEqualToString:[deleteImage objectForKey:@"remarks"]]) {
-                    
-                    
-                    if (strongSelf.illegalType == IllegalTypePark) {
-                        if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违停照片"]) {
-                            
-                            if ([t_str isEqualToString:@"车牌近照"]) {
-                                strongSelf.param.cutImageUrl = nil;
-                                strongSelf.param.taketime = nil;
-                            }
-                            
-                            [strongSelf.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
-                            
-                            [strongSelf.collectionView reloadData];
-                            
-                        }else{
-                            
-                            [strongSelf.arr_upImages removeObject:t_dic];
-                            
-                            [strongSelf.collectionView reloadData];
-                        }
-                    }else if (strongSelf.illegalType == IllegalTypeThrough){
-                        if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"闯禁令照片"]) {
-                            
-                            if ([t_str isEqualToString:@"车牌近照"]) {
-                                strongSelf.param.cutImageUrl = nil;
-                                strongSelf.param.taketime = nil;
-                            }
-                            
-                            [strongSelf.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
-                            
-                            [strongSelf.collectionView reloadData];
-                            
-                        }else{
-                            
-                            [strongSelf.arr_upImages removeObject:t_dic];
-                            
-                            [strongSelf.collectionView reloadData];
-                        }
-                    
-                    }
-            
-                    //替换之后做是否可以上传判断
-                    if (strongSelf.headView.isCanCommit == YES && ![strongSelf.arr_upImages[0] isKindOfClass:[NSNull class]] && ![strongSelf.arr_upImages[1] isKindOfClass:[NSNull class]]) {
-                        strongSelf.isCanCommit = YES;
-                    }else{
-                        strongSelf.isCanCommit = NO;
-                    }
-                    
-                    break;
-                }
-                
-            }
-        }
-        
-    };
     
-    [self presentViewController:photoBrowser animated:YES completion:nil];
+//    LLPhotoBrowser *photoBrowser = [[LLPhotoBrowser alloc] initWithupImages:t_arr currentIndex:index];
+//    
+//    //在图片浏览器中点击删除按钮的操作
+//    photoBrowser.deleteBlock = ^(NSMutableDictionary *deleteImage) {
+//        
+//        SW(strongSelf, weakSelf);
+//        
+//        for (int i = 0; i < [_arr_upImages count]; i++) {
+//            
+//            if ([strongSelf.arr_upImages[i] isKindOfClass:[NSMutableDictionary class]]) {
+//                
+//                NSMutableDictionary *t_dic = strongSelf.arr_upImages[i];
+//                
+//                NSString *t_str = [t_dic objectForKey:@"remarks"];
+//                
+//                if ([t_str isEqualToString:[deleteImage objectForKey:@"remarks"]]) {
+//                    
+//                    
+//                    if (strongSelf.illegalType == IllegalTypePark) {
+//                        if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违停照片"]) {
+//                            
+//                            if ([t_str isEqualToString:@"车牌近照"]) {
+//                                strongSelf.param.cutImageUrl = nil;
+//                                strongSelf.param.taketime = nil;
+//                            }
+//                            
+//                            [strongSelf.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
+//                            
+//                            [strongSelf.collectionView reloadData];
+//                            
+//                        }else{
+//                            
+//                            [strongSelf.arr_upImages removeObject:t_dic];
+//                            
+//                            [strongSelf.collectionView reloadData];
+//                        }
+//                    }else if (strongSelf.illegalType == IllegalTypeThrough){
+//                        if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"闯禁令照片"]) {
+//                            
+//                            if ([t_str isEqualToString:@"车牌近照"]) {
+//                                strongSelf.param.cutImageUrl = nil;
+//                                strongSelf.param.taketime = nil;
+//                            }
+//                            
+//                            [strongSelf.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
+//                            
+//                            [strongSelf.collectionView reloadData];
+//                            
+//                        }else{
+//                            
+//                            [strongSelf.arr_upImages removeObject:t_dic];
+//                            
+//                            [strongSelf.collectionView reloadData];
+//                        }
+//                    
+//                    }
+//            
+//                    //替换之后做是否可以上传判断
+//                    if (strongSelf.headView.isCanCommit == YES && ![strongSelf.arr_upImages[0] isKindOfClass:[NSNull class]] && ![strongSelf.arr_upImages[1] isKindOfClass:[NSNull class]]) {
+//                        strongSelf.isCanCommit = YES;
+//                    }else{
+//                        strongSelf.isCanCommit = NO;
+//                    }
+//                    
+//                    break;
+//                }
+//                
+//            }
+//        }
+//        
+//    };
+//    
+//    [self presentViewController:photoBrowser animated:YES completion:nil];
     
 }
 
