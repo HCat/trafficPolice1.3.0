@@ -46,6 +46,8 @@ typedef NS_ENUM(NSUInteger, KSPhotoBrowserImageLoadingStyle) {
 @property (nonatomic, assign) BOOL isShowDeleteBtn;
 @property (nonatomic, weak) id<KSPhotoBrowserDelegate> delegate;
 
+@property (nonatomic, strong,readonly) NSMutableArray *photoItems;
+
 + (instancetype)browserWithPhotoItems:(NSArray<KSPhotoItem *> *)photoItems selectedIndex:(NSUInteger)selectedIndex;
 - (instancetype)initWithPhotoItems:(NSArray<KSPhotoItem *> *)photoItems selectedIndex:(NSUInteger)selectedIndex;
 - (void)showFromViewController:(UIViewController *)vc;
@@ -56,6 +58,7 @@ typedef NS_ENUM(NSUInteger, KSPhotoBrowserImageLoadingStyle) {
 @protocol KSPhotoBrowserDelegate <NSObject>
 
 - (void)ks_photoBrowser:(KSPhotoBrowser *)browser didSelectItem:(KSPhotoItem *)item atIndex:(NSUInteger)index;
+- (void)ks_photoBrowser:(KSPhotoBrowser *)browser didDeleteItem:(KSPhotoItem *)item;
 
 @end
 

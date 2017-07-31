@@ -10,7 +10,6 @@
 
 @interface KSPhotoItem ()
 
-@property (nonatomic, strong, readwrite) UIView  *sourceView;
 @property (nonatomic, strong, readwrite) UIImage *thumbImage;
 @property (nonatomic, strong, readwrite) UIImage *image;
 @property (nonatomic, strong, readwrite) NSURL   *imageUrl;
@@ -72,6 +71,29 @@
 {
     return [[KSPhotoItem alloc] initWithSourceView:view
                                              image:image];
+    
+}
+
+#pragma mark - 扩展出来的方法
+
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                          imageUrl:(NSURL *)url withDic:(NSDictionary *)dic{
+   KSPhotoItem *item =  [[KSPhotoItem alloc] initWithSourceView:view
+                                      imageUrl:url];
+    
+    item.illegalDic = dic;
+    return item;
+
+}
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                             image:(UIImage *)image withDic:(NSDictionary *)dic{
+    
+    KSPhotoItem *item =  [[KSPhotoItem alloc] initWithSourceView:view
+                                                           image:image];
+    
+    item.illegalDic = dic;
+    return item;
+
 }
 
 @end

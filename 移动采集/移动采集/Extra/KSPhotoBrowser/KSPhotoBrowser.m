@@ -27,7 +27,7 @@ static Class imageManagerClass = nil;
 }
 
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) NSMutableArray *photoItems;
+@property (nonatomic, strong,readwrite) NSMutableArray *photoItems;
 @property (nonatomic, strong) NSMutableSet *reusableItemViews;
 @property (nonatomic, strong) NSMutableArray *visibleItemViews;
 @property (nonatomic, assign) NSUInteger currentPage;
@@ -120,7 +120,7 @@ static Class imageManagerClass = nil;
     trachBtn.isIgnore = YES;
     trachBtn.frame = CGRectMake(ScreenWidth - 40, ScreenHeight - 40, 18, 18);
     [trachBtn setImage:[UIImage imageNamed:@"btn_trash_photoBrowser"] forState:UIControlStateNormal];
-    [trachBtn addTarget:self action:@selector(trachBtn) forControlEvents:UIControlEventTouchUpInside];
+    [trachBtn addTarget:self action:@selector(handleBtnTrachClicked:) forControlEvents:UIControlEventTouchUpInside];
     [trachBtn setEnlargeEdgeWithTop:25.f right:25.f bottom:25.f left:25.f];
     trachBtn.hidden = !_isShowDeleteBtn;
     [self.view addSubview:trachBtn];
@@ -204,7 +204,7 @@ static Class imageManagerClass = nil;
 
 // MARK: - Private
 
-- (void)trachBtn{
+- (void)handleBtnTrachClicked:(id)sender{
     
     NSInteger count = _photoItems.count;
     
@@ -212,15 +212,25 @@ static Class imageManagerClass = nil;
         _currentPage = count - 1;
     }
     
-    [_photoItems removeObjectAtIndex:_currentPage];
+    
     
     for (KSPhotoView *t_photoview in _visibleItemViews) {
         [t_photoview removeFromSuperview];
     }
     [_visibleItemViews removeAllObjects];
     
+    KSPhotoItem *item = [_photoItems objectAtIndex:_currentPage];
     
-    
+    if (item) {
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(ks_photoBrowser:didDeleteItem:)]) {
+            [self.delegate ks_photoBrowser:self didDeleteItem:item];
+        }
+       
+        [_photoItems removeObjectAtIndex:_currentPage];
+        
+    }
+   
     CGRect rect = self.view.bounds;
     rect.origin.x -= kKSPhotoViewPadding;
     rect.size.width += 2 * kKSPhotoViewPadding;

@@ -12,11 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KSPhotoItem : NSObject
 
-@property (nonatomic, strong, readonly) UIView  *sourceView;
+@property (nonatomic, strong) UIView  *sourceView;
 @property (nonatomic, strong, readonly) UIImage *thumbImage;
 @property (nonatomic, strong, readonly) UIImage *image;
 @property (nonatomic, strong, readonly) NSURL   *imageUrl;
 @property (nonatomic, assign) BOOL finished;
+@property (nonatomic, strong) NSDictionary *illegalDic;
+
+
 
 - (instancetype)initWithSourceView:(UIView *)view
                         thumbImage:(UIImage *)image
@@ -33,6 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
                           imageUrl:(NSURL *)url;
 + (instancetype)itemWithSourceView:(UIImageView *)view
                              image:(UIImage *)image;
+
+//拓展出来的
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                          imageUrl:(NSURL *)url withDic:(NSDictionary *)dic;
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                             image:(UIImage *)image withDic:(NSDictionary *)dic;
 
 @end
 

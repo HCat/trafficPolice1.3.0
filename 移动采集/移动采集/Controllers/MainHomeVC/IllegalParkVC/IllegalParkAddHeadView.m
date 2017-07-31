@@ -7,9 +7,9 @@
 //
 
 #import "IllegalParkAddHeadView.h"
-#import "IllegalParkVC.h"
 
-//#import "SearchLocationVC.h"
+#import "IllegalParkVC.h"
+#import "SearchLocationVC.h"
 
 @interface IllegalParkAddHeadView()
 
@@ -123,28 +123,28 @@
     WS(weakSelf);
     
     IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
-//    SearchLocationVC *t_searchLocationvc = [SearchLocationVC new];
-//    t_searchLocationvc.searchType = SearchLocationTypeIllegal;
-//    t_searchLocationvc.arr_content = self.codes;
-//    t_searchLocationvc.arr_temp = self.codes;
-//    
-//    t_searchLocationvc.getRoadBlock = ^(CommonGetRoadModel *model) {
-//        SW(strongSelf, weakSelf);
-//        strongSelf.tf_roadSection.text = model.getRoadName;
-//        strongSelf.param.roadId = model.getRoadId;
-//        strongSelf.param.roadName = model.getRoadName;
-//        
-//        // 判断是否可以提交
-//        strongSelf.isCanCommit =  [strongSelf juegeCanCommit];
-//        
-//        //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
-//        if (strongSelf.delegate && [strongSelf.delegate performSelector:@selector(listentCarNumber) withObject:nil]) {
-//            [strongSelf.delegate listentCarNumber];
-//        }
-//        
-//    };
-//    
-//    [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
+    SearchLocationVC *t_searchLocationvc = [SearchLocationVC new];
+    t_searchLocationvc.searchType = SearchLocationTypeIllegal;
+    t_searchLocationvc.arr_content = self.codes;
+    t_searchLocationvc.arr_temp = self.codes;
+    
+    t_searchLocationvc.getRoadBlock = ^(CommonGetRoadModel *model) {
+        SW(strongSelf, weakSelf);
+        strongSelf.tf_roadSection.text = model.getRoadName;
+        strongSelf.param.roadId = model.getRoadId;
+        strongSelf.param.roadName = model.getRoadName;
+        
+        // 判断是否可以提交
+        strongSelf.isCanCommit =  [strongSelf juegeCanCommit];
+        
+        //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
+        if (strongSelf.delegate && [strongSelf.delegate performSelector:@selector(listentCarNumber) withObject:nil]) {
+            [strongSelf.delegate listentCarNumber];
+        }
+        
+    };
+    
+    [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
     
     
 }

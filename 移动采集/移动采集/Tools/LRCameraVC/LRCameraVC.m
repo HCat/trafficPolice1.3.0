@@ -48,6 +48,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     
     [_btn_flash setEnlargeEdgeWithTop:20.f right:20.f bottom:20.f left:20.f];
     [_btn_close setEnlargeEdgeWithTop:20.f right:20.f bottom:20.f left:20.f];
@@ -334,22 +335,14 @@
 #pragma mark - TOCropViewControllerDelegate
 
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle{
-    
-//    if (cropViewController.navigationController) {
-//        [cropViewController.navigationController popViewControllerAnimated:YES];
-//    }
-//    else {
-//        cropViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//        [cropViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-//    }
-    
+
     [cropViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     if (_type != 5 || _isIllegal) {
         
         WS(weakSelf);
         //获取的照片转换成ImageFileInfo对象来得到图片信息，并且赋值name用于服务端需要的key中
-        LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"图片压缩中..." inView:self.view config:nil];
+        LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"图片压缩中..." inView:weakSelf.view config:nil];
         
         dispatch_async(dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             SW(strongSelf, weakSelf);
@@ -357,7 +350,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 strongSelf.imageInfo = [[ImageFileInfo alloc] initWithImage:image withName:key_file];
-                strongSelf.image = self.imageInfo.image;
+                strongSelf.image = strongSelf.imageInfo.image;
                 //请求数据获取证件信息
                 [hud hide];
                 [strongSelf getIdentifyRequest];
@@ -370,7 +363,7 @@
         
         WS(weakSelf);
         //获取的照片转换成ImageFileInfo对象来得到图片信息，并且赋值name用于服务端需要的key中
-        LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"图片压缩中..." inView:self.view config:nil];
+        LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"图片压缩中..." inView:weakSelf.view config:nil];
         
         dispatch_async(dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             SW(strongSelf, weakSelf);
@@ -384,7 +377,7 @@
                     strongSelf.fininshCaptureBlock(strongSelf);
                 }
                 
-                [self dismissViewControllerAnimated:YES completion:^{
+                [strongSelf dismissViewControllerAnimated:YES completion:^{
                     [hud hide];
                 }];
                 
