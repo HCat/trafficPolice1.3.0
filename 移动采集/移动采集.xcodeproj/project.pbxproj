@@ -15,6 +15,17 @@
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
+		CE3C0F6A1F30586A00D3B55D /* LRPlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F621F30586A00D3B55D /* LRPlayVC.m */; };
+		CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */; };
+		CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F651F30586A00D3B55D /* LRVideoVC.m */; };
+		CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3C0F661F30586A00D3B55D /* LRVideoVC.xib */; };
+		CE3C0F6E1F30586A00D3B55D /* VideoColectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F681F30586A00D3B55D /* VideoColectVC.m */; };
+		CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3C0F691F30586A00D3B55D /* VideoColectVC.xib */; };
+		CE3C0F711F3070C900D3B55D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F701F3070C900D3B55D /* CoreMotion.framework */; };
+		CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */; };
+		CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F741F3070D800D3B55D /* MessageUI.framework */; };
+		CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F761F3070E400D3B55D /* Security.framework */; };
+		CE3C0F791F30841900D3B55D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F781F30841900D3B55D /* AVKit.framework */; };
 		CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */; };
 		CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */; };
 		CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9041F1F4272005CC5BD /* AccidentListModel.m */; };
@@ -194,6 +205,20 @@
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
 		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
+		CE3C0F611F30586A00D3B55D /* LRPlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlayVC.h; sourceTree = "<group>"; };
+		CE3C0F621F30586A00D3B55D /* LRPlayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlayVC.m; sourceTree = "<group>"; };
+		CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LRPlayVC.xib; sourceTree = "<group>"; };
+		CE3C0F641F30586A00D3B55D /* LRVideoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRVideoVC.h; sourceTree = "<group>"; };
+		CE3C0F651F30586A00D3B55D /* LRVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRVideoVC.m; sourceTree = "<group>"; };
+		CE3C0F661F30586A00D3B55D /* LRVideoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LRVideoVC.xib; sourceTree = "<group>"; };
+		CE3C0F671F30586A00D3B55D /* VideoColectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoColectVC.h; sourceTree = "<group>"; };
+		CE3C0F681F30586A00D3B55D /* VideoColectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoColectVC.m; sourceTree = "<group>"; };
+		CE3C0F691F30586A00D3B55D /* VideoColectVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoColectVC.xib; sourceTree = "<group>"; };
+		CE3C0F701F3070C900D3B55D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CE3C0F741F3070D800D3B55D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CE3C0F761F3070E400D3B55D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CE3C0F781F30841900D3B55D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		CE42B8FD1F1F3E16005CC5BD /* AccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAPI.h; sourceTree = "<group>"; };
 		CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentAPI.m; sourceTree = "<group>"; };
 		CE42B8FF1F1F3E16005CC5BD /* FastAccidentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentAPI.h; sourceTree = "<group>"; };
@@ -486,9 +511,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3C0F791F30841900D3B55D /* AVKit.framework in Frameworks */,
+				CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */,
+				CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */,
+				CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */,
+				CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */,
+				CE3C0F711F3070C900D3B55D /* CoreMotion.framework in Frameworks */,
 				CE5C390F1F2861110055C945 /* Photos.framework in Frameworks */,
 				CE5C39101F2861110055C945 /* PhotosUI.framework in Frameworks */,
-				CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */,
 				A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +529,11 @@
 		928AD146C056B058ED0A1C9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE3C0F781F30841900D3B55D /* AVKit.framework */,
+				CE3C0F761F3070E400D3B55D /* Security.framework */,
+				CE3C0F741F3070D800D3B55D /* MessageUI.framework */,
+				CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */,
+				CE3C0F701F3070C900D3B55D /* CoreMotion.framework */,
 				CE5C390D1F2861110055C945 /* Photos.framework */,
 				CE5C390E1F2861110055C945 /* PhotosUI.framework */,
 				CE0B558C1F1C9FD6003CF361 /* AVFoundation.framework */,
@@ -537,6 +572,22 @@
 				CE0C35931F25F9A200405A99 /* LRSettingCell.m */,
 			);
 			path = LRDefaultSettingVC;
+			sourceTree = "<group>";
+		};
+		CE3C0F601F30586A00D3B55D /* VideoColectVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE3C0F671F30586A00D3B55D /* VideoColectVC.h */,
+				CE3C0F681F30586A00D3B55D /* VideoColectVC.m */,
+				CE3C0F691F30586A00D3B55D /* VideoColectVC.xib */,
+				CE3C0F611F30586A00D3B55D /* LRPlayVC.h */,
+				CE3C0F621F30586A00D3B55D /* LRPlayVC.m */,
+				CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */,
+				CE3C0F641F30586A00D3B55D /* LRVideoVC.h */,
+				CE3C0F651F30586A00D3B55D /* LRVideoVC.m */,
+				CE3C0F661F30586A00D3B55D /* LRVideoVC.xib */,
+			);
+			path = VideoColectVC;
 			sourceTree = "<group>";
 		};
 		CE42B92A1F1F4AE4005CC5BD /* LRVideoView */ = {
@@ -735,6 +786,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE3C0F601F30586A00D3B55D /* VideoColectVC */,
 				CE5B92F71F2F1207000008AE /* AccidentVC */,
 				CE5B92E61F2F0AD8000008AE /* SearchLocationVC */,
 				CEFEFCE51F2990B000C33CBD /* IllegalParkVC */,
@@ -1236,8 +1288,10 @@
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
 				CE5C38F81F28606B0055C945 /* ZLPhotoActionSheet.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
+				CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */,
 				CE5C38F61F28606B0055C945 /* ZLCollectionCell.xib in Resources */,
 				CE5C38FA1F28606B0055C945 /* ZLPhotoBrowserCell.xib in Resources */,
+				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
 				CE5C39231F2881BD0055C945 /* btn_selected.png in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
@@ -1250,6 +1304,7 @@
 				CE5C38F41F28606B0055C945 /* lock.png in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
+				CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */,
 				CE5C38F91F28606B0055C945 /* ZLPhotoBrowser.bundle in Resources */,
 				CE5C38F31F28606B0055C945 /* defaultphoto.png in Resources */,
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
@@ -1319,6 +1374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3C0F6E1F30586A00D3B55D /* VideoColectVC.m in Sources */,
 				CEAA97191F1CF15900741A6F /* UINavigationBar+Awesome.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE5C39051F28606B0055C945 /* ZLPhotoManager.m in Sources */,
@@ -1353,6 +1409,7 @@
 				CE5C39041F28606B0055C945 /* ZLPhotoBrowserCell.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
+				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
 				CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
@@ -1439,6 +1496,7 @@
 				CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */,
 				CE5C39031F28606B0055C945 /* ZLPhotoBrowser.m in Sources */,
 				CEFEFD1E1F29ED8100C33CBD /* KSPhotoItem.m in Sources */,
+				CE3C0F6A1F30586A00D3B55D /* LRPlayVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

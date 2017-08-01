@@ -9,7 +9,9 @@
 #import "MainHomeVC.h"
 #import "BaseImageCollectionCell.h"
 #import "UserModel.h"
+
 #import "IllegalParkVC.h"
+#import "VideoColectVC.h"
 
 @interface MainHomeVC ()
 
@@ -182,7 +184,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     }else if ([t_title isEqualToString:@"快处录入"]){
         
     }else if ([t_title isEqualToString:@"视频录入"]){
-        
+        VideoColectVC *t_vc = [[VideoColectVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
     }else if ([t_title isEqualToString:@"重点车辆"]){
         
     }else if ([t_title isEqualToString:@"勤务指挥"]){
