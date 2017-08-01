@@ -34,6 +34,9 @@
 //图片的高
 @property(nonatomic,assign) float height;
 
+//图片的获取时间
+@property(nonatomic,copy) NSString * imageTime;
+
 //初始化成具体的ImageFileInfo类型
 //@prame : name 代表key值
 //@prame : image 具体的UIImage对象

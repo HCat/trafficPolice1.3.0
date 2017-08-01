@@ -13,6 +13,6 @@
 @property (nonatomic,copy) NSString * picId;     //图片ID
 @property (nonatomic,copy) NSString * picName;   //图片名称
 @property (nonatomic,copy) NSString * imgUrl;    //图片地址
-@property (nonatomic,copy) NSString * uploadTime; //上传时间
+@property (nonatomic,strong) NSNumber * uploadTime; //上传时间
 
 @end

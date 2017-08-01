@@ -254,6 +254,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     WS(weakSelf);
     CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
     manger.isNeedShowHud = NO;
+    manger.isLog = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
@@ -289,12 +290,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 {
     BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
    
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 5.f;
-    cell.isNeedTitle = YES;
-    cell.layout_imageWithLb.constant = 10.f;
-    
+    [cell setCommonConfig];
+
     if (indexPath.row == self.arr_upImages.count) {
         
         cell.lb_title.text = @"更多照片";
@@ -401,12 +398,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                 SW(strongSelf, weakSelf);
                 
                 if (camera.type == 5) {
-                    if (strongSelf.illegalType == IllegalTypePark) {
-                        [strongSelf addUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:[NSString stringWithFormat:@"违停照片%ld",indexPath.row]];
-                    }else if(strongSelf.illegalType == IllegalTypeThrough){
-                        [strongSelf addUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:[NSString stringWithFormat:@"闯禁令照片%ld",indexPath.row]];
-                    }
                     
+                    [strongSelf addUpImageItemToUpImagesWithImageInfo:camera.imageInfo];
                     [strongSelf.collectionView reloadData];
                     
                 }
@@ -774,7 +767,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 }
 
 //添加图片到arr_upImages数组中
-- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo remark:(NSString *)remark{
+- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo{
 
     imageFileInfo.name = key_files;
     

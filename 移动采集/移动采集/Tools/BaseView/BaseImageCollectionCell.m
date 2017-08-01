@@ -119,4 +119,14 @@
     
 }
 
+- (void)setCommonConfig{
+
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageView.layer.masksToBounds = YES;
+    self.imageView.layer.cornerRadius = 5.f;
+    self.isNeedTitle = YES;
+    self.layout_imageWithLb.constant = 10.f;
+
+}
+
 @end

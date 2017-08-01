@@ -23,6 +23,9 @@
                 time = [NSString stringWithFormat:@"%@_%@",[UserModel getUserModel].userId,time];
             }
             
+            formatter.dateFormat = @"HH:mm:ss";
+            _imageTime = [formatter stringFromDate:[NSDate date]];
+            
             _name = name; //对应网站上[upload.php中]处理文件的[字段"file"]
             
             //self.image = image;

@@ -30,9 +30,8 @@
 
 @property (nonatomic,strong) NSMutableArray *arr_upImages; //用于存储即将上传的图片
 
-@property (nonatomic,strong) IllegalThroughSecSaveParam *param; //请求参数
-@property (nonatomic,strong) IllegalThroughSecDetailModel * secDetailModel;//加载之后的第一次数据
-
+@property (nonatomic,strong) IllegalThroughSecDetailModel * secDetailModel;//第一次提交数据
+@property (nonatomic,strong) IllegalThroughSecSaveParam *param;
 
 @property(nonatomic,assign) BOOL isCanCommit; //是否可以上传
 
@@ -153,21 +152,19 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     
     BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 5.f;
-    cell.isNeedTitle = YES;
-    cell.layout_imageWithLb.constant = 10.f;
+    [cell setCommonConfig];
+    cell.lb_title.textColor = UIColorFromRGB(0xe6504a);
     
     if (indexPath.section == 0) {
         
         AccidentPicListModel *t_model = self.secDetailModel.pictures[indexPath.row];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_model.imgUrl] placeholderImage:[UIImage imageNamed:@"icon_imageLoading"]];
-        cell.lb_title.text = t_model.
-    
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_model.imgUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"]];
+        cell.lb_title.text = [ShareFun timeWithTimeInterval:t_model.uploadTime dateFormat:@"HH:mm:ss"];
+        
     }else{
     
         if (indexPath.row == self.arr_upImages.count) {
+            
             cell.imageView.image = [UIImage imageNamed:@"btn_updatePhoto"];
             
         }else{
@@ -177,6 +174,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
                 NSMutableDictionary *t_dic = _arr_upImages[indexPath.row];
                 ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
                 cell.imageView.image = imageInfo.image;
+                cell.lb_title.text = imageInfo.imageTime;
                 
             }
         
@@ -232,7 +230,6 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
         
     }
     
-    
     return nil;
 }
 
@@ -281,7 +278,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
                     SW(strongSelf, weakSelf);
                     
                     if (camera.type == 5) {
-                        [strongSelf addUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:[NSString stringWithFormat:@"二次采集照%ld",indexPath.row+1]];
+                        [strongSelf addUpImageItemToUpImagesWithImageInfo:camera.imageInfo];
                         [strongSelf.collectionView reloadData];
                         
                     }
@@ -305,7 +302,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     float width=(self.view.bounds.size.width - 13.1f*2 - 13.0f*2)/3.f;
-    return CGSizeMake(width, width);
+    return CGSizeMake(width, width+27);
 }
 
 // 装载内容 cell 的内边距
@@ -367,13 +364,13 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
 #pragma mark - 管理上传图片
 
 //添加图片到arr_upImages数组中
-- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo remark:(NSString *)remark{
+- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo{
     
     imageFileInfo.name = key_files;
     
     NSMutableDictionary *t_dic = [NSMutableDictionary dictionary];
     [t_dic setObject:imageFileInfo forKey:@"files"];
-    [t_dic setObject:remark forKey:@"remarks"];
+    [t_dic setObject:imageFileInfo.fileName forKey:@"remarks"];
     [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
     [self.arr_upImages addObject:t_dic];
     
@@ -395,15 +392,24 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
         NSMutableArray *t_arr_remarks = [NSMutableArray array];
         NSMutableArray *t_arr_taketimes = [NSMutableArray array];
         
+        NSInteger j = 1;
+        
         for (int i = 0; i < _arr_upImages.count; i++) {
+            
             if([_arr_upImages[i] isKindOfClass:[NSMutableDictionary class]]){
+                
                 NSMutableDictionary *t_dic = _arr_upImages[i];
                 ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
-                NSString *t_title = [t_dic objectForKey:@"remarks"];
-                NSString *t_taketime = [t_dic objectForKey:@"taketimes"];
-                [t_arr_files addObject:imageInfo];
-                [t_arr_remarks addObject:t_title];
-                [t_arr_taketimes addObject:t_taketime];
+                
+                if (imageInfo) {
+                    
+                    NSString *t_title = [NSString stringWithFormat:@"二次采集照%ld",j];
+                    NSString *t_taketime = [t_dic objectForKey:@"taketimes"];
+                    [t_arr_files addObject:imageInfo];
+                    [t_arr_remarks addObject:t_title];
+                    [t_arr_taketimes addObject:t_taketime];
+                    j++;
+                }
                 
             }
             

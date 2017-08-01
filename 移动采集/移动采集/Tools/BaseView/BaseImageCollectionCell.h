@@ -19,5 +19,6 @@
 
 
 - (void)setMoreImageView;
+- (void)setCommonConfig;
 
 @end

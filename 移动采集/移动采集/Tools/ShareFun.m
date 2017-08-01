@@ -260,6 +260,22 @@
     return dateString;
 }
 
++ (NSString *)timeWithTimeInterval:(NSNumber *)timeString dateFormat:(NSString *)dateFormat{
+
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:dateFormat];
+    
+    // 毫秒值转化为秒
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:date];
+    return dateString;
+
+}
+
 #pragma mark - 获取缓存目录
 
 + (NSString *)getCacheSubPath:(NSString *)dirName {

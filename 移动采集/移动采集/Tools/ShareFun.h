@@ -36,6 +36,10 @@
 //获取时间挫转换成时间：格式为yyyy-MM-dd HH:mm:ss
 + (NSString *)timeWithTimeInterval:(NSNumber *)timeString;
 
+//获取时间戳转换成时间：格式为dateFormat
++ (NSString *)timeWithTimeInterval:(NSNumber *)timeString dateFormat:(NSString *)dateFormat;
+
+
 //获取缓存目录
 + (NSString *)getCacheSubPath:(NSString *)dirName;
 
