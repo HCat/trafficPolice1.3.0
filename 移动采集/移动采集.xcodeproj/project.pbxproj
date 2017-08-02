@@ -25,7 +25,6 @@
 		CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */; };
 		CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F741F3070D800D3B55D /* MessageUI.framework */; };
 		CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F761F3070E400D3B55D /* Security.framework */; };
-		CE3C0F791F30841900D3B55D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F781F30841900D3B55D /* AVKit.framework */; };
 		CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B8FE1F1F3E16005CC5BD /* AccidentAPI.m */; };
 		CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9001F1F3E16005CC5BD /* FastAccidentAPI.m */; };
 		CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9041F1F4272005CC5BD /* AccidentListModel.m */; };
@@ -374,6 +373,7 @@
 		CE5C39201F2881BD0055C945 /* btn_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_unselected.png; sourceTree = "<group>"; };
 		CE5C39211F2881BD0055C945 /* btn_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@2x.png"; sourceTree = "<group>"; };
 		CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@3x.png"; sourceTree = "<group>"; };
+		CE6140581F316C300015B8CE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CE69154E1F1DD590008911A6 /* CommonAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAPI.h; sourceTree = "<group>"; };
 		CE69154F1F1DD590008911A6 /* CommonAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAPI.m; sourceTree = "<group>"; };
 		CE6915511F1DD70A008911A6 /* HideTabSuperVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideTabSuperVC.h; sourceTree = "<group>"; };
@@ -511,7 +511,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3C0F791F30841900D3B55D /* AVKit.framework in Frameworks */,
 				CE0B558D1F1C9FD6003CF361 /* AVFoundation.framework in Frameworks */,
 				CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */,
 				CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */,
@@ -529,6 +528,7 @@
 		928AD146C056B058ED0A1C9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE6140581F316C300015B8CE /* MediaPlayer.framework */,
 				CE3C0F781F30841900D3B55D /* AVKit.framework */,
 				CE3C0F761F3070E400D3B55D /* Security.framework */,
 				CE3C0F741F3070D800D3B55D /* MessageUI.framework */,

@@ -8,7 +8,6 @@
 
 #import "LRPlayVC.h"
 #import "UIButton+Block.h"
-#import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ArtVideoUtil.h"
 
