@@ -45,23 +45,6 @@
     }
    
     WS(weakSelf);
-    
-    //网络断开之后重新连接之后的处理
-    
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        SW(strongSelf, weakSelf);
-        if (strongSelf.arr_content) {
-            strongSelf.arr_content = nil;
-        }
-        strongSelf.tb_content.isNetAvailable = NO;
-        
-        if (_searchType == SearchLocationTypeIllegal){
-            [strongSelf getRoadName];
-        }else{
-            [strongSelf getAccidentCodes];
-        }
-    };
-    
     self.tb_content.reloadBlock = ^{
         
         SW(strongSelf, weakSelf);
@@ -78,7 +61,28 @@
         
     };
     
-     [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+    [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    WS(weakSelf);
+
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
+        SW(strongSelf, weakSelf);
+        if (strongSelf.arr_content) {
+            strongSelf.arr_content = nil;
+        }
+        strongSelf.tb_content.isNetAvailable = NO;
+        
+        if (_searchType == SearchLocationTypeIllegal){
+            [strongSelf getRoadName];
+        }else{
+            [strongSelf getAccidentCodes];
+        }
+    };
+
 }
 
 #pragma mark - 数据请求部分
