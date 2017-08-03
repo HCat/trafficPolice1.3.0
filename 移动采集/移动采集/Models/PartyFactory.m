@@ -7,7 +7,7 @@
 //
 
 #import "PartyFactory.h"
-
+#import "UserModel.h"
 
 @interface PartyFactory()
 
@@ -233,11 +233,24 @@
 
 -(BOOL)juegeCanCommit{
     LxDBObjectAsJson(self.param);
-    if (self.param.happenTimeStr.length >0 && self.param.roadId && self.param.address.length > 0 && self.param.ptaName.length > 0 && self.param.ptaIdNo.length > 0 && self.param.ptaVehicleId && self.param.ptaPhone.length > 0) {
-         return YES;
+    
+    if ([UserModel getUserModel].isInsurance) {
+        
+        if (self.param.happenTimeStr.length >0 && self.param.roadId && self.param.address.length > 0 && self.param.ptaName.length > 0 && self.param.ptaPhone.length > 0) {
+            return YES;
+        }else{
+            return NO;
+        }
     }else{
-         return NO;
+        if (self.param.causesType && self.param.happenTimeStr.length >0 && self.param.roadId && self.param.address.length > 0 && self.param.ptaName.length > 0 && self.param.ptaPhone.length > 0) {
+            return YES;
+        }else{
+            return NO;
+        }
+    
     }
+    
+    
 }
 
 - (void)dealloc{

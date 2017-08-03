@@ -118,6 +118,13 @@
 		CE5C39261F2881BD0055C945 /* btn_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39201F2881BD0055C945 /* btn_unselected.png */; };
 		CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39211F2881BD0055C945 /* btn_unselected@2x.png */; };
 		CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */; };
+		CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */; };
+		CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */; };
+		CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20361F32C0AD009D98A6 /* BottomView.m */; };
+		CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20381F32C0AD009D98A6 /* CertificateView.m */; };
+		CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5E20391F32C0AD009D98A6 /* CertificateView.xib */; };
+		CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20401F32C2E1009D98A6 /* CountAccidentHelper.m */; };
+		CE5E20451F32C325009D98A6 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20441F32C325009D98A6 /* AlertView.m */; };
 		CE61405D1F3184280015B8CE /* AccidentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE61405B1F3184280015B8CE /* AccidentVC.m */; };
 		CE61405E1F3184280015B8CE /* AccidentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE61405C1F3184280015B8CE /* AccidentVC.xib */; };
 		CE6140621F31AD9E0015B8CE /* AccidentAddFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6140601F31AD9E0015B8CE /* AccidentAddFootView.m */; };
@@ -379,6 +386,18 @@
 		CE5C39201F2881BD0055C945 /* btn_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_unselected.png; sourceTree = "<group>"; };
 		CE5C39211F2881BD0055C945 /* btn_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@2x.png"; sourceTree = "<group>"; };
 		CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@3x.png"; sourceTree = "<group>"; };
+		CE5E20321F32C0AD009D98A6 /* BottomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomPickerView.h; sourceTree = "<group>"; };
+		CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomPickerView.m; sourceTree = "<group>"; };
+		CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomPickerView.xib; sourceTree = "<group>"; };
+		CE5E20351F32C0AD009D98A6 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
+		CE5E20361F32C0AD009D98A6 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
+		CE5E20371F32C0AD009D98A6 /* CertificateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateView.h; sourceTree = "<group>"; };
+		CE5E20381F32C0AD009D98A6 /* CertificateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateView.m; sourceTree = "<group>"; };
+		CE5E20391F32C0AD009D98A6 /* CertificateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CertificateView.xib; sourceTree = "<group>"; };
+		CE5E203F1F32C2E1009D98A6 /* CountAccidentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountAccidentHelper.h; sourceTree = "<group>"; };
+		CE5E20401F32C2E1009D98A6 /* CountAccidentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountAccidentHelper.m; sourceTree = "<group>"; };
+		CE5E20431F32C325009D98A6 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		CE5E20441F32C325009D98A6 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
 		CE6140581F316C300015B8CE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CE61405A1F3184280015B8CE /* AccidentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentVC.h; sourceTree = "<group>"; };
 		CE61405B1F3184280015B8CE /* AccidentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentVC.m; sourceTree = "<group>"; };
@@ -806,6 +825,30 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		CE5E20311F32C0AD009D98A6 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E20321F32C0AD009D98A6 /* BottomPickerView.h */,
+				CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */,
+				CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */,
+				CE5E20351F32C0AD009D98A6 /* BottomView.h */,
+				CE5E20361F32C0AD009D98A6 /* BottomView.m */,
+				CE5E20371F32C0AD009D98A6 /* CertificateView.h */,
+				CE5E20381F32C0AD009D98A6 /* CertificateView.m */,
+				CE5E20391F32C0AD009D98A6 /* CertificateView.xib */,
+			);
+			path = BottomView;
+			sourceTree = "<group>";
+		};
+		CE5E20421F32C325009D98A6 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E20431F32C325009D98A6 /* AlertView.h */,
+				CE5E20441F32C325009D98A6 /* AlertView.m */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		CE6140641F31CBBA0015B8CE /* YUSegment */ = {
 			isa = PBXGroup;
 			children = (
@@ -918,6 +961,8 @@
 		CEAA96E71F1CE6DE00741A6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE5E20421F32C325009D98A6 /* AlertView */,
+				CE5E20311F32C0AD009D98A6 /* BottomView */,
 				CE42B92A1F1F4AE4005CC5BD /* LRVideoView */,
 				CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */,
 				CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */,
@@ -1133,6 +1178,8 @@
 				CEAA97221F1CF17A00741A6F /* ShareValue.m */,
 				CE6915721F1DE672008911A6 /* LocationHelper.h */,
 				CE6915731F1DE672008911A6 /* LocationHelper.m */,
+				CE5E203F1F32C2E1009D98A6 /* CountAccidentHelper.h */,
+				CE5E20401F32C2E1009D98A6 /* CountAccidentHelper.m */,
 				CE57F7881F1E017300CA9FCF /* NetWorkHelper.h */,
 				CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */,
 			);
@@ -1322,10 +1369,12 @@
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
 				CE5B92FC1F2F120E000008AE /* AccidentAddHeadView.xib in Resources */,
 				CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */,
+				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
 				CE5C38F81F28606B0055C945 /* ZLPhotoActionSheet.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */,
+				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE5C38F61F28606B0055C945 /* ZLCollectionCell.xib in Resources */,
 				CE5C38FA1F28606B0055C945 /* ZLPhotoBrowserCell.xib in Resources */,
 				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
@@ -1416,7 +1465,9 @@
 				CEAA97191F1CF15900741A6F /* UINavigationBar+Awesome.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE5C39051F28606B0055C945 /* ZLPhotoManager.m in Sources */,
+				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CEAA97361F1CF25B00741A6F /* AKTabBarView.m in Sources */,
+				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
@@ -1439,6 +1490,7 @@
 				CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */,
 				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
 				CE5C390A1F28606B0055C945 /* ZLShowLivePhotoViewController.m in Sources */,
+				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
 				CE5C390C1F28606B0055C945 /* ZLThumbnailViewController.m in Sources */,
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
@@ -1467,6 +1519,7 @@
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
 				CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */,
+				CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */,
 				CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */,
 				CE5C38FD1F28606B0055C945 /* ZLBigImageCell.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
@@ -1489,6 +1542,7 @@
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CEFEFD021F29C22500C33CBD /* maskingView.m in Sources */,
+				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
 				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,
 				CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */,

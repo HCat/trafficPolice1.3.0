@@ -138,16 +138,6 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     return actionSheet;
 }
 
-#pragma mark - 
-
-- (void)showPhotoLibrary
-{
-    ZLPhotoActionSheet *actionSheet = [self getPhotoActionSheet];
-    [actionSheet showPhotoLibrary];
-    
-}
-
-
 #pragma mark - UICollectionView Data Source
 
 //返回多少个组
@@ -167,7 +157,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     cell.isNeedTitle = NO;
 
     if (indexPath.row == self.arr_photos.count) {
-        cell.imageView.image = [UIImage imageNamed:@"updataPhoto.png"];
+        cell.imageView.image = [UIImage imageNamed:@"btn_updatePhoto"];
     } else {
         cell.imageView.image = _arr_photos[indexPath.row];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -217,10 +207,10 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 {
     if (indexPath.row == _arr_photos.count) {
         
-        [self showPhotoLibrary];
+        [[self getPhotoActionSheet] showPhotoLibrary];
         
     } else {
-        //image预览
+        
         [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:indexPath.row];
     }
     
@@ -262,12 +252,12 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 //footer底部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (_footView.isShowMoreAccidentInfo && _footView.isShowMoreInfo) {
-        return (CGSize){ScreenWidth,1214-88-124};
+        return (CGSize){ScreenWidth,1224-88-124};
     }else{
         if (_footView.isShowMoreAccidentInfo) {
-            return (CGSize){ScreenWidth,1214-88};
+            return (CGSize){ScreenWidth,1224-88};
         }else if(_footView.isShowMoreInfo){
-            return (CGSize){ScreenWidth,1214-124};
+            return (CGSize){ScreenWidth,1224-124};
         }
     
     }
@@ -277,22 +267,23 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1214-88-124};
+            return (CGSize){ScreenWidth,1224-88-124};
             
         }else{
             
-            return (CGSize){ScreenWidth,1214-88-124-24-44};
+            return (CGSize){ScreenWidth,1224-88-124-24-20};
             
         }
         
     }else{
+        
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1214};
+            return (CGSize){ScreenWidth,1224};
             
         }else{
             
-            return (CGSize){ScreenWidth,1214-88-124-24-44};
+            return (CGSize){ScreenWidth,1224-88-124-24-20};
             
         }
     }

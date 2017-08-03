@@ -48,7 +48,7 @@
 - (void)showVerticalDivider {
     CALayer *divider = ({
         CALayer *layer = [CALayer layer];
-        layer.backgroundColor = [UIColor colorWithRed:231.0 / 255 green:231.0 / 255 blue:231.0 / 255 alpha:1.0].CGColor;
+        layer.backgroundColor = UIColorFromRGB(0xb5bdd2).CGColor;
         [self.layer addSublayer:layer];
         
         layer;

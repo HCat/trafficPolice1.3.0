@@ -11,7 +11,9 @@
 #import "UserModel.h"
 
 #import "IllegalParkVC.h"
+#import "AccidentVC.h"
 #import "VideoColectVC.h"
+
 
 @interface MainHomeVC ()
 
@@ -170,22 +172,34 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     NSString *t_title = [t_dic objectForKey:@"title"];
     
     if ([t_title isEqualToString:@"违停录入"]) {
+        
         IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
         t_vc.illegalType = IllegalTypePark;
         [self.navigationController pushViewController:t_vc animated:YES];
-        
-        
+    
     }else if ([t_title isEqualToString:@"闯禁令录入"]){
+        
         IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
         t_vc.illegalType = IllegalTypeThrough;
         [self.navigationController pushViewController:t_vc animated:YES];
+        
     }else if ([t_title isEqualToString:@"事故录入"]){
+        
+        AccidentVC *t_vc = [[AccidentVC alloc] init];
+        t_vc.accidentType = AccidentTypeAccident;
+        [self.navigationController pushViewController:t_vc animated:YES];
         
     }else if ([t_title isEqualToString:@"快处录入"]){
         
+        AccidentVC *t_vc = [[AccidentVC alloc] init];
+        t_vc.accidentType = AccidentTypeFastAccident;
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
     }else if ([t_title isEqualToString:@"视频录入"]){
+        
         VideoColectVC *t_vc = [[VideoColectVC alloc] init];
         [self.navigationController pushViewController:t_vc animated:YES];
+        
     }else if ([t_title isEqualToString:@"重点车辆"]){
         
     }else if ([t_title isEqualToString:@"勤务指挥"]){

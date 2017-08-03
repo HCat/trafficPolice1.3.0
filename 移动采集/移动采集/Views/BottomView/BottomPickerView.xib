@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BottomPickerView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Lb-W4-5l4">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycy-wW-ifj">
+                            <rect key="frame" x="287" y="10" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="2og-Zn-u1g"/>
+                                <constraint firstAttribute="height" constant="25" id="FcN-ge-krO"/>
+                            </constraints>
+                            <state key="normal" image="icon_dagou_unSelected"/>
+                            <connections>
+                                <action selector="handleBtnSelectedItemClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rq7-68-1MI"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行驶状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOV-jm-eVt">
+                            <rect key="frame" x="125.5" y="12.5" width="69.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="HOV-jm-eVt" firstAttribute="centerY" secondItem="8Lb-W4-5l4" secondAttribute="centerY" id="2a3-q5-Yd4"/>
+                        <constraint firstItem="HOV-jm-eVt" firstAttribute="centerX" secondItem="8Lb-W4-5l4" secondAttribute="centerX" id="FXr-AX-zPi"/>
+                        <constraint firstAttribute="trailing" secondItem="ycy-wW-ifj" secondAttribute="trailing" constant="8" id="HAt-5U-Gzi"/>
+                        <constraint firstAttribute="height" constant="44" id="JWO-ru-ByN"/>
+                        <constraint firstItem="ycy-wW-ifj" firstAttribute="centerY" secondItem="8Lb-W4-5l4" secondAttribute="centerY" id="PfF-P7-SEu"/>
+                    </constraints>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsu-ki-4ur">
+                    <rect key="frame" x="0.0" y="44" width="320" height="163"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8Lb-W4-5l4" secondAttribute="trailing" id="0Yq-7c-ZsV"/>
+                <constraint firstItem="qsu-ki-4ur" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2LY-1v-6gg"/>
+                <constraint firstItem="8Lb-W4-5l4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JVo-ei-K7v"/>
+                <constraint firstAttribute="trailing" secondItem="qsu-ki-4ur" secondAttribute="trailing" id="f1a-El-ldI"/>
+                <constraint firstItem="8Lb-W4-5l4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qZj-Tt-Npt"/>
+                <constraint firstAttribute="bottom" secondItem="qsu-ki-4ur" secondAttribute="bottom" id="xRR-3A-ZWp"/>
+                <constraint firstItem="qsu-ki-4ur" firstAttribute="top" secondItem="8Lb-W4-5l4" secondAttribute="bottom" id="xc4-Nb-rz2"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btn_selectedItem" destination="ycy-wW-ifj" id="ZfO-8K-O1e"/>
+                <outlet property="lb_PickTitle" destination="HOV-jm-eVt" id="CIt-Xg-v1q"/>
+                <outlet property="pickView" destination="qsu-ki-4ur" id="PIG-EX-3wA"/>
+            </connections>
+            <point key="canvasLocation" x="-185" y="-190.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_dagou_unSelected" width="32" height="32"/>
+    </resources>
+</document>

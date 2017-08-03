@@ -18,8 +18,6 @@
 #import "BottomView.h"
 #import "BottomPickerView.h"
 
-
-#import "ShareFun.h"
 #import "UserModel.h"
 #import "CommonAPI.h"
 #import "FastAccidentAPI.h"
@@ -31,8 +29,6 @@
 #import "SRAlertView.h"
 
 
-
-
 @interface AccidentAddFootView()<UITextViewDelegate>
 
 //分段控件，分别为甲方，乙方，丙方
@@ -40,8 +36,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_accidentCauses;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_accidentCauses;
-
-
 
  //事故信息里面的更多信息按钮
 @property (weak, nonatomic) IBOutlet UIButton *btn_moreAccidentInfo;
@@ -96,7 +90,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_commit;
 
 @property(nonatomic,assign) BOOL isCanCommit;
-@property(nonatomic,assign) BOOL isUpLoading;
+@property(nonatomic,assign) BOOL isUpLoading; //用于防止重复提交
 
 
 
@@ -120,14 +114,15 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    //默认设置是否显示更多信息，这里预先设置是为了调用UICollectionView可以刷新下数据
-    //这里待优化
+    
+    
     self.isUpLoading = NO;
     
     self.partyFactory = [[PartyFactory alloc] init];
     //配置视图页面
     [self configView];
     
+    //默认设置是否显示更多信息，这里预先设置是为了调用UICollectionView可以刷新下数据
     self.isShowMoreInfo = YES;
     self.isShowMoreAccidentInfo = YES;
     
@@ -165,6 +160,7 @@
     self.btn_commit.isIgnore = NO;
     
     //设置UITextField的Placeholder高亮来提示哪些是需要输入的
+    _tf_accidentCauses.attributedPlaceholder = [ShareFun highlightInString:@"请选择事故成因(必选)" withSubString:@"(必选)"];
     _tf_accidentTime.attributedPlaceholder = [ShareFun highlightInString:@"请输入事故时间(必填)" withSubString:@"(必填)"];
     _tf_location.attributedPlaceholder = [ShareFun highlightInString:@"请选择位置(必选)" withSubString:@"(必选)"];
     _tf_accidentAddress.attributedPlaceholder = [ShareFun highlightInString:@"请输入事故地点(必填)" withSubString:@"(必填)"];
@@ -231,7 +227,7 @@
     [self.tv_describe addTextDidChangeHandler:^(FSTextView *textView) {
         // 文本改变后的相应操作.
         weakSelf.lb_textCount.text =
-        [NSString stringWithFormat:@"%d/%d",textView.text.length,textView.maxLength];
+        [NSString stringWithFormat:@"%ld/%ld",textView.text.length,textView.maxLength];
         
     }];
     // 添加到达最大限制Block回调.
@@ -249,7 +245,7 @@
     WS(weakSelf);
     CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
     manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    manger.isNeedShowHud = NO;
+    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
@@ -278,7 +274,6 @@
     _partyFactory.accidentType = _accidentType;
     
     if (_accidentType == AccidentTypeAccident) {
-        
         [CountAccidentHelper sharedDefault].state = @1;
     }else if (_accidentType == AccidentTypeFastAccident){
         [CountAccidentHelper sharedDefault].state = @9;
@@ -287,15 +282,15 @@
     //快处事故的UI处理
     if (_accidentType == AccidentTypeFastAccident){
         
-        self.isShowMoreInfo = YES;
-        self.isShowMoreAccidentInfo = YES;
-        self.btn_moreAccidentInfo.hidden = YES;
-        self.btn_moreInfo.hidden = YES;
+        self.isShowMoreInfo               = YES;
+        self.isShowMoreAccidentInfo       = YES;
+        self.btn_moreAccidentInfo.hidden  = YES;
+        self.btn_moreInfo.hidden          = YES;
         _layout_InsuranceCompany.constant = 14.f;
-        _layout_moreinfo.constant = 10.f;
+        _layout_moreinfo.constant         = 45.f;
         [self layoutIfNeeded];
-        self.lb_illegalBehavior.hidden = YES;
-        self.tf_illegalBehavior.hidden = YES;
+        self.lb_illegalBehavior.hidden    = YES;
+        self.tf_illegalBehavior.hidden    = YES;
         
     }
     
@@ -321,10 +316,10 @@
     _isCanCommit = isCanCommit;
     if (_isCanCommit == NO) {
         _btn_commit.enabled = NO;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0xe6e6e6)];
+        [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
     }else{
         _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0x4281E8)];
+        [_btn_commit setBackgroundColor:DefaultBtnColor];
     }
 }
 
@@ -339,7 +334,7 @@
         for (UIButton *t_btn in _btn_moreInfos) {
             t_btn.hidden = YES;
         }
-        _layout_moreinfo.constant = 34.f;
+        _layout_moreinfo.constant = 45.f;
         [self layoutIfNeeded];
         
     }else{
@@ -349,7 +344,7 @@
         for (UIButton *t_btn in _btn_moreInfos) {
             t_btn.hidden = NO;
         }
-        _layout_moreinfo.constant = 158.f;
+        _layout_moreinfo.constant = 168.f;
         [self layoutIfNeeded];
     }
     
@@ -411,7 +406,7 @@
         SW(strongSelf, weakSelf);
         
         //UIView获取UIViewController,来弹出LRCameraVC拍照，拍照完之后调用fininshCaptureBlock
-        AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self];
+        AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
         LRCameraVC *home = [[LRCameraVC alloc] init];
         home.type = 2;
         home.fininshCaptureBlock = ^(LRCameraVC *camera) {
@@ -445,7 +440,7 @@
         LxPrintf(@"驾驶证点击");
         SW(strongSelf, weakSelf);
         //UIView获取UIViewController,来弹出LRCameraVC拍照，拍照完之后调用fininshCaptureBlock
-        AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self];
+        AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
         LRCameraVC *home = [[LRCameraVC alloc] init];
         home.type = 3;
         home.fininshCaptureBlock = ^(LRCameraVC *camera) {
@@ -481,7 +476,7 @@
 
 - (IBAction)handleBtnCarNumberClicked:(id)sender {
     WS(weakSelf);
-    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self];
+    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
     LRCameraVC *home = [[LRCameraVC alloc] init];
     home.type = 4;
     home.fininshCaptureBlock = ^(LRCameraVC *camera) {
@@ -537,7 +532,7 @@
         SW(strongSelf, weakSelf);
         strongSelf.tf_accidentCauses.text = title;
         strongSelf.partyFactory.param.causesType  = @(itemId);
-        
+        strongSelf.isCanCommit =  [strongSelf.partyFactory juegeCanCommit];
         [BottomView dismissWindow];
         
     }];
@@ -548,7 +543,7 @@
 
 - (IBAction)handleBtnChoiceLocationClicked:(id)sender {
     
-    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self];
+    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
     SearchLocationVC *t_searchLocationvc = [SearchLocationVC new];
     t_searchLocationvc.searchType = SearchLocationTypeAccident;
     t_searchLocationvc.arr_content = self.codes.road;
@@ -761,15 +756,11 @@
                                                        selectAction:^(AlertViewActionType actionType) {
                                                            
                                                            SW(strongSelf, weakSelf);
-                                                           if (actionType == AlertViewActionTypeLeft) {
-                                                               
-                                                               
-                                                           } else if(actionType == AlertViewActionTypeRight) {
+                                                           if(actionType == AlertViewActionTypeRight) {
                                                                [strongSelf updateAccident];
                                                            }
                                                        }];
         alertView.blurCurrentBackgroundView = NO;
-        alertView.actionWhenHighlightedBackgroundColor = UIColorFromRGB(0x4281E8);
         [alertView show];
         
     }
@@ -779,24 +770,18 @@
 
 - (void)updateAccident{
     
-   
-    
     WS(weakSelf);
-
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
 
     if (_accidentType == AccidentTypeAccident) {
         
         AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
         manger.param = self.partyFactory.param;
-        manger.successMessage = @"提交成功";
-        manger.failMessage = @"提交失败";
+        [manger configLoadingTitle:@"提交"];
         
         self.isUpLoading = YES;
         
-        ShowHUD *hud = [ShowHUD showWhiteLoadingWithText:@"提交中.." inView:window config:nil];
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [hud hide];
+        
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
             
@@ -806,34 +791,34 @@
                     
                     [ShareValue sharedDefault].accidentCodes = nil;
                     [[ShareValue sharedDefault] accidentCodes];
-                    [ShareValue sharedDefault].roadModels = nil;
+                    [ShareValue sharedDefault].roadModels    = nil;
                     [[ShareValue sharedDefault] roadModels];
                     
                 }
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
                 
-                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf];
+                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
                 [t_vc.navigationController popViewControllerAnimated:YES];
                 
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
             SW(strongSelf, weakSelf);
-            [hud hide];
             strongSelf.isUpLoading = NO;
+            
         }];
         
     }else if (_accidentType == AccidentTypeFastAccident){
         
         FastAccidentSaveManger *manger = [[FastAccidentSaveManger alloc] init];
         manger.param = self.partyFactory.param;
-        manger.successMessage = @"提交成功";
-        manger.failMessage = @"提交失败";
+        [manger configLoadingTitle:@"提交"];
         
         self.isUpLoading = YES;
-        ShowHUD *hud = [ShowHUD showWhiteLoadingWithText:@"提交中.." inView:window config:nil];
+        
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [hud hide];
+            
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
             if (manger.responseModel.code == CODE_SUCCESS) {
@@ -849,13 +834,13 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
                 
-                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf];
+                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
                 [t_vc.navigationController popViewControllerAnimated:YES];
                 
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
             SW(strongSelf, weakSelf);
-            [hud hide];
             strongSelf.isUpLoading = NO;
         }];
         
@@ -884,7 +869,6 @@
     
 }
 
-
 #pragma mark - 判断哪些TextFiled是必填项
 
 - (void)judgeTextFieldWithIndex:(NSInteger)index{
@@ -892,8 +876,8 @@
     if(index == 0){
         
         _tf_name.attributedPlaceholder = [ShareFun highlightInString:@"请输入名字(必填)" withSubString:@"(必填)"];
-        _tf_identityCard.attributedPlaceholder = [ShareFun highlightInString:@"请输入身份证号(必填)" withSubString:@"(必填)"];
-        _tf_carType.attributedPlaceholder = [ShareFun highlightInString:@"请选择车辆类型(必选)" withSubString:@"(必选)"];
+//        _tf_identityCard.attributedPlaceholder = [ShareFun highlightInString:@"请输入身份证号(必填)" withSubString:@"(必填)"];
+//        _tf_carType.attributedPlaceholder = [ShareFun highlightInString:@"请选择车辆类型(必选)" withSubString:@"(必选)"];
         _tf_phone.attributedPlaceholder = [ShareFun highlightInString:@"请输入联系方式(必填)" withSubString:@"(必填)"];
     }else{
         _tf_name.placeholder = @"请输入名字";
@@ -911,15 +895,15 @@
     [_segmentedControl setUpWithTitles:@[@"甲方",@"乙方",@"丙方"]];
     [_segmentedControl setTextAttributes:@{
                                            NSFontAttributeName: [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight],
-                                           NSForegroundColorAttributeName: UIColorFromRGB(0x444444)
+                                           NSForegroundColorAttributeName: UIColorFromRGB(0x515767)
                                            } forState:YUSegmentedControlStateNormal];
     [_segmentedControl setTextAttributes:@{
                                            NSFontAttributeName: [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight],
-                                           NSForegroundColorAttributeName: UIColorFromRGB(0x4281e8)
+                                           NSForegroundColorAttributeName: UIColorFromRGB(0xffffff)
                                            } forState:YUSegmentedControlStateSelected];
-    _segmentedControl.indicator.backgroundColor = UIColorFromRGB(0x4281e8);
+    _segmentedControl.indicator.backgroundColor = UIColorFromRGB(0x515767);
     [_segmentedControl addTarget:self action:@selector(segmentedControlTapped:) forControlEvents:UIControlEventValueChanged];
-    [_segmentedControl setBackgroundColor:UIColorFromRGB(0xf6f6f6)];
+    [_segmentedControl setBackgroundColor:UIColorFromRGB(0xe7edf9)];
     _segmentedControl.showsVerticalDivider = YES;
     _segmentedControl.showsTopSeparator = NO;
     _segmentedControl.showsBottomSeparator = NO;
@@ -1075,7 +1059,7 @@
     textField.leftViewMode = UITextFieldViewModeAlways;
     
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 5)];
-    imageView.image = [UIImage imageNamed:@"三角形.png"];
+    imageView.image = [UIImage imageNamed:@"icon_dropDownArrow.png"];
     imageView.contentMode = UIViewContentModeCenter;
     textField.rightView = imageView;
     textField.rightViewMode = UITextFieldViewModeAlways;
