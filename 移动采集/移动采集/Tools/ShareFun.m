@@ -326,6 +326,7 @@
 }
 
 #pragma mark - 监测版本是否可以更新
+
 + (void)checkForVersionUpdates{
 
     [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {

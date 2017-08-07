@@ -76,7 +76,7 @@
     {
         if (singleLine.frame.size.height < 1)
         {
-            singleLine.backgroundColor = UIColorFromRGB(0x4281E8);
+            singleLine.backgroundColor = DefaultNavColor;
         }
     }
     

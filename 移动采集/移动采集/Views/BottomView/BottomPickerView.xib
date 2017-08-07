@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,12 +19,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycy-wW-ifj">
-                            <rect key="frame" x="287" y="10" width="25" height="25"/>
+                            <rect key="frame" x="282" y="12" width="30" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="2og-Zn-u1g"/>
-                                <constraint firstAttribute="height" constant="25" id="FcN-ge-krO"/>
+                                <constraint firstAttribute="width" constant="30" id="2og-Zn-u1g"/>
+                                <constraint firstAttribute="height" constant="21" id="FcN-ge-krO"/>
                             </constraints>
-                            <state key="normal" image="icon_dagou_unSelected"/>
+                            <state key="normal" image="btn_determine"/>
                             <connections>
                                 <action selector="handleBtnSelectedItemClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rq7-68-1MI"/>
                             </connections>
@@ -36,7 +36,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="HOV-jm-eVt" firstAttribute="centerY" secondItem="8Lb-W4-5l4" secondAttribute="centerY" id="2a3-q5-Yd4"/>
                         <constraint firstItem="HOV-jm-eVt" firstAttribute="centerX" secondItem="8Lb-W4-5l4" secondAttribute="centerX" id="FXr-AX-zPi"/>
@@ -71,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_dagou_unSelected" width="32" height="32"/>
+        <image name="btn_determine" width="23" height="15"/>
     </resources>
 </document>

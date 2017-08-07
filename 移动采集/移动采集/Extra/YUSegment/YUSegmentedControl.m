@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, YUSegmentedControlContentType) {
 
 static const NSTimeInterval kAnimationDuration      = 0.5;
 static const CGFloat        kSeparatorDefaultHeight = 1.0;
-static const CGFloat        kIndicatorDefaultHeight = 3.0;
+//static const CGFloat        kIndicatorDefaultHeight = 3.0;
 
 @interface YUSegmentedControl ()
 
@@ -227,6 +227,7 @@ static const CGFloat        kIndicatorDefaultHeight = 3.0;
 #pragma mark - 
 
 - (NSString *)titleAtIndex:(NSUInteger)index {
+    
     if (_contentType == YUSegmentedControlContentTypeImage) {
         NSLog(@"[YUSegment]: WARN use -imageAtIndex: instead.");
         return nil;
