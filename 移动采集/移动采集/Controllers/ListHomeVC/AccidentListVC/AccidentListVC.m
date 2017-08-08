@@ -11,13 +11,16 @@
 #import "Reachability.h"
 #import "UITableView+Lr_Placeholder.h"
 #import "AccidentCell.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 #import "AccidentAPI.h"
 #import "FastAccidentAPI.h"
-#import "AccidentDetailVC.h"
+
+#import "NetWorkHelper.h"
+
+//#import "AccidentDetailVC.h"
+//#import "SearchListVC.h"
 #import "ListHomeVC.h"
-#import "ShareFun.h"
-#import "SearchListVC.h"
 
 @interface AccidentListVC ()
 
@@ -33,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor clearColor];
     
     if (_accidentType == AccidentTypeAccident) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
@@ -50,6 +53,8 @@
     _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [_tb_content setSeparatorInset:UIEdgeInsetsZero];
     [_tb_content setLayoutMargins:UIEdgeInsetsZero];
+   
+     [_tb_content registerNib:[UINib nibWithNibName:@"AccidentCell" bundle:nil] forCellReuseIdentifier:@"AccidentCellID"];
 
     self.arr_content = [NSMutableArray array];
     
@@ -58,7 +63,6 @@
     [_tb_content.mj_header beginRefreshing];
     
     WS(weakSelf);
-    
     //点击重新加载之后的处理
     [_tb_content setReloadBlock:^{
         SW(strongSelf, weakSelf);
@@ -67,20 +71,17 @@
         [strongSelf.tb_content.mj_header beginRefreshing];
     }];
     
-    //网络断开之后重新连接之后的处理
-    self.networkChangeBlock = ^{
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    WS(weakSelf);
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
         strongSelf.index = 0;
         [strongSelf.tb_content.mj_header beginRefreshing];
     };
-    
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
 
 }
 
@@ -155,8 +156,8 @@
                 }
                 [strongSelf.tb_content reloadData];
             }else{
-                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%d msg:%@",manger.responseModel.code,manger.responseModel.msg];
-                [ShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
+                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%ld msg:%@",manger.responseModel.code,manger.responseModel.msg];
+                [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -202,8 +203,8 @@
                 }
                 [strongSelf.tb_content reloadData];
             }else{
-                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%d msg:%@",manger.responseModel.code,manger.responseModel.msg];
-                [ShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
+                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%ld msg:%@",manger.responseModel.code,manger.responseModel.msg];
+                [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -238,18 +239,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 105;
+    
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:@"AccidentCellID" cacheByIndexPath:indexPath configuration:^(AccidentCell *cell) {
+        
+        if (_arr_content && _arr_content.count > 0) {
+            AccidentListModel *t_model = _arr_content[indexPath.row];
+            cell.model = t_model;
+            
+        }
+    }];
+
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AccidentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCellID"];
-    if (!cell) {
-        [tableView registerNib:[UINib nibWithNibName:@"AccidentCell" bundle:nil] forCellReuseIdentifier:@"AccidentCellID"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCellID"];
-    }
     
     if (_arr_content && _arr_content.count > 0) {
+        
         AccidentListModel *t_model = _arr_content[indexPath.row];
         cell.model = t_model;
     }
@@ -271,16 +279,16 @@
         UIViewController *vc_target = nil;
         //搜索时候的跳转
         if (_str_search) {
-             vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
+            //vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
         }else{
             vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
         }
         
         AccidentListModel *t_model = _arr_content[indexPath.row];
-        AccidentDetailVC *t_vc = [[AccidentDetailVC alloc] init];
-        t_vc.accidentType = _accidentType;
-        t_vc.accidentId = t_model.accidentId;
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+//        AccidentDetailVC *t_vc = [[AccidentDetailVC alloc] init];
+//        t_vc.accidentType = _accidentType;
+//        t_vc.accidentId = t_model.accidentId;
+//        [vc_target.navigationController pushViewController:t_vc animated:YES];
     }
 }
 
@@ -298,6 +306,8 @@
 }
 
 - (void)dealloc{
+    
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
     
     if (_accidentType == AccidentTypeAccident) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];

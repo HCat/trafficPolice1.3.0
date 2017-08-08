@@ -18,7 +18,7 @@
 
 #import "ListHomeVC.h"
 #import "NetWorkHelper.h"
-//#import "IllegalDetailVC.h"
+#import "IllegalDetailVC.h"
 //#import "SearchListVC.h"
 
 
@@ -251,14 +251,14 @@
             cell.model = t_model;
 
         }
-    }];;
+    }];
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     IllegalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalCellID"];
-    
+    cell.fd_enforceFrameLayout = NO;
     if (_arr_content && _arr_content.count > 0) {
         IllegalParkListModel *t_model = _arr_content[indexPath.row];
         cell.model = t_model;
@@ -288,10 +288,10 @@
         }
         
         IllegalParkListModel *t_model = _arr_content[indexPath.row];
-//        IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
-//        t_vc.illegalType = _illegalType;
-//        t_vc.illegalId = t_model.illegalParkId;
-//        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
+        t_vc.illegalType = _illegalType;
+        t_vc.illegalId = t_model.illegalParkId;
+        [vc_target.navigationController pushViewController:t_vc animated:YES];
     }
     
 }

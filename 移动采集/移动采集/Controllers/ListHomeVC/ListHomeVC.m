@@ -9,6 +9,7 @@
 #import "ListHomeVC.h"
 #import "UserModel.h"
 #import "IllegalListVC.h"
+#import "AccidentListVC.h"
 
 @interface ListHomeVC ()
 
@@ -69,17 +70,19 @@
     }
     
     if ([UserModel isPermissionForAccidentList]) {
-        UIViewController *t_vc = [UIViewController new];
+        AccidentListVC *t_vc = [AccidentListVC new];
+        t_vc.accidentType = AccidentTypeAccident;
         t_vc.title = @"事故";
         [t_arr addObject:t_vc];
-    
+        
     }
     
     if ([UserModel isPermissionForFastAccidentList]) {
-        UIViewController *t_vc = [UIViewController new];
+        
+        AccidentListVC *t_vc = [AccidentListVC new];
+        t_vc.accidentType = AccidentTypeFastAccident;
         t_vc.title = @"快处";
         [t_arr addObject:t_vc];
-        
         
     }
     
