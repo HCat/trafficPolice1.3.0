@@ -55,4 +55,12 @@
 @property (nonatomic,copy)   NSString * ptcDescribe;      //丙方简述
 
 
+@property (nonatomic,strong) NSNumber * state;            //事故状态,1为结案(已处理) 3为中队调解中
+@property (nonatomic,copy)   NSString * casualties;       //伤亡情况
+@property (nonatomic,copy)   NSString * causes;           //事故成因
+@property (nonatomic,copy)   NSString * mediationRecord;  //中队调解记录
+@property (nonatomic,copy)   NSString * memo;             //备注记录与领导意见
+
+
+
 @end

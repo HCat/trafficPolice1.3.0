@@ -195,7 +195,6 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalImageCellID"];
         }
         
-        
         if (_model) {
 
             if (_model.picList && _model.picList.count > 0) {

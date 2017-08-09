@@ -72,6 +72,7 @@
     if ([UserModel isPermissionForAccidentList]) {
         AccidentListVC *t_vc = [AccidentListVC new];
         t_vc.accidentType = AccidentTypeAccident;
+        t_vc.isHandle = @0;
         t_vc.title = @"事故";
         [t_arr addObject:t_vc];
         
@@ -81,6 +82,7 @@
         
         AccidentListVC *t_vc = [AccidentListVC new];
         t_vc.accidentType = AccidentTypeFastAccident;
+        t_vc.isHandle = @0;
         t_vc.title = @"快处";
         [t_arr addObject:t_vc];
         

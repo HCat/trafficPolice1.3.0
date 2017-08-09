@@ -134,6 +134,7 @@
         AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        param.isHandle = _isHandle;
         if (_str_search) {
             param.search = _str_search;
         }
@@ -181,6 +182,7 @@
         FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        param.isHandle = _isHandle;
         if (_str_search) {
             param.search = _str_search;
         }

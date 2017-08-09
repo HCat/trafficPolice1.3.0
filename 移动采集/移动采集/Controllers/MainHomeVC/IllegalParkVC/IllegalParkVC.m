@@ -161,19 +161,29 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         if (manger.responseModel.code == 0) {
             
-            [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
-                if (actionType == AlertViewActionTypeRight) {
-                    NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
-                    IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
-                    t_vc.illegalThroughId = illegalThroughId;
-                    t_vc.saveSuccessBlock = ^{
-                        
-                        [strongSelf handleBeforeCommit];
-                        
-                    };
-                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
-                }
-            }];
+            
+            NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
+            IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
+            t_vc.illegalThroughId = illegalThroughId;
+            t_vc.saveSuccessBlock = ^{
+                [strongSelf handleBeforeCommit];
+                
+            };
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            
+            
+//            [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
+//                if (actionType == AlertViewActionTypeRight) {
+//                    NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
+//                    IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
+//                    t_vc.illegalThroughId = illegalThroughId;
+//                    t_vc.saveSuccessBlock = ^{
+//                        [strongSelf handleBeforeCommit];
+//                        
+//                    };
+//                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
+//                }
+//            }];
             
         }else if (manger.responseModel.code == 13){
             

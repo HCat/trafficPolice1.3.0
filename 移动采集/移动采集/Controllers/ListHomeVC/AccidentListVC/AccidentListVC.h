@@ -12,4 +12,5 @@
 
 @property(nonatomic,assign) AccidentType accidentType;
 @property(nonatomic,copy) NSString *str_search;
+@property(nonatomic,strong) NSNumber *isHandle;
 @end
