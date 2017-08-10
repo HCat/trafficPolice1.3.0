@@ -116,6 +116,13 @@
  丙方身份证 丙方驾驶证 丙方行驶证
 */
 
+@property (nonatomic,strong)  NSNumber * state;            //事故状态,1为结案(已处理) 3为中队调解中
+@property (nonatomic,copy)    NSString * casualties;       //伤亡情况
+@property (nonatomic,copy)    NSString * causes;           //事故成因
+@property (nonatomic,copy)    NSString * mediationRecord;  //中队调解记录
+@property (nonatomic,copy)    NSString * memo;             //备注记录与领导意见
+@property (nonatomic,copy)    NSArray  * delImageIds;      //数组，修改操作中要删除的照片
+
 @end
 
 @interface AccidentSaveManger:LRBaseRequest
@@ -137,6 +144,7 @@
 @property (nonatomic,assign) NSInteger  length;     //显示的记录数 默认为10
 @property (nonatomic,copy)   NSString * search;     //搜索的关键字
 @property (nonatomic,strong) NSNumber * isHandle;   //选填，1已处理 0未处理
+
 @end
 
 

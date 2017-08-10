@@ -39,6 +39,8 @@
 //获取时间戳转换成时间：格式为dateFormat
 + (NSString *)timeWithTimeInterval:(NSNumber *)timeString dateFormat:(NSString *)dateFormat;
 
+//通过颜色获取生成图片
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
 //获取缓存目录
 + (NSString *)getCacheSubPath:(NSString *)dirName;

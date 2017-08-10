@@ -208,6 +208,8 @@
 		CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */; };
 		CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9F31F1C873E00AC515C /* LoginHomeVC.xib */; };
 		CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F81F1C896400AC515C /* BaseViewController.m */; };
+		CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */; };
+		CEFD55811F3C40EC0082060B /* AccidentHandleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */; };
 		CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */; };
 		CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFEFCED1F29B16300C33CBD /* IllegalParkVC.xib */; };
 		CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCF11F29B22F00C33CBD /* IllegalParkAddHeadView.m */; };
@@ -581,6 +583,9 @@
 		CEE5E9F71F1C896400AC515C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CEE5E9F81F1C896400AC515C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CEE5E9FA1F1C8AED00AC515C /* NoticeMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeMacro.h; sourceTree = "<group>"; };
+		CEFD557D1F3C40EC0082060B /* AccidentHandleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentHandleVC.h; sourceTree = "<group>"; };
+		CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentHandleVC.m; sourceTree = "<group>"; };
+		CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentHandleVC.xib; sourceTree = "<group>"; };
 		CEFEFCEB1F29B16300C33CBD /* IllegalParkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkVC.h; sourceTree = "<group>"; };
 		CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkVC.m; sourceTree = "<group>"; };
 		CEFEFCED1F29B16300C33CBD /* IllegalParkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegalParkVC.xib; sourceTree = "<group>"; };
@@ -1022,6 +1027,9 @@
 				CE675F321F386F07006FC15F /* AccidentCell.h */,
 				CE675F331F386F07006FC15F /* AccidentCell.m */,
 				CE675F341F386F07006FC15F /* AccidentCell.xib */,
+				CEFD557D1F3C40EC0082060B /* AccidentHandleVC.h */,
+				CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */,
+				CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */,
 			);
 			path = AccidentListVC;
 			sourceTree = "<group>";
@@ -1522,6 +1530,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFD55811F3C40EC0082060B /* AccidentHandleVC.xib in Resources */,
 				CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
@@ -1773,6 +1782,7 @@
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
+				CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */,
 				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
 				CE5C39001F28606B0055C945 /* ZLForceTouchPreviewController.m in Sources */,

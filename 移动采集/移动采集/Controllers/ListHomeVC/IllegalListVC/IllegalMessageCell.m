@@ -139,7 +139,7 @@
     
     [t_content autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:t_title withOffset:15.f];
     if ([t_title.text isEqualToString:@"所在位置:"]) {
-        NSLayoutConstraint * t_constraint = [t_content autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15.f relation:NSLayoutRelationGreaterThanOrEqual];
+        [t_content autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:15.f relation:NSLayoutRelationGreaterThanOrEqual];
         t_content.numberOfLines = 2;
     }
     

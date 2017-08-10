@@ -777,6 +777,7 @@
         AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
         manger.param = self.partyFactory.param;
         [manger configLoadingTitle:@"提交"];
+        manger.v_showHud = [UIApplication sharedApplication].delegate.window;
         
         self.isUpLoading = YES;
         

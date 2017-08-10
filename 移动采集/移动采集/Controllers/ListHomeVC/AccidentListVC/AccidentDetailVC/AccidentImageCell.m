@@ -9,7 +9,10 @@
 #import "AccidentImageCell.h"
 #import <UIButton+WebCache.h>
 #import <PureLayout.h>
-#import "LLPhotoBrowser.h"
+
+#import "KSPhotoBrowser.h"
+#import "KSSDImageManager.h"
+
 #import "AccidentDetailVC.h"
 #import "ShareFun.h"
 
@@ -39,10 +42,10 @@
             
             for (int i = 0;i < [_arr_view count]; i++) {
                 
-                NSString *pic_url  = _arr_images[i];
+                AccidentPicListModel *pic = _arr_images[i];
                 
                 UIButton *t_button  = _arr_view[i];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic_url] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
             }
         
         }else{
@@ -51,14 +54,15 @@
             
             for (int i = 0;i < [_arr_images count]; i++) {
                 
-                NSString *pic_url  = _arr_images[i];
-        
+                AccidentPicListModel *pic = _arr_images[i];
+                
                 UIButton *t_button = [UIButton newAutoLayoutView];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic_url] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
                 t_button.tag = i;
                 t_button.layer.cornerRadius = 5.0f;
                 t_button.layer.masksToBounds = YES;
+                t_button.imageView.contentMode = UIViewContentModeScaleAspectFill;
                 [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
                 [self.contentView addSubview:t_button];
                 [_arr_view addObject:t_button];
@@ -133,19 +137,26 @@
     if (_arr_view && _arr_view.count > 0) {
         for (int i = 0; i < _arr_view.count; i++) {
             UIButton *btn = _arr_view[i];
-            
-            [t_arr addObject:btn.imageView.image];
+            AccidentPicListModel *picModel  = _arr_images[i];
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:picModel.imgUrl]];
+            [t_arr addObject:item];
         }
         
     }
     
     AccidentDetailVC *vc_target = (AccidentDetailVC *)[ShareFun findViewController:self withClass:[AccidentDetailVC class]];
     
-    LLPhotoBrowser *photoBrowser = [[LLPhotoBrowser alloc] initWithImages:t_arr currentIndex:tag];
-    photoBrowser.isShowDeleteBtn = NO;
-    [vc_target presentViewController:photoBrowser animated:YES completion:nil];
+    KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:tag];
+    [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+    [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+    browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+    browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+    browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+    browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+    browser.bounces             = NO;
+    browser.isShowDeleteBtn     = NO;
+    [browser showFromViewController:vc_target];
 
-    
 }
 
 - (float)heightWithimages{

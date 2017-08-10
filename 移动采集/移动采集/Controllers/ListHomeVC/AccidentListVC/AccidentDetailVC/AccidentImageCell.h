@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AccidentImageCell;
+#import "AccidentPicListModel.h"
 
 @interface AccidentImageCell : UITableViewCell
 
-@property (nonatomic,strong) NSMutableArray *arr_images;
+@property (nonatomic,strong) NSMutableArray<AccidentPicListModel *> *arr_images;
 
 - (float)heightWithimages;
 

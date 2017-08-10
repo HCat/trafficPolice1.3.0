@@ -157,6 +157,22 @@
     return strApplicationUUID;
 }
 
+#pragma mark - 通过颜色获取生成图片
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+
+}
+
 #pragma mark - 高亮文字中部分文字
 
 + (NSMutableAttributedString *)highlightNummerInString:(NSString *)originString{

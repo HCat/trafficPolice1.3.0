@@ -125,7 +125,7 @@
     FastAccidentDetailManger *manger = [[FastAccidentDetailManger alloc] init];
     manger.fastaccidentId = _accidentId;
     
-    ShowHUD *hud = [ShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];
+    LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         [hud hide];
         SW(strongSelf, weakSelf);
@@ -166,6 +166,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.row == 0) {
         AccidentImageCell *cell = (AccidentImageCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithimages];
@@ -176,7 +177,9 @@
         AccidentPartyCell *cell = (AccidentPartyCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithAccident];
     }
+    
     return 105;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -190,13 +193,9 @@
         
         
         if (_model) {
-            NSMutableArray *t_arr = [NSMutableArray array];
-            if (_model.picList && _model.picList.count > 0) {
-                for (AccidentPicListModel * t_model in _model.picList) {
-                    [t_arr addObject:t_model.imgUrl];
-                }
-                cell.arr_images = t_arr;
-            }
+            
+            cell.arr_images = _model.picList.mutableCopy;
+
         }
     
         return cell;

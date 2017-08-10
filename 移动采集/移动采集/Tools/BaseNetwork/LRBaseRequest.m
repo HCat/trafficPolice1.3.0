@@ -176,4 +176,9 @@
     self.failMessage    =  [NSString stringWithFormat:@"%@失败",title];
 }
 
+- (void)dealloc{
+
+
+}
+
 @end

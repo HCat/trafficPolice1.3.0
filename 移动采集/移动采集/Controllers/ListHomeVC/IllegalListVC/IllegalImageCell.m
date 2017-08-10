@@ -70,6 +70,7 @@
                 t_button.tag = i + 100;
                 t_button.layer.cornerRadius = 5.0f;
                 t_button.layer.masksToBounds = YES;
+                t_button.imageView.contentMode = UIViewContentModeScaleAspectFill;
                 [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
                 [t_v addSubview:t_button];
                 
@@ -163,8 +164,9 @@
     if (_arr_view && _arr_view.count > 0) {
         for (int i = 0; i < _arr_view.count; i++) {
             UIView *t_v = _arr_view[i];
+            AccidentPicListModel *picModel  = _arr_images[i];
             UIButton *t_btn = [t_v viewWithTag:i + 100];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:t_btn.imageView image:t_btn.imageView.image];
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:t_btn.imageView imageUrl:[NSURL URLWithString:picModel.imgUrl]];
             [t_arr addObject:item];
         }
         
