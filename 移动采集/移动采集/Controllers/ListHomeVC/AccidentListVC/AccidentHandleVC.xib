@@ -14,6 +14,8 @@
                 <outlet property="btn_change" destination="As2-SW-uJm" id="zwd-ef-OOV"/>
                 <outlet property="btn_handle" destination="Oxo-Nt-IpZ" id="J9H-B0-5g6"/>
                 <outlet property="btn_tip" destination="qqR-pr-Uxr" id="JVB-ou-JS4"/>
+                <outlet property="v_bottom" destination="MvS-ru-t9I" id="2cc-GE-Fk0"/>
+                <outlet property="v_content" destination="PTY-en-Cdw" id="QaJ-NV-Y3W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,13 +64,6 @@
                                 <action selector="handleBtnHandleClicked:" destination="-1" eventType="touchUpInside" id="Vru-yf-Sd9"/>
                             </connections>
                         </button>
-                        <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-cR-Qxd">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="dcu-eR-3ld"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCa-R7-rMK">
                             <rect key="frame" x="124.5" y="9.5" width="1" height="25"/>
                             <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,8 +83,6 @@
                     </subviews>
                     <color key="backgroundColor" red="0.42745098039215684" green="0.44705882352941173" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Kff-cR-Qxd" secondAttribute="trailing" id="7TI-jQ-uzZ"/>
-                        <constraint firstItem="Kff-cR-Qxd" firstAttribute="top" secondItem="MvS-ru-t9I" secondAttribute="top" id="85C-0h-aAV"/>
                         <constraint firstItem="qqR-pr-Uxr" firstAttribute="leading" secondItem="As2-SW-uJm" secondAttribute="trailing" constant="1" id="8JL-WL-gSF"/>
                         <constraint firstItem="vCU-3g-urb" firstAttribute="leading" secondItem="qqR-pr-Uxr" secondAttribute="trailing" id="9Z5-WH-BGi"/>
                         <constraint firstAttribute="height" constant="44" id="Hds-Kq-uWj"/>
@@ -98,7 +91,6 @@
                         <constraint firstAttribute="bottom" secondItem="qqR-pr-Uxr" secondAttribute="bottom" id="RvI-XJ-WVg"/>
                         <constraint firstItem="oCa-R7-rMK" firstAttribute="centerY" secondItem="MvS-ru-t9I" secondAttribute="centerY" id="acf-k3-UOj"/>
                         <constraint firstAttribute="bottom" secondItem="Oxo-Nt-IpZ" secondAttribute="bottom" id="bae-UI-Bv6"/>
-                        <constraint firstItem="Kff-cR-Qxd" firstAttribute="leading" secondItem="MvS-ru-t9I" secondAttribute="leading" id="dsz-Tm-5QO"/>
                         <constraint firstItem="Oxo-Nt-IpZ" firstAttribute="leading" secondItem="qqR-pr-Uxr" secondAttribute="trailing" constant="1" id="eNv-MJ-fHO"/>
                         <constraint firstItem="oCa-R7-rMK" firstAttribute="leading" secondItem="As2-SW-uJm" secondAttribute="trailing" id="fhR-Jv-f2J"/>
                         <constraint firstItem="As2-SW-uJm" firstAttribute="top" secondItem="MvS-ru-t9I" secondAttribute="top" id="iy4-ud-iJf"/>

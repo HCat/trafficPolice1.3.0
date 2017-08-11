@@ -11,6 +11,7 @@
 #import "AccidentListModel.h"
 #import "AccidentDetailModel.h"
 #import "AccidentCountModel.h"
+#import "RemarkModel.h"
 
 #pragma mark - 获取交通事故通用值API
 
@@ -222,5 +223,30 @@
 
 @end
 
+#pragma mark - 事故和快处共用API
 
+#pragma mark - 事故/快处添加备注(1.2.0)
+@interface AccidentAddRemarkManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * accidentId; //事故ID
+@property (nonatomic, copy)   NSString * remark;     //备注信息
+
+/****** 返回数据 ******/
+
+
+@end
+
+
+#pragma mark - 事故/快处备注列表(1.2.0)
+
+@interface AccidentRemarkListManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * accidentId; //事故ID
+
+/****** 返回数据 ******/
+@property (nonatomic,copy)   NSArray<RemarkModel *> *list;    //包含RemarkModel对象的list
+
+@end
 

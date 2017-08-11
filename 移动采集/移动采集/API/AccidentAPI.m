@@ -8,6 +8,7 @@
 
 #import "AccidentAPI.h"
 #import "ImageFileInfo.h"
+
 #import <AFNetworking.h>
 
 
@@ -310,5 +311,53 @@
 
 @end
 
+@implementation AccidentAddRemarkManger
+
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ACCIDENT_ADDREMARK;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_accidentId,@"remark":_remark};
+}
+
+
+@end
+
+#pragma mark - 事故/快处备注列表(1.2.0)
+
+@implementation AccidentRemarkListManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ACCIDENT_REMARKLIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+     return @{@"id":_accidentId};
+}
+
+
+//返回参数
+- (NSArray *)list{
+    
+    if (self.responseModel) {
+        
+        return [NSArray modelArrayWithClass:[RemarkModel class] json:self.responseJSONObject[@"data"]];
+    }
+    
+    return nil;
+}
+
+
+@end
 
 

@@ -7,10 +7,12 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "RemarkModel.h"
 
 @interface AccidentDetailVC : HideTabSuperVC
 
 @property (nonatomic,strong) NSNumber *accidentId;
-@property (nonatomic,assign)AccidentType accidentType; //类型
+@property (nonatomic,strong) RemarkModel *remarkModel;  //备注
+@property (nonatomic,assign) AccidentType accidentType;  //类型
 
 @end

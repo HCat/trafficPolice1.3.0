@@ -9,12 +9,14 @@
 #import "AccidentDetailVC.h"
 
 #import "UITableView+Lr_Placeholder.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 #import "NetWorkHelper.h"
 
 #import "AccidentAPI.h"
 #import "FastAccidentAPI.h"
 
+#import "AccidentRemarkCell.h"
 #import "AccidentImageCell.h"
 #import "AccidentMessageCell.h"
 #import "AccidentPartyCell.h"
@@ -31,14 +33,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     
     if (_accidentType == AccidentTypeAccident) {
         self.title = @"事故详情";
     }else if(_accidentType == AccidentTypeFastAccident){
         self.title = @"快处事故详情";
     }
-    
-    
+
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
     //隐藏多余行的分割线
@@ -46,6 +48,9 @@
     [_tb_content setSeparatorInset:UIEdgeInsetsZero];
     [_tb_content setLayoutMargins:UIEdgeInsetsZero];
     _tb_content.allowsSelection = NO;
+    
+    [_tb_content registerNib:[UINib nibWithNibName:@"AccidentRemarkCell" bundle:nil] forCellReuseIdentifier:@"AccidentRemarkCellID"];
+    
 
     WS(weakSelf);
     //点击重新加载之后的处理
@@ -64,7 +69,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     
     if (_accidentType == AccidentTypeAccident) {
         [self loadAccidentDetail];
@@ -86,6 +90,20 @@
         
     };
     
+}
+
+#pragma mark - set && get 
+
+- (void)setRemarkModel:(RemarkModel *)remarkModel{
+
+    _remarkModel = remarkModel;
+    
+    if (_remarkModel) {
+
+        [_tb_content reloadData];
+    
+    }
+
 }
 
 #pragma mark - 数据请求部分
@@ -157,23 +175,39 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    NSInteger count = 0;
+    if (_remarkModel) {
+        count += 1;
+    }
     if (_model) {
-        return 3;
-    }else{
-        return 0;
+        count += 3;
     }
     
+    return count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    if (_remarkModel) {
+        
+        if (indexPath.row == 0) {
+            
+            return [tableView fd_heightForCellWithIdentifier:@"AccidentRemarkCellID" cacheByIndexPath:indexPath configuration:^(AccidentRemarkCell *cell) {
+                
+                cell.remarkModel = _remarkModel;
+                
+            }];
+            
+        }
+    }
+    
+    if (indexPath.row == (_remarkModel ? 1:0)) {
         AccidentImageCell *cell = (AccidentImageCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithimages];
-    }else if (indexPath.row == 1){
+    }else if (indexPath.row == (_remarkModel ? 2:1)){
         AccidentMessageCell *cell = (AccidentMessageCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithAccident];
-    }else if (indexPath.row == 2){
+    }else if (indexPath.row == (_remarkModel ? 3:2)){
         AccidentPartyCell *cell = (AccidentPartyCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithAccident];
     }
@@ -184,7 +218,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    if (_remarkModel) {
+        
+        if (indexPath.row == 0) {
+            
+            AccidentRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentRemarkCellID"];
+            
+            cell.remarkModel = _remarkModel;
+            
+            return cell;
+           
+        }
+        
+    }
+    if (indexPath.row == (_remarkModel ? 1:0)) {
         AccidentImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentImageCellID"];
         if (!cell) {
             [tableView registerNib:[UINib nibWithNibName:@"AccidentImageCell" bundle:nil] forCellReuseIdentifier:@"AccidentImageCellID"];
@@ -200,7 +247,7 @@
     
         return cell;
         
-    }else if(indexPath.row == 1){
+    }else if(indexPath.row == (_remarkModel ? 2:1)){
     
         AccidentMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentMessageCellID"];
         if (!cell) {
@@ -216,7 +263,7 @@
         
         return cell;
     
-    }else if(indexPath.row == 2){
+    }else if(indexPath.row == (_remarkModel ? 3:2)){
         
         if (!_partycell) {
             [tableView registerNib:[UINib nibWithNibName:@"AccidentPartyCell" bundle:nil] forCellReuseIdentifier:@"AccidentPartyCellID"];
@@ -250,9 +297,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 2) {
+    if (indexPath.row == (_remarkModel ? 3:2)) {
+        
         [cell setSeparatorInset:UIEdgeInsetsMake(0, ScreenWidth, 0, 0)];
+        
     }else{
+        
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
     

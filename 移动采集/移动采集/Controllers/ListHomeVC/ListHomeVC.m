@@ -97,16 +97,15 @@
     
     NSArray *arr_controllers = [NSArray arrayWithArray:t_arr];
     NSDictionary *dic_options = @{LRPageMenuOptionUseMenuLikeSegmentedControl:@(YES),
-                                  LRPageMenuOptionSelectedTitleColor:UIColorFromRGB(0xffffff),
-                                  LRPageMenuOptionUnselectedTitleColor:UIColorFromRGB(0x444444),
-                                  LRPageMenuOptionSelectionIndicatorColor:[UIColor clearColor],
-                                  LRPageMenuOptionSelectionViewColor:DefaultBtnColor,
+                                  LRPageMenuOptionSelectedTitleColor:UIColorFromRGB(0x253254),
+                                  LRPageMenuOptionUnselectedTitleColor:UIColorFromRGB(0xb5bdd2),
+                                  LRPageMenuOptionSelectionIndicatorColor:DefaultBtnColor,
                                   LRPageMenuOptionScrollMenuBackgroundColor:[UIColor whiteColor],
                                   LRPageMenuOptionSelectionIndicatorWidth:@(80),
                                   LRPageMenuOptionBottomMenuHairlineColor:[UIColor clearColor],
                                   LRPageMenuOptionSelectedTitleFont:[UIFont systemFontOfSize:15.f],
                                   LRPageMenuOptionUnselectedTitleFont:[UIFont systemFontOfSize:14.f],
-                                  LRPageMenuOptionScrollAnimationDurationOnMenuItemTap:@(0)
+                                  
                                   };
     _pageMenu = [[LRPageMenu alloc] initWithViewControllers:arr_controllers frame:CGRectMake(0.0, 0.0, ScreenWidth, self.view.frame.size.height) options:dic_options];
     

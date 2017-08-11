@@ -162,6 +162,7 @@
 - (float)heightWithimages{
 
     if (_arr_images && _arr_images.count > 0 ) {
+        
         if (_arr_images.count % 3 == 0) {
             return 40 + ((ScreenWidth - 4*10)/3 + 10)*(_arr_images.count/3);
         }else{

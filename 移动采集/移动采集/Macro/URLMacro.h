@@ -51,7 +51,8 @@
 #define URL_ACCIDENT_COUNTBYCARNO @"app/accident/countAccidentByCarno.json"     //通过车牌号统计事故数量
 #define URL_ACCIDENT_COUNTBYTELNUM @"app/accident/countAccidentByTelNum.json"   //通过手机号统计事故数量
 #define URL_ACCIDENT_COUNTBYIDNO @"app/accident/countAccidentByIdNo.json"       //通过身份证号统计事故数量
-
+#define URL_ACCIDENT_ADDREMARK @"app/accident/addRemark.json"                   //事故/快处添加备注
+#define URL_ACCIDENT_REMARKLIST @"app/accident/remarkList.json"                 //事故/快处备注列表
 
 
 #pragma mark - 快处事故相关API

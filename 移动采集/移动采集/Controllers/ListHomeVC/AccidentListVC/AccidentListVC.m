@@ -18,7 +18,7 @@
 
 #import "NetWorkHelper.h"
 
-#import "AccidentDetailVC.h"
+#import "AccidentHandleVC.h"
 //#import "SearchListVC.h"
 #import "ListHomeVC.h"
 
@@ -287,7 +287,7 @@
         }
         
         AccidentListModel *t_model = _arr_content[indexPath.row];
-        AccidentDetailVC *t_vc = [[AccidentDetailVC alloc] init];
+        AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
         t_vc.accidentType = _accidentType;
         t_vc.accidentId = t_model.accidentId;
         [vc_target.navigationController pushViewController:t_vc animated:YES];

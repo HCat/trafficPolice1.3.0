@@ -38,6 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="WKj-qp-yyW" firstAttribute="leading" secondItem="ex6-0Q-DPH" secondAttribute="trailing" constant="7" id="918-8p-q0e"/>
                     <constraint firstItem="ex6-0Q-DPH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="W4N-wz-NZP"/>
