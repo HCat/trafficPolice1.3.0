@@ -20,6 +20,9 @@
 #import "AccidentImageCell.h"
 #import "AccidentMessageCell.h"
 #import "AccidentPartyCell.h"
+#import "AccidentHandleVC.h"
+#import "AccidentRemarkListVC.h"
+
 
 @interface AccidentDetailVC ()
 
@@ -105,6 +108,14 @@
     }
 
 }
+
+- (void)setRemarkCount:(NSInteger)remarkCount{
+
+    _remarkCount = remarkCount;
+    [_tb_content reloadData];
+    
+}
+
 
 #pragma mark - 数据请求部分
 
@@ -224,8 +235,18 @@
             
             AccidentRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentRemarkCellID"];
             
+            WS(weakSelf);
             cell.remarkModel = _remarkModel;
-            
+            cell.remarkCount = _remarkCount;
+            cell.countBlock = ^{
+                SW(strongSelf, weakSelf);
+                AccidentHandleVC *t_vc = (AccidentHandleVC *)[ShareFun findViewController:strongSelf.view withClass:[AccidentHandleVC class]];
+                
+                AccidentRemarkListVC *t_listVC = [AccidentRemarkListVC new];
+                
+                [t_vc.navigationController pushViewController:t_listVC animated:YES];
+                
+            };
             return cell;
            
         }
@@ -243,6 +264,8 @@
             
             cell.arr_images = _model.picList.mutableCopy;
 
+        }else{
+            cell.arr_images = nil;
         }
     
         return cell;

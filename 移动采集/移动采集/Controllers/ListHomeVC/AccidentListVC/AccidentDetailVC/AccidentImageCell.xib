@@ -46,6 +46,10 @@
                     <constraint firstItem="ZrT-Vh-r79" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="pao-ei-tfK"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lb_title" destination="mM3-rK-qB7" id="hjG-8z-zoZ"/>
+                <outlet property="v_title" destination="ZrT-Vh-r79" id="eLS-79-YMd"/>
+            </connections>
             <point key="canvasLocation" x="119" y="113"/>
         </tableViewCell>
     </objects>

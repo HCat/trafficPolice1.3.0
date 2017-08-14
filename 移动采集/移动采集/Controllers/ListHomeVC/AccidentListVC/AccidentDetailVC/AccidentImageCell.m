@@ -20,6 +20,11 @@
 
 @property (nonatomic,strong) NSMutableArray *arr_view;
 
+@property (weak, nonatomic) IBOutlet UIView *v_title;
+@property (weak, nonatomic) IBOutlet UILabel *lb_title;
+
+
+
 @end
 
 
@@ -37,6 +42,8 @@
     _arr_images = arr_images;
     
     if (_arr_images && _arr_images.count > 0) {
+        _v_title.hidden = NO;
+        _lb_title.hidden = NO;
         
         if (_arr_view && _arr_view.count > 0) {
             
@@ -122,6 +129,10 @@
             [self layoutIfNeeded];
             
         }
+        
+    }else{
+        _v_title.hidden = YES;
+        _lb_title.hidden = YES;
     }
     
 }

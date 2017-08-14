@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "RemarkModel.h"
 
+typedef void(^remarkCountClickBlock)();
+
 @interface AccidentRemarkCell : UITableViewCell
 
 @property (nonatomic,strong) RemarkModel *remarkModel;
+@property (nonatomic,assign) NSInteger remarkCount;
+@property (nonatomic,copy) remarkCountClickBlock countBlock;
+
 
 @end

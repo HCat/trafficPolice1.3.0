@@ -176,6 +176,13 @@
 		CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69156E1F1DE2AC008911A6 /* LSStatusBarHUD.m */; };
 		CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915731F1DE672008911A6 /* LocationHelper.m */; };
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
+		CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
+		CE8C6FC61F418CBD0009B09F /* AccidentAddRemarkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC41F418CBD0009B09F /* AccidentAddRemarkVC.m */; };
+		CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FC51F418CBD0009B09F /* AccidentAddRemarkVC.xib */; };
+		CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FCA1F41A7E10009B09F /* AccidentRemarkListVC.m */; };
+		CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FCB1F41A7E10009B09F /* AccidentRemarkListVC.xib */; };
+		CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FCF1F41ACD80009B09F /* AccidentRemarkListCell.m */; };
+		CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FD01F41ACD80009B09F /* AccidentRemarkListCell.xib */; };
 		CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DA1F1CDFE300741A6F /* ShareFun.m */; };
 		CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DE1F1CE13200741A6F /* SAMKeychain.m */; };
 		CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96E01F1CE13200741A6F /* SAMKeychainQuery.m */; };
@@ -518,6 +525,17 @@
 		CE6915731F1DE672008911A6 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		CE6915751F1DED15008911A6 /* ImageFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileInfo.h; sourceTree = "<group>"; };
 		CE6915761F1DED15008911A6 /* ImageFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileInfo.m; sourceTree = "<group>"; };
+		CE8C6FC01F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
+		CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ChangeLineSpaceAndWordSpace.m"; sourceTree = "<group>"; };
+		CE8C6FC31F418CBD0009B09F /* AccidentAddRemarkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAddRemarkVC.h; sourceTree = "<group>"; };
+		CE8C6FC41F418CBD0009B09F /* AccidentAddRemarkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentAddRemarkVC.m; sourceTree = "<group>"; };
+		CE8C6FC51F418CBD0009B09F /* AccidentAddRemarkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentAddRemarkVC.xib; sourceTree = "<group>"; };
+		CE8C6FC91F41A7E10009B09F /* AccidentRemarkListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentRemarkListVC.h; sourceTree = "<group>"; };
+		CE8C6FCA1F41A7E10009B09F /* AccidentRemarkListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentRemarkListVC.m; sourceTree = "<group>"; };
+		CE8C6FCB1F41A7E10009B09F /* AccidentRemarkListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentRemarkListVC.xib; sourceTree = "<group>"; };
+		CE8C6FCE1F41ACD80009B09F /* AccidentRemarkListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentRemarkListCell.h; sourceTree = "<group>"; };
+		CE8C6FCF1F41ACD80009B09F /* AccidentRemarkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentRemarkListCell.m; sourceTree = "<group>"; };
+		CE8C6FD01F41ACD80009B09F /* AccidentRemarkListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentRemarkListCell.xib; sourceTree = "<group>"; };
 		CEAA96D91F1CDFE300741A6F /* ShareFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFun.h; sourceTree = "<group>"; };
 		CEAA96DA1F1CDFE300741A6F /* ShareFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFun.m; sourceTree = "<group>"; };
 		CEAA96DD1F1CE13200741A6F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
@@ -1028,6 +1046,7 @@
 		CE675F2C1F386DA7006FC15F /* AccidentListVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE8C6FC81F41A7B00009B09F /* AccidentRemark */,
 				CE424F301F3AE0AD005741CA /* AccidentDetailVC */,
 				CE675F2D1F386DAE006FC15F /* AccidentListVC.h */,
 				CE675F2E1F386DAE006FC15F /* AccidentListVC.m */,
@@ -1106,6 +1125,22 @@
 			path = LSStatusBarHUD;
 			sourceTree = "<group>";
 		};
+		CE8C6FC81F41A7B00009B09F /* AccidentRemark */ = {
+			isa = PBXGroup;
+			children = (
+				CE8C6FC31F418CBD0009B09F /* AccidentAddRemarkVC.h */,
+				CE8C6FC41F418CBD0009B09F /* AccidentAddRemarkVC.m */,
+				CE8C6FC51F418CBD0009B09F /* AccidentAddRemarkVC.xib */,
+				CE8C6FC91F41A7E10009B09F /* AccidentRemarkListVC.h */,
+				CE8C6FCA1F41A7E10009B09F /* AccidentRemarkListVC.m */,
+				CE8C6FCB1F41A7E10009B09F /* AccidentRemarkListVC.xib */,
+				CE8C6FCE1F41ACD80009B09F /* AccidentRemarkListCell.h */,
+				CE8C6FCF1F41ACD80009B09F /* AccidentRemarkListCell.m */,
+				CE8C6FD01F41ACD80009B09F /* AccidentRemarkListCell.xib */,
+			);
+			name = AccidentRemark;
+			sourceTree = "<group>";
+		};
 		CEAA96DC1F1CE13200741A6F /* SAMKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1140,6 +1175,8 @@
 				CEAA97141F1CF15900741A6F /* UIButton+Block.m */,
 				CEAA97151F1CF15900741A6F /* CALayer+Additions.h */,
 				CEAA97161F1CF15900741A6F /* CALayer+Additions.m */,
+				CE8C6FC01F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.h */,
+				CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1551,6 +1588,7 @@
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
 				CE675F191F38411B006FC15F /* IllegalListVC.xib in Resources */,
 				CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */,
+				CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */,
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
 				CE5C38EA1F28606B0055C945 /* btn_original_circle.png in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
@@ -1564,6 +1602,7 @@
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
 				CE5B92FC1F2F120E000008AE /* AccidentAddHeadView.xib in Resources */,
+				CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */,
 				CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE675F1E1F384350006FC15F /* IllegalCell.xib in Resources */,
@@ -1603,6 +1642,7 @@
 				CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */,
 				CE61405E1F3184280015B8CE /* AccidentVC.xib in Resources */,
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
+				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
@@ -1681,6 +1721,7 @@
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
+				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
 				CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */,
@@ -1700,6 +1741,7 @@
 				CE5C390A1F28606B0055C945 /* ZLShowLivePhotoViewController.m in Sources */,
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
 				CE5C390C1F28606B0055C945 /* ZLThumbnailViewController.m in Sources */,
+				CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */,
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
@@ -1777,6 +1819,7 @@
 				CE0B55961F1CA8D0003CF361 /* LRShowHUD.m in Sources */,
 				CE675F301F386DAE006FC15F /* AccidentListVC.m in Sources */,
 				CEFEFD0F1F29C62900C33CBD /* LLSimpleCamera.m in Sources */,
+				CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
 				CE5C39071F28606B0055C945 /* ZLProgressHUD.m in Sources */,
 				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
@@ -1799,6 +1842,7 @@
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
 				CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */,
+				CE8C6FC61F418CBD0009B09F /* AccidentAddRemarkVC.m in Sources */,
 				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
 				CE5C39001F28606B0055C945 /* ZLForceTouchPreviewController.m in Sources */,

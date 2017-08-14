@@ -8,6 +8,7 @@
 
 #import "AccidentHandleVC.h"
 #import "AccidentDetailVC.h"
+#import "AccidentAddRemarkVC.h"
 
 #import "AccidentAPI.h"
 #import <PureLayout.h>
@@ -30,6 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"事故详情";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNewRemark:) name:NOTIFICATION_ADDREMARK_SUCCESS object:nil];
+
+    self.remarkCount = 0;
+
+    
     [self setupConfigButtons];
     [self setupAccidentDetailView];
     [self requestRemarkList];
@@ -40,6 +47,23 @@
     
 
 }
+
+#pragma mark - set && get 
+
+- (void)setRemarkCount:(NSInteger)remarkCount{
+
+    _remarkCount = remarkCount;
+    _accidentDetailVC.remarkCount = _remarkCount;
+    
+}
+
+- (void)setRemarkModel:(RemarkModel *)remarkModel{
+
+    _remarkModel = remarkModel;
+    _accidentDetailVC.remarkModel = _remarkModel;
+
+}
+
 
 #pragma mark - 请求备注列表
 
@@ -52,11 +76,16 @@
         
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
+            
+            strongSelf.remarkCount = manger.list.count;
+        
             if (manger.list.count > 0) {
+                
                 LxDBObjectAsJson(manger.list);
                 strongSelf.remarkModel = manger.list.firstObject;
-                strongSelf.accidentDetailVC.remarkModel = strongSelf.remarkModel;
+            
             }
+            
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -94,10 +123,8 @@
     [_accidentDetailVC didMoveToParentViewController:self];
 }
 
-
-#pragma mark - 按钮事件
-
 #pragma mark - 修改按钮事件
+
 - (IBAction)handleBtnChangeClicked:(id)sender {
     
     
@@ -106,9 +133,9 @@
 #pragma mark - 备注按钮事件
 - (IBAction)handleBtnTipClicked:(id)sender {
     
-    
-    
-    
+    AccidentAddRemarkVC *t_vc = [AccidentAddRemarkVC new];
+    t_vc.accidentId = _accidentId;
+    [self.navigationController pushViewController:t_vc animated:YES];
     
 }
 
@@ -118,6 +145,18 @@
     
     
     
+    
+}
+
+#pragma mark - 通知事件
+
+- (void)receiveNewRemark:(NSNotification *)notification{
+
+    RemarkModel *t_model = notification.object;
+
+    self.remarkModel = t_model;
+    
+    self.remarkCount = _remarkCount + 1;
     
 }
 

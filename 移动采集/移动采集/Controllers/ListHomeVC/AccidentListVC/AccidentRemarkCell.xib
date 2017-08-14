@@ -61,12 +61,16 @@
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共3条备注&gt;&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-Cq-gAx">
-                        <rect key="frame" x="218.5" y="25" width="78" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="1" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3z-2i-LME">
+                        <rect key="frame" x="267" y="18.5" width="30" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal">
+                            <color key="titleColor" red="1" green="0.54117647059999996" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="handleBtnRemarkCountClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ybv-Bi-zso"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王某某:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK1-Zj-In4">
                         <rect key="frame" x="23" y="52" width="47" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -90,15 +94,15 @@
                 <constraints>
                     <constraint firstItem="LFq-58-sbS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="2o6-Eq-Uj9"/>
                     <constraint firstItem="jZr-hj-rHX" firstAttribute="leading" secondItem="IK1-Zj-In4" secondAttribute="leading" id="7HX-a0-kw2"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="MCv-Cq-gAx" secondAttribute="trailing" constant="15.5" id="Ctd-qp-ox1"/>
                     <constraint firstItem="2fy-Tz-JwT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="JMJ-uj-fQQ"/>
                     <constraint firstItem="IK1-Zj-In4" firstAttribute="top" secondItem="2fy-Tz-JwT" secondAttribute="bottom" constant="11" id="JhR-Ji-7Kf"/>
                     <constraint firstAttribute="bottom" secondItem="LFq-58-sbS" secondAttribute="bottom" constant="10" id="KFn-Kn-Dqs"/>
-                    <constraint firstItem="MCv-Cq-gAx" firstAttribute="centerY" secondItem="2fy-Tz-JwT" secondAttribute="centerY" id="Km9-JS-77R"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="x3z-2i-LME" secondAttribute="trailing" constant="15.5" id="POd-yf-92n"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LFq-58-sbS" secondAttribute="trailing" constant="-8" id="T8N-sM-SCu"/>
                     <constraint firstItem="jZr-hj-rHX" firstAttribute="top" secondItem="IK1-Zj-In4" secondAttribute="bottom" constant="10" id="Z8o-U4-9G0"/>
                     <constraint firstItem="SBF-VO-DYE" firstAttribute="centerY" secondItem="IK1-Zj-In4" secondAttribute="centerY" id="cw1-nM-2X7"/>
                     <constraint firstAttribute="trailingMargin" secondItem="jZr-hj-rHX" secondAttribute="trailing" constant="15" id="gD8-qw-Gge"/>
+                    <constraint firstItem="x3z-2i-LME" firstAttribute="centerY" secondItem="2fy-Tz-JwT" secondAttribute="centerY" id="inu-LG-0Q6"/>
                     <constraint firstItem="IK1-Zj-In4" firstAttribute="leading" secondItem="2fy-Tz-JwT" secondAttribute="leading" id="iyP-cu-Vo7"/>
                     <constraint firstItem="2fy-Tz-JwT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="kIf-gM-pFA"/>
                     <constraint firstItem="LFq-58-sbS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="o4b-dZ-Cee"/>
@@ -108,9 +112,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="btn_remarkCount" destination="x3z-2i-LME" id="L3W-NM-RFb"/>
                 <outlet property="lb_name" destination="IK1-Zj-In4" id="Hl8-RM-dO2"/>
                 <outlet property="lb_remark" destination="jZr-hj-rHX" id="4i2-hg-tYL"/>
-                <outlet property="lb_remarkCount" destination="MCv-Cq-gAx" id="aTT-fV-nlj"/>
                 <outlet property="lb_time" destination="SBF-VO-DYE" id="TZF-fj-agR"/>
             </connections>
             <point key="canvasLocation" x="25" y="127.5"/>
