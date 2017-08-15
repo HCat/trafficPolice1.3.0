@@ -243,7 +243,7 @@
                 AccidentHandleVC *t_vc = (AccidentHandleVC *)[ShareFun findViewController:strongSelf.view withClass:[AccidentHandleVC class]];
                 
                 AccidentRemarkListVC *t_listVC = [AccidentRemarkListVC new];
-                
+                t_listVC.accidentId = strongSelf.accidentId;
                 [t_vc.navigationController pushViewController:t_listVC animated:YES];
                 
             };

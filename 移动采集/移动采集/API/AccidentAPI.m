@@ -108,6 +108,11 @@
 
 @implementation AccidentSaveParam
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"accidentId" : @"id",
+             };
+}
+
 //黑名单，不被转换
 + (NSArray *)modelPropertyBlacklist {
     return @[@"files", @"certFiles"];

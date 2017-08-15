@@ -10,4 +10,6 @@
 
 @interface AccidentRemarkListVC : HideTabSuperVC
 
+@property (nonatomic,strong) NSNumber * accidentId;
+
 @end

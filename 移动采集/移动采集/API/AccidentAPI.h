@@ -53,6 +53,7 @@
 
 @interface AccidentSaveParam : NSObject
 
+@property (nonatomic,strong)  NSNumber *accidentId;         //有id为修改功能，无id则是新增
 @property (nonatomic,copy)    NSString * happenTimeStr;     //事故时间 必填，格式：yyyy-MM-dd HH:mm:ss
 @property (nonatomic,strong)  NSNumber * roadId;            //道路ID 必填，从通用值【道路】获取ID
 @property (nonatomic,strong)  NSString * roadName;          //道路名称

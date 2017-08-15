@@ -39,7 +39,7 @@
     if (_remarkModel) {
 
         _lb_name.text = _remarkModel.createName;
-        _lb_time.text = [ShareFun timeWithTimeInterval:_remarkModel.createTime];
+        _lb_time.text = [NSString stringWithFormat:@"(%@)",[ShareFun timeWithTimeInterval:_remarkModel.createTime]];
         _lb_remark.text = _remarkModel.contents;
         [UILabel changeLineSpaceForLabel:_lb_remark WithSpace:3.f];
         

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RemarkModel.h"
 
 @interface AccidentRemarkListCell : UITableViewCell
+
+@property (nonatomic,strong) RemarkModel *remarkModel;
 
 @end
