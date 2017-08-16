@@ -10,6 +10,7 @@
 #import "FSTextView.h"
 #import "CALayer+Additions.h"
 #import "ListHomeVC.h"
+#import "SRAlertView.h"
 
 @interface AccidentProcessVC ()
 
@@ -72,6 +73,35 @@
 
     _tf_mediationRecord.placeholder = @"请输入简述";
     _tf_memo.placeholder = @"请输入简述";
+    
+}
+
+#pragma mark - 返回处理
+
+-(void)handleBtnBackClicked{
+    
+    if (_param.casualties || _param.causes || _param.responsibility || _param.mediationRecord || _param.memo) {
+        
+        WS(weakSelf);
+        
+        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"当前已编辑，是否退出编辑"
+                                                    leftActionTitle:@"取消"
+                                                   rightActionTitle:@"退出"
+                                                     animationStyle:AlertViewAnimationNone
+                                                       selectAction:^(AlertViewActionType actionType) {
+                                                           if(actionType == AlertViewActionTypeRight) {
+                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                           }
+                                                       }];
+        alertView.blurCurrentBackgroundView = NO;
+        [alertView show];
+        
+        
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
 }
 

@@ -178,6 +178,8 @@
 		CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69156E1F1DE2AC008911A6 /* LSStatusBarHUD.m */; };
 		CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915731F1DE672008911A6 /* LocationHelper.m */; };
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
+		CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8507EA1F44771D006C459F /* AccidentChangeVC.m */; };
+		CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */; };
 		CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
 		CE8C6FC61F418CBD0009B09F /* AccidentAddRemarkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC41F418CBD0009B09F /* AccidentAddRemarkVC.m */; };
 		CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FC51F418CBD0009B09F /* AccidentAddRemarkVC.xib */; };
@@ -372,9 +374,9 @@
 		CE4E3C101F39BB860057148B /* IllegalMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalMessageCell.h; sourceTree = "<group>"; };
 		CE4E3C111F39BB860057148B /* IllegalMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalMessageCell.m; sourceTree = "<group>"; };
 		CE4E3C121F39BB860057148B /* IllegalMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegalMessageCell.xib; sourceTree = "<group>"; };
-		CE508F361F3D51C60066A9B7 /* AccidentRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentRemarkCell.h; sourceTree = "<group>"; };
-		CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentRemarkCell.m; sourceTree = "<group>"; };
-		CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentRemarkCell.xib; sourceTree = "<group>"; };
+		CE508F361F3D51C60066A9B7 /* AccidentRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccidentRemarkCell.h; path = ../AccidentRemarkCell.h; sourceTree = "<group>"; };
+		CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccidentRemarkCell.m; path = ../AccidentRemarkCell.m; sourceTree = "<group>"; };
+		CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccidentRemarkCell.xib; path = ../AccidentRemarkCell.xib; sourceTree = "<group>"; };
 		CE508F3B1F3D80F10066A9B7 /* RemarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarkModel.h; sourceTree = "<group>"; };
 		CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarkModel.m; sourceTree = "<group>"; };
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
@@ -530,6 +532,9 @@
 		CE6915731F1DE672008911A6 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		CE6915751F1DED15008911A6 /* ImageFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileInfo.h; sourceTree = "<group>"; };
 		CE6915761F1DED15008911A6 /* ImageFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileInfo.m; sourceTree = "<group>"; };
+		CE8507E91F44771D006C459F /* AccidentChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangeVC.h; sourceTree = "<group>"; };
+		CE8507EA1F44771D006C459F /* AccidentChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangeVC.m; sourceTree = "<group>"; };
+		CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentChangeVC.xib; sourceTree = "<group>"; };
 		CE8C6FC01F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
 		CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ChangeLineSpaceAndWordSpace.m"; sourceTree = "<group>"; };
 		CE8C6FC31F418CBD0009B09F /* AccidentAddRemarkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAddRemarkVC.h; sourceTree = "<group>"; };
@@ -753,6 +758,9 @@
 				CE424F311F3AE1F1005741CA /* AccidentDetailVC.h */,
 				CE424F321F3AE1F1005741CA /* AccidentDetailVC.m */,
 				CE424F331F3AE1F1005741CA /* AccidentDetailVC.xib */,
+				CE508F361F3D51C60066A9B7 /* AccidentRemarkCell.h */,
+				CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */,
+				CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */,
 				CE424F361F3AE694005741CA /* AccidentImageCell.h */,
 				CE424F371F3AE694005741CA /* AccidentImageCell.m */,
 				CE424F381F3AE694005741CA /* AccidentImageCell.xib */,
@@ -1061,21 +1069,14 @@
 		CE675F2C1F386DA7006FC15F /* AccidentListVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE8507E81F447707006C459F /* AccidentChangeVC */,
+				CE8507E71F4476D4006C459F /* AccidentListVC */,
 				CE1B96B01F42E93200A75397 /* AccidentProcessVC */,
 				CE8C6FC81F41A7B00009B09F /* AccidentRemark */,
 				CE424F301F3AE0AD005741CA /* AccidentDetailVC */,
-				CE675F2D1F386DAE006FC15F /* AccidentListVC.h */,
-				CE675F2E1F386DAE006FC15F /* AccidentListVC.m */,
-				CE675F2F1F386DAE006FC15F /* AccidentListVC.xib */,
-				CE675F321F386F07006FC15F /* AccidentCell.h */,
-				CE675F331F386F07006FC15F /* AccidentCell.m */,
-				CE675F341F386F07006FC15F /* AccidentCell.xib */,
 				CEFD557D1F3C40EC0082060B /* AccidentHandleVC.h */,
 				CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */,
 				CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */,
-				CE508F361F3D51C60066A9B7 /* AccidentRemarkCell.h */,
-				CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */,
-				CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */,
 			);
 			path = AccidentListVC;
 			sourceTree = "<group>";
@@ -1139,6 +1140,29 @@
 				CE69156F1F1DE2AC008911A6 /* LSStatusBarHUDConst.h */,
 			);
 			path = LSStatusBarHUD;
+			sourceTree = "<group>";
+		};
+		CE8507E71F4476D4006C459F /* AccidentListVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE675F2D1F386DAE006FC15F /* AccidentListVC.h */,
+				CE675F2E1F386DAE006FC15F /* AccidentListVC.m */,
+				CE675F2F1F386DAE006FC15F /* AccidentListVC.xib */,
+				CE675F321F386F07006FC15F /* AccidentCell.h */,
+				CE675F331F386F07006FC15F /* AccidentCell.m */,
+				CE675F341F386F07006FC15F /* AccidentCell.xib */,
+			);
+			name = AccidentListVC;
+			sourceTree = "<group>";
+		};
+		CE8507E81F447707006C459F /* AccidentChangeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE8507E91F44771D006C459F /* AccidentChangeVC.h */,
+				CE8507EA1F44771D006C459F /* AccidentChangeVC.m */,
+				CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */,
+			);
+			path = AccidentChangeVC;
 			sourceTree = "<group>";
 		};
 		CE8C6FC81F41A7B00009B09F /* AccidentRemark */ = {
@@ -1648,6 +1672,7 @@
 				CE5C38F41F28606B0055C945 /* lock.png in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
+				CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
 				CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */,
 				CE5C38F91F28606B0055C945 /* ZLPhotoBrowser.bundle in Resources */,
@@ -1857,6 +1882,7 @@
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
+				CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */,
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
 				CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */,
