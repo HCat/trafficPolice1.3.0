@@ -7,7 +7,11 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "AccidentAPI.h"
 
 @interface AccidentProcessVC : HideTabSuperVC
+
+@property (nonatomic,assign) AccidentType accidentType;
+@property (nonatomic,strong) AccidentSaveParam *param;
 
 @end

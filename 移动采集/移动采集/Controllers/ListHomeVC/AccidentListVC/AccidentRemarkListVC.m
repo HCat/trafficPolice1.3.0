@@ -69,7 +69,6 @@
     WS(weakSelf);
     AccidentRemarkListManger *manger  = [AccidentRemarkListManger new];
     manger.accidentId = _accidentId;
-    [manger configLoadingTitle:@"提交"];
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);

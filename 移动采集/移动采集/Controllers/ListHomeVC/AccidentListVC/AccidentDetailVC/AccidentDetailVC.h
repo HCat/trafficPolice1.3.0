@@ -11,9 +11,10 @@
 
 @interface AccidentDetailVC : HideTabSuperVC
 
-@property (nonatomic,strong) NSNumber * accidentId;
-@property (nonatomic,strong) RemarkModel * remarkModel;   //备注
-@property (nonatomic,assign) NSInteger remarkCount;       //备注数量
-@property (nonatomic,assign) AccidentType accidentType;   //类型
+@property (nonatomic,strong) NSNumber     * accidentId;
+@property (nonatomic,assign) AccidentType   accidentType;       //事故类型或者快处类型
+@property (nonatomic,strong) RemarkModel  * remarkModel;        //备注
+@property (nonatomic,assign) NSInteger      remarkCount;        //备注数量
+@property (nonatomic,strong,readonly) AccidentDetailModel * model;
 
 @end

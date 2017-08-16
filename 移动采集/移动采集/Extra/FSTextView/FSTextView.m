@@ -15,7 +15,7 @@ CGFloat const kFSTextViewPlaceholderHorizontalMargin = 6.0; ///< placeholder水�
 
 @property (nonatomic, copy) FSTextViewHandler changeHandler; ///< 文本改变Block
 @property (nonatomic, copy) FSTextViewHandler maxHandler; ///< 达到最大限制字符数Block
-@property (nonatomic, weak) UILabel *placeholderLabel; ///< placeholderLabel
+
 
 @end
 

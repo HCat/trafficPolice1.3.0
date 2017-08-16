@@ -53,7 +53,7 @@
 
 @interface AccidentSaveParam : NSObject
 
-@property (nonatomic,strong)  NSNumber *accidentId;         //有id为修改功能，无id则是新增
+@property (nonatomic,strong)  NSNumber * accidentId;         //有id为修改功能，无id则是新增
 @property (nonatomic,copy)    NSString * happenTimeStr;     //事故时间 必填，格式：yyyy-MM-dd HH:mm:ss
 @property (nonatomic,strong)  NSNumber * roadId;            //道路ID 必填，从通用值【道路】获取ID
 @property (nonatomic,strong)  NSString * roadName;          //道路名称
@@ -123,6 +123,8 @@
 @property (nonatomic,copy)    NSString * causes;           //事故成因
 @property (nonatomic,copy)    NSString * mediationRecord;  //中队调解记录
 @property (nonatomic,copy)    NSString * memo;             //备注记录与领导意见
+@property (nonatomic,copy)    NSString * responsibility;   //事故责任认定建议,这个只有快处才有的数据
+
 @property (nonatomic,copy)    NSArray  * delImageIds;      //数组，修改操作中要删除的照片
 
 @end

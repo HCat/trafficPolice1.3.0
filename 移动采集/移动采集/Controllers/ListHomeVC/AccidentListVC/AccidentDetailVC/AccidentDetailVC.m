@@ -27,7 +27,7 @@
 @interface AccidentDetailVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
-@property (nonatomic,strong) AccidentDetailModel * model;
+@property (nonatomic,strong,readwrite) AccidentDetailModel * model;
 @property(nonatomic,strong)  AccidentPartyCell * partycell;
 
 @end
