@@ -27,4 +27,7 @@
 #define NOTIFICATION_ILLEGALTHROUGH_SUCCESS @"NOTIFICATION_ILLEGALTHROUGH_SUCCESS"  //闯禁令采集提交成功
 #define NOTIFICATION_VIDEO_SUCCESS @"NOTIFICATION_VIDEO_SUCCESS"                    //视频采集提交成功
 
+
+
+
 #endif /* NoticeMacro_h */

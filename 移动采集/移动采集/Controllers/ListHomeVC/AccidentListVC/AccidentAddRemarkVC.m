@@ -14,9 +14,9 @@
 
 @interface AccidentAddRemarkVC ()
 
-@property (weak, nonatomic) IBOutlet FSTextView *textView;
-@property (weak, nonatomic) IBOutlet UIButton *btn_commit;
-@property (nonatomic,assign) BOOL isCanCommit;
+@property (weak, nonatomic) IBOutlet FSTextView *textView;  //输入备注的textView
+@property (weak, nonatomic) IBOutlet UIButton *btn_commit;  //添加备注按钮
+@property (nonatomic,assign) BOOL isCanCommit;              //判断是否可以添加备注
 
 
 @end
@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.title = @"添加备注";
     
-    [_textView setDelegate:(id<UITextViewDelegate> _Nullable)self];
+    self.isCanCommit = NO;
     _textView.placeholder = @"点击输入备注";
     
 }
@@ -60,7 +60,6 @@
     }
     
 }
-
 
 - (IBAction)handleBtnRemarkCommitClicked:(id)sender {
     
