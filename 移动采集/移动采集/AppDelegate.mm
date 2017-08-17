@@ -129,7 +129,7 @@ BMKMapManager* _mapManager;
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
     [JPUSHService setupWithOption:launchOptions appKey:JPUSH_APP_KEY
                           channel:JPUSH_APP_CHANNEL
-                 apsForProduction:NO
+                 apsForProduction:JPUSH_PRODUCTION
             advertisingIdentifier:nil];
     
 }
@@ -156,7 +156,6 @@ BMKMapManager* _mapManager;
         [_vc_tabBar setMinimumHeightToDisplayTitle:50];
         [_vc_tabBar setTextFont:[UIFont systemFontOfSize:11.f]];
         [_vc_tabBar setTopEdgeColor:[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1]];
-        
         
         MainHomeVC *t_vc_main = [MainHomeVC new];
         UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];

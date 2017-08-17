@@ -8,8 +8,10 @@
 
 #import "AccidentHandleVC.h"
 #import "AccidentDetailVC.h"
+
 #import "AccidentAddRemarkVC.h"
 #import "AccidentProcessVC.h"
+#import "AccidentChangeVC.h"
 
 #import "AccidentAPI.h"
 #import <PureLayout.h>
@@ -27,6 +29,7 @@
 @property (nonatomic,assign) NSInteger remarkCount;    //备注条数
 
 @property (nonatomic,strong) AccidentSaveParam *param;
+@property (nonatomic,copy) NSArray<AccidentPicListModel *> *picList;
 
 @end
 
@@ -74,82 +77,89 @@
 
 - (AccidentSaveParam *)param{
 
-    AccidentSaveParam *param = [AccidentSaveParam new];
+    _param = [AccidentSaveParam new];
     
     
     AccidentModel *accidentModel        = _accidentDetailVC.model.accident;
     AccidentVoModel *accidentVoModel    = _accidentDetailVC.model.accidentVo;
     
-    param.accidentId    = _accidentId;
-    param.happenTimeStr = [ShareFun timeWithTimeInterval:accidentModel.happenTime];
-    param.roadId        = accidentModel.roadId;
-    param.address       = accidentModel.address;
-    param.causesType    = accidentModel.causesType;
-    param.weather       = accidentModel.weather;
-    param.injuredNum    = accidentModel.injuredNum;
-    param.roadType      = accidentModel.roadType;
+    _param.accidentId    = _accidentId;
+    _param.happenTimeStr = [ShareFun timeWithTimeInterval:accidentModel.happenTime];
+    _param.roadId        = accidentModel.roadId;
+    _param.address       = accidentModel.address;
+    _param.causesType    = accidentModel.causesType;
+    _param.weather       = accidentModel.weather;
+    _param.injuredNum    = accidentModel.injuredNum;
+    _param.roadType      = accidentModel.roadType;
     
     //甲方
-    param.ptaName               = accidentModel.ptaName;
-    param.ptaIdNo               = accidentModel.ptaIdNo;
-    param.ptaVehicleId          = accidentModel.ptaVehicleId;
-    param.ptaCarNo              = accidentModel.ptaCarNo;
-    param.ptaPhone              = accidentModel.ptaPhone;
-    param.ptaInsuranceCompanyId = accidentModel.ptaInsuranceCompanyId;
-    param.ptaResponsibilityId   = accidentModel.ptaResponsibilityId;
-    param.ptaDirect             = accidentModel.ptaDirect;
-    param.ptaBehaviourId        = accidentModel.ptaBehaviourId;
-    param.ptaDescribe           = accidentModel.ptaDescribe;
+    _param.ptaName               = accidentModel.ptaName;
+    _param.ptaIdNo               = accidentModel.ptaIdNo;
+    _param.ptaVehicleId          = accidentModel.ptaVehicleId;
+    _param.ptaCarNo              = accidentModel.ptaCarNo;
+    _param.ptaPhone              = accidentModel.ptaPhone;
+    _param.ptaInsuranceCompanyId = accidentModel.ptaInsuranceCompanyId;
+    _param.ptaResponsibilityId   = accidentModel.ptaResponsibilityId;
+    _param.ptaDirect             = accidentModel.ptaDirect;
+    _param.ptaBehaviourId        = accidentModel.ptaBehaviourId;
+    _param.ptaDescribe           = accidentModel.ptaDescribe;
     
-    param.ptaIsZkCl             = accidentVoModel.ptaIsZkCl;
-    param.ptaIsZkXsz            = accidentVoModel.ptaIsZkXsz;
-    param.ptaIsZkJsz            = accidentVoModel.ptaIsZkJsz;
-    param.ptaIsZkSfz            = accidentVoModel.ptaIsZkSfz;
+    _param.ptaIsZkCl             = accidentVoModel.ptaIsZkCl;
+    _param.ptaIsZkXsz            = accidentVoModel.ptaIsZkXsz;
+    _param.ptaIsZkJsz            = accidentVoModel.ptaIsZkJsz;
+    _param.ptaIsZkSfz            = accidentVoModel.ptaIsZkSfz;
     
     //乙方
-    param.ptbName               = accidentModel.ptbName;
-    param.ptbIdNo               = accidentModel.ptbIdNo;
-    param.ptbVehicleId          = accidentModel.ptbVehicleId;
-    param.ptbCarNo              = accidentModel.ptbCarNo;
-    param.ptbPhone              = accidentModel.ptbPhone;
-    param.ptbInsuranceCompanyId = accidentModel.ptbInsuranceCompanyId;
-    param.ptbResponsibilityId   = accidentModel.ptbResponsibilityId;
-    param.ptbDirect             = accidentModel.ptbDirect;
-    param.ptbBehaviourId        = accidentModel.ptbBehaviourId;
-    param.ptbDescribe           = accidentModel.ptbDescribe;
+    _param.ptbName               = accidentModel.ptbName;
+    _param.ptbIdNo               = accidentModel.ptbIdNo;
+    _param.ptbVehicleId          = accidentModel.ptbVehicleId;
+    _param.ptbCarNo              = accidentModel.ptbCarNo;
+    _param.ptbPhone              = accidentModel.ptbPhone;
+    _param.ptbInsuranceCompanyId = accidentModel.ptbInsuranceCompanyId;
+    _param.ptbResponsibilityId   = accidentModel.ptbResponsibilityId;
+    _param.ptbDirect             = accidentModel.ptbDirect;
+    _param.ptbBehaviourId        = accidentModel.ptbBehaviourId;
+    _param.ptbDescribe           = accidentModel.ptbDescribe;
     
-    param.ptbIsZkCl             = accidentVoModel.ptbIsZkCl;
-    param.ptbIsZkXsz            = accidentVoModel.ptbIsZkXsz;
-    param.ptbIsZkJsz            = accidentVoModel.ptbIsZkJsz;
-    param.ptbIsZkSfz            = accidentVoModel.ptbIsZkSfz;
+    _param.ptbIsZkCl             = accidentVoModel.ptbIsZkCl;
+    _param.ptbIsZkXsz            = accidentVoModel.ptbIsZkXsz;
+    _param.ptbIsZkJsz            = accidentVoModel.ptbIsZkJsz;
+    _param.ptbIsZkSfz            = accidentVoModel.ptbIsZkSfz;
     
     //丙方
-    param.ptcName               = accidentModel.ptcName;
-    param.ptcIdNo               = accidentModel.ptcIdNo;
-    param.ptcVehicleId          = accidentModel.ptcVehicleId;
-    param.ptcCarNo              = accidentModel.ptcCarNo;
-    param.ptcPhone              = accidentModel.ptcPhone;
-    param.ptcInsuranceCompanyId = accidentModel.ptcInsuranceCompanyId;
-    param.ptcResponsibilityId   = accidentModel.ptcResponsibilityId;
-    param.ptcDirect             = accidentModel.ptcDirect;
-    param.ptcBehaviourId        = accidentModel.ptcBehaviourId;
-    param.ptcDescribe           = accidentModel.ptcDescribe;
+    _param.ptcName               = accidentModel.ptcName;
+    _param.ptcIdNo               = accidentModel.ptcIdNo;
+    _param.ptcVehicleId          = accidentModel.ptcVehicleId;
+    _param.ptcCarNo              = accidentModel.ptcCarNo;
+    _param.ptcPhone              = accidentModel.ptcPhone;
+    _param.ptcInsuranceCompanyId = accidentModel.ptcInsuranceCompanyId;
+    _param.ptcResponsibilityId   = accidentModel.ptcResponsibilityId;
+    _param.ptcDirect             = accidentModel.ptcDirect;
+    _param.ptcBehaviourId        = accidentModel.ptcBehaviourId;
+    _param.ptcDescribe           = accidentModel.ptcDescribe;
     
-    param.ptcIsZkCl     =   accidentVoModel.ptcIsZkCl;
-    param.ptcIsZkXsz    =   accidentVoModel.ptcIsZkXsz;
-    param.ptcIsZkJsz    =   accidentVoModel.ptcIsZkJsz;
-    param.ptcIsZkSfz    =   accidentVoModel.ptcIsZkSfz;
+    _param.ptcIsZkCl     =   accidentVoModel.ptcIsZkCl;
+    _param.ptcIsZkXsz    =   accidentVoModel.ptcIsZkXsz;
+    _param.ptcIsZkJsz    =   accidentVoModel.ptcIsZkJsz;
+    _param.ptcIsZkSfz    =   accidentVoModel.ptcIsZkSfz;
     
     
     
-    param.state             =   accidentModel.state;
-    param.casualties        =   accidentModel.casualties;
-    param.causes            =   accidentModel.causes;
-    param.mediationRecord   =   accidentModel.mediationRecord;
-    param.memo              =   accidentModel.memo;
+    _param.state             =   accidentModel.state;
+    _param.casualties        =   accidentModel.casualties;
+    _param.causes            =   accidentModel.causes;
+    _param.mediationRecord   =   accidentModel.mediationRecord;
+    _param.memo              =   accidentModel.memo;
     
 
-    return param;
+    return _param;
+}
+
+- (NSArray <AccidentPicListModel *>*)picList{
+
+    _picList = [_accidentDetailVC.model.picList copy];
+    return _picList;
+    
 }
 
 
@@ -214,7 +224,11 @@
 #pragma mark - 修改按钮事件
 
 - (IBAction)handleBtnChangeClicked:(id)sender {
-    
+    AccidentChangeVC *t_vc = [AccidentChangeVC new];
+    t_vc.accidentType = _accidentType;
+    t_vc.param = self.param;
+    t_vc.picList = self.picList;
+    [self.navigationController pushViewController:t_vc animated:YES];
     
 }
 

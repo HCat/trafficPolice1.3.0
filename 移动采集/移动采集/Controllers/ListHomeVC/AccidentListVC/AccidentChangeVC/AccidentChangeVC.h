@@ -12,7 +12,9 @@
 
 @interface AccidentChangeVC : HideTabSuperVC
 
-@property (nonatomic,assign) AccidentType accidentType; //辨别是事故类型还是快处类型
-@property (nonatomic,strong) AccidentSaveParam *param;  //处理参数
+@property (nonatomic,assign) AccidentType accidentType;                 //辨别是事故类型还是快处类型
+@property (nonatomic,strong) AccidentSaveParam *param;                  //处理参数
+@property (nonatomic,copy) NSArray <AccidentPicListModel *> * picList;  //已经上传的图片
+
 
 @end

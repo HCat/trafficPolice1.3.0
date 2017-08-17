@@ -12,6 +12,6 @@
 
 @property (nonatomic,strong) NSNumber *accidentId;      //事故ID
 @property (nonatomic,assign) AccidentType accidentType; //事故类型或者快处类型
- 
+
 
 @end

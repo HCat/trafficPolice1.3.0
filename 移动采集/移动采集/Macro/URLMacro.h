@@ -15,6 +15,7 @@
 #define RELEASE_URL @"http://jinjiang.degal.cn/police-wx_jj"
 
 #define Base_URL DEBUG_URL
+#define JPUSH_PRODUCTION NO
 
 //上传用的key
 #define key_file @"file" 
