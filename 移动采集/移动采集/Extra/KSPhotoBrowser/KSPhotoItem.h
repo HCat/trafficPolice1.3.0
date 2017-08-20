@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccidentChangePhotoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) UIImage *image;
 @property (nonatomic, strong, readonly) NSURL   *imageUrl;
 @property (nonatomic, assign) BOOL finished;
+
 @property (nonatomic, strong) NSDictionary *illegalDic;
+@property (nonatomic, strong) AccidentChangePhotoModel *photo;
 
 
 
@@ -42,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
                           imageUrl:(NSURL *)url withDic:(NSDictionary *)dic;
 + (instancetype)itemWithSourceView:(UIImageView *)view
                              image:(UIImage *)image withDic:(NSDictionary *)dic;
+
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                          imageUrl:(NSURL *)url withPhotoModel:(AccidentChangePhotoModel *)photo;
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                             image:(UIImage *)image withPhotoModel:(AccidentChangePhotoModel *)photo;
 
 @end
 

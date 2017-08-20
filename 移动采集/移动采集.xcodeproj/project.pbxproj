@@ -178,6 +178,7 @@
 		CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69156E1F1DE2AC008911A6 /* LSStatusBarHUD.m */; };
 		CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915731F1DE672008911A6 /* LocationHelper.m */; };
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
+		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8507EA1F44771D006C459F /* AccidentChangeVC.m */; };
 		CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */; };
 		CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
@@ -532,6 +533,8 @@
 		CE6915731F1DE672008911A6 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		CE6915751F1DED15008911A6 /* ImageFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileInfo.h; sourceTree = "<group>"; };
 		CE6915761F1DED15008911A6 /* ImageFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileInfo.m; sourceTree = "<group>"; };
+		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
+		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
 		CE8507E91F44771D006C459F /* AccidentChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangeVC.h; sourceTree = "<group>"; };
 		CE8507EA1F44771D006C459F /* AccidentChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangeVC.m; sourceTree = "<group>"; };
 		CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentChangeVC.xib; sourceTree = "<group>"; };
@@ -1270,6 +1273,8 @@
 				CE42B9461F1F4D13005CC5BD /* PartyFactory.m */,
 				CE508F3B1F3D80F10066A9B7 /* RemarkModel.h */,
 				CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */,
+				CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */,
+				CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1827,6 +1832,7 @@
 				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
+				CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */,
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,

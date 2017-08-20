@@ -96,4 +96,26 @@
 
 }
 
+
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                          imageUrl:(NSURL *)url withPhotoModel:(AccidentChangePhotoModel *)photo{
+
+    KSPhotoItem *item =  [[KSPhotoItem alloc] initWithSourceView:view
+                                                        imageUrl:url];
+    
+    item.photo = photo;
+    return item;
+
+}
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                             image:(UIImage *)image withPhotoModel:(AccidentChangePhotoModel *)photo{
+
+    KSPhotoItem *item =  [[KSPhotoItem alloc] initWithSourceView:view
+                                                           image:image];
+    
+    item.photo = photo;
+    return item;
+    
+}
+
 @end

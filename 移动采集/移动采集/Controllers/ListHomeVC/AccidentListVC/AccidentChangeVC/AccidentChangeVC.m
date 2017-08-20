@@ -10,9 +10,6 @@
 #import "AccidentAddFootView.h"
 #import "BaseImageCollectionCell.h"
 
-#import "ZLPhotoActionSheet.h"
-#import "ZLPhotoModel.h"
-
 #import "AccidentAPI.h"
 
 #import "NetWorkHelper.h"
@@ -21,21 +18,27 @@
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
 
+#import "ZLPhotoActionSheet.h"
+#import "ZLPhotoModel.h"
+
+#import "AccidentChangePhotoModel.h"
+
 #import <UIImageView+WebCache.h>
+
+
 
 @interface AccidentChangeVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic,strong)  NSMutableArray *arr_photos;
-@property (nonatomic, strong) NSMutableArray<UIImage *> *lastSelectPhotos;
-@property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets;
 
 @property (nonatomic, strong) AccidentAddFootView *footView;
 
 @property (nonatomic,assign) BOOL isFirstLoad; //判断collectionView是不是第一次load
 
 @property (nonatomic,assign) BOOL isObserver; //判断是否添加了kvo监听,如果添加了不需要重复添加
+
 
 @end
 
@@ -54,8 +57,21 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         self.title = @"快处详情修改";
     }
     
-    _arr_photos = [[NSMutableArray alloc] initWithArray:self.picList];
-
+    _arr_photos = [NSMutableArray array];
+    
+    if (self.picList && self.picList.count > 0 ) {
+        
+        for (AccidentPicListModel *t_model in self.picList) {
+            
+            AccidentChangePhotoModel * photo = [AccidentChangePhotoModel new];
+            photo.modelId = @([_arr_photos count]);
+            photo.picModel = t_model;
+            [_arr_photos addObject:photo];
+            
+        }
+    
+    }
+    
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
     [_collectionView registerNib:[UINib nibWithNibName:@"AccidentAddFootView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footId];
     [_collectionView registerNib:[UINib nibWithNibName:@"AccidentAddHeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headId];
@@ -73,52 +89,6 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         [[ShareValue sharedDefault] accidentCodes];
     };
 }
-
-
-
-#pragma mark - initActionSheet
-
-- (ZLPhotoActionSheet *)getPhotoActionSheet
-{
-    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
-    actionSheet.sortAscending = NO;
-    actionSheet.allowSelectImage = YES;
-    actionSheet.allowSelectGif = NO;
-    actionSheet.allowSelectVideo = NO;
-    actionSheet.allowSelectLivePhoto = NO;
-    actionSheet.allowForceTouch = NO;
-    actionSheet.allowEditImage = NO;
-    actionSheet.allowTakePhotoInLibrary = YES;
-    actionSheet.showCaptureImageOnTakePhotoBtn = YES;
-    //设置照片最大预览数
-    actionSheet.maxPreviewCount = kmaxPreviewCount;
-    actionSheet.maxSelectCount = kmaxSelectCount;
-    actionSheet.cellCornerRadio = 0;
-    actionSheet.showSelectBtn = NO;
-    actionSheet.sender = self;
-    
-    NSMutableArray *arr = [NSMutableArray array];
-    for (PHAsset *asset in self.lastSelectAssets) {
-        if (asset.mediaType == PHAssetMediaTypeImage) {
-            [arr addObject:asset];
-        }
-    }
-    actionSheet.arrSelectedAssets =  actionSheet.maxSelectCount > 1 ? arr : nil;
-    
-    WS(weakSelf);
-    [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
-        SW(strongSelf, weakSelf);
-        strongSelf.footView.arr_photes = images;
-        [strongSelf.arr_photos addObjectsFromArray:images];
-        strongSelf.lastSelectAssets = assets.mutableCopy;
-        strongSelf.lastSelectPhotos = images.mutableCopy;
-        [strongSelf.collectionView reloadData];
-        LxPrintf(@"image:%@", images);
-    }];
-    
-    return actionSheet;
-}
-
 
 #pragma mark - UICollectionView Data Source
 
@@ -141,15 +111,16 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     if (indexPath.row == self.arr_photos.count) {
         cell.imageView.image = [UIImage imageNamed:@"btn_updatePhoto"];
     } else {
-        id obj = _arr_photos[indexPath.row];
-        if ([obj isKindOfClass:[AccidentPicListModel class]]) {
-            AccidentPicListModel *model = (AccidentPicListModel *)obj;
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
-            
-        }else if ([obj isKindOfClass:[UIImage class]]){
-            cell.imageView.image = _arr_photos[indexPath.row];
+        AccidentChangePhotoModel *photo = _arr_photos[indexPath.row];
+        
+        if (photo.picModel) {
+             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.picModel.imgUrl] placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
         }
         
+        if (photo.photo) {
+            cell.imageView.image = photo.photo;
+        }
+    
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     
@@ -201,7 +172,8 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
     } else {
         
-        [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:indexPath.row];
+        [self showPhotoBrowserWithIndex:indexPath.row];
+        
     }
     
 }
@@ -307,6 +279,72 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     
 }
 
+
+#pragma mark - 调用图片选择器
+
+- (ZLPhotoActionSheet *)getPhotoActionSheet
+{
+    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+    actionSheet.sortAscending = NO;
+    actionSheet.allowSelectImage = YES;
+    actionSheet.allowSelectGif = NO;
+    actionSheet.allowSelectVideo = NO;
+    actionSheet.allowSelectLivePhoto = NO;
+    actionSheet.allowForceTouch = NO;
+    actionSheet.allowEditImage = NO;
+    actionSheet.allowTakePhotoInLibrary = YES;
+    actionSheet.showCaptureImageOnTakePhotoBtn = YES;
+    //设置照片最大预览数
+    actionSheet.maxPreviewCount = kmaxPreviewCount;
+    actionSheet.maxSelectCount = kmaxSelectCount;
+    actionSheet.cellCornerRadio = 0;
+    actionSheet.showSelectBtn = NO;
+    actionSheet.sender = self;
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    for (AccidentChangePhotoModel *photo in _arr_photos) {
+        if (photo.asset) {
+            if (photo.asset.mediaType == PHAssetMediaTypeImage) {
+                [arr addObject:photo.asset];
+            }
+        }
+    }
+    
+    actionSheet.arrSelectedAssets =  actionSheet.maxSelectCount > 1 ? arr : nil;
+    
+    WS(weakSelf);
+    [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        SW(strongSelf, weakSelf);
+        strongSelf.footView.arr_photes = images;
+        
+        for (NSInteger i = strongSelf.arr_photos.count - 1; i >= 0; i--) {
+            AccidentChangePhotoModel *photo  = strongSelf.arr_photos[i];
+            if (photo.photo) {
+                [strongSelf.arr_photos removeObject:photo];
+            }
+        }
+        
+        
+        for (int i = 0 ; i < [images count] ; i++) {
+            
+            UIImage *t_image = images[i];
+            PHAsset *t_asset = assets[i];
+            AccidentChangePhotoModel *photo = [AccidentChangePhotoModel new];
+            photo.modelId = @([_arr_photos count]);
+            photo.photo = t_image;
+            photo.asset = t_asset;
+            [strongSelf.arr_photos addObject:photo];
+        }
+        
+        [strongSelf.collectionView reloadData];
+        
+        LxPrintf(@"image:%@", images);
+    }];
+    
+    return actionSheet;
+}
+
 #pragma mark - 调用图片浏览器
 
 -(void)showPhotoBrowserWithIndex:(NSInteger)index{
@@ -319,20 +357,20 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         BaseImageCollectionCell *cell = (BaseImageCollectionCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         
-        if ([_arr_photos[i] isKindOfClass:[AccidentPicListModel class]]) {
-            
-            AccidentPicListModel * t_model = _arr_photos[i];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView imageUrl:[NSURL URLWithString:t_model.imgUrl]];
-            [t_arr addObject:item];
-            
-        }else if ([_arr_photos[i] isKindOfClass:[UIImage class]]){
-            
-            UIImage * t_image = _arr_photos[i];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView image:t_image];
-            [t_arr addObject:item];
         
+        AccidentChangePhotoModel *photo = _arr_photos[i];
+
+        if (photo.picModel) {
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView imageUrl:[NSURL URLWithString:photo.picModel.imgUrl] withPhotoModel:photo];
+            [t_arr addObject:item];
         }
         
+        if (photo.photo) {
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView image:photo.photo withPhotoModel:photo];
+            [t_arr addObject:item];
+
+        }
+    
     }
     
     KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:index];
@@ -352,6 +390,11 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 
 - (void)ks_photoBrowser:(KSPhotoBrowser *)browser didDeleteItem:(KSPhotoItem *)item{
     
+    AccidentChangePhotoModel * photo = item.photo;
+    
+    [_arr_photos removeObject:photo];
+    
+    [_collectionView reloadData];
     
 }
 
