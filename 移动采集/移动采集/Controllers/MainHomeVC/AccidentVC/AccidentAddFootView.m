@@ -296,7 +296,6 @@
     
 }
 
-
 - (void)setArr_photes:(NSArray *)arr_photes{
     
     if (arr_photes) {
