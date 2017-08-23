@@ -31,13 +31,15 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic,strong)  NSMutableArray *arr_photos;
+@property (nonatomic,strong) NSMutableArray *arr_photos;    //图片数据，包括已经上传的图片还有新增图片
+
+@property (nonatomic,strong) NSMutableArray *arr_delPhotos; //已经上传的图片的删除的图片
 
 @property (nonatomic, strong) AccidentAddFootView *footView;
 
-@property (nonatomic,assign) BOOL isFirstLoad; //判断collectionView是不是第一次load
+@property (nonatomic,assign) BOOL isFirstLoad;  //判断collectionView是不是第一次load
 
-@property (nonatomic,assign) BOOL isObserver; //判断是否添加了kvo监听,如果添加了不需要重复添加
+@property (nonatomic,assign) BOOL isObserver;   //判断是否添加了kvo监听,如果添加了不需要重复添加
 
 
 @end
@@ -49,6 +51,7 @@ static NSString *const footId = @"AccidentAddFootViewID";
 static NSString *const headId = @"AccidentAddHeadViewID";
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     if (_accidentType == AccidentTypeAccident) {
@@ -58,6 +61,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     }
     
     _arr_photos = [NSMutableArray array];
+    _arr_delPhotos = [NSMutableArray array];
     
     if (self.picList && self.picList.count > 0 ) {
         
@@ -145,8 +149,15 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     }else if([kind isEqualToString:UICollectionElementKindSectionFooter]){
         
         self.footView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:footId forIndexPath:indexPath];
-        _footView.accidentType = _accidentType;
+    
+        PartyFactory *t_partyFactory = [PartyFactory new];
+        t_partyFactory.param = self.param;
         
+        _footView.partyFactory = t_partyFactory;
+        
+        _footView.isModificationStatus = YES;
+        _footView.accidentType = _accidentType;
+    
         if (!_isObserver && _footView.accidentType == AccidentTypeAccident) {
             [_footView addObserver:self forKeyPath:@"isShowMoreAccidentInfo" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
             [_footView addObserver:self forKeyPath:@"isShowMoreInfo" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
@@ -253,6 +264,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 }
 
 #pragma mark - scrollViewDelegate
+
 //用于滚动到顶部的时候使得tableView不能再继续下拉
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
@@ -282,8 +294,8 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 
 #pragma mark - 调用图片选择器
 
-- (ZLPhotoActionSheet *)getPhotoActionSheet
-{
+- (ZLPhotoActionSheet *)getPhotoActionSheet{
+    
     ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
     actionSheet.sortAscending = NO;
     actionSheet.allowSelectImage = YES;
@@ -316,6 +328,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     WS(weakSelf);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
         SW(strongSelf, weakSelf);
+        
         strongSelf.footView.arr_photes = images;
         
         for (NSInteger i = strongSelf.arr_photos.count - 1; i >= 0; i--) {
@@ -324,7 +337,6 @@ static NSString *const headId = @"AccidentAddHeadViewID";
                 [strongSelf.arr_photos removeObject:photo];
             }
         }
-        
         
         for (int i = 0 ; i < [images count] ; i++) {
             
@@ -356,8 +368,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     for (int i = 0; i < [_arr_photos count]; i++) {
         
         BaseImageCollectionCell *cell = (BaseImageCollectionCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        
-        
+    
         AccidentChangePhotoModel *photo = _arr_photos[i];
 
         if (photo.picModel) {
@@ -386,13 +397,29 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     
 }
 
-#pragma mark - KSPhotoBrowserDelegate
+#pragma mark - 图片浏览器Delegate
 
 - (void)ks_photoBrowser:(KSPhotoBrowser *)browser didDeleteItem:(KSPhotoItem *)item{
     
     AccidentChangePhotoModel * photo = item.photo;
     
+    if ([photo isUploadImage]) {
+        [_arr_delPhotos addObject:photo.picModel.picId];
+    }
+    
+    _footView.partyFactory.param.delImageIds = [_arr_delPhotos componentsJoinedByString:@","];
+    
     [_arr_photos removeObject:photo];
+    
+    NSMutableArray *t_arr = [NSMutableArray array];
+    for (AccidentChangePhotoModel *t_model in _arr_photos) {
+        if (![t_model isUploadImage]) {
+            
+            [t_arr addObject:t_model.photo];
+        }
+    }
+    
+    self.footView.arr_photes = [t_arr copy];
     
     [_collectionView reloadData];
     

@@ -54,6 +54,11 @@
     
     [_tb_content registerNib:[UINib nibWithNibName:@"AccidentRemarkCell" bundle:nil] forCellReuseIdentifier:@"AccidentRemarkCellID"];
     
+    if (_accidentType == AccidentTypeAccident) {
+        [self loadAccidentDetail];
+    }else if (_accidentType == AccidentTypeFastAccident){
+        [self loadAccidentFastDetail];
+    }
 
     WS(weakSelf);
     //点击重新加载之后的处理
@@ -72,13 +77,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    if (_accidentType == AccidentTypeAccident) {
-        [self loadAccidentDetail];
-    }else if (_accidentType == AccidentTypeFastAccident){
-        [self loadAccidentFastDetail];
-    }
-    
     
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{

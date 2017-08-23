@@ -184,7 +184,9 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     }else if([kind isEqualToString:UICollectionElementKindSectionFooter]){
         
         self.footView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:footId forIndexPath:indexPath];
+        _footView.isModificationStatus = NO;
         _footView.accidentType = _accidentType;
+        
         
         if (!_isObserver && _footView.accidentType == AccidentTypeAccident) {
             [_footView addObserver:self forKeyPath:@"isShowMoreAccidentInfo" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];

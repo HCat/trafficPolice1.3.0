@@ -45,7 +45,8 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNewRemark:) name:NOTIFICATION_ADDREMARK_SUCCESS object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetAccidentDetail:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
+    
     self.remarkCount = 0;
 
     [self setupConfigButtons];
@@ -56,7 +57,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-
 }
 
 #pragma mark - set && get 
@@ -210,6 +210,7 @@
 #pragma mark - 配置事故详情页面
 
 - (void)setupAccidentDetailView{
+    
     self.accidentDetailVC = [[AccidentDetailVC alloc] init];
     _accidentDetailVC.accidentType = _accidentType;
     _accidentDetailVC.accidentId = _accidentId;
@@ -219,11 +220,13 @@
     [_accidentDetailVC.view configureForAutoLayout];
     [_accidentDetailVC.view autoPinEdgesToSuperviewEdges];
     [_accidentDetailVC didMoveToParentViewController:self];
+
 }
 
 #pragma mark - 修改按钮事件
 
 - (IBAction)handleBtnChangeClicked:(id)sender {
+    
     AccidentChangeVC *t_vc = [AccidentChangeVC new];
     t_vc.accidentType = _accidentType;
     t_vc.param = self.param;
@@ -252,6 +255,7 @@
 
 #pragma mark - 通知事件
 
+#pragma mark - 接收到新的备注通知
 - (void)receiveNewRemark:(NSNotification *)notification{
 
     RemarkModel *t_model = notification.object;
@@ -261,6 +265,23 @@
     self.remarkCount = _remarkCount + 1;
     
 }
+
+#pragma mark - 接收到事故详情修改通知
+
+- (void)resetAccidentDetail:(NSNotification *)notification{
+    
+    if (_accidentDetailVC) {
+        [_accidentDetailVC removeFromParentViewController];
+        [_accidentDetailVC.view removeFromSuperview];
+    }
+    
+    [self setupAccidentDetailView];
+    
+    _accidentDetailVC.remarkModel = _remarkModel;
+    _accidentDetailVC.remarkCount = _remarkCount;
+}
+
+
 
 #pragma mark - dealloc
 

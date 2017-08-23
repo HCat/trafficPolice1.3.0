@@ -125,7 +125,7 @@
 @property (nonatomic,copy)    NSString * memo;             //备注记录与领导意见
 @property (nonatomic,copy)    NSString * responsibility;   //事故责任认定建议,这个只有快处才有的数据
 
-@property (nonatomic,copy)    NSArray  * delImageIds;      //数组，修改操作中要删除的照片
+@property (nonatomic,copy)    NSString * delImageIds;      //数组，修改操作中要删除的照片
 
 @end
 

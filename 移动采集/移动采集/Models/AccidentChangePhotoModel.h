@@ -17,5 +17,7 @@
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) PHAsset *asset;
 
+- (BOOL)isUploadImage; //判断是否是上传的图片
+
 
 @end

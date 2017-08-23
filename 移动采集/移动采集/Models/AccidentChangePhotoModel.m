@@ -10,4 +10,15 @@
 
 @implementation AccidentChangePhotoModel
 
+- (BOOL)isUploadImage{
+
+    if (_picModel) {
+        return YES;
+    }else{
+        return NO;
+    }
+
+}
+
+
 @end

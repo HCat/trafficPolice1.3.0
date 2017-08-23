@@ -11,6 +11,7 @@
 #import "YUSegment.h"
 #import "FSTextView.h"
 #import "AccidentVC.h"
+#import "AccidentChangeVC.h"
 #import "LRCameraVC.h"
 #import "SearchLocationVC.h"
 
@@ -114,11 +115,9 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    
-    
+
     self.isUpLoading = NO;
     
-    self.partyFactory = [[PartyFactory alloc] init];
     //配置视图页面
     [self configView];
     
@@ -133,21 +132,24 @@
         [self layoutIfNeeded];
     }
     
-    //异步请求即将用到数据
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self getServerData];
-    });
-    
-    //重新定位下
-    [[LocationHelper sharedDefault] startLocation];
-    
-    //获取当前事故时间
-    _tf_accidentTime.text = [ShareFun getCurrentTime];
-    self.partyFactory.param.happenTimeStr = [ShareFun getCurrentTime];
-    
-    self.isCanCommit = NO;
-    
 }
+
+#pragma mark - 配置为修改页面时的数据页面
+
+- (void)setUpModificationStatusInView{
+
+    _tf_accidentCauses.text = [self.codes searchNameWithModelId:[_partyFactory.param.causesType integerValue] WithArray:self.codes.cause];
+    _tf_accidentTime.text = _partyFactory.param.happenTimeStr;
+    _tf_location.text = [self.codes searchNameWithModelId:[_partyFactory.param.roadId integerValue] WithArray:self.codes.road];
+    _tf_accidentAddress.text = _partyFactory.param.address;
+    _tf_weather.text = _partyFactory.param.weather;
+    _tf_injuriesNumber.text = _partyFactory.param.injuredNum;
+    _tf_roadType.text = [self.codes searchNameWithModelType:[_partyFactory.param.roadType integerValue] WithArray:self.codes.roadType];
+    
+    [self segmentedControlTapped:_segmentedControl];
+
+}
+
 
 #pragma mark - 配置视图页面
 
@@ -216,9 +218,7 @@
     [self setUpCommonUITextField:self.tf_carNumber];
     [self setUpCommonUITextField:self.tf_phone];
     
-    
-    
-    
+
     //配置FSTextView
     [self.tv_describe setDelegate:(id<UITextViewDelegate> _Nullable)self];
     self.tv_describe.placeholder = @"请输入简述";
@@ -261,12 +261,51 @@
 
 #pragma mark - set && get
 
+
 - (AccidentGetCodesResponse *)codes{
 
     _codes = [ShareValue sharedDefault].accidentCodes;
 
     return _codes;
 }
+
+- (void)setPartyFactory:(PartyFactory *)partyFactory{
+
+    if (!_partyFactory) {
+        _partyFactory = partyFactory;
+    }
+    
+}
+
+- (void)setIsModificationStatus:(BOOL)isModificationStatus{
+
+    _isModificationStatus = isModificationStatus;
+    
+    if (_isModificationStatus == NO) {
+        
+        self.partyFactory = [[PartyFactory alloc] init];
+        //异步请求即将用到数据
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self getServerData];
+        });
+        
+        //重新定位下
+        [[LocationHelper sharedDefault] startLocation];
+        
+        //获取当前事故时间
+        _tf_accidentTime.text = [ShareFun getCurrentTime];
+        self.partyFactory.param.happenTimeStr = [ShareFun getCurrentTime];
+        
+        self.isCanCommit = NO;
+        
+    }else{
+        
+        [self  setUpModificationStatusInView];
+        
+    }
+
+}
+
 
 - (void)setAccidentType:(AccidentType)accidentType{
 
@@ -798,8 +837,14 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
                 
-                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
-                [t_vc.navigationController popViewControllerAnimated:YES];
+                if (self.isModificationStatus) {
+                    AccidentChangeVC *t_vc = (AccidentChangeVC *)[ShareFun findViewController:strongSelf withClass:[AccidentChangeVC class]];
+                    [t_vc.navigationController popViewControllerAnimated:YES];
+                }else{
+                    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
+                    [t_vc.navigationController popViewControllerAnimated:YES];
+                }
+              
                 
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -834,9 +879,15 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
                 
-                AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
-                [t_vc.navigationController popViewControllerAnimated:YES];
+                if (self.isModificationStatus) {
+                    AccidentChangeVC *t_vc = (AccidentChangeVC *)[ShareFun findViewController:strongSelf withClass:[AccidentChangeVC class]];
+                    [t_vc.navigationController popViewControllerAnimated:YES];
+                }else{
+                    AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:strongSelf withClass:[AccidentVC class]];
+                    [t_vc.navigationController popViewControllerAnimated:YES];
+                }
                 
+
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             
