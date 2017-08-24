@@ -15,6 +15,8 @@
 #import "UserSetVC.h"
 #import "UserModel.h"
 
+#import "AccidentListVC.h"
+
 @interface UserHomeVC ()
 
 @property (nonatomic,strong) NSArray  *sectionArray; /**< section模型数组*/
@@ -40,6 +42,8 @@
 #pragma mark - setUp
 
 - (void)setupSections{
+    
+    WS(weakSelf);
    
     if ([UserModel isPermissionForAccidentList]) {
         
@@ -49,6 +53,11 @@
         item1.img = [UIImage imageNamed:@"list_accident"];
         item1.executeCode = ^{
             LxPrintf(@"事故处理");
+            SW(strongSelf, weakSelf);
+            AccidentListVC *t_vc = [AccidentListVC new];
+            t_vc.accidentType = AccidentTypeAccident;
+            t_vc.isHandle = @1;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item1];
@@ -62,7 +71,12 @@
         item2.img = [UIImage imageNamed:@"list_fastAccident"];
         item2.executeCode = ^{
             LxPrintf(@"快处事故处理");
-            
+            SW(strongSelf, weakSelf);
+            AccidentListVC *t_vc = [AccidentListVC new];
+            t_vc.accidentType = AccidentTypeFastAccident;
+            t_vc.isHandle = @1;
+            t_vc.title = @"快处";
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
         };
         [self.mArr_items addObject:item2];
     }

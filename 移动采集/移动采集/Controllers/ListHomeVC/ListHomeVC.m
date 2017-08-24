@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"移动处理";
+    self.title = @"待处理";
     
     if (self.arr_menus.count == 0) {
         self.v_permission.hidden = NO;
@@ -126,7 +126,7 @@
 }
 
 - (NSString *)tabTitle{
-    return NSLocalizedString(@"列表", nil);
+    return NSLocalizedString(@"待处理", nil);
 }
 
 #pragma mark - dealloc

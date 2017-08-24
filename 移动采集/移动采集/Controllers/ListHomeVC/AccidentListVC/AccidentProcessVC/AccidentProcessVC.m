@@ -18,21 +18,13 @@
 @property (weak, nonatomic) IBOutlet UIView *v_damage;                  //伤亡情况视图,用于隐藏或显示
 @property (weak, nonatomic) IBOutlet UIView *v_accidentCauses;          //事故成因视图,用于隐藏或显示
 
-@property (weak, nonatomic) IBOutlet UIView *v_resultConciliation;      //损坏赔偿以及调解结果视图，用于隐藏或显示
-
 
 @property (weak, nonatomic) IBOutlet FSTextView *tf_damage;             //伤亡情况textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_accidentCauses;     //事故成因textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_mediationRecord;    //中队调解记录textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_memo;               //备注记录与领导记录textView
 
-@property (weak, nonatomic) IBOutlet FSTextView *tf_responsibility;     //损坏赔偿以及调解结果textView
-
-
 @property (weak, nonatomic) IBOutlet UIButton *btn_handle;              //完成按钮,用于显示是否可以点击
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_top;    //用于区别是事故或者快处之间视图
 
 @property (nonatomic,assign,readwrite) BOOL isCanCommit;                //用于判断是否可以提交
 
@@ -45,34 +37,20 @@
     
     self.isCanCommit = NO;
     
+    self.title = @"事故认定";
     
-    if (_accidentType == AccidentTypeAccident) {
-        /************* 事故视图，所作的配置 **************/
-        self.title = @"事故认定";
-        
-        _v_resultConciliation.hidden = YES;
-        _layout_top.constant = 295.f;
-        [self.view layoutIfNeeded];
-        
-        _tf_damage.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
-        _tf_accidentCauses.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
-        
-        
-    }else if (_accidentType == AccidentTypeFastAccident){
-        /************* 快处视图，所作的配置 **************/
-        self.title = @"快处认定";
-        
-        _v_damage.hidden = YES;
-        _v_accidentCauses.hidden = YES;
-        _layout_top.constant = 155.f;
-        [self.view layoutIfNeeded];
-        
-        _tf_responsibility.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
-        
-    }
-
+    _tf_damage.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
+    _tf_accidentCauses.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
     _tf_mediationRecord.placeholder = @"请输入简述";
     _tf_memo.placeholder = @"请输入简述";
+    
+    if (_param) {
+        _tf_damage.text = _param.casualties;
+        _tf_accidentCauses.text = _param.causes;
+        _tf_mediationRecord.text = _param.mediationRecord;
+        _tf_memo.text = _param.memo;
+    }
+    
     
 }
 
@@ -80,7 +58,7 @@
 
 -(void)handleBtnBackClicked{
     
-    if (_param.casualties || _param.causes || _param.responsibility || _param.mediationRecord || _param.memo) {
+    if (_param.casualties || _param.causes || _param.mediationRecord || _param.memo) {
         
         WS(weakSelf);
         
@@ -205,11 +183,7 @@
     if (textView == _tf_accidentCauses) {
         _param.causes = length > 0 ? _tf_accidentCauses.formatText : nil;
     }
-    
-    if (textView == _tf_responsibility) {
-        _param.responsibility = length > 0 ? _tf_responsibility.formatText : nil;
-    }
-    
+
     if (textView == _tf_mediationRecord) {
         _param.mediationRecord = length > 0 ? _tf_mediationRecord.text : nil;
     }
@@ -226,28 +200,13 @@
 
 - (void)judgeIsCommit{
 
-    if (_accidentType == AccidentTypeAccident) {
+    if (_tf_damage.formatText.length > 0 && _tf_accidentCauses.formatText.length > 0) {
         
-        if (_tf_damage.formatText.length > 0 && _tf_accidentCauses.formatText.length > 0) {
-            
-            self.isCanCommit = YES;
-        }else{
-            
-            self.isCanCommit = NO;
-        }
+        self.isCanCommit = YES;
+    }else{
         
-    }else if (_accidentType == AccidentTypeFastAccident){
-        
-        if (_tf_responsibility.formatText.length > 0) {
-            
-            self.isCanCommit = YES;
-        }else{
-            
-            self.isCanCommit = NO;
-        }
-        
+        self.isCanCommit = NO;
     }
-
 }
 
 #pragma mark - dealloc

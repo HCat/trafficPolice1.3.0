@@ -298,6 +298,8 @@
         
         self.isCanCommit = NO;
         
+        [_partyFactory setIndex:_segmentedControl.selectedSegmentIndex];
+        
     }else{
         
         [self  setUpModificationStatusInView];
@@ -959,8 +961,7 @@
     _segmentedControl.showsTopSeparator = NO;
     _segmentedControl.showsBottomSeparator = NO;
     [self judgeTextFieldWithIndex:_segmentedControl.selectedSegmentIndex];
-    [_partyFactory setIndex:_segmentedControl.selectedSegmentIndex];
-
+    
 }
 
 #pragma mark - 实时监听UITextField内容的变化

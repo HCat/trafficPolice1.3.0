@@ -40,13 +40,14 @@
     
     if (_accidentType == AccidentTypeAccident) {
         self.title = @"事故详情";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetAccidentDetail:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
     }else if (_accidentType == AccidentTypeFastAccident){
         self.title = @"快处详情";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetAccidentDetail:) name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNewRemark:) name:NOTIFICATION_ADDREMARK_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetAccidentDetail:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
-    
+   
     self.remarkCount = 0;
 
     [self setupConfigButtons];
@@ -161,7 +162,6 @@
     return _picList;
     
 }
-
 
 #pragma mark - 请求备注列表
 
@@ -292,6 +292,14 @@
 
 - (void)dealloc{
 
+    if (_accidentType == AccidentTypeAccident) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
+    }else if (_accidentType == AccidentTypeFastAccident){
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_ADDREMARK_SUCCESS object:nil];
+    
     LxPrintf(@"AccidentHandleVC dealloc");
 
 }
