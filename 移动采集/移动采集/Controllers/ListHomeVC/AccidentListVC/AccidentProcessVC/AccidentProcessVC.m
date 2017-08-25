@@ -15,18 +15,19 @@
 @interface AccidentProcessVC ()
 
 
-@property (weak, nonatomic) IBOutlet UIView *v_damage;                  //伤亡情况视图,用于隐藏或显示
-@property (weak, nonatomic) IBOutlet UIView *v_accidentCauses;          //事故成因视图,用于隐藏或显示
-
-
 @property (weak, nonatomic) IBOutlet FSTextView *tf_damage;             //伤亡情况textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_accidentCauses;     //事故成因textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_mediationRecord;    //中队调解记录textView
 @property (weak, nonatomic) IBOutlet FSTextView *tf_memo;               //备注记录与领导记录textView
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_handle;              //完成按钮,用于显示是否可以点击
+@property (weak, nonatomic) IBOutlet UIButton *btn_end; //结案按钮，用于显示是否可以点击
+
+
 
 @property (nonatomic,assign,readwrite) BOOL isCanCommit;                //用于判断是否可以提交
+@property (nonatomic,assign) BOOL isChange;                             //用于判断是否编辑过
+
 
 @end
 
@@ -35,22 +36,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isCanCommit = NO;
-    
     self.title = @"事故认定";
     
     _tf_damage.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
     _tf_accidentCauses.placeholderLabel.attributedText  = [ShareFun highlightInString:@"请输入简述(必填)" withSubString:@"(必填)"];
     _tf_mediationRecord.placeholder = @"请输入简述";
-    _tf_memo.placeholder = @"请输入简述";
+    _tf_memo.placeholder            = @"请输入简述";
     
     if (_param) {
-        _tf_damage.text = _param.casualties;
-        _tf_accidentCauses.text = _param.causes;
+        _tf_damage.text          = _param.casualties;
+        _tf_accidentCauses.text  = _param.causes;
         _tf_mediationRecord.text = _param.mediationRecord;
-        _tf_memo.text = _param.memo;
+        _tf_memo.text            = _param.memo;
     }
     
+    if ([_tf_damage.text length] == 0 && [_tf_accidentCauses.text length] == 0) {
+        self.isCanCommit = NO;
+    }else{
+        self.isCanCommit = YES;
+    }
+    
+    self.isChange = NO;
     
 }
 
@@ -58,7 +64,7 @@
 
 -(void)handleBtnBackClicked{
     
-    if (_param.casualties || _param.causes || _param.mediationRecord || _param.memo) {
+    if (self.isChange) {
         
         WS(weakSelf);
         
@@ -91,10 +97,14 @@
     _isCanCommit = isCanCommit;
     if (_isCanCommit == NO) {
         _btn_handle.enabled = NO;
+        _btn_end.enabled = NO;
         [_btn_handle setBackgroundColor:DefaultBtnNuableColor];
+        [_btn_end setBackgroundColor:DefaultBtnNuableColor];
     }else{
         _btn_handle.enabled = YES;
+        _btn_end.enabled = YES;
         [_btn_handle setBackgroundColor:DefaultBtnColor];
+        [_btn_end setBackgroundColor:UIColorFromRGB(0xff4e4e)];
     }
     
 }
@@ -106,68 +116,59 @@
     
     WS(weakSelf);
     
-    if (_accidentType == AccidentTypeAccident) {
+    AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
+    manger.param = _param;
+    [manger configLoadingTitle:@"保存"];
+    
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
-        AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
-        _param.state = @1;
+        SW(strongSelf, weakSelf);
         
-        manger.param = _param;
-        [manger configLoadingTitle:@"处理"];
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            
+            /************* 发送修改成功通知去刷新事故列表 ****************/
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
+            
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+            
+        }
         
-        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            
-            SW(strongSelf, weakSelf);
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
-            if (manger.responseModel.code == CODE_SUCCESS) {
-                
-                /************* 发送修改成功通知去刷新事故列表 ****************/
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
-                
-                /************* 回退到ListHomeVC 列表首页 ****************/
-                for(UIViewController *controller in self.navigationController.viewControllers) {
-                    if([controller isKindOfClass:[ListHomeVC class]]) {
-                        [strongSelf.navigationController popToViewController:controller animated:YES];
-                    }
-                }
-            
-            }
-            
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            
-        }];
-        
-    }else if (_accidentType == AccidentTypeFastAccident){
-        
-        FastAccidentSaveManger *manger = [[FastAccidentSaveManger alloc] init];
-        _param.state = @1;
-        manger.param = _param;
-        [manger configLoadingTitle:@"处理"];
-        
-        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            
-            SW(strongSelf, weakSelf);
-            
-            if (manger.responseModel.code == CODE_SUCCESS) {
-                
-                /************* 发送修改成功通知去刷新快处列表 ****************/
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
-                
-                /************* 回退到ListHomeVC 列表首页 ****************/
-                for(UIViewController *controller in self.navigationController.viewControllers) {
-                    if([controller isKindOfClass:[ListHomeVC class]]) {
-                        [strongSelf.navigationController popToViewController:controller animated:YES];
-                    }
-                }
-                
-            }
-            
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            
-        }];
-        
-    }
+    }];
     
 }
+
+#pragma mark - 结案按钮事件
+
+- (IBAction)handleBtnEndClicked:(id)sender {
+    
+    WS(weakSelf);
+
+    AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
+    _param.state = @1;
+    manger.param = _param;
+    [manger configLoadingTitle:@"保存"];
+    
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        SW(strongSelf, weakSelf);
+        
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            
+            /************* 发送修改成功通知去刷新事故列表 ****************/
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
+            
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+            
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+    
+}
+
 
 #pragma mark - 实时监听UITextView内容的变化
 
@@ -185,13 +186,14 @@
     }
 
     if (textView == _tf_mediationRecord) {
-        _param.mediationRecord = length > 0 ? _tf_mediationRecord.text : nil;
+        _param.mediationRecord = length > 0 ? _tf_mediationRecord.text : @"";
     }
     
     if (textView == _tf_memo) {
-        _param.memo = length > 0 ? _tf_memo.text : nil;
+        _param.memo = length > 0 ? _tf_memo.text : @"";
     }
-
+    
+    self.isChange = YES;
     [self judgeIsCommit];
     
 }

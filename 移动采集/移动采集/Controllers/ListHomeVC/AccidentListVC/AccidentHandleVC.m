@@ -11,6 +11,7 @@
 
 #import "AccidentAddRemarkVC.h"
 #import "AccidentProcessVC.h"
+#import "FastAccidentProcessVC.h"
 #import "AccidentChangeVC.h"
 
 #import "AccidentAPI.h"
@@ -247,10 +248,16 @@
 #pragma mark - 处理按钮事件
 - (IBAction)handleBtnHandleClicked:(id)sender {
     
-    AccidentProcessVC *t_vc = [AccidentProcessVC new];
-    t_vc.accidentType = _accidentType;
-    t_vc.param = self.param;
-    [self.navigationController pushViewController:t_vc animated:YES];
+    if (_accidentType == AccidentTypeAccident) {
+        AccidentProcessVC *t_vc = [AccidentProcessVC new];
+        t_vc.param = self.param;
+        [self.navigationController pushViewController:t_vc animated:YES];
+    }else if (_accidentType == AccidentTypeFastAccident){
+        FastAccidentProcessVC *t_vc = [FastAccidentProcessVC new];
+        t_vc.param = self.param;
+        [self.navigationController pushViewController:t_vc animated:YES];
+    }
+   
 }
 
 #pragma mark - 通知事件
