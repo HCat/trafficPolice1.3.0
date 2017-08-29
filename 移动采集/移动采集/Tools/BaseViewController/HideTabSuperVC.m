@@ -20,18 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.navigationBar.translucent = NO;
-    
-    if([self canBack]){
-        if (self.navigationController.viewControllers.count == 1) {
-            [self showLeftBarButtonItemWithImage:@"nav_down" target:self action:@selector(handleBtnBackClicked)];
-        }else{
-            [self showLeftBarButtonItemWithImage:@"nav_back" target:self action:@selector(handleBtnBackClicked)];
-        }
-    }else {
-        [self showLeftBarButtonItemWithImage:@"" target:nil action:nil];
-    }
+    self.canBack = YES;
     
 }
 
@@ -54,30 +43,6 @@
     [super viewDidDisappear:animated];
     
     
-}
-
-#pragma mark - Functions
-
--(void)handleBtnBackClicked{
-    
-    if (self.navigationController.viewControllers.count == 1) {
-        
-        [self.navigationController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-    }else{
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
-    
-}
-
-#pragma mark - Super Method
-
-- (BOOL)canBack{
-    return YES;
 }
 
 

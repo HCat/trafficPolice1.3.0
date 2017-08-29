@@ -11,6 +11,8 @@
 
 @interface AccidentCell : UITableViewCell
 
+
+@property (nonatomic,assign) AccidentType accidentType;
 @property (nonatomic,strong) AccidentListModel *model;
 
 @end

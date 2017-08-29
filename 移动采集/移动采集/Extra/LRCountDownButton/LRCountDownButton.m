@@ -157,7 +157,9 @@
             strongSelf.timer_countDown = nil;
             strongSelf.count = 0;
             strongSelf.enabled = YES;
+            
         } else {
+            
             // 设置LRCountDownButton的title为当前倒计时剩余的时间
             [strongSelf setTitle:[NSString stringWithFormat:@"重新发送验证码(%zds)", self.tempDurationOfCountDown--] forState:UIControlStateNormal];
              [strongSelf setBackgroundColor:strongSelf.processBGColor];

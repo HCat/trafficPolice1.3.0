@@ -46,6 +46,10 @@
             _lb_handle.hidden = NO;
         }
         
+        if ([_model.state isEqualToNumber:@3] && _accidentType != AccidentTypeFastAccident) {
+            _lb_state.hidden = NO;
+        }
+        
         _lb_time.text       = [ShareFun timeWithTimeInterval:_model.happenTime];
         _lb_roadName.text   = [NSString stringWithFormat:@"%@%@",_model.roadName,_model.address];
         _lb_collect.text     = _model.entryManName;

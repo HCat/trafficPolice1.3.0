@@ -78,7 +78,7 @@
     
     LRPlaceholderView *placeholderView = [[LRPlaceholderView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     placeholderView.isNetvailable = self.isNetAvailable;
-    
+    placeholderView.str_placeholder = self.str_placeholder;
     
     self.placeholderView = placeholderView;
     
@@ -165,6 +165,17 @@
     //_cmd == @select(isIgnore); 和set方法里一致
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
+
+- (void)setStr_placeholder:(NSString *)str_placeholder{
+    // 注意BOOL类型 需要用OBJC_ASSOCIATION_RETAIN_NONATOMIC 不要用错，否则set方法会赋值出错
+    objc_setAssociatedObject(self, @selector(str_placeholder), str_placeholder, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)str_placeholder{
+    //_cmd == @select(isIgnore); 和set方法里一致
+    return objc_getAssociatedObject(self, _cmd);
+}
+
 
 
 #pragma mark - reloadBlock

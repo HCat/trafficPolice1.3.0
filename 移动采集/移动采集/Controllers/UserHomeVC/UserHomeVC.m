@@ -16,6 +16,8 @@
 #import "UserModel.h"
 
 #import "AccidentListVC.h"
+#import "IllegalListVC.h"
+#import "VideoListVC.h"
 
 @interface UserHomeVC ()
 
@@ -49,17 +51,18 @@
         
         LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
         item1.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item1.funcName = @"事故处理";
+        item1.funcName = @"事故列表";
         item1.img = [UIImage imageNamed:@"list_accident"];
         item1.executeCode = ^{
-            LxPrintf(@"事故处理");
             SW(strongSelf, weakSelf);
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeAccident;
+            t_vc.title = @"事故列表";
             t_vc.isHandle = @1;
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         };
+        
         [self.mArr_items addObject:item1];
 
     }
@@ -67,13 +70,13 @@
     if ([UserModel isPermissionForFastAccidentList]) {
         LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
         item2.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item2.funcName = @"快处事故处理";
+        item2.funcName = @"快处列表";
         item2.img = [UIImage imageNamed:@"list_fastAccident"];
         item2.executeCode = ^{
-            LxPrintf(@"快处事故处理");
             SW(strongSelf, weakSelf);
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeFastAccident;
+            t_vc.title = @"快处列表";
             t_vc.isHandle = @1;
             t_vc.title = @"快处";
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
@@ -84,10 +87,15 @@
     if ([UserModel isPermissionForIllegalList]) {
         LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
         item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item3.funcName = @"违法停车处理";
+        item3.funcName = @"违停列表";
         item3.img = [UIImage imageNamed:@"list_illegalPark"];
         item3.executeCode = ^{
-            LxPrintf(@"违法停车处理");
+            SW(strongSelf, weakSelf);
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.title = @"违停列表";
+            t_vc.isHandle = YES;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item3];
@@ -96,10 +104,15 @@
     if ([UserModel isPermissionForThroughList]) {
         LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
         item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"闯禁令违法行为采集";
+        item4.funcName = @"闯禁令列表";
         item4.img = [UIImage imageNamed:@"list_through"];
         item4.executeCode = ^{
-            LxPrintf(@"闯禁令违法行为采集");
+            SW(strongSelf, weakSelf);
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.illegalType = IllegalTypeThrough;
+            t_vc.title = @"闯禁令列表";
+            t_vc.isHandle = YES;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item4];
@@ -108,11 +121,14 @@
     if ([UserModel isPermissionForVideoCollectList]) {
         LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
         item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item5.funcName = @"警情视频采集";
+        item5.funcName = @"视频列表";
         item5.img = [UIImage imageNamed:@"list_video"];
         item5.executeCode = ^{
-            LxPrintf(@"警情视频采集");
             
+            SW(strongSelf, weakSelf);
+            VideoListVC *t_vc = [[VideoListVC alloc] init];
+            t_vc.title = @"视频列表";
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item5];

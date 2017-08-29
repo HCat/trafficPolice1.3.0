@@ -21,6 +21,7 @@
 #import "AccidentHandleVC.h"
 //#import "SearchListVC.h"
 #import "ListHomeVC.h"
+#import "UINavigationBar+BarItem.h"
 
 @interface AccidentListVC ()
 
@@ -36,8 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
     
+    if ([_isHandle isEqualToNumber:@0]) {
+        self.view.backgroundColor = [UIColor clearColor];
+    }else{
+        self.canBack = YES;
+    }
+
     if (_accidentType == AccidentTypeAccident) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
     }else if (_accidentType == AccidentTypeFastAccident){
@@ -61,7 +67,7 @@
     [self initRefresh];
     
     [_tb_content.mj_header beginRefreshing];
-    
+
     WS(weakSelf);
     //点击重新加载之后的处理
     [_tb_content setReloadBlock:^{
@@ -76,6 +82,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     WS(weakSelf);
+    
+    if ([_isHandle isEqualToNumber:@1]) {
+        [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
+    }
+    
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
@@ -246,6 +257,7 @@
         
         if (_arr_content && _arr_content.count > 0) {
             AccidentListModel *t_model = _arr_content[indexPath.row];
+            cell.accidentType = _accidentType;
             cell.model = t_model;
             
         }
@@ -283,14 +295,23 @@
         if (_str_search) {
             //vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
         }else{
-            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
+            
+            if ([_isHandle isEqualToNumber:@1]) {
+                vc_target = self;
+            }else{
+                vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
+                
+                AccidentListModel *t_model = _arr_content[indexPath.row];
+                AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
+                t_vc.accidentType = _accidentType;
+                t_vc.accidentId = t_model.accidentId;
+                [vc_target.navigationController pushViewController:t_vc animated:YES];
+                
+            }
+            
         }
         
-        AccidentListModel *t_model = _arr_content[indexPath.row];
-        AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
-        t_vc.accidentType = _accidentType;
-        t_vc.accidentId = t_model.accidentId;
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+       
     }
 }
 

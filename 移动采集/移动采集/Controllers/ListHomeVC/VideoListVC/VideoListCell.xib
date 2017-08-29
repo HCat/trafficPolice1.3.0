@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="VideoListCell">
+            <rect key="frame" x="0.0" y="0.0" width="165" height="153"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="165" height="153"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gQv-wm-w1r">
+                        <rect key="frame" x="8" y="8" width="149" height="100"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="ldu-81-Fvh"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_playVideo" translatesAutoresizingMaskIntoConstraints="NO" id="4B1-wT-tPe">
+                        <rect key="frame" x="8" y="8" width="149" height="100"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="晋江万达广场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF6-ES-EuO">
+                        <rect key="frame" x="8" y="113" width="149" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-11-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsH-Pd-EQw">
+                        <rect key="frame" x="8" y="134" width="149" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7v-vl-dQ1">
+                        <rect key="frame" x="121" y="91.5" width="34" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="SsH-Pd-EQw" secondAttribute="bottom" constant="3" id="2mk-Cy-wwL"/>
+                <constraint firstItem="4B1-wT-tPe" firstAttribute="bottom" secondItem="gQv-wm-w1r" secondAttribute="bottom" id="2oR-6i-IpC"/>
+                <constraint firstItem="4B1-wT-tPe" firstAttribute="top" secondItem="gQv-wm-w1r" secondAttribute="top" id="9kC-gZ-qXe"/>
+                <constraint firstItem="gQv-wm-w1r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Ajc-a9-jpg"/>
+                <constraint firstItem="SsH-Pd-EQw" firstAttribute="trailing" secondItem="mF6-ES-EuO" secondAttribute="trailing" id="MHA-Wc-CeE"/>
+                <constraint firstItem="gQv-wm-w1r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="OGq-Ed-gJZ"/>
+                <constraint firstItem="SsH-Pd-EQw" firstAttribute="top" secondItem="mF6-ES-EuO" secondAttribute="bottom" constant="5" id="Ogg-hw-vli"/>
+                <constraint firstItem="b7v-vl-dQ1" firstAttribute="trailing" secondItem="gQv-wm-w1r" secondAttribute="trailing" constant="-2" id="Q9v-cs-INS"/>
+                <constraint firstItem="4B1-wT-tPe" firstAttribute="trailing" secondItem="gQv-wm-w1r" secondAttribute="trailing" id="ays-9m-mwq"/>
+                <constraint firstItem="SsH-Pd-EQw" firstAttribute="leading" secondItem="mF6-ES-EuO" secondAttribute="leading" id="bZn-Vi-Cwq"/>
+                <constraint firstItem="mF6-ES-EuO" firstAttribute="trailing" secondItem="gQv-wm-w1r" secondAttribute="trailing" id="hyd-WE-cBW"/>
+                <constraint firstAttribute="trailing" secondItem="gQv-wm-w1r" secondAttribute="trailing" constant="8" id="rJ0-eO-zxJ"/>
+                <constraint firstItem="mF6-ES-EuO" firstAttribute="leading" secondItem="gQv-wm-w1r" secondAttribute="leading" id="s64-cb-oNJ"/>
+                <constraint firstItem="b7v-vl-dQ1" firstAttribute="bottom" secondItem="gQv-wm-w1r" secondAttribute="bottom" constant="-2" id="t2d-OF-C8g"/>
+                <constraint firstItem="4B1-wT-tPe" firstAttribute="leading" secondItem="gQv-wm-w1r" secondAttribute="leading" id="tAr-cx-lc6"/>
+                <constraint firstItem="mF6-ES-EuO" firstAttribute="top" secondItem="gQv-wm-w1r" secondAttribute="bottom" constant="5" id="vkf-gG-Ytt"/>
+            </constraints>
+            <size key="customSize" width="165" height="153"/>
+            <connections>
+                <outlet property="imageV_preview" destination="gQv-wm-w1r" id="FKm-Oe-QWs"/>
+                <outlet property="lb_address" destination="mF6-ES-EuO" id="f0d-EQ-ll5"/>
+                <outlet property="lb_length" destination="b7v-vl-dQ1" id="V7E-DP-5gK"/>
+                <outlet property="lb_time" destination="SsH-Pd-EQw" id="hPi-mY-ffp"/>
+            </connections>
+            <point key="canvasLocation" x="82.5" y="103.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon_playVideo" width="50" height="50"/>
+    </resources>
+</document>

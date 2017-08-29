@@ -14,6 +14,4 @@
  */
 @interface HideTabSuperVC : BaseViewController
 
--(void)handleBtnBackClicked;
-
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "UINavigationBar+BarItem.h"
 
 @interface BaseViewController ()
 
@@ -18,6 +19,46 @@
     [super viewDidLoad];
     self.view.backgroundColor = DefaultBGColor;
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - set && get
+
+
+- (void)setCanBack:(BOOL)canBack{
+
+    _canBack = canBack;
+
+    if (_canBack) {
+        
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.navigationController.navigationBar.translucent = NO;
+        
+        if (self.navigationController.viewControllers.count == 1) {
+            [self showLeftBarButtonItemWithImage:@"nav_down" target:self action:@selector(handleBtnBackClicked)];
+        }else{
+            [self showLeftBarButtonItemWithImage:@"nav_back" target:self action:@selector(handleBtnBackClicked)];
+        }
+    }else{
+        [self showLeftBarButtonItemWithImage:@"" target:nil action:nil];
+    
+    }
+    
+}
+
+-(void)handleBtnBackClicked{
+    
+    if (self.navigationController.viewControllers.count == 1) {
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }else{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    
 }
 
 

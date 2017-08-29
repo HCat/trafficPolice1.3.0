@@ -36,7 +36,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
+    
+    if (!_isHandle) {
+        self.view.backgroundColor = [UIColor clearColor];
+    }else{
+        self.canBack = YES;
+    }
     
     if (_illegalType == IllegalTypePark) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALPARK_SUCCESS object:nil];
@@ -73,12 +78,15 @@
     }];
     
    
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    if (_isHandle) {
+        [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
+    }
+    
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -284,7 +292,13 @@
         if (_str_search) {
 //            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
         }else{
-            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
+            if (_isHandle) {
+                vc_target = self;
+            }else{
+                vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
+                
+            }
+           
         }
         
         IllegalParkListModel *t_model = _arr_content[indexPath.row];

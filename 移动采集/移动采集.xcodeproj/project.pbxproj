@@ -181,6 +181,16 @@
 		CE756AC91F4EBE3A00D08D40 /* FastAccidentProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */; };
 		CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
+		CE8502151F558C02001DC495 /* VideoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502101F558C02001DC495 /* VideoListVC.m */; };
+		CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502111F558C02001DC495 /* VideoListVC.xib */; };
+		CE8502171F558C02001DC495 /* VideoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502131F558C02001DC495 /* VideoDetailVC.m */; };
+		CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502141F558C02001DC495 /* VideoDetailVC.xib */; };
+		CE85021C1F558CB2001DC495 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85021A1F558CB2001DC495 /* VideoListCell.m */; };
+		CE85021D1F558CB2001DC495 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE85021B1F558CB2001DC495 /* VideoListCell.xib */; };
+		CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502201F559404001DC495 /* NJKWebViewProgress.m */; };
+		CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502221F559404001DC495 /* NJKWebViewProgressView.m */; };
+		CE8502291F559C30001DC495 /* AccidentCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502271F559C30001DC495 /* AccidentCompleteVC.m */; };
+		CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */; };
 		CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8507EA1F44771D006C459F /* AccidentChangeVC.m */; };
 		CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */; };
 		CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
@@ -540,6 +550,22 @@
 		CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastAccidentProcessVC.xib; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
 		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
+		CE85020F1F558C02001DC495 /* VideoListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListVC.h; sourceTree = "<group>"; };
+		CE8502101F558C02001DC495 /* VideoListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListVC.m; sourceTree = "<group>"; };
+		CE8502111F558C02001DC495 /* VideoListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListVC.xib; sourceTree = "<group>"; };
+		CE8502121F558C02001DC495 /* VideoDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailVC.h; sourceTree = "<group>"; };
+		CE8502131F558C02001DC495 /* VideoDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailVC.m; sourceTree = "<group>"; };
+		CE8502141F558C02001DC495 /* VideoDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDetailVC.xib; sourceTree = "<group>"; };
+		CE8502191F558CB2001DC495 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
+		CE85021A1F558CB2001DC495 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		CE85021B1F558CB2001DC495 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		CE85021F1F559404001DC495 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		CE8502201F559404001DC495 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		CE8502211F559404001DC495 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		CE8502221F559404001DC495 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		CE8502261F559C30001DC495 /* AccidentCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentCompleteVC.h; sourceTree = "<group>"; };
+		CE8502271F559C30001DC495 /* AccidentCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentCompleteVC.m; sourceTree = "<group>"; };
+		CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentCompleteVC.xib; sourceTree = "<group>"; };
 		CE8507E91F44771D006C459F /* AccidentChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangeVC.h; sourceTree = "<group>"; };
 		CE8507EA1F44771D006C459F /* AccidentChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangeVC.m; sourceTree = "<group>"; };
 		CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentChangeVC.xib; sourceTree = "<group>"; };
@@ -1080,6 +1106,7 @@
 		CE675F2C1F386DA7006FC15F /* AccidentListVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE8502251F559C18001DC495 /* AccidentCompleteVC */,
 				CE8507E81F447707006C459F /* AccidentChangeVC */,
 				CE8507E71F4476D4006C459F /* AccidentListVC */,
 				CE1B96B01F42E93200A75397 /* AccidentProcessVC */,
@@ -1109,6 +1136,7 @@
 		CE69154B1F1DD48C008911A6 /* ListHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE85020E1F558BFB001DC495 /* VideoListVC */,
 				CE675F2C1F386DA7006FC15F /* AccidentListVC */,
 				CE675F141F383C40006FC15F /* IllegalListVC */,
 				CE69155C1F1DD9C4008911A6 /* ListHomeVC.h */,
@@ -1151,6 +1179,43 @@
 				CE69156F1F1DE2AC008911A6 /* LSStatusBarHUDConst.h */,
 			);
 			path = LSStatusBarHUD;
+			sourceTree = "<group>";
+		};
+		CE85020E1F558BFB001DC495 /* VideoListVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE8502191F558CB2001DC495 /* VideoListCell.h */,
+				CE85021A1F558CB2001DC495 /* VideoListCell.m */,
+				CE85021B1F558CB2001DC495 /* VideoListCell.xib */,
+				CE85020F1F558C02001DC495 /* VideoListVC.h */,
+				CE8502101F558C02001DC495 /* VideoListVC.m */,
+				CE8502111F558C02001DC495 /* VideoListVC.xib */,
+				CE8502121F558C02001DC495 /* VideoDetailVC.h */,
+				CE8502131F558C02001DC495 /* VideoDetailVC.m */,
+				CE8502141F558C02001DC495 /* VideoDetailVC.xib */,
+			);
+			path = VideoListVC;
+			sourceTree = "<group>";
+		};
+		CE85021E1F559404001DC495 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CE85021F1F559404001DC495 /* NJKWebViewProgress.h */,
+				CE8502201F559404001DC495 /* NJKWebViewProgress.m */,
+				CE8502211F559404001DC495 /* NJKWebViewProgressView.h */,
+				CE8502221F559404001DC495 /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
+		CE8502251F559C18001DC495 /* AccidentCompleteVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE8502261F559C30001DC495 /* AccidentCompleteVC.h */,
+				CE8502271F559C30001DC495 /* AccidentCompleteVC.m */,
+				CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */,
+			);
+			path = AccidentCompleteVC;
 			sourceTree = "<group>";
 		};
 		CE8507E71F4476D4006C459F /* AccidentListVC */ = {
@@ -1411,6 +1476,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE85021E1F559404001DC495 /* NJKWebViewProgress */,
 				CE675F1F1F384637006FC15F /* UITableView+FDTemplateLayoutCell */,
 				CE675F101F381651006FC15F /* LRPageMenu */,
 				CE6140641F31CBBA0015B8CE /* YUSegment */,
@@ -1634,8 +1700,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFD55811F3C40EC0082060B /* AccidentHandleVC.xib in Resources */,
+				CE85021D1F558CB2001DC495 /* VideoListCell.xib in Resources */,
 				CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */,
 				CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */,
+				CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
 				CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */,
@@ -1670,7 +1738,9 @@
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE5C38F61F28606B0055C945 /* ZLCollectionCell.xib in Resources */,
 				CE5C38FA1F28606B0055C945 /* ZLPhotoBrowserCell.xib in Resources */,
+				CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */,
 				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
+				CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */,
 				CE5C39231F2881BD0055C945 /* btn_selected.png in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
@@ -1774,6 +1844,7 @@
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
 				CE4E3C131F39BB860057148B /* IllegalImageCell.m in Sources */,
 				CEFEFCF81F29B22F00C33CBD /* IllegalParkAddFootView.m in Sources */,
+				CE8502171F558C02001DC495 /* VideoDetailVC.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
@@ -1798,6 +1869,7 @@
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
 				CE5C390C1F28606B0055C945 /* ZLThumbnailViewController.m in Sources */,
 				CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */,
+				CE8502151F558C02001DC495 /* VideoListVC.m in Sources */,
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
@@ -1850,14 +1922,17 @@
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
 				CEFEFD1F1F29ED8100C33CBD /* KSPhotoView.m in Sources */,
 				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,
+				CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */,
 				CE5C390B1F28606B0055C945 /* ZLShowVideoViewController.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
+				CE85021C1F558CB2001DC495 /* VideoListCell.m in Sources */,
 				CE6140621F31AD9E0015B8CE /* AccidentAddFootView.m in Sources */,
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
 				CE675F2A1F384637006FC15F /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */,
 				CE1B96B41F42E95200A75397 /* AccidentProcessVC.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
+				CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CEFEFD021F29C22500C33CBD /* maskingView.m in Sources */,
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
@@ -1872,6 +1947,7 @@
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */,
 				CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */,
+				CE8502291F559C30001DC495 /* AccidentCompleteVC.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
 				CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */,

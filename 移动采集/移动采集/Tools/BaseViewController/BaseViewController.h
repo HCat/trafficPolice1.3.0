@@ -10,6 +10,6 @@
 
 @interface BaseViewController : UIViewController
 
-
+@property (nonatomic,assign) BOOL canBack;
 
 @end
