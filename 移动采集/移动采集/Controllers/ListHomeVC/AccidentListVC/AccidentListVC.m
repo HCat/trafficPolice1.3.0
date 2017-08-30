@@ -19,6 +19,7 @@
 #import "NetWorkHelper.h"
 
 #import "AccidentHandleVC.h"
+#import "AccidentCompleteVC.h"
 //#import "SearchListVC.h"
 #import "ListHomeVC.h"
 #import "UINavigationBar+BarItem.h"
@@ -298,6 +299,13 @@
             
             if ([_isHandle isEqualToNumber:@1]) {
                 vc_target = self;
+                
+                AccidentListModel *t_model = _arr_content[indexPath.row];
+                AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
+                t_vc.accidentType = _accidentType;
+                t_vc.accidentId = t_model.accidentId;
+                [vc_target.navigationController pushViewController:t_vc animated:YES];
+
             }else{
                 vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
                 

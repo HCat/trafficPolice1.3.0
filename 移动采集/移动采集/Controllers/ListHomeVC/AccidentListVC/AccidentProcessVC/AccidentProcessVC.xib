@@ -17,8 +17,6 @@
                 <outlet property="tf_damage" destination="cae-z5-QXC" id="RLL-Me-mDz"/>
                 <outlet property="tf_mediationRecord" destination="nkr-EU-8J9" id="u7c-zo-Tpy"/>
                 <outlet property="tf_memo" destination="Ynz-FU-V3e" id="L7h-YA-UM4"/>
-                <outlet property="v_accidentCauses" destination="szQ-lg-W1z" id="0lo-MR-8xG"/>
-                <outlet property="v_damage" destination="EcO-xN-ik3" id="eag-Y2-TYr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

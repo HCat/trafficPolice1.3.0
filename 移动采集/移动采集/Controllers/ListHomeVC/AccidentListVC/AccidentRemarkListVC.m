@@ -20,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSArray *arr_remarks;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_tableViewBottom;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_addRemark;
+
+
 
 @end
 
@@ -47,6 +52,13 @@
     }];
     
     [_tableView.mj_header beginRefreshing];
+    
+    if (_isHandle) {
+        self.view.backgroundColor = [UIColor clearColor];
+        _layout_tableViewBottom.constant = 0.f;
+        [self.view layoutIfNeeded];
+        _btn_addRemark.hidden = YES;
+    }
     
 }
 

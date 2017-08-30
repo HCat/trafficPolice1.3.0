@@ -249,11 +249,11 @@
 - (IBAction)handleBtnHandleClicked:(id)sender {
     
     if (_accidentType == AccidentTypeAccident) {
-        AccidentProcessVC *t_vc = [AccidentProcessVC new];
+        AccidentProcessVC *t_vc = [[AccidentProcessVC alloc] init];
         t_vc.param = self.param;
         [self.navigationController pushViewController:t_vc animated:YES];
     }else if (_accidentType == AccidentTypeFastAccident){
-        FastAccidentProcessVC *t_vc = [FastAccidentProcessVC new];
+        FastAccidentProcessVC *t_vc = [[FastAccidentProcessVC alloc] init];
         t_vc.param = self.param;
         [self.navigationController pushViewController:t_vc animated:YES];
     }

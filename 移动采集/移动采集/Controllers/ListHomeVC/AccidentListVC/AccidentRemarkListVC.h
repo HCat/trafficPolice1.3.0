@@ -11,5 +11,5 @@
 @interface AccidentRemarkListVC : HideTabSuperVC
 
 @property (nonatomic,strong) NSNumber * accidentId;
-
+@property (nonatomic,assign) BOOL isHandle; //此参数无多大作用，只是用于去一个背景色而已
 @end

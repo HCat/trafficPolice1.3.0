@@ -72,6 +72,8 @@
 		CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BBE1F272F810025A20C /* FeedbackFootView.xib */; };
 		CE450BC41F2730160025A20C /* FSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC31F2730160025A20C /* FSTextView.m */; };
 		CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */; };
+		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
+		CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */; };
 		CE4E3C051F39B63A0057148B /* IllegalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3C031F39B63A0057148B /* IllegalDetailVC.m */; };
 		CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4E3C041F39B63A0057148B /* IllegalDetailVC.xib */; };
 		CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3C081F39B9F20057148B /* IllegalFootCell.m */; };
@@ -235,6 +237,8 @@
 		CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */; };
 		CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9F31F1C873E00AC515C /* LoginHomeVC.xib */; };
 		CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F81F1C896400AC515C /* BaseViewController.m */; };
+		CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */; };
+		CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */; };
 		CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */; };
 		CEFD55811F3C40EC0082060B /* AccidentHandleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */; };
 		CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */; };
@@ -375,6 +379,9 @@
 		CE450BC31F2730160025A20C /* FSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTextView.m; sourceTree = "<group>"; };
 		CE450BC61F2741050025A20C /* BaseImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageCollectionCell.h; sourceTree = "<group>"; };
 		CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageCollectionCell.m; sourceTree = "<group>"; };
+		CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentProcessResultVC.h; sourceTree = "<group>"; };
+		CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentProcessResultVC.m; sourceTree = "<group>"; };
+		CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessResultVC.xib; sourceTree = "<group>"; };
 		CE4E3C021F39B63A0057148B /* IllegalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalDetailVC.h; sourceTree = "<group>"; };
 		CE4E3C031F39B63A0057148B /* IllegalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalDetailVC.m; sourceTree = "<group>"; };
 		CE4E3C041F39B63A0057148B /* IllegalDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegalDetailVC.xib; sourceTree = "<group>"; };
@@ -653,6 +660,9 @@
 		CEE5E9F71F1C896400AC515C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CEE5E9F81F1C896400AC515C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CEE5E9FA1F1C8AED00AC515C /* NoticeMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeMacro.h; sourceTree = "<group>"; };
+		CEFA0C501F56A592006BE7FB /* ProcessResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessResultCell.h; sourceTree = "<group>"; };
+		CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessResultCell.m; sourceTree = "<group>"; };
+		CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessResultCell.xib; sourceTree = "<group>"; };
 		CEFD557D1F3C40EC0082060B /* AccidentHandleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentHandleVC.h; sourceTree = "<group>"; };
 		CEFD557E1F3C40EC0082060B /* AccidentHandleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentHandleVC.m; sourceTree = "<group>"; };
 		CEFD557F1F3C40EC0082060B /* AccidentHandleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentHandleVC.xib; sourceTree = "<group>"; };
@@ -763,6 +773,7 @@
 		CE1B96B01F42E93200A75397 /* AccidentProcessVC */ = {
 			isa = PBXGroup;
 			children = (
+				CEFA0C4F1F56A539006BE7FB /* AccidentProcessResultVC */,
 				CE1B96B11F42E95200A75397 /* AccidentProcessVC.h */,
 				CE1B96B21F42E95200A75397 /* AccidentProcessVC.m */,
 				CE1B96B31F42E95200A75397 /* AccidentProcessVC.xib */,
@@ -1558,6 +1569,19 @@
 			path = BaseViewController;
 			sourceTree = "<group>";
 		};
+		CEFA0C4F1F56A539006BE7FB /* AccidentProcessResultVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */,
+				CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */,
+				CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */,
+				CEFA0C501F56A592006BE7FB /* ProcessResultCell.h */,
+				CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */,
+				CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */,
+			);
+			name = AccidentProcessResultVC;
+			sourceTree = "<group>";
+		};
 		CEFEFCE51F2990B000C33CBD /* IllegalParkVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1719,6 +1743,7 @@
 				CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
 				CE5C38F71F28606B0055C945 /* ZLNoAuthorityViewController.xib in Resources */,
+				CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */,
 				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CE5C38E91F28606B0055C945 /* btn_circle@3x.png in Resources */,
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
@@ -1772,6 +1797,7 @@
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
+				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1841,6 +1867,7 @@
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
+				CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */,
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
 				CE4E3C131F39BB860057148B /* IllegalImageCell.m in Sources */,
 				CEFEFCF81F29B22F00C33CBD /* IllegalParkAddFootView.m in Sources */,
@@ -1890,6 +1917,7 @@
 				CE5C39091F28606B0055C945 /* ZLShowGifViewController.m in Sources */,
 				CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */,
 				CEAA96FA1F1CE97B00741A6F /* YTKUrlArgumentsFilter.m in Sources */,
+				CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */,
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,

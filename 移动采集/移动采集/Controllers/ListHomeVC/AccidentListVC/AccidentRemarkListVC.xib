@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccidentRemarkListVC">
             <connections>
+                <outlet property="btn_addRemark" destination="P7Y-EE-CCe" id="1Af-1l-xN2"/>
+                <outlet property="layout_tableViewBottom" destination="0CA-qj-8sT" id="NEl-GI-HeL"/>
                 <outlet property="tableView" destination="kXd-If-YaE" id="Fc0-TK-gbl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
