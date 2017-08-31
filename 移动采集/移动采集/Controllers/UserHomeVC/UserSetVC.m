@@ -48,7 +48,6 @@
     item1.detailText = [UserModel getUserModel].name;
     item1.accessoryType = LRSettingAccessoryTypeNone;
     
-    
     LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
     item2.funcName = @"手机号码";
     item2.detailText = [UserModel getUserModel].phone;

@@ -203,9 +203,9 @@
     [_btn_handle setBackgroundImage:image forState:UIControlStateHighlighted];
     
     _v_bottom.layer.shadowColor = UIColorFromRGB(0x444444).CGColor;//shadowColor阴影颜色
-    _v_bottom.layer.shadowOffset = CGSizeMake(1,-2);
-    _v_bottom.layer.shadowOpacity = 0.1;
-    _v_bottom.layer.shadowRadius = 10;
+    _v_bottom.layer.shadowOffset = CGSizeMake(0,-3);
+    _v_bottom.layer.shadowOpacity = 0.3;
+    _v_bottom.layer.shadowRadius = 3;
 }
 
 #pragma mark - 配置事故详情页面

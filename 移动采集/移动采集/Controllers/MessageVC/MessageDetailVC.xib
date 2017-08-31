@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageDetailVC">
+            <connections>
+                <outlet property="btn_makesure" destination="Wui-hf-coo" id="nMP-87-MIW"/>
+                <outlet property="layout_btnAndVContent" destination="NlL-rr-rSl" id="vgD-3v-01t"/>
+                <outlet property="layout_btnBottom" destination="GIC-IJ-RK3" id="G4z-n0-CwG"/>
+                <outlet property="lb_content" destination="qkU-v7-kd1" id="Zan-WG-NXo"/>
+                <outlet property="lb_time" destination="w7z-TU-seN" id="Cbo-Uv-8h5"/>
+                <outlet property="v_content" destination="Wo1-IQ-qok" id="HnL-If-TEr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wo1-IQ-qok">
+                    <rect key="frame" x="16" y="20" width="343" height="516"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7z-TU-seN">
+                            <rect key="frame" x="16" y="17" width="35.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkU-v7-kd1">
+                            <rect key="frame" x="16" y="55" width="311" height="441"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="qkU-v7-kd1" secondAttribute="trailing" constant="16" id="1uO-Mf-ySU"/>
+                        <constraint firstItem="qkU-v7-kd1" firstAttribute="height" secondItem="Wo1-IQ-qok" secondAttribute="height" priority="750" id="A61-pD-RQP"/>
+                        <constraint firstItem="qkU-v7-kd1" firstAttribute="top" secondItem="Wo1-IQ-qok" secondAttribute="top" constant="55" id="LyM-P5-TsC"/>
+                        <constraint firstItem="qkU-v7-kd1" firstAttribute="leading" secondItem="w7z-TU-seN" secondAttribute="leading" id="acK-p9-YAb"/>
+                        <constraint firstItem="w7z-TU-seN" firstAttribute="top" secondItem="Wo1-IQ-qok" secondAttribute="top" constant="17" id="b59-J3-gz4"/>
+                        <constraint firstAttribute="bottom" secondItem="qkU-v7-kd1" secondAttribute="bottom" constant="20" id="nzP-Hk-bYL"/>
+                        <constraint firstItem="w7z-TU-seN" firstAttribute="leading" secondItem="Wo1-IQ-qok" secondAttribute="leading" constant="16" id="pNI-UH-khh"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                            <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-hf-coo">
+                    <rect key="frame" x="16" y="556" width="343" height="37"/>
+                    <color key="backgroundColor" red="0.42745098040000001" green="0.44705882349999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="9Fj-oH-eVl"/>
+                    </constraints>
+                    <state key="normal" title="确定"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnMakeSureClicked:" destination="-1" eventType="touchUpInside" id="JWb-Xd-PkY"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Wo1-IQ-qok" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="76F-xr-Gxb"/>
+                <constraint firstAttribute="bottom" secondItem="Wui-hf-coo" secondAttribute="bottom" constant="10" id="GIC-IJ-RK3"/>
+                <constraint firstItem="Wui-hf-coo" firstAttribute="leading" secondItem="Wo1-IQ-qok" secondAttribute="leading" id="HpZ-Ra-FWe"/>
+                <constraint firstItem="Wo1-IQ-qok" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="M9a-Ne-MDo"/>
+                <constraint firstItem="Wui-hf-coo" firstAttribute="top" secondItem="Wo1-IQ-qok" secondAttribute="bottom" constant="20" id="NlL-rr-rSl"/>
+                <constraint firstItem="Wui-hf-coo" firstAttribute="trailing" secondItem="Wo1-IQ-qok" secondAttribute="trailing" id="Te5-oD-b8i"/>
+                <constraint firstAttribute="trailing" secondItem="Wo1-IQ-qok" secondAttribute="trailing" constant="16" id="Tpj-6h-OU7"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

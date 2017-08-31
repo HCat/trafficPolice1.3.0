@@ -60,7 +60,6 @@
 		CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9411F1F4BE3005CC5BD /* IdentifyModel.m */; };
 		CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9441F1F4D13005CC5BD /* PartyModel.m */; };
 		CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B9461F1F4D13005CC5BD /* PartyFactory.m */; };
-		CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42B94A1F1F594E005CC5BD /* PowerAPI.m */; };
 		CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464CE1F2189E20056A9EB /* FXBlurView.m */; };
 		CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D01F2189E20056A9EB /* SRAlertView.m */; };
 		CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D51F218A530056A9EB /* HSUpdateApp.m */; };
@@ -141,6 +140,11 @@
 		CE5C39261F2881BD0055C945 /* btn_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39201F2881BD0055C945 /* btn_unselected.png */; };
 		CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39211F2881BD0055C945 /* btn_unselected@2x.png */; };
 		CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */; };
+		CE5C3BB71F57B0F2007A7EDD /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BB51F57B0F2007A7EDD /* MessageCell.m */; };
+		CE5C3BB81F57B0F2007A7EDD /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C3BB61F57B0F2007A7EDD /* MessageCell.xib */; };
+		CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */; };
+		CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */; };
+		CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */; };
 		CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */; };
 		CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */; };
 		CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20361F32C0AD009D98A6 /* BottomView.m */; };
@@ -358,8 +362,6 @@
 		CE42B9441F1F4D13005CC5BD /* PartyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyModel.m; sourceTree = "<group>"; };
 		CE42B9451F1F4D13005CC5BD /* PartyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyFactory.h; sourceTree = "<group>"; };
 		CE42B9461F1F4D13005CC5BD /* PartyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyFactory.m; sourceTree = "<group>"; };
-		CE42B9491F1F594E005CC5BD /* PowerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerAPI.h; sourceTree = "<group>"; };
-		CE42B94A1F1F594E005CC5BD /* PowerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerAPI.m; sourceTree = "<group>"; };
 		CE4464CD1F2189E20056A9EB /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		CE4464CE1F2189E20056A9EB /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		CE4464CF1F2189E20056A9EB /* SRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertView.h; sourceTree = "<group>"; };
@@ -483,6 +485,14 @@
 		CE5C39201F2881BD0055C945 /* btn_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_unselected.png; sourceTree = "<group>"; };
 		CE5C39211F2881BD0055C945 /* btn_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@2x.png"; sourceTree = "<group>"; };
 		CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@3x.png"; sourceTree = "<group>"; };
+		CE5C3BB41F57B0F2007A7EDD /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		CE5C3BB51F57B0F2007A7EDD /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		CE5C3BB61F57B0F2007A7EDD /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		CE5C3BB91F580EDE007A7EDD /* PersistentBackgroundLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentBackgroundLabel.h; sourceTree = "<group>"; };
+		CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentBackgroundLabel.m; sourceTree = "<group>"; };
+		CE5C3BBC1F5812AC007A7EDD /* MessageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailVC.h; sourceTree = "<group>"; };
+		CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVC.m; sourceTree = "<group>"; };
+		CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailVC.xib; sourceTree = "<group>"; };
 		CE5E20321F32C0AD009D98A6 /* BottomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomPickerView.h; sourceTree = "<group>"; };
 		CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomPickerView.m; sourceTree = "<group>"; };
 		CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomPickerView.xib; sourceTree = "<group>"; };
@@ -1163,6 +1173,12 @@
 				CE57F7831F1DF65C00CA9FCF /* MessageHomeVC.h */,
 				CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */,
 				CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */,
+				CE5C3BB41F57B0F2007A7EDD /* MessageCell.h */,
+				CE5C3BB51F57B0F2007A7EDD /* MessageCell.m */,
+				CE5C3BB61F57B0F2007A7EDD /* MessageCell.xib */,
+				CE5C3BBC1F5812AC007A7EDD /* MessageDetailVC.h */,
+				CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */,
+				CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */,
 			);
 			path = MessageVC;
 			sourceTree = "<group>";
@@ -1316,6 +1332,8 @@
 				CE42B92A1F1F4AE4005CC5BD /* LRVideoView */,
 				CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */,
 				CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */,
+				CE5C3BB91F580EDE007A7EDD /* PersistentBackgroundLabel.h */,
+				CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1382,8 +1400,6 @@
 				CE42B9281F1F49A5005CC5BD /* VideoColectAPI.m */,
 				CE42B93D1F1F4BCF005CC5BD /* IdentifyAPI.h */,
 				CE42B93E1F1F4BCF005CC5BD /* IdentifyAPI.m */,
-				CE42B9491F1F594E005CC5BD /* PowerAPI.h */,
-				CE42B94A1F1F594E005CC5BD /* PowerAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1749,6 +1765,7 @@
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
 				CE5B92FC1F2F120E000008AE /* AccidentAddHeadView.xib in Resources */,
+				CE5C3BB81F57B0F2007A7EDD /* MessageCell.xib in Resources */,
 				CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */,
 				CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
@@ -1797,6 +1814,7 @@
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
+				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
@@ -1859,6 +1877,7 @@
 			files = (
 				CE424F411F3AE694005741CA /* AccidentMessageCell.m in Sources */,
 				CE3C0F6E1F30586A00D3B55D /* VideoColectVC.m in Sources */,
+				CE5C3BB71F57B0F2007A7EDD /* MessageCell.m in Sources */,
 				CEAA97191F1CF15900741A6F /* UINavigationBar+Awesome.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE5C39051F28606B0055C945 /* ZLPhotoManager.m in Sources */,
@@ -1900,6 +1919,7 @@
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
+				CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */,
 				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
 				CE5B92FB1F2F120E000008AE /* AccidentAddHeadView.m in Sources */,
 				CE5C39041F28606B0055C945 /* ZLPhotoBrowserCell.m in Sources */,
@@ -1921,7 +1941,6 @@
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
-				CE42B94B1F1F594E005CC5BD /* PowerAPI.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
@@ -1975,6 +1994,7 @@
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */,
 				CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */,
+				CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */,
 				CE8502291F559C30001DC495 /* AccidentCompleteVC.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
