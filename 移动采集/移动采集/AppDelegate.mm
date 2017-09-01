@@ -39,6 +39,7 @@ BMKMapManager* _mapManager;
     
     [self commonConfig];
     [self addThirthPart:launchOptions];
+    [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = DefaultBGColor;
@@ -110,6 +111,11 @@ BMKMapManager* _mapManager;
     if (!ret) {
         LxPrintf(@"manager start failed!");
     }
+    
+    //百度地图初始化
+    
+    [AMapServices sharedServices].apiKey = AMAP_APP_KEY;
+    
     
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式

@@ -244,7 +244,7 @@
     //获取当前天气
     WS(weakSelf);
     CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
-    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].baiduLongitude,[LocationHelper sharedDefault].baiduLatitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);

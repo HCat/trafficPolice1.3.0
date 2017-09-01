@@ -8,8 +8,9 @@
 
 #import "MessageDetailVC.h"
 #import "IdentifyAPI.h"
+#import <MAMapKit/MAMapKit.h>
 
-@interface MessageDetailVC ()
+@interface MessageDetailVC ()<MAMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *v_content;
 
@@ -19,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_makesure;
 
+@property (nonatomic, strong) MAMapView *mapView;
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_btnAndVContent;
@@ -39,6 +41,22 @@
         self.title = @"特殊车辆通知";
         _layout_btnAndVContent.priority = UILayoutPriorityDefaultLow;
         [self.view layoutIfNeeded];
+        
+        self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+        self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.mapView.delegate = self;
+        [self.view addSubview:self.mapView];
+        [self.view sendSubviewToBack:self.mapView];
+        
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_model.latitude doubleValue], [_model.longitude doubleValue]);
+        
+        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        annotation.coordinate = coordinate;
+        annotation.title    = self.title;
+        annotation.subtitle = _model.content;
+        
+        [self.mapView addAnnotation:annotation];
+        
     }else if ([_model.type isEqualToNumber:@2]){
         self.title = @"出警任务";
         _layout_btnBottom.priority = UILayoutPriorityDefaultLow;
@@ -85,9 +103,25 @@
         }];
     }
     
-    
-    
-    
+}
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *reuseIndetifier = @"annotationReuseIndetifier";
+        MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation
+                                                          reuseIdentifier:reuseIndetifier];
+        }
+        annotationView.image = [UIImage imageNamed:@"map_superCar"];
+        //设置中心点偏移，使得标注底部中间点成为经纬度对应点
+        //annotationView.centerOffset = CGPointMake(0, -18);
+        return annotationView;
+    }
+    return nil;
 }
 
 #pragma mark - dealloc

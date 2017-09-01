@@ -9,24 +9,128 @@
 #import "LocationHelper.h"
 #import "Reachability.h"
 
+#define DefaultLocationTimeout 10
+#define DefaultReGeocodeTimeout 5
+
+
 @implementation LocationHelper
 
 LRSingletonM(Default)
 
 - (void)startLocation{
     
-    //初始化BMKLocationService
-    self.locService = [[BMKLocationService alloc]init];
-    self.locService.delegate = self;
-    //启动LocationService
-    [self.locService startUserLocationService];
+    
+    if (_locationType == LocationTypeBaidu) {
+        
+        //初始化BMKLocationService
+        self.locService = [[BMKLocationService alloc]init];
+        self.locService.delegate = self;
+        //启动LocationService
+        [self.locService startUserLocationService];
+        
+    }else if (_locationType == LocationTypeGaode){
+        self.locationManager = [[AMapLocationManager alloc] init];
+        
+        [self.locationManager setDelegate:self];
+        
+        //设置期望定位精度
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        
+        //设置不允许系统暂停定位
+        [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+        
+        //设置允许在后台定位
+        [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+        
+        //设置定位超时时间
+        [self.locationManager setLocationTimeout:DefaultLocationTimeout];
+        
+        //设置逆地理超时时间
+        [self.locationManager setReGeocodeTimeout:DefaultReGeocodeTimeout];
+    
+        WS(weakSelf);
+        
+        [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+            SW(strongSelf, weakSelf);
+            
+            [self stopLocation];
+            
+            if (error != nil && error.code == AMapLocationErrorLocateFailed){
+                
+                //定位错误：此时location和regeocode没有返回值
+                NSLog(@"定位错误:{%ld - %@};", (long)error.code, error.localizedDescription);
+                
+                [weakSelf performSelector:@selector(startLocation) withObject:nil afterDelay:1.5];
+                
+                return;
+                
+            }
+            
+            strongSelf.latitude =  location.coordinate.latitude;
+            strongSelf.longitude = location.coordinate.longitude;
+            
+        
+            NSDictionary* testdic = BMKConvertBaiduCoorFrom(location.coordinate,BMK_COORDTYPE_COMMON);
+            CLLocationCoordinate2D baiduCoor = BMKCoorDictionaryDecode(testdic);
+            
+            strongSelf.baiduLatitude = baiduCoor.latitude;
+            strongSelf.baiduLongitude = baiduCoor.longitude;
+            
+            if (error != nil
+                     && (error.code == AMapLocationErrorReGeocodeFailed
+                         || error.code == AMapLocationErrorTimeOut
+                         || error.code == AMapLocationErrorCannotFindHost
+                         || error.code == AMapLocationErrorBadURL
+                         || error.code == AMapLocationErrorNotConnectedToInternet
+                         || error.code == AMapLocationErrorCannotConnectToHost)){
+                         
+                //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值
+                         
+                NSLog(@"逆地理错误:{%ld - %@};", (long)error.code, error.localizedDescription);
+                
+                [weakSelf performSelector:@selector(startLocation) withObject:nil afterDelay:1.5];
+            
+            }else if (error != nil && error.code == AMapLocationErrorRiskOfFakeLocation){
+                
+                //存在虚拟定位的风险：此时location和regeocode没有返回值，不进行annotation的添加
+                NSLog(@"存在虚拟定位的风险:{%ld - %@};", (long)error.code, error.localizedDescription);
+                return;
+                
+            }else{
+                
+            }
+            
+            //修改label显示内容
+            if (regeocode){
+                
+                strongSelf.city = regeocode.city;
+                strongSelf.streetName = regeocode.street;
+                strongSelf.address = regeocode.formattedAddress;
+                LxDBAnyVar(self.city);
+                LxDBAnyVar(self.streetName);
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil userInfo:nil];
+                
+            }
+
+        }];
+        
+    }
     
 }
 
 - (void)stopLocation{
-    [self.locService stopUserLocationService];
-    self.locService.delegate = nil;
-    self.locService = nil;
+    
+    if (_locationType == LocationTypeBaidu) {
+        [self.locService stopUserLocationService];
+        self.locService.delegate = nil;
+        self.locService = nil;
+
+    }else if (_locationType == LocationTypeGaode){
+        [self.locationManager stopUpdatingLocation];
+        [self.locationManager setDelegate:nil];
+        
+    }
+    
 }
 
 - (void)startReverseGeocode{
@@ -79,6 +183,8 @@ LRSingletonM(Default)
     LxPrintf(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     self.latitude = userLocation.location.coordinate.latitude;
     self.longitude = userLocation.location.coordinate.longitude;
+    self.baiduLatitude = userLocation.location.coordinate.latitude;
+    self.baiduLongitude = userLocation.location.coordinate.longitude;
     
     [self stopLocation];
     [self startReverseGeocode];

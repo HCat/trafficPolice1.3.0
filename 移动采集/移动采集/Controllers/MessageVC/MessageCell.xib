@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6L-jU-gpl">
-                        <rect key="frame" x="80" y="22" width="209" height="18"/>
+                        <rect key="frame" x="80" y="22" width="211" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -52,9 +53,9 @@
                     <constraint firstAttribute="trailing" secondItem="boo-pY-HVU" secondAttribute="trailing" constant="15" id="cMI-dn-1BV"/>
                     <constraint firstItem="ExF-8l-eeL" firstAttribute="top" secondItem="X6L-jU-gpl" secondAttribute="bottom" constant="5" id="cpw-t2-chl"/>
                     <constraint firstItem="JXr-QY-r4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qIB-Dr-vyB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="X6L-jU-gpl" secondAttribute="trailing" constant="21" id="rpC-ke-aau"/>
                     <constraint firstItem="JXr-QY-r4c" firstAttribute="top" secondItem="X6L-jU-gpl" secondAttribute="top" id="tzq-t1-nwN"/>
                     <constraint firstItem="X6L-jU-gpl" firstAttribute="leading" secondItem="JXr-QY-r4c" secondAttribute="trailing" constant="10" id="w7Y-Wh-wmM"/>
-                    <constraint firstItem="boo-pY-HVU" firstAttribute="leading" secondItem="X6L-jU-gpl" secondAttribute="trailing" constant="10" id="wft-CA-Wjf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -17,5 +17,8 @@ pod 'JPush'
 pod 'BaiduMapKit'
 pod 'WechatOpenSDK'
 pod 'Reachability'
+pod 'AMap2DMap'
+pod 'AMapSearch'
+pod 'AMapLocation'
 
 end

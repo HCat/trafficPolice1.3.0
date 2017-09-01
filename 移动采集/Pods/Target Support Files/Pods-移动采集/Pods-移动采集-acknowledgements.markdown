@@ -48,6 +48,26 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+## AMap2DMap
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
+## AMapFoundation
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
+## AMapLocation
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
+## AMapSearch
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
 ## BaiduMapKit
 
 The MIT License (MIT)
@@ -232,7 +252,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ## SDWebImage
 
-Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
+Copyright (c) 2009-2017 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

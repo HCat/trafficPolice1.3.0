@@ -14,6 +14,7 @@
 #define WEIXIN_APP_SECRET @"4e4444373f4e38f7fc5de55e01f5d5e4"
 
 #define BAIDUMAP_APP_KEY @"y2e0Bip7eIAuOmgCYoGfghqUnXgKdj6k"
+#define AMAP_APP_KEY @"7ec20b0b5204da4bb669407ea8cf991a"
 
 #define JPUSH_APP_KEY @"ebfb8a34e25f3235f1c40ed4"
 #define JPUSH_APP_CHANNEL @"App Store"
