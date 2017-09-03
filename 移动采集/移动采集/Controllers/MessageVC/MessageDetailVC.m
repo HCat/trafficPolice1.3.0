@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_makesure;
 
 @property (nonatomic, strong) MAMapView *mapView;
-
+@property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_btnAndVContent;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_btnBottom;
@@ -43,19 +43,31 @@
         [self.view layoutIfNeeded];
         
         self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-        self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.mapView.delegate = self;
-        [self.view addSubview:self.mapView];
-        [self.view sendSubviewToBack:self.mapView];
+        _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _mapView.showsCompass= NO;
+        _mapView.showsScale= NO;
+        _mapView.delegate = self;
+        [self.view addSubview:_mapView];
+        [self.view sendSubviewToBack:_mapView];
         
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_model.latitude doubleValue], [_model.longitude doubleValue]);
+        _mapView.showsUserLocation = YES;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        [_mapView setZoomLevel:16.1 animated:YES];
         
-        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
-        annotation.coordinate = coordinate;
-        annotation.title    = self.title;
-        annotation.subtitle = _model.content;
+        if (_model.latitude && _model.longitude) {
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_model.latitude doubleValue], [_model.longitude doubleValue]);
+            
+            MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+            annotation.coordinate = coordinate;
+            annotation.title    = self.title;
+            annotation.subtitle = _model.content;
+            
+            [_mapView addAnnotation:annotation];
+            
+            [_mapView setCenterCoordinate:coordinate animated:YES];
+            
+        }
         
-        [self.mapView addAnnotation:annotation];
         
     }else if ([_model.type isEqualToNumber:@2]){
         self.title = @"出警任务";
@@ -123,6 +135,45 @@
     }
     return nil;
 }
+
+- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    MAAnnotationView *view = views[0];
+    
+    // 放到该方法中用以保证userlocation的annotationView已经添加到地图上了。
+    if ([view.annotation isKindOfClass:[MAUserLocation class]])
+    {
+        MAUserLocationRepresentation *pre = [[MAUserLocationRepresentation alloc] init];
+        pre.fillColor = [UIColor colorWithRed:183/255.f green:230/255.f blue:251/255.f alpha:0.3];
+        pre.strokeColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        pre.image = [UIImage imageNamed:@"map_location"];
+        pre.lineWidth = 1;
+        //        pre.lineDashPattern = @[@6, @3];
+        
+        [self.mapView updateUserLocationRepresentation:pre];
+        
+        view.calloutOffset = CGPointMake(0, 0);
+        view.canShowCallout = NO;
+        self.userLocationAnnotationView = view;
+    }
+    
+    
+}
+
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    if (!updatingLocation && self.userLocationAnnotationView != nil)
+    {
+        [UIView animateWithDuration:0.1 animations:^{
+            
+            double degree = userLocation.heading.trueHeading;
+            self.userLocationAnnotationView.transform = CGAffineTransformMakeRotation(degree * M_PI / 180.f );
+            
+        }];
+    }
+    
+}
+
 
 #pragma mark - dealloc
 
