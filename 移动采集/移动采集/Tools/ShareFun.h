@@ -57,4 +57,7 @@
 //监测版本是否可以更新
 + (void)checkForVersionUpdates;
 
+//提示无权限操作
++ (void)showNoPermissionsTip;
+
 @end

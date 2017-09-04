@@ -195,5 +195,22 @@
     
 }
 
+#pragma mark - 获取事故结案权限
+
++ (BOOL)isPermissionForAccidentCase{
+    
+    NSString *match = @"accident-list-06";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].userPrivileges filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
 
 @end

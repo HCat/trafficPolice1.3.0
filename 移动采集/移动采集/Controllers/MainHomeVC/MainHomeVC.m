@@ -13,6 +13,7 @@
 #import "IllegalParkVC.h"
 #import "AccidentVC.h"
 #import "VideoColectVC.h"
+#import "SignInVC.h"
 
 
 @interface MainHomeVC ()
@@ -78,6 +79,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         NSMutableArray *t_arr = [NSMutableArray array];
         
         if ([UserModel getUserModel]) {
+            
+            [t_arr addObject:@{@"image":@"menu_signIn",@"title":@"签到"}];
             
             if ([UserModel isPermissionForIllegal]) {
                 [t_arr  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
@@ -171,7 +174,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     NSDictionary *t_dic = [_arr_items objectAtIndex:indexPath.row];
     NSString *t_title = [t_dic objectForKey:@"title"];
     
-    if ([t_title isEqualToString:@"违停录入"]) {
+    if ([t_title isEqualToString:@"签到"]) {
+        SignInVC *t_vc = [[SignInVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }else if ([t_title isEqualToString:@"违停录入"]) {
         
         IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
         t_vc.illegalType = IllegalTypePark;

@@ -99,6 +99,13 @@
 #define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json" //确认接收消息
 
 
+#pragma mark - 签到相关API
+
+#define URL_SIGN @"app/common/sign.json"                //签到
+#define URL_SIGNOUT @"app/common/signOut.json"          //签退
+#define URL_SIGN_LIST @"app/common/signList.json"       //签到列表
+
+
 
 
 #endif /* URLMacro_h */

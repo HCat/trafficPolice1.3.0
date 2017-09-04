@@ -14,14 +14,27 @@
 
 @interface UserModel : BaseModel
 
-@property (nonatomic,copy) NSString *token;         //token
-@property (nonatomic,copy) NSString * userId;       //用户Id
-@property (nonatomic,copy) NSString * phone;        //用户手机
-@property (nonatomic,copy) NSString * name;         //用户名
-@property (nonatomic,copy) NSString * nickName;     //昵称
-@property (nonatomic,copy) NSString * realName;     //真实姓名
-@property (nonatomic,assign) BOOL isInsurance;      //是否保险人员 0否 1是
+@property (nonatomic,copy) NSString *token;             //token
+@property (nonatomic,copy) NSString * userId;           //用户Id
+@property (nonatomic,copy) NSString * phone;            //用户手机
+@property (nonatomic,copy) NSString * name;             //用户名
+@property (nonatomic,copy) NSString * nickName;         //昵称
+@property (nonatomic,copy) NSString * realName;         //真实姓名
+@property (nonatomic,assign) BOOL isInsurance;          //是否保险人员 0否 1是
+@property (nonatomic,copy) NSString * departmentName;   //所属中队
+@property (nonatomic,copy) NSString * systemCode;       //所属系统
+@property (nonatomic,assign) BOOL workstate;            //签到状态 1签到0签退
+@property (nonatomic,copy) NSArray *userPrivileges;     //权限列表
+
 @property (nonatomic,copy) NSArray *menus;          //可操作的菜单列表
+
+
+/******** 权限列表： ********
+
+事故结案  accident-list-06
+
+*/
+
 
 /******** menus ********
  有权限的菜单编码值，参考下面的编码值，数组类型
@@ -61,5 +74,10 @@
 + (BOOL)isPermissionForIllegalList;         //违章权限列表
 + (BOOL)isPermissionForThroughList;         //闯禁令权限列表
 + (BOOL)isPermissionForVideoCollectList;    //视频录入权限列表
+
+//获取一些功能性权限
++ (BOOL)isPermissionForAccidentCase;        //事故结案权限
+
+
  
 @end

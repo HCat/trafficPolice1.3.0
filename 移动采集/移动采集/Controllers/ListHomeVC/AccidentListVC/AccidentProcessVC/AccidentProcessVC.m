@@ -11,6 +11,7 @@
 #import "CALayer+Additions.h"
 #import "ListHomeVC.h"
 #import "SRAlertView.h"
+#import "UserModel.h"
 
 @interface AccidentProcessVC ()
 
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet FSTextView *tf_memo;               //备注记录与领导记录textView
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_handle;              //完成按钮,用于显示是否可以点击
-@property (weak, nonatomic) IBOutlet UIButton *btn_end; //结案按钮，用于显示是否可以点击
+@property (weak, nonatomic) IBOutlet UIButton *btn_end;                 //结案按钮，用于显示是否可以点击
 
 
 
@@ -107,6 +108,10 @@
         [_btn_end setBackgroundColor:UIColorFromRGB(0xff4e4e)];
     }
     
+    if (![UserModel isPermissionForAccidentCase]) {
+        [_btn_end setBackgroundColor:DefaultBtnNuableColor];
+    }
+    
 }
 
 
@@ -142,6 +147,13 @@
 #pragma mark - 结案按钮事件
 
 - (IBAction)handleBtnEndClicked:(id)sender {
+    
+    if (![UserModel isPermissionForAccidentCase]) {
+        
+        [ShareFun showNoPermissionsTip];
+        
+        return;
+    }
     
     WS(weakSelf);
 

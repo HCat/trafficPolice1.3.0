@@ -369,6 +369,22 @@
 
 }
 
+#pragma mark - 提示无权限操作
+
++ (void)showNoPermissionsTip{
+
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:@"您无权限做此操作"
+                                                leftActionTitle:nil
+                                               rightActionTitle:@"确定"
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:^(AlertViewActionType actionType) {
+                                                       
+                                                   }];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
+
+}
 
 
 @end

@@ -235,6 +235,15 @@
 		CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */; };
 		CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */; };
 		CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */; };
+		CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E31F5CFB5C0010E68A /* SignInVC.m */; };
+		CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */; };
+		CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */; };
+		CED9B0EC1F5D058E0010E68A /* SignAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0EB1F5D058E0010E68A /* SignAPI.m */; };
+		CED9B0EF1F5D06870010E68A /* SignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0EE1F5D06870010E68A /* SignModel.m */; };
+		CED9B0F31F5D356E0010E68A /* SignListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0F11F5D356E0010E68A /* SignListCell.m */; };
+		CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F21F5D356E0010E68A /* SignListCell.xib */; };
+		CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0F61F5D358C0010E68A /* SignInCell.m */; };
+		CED9B0F91F5D358C0010E68A /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F71F5D358C0010E68A /* SignInCell.xib */; };
 		CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9CF1F1C6CBB00AC515C /* main.m */; };
 		CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */; };
 		CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */; };
@@ -657,6 +666,21 @@
 		CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlaceholderView.m; sourceTree = "<group>"; };
 		CED6F5CC1F2B240D000D1293 /* KSSDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSDImageManager.h; sourceTree = "<group>"; };
 		CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSDImageManager.m; sourceTree = "<group>"; };
+		CED9B0E21F5CFB5C0010E68A /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
+		CED9B0E31F5CFB5C0010E68A /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
+		CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInVC.xib; sourceTree = "<group>"; };
+		CED9B0E71F5CFFBC0010E68A /* BorderLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderLabel.h; sourceTree = "<group>"; };
+		CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderLabel.m; sourceTree = "<group>"; };
+		CED9B0EA1F5D058E0010E68A /* SignAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignAPI.h; sourceTree = "<group>"; };
+		CED9B0EB1F5D058E0010E68A /* SignAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignAPI.m; sourceTree = "<group>"; };
+		CED9B0ED1F5D06870010E68A /* SignModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignModel.h; sourceTree = "<group>"; };
+		CED9B0EE1F5D06870010E68A /* SignModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignModel.m; sourceTree = "<group>"; };
+		CED9B0F01F5D356E0010E68A /* SignListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignListCell.h; sourceTree = "<group>"; };
+		CED9B0F11F5D356E0010E68A /* SignListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignListCell.m; sourceTree = "<group>"; };
+		CED9B0F21F5D356E0010E68A /* SignListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignListCell.xib; sourceTree = "<group>"; };
+		CED9B0F51F5D358C0010E68A /* SignInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInCell.h; sourceTree = "<group>"; };
+		CED9B0F61F5D358C0010E68A /* SignInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInCell.m; sourceTree = "<group>"; };
+		CED9B0F71F5D358C0010E68A /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
 		CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动采集.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE5E9CF1F1C6CBB00AC515C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1143,6 +1167,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CED9B0E11F5CFB1D0010E68A /* SignInVC */,
 				CE5B92F71F2F1207000008AE /* AccidentVC */,
 				CEFEFCE51F2990B000C33CBD /* IllegalParkVC */,
 				CE3C0F601F30586A00D3B55D /* VideoColectVC */,
@@ -1334,6 +1359,8 @@
 				CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */,
 				CE5C3BB91F580EDE007A7EDD /* PersistentBackgroundLabel.h */,
 				CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */,
+				CED9B0E71F5CFFBC0010E68A /* BorderLabel.h */,
+				CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1377,6 +1404,8 @@
 				CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */,
 				CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */,
 				CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */,
+				CED9B0ED1F5D06870010E68A /* SignModel.h */,
+				CED9B0EE1F5D06870010E68A /* SignModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1400,6 +1429,8 @@
 				CE42B9281F1F49A5005CC5BD /* VideoColectAPI.m */,
 				CE42B93D1F1F4BCF005CC5BD /* IdentifyAPI.h */,
 				CE42B93E1F1F4BCF005CC5BD /* IdentifyAPI.m */,
+				CED9B0EA1F5D058E0010E68A /* SignAPI.h */,
+				CED9B0EB1F5D058E0010E68A /* SignAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1437,6 +1468,22 @@
 				CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */,
 			);
 			path = AKTabBarController;
+			sourceTree = "<group>";
+		};
+		CED9B0E11F5CFB1D0010E68A /* SignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				CED9B0E21F5CFB5C0010E68A /* SignInVC.h */,
+				CED9B0E31F5CFB5C0010E68A /* SignInVC.m */,
+				CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */,
+				CED9B0F01F5D356E0010E68A /* SignListCell.h */,
+				CED9B0F11F5D356E0010E68A /* SignListCell.m */,
+				CED9B0F21F5D356E0010E68A /* SignListCell.xib */,
+				CED9B0F51F5D358C0010E68A /* SignInCell.h */,
+				CED9B0F61F5D358C0010E68A /* SignInCell.m */,
+				CED9B0F71F5D358C0010E68A /* SignInCell.xib */,
+			);
+			path = SignInVC;
 			sourceTree = "<group>";
 		};
 		CEE5E9C21F1C6CBB00AC515C = {
@@ -1753,6 +1800,7 @@
 				CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */,
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
 				CE5C38EA1F28606B0055C945 /* btn_original_circle.png in Resources */,
+				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE5C38E81F28606B0055C945 /* btn_circle@2x.png in Resources */,
 				CE4E3C161F39BB860057148B /* IllegalMessageCell.xib in Resources */,
@@ -1770,6 +1818,7 @@
 				CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE1B96B51F42E95200A75397 /* AccidentProcessVC.xib in Resources */,
+				CED9B0F91F5D358C0010E68A /* SignInCell.xib in Resources */,
 				CE675F1E1F384350006FC15F /* IllegalCell.xib in Resources */,
 				CE424F421F3AE694005741CA /* AccidentMessageCell.xib in Resources */,
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
@@ -1801,6 +1850,7 @@
 				CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
 				CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */,
+				CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */,
 				CE5C38F91F28606B0055C945 /* ZLPhotoBrowser.bundle in Resources */,
 				CE5C38F31F28606B0055C945 /* defaultphoto.png in Resources */,
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
@@ -1885,6 +1935,7 @@
 				CEAA97361F1CF25B00741A6F /* AKTabBarView.m in Sources */,
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
+				CED9B0EC1F5D058E0010E68A /* SignAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
 				CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */,
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
@@ -1893,6 +1944,7 @@
 				CE8502171F558C02001DC495 /* VideoDetailVC.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
+				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
@@ -1912,6 +1964,7 @@
 				CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */,
 				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
 				CE5C390A1F28606B0055C945 /* ZLShowLivePhotoViewController.m in Sources */,
+				CED9B0F31F5D356E0010E68A /* SignListCell.m in Sources */,
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
 				CE5C390C1F28606B0055C945 /* ZLThumbnailViewController.m in Sources */,
 				CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */,
@@ -1919,6 +1972,7 @@
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
+				CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */,
 				CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */,
 				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
 				CE5B92FB1F2F120E000008AE /* AccidentAddHeadView.m in Sources */,
@@ -1940,6 +1994,7 @@
 				CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */,
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
+				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
@@ -1954,6 +2009,7 @@
 				CE5C38FD1F28606B0055C945 /* ZLBigImageCell.m in Sources */,
 				CE675F1D1F384350006FC15F /* IllegalCell.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
+				CED9B0EF1F5D06870010E68A /* SignModel.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE675F2B1F384637006FC15F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
