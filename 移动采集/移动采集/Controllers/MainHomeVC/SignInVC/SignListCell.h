@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SignModel.h"
+
 
 @interface SignListCell : UITableViewCell
+
+@property(nonatomic,strong) SignModel *signModel;
+
 
 @end

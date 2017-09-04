@@ -10,8 +10,8 @@
 
 @interface SignModel : NSObject
 
-@property (nonatomic,strong) NSNumber *workstate;   //状态：0签退1签到
-@property (nonatomic,copy) NSString *address;       //地址
-@property (nonatomic,copy) NSString *createTime;    //时间
+@property (nonatomic,strong) NSNumber *workstate;       //状态：0签退1签到
+@property (nonatomic,copy) NSString *address;           //地址
+@property (nonatomic,strong) NSNumber *createTime;      //时间
 
 @end

@@ -18,6 +18,9 @@
 #import "SignInCell.h"
 #import "SignListCell.h"
 
+#import "SRAlertView.h"
+#import "LocationHelper.h"
+
 
 @interface SignInVC ()
 
@@ -35,6 +38,8 @@
 
 @property (nonatomic,assign) BOOL isUptime;
 
+@property (nonatomic,strong) LRShowHUD *hud;
+
 @end
 
 @implementation SignInVC
@@ -46,6 +51,8 @@
     self.title= @"签到";
     
     self.isUptime = NO;
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
     
     _lb_currentTime.edgeInsets = UIEdgeInsetsMake(8, 8+2, 8, 8+2);//设置内边距
     [_lb_currentTime sizeToFit];//重新计算尺寸，会执行Label内重写的方法
@@ -155,9 +162,9 @@
     
     CGFloat height = 0;
     if (indexPath.row == 0) {
-        height = 245;
+        height = 250;
     }else{
-        height = 90;
+        height = 140;
     }
     return height;
 }
@@ -190,6 +197,8 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"SignListCellID"];
         }
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        cell.signModel = _arr_content[indexPath.row-1];
+        
         
         return cell;
     }
@@ -204,11 +213,90 @@
 #pragma mark - delegate 
 
 - (void)handleBtnSignInOrOut{
-    UserModel *userModel = [UserModel getUserModel];
-    userModel.workstate = !userModel.workstate;
-    [UserModel setUserModel:userModel];
     
-    [self loadSignListRequest];
+    WS(weakSelf);
+    
+    if ([UserModel getUserModel].workstate == YES ) {
+        SW(strongSelf, weakSelf);
+        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"是否下班签退"
+                                                    leftActionTitle:@"否"
+                                                   rightActionTitle:@"是"
+                                                     animationStyle:AlertViewAnimationNone
+                                                       selectAction:^(AlertViewActionType actionType) {
+                                                           if(actionType == AlertViewActionTypeRight) {
+                                                               
+                                                               strongSelf.hud = [LRShowHUD showWhiteLoadingWithText:@"签退中" inView:nil config:nil];
+                                                               [[LocationHelper sharedDefault] startLocation];
+                                                               
+                                                           }
+                                                       }];
+        alertView.blurCurrentBackgroundView = NO;
+        [alertView show];
+
+
+    }else{
+       self.hud = [LRShowHUD showWhiteLoadingWithText:@"签到中" inView:nil config:nil];
+       [[LocationHelper sharedDefault] startLocation];
+        
+    }
+    
+    
+   
+    
+   
+
+}
+
+#pragma mark - notication
+
+- (void)locationChange{
+
+    if ([UserModel getUserModel].workstate == YES ) {
+        SignOutManger *manger = [[SignOutManger alloc] init];
+        manger.address = [LocationHelper sharedDefault].address;
+        manger.longitude = @([LocationHelper sharedDefault].longitude);
+        manger.latitude  = @([LocationHelper sharedDefault].latitude);
+        
+        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [_hud hide];
+            [LRShowHUD showSuccess:@"签退成功" duration:1.5f];
+            
+            UserModel *userModel = [UserModel getUserModel];
+            userModel.workstate = !userModel.workstate;
+            [UserModel setUserModel:userModel];
+            [self loadSignListRequest];
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [_hud hide];
+            [LRShowHUD showSuccess:@"签退失败" duration:1.5f];
+
+        }];
+        
+        
+    }else{
+        
+        SignManger *manger = [[SignManger alloc] init];
+        manger.address = [LocationHelper sharedDefault].address;
+        manger.longitude = @([LocationHelper sharedDefault].longitude);
+        manger.latitude  = @([LocationHelper sharedDefault].latitude);
+        
+        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [_hud hide];
+            [LRShowHUD showSuccess:@"签到成功" duration:1.5f];
+            UserModel *userModel = [UserModel getUserModel];
+            userModel.workstate = !userModel.workstate;
+            [UserModel setUserModel:userModel];
+            [self loadSignListRequest];
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [_hud hide];
+            [LRShowHUD showSuccess:@"签到失败" duration:1.5f];
+        }];
+        
+        
+    }
+    
 
 }
 

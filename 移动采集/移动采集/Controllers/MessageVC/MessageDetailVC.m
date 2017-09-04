@@ -39,6 +39,13 @@
     
     if ([_model.type isEqualToNumber:@1]) {
         self.title = @"特殊车辆通知";
+        
+        _v_content.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
+        _v_content.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
+        _v_content.layer.shadowOpacity = 0.5;//不透明度
+        _v_content.layer.shadowRadius = 10.0;//半径
+        
+    
         _layout_btnAndVContent.priority = UILayoutPriorityDefaultLow;
         [self.view layoutIfNeeded];
         
