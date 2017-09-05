@@ -33,13 +33,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <color key="backgroundColor" red="0.20000000000000001" green="0.21568627450980393" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBg-sh-QkM">
-                            <rect key="frame" x="341" y="31" width="19" height="22"/>
-                            <state key="normal" image="nav_qrCode"/>
-                            <connections>
-                                <action selector="handleBtnQrCodeClicked:" destination="-1" eventType="touchUpInside" id="f3T-V8-Hj3"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJB-Ct-eIg">
                             <rect key="frame" x="15" y="33.5" width="12" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -50,7 +43,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zY-fB-cbJ">
-                            <rect key="frame" x="35" y="28.5" width="291" height="27"/>
+                            <rect key="frame" x="35" y="28.5" width="320" height="27"/>
                             <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="27" id="wyh-wm-L2L"/>
@@ -72,18 +65,16 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="MBg-sh-QkM" secondAttribute="trailing" constant="15" id="2SI-yP-ecO"/>
+                        <constraint firstItem="2zY-fB-cbJ" firstAttribute="centerY" secondItem="BQu-Ip-wci" secondAttribute="centerY" constant="10" id="0XE-Ve-dsO"/>
+                        <constraint firstAttribute="trailing" secondItem="2zY-fB-cbJ" secondAttribute="trailing" constant="20" id="0k5-aZ-wJ2"/>
                         <constraint firstItem="14f-EN-qFG" firstAttribute="leading" secondItem="BQu-Ip-wci" secondAttribute="leading" id="5f9-yx-i8A"/>
                         <constraint firstItem="Eil-H6-Rdf" firstAttribute="centerY" secondItem="2zY-fB-cbJ" secondAttribute="centerY" id="7cm-cF-p5b"/>
                         <constraint firstAttribute="bottom" secondItem="14f-EN-qFG" secondAttribute="bottom" id="8cc-pc-SM8"/>
                         <constraint firstItem="2zY-fB-cbJ" firstAttribute="leading" secondItem="mJB-Ct-eIg" secondAttribute="trailing" constant="8" id="Hgt-4S-We4"/>
-                        <constraint firstItem="MBg-sh-QkM" firstAttribute="centerY" secondItem="BQu-Ip-wci" secondAttribute="centerY" constant="10" id="UJM-EN-ePJ"/>
-                        <constraint firstItem="2zY-fB-cbJ" firstAttribute="centerY" secondItem="MBg-sh-QkM" secondAttribute="centerY" id="WrS-XS-GaW"/>
                         <constraint firstItem="14f-EN-qFG" firstAttribute="top" secondItem="BQu-Ip-wci" secondAttribute="top" id="XbO-Jc-bZk"/>
                         <constraint firstItem="2zY-fB-cbJ" firstAttribute="leading" secondItem="Eil-H6-Rdf" secondAttribute="leading" constant="-8" id="bdQ-vc-iLf"/>
-                        <constraint firstItem="MBg-sh-QkM" firstAttribute="leading" secondItem="2zY-fB-cbJ" secondAttribute="trailing" constant="15" id="gBd-0L-uLY"/>
-                        <constraint firstItem="mJB-Ct-eIg" firstAttribute="centerY" secondItem="MBg-sh-QkM" secondAttribute="centerY" id="jbz-py-h15"/>
                         <constraint firstItem="mJB-Ct-eIg" firstAttribute="leading" secondItem="BQu-Ip-wci" secondAttribute="leading" constant="15" id="lPr-Pm-pyK"/>
+                        <constraint firstItem="mJB-Ct-eIg" firstAttribute="centerY" secondItem="2zY-fB-cbJ" secondAttribute="centerY" id="pLq-wg-Jen"/>
                         <constraint firstAttribute="trailing" secondItem="14f-EN-qFG" secondAttribute="trailing" id="rOF-YA-Gde"/>
                         <constraint firstAttribute="height" constant="64" id="vew-n1-lhv"/>
                     </constraints>
@@ -138,7 +129,6 @@
     <resources>
         <image name="icon_search" width="13" height="13"/>
         <image name="nav_location" width="12" height="17"/>
-        <image name="nav_qrCode" width="19" height="19"/>
         <image name="pic_main_bg" width="375" height="255"/>
     </resources>
 </document>

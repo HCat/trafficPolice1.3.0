@@ -30,6 +30,8 @@
 		CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7A81F5E57120058FE8D /* SocketModel.m */; };
 		CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7AE1F5E58320058FE8D /* LocationModel.m */; };
 		CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */; };
+		CE41C7B81F5EAC800058FE8D /* ImportCarHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7B61F5EAC800058FE8D /* ImportCarHomeVC.m */; };
+		CE41C7B91F5EAC800058FE8D /* ImportCarHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE41C7B71F5EAC800058FE8D /* ImportCarHomeVC.xib */; };
 		CE424F341F3AE1F1005741CA /* AccidentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE424F321F3AE1F1005741CA /* AccidentDetailVC.m */; };
 		CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE424F331F3AE1F1005741CA /* AccidentDetailVC.xib */; };
 		CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE424F371F3AE694005741CA /* AccidentImageCell.m */; };
@@ -320,6 +322,9 @@
 		CE41C7B01F5E798A0058FE8D /* BackgroundLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLocationHelper.h; sourceTree = "<group>"; };
 		CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLocationHelper.m; sourceTree = "<group>"; };
 		CE41C7B31F5E80CF0058FE8D /* WebSocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketMacro.h; sourceTree = "<group>"; };
+		CE41C7B51F5EAC800058FE8D /* ImportCarHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportCarHomeVC.h; sourceTree = "<group>"; };
+		CE41C7B61F5EAC800058FE8D /* ImportCarHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportCarHomeVC.m; sourceTree = "<group>"; };
+		CE41C7B71F5EAC800058FE8D /* ImportCarHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportCarHomeVC.xib; sourceTree = "<group>"; };
 		CE424F311F3AE1F1005741CA /* AccidentDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentDetailVC.h; sourceTree = "<group>"; };
 		CE424F321F3AE1F1005741CA /* AccidentDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentDetailVC.m; sourceTree = "<group>"; };
 		CE424F331F3AE1F1005741CA /* AccidentDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentDetailVC.xib; sourceTree = "<group>"; };
@@ -847,6 +852,16 @@
 			path = VideoColectVC;
 			sourceTree = "<group>";
 		};
+		CE41C7B41F5EAA100058FE8D /* importCarVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE41C7B51F5EAC800058FE8D /* ImportCarHomeVC.h */,
+				CE41C7B61F5EAC800058FE8D /* ImportCarHomeVC.m */,
+				CE41C7B71F5EAC800058FE8D /* ImportCarHomeVC.xib */,
+			);
+			path = importCarVC;
+			sourceTree = "<group>";
+		};
 		CE424F301F3AE0AD005741CA /* AccidentDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1195,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE41C7B41F5EAA100058FE8D /* importCarVC */,
 				CED9B0E11F5CFB1D0010E68A /* SignInVC */,
 				CE5B92F71F2F1207000008AE /* AccidentVC */,
 				CEFEFCE51F2990B000C33CBD /* IllegalParkVC */,
@@ -1845,6 +1861,7 @@
 				CE424F421F3AE694005741CA /* AccidentMessageCell.xib in Resources */,
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
 				CE5C38F81F28606B0055C945 /* ZLPhotoActionSheet.xib in Resources */,
+				CE41C7B91F5EAC800058FE8D /* ImportCarHomeVC.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE4E3C0B1F39B9F20057148B /* IllegalFootCell.xib in Resources */,
 				CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */,
@@ -2122,6 +2139,7 @@
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
 				CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */,
+				CE41C7B81F5EAC800058FE8D /* ImportCarHomeVC.m in Sources */,
 				CE5C39031F28606B0055C945 /* ZLPhotoBrowser.m in Sources */,
 				CE424F341F3AE1F1005741CA /* AccidentDetailVC.m in Sources */,
 				CEFEFD1E1F29ED8100C33CBD /* KSPhotoItem.m in Sources */,

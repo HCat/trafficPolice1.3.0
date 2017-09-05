@@ -37,7 +37,7 @@
 @property (nonatomic,strong) NSDate *curretnTime;
 
 @property (nonatomic,assign) BOOL isUptime;
-
+@property (nonatomic,assign) BOOL isFirstLoad;  //是否是第一次加载数据
 @property (nonatomic,strong) LRShowHUD *hud;
 
 @end
@@ -51,6 +51,7 @@
     self.title= @"签到";
     
     self.isUptime = NO;
+    self.isFirstLoad = YES;
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
     
@@ -105,9 +106,14 @@
     }
     
     SignListManger *manger = [[SignListManger alloc] init];
+    if (_isFirstLoad) {
+        [manger configLoadingTitle:@"加载"];
+    }
+    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);
+        strongSelf.isFirstLoad = NO;
         
         if (manger.responseModel.code == CODE_SUCCESS) {
         
