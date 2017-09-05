@@ -8,6 +8,9 @@
 
 #import "LocationHelper.h"
 #import "Reachability.h"
+#import "BackgroundLocationHelper.h"
+#import "UserModel.h"
+#import "WebSocketHelper.h"
 
 #define DefaultLocationTimeout 10
 #define DefaultReGeocodeTimeout 5
@@ -18,7 +21,10 @@
 LRSingletonM(Default)
 
 - (void)startLocation{
-    
+    //****************** 当单次定位的时候，如果签到需要暂停后台定位 *************//
+//    if ([UserModel getUserModel].workstate ) {
+//        [[WebSocketHelper sharedDefault] closeServer];
+//    }
     
     if (_locationType == LocationTypeBaidu) {
         
@@ -37,10 +43,10 @@ LRSingletonM(Default)
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
         
         //设置不允许系统暂停定位
-        [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+        [self.locationManager setPausesLocationUpdatesAutomatically:YES];
         
         //设置允许在后台定位
-        [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+        [self.locationManager setAllowsBackgroundLocationUpdates:NO];
         
         //设置定位超时时间
         [self.locationManager setLocationTimeout:DefaultLocationTimeout];
@@ -119,6 +125,11 @@ LRSingletonM(Default)
 }
 
 - (void)stopLocation{
+    
+    //****************** 当单次定位的结束时候，如果签到需要重启后台定位 *************//
+//    if ([UserModel getUserModel].workstate) {
+//        [[WebSocketHelper sharedDefault] startServer];;
+//    }
     
     if (_locationType == LocationTypeBaidu) {
         [self.locService stopUserLocationService];

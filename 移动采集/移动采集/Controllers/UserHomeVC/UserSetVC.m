@@ -210,7 +210,7 @@
 
 - (IBAction)handleBtnQuitClicked:(id)sender {
     
-    [ShareFun LoginOut];
+    [ShareFun loginOut];
     
 }
 

@@ -11,11 +11,19 @@
 
 #pragma mark - 基地址
 
-#define DEBUG_URL @"http://test20.degal.cn/police-wx"
-#define RELEASE_URL @"http://jinjiang.degal.cn/police-wx_jj"
+#define ISONLINE NO
 
-#define Base_URL DEBUG_URL
-#define JPUSH_PRODUCTION NO
+#define DEBUG_URL @"http://h16552j072.51mypc.cn/police-admin"
+#define RELEASE_URL @"http://jinjiang.degal.cn/police-wx_jj"
+#define WEBSOCKET_DEBUG_URL @"ws://h16552j072.51mypc.cn/police-admin/websocket"
+#define WEBSOCKET_RELEASE_URL @"ws://jinjiang.degal.cn/police-wx_jj/websocket"
+
+#define Base_URL ISONLINE ? RELEASE_URL : DEBUG_URL
+#define WEBSOCKETURL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
+
+#define JPUSH_PRODUCTION ISONLINE ? YES : NO
+
+
 
 //上传用的key
 #define key_file @"file" 

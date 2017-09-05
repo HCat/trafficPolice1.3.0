@@ -27,6 +27,9 @@
 		CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */; };
 		CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F741F3070D800D3B55D /* MessageUI.framework */; };
 		CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F761F3070E400D3B55D /* Security.framework */; };
+		CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7A81F5E57120058FE8D /* SocketModel.m */; };
+		CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7AE1F5E58320058FE8D /* LocationModel.m */; };
+		CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */; };
 		CE424F341F3AE1F1005741CA /* AccidentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE424F321F3AE1F1005741CA /* AccidentDetailVC.m */; };
 		CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE424F331F3AE1F1005741CA /* AccidentDetailVC.xib */; };
 		CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE424F371F3AE694005741CA /* AccidentImageCell.m */; };
@@ -186,6 +189,7 @@
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
 		CE756AC91F4EBE3A00D08D40 /* FastAccidentProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */; };
 		CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */; };
+		CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE8502151F558C02001DC495 /* VideoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502101F558C02001DC495 /* VideoListVC.m */; };
 		CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502111F558C02001DC495 /* VideoListVC.xib */; };
@@ -309,6 +313,13 @@
 		CE3C0F741F3070D800D3B55D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CE3C0F761F3070E400D3B55D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE3C0F781F30841900D3B55D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		CE41C7A71F5E57120058FE8D /* SocketModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketModel.h; sourceTree = "<group>"; };
+		CE41C7A81F5E57120058FE8D /* SocketModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketModel.m; sourceTree = "<group>"; };
+		CE41C7AD1F5E58320058FE8D /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
+		CE41C7AE1F5E58320058FE8D /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		CE41C7B01F5E798A0058FE8D /* BackgroundLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLocationHelper.h; sourceTree = "<group>"; };
+		CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLocationHelper.m; sourceTree = "<group>"; };
+		CE41C7B31F5E80CF0058FE8D /* WebSocketMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketMacro.h; sourceTree = "<group>"; };
 		CE424F311F3AE1F1005741CA /* AccidentDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentDetailVC.h; sourceTree = "<group>"; };
 		CE424F321F3AE1F1005741CA /* AccidentDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentDetailVC.m; sourceTree = "<group>"; };
 		CE424F331F3AE1F1005741CA /* AccidentDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentDetailVC.xib; sourceTree = "<group>"; };
@@ -574,6 +585,8 @@
 		CE756AC61F4EBE3A00D08D40 /* FastAccidentProcessVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentProcessVC.h; sourceTree = "<group>"; };
 		CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastAccidentProcessVC.m; sourceTree = "<group>"; };
 		CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastAccidentProcessVC.xib; sourceTree = "<group>"; };
+		CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketHelper.h; sourceTree = "<group>"; };
+		CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketHelper.m; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
 		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
 		CE85020F1F558C02001DC495 /* VideoListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListVC.h; sourceTree = "<group>"; };
@@ -1406,6 +1419,10 @@
 				CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */,
 				CED9B0ED1F5D06870010E68A /* SignModel.h */,
 				CED9B0EE1F5D06870010E68A /* SignModel.m */,
+				CE41C7A71F5E57120058FE8D /* SocketModel.h */,
+				CE41C7A81F5E57120058FE8D /* SocketModel.m */,
+				CE41C7AD1F5E58320058FE8D /* LocationModel.h */,
+				CE41C7AE1F5E58320058FE8D /* LocationModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1581,6 +1598,7 @@
 				CEAA96FB1F1CEB5900741A6F /* URLErrorMacro.h */,
 				CEE5E9FA1F1C8AED00AC515C /* NoticeMacro.h */,
 				CEAA96ED1F1CE7DB00741A6F /* UserDefaultMacro.h */,
+				CE41C7B31F5E80CF0058FE8D /* WebSocketMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -1602,6 +1620,10 @@
 				CE5E20401F32C2E1009D98A6 /* CountAccidentHelper.m */,
 				CE57F7881F1E017300CA9FCF /* NetWorkHelper.h */,
 				CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */,
+				CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */,
+				CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */,
+				CE41C7B01F5E798A0058FE8D /* BackgroundLocationHelper.h */,
+				CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1981,6 +2003,7 @@
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
+				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
 				CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
@@ -1995,6 +2018,7 @@
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
 				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
+				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
@@ -2010,6 +2034,7 @@
 				CE675F1D1F384350006FC15F /* IllegalCell.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
 				CED9B0EF1F5D06870010E68A /* SignModel.m in Sources */,
+				CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE675F2B1F384637006FC15F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
@@ -2060,6 +2085,7 @@
 				CEFEFD0F1F29C62900C33CBD /* LLSimpleCamera.m in Sources */,
 				CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
+				CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */,
 				CE5C39071F28606B0055C945 /* ZLProgressHUD.m in Sources */,
 				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
 				CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */,

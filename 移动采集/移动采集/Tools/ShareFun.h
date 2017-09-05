@@ -52,12 +52,23 @@
 + (float)folderSizeAtPath:(NSString *)folderPath;
 
 //注销需要执行的操作
-+ (void)LoginOut;
++ (void)loginOut;
 
 //监测版本是否可以更新
 + (void)checkForVersionUpdates;
 
 //提示无权限操作
 + (void)showNoPermissionsTip;
+
+//开启webSocket
++ (void)openWebSocket;
+
+//关闭webSocket
++ (void)closeWebSocket;
+
+// 定位地址存储在plist上面
++ (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue;
+
+
 
 @end

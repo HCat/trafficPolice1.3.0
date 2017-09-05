@@ -17,6 +17,9 @@
 #import "LoginHomeVC.h"
 #import "LRBaseRequest.h"
 
+#import "UserModel.h"
+#import "WebSocketHelper.h"
+
 @implementation ShareFun
 
 #pragma mark - 手机号验证
@@ -327,13 +330,14 @@
 
 #pragma mark - 注销需要执行的操作
 
-+ (void)LoginOut{
++ (void)loginOut{
     
     [LRBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
     [UserModel setUserModel:nil];
     
+    [ShareFun closeWebSocket];
     ApplicationDelegate.vc_tabBar = nil;
     LoginHomeVC *t_vc = [LoginHomeVC new];
     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
@@ -384,6 +388,41 @@
     alertView.blurCurrentBackgroundView = NO;
     [alertView show];
 
+}
+
+#pragma mark - 开启webSocket
++ (void)openWebSocket{
+
+    if ([UserModel getUserModel].workstate == YES) {
+        
+        [[WebSocketHelper sharedDefault] startServer];
+        
+    }
+
+}
+
+#pragma mark - 关闭webSocket
++ (void)closeWebSocket{
+    
+    [[WebSocketHelper sharedDefault] closeServer];
+}
+
+#pragma mark - 定位地址存储在plist上面
++ (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectroy = [paths objectAtIndex:0];
+    NSString *filename =@"location.plist";
+    NSString *filePath = [documentsDirectroy stringByAppendingPathComponent:filename];
+    //NSLog(@"filePath:%@",filePath);
+    NSFileManager *file =  [NSFileManager defaultManager];
+    NSMutableDictionary *dic;
+    if ([file fileExistsAtPath:filePath]) {
+        dic = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    }else{
+        dic = [[NSMutableDictionary alloc] init];
+    }
+    [dic setValue:logValue  forKey:logKey];
+    [dic writeToFile:filePath atomically:YES];
 }
 
 

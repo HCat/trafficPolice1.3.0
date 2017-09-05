@@ -46,6 +46,8 @@ BMKMapManager* _mapManager;
     
     if ([ShareValue sharedDefault].token) {
         
+        [ShareFun openWebSocket];
+        
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];

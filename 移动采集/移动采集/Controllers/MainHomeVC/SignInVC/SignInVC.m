@@ -261,10 +261,10 @@
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             [_hud hide];
             [LRShowHUD showSuccess:@"签退成功" duration:1.5f];
-            
             UserModel *userModel = [UserModel getUserModel];
             userModel.workstate = !userModel.workstate;
             [UserModel setUserModel:userModel];
+            [ShareFun closeWebSocket];
             [self loadSignListRequest];
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -284,9 +284,11 @@
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             [_hud hide];
             [LRShowHUD showSuccess:@"签到成功" duration:1.5f];
+            
             UserModel *userModel = [UserModel getUserModel];
             userModel.workstate = !userModel.workstate;
             [UserModel setUserModel:userModel];
+            [ShareFun openWebSocket];
             [self loadSignListRequest];
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

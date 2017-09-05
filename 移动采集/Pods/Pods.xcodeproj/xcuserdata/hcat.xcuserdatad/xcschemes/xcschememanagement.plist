@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SocketRocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TOCropViewController-TOCropViewControllerBundle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +82,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0045AA8D7C4FF15F33BFA9DA45B0AE84</key>
+		<key>03CEC8D54D6CBF07833AC0E345B63F4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>10577E77E84E9C8207405E4A3774B8C4</key>
+		<key>1C862A34AB2A9D223907B9EF3C51D74C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2881FAE07A24756ECCA514C5961D5F55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41197692E4C6D70BF3B44DEE798C1DA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F966645FCC769A1306BBFD2E87BD45A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,37 +132,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E4656E81842CE17BFBB46BE14F4D95E</key>
+		<key>A86A5E0C846EE19549B1FF05A5AE4AEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8C7CFA95FE4E11E7F847EC1B26C17C3</key>
+		<key>CCBDC1516C70B0DAFAEA09D9B49669D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF7C2E6989144CE1EC2147770242F4FF</key>
+		<key>E2CF862BF8C8A58BF21E72DC89E957A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D46A4B005DA499375BC34E16BE0E245C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DABBD9749473084F65319B5C75E4AE26</key>
+		<key>EFBD6EEEAA719592DC3F2ABF835DA31A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F7A4B860C5052FBC7A438920F43019B3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA2DCBDAFD5ABFA21BCD95EFE0CE88B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

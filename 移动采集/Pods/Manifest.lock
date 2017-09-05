@@ -36,6 +36,7 @@ PODS:
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
+  - SocketRocket (0.5.1)
   - TOCropViewController (2.0.12)
   - WechatOpenSDK (1.8.0)
   - YTKNetwork (2.0.3):
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - PureLayout
   - Reachability
   - SDWebImage
+  - SocketRocket
   - TOCropViewController
   - WechatOpenSDK
   - YTKNetwork
@@ -82,11 +84,12 @@ SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
   WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
   YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 6ce3968568e3c954b44be6cfe29c8bb4667a178c
+PODFILE CHECKSUM: 4f9b71c06a6f79ba4c7854700cee99ccc39170fd
 
 COCOAPODS: 1.2.1

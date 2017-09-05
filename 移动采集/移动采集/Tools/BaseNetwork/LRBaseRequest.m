@@ -119,7 +119,7 @@
         
     }else if (self.responseModel.code == CODE_NOLOGIN){
         
-        [ShareFun LoginOut];
+        [ShareFun loginOut];
         [LRShowHUD showError:@"登录超时" duration:1.2f];
     
     }
@@ -143,7 +143,7 @@
     
     if (self.responseStatusCode == CODE_TOKENTIMEOUT){
         
-        [ShareFun LoginOut];
+        [ShareFun loginOut];
         
         [LRShowHUD showError:@"登录超时" duration:1.2f];
         
