@@ -409,7 +409,7 @@
 
 #pragma mark - 定位地址存储在plist上面
 + (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectroy = [paths objectAtIndex:0];
     NSString *filename =@"location.plist";
     NSString *filePath = [documentsDirectroy stringByAppendingPathComponent:filename];

@@ -39,6 +39,8 @@ LRSingletonM(Default)
     //设置允许在后台定位
     [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
+    self.locationManager.distanceFilter = 50.f;
+    
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
     
