@@ -9,7 +9,10 @@
 #ifndef WebSocketMacro_h
 #define WebSocketMacro_h
 
-#define WEBSOCKTETYPE_POLICELOCATION 30001      //上传警员位置消息类型
+
+#define WEBSOCKTETYPE_POLICELOGININ   10001      //用户上线
+#define WEBSOCKTETYPE_POLICELOGINOUT  10002      //用户下线
+#define WEBSOCKTETYPE_POLICELOCATION  30001      //上传警员位置消息类型
 
 
 #endif /* WebSocketMacro_h */

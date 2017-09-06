@@ -94,8 +94,7 @@ LRSingletonM(Default)
         _webSocket = nil;
         return;
     }
-    
-    
+
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload{

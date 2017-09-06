@@ -19,6 +19,7 @@
 
 #import "UserModel.h"
 #import "WebSocketHelper.h"
+#import "SocketModel.h"
 
 @implementation ShareFun
 
@@ -397,6 +398,15 @@
         
         [[WebSocketHelper sharedDefault] startServer];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            SocketModel *t_socketModel  = [[SocketModel alloc] init];
+            t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
+            t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOGININ);
+            NSString *json_string = t_socketModel.modelToJSONString;
+            [[WebSocketHelper sharedDefault].webSocket send:json_string];
+            
+        });
+        
     }
 
 }
@@ -404,7 +414,17 @@
 #pragma mark - 关闭webSocket
 + (void)closeWebSocket{
     
-    [[WebSocketHelper sharedDefault] closeServer];
+    SocketModel *t_socketModel  = [[SocketModel alloc] init];
+    t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
+    t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOGINOUT);
+    NSString *json_string = t_socketModel.modelToJSONString;
+    [[WebSocketHelper sharedDefault].webSocket send:json_string];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[WebSocketHelper sharedDefault] closeServer];
+    });
+    
+    
 }
 
 #pragma mark - 定位地址存储在plist上面

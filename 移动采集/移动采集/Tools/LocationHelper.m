@@ -21,11 +21,7 @@
 LRSingletonM(Default)
 
 - (void)startLocation{
-    //****************** 当单次定位的时候，如果签到需要暂停后台定位 *************//
-//    if ([UserModel getUserModel].workstate ) {
-//        [[WebSocketHelper sharedDefault] closeServer];
-//    }
-    
+
     if (_locationType == LocationTypeBaidu) {
         
         //初始化BMKLocationService
@@ -125,11 +121,6 @@ LRSingletonM(Default)
 }
 
 - (void)stopLocation{
-    
-    //****************** 当单次定位的结束时候，如果签到需要重启后台定位 *************//
-//    if ([UserModel getUserModel].workstate) {
-//        [[WebSocketHelper sharedDefault] startServer];;
-//    }
     
     if (_locationType == LocationTypeBaidu) {
         [self.locService stopUserLocationService];

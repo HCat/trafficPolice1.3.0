@@ -114,6 +114,13 @@
 #define URL_SIGN_LIST @"app/common/signList.json"       //签到列表
 
 
+#pragma mark - 重点车辆相关API
+
+#define URL_VEHICLE_GETDETAILINFOBYQRCODE @"app/vehicle/getDetailInfo.json"  //二维码编号获取重点车辆
+#define URL_VEHICLE_GETDETAILINFOBYPLATENO @"app/vehicle/getDetailInfoByPlateNo.json"  //车牌号获取重点车辆
+#define URL_VEHICLE_GETVEHICLERANGELOCATION @"app/vehicle/getVehicleRangeLocation.json"  //获取一定范围内车辆信息
+
+
 
 
 #endif /* URLMacro_h */
