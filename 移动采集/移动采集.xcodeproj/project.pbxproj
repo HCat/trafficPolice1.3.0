@@ -92,6 +92,10 @@
 		CE4E3C141F39BB860057148B /* IllegalImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4E3C0F1F39BB860057148B /* IllegalImageCell.xib */; };
 		CE4E3C151F39BB860057148B /* IllegalMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3C111F39BB860057148B /* IllegalMessageCell.m */; };
 		CE4E3C161F39BB860057148B /* IllegalMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4E3C121F39BB860057148B /* IllegalMessageCell.xib */; };
+		CE4F3C121F5FE09400C6EF64 /* VehicleCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F3C111F5FE09400C6EF64 /* VehicleCarView.m */; };
+		CE4F3C151F5FE8C900C6EF64 /* VehicleCarAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F3C141F5FE8C900C6EF64 /* VehicleCarAnnotation.m */; };
+		CE4F3C191F5FFC0000C6EF64 /* QRCodeScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F3C171F5FFC0000C6EF64 /* QRCodeScanVC.m */; };
+		CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4F3C181F5FFC0000C6EF64 /* QRCodeScanVC.xib */; };
 		CE508F391F3D51C60066A9B7 /* AccidentRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */; };
 		CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */; };
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
@@ -439,6 +443,13 @@
 		CE4E3C101F39BB860057148B /* IllegalMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalMessageCell.h; sourceTree = "<group>"; };
 		CE4E3C111F39BB860057148B /* IllegalMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalMessageCell.m; sourceTree = "<group>"; };
 		CE4E3C121F39BB860057148B /* IllegalMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegalMessageCell.xib; sourceTree = "<group>"; };
+		CE4F3C101F5FE09400C6EF64 /* VehicleCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleCarView.h; sourceTree = "<group>"; };
+		CE4F3C111F5FE09400C6EF64 /* VehicleCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleCarView.m; sourceTree = "<group>"; };
+		CE4F3C131F5FE8C900C6EF64 /* VehicleCarAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleCarAnnotation.h; sourceTree = "<group>"; };
+		CE4F3C141F5FE8C900C6EF64 /* VehicleCarAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleCarAnnotation.m; sourceTree = "<group>"; };
+		CE4F3C161F5FFC0000C6EF64 /* QRCodeScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanVC.h; sourceTree = "<group>"; };
+		CE4F3C171F5FFC0000C6EF64 /* QRCodeScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanVC.m; sourceTree = "<group>"; };
+		CE4F3C181F5FFC0000C6EF64 /* QRCodeScanVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScanVC.xib; sourceTree = "<group>"; };
 		CE508F361F3D51C60066A9B7 /* AccidentRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccidentRemarkCell.h; path = ../AccidentRemarkCell.h; sourceTree = "<group>"; };
 		CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccidentRemarkCell.m; path = ../AccidentRemarkCell.m; sourceTree = "<group>"; };
 		CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccidentRemarkCell.xib; path = ../AccidentRemarkCell.xib; sourceTree = "<group>"; };
@@ -876,6 +887,13 @@
 				CE41C7B51F5EAC800058FE8D /* ImportCarHomeVC.h */,
 				CE41C7B61F5EAC800058FE8D /* ImportCarHomeVC.m */,
 				CE41C7B71F5EAC800058FE8D /* ImportCarHomeVC.xib */,
+				CE4F3C101F5FE09400C6EF64 /* VehicleCarView.h */,
+				CE4F3C111F5FE09400C6EF64 /* VehicleCarView.m */,
+				CE4F3C131F5FE8C900C6EF64 /* VehicleCarAnnotation.h */,
+				CE4F3C141F5FE8C900C6EF64 /* VehicleCarAnnotation.m */,
+				CE4F3C161F5FFC0000C6EF64 /* QRCodeScanVC.h */,
+				CE4F3C171F5FFC0000C6EF64 /* QRCodeScanVC.m */,
+				CE4F3C181F5FFC0000C6EF64 /* QRCodeScanVC.xib */,
 			);
 			path = importCarVC;
 			sourceTree = "<group>";
@@ -1931,6 +1949,7 @@
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
+				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
 				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
@@ -2079,6 +2098,7 @@
 				CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */,
 				CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */,
 				CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */,
+				CE4F3C191F5FFC0000C6EF64 /* QRCodeScanVC.m in Sources */,
 				CE5C38FD1F28606B0055C945 /* ZLBigImageCell.m in Sources */,
 				CE675F1D1F384350006FC15F /* IllegalCell.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
@@ -2110,6 +2130,7 @@
 				CE0731C41F5EC7E400B3831B /* VehicleAPI.m in Sources */,
 				CE1B96B41F42E95200A75397 /* AccidentProcessVC.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
+				CE4F3C121F5FE09400C6EF64 /* VehicleCarView.m in Sources */,
 				CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CE0731CD1F5ECF0200B3831B /* VehicleRemarkModel.m in Sources */,
@@ -2175,6 +2196,7 @@
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
 				CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */,
+				CE4F3C151F5FE8C900C6EF64 /* VehicleCarAnnotation.m in Sources */,
 				CE41C7B81F5EAC800058FE8D /* ImportCarHomeVC.m in Sources */,
 				CE5C39031F28606B0055C945 /* ZLPhotoBrowser.m in Sources */,
 				CE424F341F3AE1F1005741CA /* AccidentDetailVC.m in Sources */,

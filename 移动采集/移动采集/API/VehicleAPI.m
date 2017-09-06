@@ -95,11 +95,12 @@
 }
 
 //返回参数
-- (NSArray *)list{
+- (NSArray *)vehicleGpsList{
     
     if (self.responseModel) {
         
-        return [NSArray modelArrayWithClass:[VehicleGPSModel class] json:self.responseJSONObject[@"data"]];
+        _vehicleGpsList = [NSArray modelArrayWithClass:[VehicleGPSModel class] json:self.responseJSONObject[@"data"][@"vehicleGpsList"]];
+        return _vehicleGpsList;
     }
     
     return nil;

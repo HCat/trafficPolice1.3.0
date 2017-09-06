@@ -65,7 +65,7 @@
 @property (nonatomic, strong) NSNumber * lng;       //经度
 @property (nonatomic, strong) NSNumber * lat;       //纬度
 @property (nonatomic, strong) NSNumber * range;     //范围
-@property (nonatomic, strong) NSNumber * carType;   //车辆类型
+@property (nonatomic, strong) NSNumber * carType;   //车辆类型 1警务车 2土方车
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) NSArray <VehicleGPSModel *> * vehicleGpsList;

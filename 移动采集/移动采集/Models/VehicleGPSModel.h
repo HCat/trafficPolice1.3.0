@@ -13,7 +13,7 @@
 @property (nonatomic,strong) NSNumber * longitude;      //经度
 @property (nonatomic,strong) NSNumber * latitude;       //纬度
 @property (nonatomic,strong) NSNumber * vehicleId;      //车辆Id
-@property (nonatomic,strong) NSNumber * plateNo;        //车牌号
+@property (nonatomic,copy)   NSString * plateNo;        //车牌号
 
 
 @end

@@ -124,6 +124,8 @@
     
 }
 
+#pragma mark - MAMapViewDelegate
+
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
