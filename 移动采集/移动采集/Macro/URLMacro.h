@@ -13,13 +13,16 @@
 
 #define ISONLINE NO
 
+#define DACHAODEBUG_URL @"http://192.168.10.88/police-admin"
+#define WEBSOCKET_DACHAODEBUG_URL @"ws://192.168.10.88/police-admin/websocket"
+
 #define DEBUG_URL @"http://h16552j072.51mypc.cn/police-admin"
 #define RELEASE_URL @"http://jinjiang.degal.cn/police-wx_jj"
 #define WEBSOCKET_DEBUG_URL @"ws://h16552j072.51mypc.cn/police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jinjiang.degal.cn/police-wx_jj/websocket"
 
-#define Base_URL ISONLINE ? RELEASE_URL : DEBUG_URL
-#define WEBSOCKETURL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
+#define Base_URL ISONLINE ? RELEASE_URL : DACHAODEBUG_URL
+#define WEBSOCKETURL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DACHAODEBUG_URL
 
 #define JPUSH_PRODUCTION ISONLINE ? YES : NO
 

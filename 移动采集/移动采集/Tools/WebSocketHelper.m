@@ -9,7 +9,8 @@
 #import "WebSocketHelper.h"
 #import "SRWebSocket.h"
 #import "BackgroundLocationHelper.h"
-
+#import "SocketModel.h"
+#import "UserModel.h"
 
 
 #define CLOSEBYUSER 120
@@ -68,7 +69,17 @@ LRSingletonM(Default)
     
     //****************  webSocket开启的时候就开启后台定位，获取位置信息来上传 *****************//
     
-    [[BackgroundLocationHelper sharedDefault] startLocation];
+    if ([UserModel getUserModel].workstate == YES) {
+        
+        SocketModel *t_socketModel  = [[SocketModel alloc] init];
+        t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
+        t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOGININ);
+        NSString *json_string = t_socketModel.modelToJSONString;
+        [[WebSocketHelper sharedDefault].webSocket send:json_string];
+        
+        [[BackgroundLocationHelper sharedDefault] startLocation];
+        
+    }
     
 }
 

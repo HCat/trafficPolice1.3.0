@@ -45,7 +45,7 @@
     
     LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
     item1.funcName = @"用户名";
-    item1.detailText = [UserModel getUserModel].name;
+    item1.detailText = [UserModel getUserModel].realName;
     item1.accessoryType = LRSettingAccessoryTypeNone;
     
     LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];

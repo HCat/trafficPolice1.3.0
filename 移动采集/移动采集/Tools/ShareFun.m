@@ -333,12 +333,11 @@
 
 + (void)loginOut{
     
+    [ShareFun closeWebSocket];
     [LRBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
     [UserModel setUserModel:nil];
-    
-    [ShareFun closeWebSocket];
     ApplicationDelegate.vc_tabBar = nil;
     LoginHomeVC *t_vc = [LoginHomeVC new];
     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
@@ -397,15 +396,6 @@
     if ([UserModel getUserModel].workstate == YES) {
         
         [[WebSocketHelper sharedDefault] startServer];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            SocketModel *t_socketModel  = [[SocketModel alloc] init];
-            t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
-            t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOGININ);
-            NSString *json_string = t_socketModel.modelToJSONString;
-            [[WebSocketHelper sharedDefault].webSocket send:json_string];
-            
-        });
         
     }
 

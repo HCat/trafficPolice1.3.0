@@ -60,7 +60,7 @@
     _lb_currentTime.layer.cornerRadius = 5.f;
     _lb_currentTime.layer.masksToBounds = YES;
     
-    _lb_name.text = [UserModel getUserModel].name;
+    _lb_name.text = [UserModel getUserModel].realName;
     _lb_affiliation.text =[UserModel getUserModel].departmentName;
     
     _tb_content.isNeedPlaceholderView = YES;
@@ -247,11 +247,6 @@
         
     }
     
-    
-   
-    
-   
-
 }
 
 #pragma mark - notication
