@@ -70,5 +70,4 @@
 + (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue;
 
 
-
 @end

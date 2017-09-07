@@ -10,10 +10,13 @@
 #import "VehicleModel.h"
 #import "VehicleAPI.h"
 
+typedef void(^VehicleCarNoShowBlock)();
+
 @interface VehicleCarCell : UITableViewCell
 
 @property (nonatomic,strong) VehicleModel * vehicle;
 @property (nonatomic,strong) NSArray <VehicleImageModel *> * imagelists;
 
+@property (nonatomic,copy) VehicleCarNoShowBlock block;
 
 @end

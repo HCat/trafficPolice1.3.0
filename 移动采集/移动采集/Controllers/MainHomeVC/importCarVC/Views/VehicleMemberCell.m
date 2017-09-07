@@ -1,12 +1,13 @@
 //
-//  VehicleCarCell.m
+//  VehicleMemberCell.m
 //  移动采集
 //
-//  Created by hcat on 2017/9/7.
+//  Created by hcat-89 on 2017/9/8.
 //  Copyright © 2017年 Hcat. All rights reserved.
 //
 
-#import "VehicleCarCell.h"
+#import "VehicleMemberCell.h"
+
 #import <UIButton+WebCache.h>
 #import <PureLayout.h>
 #import "CALayer+Additions.h"
@@ -16,100 +17,83 @@
 
 #import "VehicleDetailVC.h"
 
-@interface VehicleCarCell()
+@interface VehicleMemberCell ()
 
-@property (nonatomic,weak) IBOutlet UILabel * lb_plateno;                    //车牌号
-@property (nonatomic,weak) IBOutlet UILabel * lb_carType;                    //车辆类型:1土方车 2水泥砼车 3砂石子车
-@property (nonatomic,weak) IBOutlet UILabel * lb_inspectTimeEnd;             //年审截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_compInsuranceTimeEnd;       //强制险截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_bussInsuranceTimeEnd;       //商业险截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_factoryno;                  //车架号码
-@property (nonatomic,weak) IBOutlet UILabel * lb_motorid;                    //发动机号码
-@property (nonatomic,weak) IBOutlet UILabel * lb_description;                //车辆描述
-@property (nonatomic,weak) IBOutlet UILabel * lb_driver;                     //车主姓名
-@property (nonatomic,weak) IBOutlet UILabel * lb_dvrcard;                    //车主身份证
-@property (nonatomic,weak) IBOutlet UILabel * lb_drivermobile;               //车主电话
-@property (nonatomic,weak) IBOutlet UILabel * lb_carHopper;                  //车斗信息
-@property (nonatomic,weak) IBOutlet UILabel * lb_status;                     //车辆状态
-@property (nonatomic,weak) IBOutlet UILabel * lb_remark;                     //备注
+@property (nonatomic,weak) IBOutlet UILabel * lb_name;               //运输主体名称
+@property (nonatomic,weak) IBOutlet UILabel * lb_memtype;            //运输主体性质:1土方车 2水泥砼车 3砂石子车
+@property (nonatomic,weak) IBOutlet UILabel * lb_memFormNo;          //自编号前缀
+@property (nonatomic,weak) IBOutlet UILabel * lb_licenseTime;   //营业执照有效期,开始时间到结束时间
+@property (nonatomic,weak) IBOutlet UILabel * lb_memberArea;            //所在区域
+@property (nonatomic,weak) IBOutlet UILabel * lb_address;            //详细地址
+@property (nonatomic,weak) IBOutlet UILabel * lb_licenseno;          //组织机构代码
+@property (nonatomic,weak) IBOutlet UILabel * lb_contact;            //法人代表
+@property (nonatomic,weak) IBOutlet UILabel * lb_contactphone;       //法人电话
+@property (nonatomic,weak) IBOutlet UILabel * lb_manager;            //车队管理员
+@property (nonatomic,weak) IBOutlet UILabel * lb_managePhone;        //车队管理员电话
+@property (nonatomic,weak) IBOutlet UILabel * lb_safer;              //安全管理员
+@property (nonatomic,weak) IBOutlet UILabel * lb_safePhone;          //安全管理员电话
 @property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;             //证件照片
 
 @property (nonatomic,strong) NSMutableArray *arr_view;
 
 @end
 
-@implementation VehicleCarCell
 
+@implementation VehicleMemberCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     if (!self.arr_view) {
         self.arr_view = [NSMutableArray array];
     }
-    
-    // Initialization code
 }
 
-- (void)setVehicle:(VehicleModel *)vehicle{
+- (void)setMemberInfo:(MemberInfoModel *)memberInfo{
 
-    _vehicle = vehicle;
+    _memberInfo = memberInfo;
     
-    if (_vehicle) {
+    if (_memberInfo) {
         
-        _lb_plateno.text = _vehicle.plateno;  //车牌号
-        
+        _lb_name.text = _memberInfo.name;   //运输主体名称
         //车辆类型:1土方车 2水泥砼车 3砂石子车
-        if ([_vehicle.carType isEqualToNumber:@1]) {
-            _lb_carType.text = @"土方车";
-        }else if ([_vehicle.carType isEqualToNumber:@2]){
-            _lb_carType.text = @"水泥砼车";
+        if ([_memberInfo.memtype isEqualToNumber:@1]) {
+            _lb_memtype.text = @"土方车";
+        }else if ([_memberInfo.memtype isEqualToNumber:@2]){
+            _lb_memtype.text = @"水泥砼车";
         }else{
-            _lb_carType.text = @"砂石子车";
+            _lb_memtype.text = @"砂石子车";
         }
         
-        _lb_inspectTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"];             //年审截止日期
-        _lb_compInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //强制险截止日期
-        _lb_bussInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //商业险截止日期
-        _lb_factoryno.text = _vehicle.factoryno;            //车架号码
-        _lb_motorid.text = _vehicle.motorid;                //发动机号码
-        _lb_description.text = _vehicle.description_text;   //车辆描述
-        _lb_driver.text = _vehicle.driver;                  //车主姓名
-        _lb_dvrcard.text = _vehicle.dvrcard;                //车主身份证
-        _lb_drivermobile.text = _vehicle.drivermobile;      //车主电话
-        
-        //车斗信息
-        _lb_carHopper.text = [NSString stringWithFormat:@"%@x%@x%@(单位cm)",_vehicle.carHopperL,_vehicle.carHopperW,_vehicle.carHopperH];
-        
-        //车辆状态：1正常 0暂停运营 2停止运营 3未审核 4未提交 5审核未通过
-        if ([_vehicle.status isEqualToNumber:@0]) {
-            _lb_status.text = @"暂停运营";
-        }else if ([_vehicle.status isEqualToNumber:@1]){
-            _lb_status.text = @"正常";
-        }else if ([_vehicle.status isEqualToNumber:@2]){
-            _lb_status.text = @"停止运营";
-        }else if ([_vehicle.status isEqualToNumber:@3]){
-            _lb_status.text = @"未审核";
-        }else if ([_vehicle.status isEqualToNumber:@4]){
-            _lb_status.text = @"未提交";
-        }else{
-            _lb_status.text = @"审核未通过";
-        }
-
-        _lb_remark.text = _vehicle.remark;                  //备注
-        
-        
+        _lb_memFormNo.text = _memberInfo.memFormNo;
+        _lb_licenseTime.text = [NSString stringWithFormat:@"%@到%@",[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeStart dateFormat:@"yyyy年MM月dd日"],[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeEnd dateFormat:@"yyyy年MM月dd日"]];
+        _lb_address.text = _memberInfo.address;
+        _lb_licenseno.text = _memberInfo.licenseno;
+        _lb_contact.text = _memberInfo.contact;
+        _lb_contactphone.text = _memberInfo.contactphone;
+        _lb_manager.text = _memberInfo.manager;
+        _lb_managePhone.text = _memberInfo.managePhone;
+        _lb_safer.text = _memberInfo.safer;
+        _lb_safePhone.text = _memberInfo.safePhone;
+    
     }
 
 }
 
+- (void)setMemberArea:(NSString *)memberArea{
+
+    _memberArea = memberArea;
+    
+    _lb_memberArea.text = _memberArea;
+    
+}
+
 - (void)setImagelists:(NSArray<VehicleImageModel *> *)imagelists{
-
-
+    
+    
     _imagelists = imagelists;
     
     if (_imagelists && _imagelists.count > 0) {
-       
+        
         
         if (_arr_view && _arr_view.count > 0) {
             
@@ -167,7 +151,7 @@
                 [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:30.0f];
             }else if ([arr_v count] == 2){
                 [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
-              
+                
             }
             
             [arr_v removeAllObjects];
@@ -178,7 +162,7 @@
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                     [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
                 }
             }
             
@@ -191,16 +175,16 @@
         }
         
     }else{
-    
+        
         [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
-    
+        
     }
-
+    
 }
 
 
 - (IBAction)btnTagAction:(id)sender{
-
+    
     NSInteger tag = [(UIButton *)sender tag];
     
     
@@ -228,8 +212,8 @@
     browser.bounces             = NO;
     browser.isShowDeleteBtn     = NO;
     [browser showFromViewController:vc_target];
-
-
+    
+    
 }
 
 
@@ -245,6 +229,7 @@
 }
 
 
+#pragma mark - dealloc
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -254,8 +239,8 @@
 
 - (void)dealloc{
 
-    LxPrintf(@"VehicleCarCell dealloc");
-
+    LxPrintf(@"VehicleMemberCell dealloc");
+    
 }
 
 @end

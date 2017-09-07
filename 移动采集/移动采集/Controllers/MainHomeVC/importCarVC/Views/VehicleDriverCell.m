@@ -1,12 +1,13 @@
 //
-//  VehicleCarCell.m
+//  VehicleDriverCell.m
 //  移动采集
 //
-//  Created by hcat on 2017/9/7.
+//  Created by hcat-89 on 2017/9/8.
 //  Copyright © 2017年 Hcat. All rights reserved.
 //
 
-#import "VehicleCarCell.h"
+#import "VehicleDriverCell.h"
+
 #import <UIButton+WebCache.h>
 #import <PureLayout.h>
 #import "CALayer+Additions.h"
@@ -15,107 +16,85 @@
 #import "KSSDImageManager.h"
 
 #import "VehicleDetailVC.h"
+#import "VehicleAPI.h"
 
-@interface VehicleCarCell()
+@interface VehicleDriverCell ()
 
-@property (nonatomic,weak) IBOutlet UILabel * lb_plateno;                    //车牌号
-@property (nonatomic,weak) IBOutlet UILabel * lb_carType;                    //车辆类型:1土方车 2水泥砼车 3砂石子车
-@property (nonatomic,weak) IBOutlet UILabel * lb_inspectTimeEnd;             //年审截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_compInsuranceTimeEnd;       //强制险截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_bussInsuranceTimeEnd;       //商业险截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_factoryno;                  //车架号码
-@property (nonatomic,weak) IBOutlet UILabel * lb_motorid;                    //发动机号码
-@property (nonatomic,weak) IBOutlet UILabel * lb_description;                //车辆描述
-@property (nonatomic,weak) IBOutlet UILabel * lb_driver;                     //车主姓名
-@property (nonatomic,weak) IBOutlet UILabel * lb_dvrcard;                    //车主身份证
-@property (nonatomic,weak) IBOutlet UILabel * lb_drivermobile;               //车主电话
-@property (nonatomic,weak) IBOutlet UILabel * lb_carHopper;                  //车斗信息
-@property (nonatomic,weak) IBOutlet UILabel * lb_status;                     //车辆状态
-@property (nonatomic,weak) IBOutlet UILabel * lb_remark;                     //备注
-@property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;             //证件照片
+@property (nonatomic,weak) IBOutlet UILabel * lb_driverName;         //驾驶员姓名
+@property (nonatomic,weak) IBOutlet UILabel * lb_sex;                //驾驶员性别 1：男 2：女
+@property (nonatomic,weak) IBOutlet UILabel * lb_driverCode;         //驾驶证号码
+@property (nonatomic,weak) IBOutlet UILabel * lb_drivingType;        //准驾车型
+@property (nonatomic,weak) IBOutlet UILabel * lb_yearTrialDeadline;  //年审截止日期
+@property (nonatomic,weak) IBOutlet UILabel * lb_invalidDate;        //有效期截止日期
+@property (nonatomic,weak) IBOutlet UILabel * lb_certificationDate;  //从业时间
+@property (nonatomic,weak) IBOutlet UILabel * lb_driverLicence;      //从业资格证号
+@property (nonatomic,weak) IBOutlet UILabel * lb_licenceInvalidTime; //资格证有效期
+@property (nonatomic,weak) IBOutlet UILabel * lb_telephone;          //联系电话
+@property (nonatomic,weak) IBOutlet UILabel * lb_address;            //居住地址
+@property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;//证件照片
+
+
+@property (nonatomic,copy)   NSArray <VehicleImageModel *> * driverImgList; //驾驶员证件照片
 
 @property (nonatomic,strong) NSMutableArray *arr_view;
 
+
 @end
 
-@implementation VehicleCarCell
-
+@implementation VehicleDriverCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     if (!self.arr_view) {
         self.arr_view = [NSMutableArray array];
     }
-    
-    // Initialization code
+
 }
 
-- (void)setVehicle:(VehicleModel *)vehicle{
+- (void)setDriver:(VehicleDriverModel *)driver{
 
-    _vehicle = vehicle;
-    
-    if (_vehicle) {
+    _driver = driver;
+
+    if (_driver) {
         
-        _lb_plateno.text = _vehicle.plateno;  //车牌号
+        _lb_driverName.text = _driver.driverName;
         
-        //车辆类型:1土方车 2水泥砼车 3砂石子车
-        if ([_vehicle.carType isEqualToNumber:@1]) {
-            _lb_carType.text = @"土方车";
-        }else if ([_vehicle.carType isEqualToNumber:@2]){
-            _lb_carType.text = @"水泥砼车";
+        if ([_driver.sex isEqualToString:@"1"]) {
+            _lb_sex.text = @"男";
         }else{
-            _lb_carType.text = @"砂石子车";
+            _lb_sex.text = @"女";
         }
         
-        _lb_inspectTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"];             //年审截止日期
-        _lb_compInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //强制险截止日期
-        _lb_bussInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //商业险截止日期
-        _lb_factoryno.text = _vehicle.factoryno;            //车架号码
-        _lb_motorid.text = _vehicle.motorid;                //发动机号码
-        _lb_description.text = _vehicle.description_text;   //车辆描述
-        _lb_driver.text = _vehicle.driver;                  //车主姓名
-        _lb_dvrcard.text = _vehicle.dvrcard;                //车主身份证
-        _lb_drivermobile.text = _vehicle.drivermobile;      //车主电话
+        _lb_driverCode.text = _driver.driverCode;
+        _lb_yearTrialDeadline.text = [ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"];
+        _lb_drivingType.text = _driver.drivingType;
+        _lb_invalidDate.text = [ShareFun timeWithTimeInterval:_driver.invalidDate dateFormat:@"yyyy年MM月dd日"];
+        _lb_certificationDate.text = [ShareFun timeWithTimeInterval:_driver.certificationDate dateFormat:@"yyyy年MM月dd日"];
+        _lb_driverLicence.text = _driver.driverLicence;
+        _lb_licenceInvalidTime.text =[ShareFun timeWithTimeInterval:_driver.licenceInvalidTime dateFormat:@"yyyy年MM月dd日"];
+        _lb_telephone.text = _driver.telephone;
+        _lb_address.text = _driver.address;
         
-        //车斗信息
-        _lb_carHopper.text = [NSString stringWithFormat:@"%@x%@x%@(单位cm)",_vehicle.carHopperL,_vehicle.carHopperW,_vehicle.carHopperH];
-        
-        //车辆状态：1正常 0暂停运营 2停止运营 3未审核 4未提交 5审核未通过
-        if ([_vehicle.status isEqualToNumber:@0]) {
-            _lb_status.text = @"暂停运营";
-        }else if ([_vehicle.status isEqualToNumber:@1]){
-            _lb_status.text = @"正常";
-        }else if ([_vehicle.status isEqualToNumber:@2]){
-            _lb_status.text = @"停止运营";
-        }else if ([_vehicle.status isEqualToNumber:@3]){
-            _lb_status.text = @"未审核";
-        }else if ([_vehicle.status isEqualToNumber:@4]){
-            _lb_status.text = @"未提交";
-        }else{
-            _lb_status.text = @"审核未通过";
-        }
-
-        _lb_remark.text = _vehicle.remark;                  //备注
-        
+        self.driverImgList = [_driver.driverImgList copy];
         
     }
-
+    
 }
 
-- (void)setImagelists:(NSArray<VehicleImageModel *> *)imagelists{
 
-
-    _imagelists = imagelists;
+- (void)setDriverImgList:(NSArray<VehicleImageModel *> *)driverImgList{
     
-    if (_imagelists && _imagelists.count > 0) {
-       
+    
+    _driverImgList = driverImgList;
+    
+    if (_driverImgList && _driverImgList.count > 0) {
+        
         
         if (_arr_view && _arr_view.count > 0) {
             
             for (int i = 0;i < [_arr_view count]; i++) {
                 
-                VehicleImageModel *pic = _imagelists[i];
+                VehicleImageModel *pic = _driverImgList[i];
                 
                 UIButton *t_button  = _arr_view[i];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
@@ -125,9 +104,9 @@
             
             NSMutableArray *arr_v = [NSMutableArray new];
             
-            for (int i = 0;i < [_imagelists count]; i++) {
+            for (int i = 0;i < [_driverImgList count]; i++) {
                 
-                VehicleImageModel *pic = _imagelists[i];
+                VehicleImageModel *pic = _driverImgList[i];
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
@@ -167,7 +146,7 @@
                 [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:30.0f];
             }else if ([arr_v count] == 2){
                 [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
-              
+                
             }
             
             [arr_v removeAllObjects];
@@ -178,7 +157,7 @@
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                     [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
                 }
             }
             
@@ -191,16 +170,16 @@
         }
         
     }else{
-    
-        [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
-    
+        
+        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:15.f];
+        
     }
-
+    
 }
 
 
 - (IBAction)btnTagAction:(id)sender{
-
+    
     NSInteger tag = [(UIButton *)sender tag];
     
     
@@ -209,7 +188,7 @@
     if (_arr_view && _arr_view.count > 0) {
         for (int i = 0; i < _arr_view.count; i++) {
             UIButton *btn = _arr_view[i];
-            VehicleImageModel *picModel  = _imagelists[i];
+            VehicleImageModel *picModel  = _driverImgList[i];
             KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:picModel.mediaUrl]];
             [t_arr addObject:item];
         }
@@ -228,8 +207,8 @@
     browser.bounces             = NO;
     browser.isShowDeleteBtn     = NO;
     [browser showFromViewController:vc_target];
-
-
+    
+    
 }
 
 
@@ -245,6 +224,7 @@
 }
 
 
+#pragma mark - dealloc
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -253,9 +233,9 @@
 }
 
 - (void)dealloc{
-
-    LxPrintf(@"VehicleCarCell dealloc");
-
+    
+    LxPrintf(@"VehicleDriverCell dealloc");
+    
 }
 
 @end

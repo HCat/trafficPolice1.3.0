@@ -13,8 +13,16 @@
 #import "UITableView+Lr_Placeholder.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
-#import "VehicleCarCell.h"
 #import "VehicleAPI.h"
+
+#import "VehicleCarCell.h"
+#import "VehicleCarNoShowCell.h"
+#import "VehicleMemberCell.h"
+#import "VehicleMemberNoShowCell.h"
+#import "VehicleDriverCell.h"
+#import "VehicleDriverNoShowCell.h"
+#import "VehicleRemarkCell.h"
+
 
 typedef NS_ENUM(NSUInteger, VehicleCellType) {
     VehicleCellTypeVehicleCar,  //车辆信息
@@ -31,6 +39,10 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 @property (nonatomic,strong) NSMutableArray *arr_content;
 @property (nonatomic,strong) VehicleDetailReponse *reponse;
 
+@property (nonatomic,assign) BOOL isShowVehicleCar;
+@property (nonatomic,assign) BOOL isShowVehicleMember;
+@property (nonatomic,assign) BOOL isShowVehicleDriver;
+
 @end
 
 @implementation VehicleDetailVC
@@ -43,8 +55,18 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     _tableView.isNeedPlaceholderView = YES;
     _tableView.firstReload = YES;
     
+    self.isShowVehicleCar = NO;
+    self.isShowVehicleMember = NO;
+    self.isShowVehicleDriver = NO;
+    
     [_tableView registerNib:[UINib nibWithNibName:@"VehicleCarCell" bundle:nil] forCellReuseIdentifier:@"VehicleCarCellID"];
-    _tableView.fd_debugLogEnabled = YES;
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleCarNoShowCell" bundle:nil] forCellReuseIdentifier:@"VehicleCarNoShowCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleMemberCell" bundle:nil] forCellReuseIdentifier:@"VehicleMemberCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleMemberNoShowCell" bundle:nil] forCellReuseIdentifier:@"VehicleMemberNoShowCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleDriverCell" bundle:nil] forCellReuseIdentifier:@"VehicleDriverCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleDriverNoShowCell" bundle:nil] forCellReuseIdentifier:@"VehicleDriverNoShowCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleRemarkCell" bundle:nil] forCellReuseIdentifier:@"VehicleRemarkCellID"];
+    
     WS(weakSelf);
     [_tableView setReloadBlock:^{
         SW(strongSelf, weakSelf);
@@ -85,26 +107,26 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             [self.arr_content addObject:_reponse.vehicle];
         }
         
-//        //添加运输主体信息
-//        if (_reponse.memberInfo) {
-//            [self.arr_content addObject:_reponse.memberInfo];
-//        }
-//        
-//        //添加驾驶员资料
-//        if (_reponse.driverList && _reponse.driverList.count > 0) {
-//            for (VehicleDriverModel *t_model in _reponse.driverList) {
-//                [self.arr_content addObject:t_model];
-//            }
-//        
-//        }
-//        
-//        //添加车辆备注信息
-//        if (_reponse.vehicleRemarkList && _reponse.vehicleRemarkList.count > 0) {
-//            for (VehicleRemarkModel *t_model in _reponse.vehicleRemarkList) {
-//                [self.arr_content addObject:t_model];
-//            }
-//            
-//        }
+        //添加运输主体信息
+        if (_reponse.memberInfo) {
+            [self.arr_content addObject:_reponse.memberInfo];
+        }
+        
+        //添加驾驶员资料
+        if (_reponse.driverList && _reponse.driverList.count > 0) {
+            for (VehicleDriverModel *t_model in _reponse.driverList) {
+                [self.arr_content addObject:t_model];
+            }
+        
+        }
+        
+        //添加车辆备注信息
+        if (_reponse.vehicleRemarkList && _reponse.vehicleRemarkList.count > 0) {
+            for (VehicleRemarkModel *t_model in _reponse.vehicleRemarkList) {
+                [self.arr_content addObject:t_model];
+            }
+            
+        }
         
         
     }
@@ -154,8 +176,12 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             if (manger.responseModel.code == CODE_SUCCESS) {
+                SW(strongSelf,weakSelf);
                 
-                
+                if (manger.responseModel.code == CODE_SUCCESS) {
+                    strongSelf.reponse = manger.vehicleDetailReponse;
+                    [strongSelf.tableView reloadData];
+                }
                 
             }
             
@@ -203,13 +229,76 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     WS(weakSelf);
     switch (t_type) {
         case VehicleCellTypeVehicleCar:{
-            height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarCell *cell) {
-                SW(strongSelf, weakSelf);
-                cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
-                
-            }];
-            break;
+            if (_isShowVehicleCar) {
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
+                    if (strongSelf.reponse.vehicleImgList && strongSelf.reponse.vehicleImgList.count > 0) {
+                        cell.imagelists = [strongSelf.reponse.vehicleImgList copy];
+                    }
+                    
+                }];
+            }else{
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarNoShowCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
+                   
+                }];
+            
+            }
+        
         }
+        break;
+        case VehicleCellTypeMember:{
+            if (_isShowVehicleMember) {
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleMemberCellID" cacheByIndexPath:indexPath configuration:^(VehicleMemberCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.memberInfo = (MemberInfoModel *)strongSelf.arr_content[indexPath.row];
+                    cell.memberArea = strongSelf.reponse.memberArea;
+                    if (strongSelf.reponse.memberImgList && strongSelf.reponse.memberImgList.count > 0) {
+                        cell.imagelists = [strongSelf.reponse.memberImgList copy];
+                    }
+                    
+                }];
+            }else{
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleMemberNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleMemberNoShowCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.memberInfo = (MemberInfoModel *)strongSelf.arr_content[indexPath.row];
+                    cell.memberArea = strongSelf.reponse.memberArea;
+
+                    
+                }];
+                
+            }
+        
+        }
+        break;
+        case VehicleCellTypeDriver:{
+            if (_isShowVehicleDriver) {
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleDriverCellID" cacheByIndexPath:indexPath configuration:^(VehicleDriverCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.driver = (VehicleDriverModel *)strongSelf.arr_content[indexPath.row];
+                }];
+            }else{
+                height = [tableView fd_heightForCellWithIdentifier:@"VehicleDriverNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleDriverNoShowCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.driver = (VehicleDriverModel *)strongSelf.arr_content[indexPath.row];
+                    
+                    
+                }];
+                
+            }
+            
+        }
+        break;
+        case VehicleCellTypeRemark:{
+            height = [tableView fd_heightForCellWithIdentifier:@"VehicleRemarkCellID" cacheByIndexPath:indexPath configuration:^(VehicleRemarkCell *cell) {
+                SW(strongSelf, weakSelf);
+                cell.remark = (VehicleRemarkModel *)strongSelf.arr_content[indexPath.row];
+            }];
+            
+        }
+            break;
         default:
             break;
     }
@@ -225,13 +314,116 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     switch (t_type) {
         case VehicleCellTypeVehicleCar:{
             
-            VehicleCarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCarCellID"];
+            if (_isShowVehicleCar) {
+            
+                
+                VehicleCarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCarCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
+                WS(weakSelf);
+                if (_reponse.vehicleImgList && _reponse.vehicleImgList.count > 0) {
+                    cell.imagelists = [_reponse.vehicleImgList copy];
+                }
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleCar = NO;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+                
+                return cell;
+            }else{
+            
+                VehicleCarNoShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCarNoShowCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
+                WS(weakSelf);
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleCar = YES;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+                 return cell;
+            }
+            
+        }
+        break;
+        case VehicleCellTypeMember:{
+            
+            if (_isShowVehicleMember) {
+                
+                VehicleMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleMemberCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.memberInfo = (MemberInfoModel *)self.arr_content[indexPath.row];
+                cell.memberArea = _reponse.memberArea;
+                WS(weakSelf);
+                if (_reponse.vehicleImgList && _reponse.vehicleImgList.count > 0) {
+                    cell.imagelists = [_reponse.memberImgList copy];
+                }
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleMember = NO;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+                
+                return cell;
+            }else{
+                
+                VehicleMemberNoShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleMemberNoShowCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.memberInfo = (MemberInfoModel *)self.arr_content[indexPath.row];
+                cell.memberArea = _reponse.memberArea;
+                WS(weakSelf);
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleMember = YES;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+                return cell;
+            }
+            
+            
+        }
+        break;
+        case VehicleCellTypeDriver:{
+            if (_isShowVehicleDriver) {
+                VehicleDriverCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleDriverCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.driver = (VehicleDriverModel *)self.arr_content[indexPath.row];
+                WS(weakSelf);
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleDriver = NO;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+                
+                return cell;
+            }else{
+                VehicleDriverNoShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleDriverNoShowCellID"];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                cell.driver = (VehicleDriverModel *)self.arr_content[indexPath.row];
+                WS(weakSelf);
+                cell.block = ^{
+                    SW(strongSelf, weakSelf);
+                    strongSelf.isShowVehicleDriver = YES;
+                    [strongSelf.tableView reloadData];
+                    
+                };
+
+                return cell;
+            }
+            
+        }
+        break;
+        case VehicleCellTypeRemark:{
+            VehicleRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleRemarkCellID"];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
+            cell.remark = (VehicleRemarkModel *)self.arr_content[indexPath.row];
             
-            return cell;
-            
-            break;
         }
         default:
             break;
