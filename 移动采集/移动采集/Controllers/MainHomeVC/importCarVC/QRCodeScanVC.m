@@ -8,6 +8,7 @@
 
 #import "QRCodeScanVC.h"
 #import "NSTimer+UnRetain.h"
+#import "VehicleDetailVC.h"
 #import <AVFoundation/AVFoundation.h>
 
 #define HEIGHT SCREEN_HEIGHT-64
@@ -18,13 +19,14 @@
 
 
 @interface QRCodeScanVC ()<AVCaptureMetadataOutputObjectsDelegate>{
-    int num;
-    BOOL upOrdown;
+    
     CAShapeLayer *cropLayer;
 }
 
 
 @property (nonatomic,strong) NSTimer * timer;
+@property (nonatomic,assign) int num;
+@property (nonatomic,assign) BOOL upOrdown;
 
 @property (strong,nonatomic)AVCaptureDevice * device;
 @property (strong,nonatomic)AVCaptureDeviceInput * input;
@@ -68,8 +70,8 @@
     imageView.image = [UIImage imageNamed:@"icon_QRCode_bounds"];
     [self.view addSubview:imageView];
     
-    upOrdown = NO;
-    num =0;
+    self.upOrdown = NO;
+    self.num =0;
     _line = [[UIImageView alloc] initWithFrame:CGRectMake(LEFT, TOP+10, 200, 2)];
     _line.image = [UIImage imageNamed:@"icon_QRCode_line"];
     [self.view addSubview:_line];
@@ -99,24 +101,24 @@
     WS(weakSelf);
     self.timer = [NSTimer lr_scheduledTimerWithTimeInterval:.02 repeats:YES block:^(NSTimer *timer) {
         
-        if (upOrdown == NO) {
-            num ++;
-            weakSelf.line.frame = CGRectMake(LEFT, TOP+10+2*num, 200, 2);
-            if (2*num == 180) {
-                upOrdown = YES;
+        if (weakSelf.upOrdown == NO) {
+            weakSelf.num ++;
+            weakSelf.line.frame = CGRectMake(LEFT, TOP+10+2 * weakSelf.num, 200, 2);
+            if (2 * weakSelf.num == 180) {
+                weakSelf.upOrdown = YES;
             }
         }
         else {
-            num --;
-            weakSelf.line.frame = CGRectMake(LEFT, TOP+10+2*num, 200, 2);
-            if (num == 0) {
-                upOrdown = NO;
+            weakSelf.num --;
+            weakSelf.line.frame = CGRectMake(LEFT, TOP+10+2 * weakSelf.num, 200, 2);
+            if (weakSelf.num == 0) {
+                weakSelf.upOrdown = NO;
             }
         }
         
         
     }];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     
     
     
@@ -238,13 +240,11 @@
             NSLog(@"%@",temp);
         }
         
+        VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
+        t_vc.type = VehicleRequestTypeQRCode;
+        t_vc.NummberId = stringValue;
+        [self.navigationController pushViewController:t_vc animated:YES];
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"扫描结果" message:stringValue preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            
-        }]];
-        [self presentViewController:alert animated:YES completion:nil];
         
     } else {
         NSLog(@"无扫描信息");
@@ -322,6 +322,11 @@
 
 - (void)dealloc{
 
+    if (self.timer) {
+        [self.timer timeInterval];
+        self.timer = nil;
+    }
+    
     LxPrintf(@"QRCodeScanVC dealloc");
 
 }

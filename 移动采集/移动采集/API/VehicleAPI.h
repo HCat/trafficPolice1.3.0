@@ -16,15 +16,24 @@
 
 #pragma mark -返回重点车辆信息
 
+@interface VehicleImageModel : NSObject
+
+@property (nonatomic,copy) NSString *mediaUrl;
+
+@end
+
+
 @interface VehicleDetailReponse : NSObject
 
-@property (nonatomic,strong) MemberInfoModel * memberInfo;          //运输主体信息
-@property (nonatomic,copy)   NSString * memberArea;                 //包含IdentifyModel对象
-@property (nonatomic,assign) NSArray <NSString *> * memberImgList;  //运输主体资质照片
 @property (nonatomic,strong) VehicleModel * vehicle;                //车辆信息
-@property (nonatomic,assign) NSArray <NSString *> * vehicleImgList; //车辆证件照片
-@property (nonatomic,assign) NSArray <VehicleRemarkModel *> * vehicleRemarkList; //车辆证件照片
-@property (nonatomic,assign) NSArray <VehicleDriverModel *> * driverList;        //车辆证件照片
+@property (nonatomic,copy)   NSArray <VehicleImageModel *> * vehicleImgList; //车辆证件照片
+
+@property (nonatomic,strong) MemberInfoModel * memberInfo;          //运输主体信息
+@property (nonatomic,copy)   NSString * memberArea;                 //运输主体所在区域
+@property (nonatomic,copy)   NSArray <VehicleImageModel *> * memberImgList;  //运输主体资质照片
+
+@property (nonatomic,copy)   NSArray <VehicleRemarkModel *> * vehicleRemarkList; //车辆备注信息
+@property (nonatomic,copy)   NSArray <VehicleDriverModel *> * driverList;        //驾驶员资料
 
 @end
 
@@ -34,7 +43,7 @@
 @interface VehicleDetailByQrCodeManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSNumber * qrCode;
+@property (nonatomic, copy) NSString * qrCode;
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) VehicleDetailReponse * vehicleDetailReponse;
@@ -47,7 +56,7 @@
 @interface VehicleDetailByPlateNoManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSNumber * plateNo;
+@property (nonatomic, copy) NSString * plateNo;
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) VehicleDetailReponse * vehicleDetailReponse;

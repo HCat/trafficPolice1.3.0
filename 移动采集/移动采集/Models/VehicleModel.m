@@ -10,4 +10,9 @@
 
 @implementation VehicleModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"description_text" : @"description",
+             };
+}
+
 @end

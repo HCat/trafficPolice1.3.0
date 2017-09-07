@@ -38,13 +38,13 @@
     
     
     WS(weakSelf);
-    self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
-        
-        SW(strongSelf, weakSelf);
-        [strongSelf loadVehicleData];
-        
-    }];
-    [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
+//    self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
+//        
+//        SW(strongSelf, weakSelf);
+//        [strongSelf loadVehicleData];
+//        
+//    }];
+//    [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
 
     
 }
@@ -251,8 +251,10 @@
 
 - (void)dealloc{
     
-    
-    
+    if (self.loadRequestTime) {
+        [self.loadRequestTime timeInterval];
+        self.loadRequestTime = nil;
+    }
     
     LxPrintf(@"ImportCarHomeVC dealloc");
 

@@ -7,7 +7,17 @@
 //
 
 #import "VehicleDriverModel.h"
+#import "VehicleAPI.h"
+
 
 @implementation VehicleDriverModel
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    
+    return @{@"driverImgList" : [VehicleImageModel class],
+             @"vehicleImgList" : [VehicleImageModel class]
+            
+             };
+}
 
 @end

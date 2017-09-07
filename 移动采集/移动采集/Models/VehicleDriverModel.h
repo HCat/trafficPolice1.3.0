@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class VehicleImageModel;
+
 @interface VehicleDriverModel : NSObject
 
 @property (nonatomic,copy)   NSString * driverName;         //驾驶员姓名
@@ -21,7 +23,7 @@
 @property (nonatomic,strong) NSNumber * licenceInvalidTime; //资格证有效期
 @property (nonatomic,strong) NSNumber * telephone;          //联系电话
 @property (nonatomic,copy)   NSString * address;            //居住地址
-@property (nonatomic,copy)   NSArray <NSString *> * driverImgList; //驾驶员证件照片
+@property (nonatomic,copy)   NSArray <VehicleImageModel *> * driverImgList; //驾驶员证件照片
 
 
 

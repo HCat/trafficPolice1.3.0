@@ -8,11 +8,18 @@
 
 #import "VehicleAPI.h"
 
+@implementation VehicleImageModel
+
+@end
+
 
 @implementation VehicleDetailReponse
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"vehicleRemarkList" : [VehicleRemarkModel class],
+
+    return @{@"memberImgList" : [VehicleImageModel class],
+             @"vehicleImgList" : [VehicleImageModel class],
+             @"vehicleRemarkList" : [VehicleRemarkModel class],
              @"driverList" : [VehicleDriverModel class]
              };
 }
@@ -38,7 +45,8 @@
 - (VehicleDetailReponse *)vehicleDetailReponse{
     
     if (self.responseModel.data) {
-        return [VehicleDetailReponse modelWithDictionary:self.responseModel.data];
+        _vehicleDetailReponse =  [VehicleDetailReponse modelWithDictionary:self.responseModel.data];
+        return _vehicleDetailReponse;
     }
     
     return nil;

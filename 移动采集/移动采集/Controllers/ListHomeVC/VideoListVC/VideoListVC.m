@@ -8,7 +8,7 @@
 
 #import "VideoListVC.h"
 #import "UICollectionView+Lr_Placeholder.h"
-#import "Reachability.h"
+
 #import <MJRefresh.h>
 #import "VideoColectAPI.h"
 #import "VideoListCell.h"

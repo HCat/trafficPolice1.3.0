@@ -7,7 +7,6 @@
 //
 
 #import "LocationHelper.h"
-#import "Reachability.h"
 #import "BackgroundLocationHelper.h"
 #import "UserModel.h"
 #import "WebSocketHelper.h"
