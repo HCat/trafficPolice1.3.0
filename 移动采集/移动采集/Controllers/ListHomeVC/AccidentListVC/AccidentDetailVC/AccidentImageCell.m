@@ -14,7 +14,7 @@
 #import "KSSDImageManager.h"
 
 #import "AccidentDetailVC.h"
-#import "ShareFun.h"
+
 
 @interface AccidentImageCell()
 

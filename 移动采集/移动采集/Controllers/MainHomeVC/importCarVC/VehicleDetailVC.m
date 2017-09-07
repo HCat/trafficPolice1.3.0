@@ -206,7 +206,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarCell *cell) {
                 SW(strongSelf, weakSelf);
                 cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
-        
+                
             }];
             break;
         }

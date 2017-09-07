@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "VehicleModel.h"
+#import "VehicleAPI.h"
 
 @interface VehicleCarCell : UITableViewCell
 
 @property (nonatomic,strong) VehicleModel * vehicle;
+@property (nonatomic,strong) NSArray <VehicleImageModel *> * imagelists;
+
 
 @end
