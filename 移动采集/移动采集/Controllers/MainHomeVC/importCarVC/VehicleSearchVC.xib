@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VehicleSearchVC">
             <connections>
+                <outlet property="btn_back" destination="aVt-Hl-VBP" id="Nab-wj-46O"/>
+                <outlet property="btn_search" destination="fEd-sL-32h" id="HkQ-RU-aKf"/>
+                <outlet property="tf_search" destination="UCm-2o-p2d" id="XY1-00-iAr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +21,76 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDF-6f-CRR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RYF-eN-NJr">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入车牌号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCm-2o-p2d">
+                            <rect key="frame" x="50" y="26" width="275" height="30"/>
+                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="VdB-mm-gxZ"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="bhT-zG-diK"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVt-Hl-VBP">
+                            <rect key="frame" x="20" y="30" width="10" height="22"/>
+                            <state key="normal" image="nav_back"/>
+                            <connections>
+                                <action selector="handleBtnBackClicked:" destination="-1" eventType="touchUpInside" id="gTp-Qk-azd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEd-sL-32h">
+                            <rect key="frame" x="337" y="30" width="21" height="22"/>
+                            <state key="normal" image="btn_search"/>
+                            <connections>
+                                <action selector="handleBtnSearchClicked:" destination="-1" eventType="touchUpInside" id="8zO-s4-LsA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fEd-sL-32h" firstAttribute="centerY" secondItem="UCm-2o-p2d" secondAttribute="centerY" id="2lU-2u-pkm"/>
+                        <constraint firstItem="RYF-eN-NJr" firstAttribute="top" secondItem="gDF-6f-CRR" secondAttribute="top" id="8YB-fH-eJ7"/>
+                        <constraint firstAttribute="height" constant="64" id="BeW-oc-7TS"/>
+                        <constraint firstAttribute="bottom" secondItem="UCm-2o-p2d" secondAttribute="bottom" constant="8" id="E27-RA-RdN"/>
+                        <constraint firstAttribute="trailing" secondItem="fEd-sL-32h" secondAttribute="trailing" constant="17" id="EtB-fA-GgZ"/>
+                        <constraint firstItem="UCm-2o-p2d" firstAttribute="centerX" secondItem="gDF-6f-CRR" secondAttribute="centerX" id="FL4-ed-mzj"/>
+                        <constraint firstItem="aVt-Hl-VBP" firstAttribute="centerY" secondItem="UCm-2o-p2d" secondAttribute="centerY" id="Ow7-qN-jO2"/>
+                        <constraint firstItem="aVt-Hl-VBP" firstAttribute="leading" secondItem="gDF-6f-CRR" secondAttribute="leading" constant="20" id="Z5k-B3-Xii"/>
+                        <constraint firstAttribute="bottom" secondItem="RYF-eN-NJr" secondAttribute="bottom" id="bmy-Jz-T6l"/>
+                        <constraint firstAttribute="trailing" secondItem="RYF-eN-NJr" secondAttribute="trailing" id="eSz-7h-mYn"/>
+                        <constraint firstItem="UCm-2o-p2d" firstAttribute="leading" secondItem="gDF-6f-CRR" secondAttribute="leading" constant="50" id="nNw-bR-HLc"/>
+                        <constraint firstItem="RYF-eN-NJr" firstAttribute="leading" secondItem="gDF-6f-CRR" secondAttribute="leading" id="p8n-S9-YRA"/>
+                        <constraint firstAttribute="trailing" secondItem="UCm-2o-p2d" secondAttribute="trailing" constant="50" id="v5a-YN-fat"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gDF-6f-CRR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AR7-p1-oiD"/>
+                <constraint firstItem="gDF-6f-CRR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qu2-fr-Z3N"/>
+                <constraint firstAttribute="trailing" secondItem="gDF-6f-CRR" secondAttribute="trailing" id="edV-bF-vff"/>
+            </constraints>
+            <point key="canvasLocation" x="26.5" y="52.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="btn_search" width="21" height="21"/>
+        <image name="nav_back" width="10" height="17"/>
+    </resources>
 </document>

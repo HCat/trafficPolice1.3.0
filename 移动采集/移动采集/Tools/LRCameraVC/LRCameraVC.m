@@ -53,6 +53,7 @@
     [_btn_flash setEnlargeEdgeWithTop:20.f right:20.f bottom:20.f left:20.f];
     [_btn_close setEnlargeEdgeWithTop:20.f right:20.f bottom:20.f left:20.f];
     
+    
     if(_type == 1) {
         
         _v_masking.type = 1;

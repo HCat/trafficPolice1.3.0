@@ -242,9 +242,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarCell *cell) {
                     SW(strongSelf, weakSelf);
                     cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
-                    if (strongSelf.reponse.vehicleImgList && strongSelf.reponse.vehicleImgList.count > 0) {
-                        cell.imagelists = [strongSelf.reponse.vehicleImgList copy];
-                    }
+                    cell.imagelists = [strongSelf.reponse.vehicleImgList copy];
+                   
                     
                 }];
             }else{
@@ -264,9 +263,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                     SW(strongSelf, weakSelf);
                     cell.memberInfo = (MemberInfoModel *)strongSelf.arr_content[indexPath.row];
                     cell.memberArea = strongSelf.reponse.memberArea;
-                    if (strongSelf.reponse.memberImgList && strongSelf.reponse.memberImgList.count > 0) {
-                        cell.imagelists = [strongSelf.reponse.memberImgList copy];
-                    }
+                    cell.imagelists = [strongSelf.reponse.memberImgList copy];
+                    
                     
                 }];
             }else{
@@ -312,7 +310,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             break;
     }
     
-    
+    LxPrintf(@"height:%lf",height);
     return height;
 }
 
@@ -330,9 +328,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
                 WS(weakSelf);
-                if (_reponse.vehicleImgList && _reponse.vehicleImgList.count > 0) {
-                    cell.imagelists = [_reponse.vehicleImgList copy];
-                }
+                cell.imagelists = [_reponse.vehicleImgList copy];
+               
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
                     strongSelf.isShowVehicleCar = NO;
@@ -367,9 +364,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 cell.memberInfo = (MemberInfoModel *)self.arr_content[indexPath.row];
                 cell.memberArea = _reponse.memberArea;
                 WS(weakSelf);
-                if (_reponse.vehicleImgList && _reponse.vehicleImgList.count > 0) {
-                    cell.imagelists = [_reponse.memberImgList copy];
-                }
+                cell.imagelists = [_reponse.memberImgList copy];
+                
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
                     strongSelf.isShowVehicleMember = NO;

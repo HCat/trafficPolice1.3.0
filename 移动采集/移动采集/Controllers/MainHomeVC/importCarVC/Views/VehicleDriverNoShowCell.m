@@ -161,7 +161,7 @@
         
     }else{
         
-        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:15.f];
+        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
         
     }
     

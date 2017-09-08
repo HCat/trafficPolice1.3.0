@@ -16,6 +16,7 @@
 #import "QRCodeScanVC.h"
 #import "VehicleCameraVC.h"
 #import "VehicleDetailVC.h"
+#import "VehicleSearchVC.h"
 
 @interface ImportCarHomeVC ()<MAMapViewDelegate>
 
@@ -250,6 +251,8 @@
         if (camera) {
             if (camera.isHandSearch) {
                 
+                VehicleSearchVC *t_vc = [[VehicleSearchVC alloc] init];
+                [strongSelf.navigationController pushViewController:t_vc animated:YES];
                 
             }else{
             
