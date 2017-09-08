@@ -113,6 +113,10 @@
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
+		CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE56965F1F62341C0073ADB7 /* VehicleCameraVC.m */; };
+		CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5696601F62341C0073ADB7 /* VehicleCameraVC.xib */; };
+		CE5696661F6245950073ADB7 /* VehicleSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5696641F6245950073ADB7 /* VehicleSearchVC.m */; };
+		CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5696651F6245950073ADB7 /* VehicleSearchVC.xib */; };
 		CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */; };
 		CE57F7871F1DF65C00CA9FCF /* MessageHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */; };
 		CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */; };
@@ -492,6 +496,12 @@
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
 		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
 		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
+		CE56965E1F62341C0073ADB7 /* VehicleCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleCameraVC.h; sourceTree = "<group>"; };
+		CE56965F1F62341C0073ADB7 /* VehicleCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleCameraVC.m; sourceTree = "<group>"; };
+		CE5696601F62341C0073ADB7 /* VehicleCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleCameraVC.xib; sourceTree = "<group>"; };
+		CE5696631F6245950073ADB7 /* VehicleSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleSearchVC.h; sourceTree = "<group>"; };
+		CE5696641F6245950073ADB7 /* VehicleSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleSearchVC.m; sourceTree = "<group>"; };
+		CE5696651F6245950073ADB7 /* VehicleSearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleSearchVC.xib; sourceTree = "<group>"; };
 		CE57F7831F1DF65C00CA9FCF /* MessageHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHomeVC.h; sourceTree = "<group>"; };
 		CE57F7841F1DF65C00CA9FCF /* MessageHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHomeVC.m; sourceTree = "<group>"; };
 		CE57F7851F1DF65C00CA9FCF /* MessageHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageHomeVC.xib; sourceTree = "<group>"; };
@@ -987,6 +997,12 @@
 				CE5A00FB1F60E0D5000F13CC /* VehicleDetailVC.h */,
 				CE5A00FC1F60E0D5000F13CC /* VehicleDetailVC.m */,
 				CE5A00FD1F60E0D5000F13CC /* VehicleDetailVC.xib */,
+				CE56965E1F62341C0073ADB7 /* VehicleCameraVC.h */,
+				CE56965F1F62341C0073ADB7 /* VehicleCameraVC.m */,
+				CE5696601F62341C0073ADB7 /* VehicleCameraVC.xib */,
+				CE5696631F6245950073ADB7 /* VehicleSearchVC.h */,
+				CE5696641F6245950073ADB7 /* VehicleSearchVC.m */,
+				CE5696651F6245950073ADB7 /* VehicleSearchVC.xib */,
 			);
 			path = importCarVC;
 			sourceTree = "<group>";
@@ -1994,6 +2010,7 @@
 				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE5C38E81F28606B0055C945 /* btn_circle@2x.png in Resources */,
+				CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */,
 				CE4E3C161F39BB860057148B /* IllegalMessageCell.xib in Resources */,
 				CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
@@ -2060,6 +2077,7 @@
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
+				CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */,
 				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
 				CE2C98AE1F61AAD7009851F6 /* VehicleMemberNoShowCell.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
@@ -2176,6 +2194,7 @@
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
+				CE5696661F6245950073ADB7 /* VehicleSearchVC.m in Sources */,
 				CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */,
 				CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */,
 				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
@@ -2221,6 +2240,7 @@
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
 				CED9B0EF1F5D06870010E68A /* SignModel.m in Sources */,
 				CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */,
+				CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE675F2B1F384637006FC15F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,

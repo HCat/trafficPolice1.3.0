@@ -30,10 +30,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEo-Vl-87d">
-                    <rect key="frame" x="221" y="485" width="58" height="58"/>
+                    <rect key="frame" x="239" y="494" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="58" id="PWw-F4-K0t"/>
-                        <constraint firstAttribute="height" constant="58" id="hSd-5W-Lnk"/>
+                        <constraint firstAttribute="width" constant="40" id="PWw-F4-K0t"/>
+                        <constraint firstAttribute="height" constant="40" id="hSd-5W-Lnk"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <connections>
@@ -41,7 +41,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDv-Bk-iFx">
-                    <rect key="frame" x="250" y="548" width="0.0" height="0.0"/>
+                    <rect key="frame" x="259" y="539" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>

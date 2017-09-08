@@ -54,16 +54,16 @@
     
     if (_driver) {
         
-        _lb_driverName.text = _driver.driverName;
+        _lb_driverName.text = [ShareFun takeStringNoNull:_driver.driverName];
         
         if ([_driver.sex isEqualToString:@"1"]) {
             _lb_sex.text = @"男";
         }else{
             _lb_sex.text = @"女";
         }
-        _lb_drivingType.text = _driver.drivingType;
-        _lb_driverCode.text = _driver.driverCode;
-        _lb_yearTrialDeadline.text = [ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"];;
+        _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
+        _lb_driverCode.text = [ShareFun takeStringNoNull:_driver.driverCode];
+        _lb_yearTrialDeadline.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"]];
        
         self.driverImgList = [_driver.driverImgList copy];
         

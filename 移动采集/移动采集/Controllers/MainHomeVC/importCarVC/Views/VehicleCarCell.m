@@ -57,7 +57,7 @@
     
     if (_vehicle) {
         
-        _lb_plateno.text = _vehicle.plateno;  //车牌号
+        _lb_plateno.text = [ShareFun takeStringNoNull:_vehicle.plateno];  //车牌号
         
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_vehicle.carType isEqualToNumber:@1]) {
@@ -68,18 +68,18 @@
             _lb_carType.text = @"砂石子车";
         }
         
-        _lb_inspectTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"];             //年审截止日期
-        _lb_compInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //强制险截止日期
-        _lb_bussInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //商业险截止日期
-        _lb_factoryno.text = _vehicle.factoryno;            //车架号码
-        _lb_motorid.text = _vehicle.motorid;                //发动机号码
-        _lb_description.text = _vehicle.description_text;   //车辆描述
-        _lb_driver.text = _vehicle.driver;                  //车主姓名
-        _lb_dvrcard.text = _vehicle.dvrcard;                //车主身份证
-        _lb_drivermobile.text = _vehicle.drivermobile;      //车主电话
+        _lb_inspectTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"]];             //年审截止日期
+        _lb_compInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //强制险截止日期
+        _lb_bussInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //商业险截止日期
+        _lb_factoryno.text = [ShareFun takeStringNoNull:_vehicle.factoryno];            //车架号码
+        _lb_motorid.text = [ShareFun takeStringNoNull:_vehicle.motorid];                //发动机号码
+        _lb_description.text = [ShareFun takeStringNoNull:_vehicle.description_text];   //车辆描述
+        _lb_driver.text = [ShareFun takeStringNoNull:_vehicle.driver];                  //车主姓名
+        _lb_dvrcard.text = [ShareFun takeStringNoNull:_vehicle.dvrcard];                //车主身份证
+        _lb_drivermobile.text = [ShareFun takeStringNoNull:_vehicle.drivermobile];      //车主电话
         
         //车斗信息
-        _lb_carHopper.text = [NSString stringWithFormat:@"%@x%@x%@(单位cm)",_vehicle.carHopperL,_vehicle.carHopperW,_vehicle.carHopperH];
+        _lb_carHopper.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@x%@x%@(单位cm)",_vehicle.carHopperL,_vehicle.carHopperW,_vehicle.carHopperH]];
         
         //车辆状态：1正常 0暂停运营 2停止运营 3未审核 4未提交 5审核未通过
         if ([_vehicle.status isEqualToNumber:@0]) {
@@ -96,7 +96,7 @@
             _lb_status.text = @"审核未通过";
         }
 
-        _lb_remark.text = _vehicle.remark;                  //备注
+        _lb_remark.text = [ShareFun takeStringNoNull:_vehicle.remark];                  //备注
         
         
     }

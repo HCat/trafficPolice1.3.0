@@ -29,9 +29,9 @@
     _remark = remark;
     
     if (_remark) {
-        _lb_createTime.text = [ShareFun timeWithTimeInterval:_remark.createTime dateFormat:@"yyyy年MM月dd日"];
-        _lb_name.text = _remark.name;
-        _lb_content.text = _remark.content;
+        _lb_createTime.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_remark.createTime dateFormat:@"yyyy年MM月dd日"]];
+        _lb_name.text = [ShareFun takeStringNoNull:_remark.name];
+        _lb_content.text = [ShareFun takeStringNoNull:_remark.content];
     }
 
 }

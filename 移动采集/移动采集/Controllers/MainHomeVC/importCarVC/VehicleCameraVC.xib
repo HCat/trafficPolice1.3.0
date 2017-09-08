@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VehicleCameraVC">
+            <connections>
+                <outlet property="btn_close" destination="kcn-Xj-uy3" id="MNy-jX-lIN"/>
+                <outlet property="btn_flash" destination="rqh-31-asX" id="GCK-x9-kx3"/>
+                <outlet property="btn_snap" destination="WkE-vM-cMw" id="U5t-FK-RtG"/>
+                <outlet property="lb_flash" destination="y1c-ib-kjS" id="wud-OH-Z4m"/>
+                <outlet property="lb_tip" destination="g8L-aV-kn8" id="JkL-uh-5C3"/>
+                <outlet property="v_masking" destination="ybj-sv-bwg" id="1yv-yZ-2B2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybj-sv-bwg" customClass="maskingView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqh-31-asX">
+                    <rect key="frame" x="300" y="513" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Oty-De-qS0"/>
+                        <constraint firstAttribute="height" constant="40" id="jlb-uv-aGb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" image="camera_flash_open"/>
+                    <connections>
+                        <action selector="handlebtnFlashClicked:" destination="-1" eventType="touchUpInside" id="M1B-nJ-clW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aI-DY-79B">
+                    <rect key="frame" x="291" y="594" width="57" height="38"/>
+                    <state key="normal" image="btn_handSearch"/>
+                    <connections>
+                        <action selector="handlebtnHandSearchClicked:" destination="-1" eventType="touchUpInside" id="OBC-Ja-D9s"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-ib-kjS">
+                    <rect key="frame" x="313" y="558" width="14.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8L-aV-kn8">
+                    <rect key="frame" x="187" y="333.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcn-Xj-uy3">
+                    <rect key="frame" x="35" y="602" width="21" height="22"/>
+                    <state key="normal" image="camera_back"/>
+                    <connections>
+                        <action selector="handlebtnCloseClicked:" destination="-1" eventType="touchUpInside" id="cIb-mc-ddo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkE-vM-cMw">
+                    <rect key="frame" x="147" y="573" width="80" height="80"/>
+                    <state key="normal" image="camera_snap"/>
+                    <connections>
+                        <action selector="handlebtnSnapClicked:" destination="-1" eventType="touchUpInside" id="pSt-SB-f1R"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ybj-sv-bwg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="00A-Nj-O1I"/>
+                <constraint firstItem="g8L-aV-kn8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4fk-hb-fHe"/>
+                <constraint firstAttribute="bottom" secondItem="WkE-vM-cMw" secondAttribute="bottom" constant="14" id="A8V-jB-fXV"/>
+                <constraint firstItem="y1c-ib-kjS" firstAttribute="centerX" secondItem="rqh-31-asX" secondAttribute="centerX" id="F6a-zH-DjO"/>
+                <constraint firstItem="WkE-vM-cMw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MT3-wR-f60"/>
+                <constraint firstAttribute="bottom" secondItem="ybj-sv-bwg" secondAttribute="bottom" id="P5r-AE-Vjl"/>
+                <constraint firstAttribute="trailing" secondItem="rqh-31-asX" secondAttribute="trailing" constant="35" id="TTz-lE-KeT"/>
+                <constraint firstItem="ybj-sv-bwg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UlF-EK-PKO"/>
+                <constraint firstItem="y1c-ib-kjS" firstAttribute="top" secondItem="rqh-31-asX" secondAttribute="bottom" constant="5" id="Yob-tT-CQr"/>
+                <constraint firstItem="kcn-Xj-uy3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="cBh-nz-Xxq"/>
+                <constraint firstItem="7aI-DY-79B" firstAttribute="centerX" secondItem="rqh-31-asX" secondAttribute="centerX" id="fO4-4V-w4r"/>
+                <constraint firstItem="kcn-Xj-uy3" firstAttribute="centerY" secondItem="WkE-vM-cMw" secondAttribute="centerY" id="lTz-VI-QSy"/>
+                <constraint firstItem="WkE-vM-cMw" firstAttribute="top" secondItem="rqh-31-asX" secondAttribute="bottom" constant="20" id="mJZ-4G-W69"/>
+                <constraint firstItem="7aI-DY-79B" firstAttribute="centerY" secondItem="WkE-vM-cMw" secondAttribute="centerY" id="nmS-Kd-w4I"/>
+                <constraint firstAttribute="trailing" secondItem="ybj-sv-bwg" secondAttribute="trailing" id="wcL-cM-SZL"/>
+                <constraint firstItem="g8L-aV-kn8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zAO-Ik-kqc"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_handSearch" width="57" height="38"/>
+        <image name="camera_back" width="21" height="17"/>
+        <image name="camera_flash_open" width="58" height="58"/>
+        <image name="camera_snap" width="80" height="80"/>
+    </resources>
+</document>

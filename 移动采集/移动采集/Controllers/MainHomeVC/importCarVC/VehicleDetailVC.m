@@ -145,12 +145,18 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
         VehicleDetailByQrCodeManger *manger = [[VehicleDetailByQrCodeManger alloc] init];
         manger.qrCode = _NummberId;
         [manger configLoadingTitle:@"加载"];
+        manger.failMessage = @"";
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf,weakSelf);
             
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.reponse = manger.vehicleDetailReponse;
                 [strongSelf.tableView reloadData];
+            }
+            
+            if ([manger.responseModel.msg isEqualToString:@"该车牌号对应车辆信息不存在"]){
+                [strongSelf.tableView reloadData];
+            
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -173,15 +179,18 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
         VehicleDetailByPlateNoManger *manger = [[VehicleDetailByPlateNoManger alloc] init];
         manger.plateNo = _NummberId;
         [manger configLoadingTitle:@"加载"];
+        manger.failMessage = @"";
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
+            SW(strongSelf,weakSelf);
+            
             if (manger.responseModel.code == CODE_SUCCESS) {
-                SW(strongSelf,weakSelf);
-                
-                if (manger.responseModel.code == CODE_SUCCESS) {
-                    strongSelf.reponse = manger.vehicleDetailReponse;
-                    [strongSelf.tableView reloadData];
-                }
+                strongSelf.reponse = manger.vehicleDetailReponse;
+                [strongSelf.tableView reloadData];
+            }
+            
+            if ([manger.responseModel.msg isEqualToString:@"该车牌号对应车辆信息不存在"]){
+                [strongSelf.tableView reloadData];
                 
             }
             

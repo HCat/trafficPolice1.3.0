@@ -435,5 +435,17 @@
     [dic writeToFile:filePath atomically:YES];
 }
 
+#pragma mark - 让NSString不为空
+
++ (NSString *)takeStringNoNull:(NSString *)t_string{
+    
+    if (t_string && t_string.length > 0) {
+        return t_string;
+    }else{
+        return @" ";
+    }
+    
+}
+
 
 @end

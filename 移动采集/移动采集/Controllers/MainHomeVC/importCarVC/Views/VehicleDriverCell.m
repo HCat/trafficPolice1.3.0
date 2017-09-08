@@ -57,7 +57,7 @@
 
     if (_driver) {
         
-        _lb_driverName.text = _driver.driverName;
+        _lb_driverName.text = [ShareFun takeStringNoNull:_driver.driverName];
         
         if ([_driver.sex isEqualToString:@"1"]) {
             _lb_sex.text = @"男";
@@ -65,15 +65,15 @@
             _lb_sex.text = @"女";
         }
         
-        _lb_driverCode.text = _driver.driverCode;
-        _lb_yearTrialDeadline.text = [ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"];
-        _lb_drivingType.text = _driver.drivingType;
-        _lb_invalidDate.text = [ShareFun timeWithTimeInterval:_driver.invalidDate dateFormat:@"yyyy年MM月dd日"];
-        _lb_certificationDate.text = [ShareFun timeWithTimeInterval:_driver.certificationDate dateFormat:@"yyyy年MM月dd日"];
-        _lb_driverLicence.text = _driver.driverLicence;
-        _lb_licenceInvalidTime.text =[ShareFun timeWithTimeInterval:_driver.licenceInvalidTime dateFormat:@"yyyy年MM月dd日"];
-        _lb_telephone.text = _driver.telephone;
-        _lb_address.text = _driver.address;
+        _lb_driverCode.text = [ShareFun takeStringNoNull:_driver.driverCode];
+        _lb_yearTrialDeadline.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"]];
+        _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
+        _lb_invalidDate.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.invalidDate dateFormat:@"yyyy年MM月dd日"]];
+        _lb_certificationDate.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.certificationDate dateFormat:@"yyyy年MM月dd日"]];
+        _lb_driverLicence.text = [ShareFun takeStringNoNull:_driver.driverLicence];
+        _lb_licenceInvalidTime.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.licenceInvalidTime dateFormat:@"yyyy年MM月dd日"]];
+        _lb_telephone.text = [ShareFun takeStringNoNull:_driver.telephone];
+        _lb_address.text = [ShareFun takeStringNoNull:_driver.address];
         
         self.driverImgList = [_driver.driverImgList copy];
         

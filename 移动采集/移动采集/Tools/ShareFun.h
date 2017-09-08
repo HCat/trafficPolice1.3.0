@@ -70,4 +70,7 @@
 + (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue;
 
 
+// 让NSString不为空
++ (NSString *)takeStringNoNull:(NSString *)t_string;
+
 @end

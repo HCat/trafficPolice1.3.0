@@ -14,6 +14,8 @@
 #import "VehicleCarAnnotation.h"
 
 #import "QRCodeScanVC.h"
+#import "VehicleCameraVC.h"
+#import "VehicleDetailVC.h"
 
 @interface ImportCarHomeVC ()<MAMapViewDelegate>
 
@@ -180,6 +182,11 @@
             
             VehicleCarAnnotation *vehicle = (VehicleCarAnnotation *)view.annotation;
             LxDBAnyVar(vehicle);
+            
+            VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
+            t_vc.type = VehicleRequestTypeCarNumber;
+            t_vc.NummberId = vehicle.vehicleCar.plateNo;
+            [self.navigationController pushViewController:t_vc animated:YES];
         }
     
     }
@@ -236,7 +243,28 @@
 
 - (IBAction)handleBtnCarNumberClicked:(id)sender {
     
-    
+    WS(weakSelf);
+    VehicleCameraVC *t_vc = [[VehicleCameraVC alloc] init];
+    t_vc.fininshCaptureBlock = ^(VehicleCameraVC *camera) {
+        SW(strongSelf, weakSelf);
+        if (camera) {
+            if (camera.isHandSearch) {
+                
+                
+            }else{
+            
+                VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
+                t_vc.type = VehicleRequestTypeCarNumber;
+                t_vc.NummberId = camera.commonIdentifyResponse.carNo;
+                [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            }
+            
+        }
+    };
+    [self presentViewController:t_vc
+                       animated:NO
+                     completion:^{
+                     }];
     
 }
 

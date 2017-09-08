@@ -54,7 +54,7 @@
     
     if (_memberInfo) {
         
-        _lb_name.text = _memberInfo.name;   //运输主体名称
+        _lb_name.text = [ShareFun takeStringNoNull:_memberInfo.name];   //运输主体名称
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_memberInfo.memtype isEqualToNumber:@1]) {
             _lb_memtype.text = @"土方车";
@@ -64,16 +64,16 @@
             _lb_memtype.text = @"砂石子车";
         }
         
-        _lb_memFormNo.text = _memberInfo.memFormNo;
-        _lb_licenseTime.text = [NSString stringWithFormat:@"%@到%@",[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeStart dateFormat:@"yyyy年MM月dd日"],[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeEnd dateFormat:@"yyyy年MM月dd日"]];
-        _lb_address.text = _memberInfo.address;
-        _lb_licenseno.text = _memberInfo.licenseno;
-        _lb_contact.text = _memberInfo.contact;
-        _lb_contactphone.text = _memberInfo.contactphone;
-        _lb_manager.text = _memberInfo.manager;
-        _lb_managePhone.text = _memberInfo.managePhone;
-        _lb_safer.text = _memberInfo.safer;
-        _lb_safePhone.text = _memberInfo.safePhone;
+        _lb_memFormNo.text = [ShareFun takeStringNoNull:_memberInfo.memFormNo];
+        _lb_licenseTime.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@到%@",[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeStart dateFormat:@"yyyy年MM月dd日"],[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeEnd dateFormat:@"yyyy年MM月dd日"]]];
+        _lb_address.text = [ShareFun takeStringNoNull:_memberInfo.address];
+        _lb_licenseno.text = [ShareFun takeStringNoNull:_memberInfo.licenseno];
+        _lb_contact.text = [ShareFun takeStringNoNull:_memberInfo.contact];
+        _lb_contactphone.text = [ShareFun takeStringNoNull:_memberInfo.contactphone];
+        _lb_manager.text = [ShareFun takeStringNoNull:_memberInfo.manager];
+        _lb_managePhone.text = [ShareFun takeStringNoNull:_memberInfo.managePhone];
+        _lb_safer.text = [ShareFun takeStringNoNull:_memberInfo.safer];
+        _lb_safePhone.text = [ShareFun takeStringNoNull:_memberInfo.safePhone];
     
     }
 
@@ -83,7 +83,7 @@
 
     _memberArea = memberArea;
     
-    _lb_memberArea.text = _memberArea;
+    _lb_memberArea.text = [ShareFun takeStringNoNull:_memberArea];
     
 }
 

@@ -38,7 +38,7 @@
     
     if (_vehicle) {
         
-        _lb_plateno.text = _vehicle.plateno;  //车牌号
+        _lb_plateno.text = [ShareFun takeStringNoNull:_vehicle.plateno];  //车牌号
         
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_vehicle.carType isEqualToNumber:@1]) {
@@ -49,9 +49,9 @@
             _lb_carType.text = @"砂石子车";
         }
         
-        _lb_inspectTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"];             //年审截止日期
-        _lb_compInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //强制险截止日期
-        _lb_bussInsuranceTimeEnd.text = [ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]; //商业险截止日期
+        _lb_inspectTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"]];             //年审截止日期
+        _lb_compInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //强制险截止日期
+        _lb_bussInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //商业险截止日期
         
     }
     
