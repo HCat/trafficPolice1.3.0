@@ -123,6 +123,9 @@
 #define URL_VEHICLE_GETDETAILINFOBYPLATENO @"app/vehicle/getDetailInfoByPlateNo.json"  //车牌号获取重点车辆
 #define URL_VEHICLE_GETVEHICLERANGELOCATION @"app/vehicle/getVehicleRangeLocation.json"  //获取一定范围内车辆信息
 
+#pragma mark - 警员勤务
+
+#define URL_LOCATION_GETLIST @"app/location/getList.json"   //获取警员位置信息
 
 
 

@@ -15,6 +15,7 @@
 #import "VideoColectVC.h"
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
+#import "PoliceCommandVC.h"
 
 
 @interface MainHomeVC ()
@@ -214,6 +215,9 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         
     }else if ([t_title isEqualToString:@"勤务指挥"]){
+        
+        PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
         
     }else if ([t_title isEqualToString:@"路面实况"]){
         

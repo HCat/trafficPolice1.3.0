@@ -10,7 +10,6 @@
 #import "NSTimer+UnRetain.h"
 #import <MAMapKit/MAMapKit.h>
 #import "VehicleAPI.h"
-#import "VehicleCarView.h"
 #import "VehicleCarAnnotation.h"
 
 #import "QRCodeScanVC.h"
@@ -75,7 +74,7 @@
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
-    [_mapView setZoomLevel:16.1 animated:YES];
+    [_mapView setZoomLevel:14.1 animated:YES];
 
 }
 
@@ -101,25 +100,6 @@
            
             strongSelf.arr_vehicles = [manger.vehicleGpsList mutableCopy];
             
-            if (strongSelf.arr_vehicles && strongSelf.arr_vehicles.count > 0) {
-                for (int i = 0 ; i < 3 ; i++) {
-                    VehicleGPSModel *model = manger.vehicleGpsList[0];
-                    if (i == 0) {
-                        model.longitude = @(118.180713);
-                        model.latitude = @(24.485624);
-                    }else if (i == 1){
-                        model.longitude = @(118.172397);
-                        model.latitude = @(24.485609);
-                    }else{
-                        model.longitude = @(118.178083);
-                        model.latitude = @(24.475376);
-                    }
-                    
-                    [strongSelf.arr_vehicles addObject:model];
-                    
-                }
-            }
-           
             for (VehicleGPSModel *model in strongSelf.arr_vehicles) {
                 VehicleCarAnnotation *annotation = [[VehicleCarAnnotation alloc] init];
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
