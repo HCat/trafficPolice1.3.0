@@ -72,3 +72,32 @@
 @end
 
 
+#pragma mark - 消息通知
+
+@implementation IdentifyNoticeParam
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"idArr" : [NSNumber class],
+             @"msgType" : [NSString class]
+             };
+}
+
+@end
+
+@implementation IdentifyNoticeManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_IDENTIFY_NOTICE;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
+@end
+
+

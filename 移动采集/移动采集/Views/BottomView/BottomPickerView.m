@@ -91,7 +91,10 @@
                 if ([obj isMemberOfClass:[AccidentGetCodesModel class]]) {
                     AccidentGetCodesModel *t_model =( AccidentGetCodesModel *)obj;
                     genderLabel.text = t_model.modelName;
-                }else{
+                }else if ([obj isMemberOfClass:[CommonGetGroupListModel class]]) {
+                    CommonGetGroupListModel *t_model =( CommonGetGroupListModel *)obj;
+                    genderLabel.text = t_model.getGroupName;
+                }else {
                     genderLabel.text = self.items[row];
                     
                 }

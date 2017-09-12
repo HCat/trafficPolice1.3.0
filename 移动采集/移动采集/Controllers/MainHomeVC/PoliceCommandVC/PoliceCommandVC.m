@@ -9,11 +9,22 @@
 #import "PoliceCommandVC.h"
 #import "NSTimer+UnRetain.h"
 #import <MAMapKit/MAMapKit.h>
+#import <PureLayout.h>
 
 #import "VehicleAPI.h"
 #import "LocationAPI.h"
+#import "CommonAPI.h"
+#import "IdentifyAPI.h"
 #import "VehicleCarAnnotation.h"
 #import "PoliceAnnotation.h"
+
+#import "BottomView.h"
+#import "BottomPickerView.h"
+
+#import "OnePoliceView.h"
+#import "GroupPoliceView.h"
+#import "BoradPoliceView.h"
+
 
 @interface PoliceCommandVC ()<MAMapViewDelegate>
 
@@ -32,7 +43,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_locationPolice;  //定位警察按钮
 @property (weak, nonatomic) IBOutlet UIButton *btn_pushPolice;      //广播警察按钮
 
+@property (nonatomic,strong) OnePoliceView * onePoliceView;
+@property (nonatomic,strong) GroupPoliceView * groupPoliceView;
+@property (nonatomic,strong) BoradPoliceView *boradPoliceView;
 
+@property (nonatomic,strong) NSArray <CommonGetGroupListModel *> * arr_groupList;
+@property (nonatomic,strong) NSArray <NSNumber *> * arr_policeIds;
 
 @end
 
@@ -269,18 +285,123 @@
 #pragma mark - 单个警察点击按钮
 - (IBAction)handleBtnOnePoliceClicked:(id)sender {
     
+    if (_onePoliceView == nil) {
+        self.onePoliceView = [OnePoliceView initCustomView];
+        [self.onePoliceView configureForAutoLayout];
+    }
+
+    [self.view addSubview:self.onePoliceView];
+    [self.onePoliceView autoPinEdgesToSuperviewEdges];
+
+
     
 }
 
 #pragma mark - 群组警察点击按钮
 - (IBAction)handleBtnGroupPoliceClicked:(id)sender {
-    
-    
+
+    WS(weakSelf);
+    if (_arr_groupList == nil) {
+        
+        CommonGetGroupListManger *t_manger = [[CommonGetGroupListManger alloc] init];
+        [t_manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+            SW(strongSelf, weakSelf);
+            strongSelf.arr_groupList = t_manger.commonGetGroupListResponse;
+            
+            if (strongSelf.groupPoliceView == nil) {
+                
+                strongSelf.groupPoliceView = [GroupPoliceView initCustomView];
+                [strongSelf.groupPoliceView configureForAutoLayout];
+            }
+            
+            
+            
+            strongSelf.groupPoliceView.selectedBlock = ^(GroupPoliceView *view) {
+                
+                SW(strongSelf, weakSelf);
+                
+                BottomPickerView *t_view = [BottomPickerView initCustomView];
+                [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 207)];
+                t_view.pickerTitle = @"警队小组";
+                t_view.items = strongSelf.arr_groupList;
+                t_view.selectedBtnBlock = ^(NSArray *items, NSInteger index) {
+                    CommonGetGroupListModel * groupListModel = items[index];
+                    view.tf_groupName.text = groupListModel.getGroupName;
+                    view.groupName = groupListModel.getGroupName;
+                    view.groupId = groupListModel.getGroupId;
+                    [BottomView dismissWindow];
+                };
+                
+                [BottomView showWindowWithBottomView:t_view];
+                
+                
+            };
+            
+            strongSelf.groupPoliceView.makeSureBlock = ^(NSString *groupName, NSNumber *groupId) {
+                
+                
+                
+                
+            };
+            
+            [strongSelf.view addSubview:strongSelf.groupPoliceView];
+            [strongSelf.groupPoliceView autoPinEdgesToSuperviewEdges];
+            
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+        }];
+        
+        
+    }else{
+        
+        if (_groupPoliceView == nil) {
+            
+            self.groupPoliceView = [GroupPoliceView initCustomView];
+            [_groupPoliceView configureForAutoLayout];
+        }
+        
+        _groupPoliceView.selectedBlock = ^(GroupPoliceView *view) {
+            
+            SW(strongSelf, weakSelf);
+            
+            BottomPickerView *t_view = [BottomPickerView initCustomView];
+            [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 207)];
+            t_view.pickerTitle = @"警队小组";
+            t_view.items = strongSelf.arr_groupList;
+            t_view.selectedBtnBlock = ^(NSArray *items, NSInteger index) {
+                CommonGetGroupListModel * groupListModel = items[index];
+                view.tf_groupName.text = groupListModel.getGroupName;
+                view.groupName = groupListModel.getGroupName;
+                view.groupId = groupListModel.getGroupId;
+                [BottomView dismissWindow];
+            };
+            
+            [BottomView showWindowWithBottomView:t_view];
+            
+            
+        };
+        
+        _groupPoliceView.makeSureBlock = ^(NSString *groupName, NSNumber *groupId) {
+            
+            
+            
+            
+        };
+        
+        [self.view addSubview:_groupPoliceView];
+        [_groupPoliceView autoPinEdgesToSuperviewEdges];
+        
+    }
+
 }
 
 
 #pragma mark - 定位警察点击按钮
 - (IBAction)handleBtnLocationPoliceClicked:(id)sender {
+    
+    
     
     
 }
@@ -289,11 +410,40 @@
 #pragma mark - 广播警察点击按钮
 - (IBAction)handleBtnPushPoliceClicked:(id)sender {
     
+    if (_boradPoliceView == nil) {
+        self.boradPoliceView = [BoradPoliceView initCustomView];
+        [_boradPoliceView configureForAutoLayout];
+        WS(weakSelf);
+        _boradPoliceView.block = ^(NSString *content) {
+            SW(strongSelf, weakSelf);
+            IdentifyNoticeParam *param = [[IdentifyNoticeParam alloc] init];
+            param.message = content;
+            param.msgType = @[@"1"];
+            param.idArr = [strongSelf.arr_policeIds copy];
+            IdentifyNoticeManger *manger = [[IdentifyNoticeManger alloc] init];
+            manger.param = param;
+            [manger configLoadingTitle:@"发送"];
+            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+                if (manger.responseModel.code == CODE_SUCCESS) {
+                    [strongSelf.boradPoliceView dismiss];
+                }
+                
+            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+            }];
+            
+        };
+        
+    }
+    
+    [self.view addSubview:_boradPoliceView];
+    [_boradPoliceView autoPinEdgesToSuperviewEdges];
+    _boradPoliceView.tv_content.text = nil;
+    
     
     
 }
-
-
 
 
 #pragma mark - dealloc

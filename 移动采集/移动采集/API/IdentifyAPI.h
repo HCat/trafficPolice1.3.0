@@ -52,6 +52,29 @@
 @end
 
 
+#pragma mark - 消息通知
+
+
+@interface IdentifyNoticeParam :NSObject
+
+
+@property (nonatomic,copy)    NSArray  <NSNumber *> * idArr;         //用户id（数组）
+@property (nonatomic,copy)    NSArray  <NSString *> * msgType;       //通知类型（数组） 1为推送通知，2为短信通知
+@property (nonatomic,copy)    NSString * message;                    //消息
+
+@end
+
+@interface IdentifyNoticeManger : LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) IdentifyNoticeParam * param;
+
+/****** 返回数据 ******/
+
+
+@end
+
+
 
 
 

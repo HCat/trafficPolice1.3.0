@@ -69,6 +69,27 @@
 
 @end
 
+#pragma mark - 获取警员群组API
+
+@interface CommonGetGroupListModel : NSObject
+
+@property (nonatomic,copy) NSNumber *getGroupId;     //通用值id
+@property (nonatomic,copy) NSString *getGroupName;   //通用值名称
+
+
+@end
+
+
+@interface CommonGetGroupListManger : LRBaseRequest
+
+/****** 请求数据 ******/
+/***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
+
+/****** 返回数据 ******/
+@property (nonatomic, copy) NSArray<CommonGetGroupListModel *> *commonGetGroupListResponse; //证件信息
+
+@end
+
 #pragma mark - 获取图片轮播API
 
 @interface CommonGetImgPlayModel : NSObject

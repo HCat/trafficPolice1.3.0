@@ -192,6 +192,12 @@
 		CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6140611F31AD9E0015B8CE /* AccidentAddFootView.xib */; };
 		CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6140671F31CBBA0015B8CE /* YUSegmentedControl.m */; };
 		CE61406B1F31CBBA0015B8CE /* YUSegmentedControlItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6140691F31CBBA0015B8CE /* YUSegmentedControlItem.m */; };
+		CE6154B01F67896D0018DF71 /* OnePoliceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6154AF1F67896D0018DF71 /* OnePoliceView.m */; };
+		CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6154B11F6789780018DF71 /* OnePoliceView.xib */; };
+		CE6154B41F6789930018DF71 /* GroupPoliceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6154B31F6789930018DF71 /* GroupPoliceView.xib */; };
+		CE6154B71F67899D0018DF71 /* GroupPoliceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6154B61F67899D0018DF71 /* GroupPoliceView.m */; };
+		CE6154BA1F6789CE0018DF71 /* BoradPoliceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6154B91F6789CE0018DF71 /* BoradPoliceView.m */; };
+		CE6154BC1F67FB5A0018DF71 /* BoradPoliceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6154BB1F67FB5A0018DF71 /* BoradPoliceView.xib */; };
 		CE675F131F381651006FC15F /* LRPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE675F121F381651006FC15F /* LRPageMenu.m */; };
 		CE675F181F38411B006FC15F /* IllegalListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE675F161F38411B006FC15F /* IllegalListVC.m */; };
 		CE675F191F38411B006FC15F /* IllegalListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE675F171F38411B006FC15F /* IllegalListVC.xib */; };
@@ -623,6 +629,15 @@
 		CE6140671F31CBBA0015B8CE /* YUSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUSegmentedControl.m; sourceTree = "<group>"; };
 		CE6140681F31CBBA0015B8CE /* YUSegmentedControlItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUSegmentedControlItem.h; sourceTree = "<group>"; };
 		CE6140691F31CBBA0015B8CE /* YUSegmentedControlItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUSegmentedControlItem.m; sourceTree = "<group>"; };
+		CE6154AE1F67896D0018DF71 /* OnePoliceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePoliceView.h; sourceTree = "<group>"; };
+		CE6154AF1F67896D0018DF71 /* OnePoliceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePoliceView.m; sourceTree = "<group>"; };
+		CE6154B11F6789780018DF71 /* OnePoliceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePoliceView.xib; sourceTree = "<group>"; };
+		CE6154B31F6789930018DF71 /* GroupPoliceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupPoliceView.xib; sourceTree = "<group>"; };
+		CE6154B51F67899D0018DF71 /* GroupPoliceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPoliceView.h; sourceTree = "<group>"; };
+		CE6154B61F67899D0018DF71 /* GroupPoliceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPoliceView.m; sourceTree = "<group>"; };
+		CE6154B81F6789CE0018DF71 /* BoradPoliceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoradPoliceView.h; sourceTree = "<group>"; };
+		CE6154B91F6789CE0018DF71 /* BoradPoliceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoradPoliceView.m; sourceTree = "<group>"; };
+		CE6154BB1F67FB5A0018DF71 /* BoradPoliceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoradPoliceView.xib; sourceTree = "<group>"; };
 		CE675F111F381651006FC15F /* LRPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPageMenu.h; sourceTree = "<group>"; };
 		CE675F121F381651006FC15F /* LRPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPageMenu.m; sourceTree = "<group>"; };
 		CE675F151F38411B006FC15F /* IllegalListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalListVC.h; sourceTree = "<group>"; };
@@ -1303,6 +1318,22 @@
 			path = YUSegment;
 			sourceTree = "<group>";
 		};
+		CE6154AD1F677E470018DF71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE6154AE1F67896D0018DF71 /* OnePoliceView.h */,
+				CE6154AF1F67896D0018DF71 /* OnePoliceView.m */,
+				CE6154B11F6789780018DF71 /* OnePoliceView.xib */,
+				CE6154B51F67899D0018DF71 /* GroupPoliceView.h */,
+				CE6154B61F67899D0018DF71 /* GroupPoliceView.m */,
+				CE6154B31F6789930018DF71 /* GroupPoliceView.xib */,
+				CE6154B81F6789CE0018DF71 /* BoradPoliceView.h */,
+				CE6154B91F6789CE0018DF71 /* BoradPoliceView.m */,
+				CE6154BB1F67FB5A0018DF71 /* BoradPoliceView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE675F101F381651006FC15F /* LRPageMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1507,6 +1538,7 @@
 		CE8EE8601F66354900CC64B0 /* PoliceCommandVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE6154AD1F677E470018DF71 /* Views */,
 				CE8EE8611F66356000CC64B0 /* PoliceCommandVC.h */,
 				CE8EE8621F66356000CC64B0 /* PoliceCommandVC.m */,
 				CE8EE8631F66356000CC64B0 /* PoliceCommandVC.xib */,
@@ -2058,6 +2090,7 @@
 				CE424F421F3AE694005741CA /* AccidentMessageCell.xib in Resources */,
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
 				CE5C38F81F28606B0055C945 /* ZLPhotoActionSheet.xib in Resources */,
+				CE6154B41F6789930018DF71 /* GroupPoliceView.xib in Resources */,
 				CE41C7B91F5EAC800058FE8D /* ImportCarHomeVC.xib in Resources */,
 				CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */,
 				CE4E3C0B1F39B9F20057148B /* IllegalFootCell.xib in Resources */,
@@ -2065,6 +2098,7 @@
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE5C38F61F28606B0055C945 /* ZLCollectionCell.xib in Resources */,
 				CE5C38FA1F28606B0055C945 /* ZLPhotoBrowserCell.xib in Resources */,
+				CE6154BC1F67FB5A0018DF71 /* BoradPoliceView.xib in Resources */,
 				CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */,
 				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
 				CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */,
@@ -2110,6 +2144,7 @@
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
 				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
+				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
@@ -2257,6 +2292,7 @@
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
+				CE6154BA1F6789CE0018DF71 /* BoradPoliceView.m in Sources */,
 				CE675F351F386F07006FC15F /* AccidentCell.m in Sources */,
 				CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */,
 				CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */,
@@ -2332,11 +2368,13 @@
 				CE5C38FC1F28606B0055C945 /* ToastUtils.m in Sources */,
 				CE4E3C151F39BB860057148B /* IllegalMessageCell.m in Sources */,
 				CE5C39061F28606B0055C945 /* ZLPhotoModel.m in Sources */,
+				CE6154B71F67899D0018DF71 /* GroupPoliceView.m in Sources */,
 				CEAA96F71F1CE97B00741A6F /* BaseModel.m in Sources */,
 				CEFEFD101F29C62900C33CBD /* UIImage+FixOrientation.m in Sources */,
 				CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */,
 				CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */,
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
+				CE6154B01F67896D0018DF71 /* OnePoliceView.m in Sources */,
 				CE5A00FE1F60E0D5000F13CC /* VehicleDetailVC.m in Sources */,
 				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,

@@ -47,6 +47,7 @@
 #define URL_COMMON_GETWEATHER @"app/common/getWeather.json"                     //获取当前天气
 #define URL_COMMON_IDENTIFY @"app/common/identify.json"                         //证件识别
 #define URL_COMMON_GETROAD @"app/common/getRoad.json"                           //获取路名
+#define URL_COMMON_GETGROUPLIST @"app/common/getGroupList.json"                 //获取警员分组列表
 #define URL_COMMON_GETIMGPLAY @"app/common/getImgPlay.json"                     //获取图片轮播图片
 #define URL_COMMON_VERSIONUPDATE @"app/common/versionUpdate.json"               //版本更新
 #define URL_COMMON_ADVICE @"app/common/advice.json"                             //投诉建议
@@ -106,8 +107,9 @@
 
 #pragma mark - 消息相关API
 
-#define URL_IDENTIFY_LIST @"identify/identifyMsgList.json" //消息列表
-#define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json" //确认接收消息
+#define URL_IDENTIFY_LIST @"identify/identifyMsgList.json"  //消息列表
+#define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json"    //确认接收消息
+#define URL_IDENTIFY_NOTICE @"identify/notice.json"         //消息通知
 
 
 #pragma mark - 签到相关API

@@ -119,6 +119,45 @@
 
 @end
 
+#pragma mark - 获取路名API
+
+@implementation CommonGetGroupListModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"getGroupId" : @"id",
+             @"getGroupName" : @"name",
+             };
+}
+
+@end
+
+@implementation CommonGetGroupListManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_COMMON_GETGROUPLIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return nil;
+}
+
+//返回参数
+- (NSArray *)commonGetGroupListResponse{
+    
+    if (self.responseModel) {
+        return [NSArray modelArrayWithClass:[CommonGetGroupListModel class] json:self.responseJSONObject[@"data"]];
+    }
+    
+    return nil;
+}
+
+@end
+
+
 #pragma mark - 获取图片轮播API
 
 @implementation CommonGetImgPlayModel
