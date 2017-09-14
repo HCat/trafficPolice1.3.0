@@ -337,7 +337,11 @@
     [LRBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
+    [ShareValue sharedDefault].makeNumber = 0;
     [UserModel setUserModel:nil];
+    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
+    } seq:0];
     ApplicationDelegate.vc_tabBar = nil;
     LoginHomeVC *t_vc = [LoginHomeVC new];
     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];

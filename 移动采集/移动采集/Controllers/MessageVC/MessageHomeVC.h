@@ -10,6 +10,6 @@
 
 @interface MessageHomeVC : ShowTabSuperVC
 
-
+- (void)reloadDataUseMJRefresh;
 
 @end

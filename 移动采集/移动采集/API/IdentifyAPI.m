@@ -95,4 +95,52 @@
 
 @end
 
+#pragma mark - 消息详情
+
+@implementation IdentifyMsgDetailManger
+
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_IDENTIFY_MSGDETAIL;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_msgId};
+}
+
+//返回参数
+- (IdentifyModel *)identifyModel{
+    
+    if (self.responseModel.data) {
+        _identifyModel = [IdentifyModel modelWithDictionary:self.responseModel.data];
+        return _identifyModel;
+    }
+    
+    return nil;
+}
+
+@end
+
+#pragma mark - 消息任务完成
+
+@implementation IdentifyFinishPoliceCallManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_IDENTIFY_FINISHPOLICECALL;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_msgId};
+}
+
+@end
+
 

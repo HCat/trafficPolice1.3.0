@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <AVFoundation/AVFoundation.h>
 #import <YTKNetwork.h>
 #import "LSStatusBarHUD.h"
 
@@ -23,11 +23,14 @@
 #import "UserHomeVC.h"
 
 #import "UserModel.h"
+#import "MessageHomeVC.h"
+#import "IdentifyAPI.h"
+#import "MessageDetailVC.h"
 
 
 @interface AppDelegate ()
 
-
+@property (nonatomic, strong) AVAudioPlayer *player;
 
 @end
 
@@ -37,12 +40,15 @@ BMKMapManager* _mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-    
     [self commonConfig];
     [self addThirthPart:launchOptions];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    //设定定位使用高德还是百度地图来定位
     [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
+    //同步通知消息数目
+    [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    //添加点击消息通知时候弹出具体详情
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationSuccess:) name:NOTIFICATION_RECEIVENOTIFICATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = DefaultBGColor;
@@ -156,6 +162,7 @@ BMKMapManager* _mapManager;
     if (_vc_tabBar == nil) {
         
         self.vc_tabBar = [[AKTabBarController alloc]initWithTabBarHeight:50];
+        [_vc_tabBar setDelegate:(id<AKTabBarControllerDelegate>)self];
         [_vc_tabBar setTabTitleIsHidden:NO];
         [_vc_tabBar setTabEdgeColor:[UIColor clearColor]];
         [_vc_tabBar setIconGlossyIsHidden:YES];
@@ -192,6 +199,14 @@ BMKMapManager* _mapManager;
 
 -(void)reloadTabBar{
     [_vc_tabBar loadTabs];
+}
+
+#pragma mark -AKTabbarDelegete
+- (void)tabBarControllerdidSelectTabAtIndex:(NSInteger)index{
+    if (index == 2) {
+        [ShareValue sharedDefault].makeNumber = 0;
+        [_vc_tabBar loadTabs];
+    }
 }
 
 #pragma mark - 网络改变监听
@@ -323,6 +338,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         NSDictionary *aps = [userInfo objectForKey:@"aps"];
         NSString *sound = [aps objectForKey:@"sound"];
+        NSNumber *badge =   [aps objectForKey:@"badge"];
+        
+        if (_vc_tabBar.selectedIndex == 2) {
+            [ShareValue sharedDefault].makeNumber = 0;
+            UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
+            MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
+            [vc reloadDataUseMJRefresh];
+            
+        }else{
+            [ShareValue sharedDefault].makeNumber = [badge integerValue];
+            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[2];
+            MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
+            [vc reloadDataUseMJRefresh];
+        }
+        [_vc_tabBar loadTabs];
+        
         
         if ([sound containsString:@"police"]) {
             
@@ -338,7 +369,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [self.player play];
         }
         
-//        [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WILLPRESENTNOTIFICATION object:userInfo];
     }
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
@@ -391,6 +421,47 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
+#pragma mark - notification
+
+- (void)receiveNotificationSuccess:(NSNotification *)notication{
+    NSDictionary * userInfo = notication.object;
+    if (userInfo) {
+        NSNumber *msgId = [userInfo objectForKey:@"id"];
+        if (msgId) {
+            IdentifyMsgDetailManger *manger = [[IdentifyMsgDetailManger alloc] init];
+            manger.msgId =msgId;
+            [manger configLoadingTitle:@"请求"];
+            
+            WS(weakSelf);
+            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+                if (manger.responseModel.code == CODE_SUCCESS) {
+                    MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
+                    t_vc.model = manger.identifyModel;
+                    UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
+                    [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                    }];
+                    
+                }
+            
+            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+            }];
+            
+            
+        }
+    }
+}
+
+- (void)makesureNotification:(NSNotification *)notication{
+    
+    if (self.player) {
+        [self.player stop];
+        self.player = nil;
+    }
+
+
+}
 
 #pragma mark -
 
@@ -409,15 +480,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    if (_vc_tabBar.selectedIndex == 2) {
+        [ShareValue sharedDefault].makeNumber = 0;
+        UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
+        MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
+        [vc reloadDataUseMJRefresh];
+    }else{
+        [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    }
+    
+    [_vc_tabBar loadTabs];
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+
     [[LocationHelper sharedDefault] stopLocation];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

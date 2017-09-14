@@ -8,6 +8,7 @@
 
 #import "PoliceCommandVC.h"
 #import "NSTimer+UnRetain.h"
+#import "UINavigationBar+BarItem.h"
 #import <MAMapKit/MAMapKit.h>
 #import <PureLayout.h>
 
@@ -24,6 +25,7 @@
 #import "OnePoliceView.h"
 #import "GroupPoliceView.h"
 #import "BoradPoliceView.h"
+#import "PoliceDetailView.h"
 
 #import "PoliceLocationVC.h"
 
@@ -58,6 +60,8 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
 @property (nonatomic,strong) OnePoliceView * onePoliceView;         //单个警察弹出框
 @property (nonatomic,strong) GroupPoliceView * groupPoliceView;     //警察小组弹出框
 @property (nonatomic,strong) BoradPoliceView *boradPoliceView;      //广播弹出框
+@property (nonatomic,strong) PoliceDetailView *policeDetailView;    //警员详情
+
 
 @property (nonatomic,strong) NSArray <CommonGetGroupListModel *> * arr_groupList;
 @property (nonatomic,strong) NSMutableArray * arr_policeIds;
@@ -80,6 +84,7 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
     self.arr_policePoint = [NSMutableArray array];
     self.arr_policeIds = [NSMutableArray array];
 
+    [self showRightBarButtonItemWithImage:@"" target:self action:@selector(makeLocationInCenter)];
     
     [self initMapView];
     
@@ -390,10 +395,24 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
     /* Adjust the map center in order to show the callout view completely. */
     if ([view isKindOfClass:[MAAnnotationView class]]) {
         
-        if ([view.annotation isKindOfClass:[VehicleCarAnnotation class]]){
+        if ([view.annotation isKindOfClass:[PoliceAnnotation class]]){
             
-            VehicleCarAnnotation *vehicle = (VehicleCarAnnotation *)view.annotation;
-            LxDBAnyVar(vehicle);
+            PoliceAnnotation *policeAnnotation = (PoliceAnnotation *)view.annotation;
+            LxDBAnyVar(policeAnnotation);
+            
+            if (_policeDetailView == nil) {
+                self.policeDetailView = [PoliceDetailView initCustomView];
+                [_policeDetailView configureForAutoLayout];
+                
+            }
+            
+            [self.view addSubview:_policeDetailView];
+            [_policeDetailView autoPinEdgesToSuperviewEdges];
+            
+            _policeDetailView.policeName = policeAnnotation.userModel.userName;
+            
+            NSString *groupString = [policeAnnotation.userModel.groupNames componentsJoinedByString:@","];
+            _policeDetailView.policeGroup = groupString;
             
         }
         
@@ -652,7 +671,16 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
     
 }
 
-#pragma mark  重新刷新坐标点
+#pragma mark - 让地图的中心点为定位坐标按钮
+
+- (void)makeLocationInCenter{
+    
+    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+
+
+}
+
+#pragma mark  - 重新刷新坐标点
 
 - (void)reloadPoint{
 

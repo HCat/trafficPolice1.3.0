@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_content;
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
 @property (weak, nonatomic) IBOutlet PersistentBackgroundLabel *lb_type;
-
+@property (weak, nonatomic) IBOutlet UIImageView *imgeV_state;
 
 @end
 
@@ -36,7 +36,7 @@
         
         if ([_model.type isEqualToNumber:@1]) {
             _lb_type.text = @"特殊车辆";
-            
+            _imgeV_state.hidden = YES;
             if ([_model.flag isEqualToNumber:@0]) {
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xf26262)];
             }else{
@@ -53,13 +53,19 @@
                
             }else{
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xa8b2cb)];
-                
             }
+            
+            if ([_model.state isEqualToNumber:@0]) {
+                _imgeV_state.hidden = NO;
+            }else{
+                _imgeV_state.hidden = YES;
+            }
+            
             
         }else{
         
             _lb_type.text = @"警务消息";
-            
+            _imgeV_state.hidden = YES;
             if ([_model.flag isEqualToNumber:@0]) {
                  [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xf8a72f)];
                

@@ -35,6 +35,7 @@
     self.title = @"通知";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
     
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
@@ -47,11 +48,8 @@
     self.arr_content = [NSMutableArray array];
     
     [self initRefresh];
-    
     [_tb_content.mj_header beginRefreshing];
-    
     WS(weakSelf);
-    
     //点击重新加载之后的处理
     [_tb_content setReloadBlock:^{
         SW(strongSelf, weakSelf);
@@ -103,6 +101,10 @@
 }
 
 #pragma mark - 加载新数据
+
+- (void)reloadDataUseMJRefresh{
+    [_tb_content.mj_header beginRefreshing];
+}
 
 - (void)reloadData{
     self.index = 0;
@@ -238,11 +240,11 @@
 }
 
 -(BOOL)showMask{
-    return YES;
+    return [ShareValue sharedDefault].makeNumber > 0 ? YES : NO;
 }
 
 -(NSInteger)showMaskNumber{
-    return 1;
+    return [ShareValue sharedDefault].makeNumber;
 }
 
 #pragma mark - dealloc

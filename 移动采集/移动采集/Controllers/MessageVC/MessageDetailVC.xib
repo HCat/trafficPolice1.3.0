@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageDetailVC">
             <connections>
+                <outlet property="btn_complete" destination="DLd-6H-nXm" id="tFf-Fp-zrz"/>
                 <outlet property="btn_makesure" destination="Wui-hf-coo" id="nMP-87-MIW"/>
                 <outlet property="layout_btnAndVContent" destination="NlL-rr-rSl" id="vgD-3v-01t"/>
                 <outlet property="layout_btnBottom" destination="GIC-IJ-RK3" id="G4z-n0-CwG"/>
@@ -79,10 +80,29 @@
                         <action selector="handleBtnMakeSureClicked:" destination="-1" eventType="touchUpInside" id="JWb-Xd-PkY"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLd-6H-nXm">
+                    <rect key="frame" x="16" y="556" width="343" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.44994854439999998" blue="0.3931665453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="cgg-Sw-8VC"/>
+                    </constraints>
+                    <state key="normal" title="完成"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnCompleteClicked:" destination="-1" eventType="touchUpInside" id="JXd-BJ-yqB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="DLd-6H-nXm" firstAttribute="trailing" secondItem="Wo1-IQ-qok" secondAttribute="trailing" id="13W-wM-KBb"/>
+                <constraint firstItem="DLd-6H-nXm" firstAttribute="top" secondItem="Wo1-IQ-qok" secondAttribute="bottom" constant="20" id="5P4-K2-nGO"/>
                 <constraint firstItem="Wo1-IQ-qok" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="76F-xr-Gxb"/>
+                <constraint firstItem="DLd-6H-nXm" firstAttribute="leading" secondItem="Wo1-IQ-qok" secondAttribute="leading" id="CdC-pM-971"/>
                 <constraint firstAttribute="bottom" secondItem="Wui-hf-coo" secondAttribute="bottom" constant="10" id="GIC-IJ-RK3"/>
                 <constraint firstItem="Wui-hf-coo" firstAttribute="leading" secondItem="Wo1-IQ-qok" secondAttribute="leading" id="HpZ-Ra-FWe"/>
                 <constraint firstItem="Wo1-IQ-qok" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="M9a-Ne-MDo"/>

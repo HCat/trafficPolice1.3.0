@@ -86,5 +86,16 @@ LRSingletonM(Default)
 
 }
 
+- (NSInteger)makeNumber{
+    LxPrintf(@"推送消息数目：%ld",(long)[UIApplication sharedApplication].applicationIconBadgeNumber);
+    return [UIApplication sharedApplication].applicationIconBadgeNumber;
+}
+
+- (void)setMakeNumber:(NSInteger)makeNumber{
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = makeNumber;
+    [JPUSHService setBadge:makeNumber];
+}
+
 
 @end

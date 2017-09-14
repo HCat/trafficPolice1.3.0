@@ -8,6 +8,7 @@
 
 #import "ImportCarHomeVC.h"
 #import "NSTimer+UnRetain.h"
+#import "UINavigationBar+BarItem.h"
 #import <MAMapKit/MAMapKit.h>
 #import "VehicleAPI.h"
 #import "VehicleCarAnnotation.h"
@@ -32,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"重点车辆";
+    
+    [self showRightBarButtonItemWithImage:@"" target:self action:@selector(makeLocationInCenter)];
     self.carType = @2;
     self.arr_point = [NSMutableArray array];
     
@@ -251,6 +254,14 @@
     
 }
 
+#pragma mark - 让地图的中心点为定位坐标按钮
+
+- (void)makeLocationInCenter{
+    
+    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+    
+    
+}
 
 
 #pragma mark - dealloc

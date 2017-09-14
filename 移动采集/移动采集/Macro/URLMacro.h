@@ -102,15 +102,16 @@
 
 #define URL_VIDEOCOLECT_SAVE @"app/videoColect/save.json"                       //警情反馈采集增加
 #define URL_VIDEOCOLECT_LISTPAGING @"app/videoColect/listPaging.json"           //警情反馈采集列表
-#define URL_VIDEOCOLECT_DETAIL @"app/videoColect/detail.json"                   //	警情反馈详情
+#define URL_VIDEOCOLECT_DETAIL @"app/videoColect/detail.json"                   //警情反馈详情
 
 
 #pragma mark - 消息相关API
 
-#define URL_IDENTIFY_LIST @"identify/identifyMsgList.json"  //消息列表
-#define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json"    //确认接收消息
-#define URL_IDENTIFY_NOTICE @"identify/notice.json"         //消息通知
-
+#define URL_IDENTIFY_LIST @"identify/identifyMsgList.json"                  //消息列表
+#define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json"                    //确认接收消息
+#define URL_IDENTIFY_NOTICE @"identify/notice.json"                         //消息通知
+#define URL_IDENTIFY_MSGDETAIL @"identify/msgDetail.json"                   //消息详情
+#define URL_IDENTIFY_FINISHPOLICECALL @"identify/finishPoliceCall.json"     //消息任务完成
 
 #pragma mark - 签到相关API
 

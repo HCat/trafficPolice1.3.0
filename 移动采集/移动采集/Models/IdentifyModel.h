@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSNumber * createTime;
 @property (nonatomic, strong) NSNumber * longitude; //经度
 @property (nonatomic, strong) NSNumber * latitude;  //纬度
+@property (nonatomic, strong) NSNumber * state;     //任务状态  0未完成 1完成，(type=2出警任务的状态)
 
 @end

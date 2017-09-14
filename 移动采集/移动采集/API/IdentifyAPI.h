@@ -71,6 +71,31 @@
 
 /****** 返回数据 ******/
 
+@end
+
+
+#pragma mark - 消息详情
+
+@interface IdentifyMsgDetailManger : LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * msgId; //主键
+
+/****** 返回数据 ******/
+
+@property (nonatomic, strong) IdentifyModel * identifyModel;
+
+@end
+
+#pragma mark - 消息任务完成
+
+@interface IdentifyFinishPoliceCallManger : LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * msgId; //主键
+
+/****** 返回数据 ******/
+
 
 @end
 

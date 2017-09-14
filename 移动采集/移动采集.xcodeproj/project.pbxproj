@@ -231,6 +231,8 @@
 		CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69156E1F1DE2AC008911A6 /* LSStatusBarHUD.m */; };
 		CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915731F1DE672008911A6 /* LocationHelper.m */; };
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
+		CE6D2DA41F6AF81400293753 /* PoliceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */; };
+		CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */; };
 		CE756AC91F4EBE3A00D08D40 /* FastAccidentProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */; };
 		CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */; };
 		CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */; };
@@ -708,6 +710,9 @@
 		CE6915731F1DE672008911A6 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		CE6915751F1DED15008911A6 /* ImageFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileInfo.h; sourceTree = "<group>"; };
 		CE6915761F1DED15008911A6 /* ImageFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileInfo.m; sourceTree = "<group>"; };
+		CE6D2DA21F6AF81400293753 /* PoliceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceDetailView.h; sourceTree = "<group>"; };
+		CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceDetailView.m; sourceTree = "<group>"; };
+		CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceDetailView.xib; sourceTree = "<group>"; };
 		CE756AC61F4EBE3A00D08D40 /* FastAccidentProcessVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentProcessVC.h; sourceTree = "<group>"; };
 		CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastAccidentProcessVC.m; sourceTree = "<group>"; };
 		CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastAccidentProcessVC.xib; sourceTree = "<group>"; };
@@ -1387,6 +1392,9 @@
 				CE6154B81F6789CE0018DF71 /* BoradPoliceView.h */,
 				CE6154B91F6789CE0018DF71 /* BoradPoliceView.m */,
 				CE6154BB1F67FB5A0018DF71 /* BoradPoliceView.xib */,
+				CE6D2DA21F6AF81400293753 /* PoliceDetailView.h */,
+				CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */,
+				CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2232,6 +2240,7 @@
 				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
+				CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2305,6 +2314,7 @@
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CED9B0EC1F5D058E0010E68A /* SignAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
+				CE6D2DA41F6AF81400293753 /* PoliceDetailView.m in Sources */,
 				CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */,
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
 				CE4E3C131F39BB860057148B /* IllegalImageCell.m in Sources */,

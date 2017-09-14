@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_content;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_makesure;
+@property (weak, nonatomic) IBOutlet UIButton *btn_complete;
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
@@ -40,6 +41,7 @@
     if ([_model.type isEqualToNumber:@1]) {
         self.title = @"特殊车辆通知";
         
+        _btn_complete.hidden = YES;
         _v_content.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
         _v_content.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
         _v_content.layer.shadowOpacity = 0.5;//不透明度
@@ -80,8 +82,21 @@
         self.title = @"出警任务";
         _layout_btnBottom.priority = UILayoutPriorityDefaultLow;
         [self.view layoutIfNeeded];
+        
+        if ([_model.flag isEqualToNumber:@0]) {
+            _btn_complete.hidden = YES;
+        }else{
+            if ([_model.state isEqualToNumber:@0]) {
+                _btn_complete.hidden = NO;
+            }else{
+                _btn_complete.hidden = YES;
+            }
+            
+        }
+        
     }else{
         self.title = @"警务消息";
+        _btn_complete.hidden = YES;
         _layout_btnBottom.priority = UILayoutPriorityDefaultLow;
         [self.view layoutIfNeeded];
     }
@@ -101,7 +116,6 @@
     
         IdentifySetMsgReadManger *manger = [[IdentifySetMsgReadManger alloc] init];
         manger.msgId = _model.msgId;
-        manger.isNeedShowHud = NO;
         [manger configLoadingTitle:@"确认"];
        
         WS(weakSelf);
@@ -111,7 +125,12 @@
             
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.model.flag = @1;
-                _btn_makesure.hidden = YES;
+                strongSelf.btn_makesure.hidden = YES;
+                if ([strongSelf.model.state isEqualToNumber:@0]) {
+                    strongSelf.btn_complete.hidden = NO;
+                }else{
+                    strongSelf.btn_complete.hidden = YES;
+                }
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
             }
@@ -119,6 +138,37 @@
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             
         
+        }];
+    }
+    
+}
+
+#pragma mark - 完成按钮事件
+
+- (IBAction)handleBtnCompleteClicked:(id)sender {
+    
+    if ([_model.state isEqualToNumber:@0]) {
+        
+        
+        IdentifyFinishPoliceCallManger *manger = [[IdentifyFinishPoliceCallManger alloc] init];
+        manger.msgId = _model.msgId;
+        [manger configLoadingTitle:@"请求"];
+        
+        WS(weakSelf);
+        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+            SW(strongSelf, weakSelf);
+            
+            if (manger.responseModel.code == CODE_SUCCESS) {
+                strongSelf.model.state = @1;
+                strongSelf.btn_complete.hidden = YES;
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
+            }
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+            
         }];
     }
     
