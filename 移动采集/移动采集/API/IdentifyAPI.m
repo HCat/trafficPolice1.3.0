@@ -76,11 +76,6 @@
 
 @implementation IdentifyNoticeParam
 
-+ (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"idArr" : [NSNumber class],
-             @"msgType" : [NSString class]
-             };
-}
 
 @end
 

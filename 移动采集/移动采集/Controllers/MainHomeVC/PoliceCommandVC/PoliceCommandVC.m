@@ -25,11 +25,23 @@
 #import "GroupPoliceView.h"
 #import "BoradPoliceView.h"
 
+#import "PoliceLocationVC.h"
+
+
+
+typedef NS_ENUM(NSUInteger, PoliceType) {
+    PoliceTypeOnePolice,
+    PoliceTypeGroupPolice,
+    PoliceTypeLocationPolice,
+    PoliceTypeUnknow,
+};
 
 @interface PoliceCommandVC ()<MAMapViewDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
+@property (nonatomic, strong) MAPointAnnotation *positionAnnotation; //定位的坐标点
+@property (nonatomic, strong) MACircle *positionCircle;              //定位画的圆
 
 @property (nonatomic, strong) NSTimer * loadRequestTime;            //请求时间
 @property (nonatomic, strong) NSMutableArray *arr_policeCar;        //用来存储警车请求数据
@@ -43,12 +55,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_locationPolice;  //定位警察按钮
 @property (weak, nonatomic) IBOutlet UIButton *btn_pushPolice;      //广播警察按钮
 
-@property (nonatomic,strong) OnePoliceView * onePoliceView;
-@property (nonatomic,strong) GroupPoliceView * groupPoliceView;
-@property (nonatomic,strong) BoradPoliceView *boradPoliceView;
+@property (nonatomic,strong) OnePoliceView * onePoliceView;         //单个警察弹出框
+@property (nonatomic,strong) GroupPoliceView * groupPoliceView;     //警察小组弹出框
+@property (nonatomic,strong) BoradPoliceView *boradPoliceView;      //广播弹出框
 
 @property (nonatomic,strong) NSArray <CommonGetGroupListModel *> * arr_groupList;
-@property (nonatomic,strong) NSArray <NSNumber *> * arr_policeIds;
+@property (nonatomic,strong) NSMutableArray * arr_policeIds;
+
+@property (nonatomic,assign)PoliceType policeType;
+
+@property (nonatomic,strong) NSNumber * latitude;
+@property (nonatomic,strong) NSNumber * longitude;
+@property (nonatomic,strong) NSNumber * range;
 
 @end
 
@@ -60,13 +78,18 @@
     self.title = @"勤务指挥";
     self.arr_policeCarPoint = [NSMutableArray array];
     self.arr_policePoint = [NSMutableArray array];
+    self.arr_policeIds = [NSMutableArray array];
+
     
     [self initMapView];
+    
+    self.policeType = PoliceTypeUnknow;
     
     WS(weakSelf);
     self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
         
         SW(strongSelf, weakSelf);
+        [strongSelf resetPoliceType:strongSelf.policeType];
         [strongSelf loadPoliceCarData];
         [strongSelf loadPoliceData];
         
@@ -75,6 +98,85 @@
     
     
 }
+
+#pragma mark - set && get 
+
+- (void)resetPoliceType:(PoliceType)policeType{
+
+    self.policeType = policeType;
+
+}
+
+- (void)setPoliceType:(PoliceType)policeType{
+
+    _policeType = policeType;
+    
+    switch (_policeType) {
+        case PoliceTypeUnknow:{
+            
+            [self celearPositionRange];
+            
+            _latitude = @(_mapView.centerCoordinate.latitude);
+            _longitude = @(_mapView.centerCoordinate.longitude);
+            _range = @5;
+            
+            _btn_onePolice.selected = NO;
+            _btn_groupPolice.selected = NO;
+            _btn_locationPolice.selected = NO;
+            _btn_pushPolice.enabled = NO;
+            
+        }break;
+        case PoliceTypeOnePolice:{
+            
+            [self celearPositionRange];
+            
+            _latitude = @(_mapView.centerCoordinate.latitude);
+            _longitude = @(_mapView.centerCoordinate.longitude);
+            _range = @5;
+            
+            _btn_onePolice.selected = YES;
+            _btn_groupPolice.selected = NO;
+            _btn_locationPolice.selected = NO;
+            _btn_pushPolice.enabled = NO;
+            
+        }break;
+        case PoliceTypeGroupPolice:{
+            
+             [self celearPositionRange];
+            
+            _latitude = @(_mapView.centerCoordinate.latitude);
+            _longitude = @(_mapView.centerCoordinate.longitude);
+            _range = @5;
+            
+            _btn_onePolice.selected = NO;
+            _btn_groupPolice.selected = YES;
+            _btn_locationPolice.selected = NO;
+            _btn_pushPolice.enabled = NO;
+
+            
+        }break;
+        case PoliceTypeLocationPolice:{
+            
+            //选中时候的位置和范围在PoliceLocation的委托中已经确定不需要重新赋值
+        
+            [self drawPositionRange];
+            _btn_onePolice.selected = NO;
+            _btn_groupPolice.selected = NO;
+            _btn_locationPolice.selected = YES;
+            _btn_pushPolice.enabled = YES;
+            
+            
+        }break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+
+
 
 #pragma mark - init
 
@@ -101,9 +203,9 @@
 
     WS(weakSelf);
     VehicleRangeLocationManger *manger = [[VehicleRangeLocationManger alloc] init];
-    manger.lat = @(_mapView.centerCoordinate.latitude);
-    manger.lng = @(_mapView.centerCoordinate.longitude);
-    manger.range = @5;
+    manger.lat = _latitude;
+    manger.lng = _longitude;
+    manger.range = _range;
     manger.carType = @1;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
@@ -145,9 +247,9 @@
     
     WS(weakSelf);
     LocationGetListManger *manger = [[LocationGetListManger alloc] init];
-    manger.lat = @(_mapView.centerCoordinate.latitude);
-    manger.lng = @(_mapView.centerCoordinate.longitude);
-    manger.range = @5;
+    manger.lat = _latitude;
+    manger.lng = _longitude;
+    manger.range = _range;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);
@@ -159,6 +261,19 @@
             }
             
             strongSelf.arr_police = [manger.userGpsList mutableCopy];
+            
+            if (strongSelf.policeType == PoliceTypeLocationPolice) {
+                
+                if (strongSelf.arr_policeIds && strongSelf.arr_policeIds.count > 0) {
+                    [strongSelf.arr_policeIds removeAllObjects];
+                }
+                
+                if (strongSelf.arr_police && strongSelf.arr_police.count > 0) {
+                    for (UserGpsListModel *t_model in strongSelf.arr_police) {
+                        [strongSelf.arr_policeIds addObject:t_model.userId];
+                    }
+                }
+            }
             
             for (UserGpsListModel *model in strongSelf.arr_police) {
                 PoliceAnnotation *annotation = [[PoliceAnnotation alloc] init];
@@ -215,10 +330,57 @@
             
         }
         
-        policeView.image = [UIImage imageNamed:@"map_police"];
+        switch (_policeType) {
+            case PoliceTypeUnknow:{
+                policeView.image = [UIImage imageNamed:@"map_police"];
+            }break;
+            case PoliceTypeOnePolice:{
+                PoliceAnnotation * t_policeAnnotation = (PoliceAnnotation *)annotation;
+                LxDBAnyVar(t_policeAnnotation);
+                if ([t_policeAnnotation.userModel.userName isEqualToString:_onePoliceView.name]) {
+                    policeView.image = [UIImage imageNamed:@"map_police_selected"];
+                }else{
+                    policeView.image = [UIImage imageNamed:@"map_police"];
+                }
+            
+            }break;
+            case PoliceTypeGroupPolice:{
+                PoliceAnnotation * t_policeAnnotation = (PoliceAnnotation *)annotation;
+                LxDBAnyVar(t_policeAnnotation);
+               
+                BOOL isGroupNumber = [t_policeAnnotation.userModel.groupIds containsObject:[_groupPoliceView.groupId stringValue]];
+                
+                if (isGroupNumber) {
+                    policeView.image = [UIImage imageNamed:@"map_police_selected"];
+                }else{
+                    policeView.image = [UIImage imageNamed:@"map_police"];
+                }
+                
+            }break;
+            case PoliceTypeLocationPolice:{
+                policeView.image = [UIImage imageNamed:@"map_police"];
+            }break;
+            default:
+                break;
+        }
         
+    
         return policeView;
     
+    }else if ([annotation isKindOfClass:[MAPointAnnotation class]]){
+        static NSString *customReuseIndetifier = @"positionAnnotationID";
+        MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (positionView == nil)
+        {
+            positionView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            
+        }
+        
+        positionView.image = [UIImage imageNamed:@"map_chosePosition"];
+
+        
+        return positionView;
     }
     
     return nil;
@@ -246,6 +408,8 @@
     if ([view.annotation isKindOfClass:[MAUserLocation class]])
     {
         
+        LxPrintf(@"*************** 添加定位图标 ******************");
+        [self resetPoliceType:_policeType];
         [self loadPoliceCarData];
         [self loadPoliceData];
         MAUserLocationRepresentation *pre = [[MAUserLocationRepresentation alloc] init];
@@ -279,8 +443,22 @@
     
 }
 
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MACircle class]])
+    {
+        MACircleRenderer *circleRenderer = [[MACircleRenderer alloc] initWithCircle:overlay];
+        
+        circleRenderer.lineWidth   = 1.f;
+        circleRenderer.strokeColor = [UIColor clearColor];
+        circleRenderer.fillColor   = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+        
+        return circleRenderer;
+    }
+    
+    return nil;
+}
 
-#pragma mark - 按钮事件
 
 #pragma mark - 单个警察点击按钮
 - (IBAction)handleBtnOnePoliceClicked:(id)sender {
@@ -288,6 +466,16 @@
     if (_onePoliceView == nil) {
         self.onePoliceView = [OnePoliceView initCustomView];
         [self.onePoliceView configureForAutoLayout];
+        WS(weakSelf);
+        
+        self.onePoliceView.block = ^(NSString *name) {
+            
+            SW(strongSelf, weakSelf);
+            
+            strongSelf.policeType = PoliceTypeOnePolice;
+            [strongSelf reloadPoint];
+
+        };
     }
 
     [self.view addSubview:self.onePoliceView];
@@ -340,8 +528,9 @@
             
             strongSelf.groupPoliceView.makeSureBlock = ^(NSString *groupName, NSNumber *groupId) {
                 
-                
-                
+                SW(strongSelf, weakSelf);
+                strongSelf.policeType = PoliceTypeGroupPolice;
+                [strongSelf reloadPoint];
                 
             };
             
@@ -385,8 +574,9 @@
         
         _groupPoliceView.makeSureBlock = ^(NSString *groupName, NSNumber *groupId) {
             
-            
-            
+            SW(strongSelf, weakSelf);
+            strongSelf.policeType = PoliceTypeGroupPolice;
+            [strongSelf reloadPoint];
             
         };
         
@@ -401,8 +591,20 @@
 #pragma mark - 定位警察点击按钮
 - (IBAction)handleBtnLocationPoliceClicked:(id)sender {
     
+    PoliceLocationVC *t_vc = [[PoliceLocationVC alloc] init];
+    WS(weakSelf);
+    t_vc.block = ^(NSNumber *lat, NSNumber *lon, NSNumber *range) {
+        SW(strongSelf, weakSelf);
+        strongSelf.latitude = lat;
+        strongSelf.longitude = lon;
+        strongSelf.range = range;
+        strongSelf.policeType = PoliceTypeLocationPolice;
+        [strongSelf loadPoliceData];
+        [strongSelf loadPoliceCarData];
     
+    };
     
+    [self.navigationController pushViewController:t_vc animated:YES];
     
 }
 
@@ -415,11 +617,18 @@
         [_boradPoliceView configureForAutoLayout];
         WS(weakSelf);
         _boradPoliceView.block = ^(NSString *content) {
+            
             SW(strongSelf, weakSelf);
+            if (!strongSelf.arr_policeIds || strongSelf.arr_policeIds.count == 0) {
+                [LRShowHUD showError:@"当前无人员可以通知" duration:1.5];
+                [strongSelf.boradPoliceView dismiss];
+                return ;
+            }
+            
             IdentifyNoticeParam *param = [[IdentifyNoticeParam alloc] init];
             param.message = content;
-            param.msgType = @[@"1"];
-            param.idArr = [strongSelf.arr_policeIds copy];
+            param.msgType = @"1";
+            param.idArr = [strongSelf.arr_policeIds  componentsJoinedByString:@","];
             IdentifyNoticeManger *manger = [[IdentifyNoticeManger alloc] init];
             manger.param = param;
             [manger configLoadingTitle:@"发送"];
@@ -441,7 +650,73 @@
     [_boradPoliceView autoPinEdgesToSuperviewEdges];
     _boradPoliceView.tv_content.text = nil;
     
+}
+
+#pragma mark  重新刷新坐标点
+
+- (void)reloadPoint{
+
+    if (_arr_policePoint && _arr_policePoint.count > 0) {
+        [_mapView removeAnnotations:_arr_policePoint];
+        [_arr_policePoint removeAllObjects];
+    }
     
+    for (UserGpsListModel *model in _arr_police) {
+        PoliceAnnotation *annotation = [[PoliceAnnotation alloc] init];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+        annotation.coordinate = coordinate;
+        annotation.title    = model.userId;
+        annotation.subtitle = model.userName;
+        annotation.userModel = model;
+        
+        [_arr_policePoint addObject:annotation];
+    }
+    
+    if (_arr_policePoint && _arr_policePoint.count > 0) {
+        [_mapView addAnnotations:_arr_policePoint];
+    }
+
+
+}
+
+#pragma mark - 画定位的圆形还有坐标
+
+- (void) drawPositionRange{
+    
+    if (self.positionAnnotation) {
+        [_mapView removeAnnotation:self.positionAnnotation];
+        self.positionAnnotation = nil;
+    }
+
+    self.positionAnnotation = [[MAPointAnnotation alloc] init];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]);
+    _positionAnnotation.coordinate = coordinate;
+    _positionAnnotation.title    = @"定位的点";
+    _positionAnnotation.subtitle = @"定位的点";
+    
+    [_mapView addAnnotation:_positionAnnotation];
+    
+    if (self.positionCircle) {
+        [_mapView removeOverlay:self.positionCircle];
+        self.positionCircle = nil;
+    }
+    
+    self.positionCircle = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]) radius:[_range intValue] * 1000];
+    [self.mapView addOverlay:_positionCircle];
+    
+}
+
+- (void)celearPositionRange{
+    
+    if (self.positionAnnotation) {
+        [_mapView removeAnnotation:self.positionAnnotation];
+        self.positionAnnotation = nil;
+    }
+    
+    if (self.positionCircle) {
+        [_mapView removeOverlay:self.positionCircle];
+        self.positionCircle = nil;
+    }
     
 }
 

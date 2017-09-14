@@ -33,6 +33,7 @@
                                 <constraint firstAttribute="height" constant="40" id="Wea-sj-cdQ"/>
                             </constraints>
                             <state key="normal" image="btn_police_n"/>
+                            <state key="selected" image="btn_police_h"/>
                             <state key="highlighted" image="btn_police_h"/>
                             <connections>
                                 <action selector="handleBtnOnePoliceClicked:" destination="-1" eventType="touchUpInside" id="U2D-Bn-gpe"/>
@@ -44,6 +45,7 @@
                                 <constraint firstAttribute="height" constant="40" id="bFe-dw-46q"/>
                             </constraints>
                             <state key="normal" image="btn_policeGroup_n"/>
+                            <state key="selected" image="btn_policeGroup_h"/>
                             <state key="highlighted" image="btn_policeGroup_h"/>
                             <connections>
                                 <action selector="handleBtnGroupPoliceClicked:" destination="-1" eventType="touchUpInside" id="x6z-KH-Hbz"/>
@@ -55,6 +57,7 @@
                                 <constraint firstAttribute="height" constant="40" id="hbC-qk-ibR"/>
                             </constraints>
                             <state key="normal" image="btn_policeLocation_n"/>
+                            <state key="selected" image="btn_policeLocation_h"/>
                             <state key="highlighted" image="btn_policeLocation_h"/>
                             <connections>
                                 <action selector="handleBtnLocationPoliceClicked:" destination="-1" eventType="touchUpInside" id="ukf-OH-LVl"/>
@@ -66,7 +69,9 @@
                                 <constraint firstAttribute="height" constant="40" id="JNL-q9-dct"/>
                             </constraints>
                             <state key="normal" image="btn_broadcast_n"/>
+                            <state key="disabled" image="btn_broadcast_u"/>
                             <state key="selected" image="btn_broadcast_h"/>
+                            <state key="highlighted" image="btn_broadcast_h"/>
                             <connections>
                                 <action selector="handleBtnPushPoliceClicked:" destination="-1" eventType="touchUpInside" id="laW-4I-7iQ"/>
                             </connections>
@@ -113,6 +118,7 @@
     <resources>
         <image name="btn_broadcast_h" width="40" height="40"/>
         <image name="btn_broadcast_n" width="20" height="19"/>
+        <image name="btn_broadcast_u" width="40" height="40"/>
         <image name="btn_policeGroup_h" width="40" height="40"/>
         <image name="btn_policeGroup_n" width="21" height="20"/>
         <image name="btn_policeLocation_h" width="40" height="40"/>

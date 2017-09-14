@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="PoliceLocationCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_policeLocation" translatesAutoresizingMaskIntoConstraints="NO" id="NER-zg-eIb">
+                        <rect key="frame" x="18" y="27" width="12" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="azX-2r-7nV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vK-GU-YQO">
+                        <rect key="frame" x="42" y="40" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-nQ-pFa">
+                        <rect key="frame" x="42" y="14" width="270" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NER-zg-eIb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="1Mx-jb-NOz"/>
+                    <constraint firstItem="NER-zg-eIb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YXX-fi-1rg"/>
+                    <constraint firstItem="7vK-GU-YQO" firstAttribute="top" secondItem="lCE-nQ-pFa" secondAttribute="bottom" constant="9" id="eOQ-h1-DRK"/>
+                    <constraint firstItem="NER-zg-eIb" firstAttribute="top" secondItem="lCE-nQ-pFa" secondAttribute="bottom" constant="-4" id="fpQ-fg-Jnf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lCE-nQ-pFa" secondAttribute="trailing" id="kbT-4r-qQH"/>
+                    <constraint firstItem="7vK-GU-YQO" firstAttribute="leading" secondItem="lCE-nQ-pFa" secondAttribute="leading" id="qhT-kd-dd2"/>
+                    <constraint firstItem="lCE-nQ-pFa" firstAttribute="leading" secondItem="NER-zg-eIb" secondAttribute="trailing" constant="12" id="wRY-tf-nL3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lb_address" destination="7vK-GU-YQO" id="xK8-cX-Ohz"/>
+                <outlet property="lb_name" destination="lCE-nQ-pFa" id="Fr7-w5-eWR"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="65"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_policeLocation" width="12" height="16"/>
+    </resources>
+</document>

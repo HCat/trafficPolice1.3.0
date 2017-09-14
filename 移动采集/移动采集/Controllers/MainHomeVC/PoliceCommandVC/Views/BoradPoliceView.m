@@ -11,7 +11,6 @@
 
 @interface BoradPoliceView ()
 
-
 @property (nonatomic,copy,readwrite) NSString *content;
 
 
