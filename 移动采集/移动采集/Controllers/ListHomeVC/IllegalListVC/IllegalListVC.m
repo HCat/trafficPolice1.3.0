@@ -19,7 +19,7 @@
 #import "ListHomeVC.h"
 #import "NetWorkHelper.h"
 #import "IllegalDetailVC.h"
-//#import "SearchListVC.h"
+#import "SearchListVC.h"
 
 
 @interface IllegalListVC ()
@@ -290,7 +290,7 @@
         UIViewController *vc_target = nil;
         //搜索时候的跳转
         if (_str_search) {
-//            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
+            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
         }else{
             if (_isHandle) {
                 vc_target = self;

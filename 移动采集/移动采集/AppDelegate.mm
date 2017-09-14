@@ -44,10 +44,11 @@ BMKMapManager* _mapManager;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = DefaultBGColor;
     
+    LxPrintf(@"%@",[ShareValue sharedDefault].token);
     if ([ShareValue sharedDefault].token) {
         
         [ShareFun openWebSocket];
-        
+        LxPrintf(@"%@",[UserModel getUserModel].userId);
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];

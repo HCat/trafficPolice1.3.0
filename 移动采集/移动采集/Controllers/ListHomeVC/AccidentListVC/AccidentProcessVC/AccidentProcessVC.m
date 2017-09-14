@@ -12,6 +12,7 @@
 #import "ListHomeVC.h"
 #import "SRAlertView.h"
 #import "UserModel.h"
+#import "SearchListVC.h"
 
 @interface AccidentProcessVC ()
 
@@ -160,7 +161,7 @@
     AccidentSaveManger *manger = [[AccidentSaveManger alloc] init];
     _param.state = @1;
     manger.param = _param;
-    [manger configLoadingTitle:@"保存"];
+    [manger configLoadingTitle:@"结案"];
     
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
@@ -171,7 +172,17 @@
             /************* 发送修改成功通知去刷新事故列表 ****************/
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
             
-            [strongSelf.navigationController popViewControllerAnimated:YES];
+            /************* 回退到ListHomeVC 列表首页 ****************/
+            for(UIViewController *controller in self.navigationController.viewControllers) {
+                if([controller isKindOfClass:[ListHomeVC class]]) {
+                    [strongSelf.navigationController popToViewController:controller animated:YES];
+                }
+                
+                if([controller isKindOfClass:[SearchListVC class]]) {
+                    [strongSelf.navigationController popToViewController:controller animated:YES];
+                }
+            
+            }
             
         }
         

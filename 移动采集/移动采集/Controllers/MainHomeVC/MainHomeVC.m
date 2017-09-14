@@ -16,6 +16,7 @@
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
 #import "PoliceCommandVC.h"
+#import "SearchListVC.h"
 
 
 @interface MainHomeVC ()
@@ -264,7 +265,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 }
 
 - (IBAction)handlleBtnSearchClicked:(id)sender {
-    
+    SearchListVC *t_vc = [SearchListVC new];
+    [self.navigationController pushViewController:t_vc animated:YES];
     
 }
 

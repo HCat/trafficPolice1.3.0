@@ -227,7 +227,7 @@
 
 - (void)dealloc{
 
-    LxPrintf(@"LRSettingVC dealloc");
+    LxPrintf(@"LRSettingCell dealloc");
 
 }
 

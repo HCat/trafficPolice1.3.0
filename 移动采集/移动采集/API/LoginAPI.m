@@ -89,7 +89,8 @@
 - (UserModel *)userModel{
     
     if (self.responseModel.data) {
-        return [UserModel modelWithDictionary:self.responseModel.data];
+        _userModel = [UserModel modelWithDictionary:self.responseModel.data];
+        return _userModel;
     }
     
     return nil;

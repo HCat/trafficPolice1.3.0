@@ -14,7 +14,7 @@
 #import "VideoListCell.h"
 #import "VideoDetailVC.h"
 #import "NetWorkHelper.h"
-//#import "SearchListVC.h"
+#import "SearchListVC.h"
 
 @interface VideoListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -125,6 +125,7 @@
     VideoColectListPagingParam *param = [[VideoColectListPagingParam alloc] init];
     param.start = _index;
     param.length = 10;
+
     VideoColectListPagingManger *manger = [[VideoColectListPagingManger alloc] init];
     manger.param = param;
     manger.isNeedShowHud = NO;
@@ -204,7 +205,7 @@
         UIViewController *vc_target = self;
         //搜索时候的跳转
         if (_str_search) {
-           // vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
+            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
         }
         
         VideoColectListModel *model = _arr_content[indexPath.row];
