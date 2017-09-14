@@ -82,7 +82,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLd-6H-nXm">
                     <rect key="frame" x="16" y="556" width="343" height="37"/>
-                    <color key="backgroundColor" red="1" green="0.44994854439999998" blue="0.3931665453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.42745098040000001" green="0.44705882349999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="cgg-Sw-8VC"/>
                     </constraints>
