@@ -237,6 +237,14 @@
     return NSLocalizedString(@"消息", nil);
 }
 
+-(BOOL)showMask{
+    return YES;
+}
+
+-(NSInteger)showMaskNumber{
+    return 1;
+}
+
 #pragma mark - dealloc
 
 - (void)didReceiveMemoryWarning {

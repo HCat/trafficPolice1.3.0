@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <AVFoundation/AVFoundation.h>
+
 #import <YTKNetwork.h>
 #import "LSStatusBarHUD.h"
 
@@ -27,7 +27,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) AVAudioPlayer *player;
+
 
 @end
 
@@ -37,8 +37,11 @@ BMKMapManager* _mapManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    
     [self commonConfig];
     [self addThirthPart:launchOptions];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -50,6 +53,7 @@ BMKMapManager* _mapManager;
         [ShareFun openWebSocket];
         LxPrintf(@"%@",[UserModel getUserModel].userId);
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+            
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
         
@@ -126,6 +130,8 @@ BMKMapManager* _mapManager;
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         // 可以添加自定义categories
         // NSSet<UNNotificationCategory *> *categories for iOS10 or later
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
@@ -182,6 +188,10 @@ BMKMapManager* _mapManager;
         
     }
     
+}
+
+-(void)reloadTabBar{
+    [_vc_tabBar loadTabs];
 }
 
 #pragma mark - 网络改变监听
@@ -305,6 +315,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     
+    LxPrintf(@"***************** 前台接收到消息 *****************");
+    
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
@@ -314,6 +326,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         if ([sound containsString:@"police"]) {
             
+            if (self.player) {
+                [self.player stop];
+                self.player = nil;
+            }
+            
             NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
             self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
             self.player.numberOfLoops = 1000;
@@ -321,7 +338,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [self.player play];
         }
         
-        [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
+//        [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber + 1;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WILLPRESENTNOTIFICATION object:userInfo];
     }
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
@@ -330,6 +347,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     // Required
+    
+    LxPrintf(@"***************** 点击接收到消息框 *****************");
     
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -342,6 +361,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *sound = [aps objectForKey:@"sound"];
         
         if ([sound containsString:@"police"]) {
+            
+            if (self.player) {
+                [self.player stop];
+                self.player = nil;
+            }
+            
             NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
             self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
             self.player.numberOfLoops = 1000;
@@ -370,6 +395,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 #pragma mark -
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }

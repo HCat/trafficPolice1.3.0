@@ -96,6 +96,8 @@
 // Used to show / hide title.
 @property (nonatomic, assign) BOOL titleIsHidden;
 
-@property(nonatomic,assign) BOOL showMark;//设置是否显示上标
+@property(nonatomic,assign) BOOL showMark;//设置是否显示通知圆点
+@property(nonatomic,assign) NSInteger markNumber;//设置通知数目
+
 
 @end

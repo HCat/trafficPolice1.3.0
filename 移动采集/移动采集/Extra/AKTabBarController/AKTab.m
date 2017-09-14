@@ -452,16 +452,44 @@ static const float kTopMargin = 2.0;
         
     }
     if (_showMark) {
-        CGContextSaveGState(ctx);
-        {
-            //填充圆，无边框
-            UIColor *markColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
-            CGContextSetFillColorWithColor(ctx, markColor.CGColor);
-            CGContextMoveToPoint(ctx, rect.size.width / 5 * 4, rect.size.width / 5);
-            CGContextAddArc(ctx, rect.size.width / 5 * 4, rect.origin.y+10, 3,  0, 2*PI, 0);//x,y为圆点坐标
-            CGContextDrawPath(ctx, kCGPathFill);//绘制填充
+        
+        CGFloat center_x = (rect.size.width / 24 * 17) + 3;
+        CGFloat center_y = rect.origin.y+13;
+        
+//        CGContextSaveGState(ctx);
+//        {
+//            //填充圆，无边框
+//            UIColor *markColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
+//            CGContextSetFillColorWithColor(ctx, markColor.CGColor);
+//            //CGContextMoveToPoint(ctx, rect.size.width / 5 * 4, rect.size.width / 5);
+//            NSLog(@"%f",rect.size.width);
+//            CGContextAddArc(ctx, center_x, center_y, 8,  0, 2*PI, 0);//x,y为圆点坐标
+//            CGContextDrawPath(ctx, kCGPathFill);//绘制填充
+//        }
+//        CGContextRestoreGState(ctx);
+        
+        UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
+        NSString *str_number = nil;
+        
+        if (_markNumber > 99) {
+            str_number = @"99+";
+        }else{
+            str_number = [NSString stringWithFormat:@"%ld",(long)_markNumber];
         }
-        CGContextRestoreGState(ctx);
+        lb_number.text = str_number;
+        lb_number.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
+        lb_number.textAlignment = NSTextAlignmentCenter;
+        lb_number.textColor = [UIColor whiteColor];
+        lb_number.font = [UIFont systemFontOfSize:13.f];
+        CGSize size = [lb_number.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:lb_number.font,NSFontAttributeName,nil]];
+        CGFloat nameH = 16;
+        CGFloat nameW = size.width + 6 < 16 ? 16 :size.width + 6;
+        lb_number.frame = CGRectMake(0,0, nameW,nameH);
+        lb_number.center = CGPointMake(center_x, center_y);
+        lb_number.layer.cornerRadius = 8.f;
+        lb_number.layer.masksToBounds = YES;
+        [self addSubview:lb_number];
+        
     }
 
 }

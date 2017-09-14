@@ -55,6 +55,11 @@
     return NO;
 }
 
+-(NSInteger)showMaskNumber{
+    return 0;
+}
+
+
 -(BOOL)canChangeTab{
     return YES;
 }

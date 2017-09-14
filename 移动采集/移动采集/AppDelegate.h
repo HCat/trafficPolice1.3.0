@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AVFoundation/AVFoundation.h>
 //第三方平台
 #import <WXApi.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
@@ -27,10 +27,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) AKTabBarController *vc_tabBar;
-
+@property (nonatomic, strong) AVAudioPlayer *player;
 
 -(void)initAKTabBarController;
-
+-(void)reloadTabBar;
 
 @end
 

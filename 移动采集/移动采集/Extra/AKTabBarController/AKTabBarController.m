@@ -138,6 +138,7 @@ typedef enum {
             [tab setTabSelectedImageWithName:[vc tabSelectedImageName]];
             [tab setTabTitle:[vc tabTitle]];
             [tab setShowMark:[vc showMask]];
+            [tab setMarkNumber:[vc showMaskNumber]];
         }else if([vc isKindOfClass:[NSArray class]]){
             NSArray *array = (NSArray *)vc;
             [tab setImage:[UIImage imageNamed:array[0]] forState:UIControlStateNormal];

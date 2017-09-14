@@ -39,6 +39,7 @@
 
 
 -(BOOL)showMask;
+-(NSInteger)showMaskNumber;
 
 -(BOOL)canChangeTab;
 

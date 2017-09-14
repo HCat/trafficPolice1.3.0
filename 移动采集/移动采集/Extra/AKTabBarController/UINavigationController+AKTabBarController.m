@@ -43,6 +43,11 @@
     return [(self.viewControllers)[0] showMask];
 }
 
+-(NSInteger)showMaskNumber{
+    return [(self.viewControllers)[0] showMaskNumber];;
+}
+
+
 -(BOOL)canChangeTab{
     return [(self.viewControllers)[0] canChangeTab];
 }
