@@ -50,17 +50,16 @@
             
             if ([_model.flag isEqualToNumber:@0]) {
                  [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0x5491f5)];
+                _imgeV_state.hidden = YES;
                
             }else{
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xa8b2cb)];
+                if ([_model.state isEqualToNumber:@0]) {
+                    _imgeV_state.hidden = NO;
+                }else{
+                    _imgeV_state.hidden = YES;
+                }
             }
-            
-            if ([_model.state isEqualToNumber:@0]) {
-                _imgeV_state.hidden = NO;
-            }else{
-                _imgeV_state.hidden = YES;
-            }
-            
             
         }else{
         

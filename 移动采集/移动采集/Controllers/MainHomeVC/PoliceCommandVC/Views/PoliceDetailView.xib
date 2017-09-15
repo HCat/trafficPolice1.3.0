@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,8 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.44999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jd-vH-Zyb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Ir1-X0-TEn" appends="YES" id="Kzd-5d-PS5"/>
+                    </connections>
+                </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qam-c9-aUf">
-                    <rect key="frame" x="38" y="255.5" width="299" height="92"/>
+                    <rect key="frame" x="38" y="246" width="299" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQh-ZE-imH">
                             <rect key="frame" x="21" y="26" width="35" height="18"/>
@@ -27,7 +35,7 @@
                             <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小组:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX3-Tq-tjS">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编组:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX3-Tq-tjS">
                             <rect key="frame" x="21" y="66" width="35" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="35" id="Tlf-s1-5Tc"/>
@@ -42,8 +50,8 @@
                             <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeW-jO-Ico">
-                            <rect key="frame" x="64" y="66" width="215" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeW-jO-Ico">
+                            <rect key="frame" x="64" y="66" width="215" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -51,12 +59,12 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="XX3-Tq-tjS" firstAttribute="top" secondItem="yQh-ZE-imH" secondAttribute="bottom" constant="22" id="3E1-J8-uAB"/>
                         <constraint firstAttribute="trailing" secondItem="TWx-le-dKZ" secondAttribute="trailing" constant="20" id="427-hO-7Xz"/>
                         <constraint firstItem="yeW-jO-Ico" firstAttribute="leading" secondItem="XX3-Tq-tjS" secondAttribute="trailing" constant="8" id="C28-8G-mne"/>
                         <constraint firstItem="yeW-jO-Ico" firstAttribute="height" secondItem="Qam-c9-aUf" secondAttribute="height" priority="750" id="DB8-Yz-2am"/>
                         <constraint firstAttribute="trailing" secondItem="yeW-jO-Ico" secondAttribute="trailing" constant="20" id="DFK-4Q-LSe"/>
                         <constraint firstItem="yQh-ZE-imH" firstAttribute="top" secondItem="Qam-c9-aUf" secondAttribute="top" constant="26" id="Dvl-oR-yYz"/>
+                        <constraint firstItem="XX3-Tq-tjS" firstAttribute="top" secondItem="Qam-c9-aUf" secondAttribute="top" constant="66" id="OFs-OO-ykN"/>
                         <constraint firstItem="yeW-jO-Ico" firstAttribute="top" secondItem="XX3-Tq-tjS" secondAttribute="top" id="bNa-p6-NNh"/>
                         <constraint firstAttribute="width" constant="299" id="cX3-zl-jZR"/>
                         <constraint firstItem="yQh-ZE-imH" firstAttribute="leading" secondItem="Qam-c9-aUf" secondAttribute="leading" constant="21" id="f4a-Ua-geP"/>
@@ -71,14 +79,6 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
-                </view>
-                <view alpha="0.44999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jd-vH-Zyb">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <gestureRecognizers/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="Ir1-X0-TEn" appends="YES" id="Kzd-5d-PS5"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

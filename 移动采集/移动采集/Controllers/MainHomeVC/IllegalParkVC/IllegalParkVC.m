@@ -55,7 +55,14 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [super viewDidLoad];
     
     if (_illegalType == IllegalTypePark) {
-        self.title = @"违停采集";
+        if (_subType == ParkTypePark) {
+            self.title = @"违停采集";
+        }else if (_subType == ParkTypeReversePark){
+            self.title = @"不按朝向";
+        }else if (_subType == ParkTypeLockPark){
+            self.title = @"违停锁车";
+        }
+        
     }else if(_illegalType == IllegalTypeThrough){
         self.title = @"闯禁令采集";
     }
@@ -89,7 +96,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     };
 }
 
-#pragma mark - 
+#pragma mark - 返回按钮事件
 
 -(void)handleBtnBackClicked{
     
@@ -232,6 +239,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         IllegalParkQueryRecordManger *manger = [[IllegalParkQueryRecordManger alloc] init];
         manger.carNo = carNumber;
         manger.roadId = _param.roadId;
+        manger.type = @(_subType);
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
@@ -607,6 +615,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
+    
+    
     if (![_param.roadId isEqualToNumber:@0]) {
         _param.roadName = nil;
     }
@@ -619,6 +629,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     if (_illegalType == IllegalTypePark) {
         
         //违停请求
+        _param.type = @(_subType);
         IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
         manger.param = _param;
         [manger configLoadingTitle:@"提交"];

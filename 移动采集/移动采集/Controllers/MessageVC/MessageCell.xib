@@ -45,13 +45,22 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_time" translatesAutoresizingMaskIntoConstraints="NO" id="itF-HV-Bbh">
+                        <rect key="frame" x="7" y="15" width="17" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="Mju-sz-hCa"/>
+                            <constraint firstAttribute="height" constant="17" id="jE8-g7-twA"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="boo-pY-HVU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7rM-wF-n9c"/>
                     <constraint firstItem="X6L-jU-gpl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="Bsl-Gf-BQM"/>
+                    <constraint firstItem="JXr-QY-r4c" firstAttribute="top" secondItem="itF-HV-Bbh" secondAttribute="bottom" constant="-10" id="LIl-Z4-M3Q"/>
                     <constraint firstItem="ExF-8l-eeL" firstAttribute="leading" secondItem="X6L-jU-gpl" secondAttribute="leading" id="c81-yV-jAg"/>
                     <constraint firstAttribute="trailing" secondItem="boo-pY-HVU" secondAttribute="trailing" constant="15" id="cMI-dn-1BV"/>
                     <constraint firstItem="ExF-8l-eeL" firstAttribute="top" secondItem="X6L-jU-gpl" secondAttribute="bottom" constant="5" id="cpw-t2-chl"/>
+                    <constraint firstItem="JXr-QY-r4c" firstAttribute="leading" secondItem="itF-HV-Bbh" secondAttribute="trailing" constant="-9" id="dJY-Qs-R4y"/>
                     <constraint firstItem="JXr-QY-r4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qIB-Dr-vyB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="X6L-jU-gpl" secondAttribute="trailing" constant="21" id="rpC-ke-aau"/>
                     <constraint firstItem="JXr-QY-r4c" firstAttribute="top" secondItem="X6L-jU-gpl" secondAttribute="top" id="tzq-t1-nwN"/>
@@ -59,6 +68,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgeV_state" destination="itF-HV-Bbh" id="UAR-HI-H69"/>
                 <outlet property="lb_content" destination="X6L-jU-gpl" id="HN8-Q0-Aod"/>
                 <outlet property="lb_time" destination="ExF-8l-eeL" id="U2c-nE-6yz"/>
                 <outlet property="lb_type" destination="JXr-QY-r4c" id="iOR-bA-OTy"/>
@@ -68,5 +78,6 @@
     </objects>
     <resources>
         <image name="icon_arrow" width="6" height="11"/>
+        <image name="icon_time" width="17" height="17"/>
     </resources>
 </document>

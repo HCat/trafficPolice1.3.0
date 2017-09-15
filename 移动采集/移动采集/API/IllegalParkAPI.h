@@ -28,6 +28,7 @@
 //两个参数同时不为空才有效，没有则不填
 @property (nonatomic,copy)   NSString * cutImageUrl;          //裁剪近照url
 @property (nonatomic,copy)   NSString * taketime;             //裁剪时间
+@property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 
 @end
 
@@ -102,6 +103,7 @@
 /****** 请求数据 ******/
 @property (nonatomic, copy) NSString * carNo;    //车牌号
 @property (nonatomic, strong) NSNumber * roadId; //道路ID
+@property (nonatomic, strong) NSNumber * type;   //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 
 /****** 返回数据 ******/
 

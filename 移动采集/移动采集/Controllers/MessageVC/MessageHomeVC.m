@@ -190,9 +190,10 @@
         [_tb_content registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"MessageCellID"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCellID"];
     }
-    
-    IdentifyModel *t_model = _arr_content[indexPath.row];
-    cell.model = t_model;
+    if (_arr_content && _arr_content.count > 0) {
+        IdentifyModel *t_model = _arr_content[indexPath.row];
+        cell.model = t_model;
+    }
     
     return cell;
 }
@@ -208,6 +209,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     IdentifyModel *t_model = _arr_content[indexPath.row];
+    t_model.source = @0;
     MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
     t_vc.model = t_model;
     [self.navigationController pushViewController:t_vc animated:YES];
@@ -218,9 +220,17 @@
 #pragma mark - 通知
 
 - (void)makesureNotification:(NSNotification *)notification{
+    
+    NSNumber *source = notification.object;
+    
+    if ([source isEqualToNumber:@0]) {
+        [self.tb_content reloadData];
+    }else{
+        [self reloadDataUseMJRefresh];
+    }
 
-    [self.tb_content reloadData];
-
+    
+    
 }
 
 

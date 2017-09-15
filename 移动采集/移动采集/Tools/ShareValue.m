@@ -94,7 +94,12 @@ LRSingletonM(Default)
 - (void)setMakeNumber:(NSInteger)makeNumber{
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = makeNumber;
-    [JPUSHService setBadge:makeNumber];
+    if (makeNumber == 0) {
+        [JPUSHService resetBadge];
+    }else{
+        [JPUSHService setBadge:makeNumber];
+    }
+    
 }
 
 

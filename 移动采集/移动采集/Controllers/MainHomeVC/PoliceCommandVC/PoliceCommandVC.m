@@ -84,7 +84,7 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
     self.arr_policePoint = [NSMutableArray array];
     self.arr_policeIds = [NSMutableArray array];
 
-    [self showRightBarButtonItemWithImage:@"" target:self action:@selector(makeLocationInCenter)];
+    [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
     
     [self initMapView];
     

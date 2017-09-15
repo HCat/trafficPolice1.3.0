@@ -41,7 +41,6 @@
 #define URL_LOGIN_VISITOR @"app/loginVisitor.json"                              //游客登录
 
 
-
 #pragma mark - 通用相关API
 
 #define URL_COMMON_GETWEATHER @"app/common/getWeather.json"                     //获取当前天气

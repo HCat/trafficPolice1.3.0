@@ -165,7 +165,7 @@
     self.isCanCommit =  [self juegeCanCommit];
     
     //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
-    if (self.delegate && [self.delegate performSelector:@selector(listentCarNumber) withObject:nil]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listentCarNumber)]) {
         [self.delegate listentCarNumber];
     }
     

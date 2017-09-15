@@ -19,5 +19,7 @@
 @property (nonatomic, strong) NSNumber * longitude; //经度
 @property (nonatomic, strong) NSNumber * latitude;  //纬度
 @property (nonatomic, strong) NSNumber * state;     //任务状态  0未完成 1完成，(type=2出警任务的状态)
+@property (nonatomic, strong) NSNumber * source;    //0 来源列表  1来源通知
+
 
 @end

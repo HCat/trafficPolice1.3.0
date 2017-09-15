@@ -25,7 +25,12 @@ typedef NS_ENUM(NSInteger, IllegalType) {
     IllegalTypeThrough,     //闯禁令
 };
 
-
+typedef NS_ENUM(NSUInteger, ParkType) {
+    ParkTypePark = 1,               //违停
+    ParkTypeReversePark = 1001,     //逆向违停
+    ParkTypeLockPark = 1002,        //违停锁车
+    ParkTypeCarInfoAdd = 2001,      //车辆录入
+};
 
 @interface ShareValue : NSObject
 

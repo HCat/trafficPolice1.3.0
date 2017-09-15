@@ -437,6 +437,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 
                 if (manger.responseModel.code == CODE_SUCCESS) {
                     MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
+                    manger.identifyModel.source = @1;
                     t_vc.model = manger.identifyModel;
                     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
                     [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{

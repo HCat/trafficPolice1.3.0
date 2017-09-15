@@ -11,6 +11,7 @@
 #import "UserModel.h"
 
 #import "IllegalParkVC.h"
+#import "CarInfoAddVC.h"
 #import "AccidentVC.h"
 #import "VideoColectVC.h"
 #import "SignInVC.h"
@@ -89,6 +90,19 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [t_arr  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
             }
             
+            if ([UserModel isPermissionForIllegalReverseParking]) {
+                [t_arr  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
+            }
+            
+            if ([UserModel isPermissionForIllegalReverseParking]) {
+                [t_arr  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
+            }
+            
+            if ([UserModel isPermissionForIllegalReverseParking]) {
+                [t_arr  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
+            }
+            
+            
             if ([UserModel isPermissionForThrough]) {
                 [t_arr  addObject:@{@"image":@"menu_through",@"title":@"闯禁令录入"}];
             }
@@ -104,16 +118,22 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             if ([UserModel isPermissionForVideoCollect]) {
                 [t_arr  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
             }
-
+            
+            if ([UserModel isPermissionForImportantCar]) {
+                [t_arr  addObject:@{@"image":@"menu_keyPointCar",@"title":@"重点车辆"}];
+            }
+            
+            if ([UserModel isPermissionForPoliceCommand]) {
+               [t_arr  addObject:@{@"image":@"menu_serviceCommand",@"title":@"勤务指挥"}];
+            }
+            
+            if ([UserModel isPermissionForRoadInfo]) {
+                [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
+            }
+            
+        
         }
-        
-        [t_arr  addObject:@{@"image":@"menu_keyPointCar",@"title":@"重点车辆"}];
-        
-        [t_arr  addObject:@{@"image":@"menu_serviceCommand",@"title":@"勤务指挥"}];
-        
-        [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
-        
-        
+
         _arr_items = t_arr.copy;
         
     }
@@ -185,8 +205,28 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
         t_vc.illegalType = IllegalTypePark;
+        t_vc.subType = ParkTypePark;
         [self.navigationController pushViewController:t_vc animated:YES];
     
+    }else if ([t_title isEqualToString:@"不按朝向"]) {
+        
+        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+        t_vc.illegalType = IllegalTypePark;
+        t_vc.subType = ParkTypeReversePark;
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }else if ([t_title isEqualToString:@"车辆录入"]) {
+        
+        CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }else if ([t_title isEqualToString:@"违停锁车"]) {
+        
+        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+        t_vc.illegalType = IllegalTypePark;
+        t_vc.subType = ParkTypeLockPark;
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
     }else if ([t_title isEqualToString:@"闯禁令录入"]){
         
         IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];

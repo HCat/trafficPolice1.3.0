@@ -132,7 +132,7 @@
                     strongSelf.btn_complete.hidden = YES;
                 }
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:_model.source];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -163,7 +163,7 @@
                 strongSelf.model.state = @1;
                 strongSelf.btn_complete.hidden = YES;
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:_model.source];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

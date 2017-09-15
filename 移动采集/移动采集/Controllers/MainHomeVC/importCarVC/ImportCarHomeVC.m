@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.title = @"重点车辆";
     
-    [self showRightBarButtonItemWithImage:@"" target:self action:@selector(makeLocationInCenter)];
+    [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
     self.carType = @2;
     self.arr_point = [NSMutableArray array];
     

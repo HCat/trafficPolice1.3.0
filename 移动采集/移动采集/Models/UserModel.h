@@ -40,17 +40,27 @@
  有权限的菜单编码值，参考下面的编码值，数组类型
  菜单编码：
  
- "ACCIDENT_LIST",
- "FASTACC_LIST",
- "ILLEGAL_LIST",
- "THROUGH_LIST",
- "VIDEO_COLLECT_LIST"
- 
- "NORMAL_ACCIDENT_ADD",
- "FAST_ACCIDENT_ADD",
- "ILLEGAL_PARKING",
- "ILLEGAL_THROUGH",
- "VIDEO_COLLECT",
+ 事故添加           NORMAL_ACCIDENT_ADD
+	事故列表        ACCIDENT_LIST
+	快处事故添加     FAST_ACCIDENT_ADD
+	快处列表        FASTACC_LIST
+	违停采集        ILLEGAL_PARKING
+	违停列表        ILLEGAL_LIST
+    不按朝向采集     ILLEGAL_REVERSE_PARKING
+	不按朝向列表     ILLEGAL_REVERSE_LIST
+	违停锁车采集     ILLEGAL_LOCK_PARKING
+	违停锁车列表     ILLEGAL_LOCK_LIST
+	车辆录入        CAR_INFO_ADD
+	车辆列表        CAR_INFO_LIST
+    闯禁令采集      ILLEGAL_THROUGH
+	闯禁令列表      THROUGH_LIST
+	视频采集        VIDEO_COLLECT
+	视频采集列表    VIDEO_COLLECT_LIST
+	重点车辆       IMPORTANT_CAR
+	勤务指挥       POLICE_COMMAND
+    路面实况       ROAD_INFO
+
+
 */
 
 
@@ -67,6 +77,15 @@
 + (BOOL)isPermissionForThrough;         //闯禁令录入权限
 + (BOOL)isPermissionForVideoCollect;    //视频录入权限
 
++ (BOOL)isPermissionForIllegalReverseParking;   //获取不按朝向采集权限
++ (BOOL)isPermissionForLockParking;     //获取违停锁车采集权限
++ (BOOL)isPermissionForCarInfoAdd;      //获取车辆录入权限
+
++ (BOOL)isPermissionForImportantCar;    //获取重点车辆权限
++ (BOOL)isPermissionForPoliceCommand;   //获取勤务指挥权限
+
++ (BOOL)isPermissionForRoadInfo;        //路面实况权限
+
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;        //事故权限列表
@@ -74,6 +93,10 @@
 + (BOOL)isPermissionForIllegalList;         //违章权限列表
 + (BOOL)isPermissionForThroughList;         //闯禁令权限列表
 + (BOOL)isPermissionForVideoCollectList;    //视频录入权限列表
+
++ (BOOL)isPermissionForIllegalReverseList;  //不按朝向列表权限
++ (BOOL)isPermissionForIllegalLockList;     //违停锁车列表权限
++ (BOOL)isPermissionForCarInfoList;         //车辆列表
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;        //事故结案权限

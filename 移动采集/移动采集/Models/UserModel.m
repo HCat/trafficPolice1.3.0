@@ -116,6 +116,103 @@
     
 }
 
+#pragma mark - 获取不按朝向采集权限
+
++ (BOOL)isPermissionForIllegalReverseParking{
+    
+    NSString *match = @"ILLEGAL_REVERSE_PARKING";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取违停锁车采集权限
+
++ (BOOL)isPermissionForLockParking{
+    
+    NSString *match = @"ILLEGAL_LOCK_PARKING";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取车辆录入权限
+
++ (BOOL)isPermissionForCarInfoAdd{
+    
+    NSString *match = @"CAR_INFO_ADD";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取重点车辆权限
+
++ (BOOL)isPermissionForImportantCar{
+    
+    NSString *match = @"IMPORTANT_CAR";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取勤务指挥权限
+
++ (BOOL)isPermissionForPoliceCommand{
+    
+    NSString *match = @"POLICE_COMMAND";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 获取路面实况权限
+
++ (BOOL)isPermissionForRoadInfo{
+    
+    NSString *match = @"ROAD_INFO";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
 
 #pragma mark - 获取事故权限列表
 
@@ -194,6 +291,55 @@
     return NO;
     
 }
+
+#pragma mark - 不按朝向列表权限
+
++ (BOOL)isPermissionForIllegalReverseList{
+    
+    NSString *match = @"ILLEGAL_REVERSE_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 违停锁车列表权限
+
++ (BOOL)isPermissionForIllegalLockList{
+    
+    NSString *match = @"ILLEGAL_LOCK_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 车辆列表权限
+
++ (BOOL)isPermissionForCarInfoList{
+    
+    NSString *match = @"CAR_INFO_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 
 #pragma mark - 获取事故结案权限
 
