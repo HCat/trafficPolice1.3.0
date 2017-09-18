@@ -147,6 +147,9 @@
         param.length = 10;
         if (_str_search) {
             param.search = _str_search;
+            param.type = @(1);
+        }else{
+            param.type = @(_subType);
         }
         IllegalParkListPagingManger *manger = [[IllegalParkListPagingManger alloc] init];
         manger.param = param;
@@ -304,6 +307,7 @@
         IllegalParkListModel *t_model = _arr_content[indexPath.row];
         IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
         t_vc.illegalType = _illegalType;
+        t_vc.subType = _subType;
         t_vc.illegalId = t_model.illegalParkId;
         [vc_target.navigationController pushViewController:t_vc animated:YES];
     }

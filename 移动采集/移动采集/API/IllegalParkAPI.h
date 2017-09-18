@@ -50,6 +50,7 @@
 @property (nonatomic,assign) NSInteger  start;   //开始的索引号 从0开始
 @property (nonatomic,assign) NSInteger  length;  //显示的记录数 默认为10
 @property (nonatomic,copy)   NSString * search;  //搜索的关键字
+@property (nonatomic,strong) NSNumber * type;   //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 
 @end
 

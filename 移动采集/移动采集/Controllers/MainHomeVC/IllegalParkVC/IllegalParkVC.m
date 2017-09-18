@@ -319,7 +319,16 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         if(indexPath.row == 0){
             
             if (_illegalType == IllegalTypePark) {
-                cell.lb_title.text = @"违停照片";
+                
+                if (_subType == ParkTypePark) {
+                    cell.lb_title.text = @"违停照片";
+                }else if (_subType == ParkTypeReversePark){
+                    cell.lb_title.text = @"不按朝向照片";
+                }else if (_subType == ParkTypeLockPark){
+                    cell.lb_title.text = @"违停锁车照片";
+                }
+                
+                //cell.lb_title.text = @"违停照片";
             }else if(_illegalType == IllegalTypeThrough){
                 cell.lb_title.text = @"闯禁令照片";
             }
@@ -331,7 +340,14 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         }else {
             
             if (_illegalType == IllegalTypePark) {
-                cell.lb_title.text = [NSString stringWithFormat:@"违停照片%ld",indexPath.row];
+                if (_subType == ParkTypePark) {
+                    cell.lb_title.text = [NSString stringWithFormat:@"违停照片%ld",indexPath.row];
+                }else if (_subType == ParkTypeReversePark){
+                    cell.lb_title.text = [NSString stringWithFormat:@"不按朝向照片%ld",indexPath.row];
+                }else if (_subType == ParkTypeLockPark){
+                    cell.lb_title.text = [NSString stringWithFormat:@"违停锁车照片%ld",indexPath.row];
+                }
+                
             }else if(_illegalType == IllegalTypeThrough){
                 cell.lb_title.text = [NSString stringWithFormat:@"闯禁令照片%ld",indexPath.row];
             }
@@ -615,8 +631,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
-    
-    
     if (![_param.roadId isEqualToNumber:@0]) {
         _param.roadName = nil;
     }
@@ -830,7 +844,15 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                     }else if([[t_dic objectForKey:@"isMore"] isEqualToNumber:@1]){
                         
                         if (self.illegalType == IllegalTypePark) {
-                            t_title = [NSString stringWithFormat:@"违停照片%ld",j];
+                            if (_subType == ParkTypePark) {
+                                t_title = [NSString stringWithFormat:@"违停照片%ld",j];
+                            }else if (_subType == ParkTypeReversePark){
+                                t_title = [NSString stringWithFormat:@"不按朝向照片%ld",j];
+                            }else if (_subType == ParkTypeLockPark){
+                                t_title = [NSString stringWithFormat:@"违停锁车照片%ld",j];
+                            }
+                            
+                            
                         }else if(self.illegalType == IllegalTypeThrough){
                             t_title = [NSString stringWithFormat:@"闯禁令照片%ld",j];
                         }

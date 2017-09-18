@@ -167,6 +167,8 @@ static NSString *const footId = @"FeedbackFootViewID";
         cell.isNeedTitle = NO;
         cell.layer.cornerRadius = 5.0f;
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.layer.cornerRadius = 5.f;
         ImageFileInfo *imageInfo = _arr_photos[indexPath.row];
         cell.imageView.image = imageInfo.image;
         

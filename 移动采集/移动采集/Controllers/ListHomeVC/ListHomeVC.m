@@ -56,6 +56,7 @@
     if ([UserModel isPermissionForIllegalList]) {
         IllegalListVC *t_vc = [IllegalListVC new];
         t_vc.illegalType = IllegalTypePark;
+        t_vc.subType = ParkTypePark;
         t_vc.title = @"违停";
         [t_arr addObject:t_vc];
     
@@ -68,6 +69,16 @@
         [t_arr addObject:t_vc];
       
     }
+    
+    
+    if ([UserModel isPermissionForLockParking]) {
+        IllegalListVC *t_vc = [IllegalListVC new];
+        t_vc.illegalType = IllegalTypePark;
+        t_vc.subType = ParkTypeLockPark;
+        t_vc.title = @"违停锁车";
+        [t_arr addObject:t_vc];
+    }
+    
     
     if ([UserModel isPermissionForAccidentList]) {
         AccidentListVC *t_vc = [AccidentListVC new];

@@ -24,8 +24,8 @@
     if(self = [super initWithFrame:frame]){
         
         [self imageView];
-        self.layer.masksToBounds = YES;
-        self.layer.cornerRadius = 5.0f;
+//        self.layer.masksToBounds = YES;
+//        self.layer.cornerRadius = 5.0f;
 
     }
     
@@ -128,5 +128,6 @@
     self.layout_imageWithLb.constant = 10.f;
 
 }
+
 
 @end

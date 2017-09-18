@@ -93,6 +93,7 @@
             SW(strongSelf, weakSelf);
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypePark;
             t_vc.title = @"违停列表";
             t_vc.isHandle = YES;
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
@@ -117,6 +118,61 @@
         };
         [self.mArr_items addObject:item4];
     }
+    
+    if ([UserModel isPermissionForIllegalReverseParking]) {
+        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item4.funcName = @"不按朝向列表";
+        item4.img = [UIImage imageNamed:@"list_receverPark"];
+        item4.executeCode = ^{
+            SW(strongSelf, weakSelf);
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeReversePark;
+            t_vc.title = @"不按朝向列表";
+            t_vc.isHandle = YES;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            
+        };
+        [self.mArr_items addObject:item4];
+    }
+    
+    if ([UserModel isPermissionForLockParking]) {
+        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item4.funcName = @"违停锁车列表";
+        item4.img = [UIImage imageNamed:@"list_lockPark"];
+        item4.executeCode = ^{
+            SW(strongSelf, weakSelf);
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeLockPark;
+            t_vc.title = @"违停锁车列表";
+            t_vc.isHandle = YES;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            
+        };
+        [self.mArr_items addObject:item4];
+    }
+    
+    if ([UserModel isPermissionForCarInfoAdd]) {
+        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+        item4.funcName = @"车辆录入列表";
+        item4.img = [UIImage imageNamed:@"list_carInfoAdd"];
+        item4.executeCode = ^{
+            SW(strongSelf, weakSelf);
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeCarInfoAdd;
+            t_vc.title = @"车辆录入列表";
+            t_vc.isHandle = YES;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            
+        };
+        [self.mArr_items addObject:item4];
+    }
+    
     
     if ([UserModel isPermissionForVideoCollectList]) {
         LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];

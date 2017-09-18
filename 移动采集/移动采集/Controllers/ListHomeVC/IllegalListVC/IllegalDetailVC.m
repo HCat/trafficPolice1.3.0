@@ -32,7 +32,15 @@
     [super viewDidLoad];
     
     if (_illegalType == IllegalTypePark) {
-        self.title = @"违停详情";
+        if (_subType == ParkTypePark) {
+            self.title = @"违停详情";
+        }else if (_subType == ParkTypeReversePark){
+            self.title = @"不按朝向详情";
+        }else if (_subType == ParkTypeLockPark){
+            self.title = @"违停锁车详情";
+        }else{
+            self.title = @"车辆录入详情";
+        }
     }else if(_illegalType == IllegalTypeThrough){
         self.title = @"闯禁令详情";
     }
@@ -159,7 +167,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (_model) {
-        if ([_model.illegalCollect.state isEqualToNumber:@1] ) {
+        
+        if (_subType == ParkTypeCarInfoAdd) {
+            return 2;
+        }
+        
+        if ([_model.illegalCollect.state isEqualToNumber:@1]) {
             return 3;
         }else{
             return 2;
@@ -212,6 +225,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalMessageCellID"];
         }
         
+        cell.subType = _subType;
         
         if (_model) {
             
@@ -219,6 +233,7 @@
                 cell.illegalCollect = _model.illegalCollect;
             }
         }
+       
         
         return cell;
 

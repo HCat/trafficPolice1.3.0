@@ -126,6 +126,8 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         }
     
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.layer.cornerRadius = 5.f;
     }
     
     return cell;
@@ -368,6 +370,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     for (int i = 0; i < [_arr_photos count]; i++) {
         
         BaseImageCollectionCell *cell = (BaseImageCollectionCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+       
     
         AccidentChangePhotoModel *photo = _arr_photos[i];
 

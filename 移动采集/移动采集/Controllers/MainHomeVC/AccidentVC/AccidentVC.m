@@ -161,6 +161,8 @@ static NSString *const headId = @"AccidentAddHeadViewID";
     } else {
         cell.imageView.image = _arr_photos[indexPath.row];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.layer.cornerRadius = 5.f;
     }
     
     return cell;

@@ -76,7 +76,7 @@
     UIGraphicsBeginImageContext(CGSizeMake(SCREEN_WIDTH-50, 1));   // 开始画线
     CGContextRef line = UIGraphicsGetCurrentContext();
     CGContextSetLineCap(line, kCGLineCapRound);  // 设置线条终点形状
-    double lengths[] = {5, 5};// 设置每画10个point空出1个point
+    CGFloat lengths[] = {5, 5};// 设置每画10个point空出1个point
     CGContextSetStrokeColorWithColor(line, DefaultBtnNuableColor.CGColor); // 设置线条颜色
     CGContextSetLineWidth(line, 1.0);// 设置线条宽度
     CGContextSetLineDash(line, 0, lengths, 2); // 画虚线
