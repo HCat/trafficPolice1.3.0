@@ -251,6 +251,7 @@ static Class imageManagerClass = nil;
     
     if (_photoItems.count == 0) {
         // 来到这里说明没有图片，退出预览
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
         [self dismissViewControllerAnimated:NO completion:nil];
     };
     
