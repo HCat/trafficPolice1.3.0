@@ -13,5 +13,6 @@
 - (void)setBorderColorFromUIColor:(UIColor *)color
 {
     self.borderColor = color.CGColor;
+    
 }
 @end

@@ -193,6 +193,12 @@
     self.layout_height_table.constant = self.mArr_items.count * 49;
     [self.view layoutIfNeeded];
     
+    if (IS_IPHONE_5) {
+        self.tb_content.scrollEnabled = YES;
+    }else{
+        self.tb_content.scrollEnabled = NO;
+    }
+    
     LRSettingSectionModel *section1 = [[LRSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 0;
     
