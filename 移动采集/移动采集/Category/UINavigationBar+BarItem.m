@@ -8,6 +8,7 @@
 
 #import "UINavigationBar+BarItem.h"
 #import "UIButton+Block.m"
+#import "UIButton+NoRepeatClick.h"
 
 @implementation UIViewController (BarItem)
 
@@ -15,12 +16,13 @@
     UIImage *image = [UIImage imageNamed:imageName];
     CGRect buttonFrame = CGRectMake(0, 0, image.size.width, self.navigationController.navigationBar.frame.size.height);
     UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];
+    button.isIgnore = YES;
     button.contentMode = UIViewContentModeScaleAspectFit;
 	button.backgroundColor = [UIColor clearColor];
     button.frame = buttonFrame;
     [button setImage:image forState:UIControlStateNormal];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    [button setEnlargeEdgeWithTop:10 right:20 bottom:10 left:50];
+    [button setEnlargeEdgeWithTop:20 right:150 bottom:20 left:150];
 //    [button setImageEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 20)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }

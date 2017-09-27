@@ -29,6 +29,9 @@ typedef void (^fininshCaptureBlock)(LRCameraVC
 //获取得到压缩的图片
 @property (nonatomic,strong) UIImage *image;
 
+@property (nonatomic,assign) BOOL isAccident;
+
+
 //请求服务端口得到的数据
 @property (nonatomic,strong) CommonIdentifyResponse *commonIdentifyResponse;
 

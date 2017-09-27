@@ -27,6 +27,7 @@
 #import "IdentifyAPI.h"
 #import "MessageDetailVC.h"
 
+#import "SuperLogger.h"
 
 @interface AppDelegate ()
 
@@ -74,6 +75,17 @@ BMKMapManager* _mapManager;
     
     [self.window makeKeyAndVisible];
     
+    //日子重定向用于记录崩溃日志
+    SuperLogger *logger = [SuperLogger sharedInstance];
+    // Start NSLogToDocument
+    [logger redirectNSLogToDocumentFolder];
+    // Set Email info
+    logger.mailTitle = @"移动采集日志信息";
+    logger.mailContect = @"移动采集日志信息";
+    logger.mailRecipients = @[@"qgwzhuanglr@163.com"];
+    //每次进来清除一周前的日志
+    NSDate *five = [[NSDate date]dateByAddingTimeInterval:-60*60*24*7];
+    [[SuperLogger sharedInstance] cleanLogsBefore:five deleteStarts:YES];
     
     return YES;
 }
@@ -136,7 +148,7 @@ BMKMapManager* _mapManager;
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         // 可以添加自定义categories
         // NSSet<UNNotificationCategory *> *categories for iOS10 or later

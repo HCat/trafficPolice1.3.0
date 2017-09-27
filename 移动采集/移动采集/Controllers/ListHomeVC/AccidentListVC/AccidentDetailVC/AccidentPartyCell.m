@@ -455,7 +455,7 @@
     [view addSubview:t_title];
     
     UIImageView * t_content = [UIImageView newAutoLayoutView];
-    [t_content setImage:[UIImage imageNamed:@"icon_yuan_selected.png"]];
+    [t_content setImage:[UIImage imageNamed:@"btn_dot_h.png"]];
     [view addSubview:t_content];
     
     [t_content autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];

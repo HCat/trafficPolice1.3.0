@@ -14,6 +14,7 @@ typedef void(^IllegalSecSaveSuccessBlock)();
 @interface IllegalSecSaveVC : HideTabSuperVC
 
 @property (nonatomic,strong) NSNumber * illegalThroughId;
+@property (nonatomic,strong) NSMutableDictionary *illegal_image;
 @property (nonatomic,copy)IllegalSecSaveSuccessBlock saveSuccessBlock;
 
 

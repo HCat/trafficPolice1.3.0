@@ -448,6 +448,7 @@
         //UIView获取UIViewController,来弹出LRCameraVC拍照，拍照完之后调用fininshCaptureBlock
         AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
         LRCameraVC *home = [[LRCameraVC alloc] init];
+        home.isAccident = YES;
         home.type = 2;
         home.fininshCaptureBlock = ^(LRCameraVC *camera) {
             if (camera) {
@@ -482,6 +483,7 @@
         //UIView获取UIViewController,来弹出LRCameraVC拍照，拍照完之后调用fininshCaptureBlock
         AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
         LRCameraVC *home = [[LRCameraVC alloc] init];
+        home.isAccident = YES;
         home.type = 3;
         home.fininshCaptureBlock = ^(LRCameraVC *camera) {
             if (camera) {
@@ -518,6 +520,7 @@
     WS(weakSelf);
     AccidentVC *t_vc = (AccidentVC *)[ShareFun findViewController:self withClass:[AccidentVC class]];
     LRCameraVC *home = [[LRCameraVC alloc] init];
+    home.isAccident = YES;
     home.type = 4;
     home.fininshCaptureBlock = ^(LRCameraVC *camera) {
         SW(strongSelf, weakSelf);

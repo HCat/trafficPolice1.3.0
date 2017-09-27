@@ -168,10 +168,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         if (manger.responseModel.code == 0) {
             
-            
             NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
             IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
             t_vc.illegalThroughId = illegalThroughId;
+            if ([_arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]) {
+                t_vc.illegal_image = _arr_upImages[0];
+            };
             t_vc.saveSuccessBlock = ^{
                 [strongSelf handleBeforeCommit];
                 
@@ -659,14 +661,26 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             }
             
             if (manger.responseModel.code == CODE_SUCCESS) {
-        
+                
+                if (manger.responseModel.msg && manger.responseModel.msg.length > 0) {
+                    [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
+                        
+                    }];
+                }
+                
                 [strongSelf handleBeforeCommit];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_SUCCESS object:nil];
                 
             }else if (manger.responseModel.code == CODE_FAILED){
                 
-               [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
+                [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
+                    if (actionType == AlertViewActionTypeRight) {
+                        
+                        [strongSelf handleBeforeCommit];
+                        
+                    }
+                }];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

@@ -53,6 +53,9 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     self.title = @"闯禁令二次采集";
     
     self.arr_upImages = [NSMutableArray array];
+    if (_illegal_image) {
+        [self.arr_upImages addObject:_illegal_image];
+    }
     self.param = [[IllegalThroughSecSaveParam alloc] init];
     self.param.illegalThroughId = _illegalThroughId;
     self.isCanCommit = NO;

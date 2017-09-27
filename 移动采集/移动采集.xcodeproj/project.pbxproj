@@ -298,6 +298,11 @@
 		CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE8A1F691358004FED7B /* MenuModel.m */; };
 		CED6EE901F691358004FED7B /* UIView+AdjustFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE8C1F691358004FED7B /* UIView+AdjustFrame.m */; };
 		CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */; };
+		CED797F51F7A3D36003FC68C /* SuperLogerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643931F7A3B0800C72288 /* SuperLogerListView.m */; };
+		CED797F61F7A3D36003FC68C /* SuperLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643951F7A3B0800C72288 /* SuperLogger.m */; };
+		CED797F71F7A3D36003FC68C /* SuperLoggerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643971F7A3B0800C72288 /* SuperLoggerFunctions.m */; };
+		CED797F81F7A3D36003FC68C /* SuperLoggerPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643991F7A3B0800C72288 /* SuperLoggerPreviewView.m */; };
+		CED797F91F7A41FC003FC68C /* SuperLogger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE9643911F7A3B0800C72288 /* SuperLogger.bundle */; };
 		CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E31F5CFB5C0010E68A /* SignInVC.m */; };
 		CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */; };
 		CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */; };
@@ -764,6 +769,15 @@
 		CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGpsListModel.m; sourceTree = "<group>"; };
 		CE8EE86C1F66A6AF00CC64B0 /* PoliceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceAnnotation.h; sourceTree = "<group>"; };
 		CE8EE86D1F66A6AF00CC64B0 /* PoliceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceAnnotation.m; sourceTree = "<group>"; };
+		CE9643911F7A3B0800C72288 /* SuperLogger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuperLogger.bundle; sourceTree = "<group>"; };
+		CE9643921F7A3B0800C72288 /* SuperLogerListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperLogerListView.h; sourceTree = "<group>"; };
+		CE9643931F7A3B0800C72288 /* SuperLogerListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLogerListView.m; sourceTree = "<group>"; };
+		CE9643941F7A3B0800C72288 /* SuperLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperLogger.h; sourceTree = "<group>"; };
+		CE9643951F7A3B0800C72288 /* SuperLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLogger.m; sourceTree = "<group>"; };
+		CE9643961F7A3B0800C72288 /* SuperLoggerFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperLoggerFunctions.h; sourceTree = "<group>"; };
+		CE9643971F7A3B0800C72288 /* SuperLoggerFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLoggerFunctions.m; sourceTree = "<group>"; };
+		CE9643981F7A3B0800C72288 /* SuperLoggerPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperLoggerPreviewView.h; sourceTree = "<group>"; };
+		CE9643991F7A3B0800C72288 /* SuperLoggerPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLoggerPreviewView.m; sourceTree = "<group>"; };
 		CEAA96D91F1CDFE300741A6F /* ShareFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFun.h; sourceTree = "<group>"; };
 		CEAA96DA1F1CDFE300741A6F /* ShareFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFun.m; sourceTree = "<group>"; };
 		CEAA96DD1F1CE13200741A6F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
@@ -1625,6 +1639,30 @@
 			path = PoliceCommandVC;
 			sourceTree = "<group>";
 		};
+		CE96438F1F7A3B0800C72288 /* SuperLogger */ = {
+			isa = PBXGroup;
+			children = (
+				CE9643901F7A3B0800C72288 /* Resources */,
+				CE9643921F7A3B0800C72288 /* SuperLogerListView.h */,
+				CE9643931F7A3B0800C72288 /* SuperLogerListView.m */,
+				CE9643941F7A3B0800C72288 /* SuperLogger.h */,
+				CE9643951F7A3B0800C72288 /* SuperLogger.m */,
+				CE9643961F7A3B0800C72288 /* SuperLoggerFunctions.h */,
+				CE9643971F7A3B0800C72288 /* SuperLoggerFunctions.m */,
+				CE9643981F7A3B0800C72288 /* SuperLoggerPreviewView.h */,
+				CE9643991F7A3B0800C72288 /* SuperLoggerPreviewView.m */,
+			);
+			path = SuperLogger;
+			sourceTree = "<group>";
+		};
+		CE9643901F7A3B0800C72288 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE9643911F7A3B0800C72288 /* SuperLogger.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CEAA96DC1F1CE13200741A6F /* SAMKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1901,6 +1939,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE96438F1F7A3B0800C72288 /* SuperLogger */,
 				CE496EFD1F6A1ACB004E69C6 /* TTGTagCollectionView */,
 				CED6EE841F69134C004FED7B /* PopMenuTableView */,
 				CE85021E1F559404001DC495 /* NJKWebViewProgress */,
@@ -2149,6 +2188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED797F91F7A41FC003FC68C /* SuperLogger.bundle in Resources */,
 				CEFD55811F3C40EC0082060B /* AccidentHandleVC.xib in Resources */,
 				CE85021D1F558CB2001DC495 /* VideoListCell.xib in Resources */,
 				CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */,
@@ -2309,6 +2349,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED797F51F7A3D36003FC68C /* SuperLogerListView.m in Sources */,
+				CED797F61F7A3D36003FC68C /* SuperLogger.m in Sources */,
+				CED797F71F7A3D36003FC68C /* SuperLoggerFunctions.m in Sources */,
+				CED797F81F7A3D36003FC68C /* SuperLoggerPreviewView.m in Sources */,
 				CE424F411F3AE694005741CA /* AccidentMessageCell.m in Sources */,
 				CE5A01041F611CC6000F13CC /* VehicleCarCell.m in Sources */,
 				CE3C0F6E1F30586A00D3B55D /* VideoColectVC.m in Sources */,

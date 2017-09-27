@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btn_close" destination="HZ8-Vm-GhA" id="pJT-lQ-cDl"/>
                 <outlet property="btn_flash" destination="SEo-Vl-87d" id="Sks-fR-v8g"/>
+                <outlet property="btn_photo" destination="n7J-S9-RJt" id="KoD-EF-C3t"/>
                 <outlet property="btn_snap" destination="1dP-ME-VzJ" id="jNk-lg-2GH"/>
                 <outlet property="lb_flash" destination="yDv-Bk-iFx" id="rSe-WS-YaB"/>
                 <outlet property="lb_tip" destination="ObL-fP-elc" id="jlA-C7-p4m"/>
@@ -32,6 +33,20 @@
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="camera_bottombg" translatesAutoresizingMaskIntoConstraints="NO" id="Flf-4g-zxL">
                     <rect key="frame" x="0.0" y="463" width="320" height="105"/>
                 </imageView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-S9-RJt">
+                    <rect key="frame" x="263" y="30" width="42" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="DUa-yF-Laf"/>
+                        <constraint firstAttribute="width" constant="42" id="IoA-3b-HP6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <inset key="titleEdgeInsets" minX="-18" minY="0.0" maxX="0.0" maxY="-22"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="-15" maxX="-25" maxY="0.0"/>
+                    <state key="normal" title="相册" image="camera_photo"/>
+                    <connections>
+                        <action selector="handlebtnPhotoAlbumClicked:" destination="-1" eventType="touchUpInside" id="zef-Bv-evH"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEo-Vl-87d">
                     <rect key="frame" x="267" y="510" width="35" height="35"/>
                     <constraints>
@@ -71,7 +86,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.75686274509999996" green="0.84705882349999995" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="ObL-fP-elc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="05H-2I-TVR"/>
                 <constraint firstAttribute="bottom" secondItem="1dP-ME-VzJ" secondAttribute="bottom" constant="20" id="4m3-RS-QTb"/>
@@ -84,10 +99,12 @@
                 <constraint firstItem="1dP-ME-VzJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RPG-wF-lyU"/>
                 <constraint firstItem="yDv-Bk-iFx" firstAttribute="centerX" secondItem="SEo-Vl-87d" secondAttribute="centerX" id="XGf-VP-FdU"/>
                 <constraint firstItem="HZ8-Vm-GhA" firstAttribute="centerY" secondItem="Flf-4g-zxL" secondAttribute="centerY" constant="16" id="ZW1-HK-fYn"/>
+                <constraint firstItem="n7J-S9-RJt" firstAttribute="centerX" secondItem="SEo-Vl-87d" secondAttribute="centerX" id="avi-ow-fv4"/>
                 <constraint firstAttribute="bottom" secondItem="cBM-bp-BGR" secondAttribute="bottom" id="daM-on-ZLr"/>
                 <constraint firstAttribute="trailing" secondItem="SEo-Vl-87d" secondAttribute="trailing" constant="18" id="kAK-hu-rbl"/>
                 <constraint firstItem="SEo-Vl-87d" firstAttribute="bottom" secondItem="yDv-Bk-iFx" secondAttribute="top" constant="-5" id="lQl-9g-QQP"/>
                 <constraint firstItem="ObL-fP-elc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lmv-0M-xkS"/>
+                <constraint firstItem="n7J-S9-RJt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="pyh-H8-ecT"/>
                 <constraint firstAttribute="trailing" secondItem="cBM-bp-BGR" secondAttribute="trailing" id="xDZ-be-RTl"/>
                 <constraint firstItem="SEo-Vl-87d" firstAttribute="centerY" secondItem="HZ8-Vm-GhA" secondAttribute="centerY" id="y6y-nV-RbM"/>
             </constraints>
@@ -127,6 +144,7 @@
         <image name="camera_back" width="21" height="17"/>
         <image name="camera_bottombg" width="375" height="113"/>
         <image name="camera_flash_close" width="58" height="58"/>
+        <image name="camera_photo" width="18" height="15"/>
         <image name="camera_snap" width="80" height="80"/>
     </resources>
 </document>

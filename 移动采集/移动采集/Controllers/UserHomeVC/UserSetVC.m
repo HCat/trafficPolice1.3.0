@@ -15,6 +15,7 @@
 #import "UserModel.h"
 
 #import "FeedbackVC.h"
+#import "SuperLogger.h"
 
 
 @interface UserSetVC ()
@@ -33,6 +34,10 @@
     [_tb_content setSeparatorInset:UIEdgeInsetsZero];
     [_tb_content setLayoutMargins:UIEdgeInsetsZero];
     [self setupSections];
+    
+    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showLog)];
+    tapGesture.numberOfTapsRequired = 10;
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - setUp
@@ -212,6 +217,12 @@
     
     [ShareFun loginOut];
     
+}
+
+#pragma mark - 显示日志重定向列表
+
+- (void)showLog{
+    [self.navigationController presentViewController:[[SuperLogger sharedInstance] getListView] animated:YES completion:nil];
 }
 
 #pragma mark -dealloc

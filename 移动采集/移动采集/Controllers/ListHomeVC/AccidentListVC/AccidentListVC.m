@@ -297,7 +297,7 @@
         
         UIViewController *vc_target = nil;
         
-        if ([t_model.state isEqualToNumber:@1]) {
+        if ([t_model.state isEqualToNumber:@1] || [t_model.state isEqualToNumber:@9]) {
             
             if (_str_search) {
                 vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];

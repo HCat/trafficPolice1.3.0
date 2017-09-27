@@ -95,7 +95,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 - (void)setReponse:(VehicleDetailReponse *)reponse{
 
     _reponse = reponse;
-    LxDBObjectAsJson(_reponse);
+    NSLog(@"%@",_reponse);
     if (_reponse) {
         
         if (_arr_content && _arr_content.count > 0) {
@@ -140,6 +140,14 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 - (void)loadVehicleRequest:(VehicleRequestType)type{
 
     WS(weakSelf);
+    
+    if (!_NummberId) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.tableView reloadData];
+        });
+        
+        return;
+    }
     
     if (type == VehicleRequestTypeQRCode) {
         VehicleDetailByQrCodeManger *manger = [[VehicleDetailByQrCodeManger alloc] init];
@@ -442,17 +450,22 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 
 - (VehicleCellType)getTypeFromArray:(NSInteger )row{
 
-    id obj = _arr_content[row];
-    if ([obj isKindOfClass:[VehicleModel class]]) {
-        return VehicleCellTypeVehicleCar;
-    }else if ([obj isKindOfClass:[MemberInfoModel class]]){
-        return VehicleCellTypeMember;
-    }else if ([obj isKindOfClass:[VehicleDriverModel class]]){
-        return VehicleCellTypeDriver;
+    if (_arr_content && _arr_content.count > 0) {
+        id obj = _arr_content[row];
+        if ([obj isKindOfClass:[VehicleModel class]]) {
+            return VehicleCellTypeVehicleCar;
+        }else if ([obj isKindOfClass:[MemberInfoModel class]]){
+            return VehicleCellTypeMember;
+        }else if ([obj isKindOfClass:[VehicleDriverModel class]]){
+            return VehicleCellTypeDriver;
+        }else{
+            return VehicleCellTypeRemark;
+        }
     }else{
-        return VehicleCellTypeRemark;
+        return -1;
+        
     }
-
+   
 }
 
 

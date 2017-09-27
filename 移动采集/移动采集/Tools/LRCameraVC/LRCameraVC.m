@@ -17,6 +17,8 @@
 #import "PureLayout.h"
 #import "maskingView.h"
 #import "UIButton+Block.h"
+#import "ZLPhotoActionSheet.h"
+
 
 
 @interface LRCameraVC ()<TOCropViewControllerDelegate,DeviceOrientationDelegate>
@@ -30,6 +32,8 @@
 
 //关闭按钮
 @property (weak, nonatomic) IBOutlet UIButton *btn_close;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_photo;
 
 //拍照按钮
 @property (weak, nonatomic) IBOutlet UIButton *btn_snap;
@@ -75,6 +79,10 @@
             _lb_tip.text = @"请扫描行驶证";
         }
         
+    }
+    
+    if (_isAccident) {
+        self.btn_photo.hidden = NO;
     }
 
     //初始化照相机，通过AVFoundation自定义的相机
@@ -284,6 +292,32 @@
 
 //相册按钮点击
 - (IBAction)handlebtnPhotoAlbumClicked:(id)sender {
+    
+    //调用从相册中选择照片
+    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+    actionSheet.sortAscending = NO;
+    actionSheet.allowSelectImage = YES;
+    actionSheet.allowSelectGif = NO;
+    actionSheet.allowSelectVideo = NO;
+    actionSheet.allowTakePhotoInLibrary = NO;
+    actionSheet.maxPreviewCount = 1;
+    actionSheet.maxSelectCount = 1;
+    actionSheet.sender = self;
+    
+    WS(weakSelf);
+    [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        
+        //选中照片之后的处理
+        SW(strongSelf,weakSelf);
+        //获取的照片转换成ImageFileInfo对象来得到图片信息，并且赋值name用于服务端需要的key中
+        strongSelf.imageInfo = [[ImageFileInfo alloc] initWithImage:images[0] withName:key_file];
+        strongSelf.image = strongSelf.imageInfo.image;
+        //请求数据获取证件信息
+        [strongSelf getIdentifyRequest];
+        
+    }];
+    [actionSheet showPhotoLibrary];
+    
     
    
 }
