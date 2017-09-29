@@ -11,7 +11,7 @@
 #import "UserModel.h"
 #import "WebSocketHelper.h"
 
-#define DefaultLocationTimeout 10
+#define DefaultLocationTimeout 5
 #define DefaultReGeocodeTimeout 5
 
 

@@ -17,6 +17,7 @@
 
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
+#import "SRAlertView.h"
 
 #import "IllegalThroughAPI.h"
 #import <UIImageView+WebCache.h>
@@ -58,7 +59,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     }
     self.param = [[IllegalThroughSecSaveParam alloc] init];
     self.param.illegalThroughId = _illegalThroughId;
-    self.isCanCommit = NO;
+    //替换之后做是否可以上传判断
     
     [_collectionView registerNib:[UINib nibWithNibName:@"IllegalThroughSecAddView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headId];
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
@@ -72,7 +73,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+    
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -82,6 +83,28 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     };
 
 }
+
+#pragma mark - 返回事件
+
+-(void)handleBtnBackClicked{
+    
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:@"是否退出二次采集"
+                                                leftActionTitle:@"取消"
+                                               rightActionTitle:@"确定"
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:^(AlertViewActionType actionType) {
+                                                       if (actionType == AlertViewActionTypeRight) {
+                                                           [self.navigationController popToRootViewControllerAnimated:YES];
+                                                           
+                                                       }
+                                                   }];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
+    
+}
+
+
 
 #pragma mark - set && get
 
@@ -226,6 +249,12 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
             self.footView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:footId forIndexPath:indexPath];
             
             [_footView setDelegate:(id<IllegalParkAddFootViewDelegate>)self];
+            
+            if (self.arr_upImages.count > 0) {
+                self.isCanCommit = YES;
+            }else{
+                self.isCanCommit = NO;
+            }
             
             return _footView;
             

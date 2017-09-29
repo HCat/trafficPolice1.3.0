@@ -662,7 +662,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
             if (manger.responseModel.code == CODE_SUCCESS) {
                 
-                if (manger.responseModel.msg && manger.responseModel.msg.length > 0) {
+                if (manger.responseModel.msg && manger.responseModel.msg.length > 0 && ![manger.responseModel.msg isEqualToString:@"success"]) {
                     [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
                         
                     }];

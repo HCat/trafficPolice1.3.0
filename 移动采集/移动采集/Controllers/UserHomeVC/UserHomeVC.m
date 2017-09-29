@@ -119,7 +119,7 @@
         [self.mArr_items addObject:item4];
     }
     
-    if ([UserModel isPermissionForIllegalReverseParking]) {
+    if ([UserModel isPermissionForIllegalReverseList]) {
         LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
         item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
         item4.funcName = @"不按朝向列表";
@@ -137,7 +137,7 @@
         [self.mArr_items addObject:item4];
     }
     
-    if ([UserModel isPermissionForLockParking]) {
+    if ([UserModel isPermissionForIllegalLockList]) {
         LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
         item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
         item4.funcName = @"违停锁车列表";
@@ -155,7 +155,7 @@
         [self.mArr_items addObject:item4];
     }
     
-    if ([UserModel isPermissionForCarInfoAdd]) {
+    if ([UserModel isPermissionForCarInfoList]) {
         LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
         item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
         item4.funcName = @"车辆录入列表";
