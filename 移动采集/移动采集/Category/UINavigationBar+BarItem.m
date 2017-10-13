@@ -15,11 +15,20 @@
 - (void)showLeftBarButtonItemWithImage:(NSString *)imageName target:(id)target action:(SEL)action {
     UIImage *image = [UIImage imageNamed:imageName];
     CGRect buttonFrame = CGRectMake(0, 0, image.size.width, self.navigationController.navigationBar.frame.size.height);
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) {
+        buttonFrame = CGRectMake(0, 0, 120, self.navigationController.navigationBar.frame.size.height);
+    
+    }
+    
     UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];
     button.isIgnore = YES;
     button.contentMode = UIViewContentModeScaleAspectFit;
 	button.backgroundColor = [UIColor clearColor];
     button.frame = buttonFrame;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) {
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, -button.frame.size.width + image.size.width+10,0, 0);
+    }
+    
     [button setImage:image forState:UIControlStateNormal];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     [button setEnlargeEdgeWithTop:20 right:150 bottom:20 left:150];
