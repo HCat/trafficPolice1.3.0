@@ -93,6 +93,13 @@
     
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [[LocationHelper sharedDefault] setLocationType:LocationTypeBaidu];
+    [super viewDidDisappear:animated];
+    
+    
+}
+
 #pragma mark - 请求签到数据
 
 - (void)loadSignListRequest{
@@ -233,6 +240,7 @@
                                                            if(actionType == AlertViewActionTypeRight) {
                                                                
                                                                strongSelf.hud = [LRShowHUD showWhiteLoadingWithText:@"签退中" inView:nil config:nil];
+                                                               [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
                                                                [[LocationHelper sharedDefault] startLocation];
                                                                
                                                            }
@@ -243,6 +251,7 @@
 
     }else{
        self.hud = [LRShowHUD showWhiteLoadingWithText:@"签到中" inView:nil config:nil];
+       [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
        [[LocationHelper sharedDefault] startLocation];
         
     }
