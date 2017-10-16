@@ -1,64 +1,44 @@
-// AKTab.m
 //
-// Copyright (c) 2012 Ali Karagoz (http://alikaragoz.net)
+//  AKTab.m
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Created by hcat on 2017/9/22.
+//  Copyright © 2017年 Hcat. All rights reserved.
 //
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 
 #import "AKTab.h"
 
-#define PI 3.14159265358979323846
-// cross fade animation duration.
+// 选中和未选中图标变化动画时间
 static const float kAnimationDuration = 0.15;
 
-// Padding of the content
+// 内容视图与父视图间隔
 static const float kPadding = 4.0;
 
-// Margin between the image and the title
+// image视图与title视图距离
 static const float kMargin = 2.0;
 
-// Margin at the top
+// 顶部视图距离
 static const float kTopMargin = 2.0;
 
-@interface AKTab ()
-
-// Permits the cross fade animation between the two images, duration in seconds.
-- (void)animateContentWithDuration:(CFTimeInterval)duration;
+@interface AKTab (){
+    BOOL isHaveTabIcon;          // 用于判断是否有图片
+    BOOL isHaveTabIconSelected;  // 用于判断是否有选中图片
+    
+}
 
 @end
 
 @implementation AKTab
-{
-    BOOL isTabIconPresent;
-    BOOL isTabIconSelectedPresent;
-}
 
 #pragma mark - Initialization
-
 - (id)init
 {
     self = [super init];
     if (self) {
         self.contentMode = UIViewContentModeScaleAspectFit;
         self.backgroundColor = [UIColor clearColor];
-        _titleIsHidden = NO;
-        isTabIconPresent = NO;
-        isTabIconSelectedPresent = NO;
+        _isTitleHidden = NO;
+        isHaveTabIcon = NO;
+        isHaveTabIconSelected = NO;
     }
     return self;
 }
@@ -68,115 +48,111 @@ static const float kTopMargin = 2.0;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    [self animateContentWithDuration:kAnimationDuration];
-}
-
-#pragma mark - Animation
-
-- (void)animateContentWithDuration:(CFTimeInterval)duration
-{
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"contents"];
-    animation.duration = duration;
+    animation.duration = kAnimationDuration;
     [self.layer addAnimation:animation forKey:@"contents"];
     [self setNeedsDisplay];
 }
 
 #pragma mark - Drawing
 
-- (void)drawRect:(CGRect)rect
-{
-    
+- (void)drawRect:(CGRect)rect {
     if (_keepFlag) {
         [super drawRect:rect];
         return;
     }
-    // If the height of the container is too short, we do not display the title
-    CGFloat offset = 1.0;
     
-    if (_tabImageWithName) isTabIconPresent = YES;
-    if (_tabSelectedImageWithName) isTabIconSelectedPresent = YES;
+    if (_tab_imageName)isHaveTabIcon = YES;
+    if (_tab_selectedImageName)isHaveTabIconSelected = YES;
     
-    if (!_minimumHeightToDisplayTitle)
-        _minimumHeightToDisplayTitle = _tabBarHeight - offset;
     
-    BOOL displayTabTitle = (CGRectGetHeight(rect) + offset >= _minimumHeightToDisplayTitle) ? YES : NO;
-    if (!isTabIconPresent) displayTabTitle = YES;
-    if (_titleIsHidden) displayTabTitle = NO;
     
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    BOOL displayTabTitle = YES;
+    if (!isHaveTabIcon) displayTabTitle = YES;
+    if (_isTitleHidden) displayTabTitle = NO;
     
-    // Container, basically centered in rect
+    
+    
+    // 容器的Rect,基于rect的中心
     CGRect container = CGRectInset(rect, kPadding, kPadding);
     container.size.height -= kTopMargin;
     container.origin.y += kTopMargin;
     
-    UIImage *image;
-    CGRect imageRect = CGRectZero;
-    CGFloat ratio = 0;
     
-    if (isTabIconPresent)
-    {
-        // Tab's image
+    UIImage *image; // 图片
+    CGRect imageRect = CGRectZero; // 图片尺寸
+    CGFloat ratio = 0.0; // 图片的宽高比
+    
+    
+    
+    if (isHaveTabIcon){
+        
         if(self.selected){
-            image = isTabIconSelectedPresent ? [UIImage imageNamed:_tabSelectedImageWithName] : [UIImage imageNamed:_tabImageWithName];
+            image = isHaveTabIconSelected ? [UIImage imageNamed:_tab_selectedImageName] : [UIImage imageNamed:_tab_imageName];
         }else{
-            image = [UIImage imageNamed:_tabImageWithName];
+            image = [UIImage imageNamed:_tab_imageName];
         }
         
-        // Getting the ratio for eventual scaling
         ratio = image.size.width / image.size.height;
         
-        // Setting the imageContainer's size.
         imageRect.size = image.size;
     }
     
-    // Title label
+    // 初始化titleLable
     UILabel *tabTitleLabel = [[UILabel alloc] init];
-    tabTitleLabel.text = _tabTitle;
-    tabTitleLabel.font = self.tabTitleFont ?: [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
-    
+    tabTitleLabel.text = _tab_title;
+    tabTitleLabel.font = _tab_titleFont ? _tab_titleFont : [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
+    tabTitleLabel.numberOfLines = 0;
+    // 设置titleLable的高度
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    /// Set line break mode
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    /// Set text alignment
+    //原先是设置成NSLineBreakByTruncatingMiddle，这样不管字数多少都不会根据行高来计算高度
+    if (isHaveTabIcon) {
+        paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    }else{
+        paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    }
     paragraphStyle.alignment = NSTextAlignmentCenter;
-    
     NSDictionary *attributes = @{ NSFontAttributeName: tabTitleLabel.font,
-                                  //NSForegroundColorAttributeName:_textColor ? _textColor : textColor,
-                                  NSParagraphStyleAttributeName: paragraphStyle };
-    
+                                  NSParagraphStyleAttributeName: paragraphStyle
+                                  };
     CGSize labelSize = [tabTitleLabel.text boundingRectWithSize:CGSizeMake(CGRectGetWidth(rect), CGRectGetHeight(rect)) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
-    
-    //CGSize labelSize = [tabTitleLabel.text sizeWithFont:tabTitleLabel.font forWidth:CGRectGetWidth(rect) lineBreakMode:NSLineBreakByTruncatingMiddle ];
     
     CGRect labelRect = CGRectZero;
     
     labelRect.size.height = (displayTabTitle) ? labelSize.height : 0;
     
-    // Container of the image + label (when there is room)
+
+    // 设置内容尺寸：(包含image和title)
     CGRect content = CGRectZero;
-    content.size.width = CGRectGetWidth(container);
     
-    // We determine the height based on the longest side of the image (when not square) , presence of the label and height of the container
+    content.size.width = CGRectGetWidth(container);
+    // 我们根据图像的最长边(如果不是方形的情况)、标签的存在和容器的高度来确定高度
     content.size.height = MIN(MAX(CGRectGetWidth(imageRect), CGRectGetHeight(imageRect)) + ((displayTabTitle) ? (kMargin + CGRectGetHeight(labelRect)) : 0), CGRectGetHeight(container));
     
-    // Now we move the boxes
+    // 设置内容坐标点在容器中心点
     content.origin.x = floorf(CGRectGetMidX(container) - CGRectGetWidth(content) / 2);
     content.origin.y = floorf(CGRectGetMidY(container) - CGRectGetHeight(content) / 2);
     
+    
+    
+    
+    //titleLable的宽度以及坐标点
     labelRect.size.width = CGRectGetWidth(content);
     labelRect.origin.x = CGRectGetMinX(content);
     labelRect.origin.y = CGRectGetMaxY(content) - CGRectGetHeight(labelRect);
     
-    if (!displayTabTitle)
+    if (!displayTabTitle){
         labelRect = CGRectZero;
+    }
     
-    if (isTabIconPresent)
-    {
+    
+    
+    if (isHaveTabIcon){
+        
         CGRect imageContainer = content;
         imageContainer.size.height = CGRectGetHeight(content) - ((displayTabTitle) ? (kMargin + CGRectGetHeight(labelRect)) : 0);
         
-        // When the image is not square we have to make sure it will not go beyond the bonds of the container
+        // 当图像不是正方形时，我们必须确保它不会超出容器的bounds
         if (CGRectGetWidth(imageRect) >= CGRectGetHeight(imageRect)) {
             imageRect.size.width = MIN(CGRectGetHeight(imageRect), MIN(CGRectGetWidth(imageContainer), CGRectGetHeight(imageContainer)));
             imageRect.size.height = floorf(CGRectGetWidth(imageRect) / ratio);
@@ -189,9 +165,11 @@ static const float kTopMargin = 2.0;
         imageRect.origin.y = floorf(CGRectGetMidY(imageContainer) - CGRectGetHeight(imageRect) / 2);
     }
     
-    CGFloat offsetY = rect.size.height - ((displayTabTitle) ? (kMargin + CGRectGetHeight(labelRect)) : 0) + kTopMargin;
-
-    if(isTabIconPresent && isTabIconSelectedPresent){
+    
+    
+    
+    // 添加图片视图
+    if(isHaveTabIcon){
         for(UIView *view in self.subviews){
             if([view isKindOfClass:[UIImageView class]]){
                 [view removeFromSuperview];
@@ -203,270 +181,139 @@ static const float kTopMargin = 2.0;
         [self addSubview:imageview];
     }
     
+    
+    
+    // 初始化绘制上下文
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
     if (!self.selected) {
         
-        // We draw the vertical lines for the border
-        CGContextSaveGState(ctx);
-        {
-            CGContextSetBlendMode(ctx, kCGBlendModeOverlay);
-            CGContextSetFillColorWithColor(ctx, _innerStrokeColor ? [_innerStrokeColor CGColor] : [[UIColor colorWithRed:.7f green:.7f blue:.7f alpha:.1f] CGColor]);
-            CGContextFillRect(ctx, CGRectMake(0, kTopMargin, 1, rect.size.height - kTopMargin));
-            CGContextFillRect(ctx, CGRectMake(rect.size.width - 1, 2, 1, rect.size.height - 2));
-        }
-        CGContextRestoreGState(ctx);
-        
-        if (isTabIconPresent && !isTabIconSelectedPresent)
-        {
-            if(self.tabIconPreRendered) {
-                // Simply draw the pre-rendered image.
-                CGContextSaveGState(ctx);
-                {
-                    CGContextTranslateCTM(ctx, 0.0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextDrawImage(ctx, imageRect, image.CGImage);
-                }
-                CGContextRestoreGState(ctx);
-            } else {
-                // We draw the inner shadow which is just the image mask with an offset of 1 pixel
-                CGContextSaveGState(ctx);
-                {                
-                    CGContextTranslateCTM(ctx, _tabIconShadowOffset.width, offsetY + _tabIconShadowOffset.height);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextClipToMask(ctx, imageRect, image.CGImage);
-                    CGContextSetFillColorWithColor(ctx, _tabIconShadowColor ? [_tabIconShadowColor CGColor] : [[UIColor colorWithRed:.0f green:.0f blue:.0f alpha:.8f] CGColor]);
-                    CGContextFillRect(ctx, imageRect);
-                }
-                CGContextRestoreGState(ctx);
-                
-                // We draw the inner gradient
-                CGContextSaveGState(ctx);
-                {
-                    CGContextTranslateCTM(ctx, 0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextClipToMask(ctx, imageRect, image.CGImage);
-                    
-                    size_t num_locations = 2;
-                    CGFloat locations[2] = {1.0, 0.0};
-                    CGFloat components[8] = {0.353, 0.353, 0.353, 1.0, // Start color
-                        0.612, 0.612, 0.612, 1.0};  // End color
-                    
-                    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-                    CGGradientRef gradient = _tabIconColors ? CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)_tabIconColors, locations) : CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
-                    
-                    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, imageRect.origin.y + imageRect.size.height), CGPointMake(0, imageRect.origin.y), kCGGradientDrawsAfterEndLocation);
-                    
-                    CGColorSpaceRelease(colorSpace);
-                    CGGradientRelease(gradient);
-                }
-                CGContextRestoreGState(ctx);
-            }
-        }
-        
         if (displayTabTitle) {
-            CGContextSaveGState(ctx);
-            {
+            
+            // 配置titleLabel的显示
+            CGContextSaveGState(ctx);{
+                
                 UIColor *textColor = [UIColor colorWithRed:0.461 green:0.461 blue:0.461 alpha:1.0];
-                CGContextSetFillColorWithColor(ctx, _textColor ? _textColor.CGColor : textColor.CGColor);
+                CGContextSetFillColorWithColor(ctx, _tab_titleColor ? _tab_titleColor.CGColor : textColor.CGColor);
                 
                 UIFont *font = tabTitleLabel.font;
-                
-                /// Make a copy of the default paragraph style
                 NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-                /// Set line break mode
-                paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
-                /// Set text alignment
+                if (isHaveTabIcon) {
+                    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
+                }else{
+                    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+                }
                 paragraphStyle.alignment = NSTextAlignmentCenter;
-                
                 NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                              NSForegroundColorAttributeName:_textColor ? _textColor : textColor,
+                                              NSForegroundColorAttributeName:_tab_titleColor ? _tab_titleColor : textColor,
                                               NSParagraphStyleAttributeName: paragraphStyle };
-                
                 [tabTitleLabel.text drawInRect:labelRect withAttributes:attributes];
                 
-                
-                //[tabTitleLabel.text drawInRect:labelRect withFont:tabTitleLabel.font lineBreakMode:NSLineBreakByTruncatingMiddle  alignment:NSTextAlignmentCenter];
             }
+            
             CGContextRestoreGState(ctx);
         }
         
-    } else if (self.selected) {
+    }else if (self.selected){
         
-        // We fill the background with a noise pattern
-        CGContextSaveGState(ctx);
-        {
-            [[UIColor colorWithPatternImage:[UIImage imageNamed:_selectedBackgroundImageName ? _selectedBackgroundImageName : @"AKTabBarController.bundle/noise-pattern"]] set];
-            CGContextFillRect(ctx, rect);
-            
-            // We set the parameters of th gradient multiply blend
-            size_t num_locations = 2;
-            CGFloat locations[2] = {1.0, 0.0};
-            CGFloat components[8] = {0.6, 0.6, 0.6, 1.0,  // Start color
-                0.2, 0.2, 0.2, 0.4}; // End color
-            
-            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-            CGGradientRef gradient = _tabSelectedColors ? CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)_tabSelectedColors, locations) : CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
-            CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
-            CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, kTopMargin), CGPointMake(0, rect.size.height - kTopMargin), kCGGradientDrawsAfterEndLocation);
-            
-            // top dark emboss
-            CGContextSetBlendMode(ctx, kCGBlendModeNormal);
-            UIColor *topEdgeColor = _topEdgeColor;
-            if (!topEdgeColor) {
-                _edgeColor ? _edgeColor : [UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.8f];
+        /****************  选中背景颜色, 通过图片获取颜色和设置背景颜色获取  ***************/
+        
+        CGContextSaveGState(ctx);{
+            if (_tab_selectedBgImageName) {
+                [[UIColor colorWithPatternImage:[UIImage imageNamed:_tab_selectedBgImageName ? _tab_selectedBgImageName : @"LRTabBarController.bundle/noise-pattern"]] set];
+                CGContextFillRect(ctx, rect);
             }
-            CGContextSetFillColorWithColor(ctx, topEdgeColor.CGColor);
-            CGContextFillRect(ctx, CGRectMake(0, 0, rect.size.width, 1));
             
-            CGColorSpaceRelease(colorSpace);
-            CGGradientRelease(gradient);
+            if (_tab_selectedBgColor) {
+                [_tab_selectedBgColor set];
+                CGContextFillRect(ctx, rect);
+            }
+            
         }
         CGContextRestoreGState(ctx);
         
-        // We draw the vertical lines for the border
-        CGContextSaveGState(ctx);
-        {
-            CGContextSetBlendMode(ctx, kCGBlendModeOverlay);
-            CGContextSetFillColorWithColor(ctx, _strokeColor ? [_strokeColor CGColor] : [[UIColor colorWithRed:.7f green:.7f blue:.7f alpha:.4f] CGColor]);
-            CGContextFillRect(ctx, CGRectMake(0, 2, 1, rect.size.height - 2));
-            CGContextFillRect(ctx, CGRectMake(rect.size.width - 1, 2, 1, rect.size.height - 2));
-        }
-        CGContextRestoreGState(ctx);
+        // 设置渲染结束坐标
+        CGFloat offsetY = rect.size.height - ((displayTabTitle) ? (kMargin + CGRectGetHeight(labelRect)) : 0) + kTopMargin;
         
-        if (isTabIconPresent && !isTabIconSelectedPresent)
-        {
-            if(self.tabIconPreRendered) {
-                // Simply draw the pre-rendered image.
-                CGContextSaveGState(ctx);
-                {
-                    CGContextTranslateCTM(ctx, 0.0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextDrawImage(ctx, imageRect, image.CGImage);
-                }
-                CGContextRestoreGState(ctx);
-            } else {
-                // We draw the outer glow
-                CGContextSaveGState(ctx);
-                {
-                    CGContextTranslateCTM(ctx, 0.0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextSetShadowWithColor(ctx, CGSizeMake(0, 0), 10.0, _tabIconOuterGlowColorSelected ? [_tabIconOuterGlowColorSelected CGColor] : [UIColor colorWithRed:0.169 green:0.418 blue:0.547 alpha:1].CGColor);
-                    CGContextSetBlendMode(ctx, kCGBlendModeOverlay);
-                    CGContextDrawImage(ctx, imageRect, image.CGImage);
-                    
-                }
-                CGContextRestoreGState(ctx);
+        if (isHaveTabIcon && !isHaveTabIconSelected){
+            
+            /****************  图像上画出光泽的效果  ***************/
+            CGContextSaveGState(ctx);{
+                // Center of the circle + an offset to have the right angle no matter the size of the container
+                CGFloat posX = CGRectGetMinX(container) - CGRectGetHeight(container);
+                CGFloat posY = CGRectGetMinY(container) - CGRectGetHeight(container) * 2 - CGRectGetWidth(container);
                 
-                // We draw the inner gradient
-                CGContextSaveGState(ctx);
-                {
-                    CGContextTranslateCTM(ctx, 0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextClipToMask(ctx, imageRect, image.CGImage);
-                    
-                    size_t num_locations = 2;
-                    CGFloat locations[2] = {1.0, 0.2};
-                    CGFloat components[8] = {0.082, 0.369, 0.663, 1.0, // Start color
-                        0.537, 0.773, 0.988, 1.0};  // End color
-                    
-                    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-                    CGGradientRef gradient = _tabIconColorsSelected ? CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)_tabIconColorsSelected, locations) : CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
-                    
-                    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, imageRect.origin.y + imageRect.size.height), CGPointMake(0, imageRect.origin.y), kCGGradientDrawsAfterEndLocation);
-                    
-                    CGColorSpaceRelease(colorSpace);
-                    CGGradientRelease(gradient);
-                }
-                CGContextRestoreGState(ctx);
+                // Getting the icon center
+                CGFloat dX = CGRectGetMidX(imageRect) - posX;
+                CGFloat dY = CGRectGetMidY(imageRect) - posY;
                 
+                // Calculating the radius
+                CGFloat radius = sqrtf((dX * dX) + (dY * dY));
                 
-                // We draw the glossy effect over the image
-                CGContextSaveGState(ctx);
-                {
-                    // Center of the circle + an offset to have the right angle no matter the size of the container
-                    CGFloat posX = CGRectGetMinX(container) - CGRectGetHeight(container);
-                    CGFloat posY = CGRectGetMinY(container) - CGRectGetHeight(container) * 2 - CGRectGetWidth(container);
-                    
-                    // Getting the icon center
-                    CGFloat dX = CGRectGetMidX(imageRect) - posX;
-                    CGFloat dY = CGRectGetMidY(imageRect) - posY;
-                    
-                    // Calculating the radius
-                    CGFloat radius = sqrtf((dX * dX) + (dY * dY));
-                    
-                    // We draw the circular path
-                    CGMutablePathRef glossPath = CGPathCreateMutable();
-                    CGPathAddArc(glossPath, NULL, posX, posY, radius, M_PI, 0, YES);
-                    CGPathCloseSubpath(glossPath);
-                    CGContextAddPath(ctx, glossPath);
-                    CGContextClip(ctx);
-                    
-                    // Clipping to the image path
-                    CGContextTranslateCTM(ctx, 0, offsetY);
-                    CGContextScaleCTM(ctx, 1.0, -1.0);
-                    CGContextClipToMask(ctx, imageRect, image.CGImage);
-                    
-                    // Drawing the clipped gradient
-                    size_t num_locations = 2;
-                    CGFloat locations[2] = {1, 0};
-                    CGFloat components[8] = {1.0, 1.0, 1.0, _glossyIsHidden ? 0 : 0.5, // Start color
-                        1.0, 1.0, 1.0, _glossyIsHidden ? 0 : 0.15};  // End color
-                    
-                    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-                    CGGradientRef gradient = CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
-                    CGContextDrawRadialGradient(ctx, gradient, CGPointMake(CGRectGetMinX(imageRect), CGRectGetMinY(imageRect)), 0, CGPointMake(CGRectGetMaxX(imageRect), CGRectGetMaxY(imageRect)), radius, kCGGradientDrawsBeforeStartLocation);
-                    
-                    CGColorSpaceRelease(colorSpace);
-                    CGGradientRelease(gradient);
-                    CGPathRelease(glossPath);
-                }
-                CGContextRestoreGState(ctx);
+                // We draw the circular path
+                CGMutablePathRef glossPath = CGPathCreateMutable();
+                CGPathAddArc(glossPath, NULL, posX, posY, radius, M_PI, 0, YES);
+                CGPathCloseSubpath(glossPath);
+                CGContextAddPath(ctx, glossPath);
+                CGContextClip(ctx);
+                
+                // Clipping to the image path
+                CGContextTranslateCTM(ctx, 0, offsetY);
+                CGContextScaleCTM(ctx, 1.0, -1.0);
+                CGContextClipToMask(ctx, imageRect, image.CGImage);
+                
+                // Drawing the clipped gradient
+                size_t num_locations = 2;
+                CGFloat locations[2] = {1, 0};
+                CGFloat components[8] = {0.353, 0.353, 0.353, _isGlossySelected ? 1.0 : 0, // Start color
+                    0.612, 0.612, 0.612, _isGlossySelected ? 1.0 : 0.0};  // End color
+                
+                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+                CGGradientRef gradient = CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
+                CGContextDrawRadialGradient(ctx, gradient, CGPointMake(CGRectGetMinX(imageRect), CGRectGetMinY(imageRect)), 0, CGPointMake(CGRectGetMaxX(imageRect), CGRectGetMaxY(imageRect)), radius, kCGGradientDrawsBeforeStartLocation);
+                
+                CGColorSpaceRelease(colorSpace);
+                CGGradientRelease(gradient);
+                CGPathRelease(glossPath);
             }
+            CGContextRestoreGState(ctx);
+            
         }
+        
         
         if (displayTabTitle) {
-            CGContextSaveGState(ctx);
-            {
+            /****************  配置选中的titleLabel样式 ***************/
+            CGContextSaveGState(ctx);{
+                
                 UIColor *textColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:1.0];
-                CGContextSetFillColorWithColor(ctx, _selectedTextColor ? _selectedTextColor.CGColor : textColor.CGColor);
+                CGContextSetFillColorWithColor(ctx, _tab_selectedTitleColor ? _tab_selectedTitleColor.CGColor : textColor.CGColor);
                 
                 UIFont *font = tabTitleLabel.font;
-                
-                /// Make a copy of the default paragraph style
                 NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-                /// Set line break mode
-                paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
-                /// Set text alignment
+                if (isHaveTabIcon) {
+                    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingMiddle;
+                }else{
+                    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+                }
                 paragraphStyle.alignment = NSTextAlignmentCenter;
                 
                 NSDictionary *attributes = @{ NSFontAttributeName: font,
-                                              NSForegroundColorAttributeName: _selectedTextColor ? _selectedTextColor : textColor,
+                                              NSForegroundColorAttributeName: _tab_selectedTitleColor ? _tab_selectedTitleColor : textColor,
                                               NSParagraphStyleAttributeName: paragraphStyle };
                 
                 [tabTitleLabel.text drawInRect:labelRect withAttributes:attributes];
                 
-                //[tabTitleLabel.text drawInRect:labelRect withFont:tabTitleLabel.font lineBreakMode:NSLineBreakByTruncatingMiddle  alignment:NSTextAlignmentCenter];
             }
             CGContextRestoreGState(ctx);
         }
-        
         
     }
+    
+    /****************  设置显示标签通知 ***************/
     if (_showMark) {
         
-        CGFloat center_x = (rect.size.width / 24 * 17) + 3;
-        CGFloat center_y = rect.origin.y+13;
-        
-//        CGContextSaveGState(ctx);
-//        {
-//            //填充圆，无边框
-//            UIColor *markColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
-//            CGContextSetFillColorWithColor(ctx, markColor.CGColor);
-//            //CGContextMoveToPoint(ctx, rect.size.width / 5 * 4, rect.size.width / 5);
-//            NSLog(@"%f",rect.size.width);
-//            CGContextAddArc(ctx, center_x, center_y, 8,  0, 2*PI, 0);//x,y为圆点坐标
-//            CGContextDrawPath(ctx, kCGPathFill);//绘制填充
-//        }
-//        CGContextRestoreGState(ctx);
+        CGFloat center_x = content.size.width;
+        CGFloat center_y = content.origin.y;
         
         UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
         NSString *str_number = nil;
@@ -485,12 +332,21 @@ static const float kTopMargin = 2.0;
         CGFloat nameH = 16;
         CGFloat nameW = size.width + 6 < 16 ? 16 :size.width + 6;
         lb_number.frame = CGRectMake(0,0, nameW,nameH);
-        lb_number.center = CGPointMake(center_x, center_y);
+        if (_markNumber > 99) {
+            lb_number.center = CGPointMake(self.bounds.size.width - nameW/2, center_y);
+        }else{
+            lb_number.center = CGPointMake(center_x, center_y);
+        }
+        
         lb_number.layer.cornerRadius = 8.f;
         lb_number.layer.masksToBounds = YES;
         [self addSubview:lb_number];
         
     }
-
+    
+    
 }
+
+
 @end
+

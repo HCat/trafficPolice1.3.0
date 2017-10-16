@@ -175,21 +175,12 @@ BMKMapManager* _mapManager;
         
         self.vc_tabBar = [[AKTabBarController alloc]initWithTabBarHeight:50];
         [_vc_tabBar setDelegate:(id<AKTabBarControllerDelegate>)self];
-        [_vc_tabBar setTabTitleIsHidden:NO];
-        [_vc_tabBar setTabEdgeColor:[UIColor clearColor]];
-        [_vc_tabBar setIconGlossyIsHidden:YES];
-        [_vc_tabBar setIconShadowOffset:CGSizeZero];
-        [_vc_tabBar setTabColors:@[[UIColor clearColor],[UIColor clearColor]]];
-        [_vc_tabBar setSelectedTabColors:@[[UIColor clearColor],[UIColor clearColor]]];
-        [_vc_tabBar setBackgroundImageName:@"tabbar_bg"];
-        [_vc_tabBar setSelectedBackgroundImageName:@"tabbar_bg"];
-        [_vc_tabBar setTextColor:UIColorFromRGB(0xb5bdd2)];
-        [_vc_tabBar setSelectedTextColor:UIColorFromRGB(0x253254)];
-        [_vc_tabBar setTabStrokeColor:[UIColor clearColor]];
-        [_vc_tabBar setTabInnerStrokeColor:[UIColor clearColor]];
-        [_vc_tabBar setMinimumHeightToDisplayTitle:50];
-        [_vc_tabBar setTextFont:[UIFont systemFontOfSize:11.f]];
-        [_vc_tabBar setTopEdgeColor:[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1]];
+    
+        [_vc_tabBar setTabBar_bgImageName:@"tabbar_bg"];
+        [_vc_tabBar setTab_selectedBgImageName:@"tabbar_bg"];
+        [_vc_tabBar setTab_titleColor:UIColorFromRGB(0xbbbbbb)];
+        [_vc_tabBar setTab_selectedTitleColor:UIColorFromRGB(0x4281e8)];
+        [_vc_tabBar setTab_titleFont:[UIFont systemFontOfSize:11.f]];
         
         MainHomeVC *t_vc_main = [MainHomeVC new];
         UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];

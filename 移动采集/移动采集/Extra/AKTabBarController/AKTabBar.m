@@ -1,36 +1,20 @@
-// AKTabBar.m
 //
-// Copyright (c) 2012 Ali Karagoz (http://alikaragoz.net)
+//  AKTabBar.m
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Created by hcat on 2017/9/22.
+//  Copyright © 2017年 Hcat. All rights reserved.
 //
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 
 #import "AKTabBar.h"
 
-static int kInterTabMargin = 1;
-static int kTopEdgeWidth   = 1;
+static int kInterTabMargin = 1; //tabs之间的距离间隔
+static int kTopEdgeHeight  = 1; //topEdge的高度
 
 @implementation AKTabBar
 
 #pragma mark - Initialization
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -46,16 +30,15 @@ static int kTopEdgeWidth   = 1;
 
 #pragma mark - Setters and Getters
 
-- (void)setTabs:(NSArray *)array
-{
-    if (_tabs != array) {
-        for (AKTab *tab in _tabs) {
+- (void)setArr_tabs:(NSArray *)arr_tabs{
+    if (_arr_tabs != arr_tabs) {
+        for (AKTab *tab in _arr_tabs) {
             [tab removeFromSuperview];
         }
         
-        _tabs = array;
+        _arr_tabs = arr_tabs;
         
-        for (AKTab *tab in _tabs) {
+        for (AKTab *tab in _arr_tabs) {
             tab.userInteractionEnabled = YES;
             [tab addTarget:self action:@selector(tabSelected:) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -63,89 +46,69 @@ static int kTopEdgeWidth   = 1;
     [self setNeedsLayout];
 }
 
-- (void)setSelectedTab:(AKTab *)selectedTab {
-    if (selectedTab != _selectedTab) {
-        [_selectedTab setSelected:NO];
-        _selectedTab = selectedTab;
-        [_selectedTab setSelected:YES];
+- (void)setTab_selected:(AKTab *)tab_selected{
+    
+    if (tab_selected != _tab_selected) {
+        [_tab_selected setSelected:NO];
+        _tab_selected = tab_selected;
+        [_tab_selected setSelected:YES];
     }
 }
 
 #pragma mark - Delegate notification
 
-- (void)tabSelected:(AKTab *)sender
-{
-    [_delegate tabBar:self didSelectTabAtIndex:[_tabs indexOfObject:sender]];
-    
+- (void)tabSelected:(AKTab *)sender{
+    [_delegate tabBar:self didSelectTabAtIndex:[_arr_tabs indexOfObject:sender]];
 }
 
 
 #pragma mark - Drawing & Layout
 
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing the tab bar background
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	    
-    // fill ingthe background with a noise pattern
-    [[UIColor colorWithPatternImage:[UIImage imageNamed:_backgroundImageName ? _backgroundImageName : @"AKTabBarController.bundle/noise-pattern"]] set];
+- (void)drawRect:(CGRect)rect{
     
-    CGContextFillRect(ctx, rect);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    // Drawing the gradient
-    CGContextSaveGState(ctx);
-    {
-        // We set the parameters of the gradient multiply blend
-        size_t num_locations = 2;
-        CGFloat locations[2] = {0.0, 1.0};
-        CGFloat components[8] = {0.9, 0.9, 0.9, 1.0,    // Start color
-                                 0.2, 0.2, 0.2, 0.8};    // End color
-        
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        CGGradientRef gradient = _tabColors ? CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)_tabColors, locations) : CGGradientCreateWithColorComponents (colorSpace, components, locations, num_locations);
-        CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
-        CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, rect.size.height), kCGGradientDrawsAfterEndLocation);
-        
-        CGColorSpaceRelease(colorSpace);
-        CGGradientRelease(gradient);
-    }
-    CGContextRestoreGState(ctx);
-    
-    // Drawing the top dark emboss
-    CGContextSaveGState(ctx);
-    {
-        UIColor *topEdgeColor = _topEdgeColor;
-        if (!topEdgeColor) {
-            _edgeColor ? _edgeColor : [UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.8f];
+    // 绘制tabBar的背景,根据
+    CGContextSaveGState(ctx);{
+        if (_tabBar_bgImageName) {
+            [[UIColor colorWithPatternImage:[UIImage imageNamed:_tabBar_bgImageName ? _tabBar_bgImageName : @"LRTabBarController.bundle/noise-pattern"]] set];
+            CGContextFillRect(ctx, rect);
         }
-        CGContextSetFillColorWithColor(ctx, topEdgeColor.CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, rect.size.width, kTopEdgeWidth));
+        
+        if (_tabBar_bgColor) {
+            [_tabBar_bgColor set];
+            CGContextFillRect(ctx, rect);
+        }
+        
     }
     CGContextRestoreGState(ctx);
     
-    // Drawing the top bright emboss
+    // 绘制tabBar顶部横线
     CGContextSaveGState(ctx);
     {
-        CGContextSetBlendMode(ctx, kCGBlendModeOverlay);
-        CGContextSetRGBFillColor(ctx, 0.9, 0.9, 0.9, 0.7);
-        CGContextFillRect(ctx, CGRectMake(0, 1, rect.size.width, 1));
-
+        UIColor *topEdgeColor = _tabBar_topEdgeColor ? _tabBar_topEdgeColor : [UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.0f];;
+        
+        CGContextSetFillColorWithColor(ctx, topEdgeColor.CGColor);
+        CGContextFillRect(ctx, CGRectMake(0, 0, rect.size.width, kTopEdgeHeight));
     }
     CGContextRestoreGState(ctx);
-        
-    // Drawing the edge border lines
-    CGContextSetFillColorWithColor(ctx, _edgeColor ? [_edgeColor CGColor] : [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.8f] CGColor]);
-    for (AKTab *tab in _tabs)
-        CGContextFillRect(ctx, CGRectMake(tab.frame.origin.x - kInterTabMargin, kTopEdgeWidth, kInterTabMargin, rect.size.height));
+    
+    
+    // 画出竖直分割线
+    CGContextSetFillColorWithColor(ctx,  _tabBar_strokeColor? [_tabBar_strokeColor CGColor] : [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:.0f] CGColor]);
+    
+    for (AKTab *tab in _arr_tabs){
+        CGContextFillRect(ctx, CGRectMake(tab.frame.origin.x - kInterTabMargin, kTopEdgeHeight, kInterTabMargin, rect.size.height));
+    }
     
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-
+    
     CGFloat screenWidth = self.bounds.size.width;
     
-    CGFloat tabNumber = _tabs.count;
+    CGFloat tabNumber = _arr_tabs.count;
     
     // Calculating the tabs width.
     CGFloat tabWidth = floorf(((screenWidth + 1) / tabNumber) - 1);
@@ -157,11 +120,11 @@ static int kTopEdgeWidth   = 1;
     
     CGRect rect = self.bounds;
     rect.size.width = tabWidth;
-
+    
     CGFloat dTabWith;
     
-    for (AKTab *tab in _tabs) {
-    
+    for (AKTab *tab in _arr_tabs) {
+        
         // Here is the code that increment the width until we use all the space left
         
         dTabWith = tabWidth;
@@ -171,16 +134,21 @@ static int kTopEdgeWidth   = 1;
             spaceLeft--;
         }
         
-        if ([_tabs indexOfObject:tab] == 0) {
+        if ([_arr_tabs indexOfObject:tab] == 0) {
             tab.frame = CGRectMake(rect.origin.x, rect.origin.y, dTabWith, rect.size.height);
         } else {
+            
             tab.frame = CGRectMake(rect.origin.x + kInterTabMargin, rect.origin.y, dTabWith, rect.size.height);
+            if(tab.keepFlag){
+                tab.frame = CGRectMake(rect.origin.x + kInterTabMargin, rect.origin.y- 15, dTabWith, 60);
+                
+            }
         }
         
         [self addSubview:tab];
         rect.origin.x = tab.frame.origin.x + tab.frame.size.width;
     }
-    
+
 }
 
 @end

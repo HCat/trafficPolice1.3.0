@@ -258,6 +258,12 @@
 		CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FCB1F41A7E10009B09F /* AccidentRemarkListVC.xib */; };
 		CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FCF1F41ACD80009B09F /* AccidentRemarkListCell.m */; };
 		CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FD01F41ACD80009B09F /* AccidentRemarkListCell.xib */; };
+		CE8CDE671F9455F80018044C /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE5B1F94544B0018044C /* AKTab.m */; };
+		CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE5D1F94544B0018044C /* AKTabBar.m */; };
+		CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE601F94544B0018044C /* AKTabBarController.m */; };
+		CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE621F94544B0018044C /* AKTabBarView.m */; };
+		CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE641F94544B0018044C /* UINavigationController+AKTabBarController.m */; };
+		CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE661F94544B0018044C /* UIViewController+AKTabBarController.m */; };
 		CE8EE8641F66356000CC64B0 /* PoliceCommandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8621F66356000CC64B0 /* PoliceCommandVC.m */; };
 		CE8EE8651F66356000CC64B0 /* PoliceCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8EE8631F66356000CC64B0 /* PoliceCommandVC.xib */; };
 		CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8671F6690E800CC64B0 /* LocationAPI.m */; };
@@ -283,13 +289,6 @@
 		CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97141F1CF15900741A6F /* UIButton+Block.m */; };
 		CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97161F1CF15900741A6F /* CALayer+Additions.m */; };
 		CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97221F1CF17A00741A6F /* ShareValue.m */; };
-		CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97261F1CF25B00741A6F /* AKTab.m */; };
-		CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97281F1CF25B00741A6F /* AKTabBar.m */; };
-		CEAA97341F1CF25B00741A6F /* AKTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CEAA97291F1CF25B00741A6F /* AKTabBarController.bundle */; };
-		CEAA97351F1CF25B00741A6F /* AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA972B1F1CF25B00741A6F /* AKTabBarController.m */; };
-		CEAA97361F1CF25B00741A6F /* AKTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA972D1F1CF25B00741A6F /* AKTabBarView.m */; };
-		CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA972F1F1CF25B00741A6F /* UINavigationController+AKTabBarController.m */; };
-		CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */; };
 		CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */; };
 		CED6EE821F6906FC004FED7B /* PoliceLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE801F6906FC004FED7B /* PoliceLocationVC.m */; };
 		CED6EE831F6906FC004FED7B /* PoliceLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED6EE811F6906FC004FED7B /* PoliceLocationVC.xib */; };
@@ -760,6 +759,19 @@
 		CE8C6FCE1F41ACD80009B09F /* AccidentRemarkListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentRemarkListCell.h; sourceTree = "<group>"; };
 		CE8C6FCF1F41ACD80009B09F /* AccidentRemarkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentRemarkListCell.m; sourceTree = "<group>"; };
 		CE8C6FD01F41ACD80009B09F /* AccidentRemarkListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentRemarkListCell.xib; sourceTree = "<group>"; };
+		CE8CDE5A1F94544B0018044C /* AKTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKTab.h; sourceTree = "<group>"; };
+		CE8CDE5B1F94544B0018044C /* AKTab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKTab.m; sourceTree = "<group>"; };
+		CE8CDE5C1F94544B0018044C /* AKTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKTabBar.h; sourceTree = "<group>"; };
+		CE8CDE5D1F94544B0018044C /* AKTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKTabBar.m; sourceTree = "<group>"; };
+		CE8CDE5E1F94544B0018044C /* AKTabBarController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AKTabBarController.bundle; sourceTree = "<group>"; };
+		CE8CDE5F1F94544B0018044C /* AKTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKTabBarController.h; sourceTree = "<group>"; };
+		CE8CDE601F94544B0018044C /* AKTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKTabBarController.m; sourceTree = "<group>"; };
+		CE8CDE611F94544B0018044C /* AKTabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKTabBarView.h; sourceTree = "<group>"; };
+		CE8CDE621F94544B0018044C /* AKTabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKTabBarView.m; sourceTree = "<group>"; };
+		CE8CDE631F94544B0018044C /* UINavigationController+AKTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+AKTabBarController.h"; sourceTree = "<group>"; };
+		CE8CDE641F94544B0018044C /* UINavigationController+AKTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+AKTabBarController.m"; sourceTree = "<group>"; };
+		CE8CDE651F94544B0018044C /* UIViewController+AKTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AKTabBarController.h"; sourceTree = "<group>"; };
+		CE8CDE661F94544B0018044C /* UIViewController+AKTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AKTabBarController.m"; sourceTree = "<group>"; };
 		CE8EE8611F66356000CC64B0 /* PoliceCommandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceCommandVC.h; sourceTree = "<group>"; };
 		CE8EE8621F66356000CC64B0 /* PoliceCommandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceCommandVC.m; sourceTree = "<group>"; };
 		CE8EE8631F66356000CC64B0 /* PoliceCommandVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceCommandVC.xib; sourceTree = "<group>"; };
@@ -821,19 +833,6 @@
 		CEAA97161F1CF15900741A6F /* CALayer+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Additions.m"; sourceTree = "<group>"; };
 		CEAA97211F1CF17A00741A6F /* ShareValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareValue.h; sourceTree = "<group>"; };
 		CEAA97221F1CF17A00741A6F /* ShareValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareValue.m; sourceTree = "<group>"; };
-		CEAA97251F1CF25B00741A6F /* AKTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTab.h; sourceTree = "<group>"; };
-		CEAA97261F1CF25B00741A6F /* AKTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTab.m; sourceTree = "<group>"; };
-		CEAA97271F1CF25B00741A6F /* AKTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBar.h; sourceTree = "<group>"; };
-		CEAA97281F1CF25B00741A6F /* AKTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBar.m; sourceTree = "<group>"; };
-		CEAA97291F1CF25B00741A6F /* AKTabBarController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AKTabBarController.bundle; sourceTree = "<group>"; };
-		CEAA972A1F1CF25B00741A6F /* AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBarController.h; sourceTree = "<group>"; };
-		CEAA972B1F1CF25B00741A6F /* AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBarController.m; sourceTree = "<group>"; };
-		CEAA972C1F1CF25B00741A6F /* AKTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTabBarView.h; sourceTree = "<group>"; };
-		CEAA972D1F1CF25B00741A6F /* AKTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTabBarView.m; sourceTree = "<group>"; };
-		CEAA972E1F1CF25B00741A6F /* UINavigationController+AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+AKTabBarController.h"; sourceTree = "<group>"; };
-		CEAA972F1F1CF25B00741A6F /* UINavigationController+AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+AKTabBarController.m"; sourceTree = "<group>"; };
-		CEAA97301F1CF25B00741A6F /* UIViewController+AKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AKTabBarController.h"; sourceTree = "<group>"; };
-		CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AKTabBarController.m"; sourceTree = "<group>"; };
 		CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlaceholderView.h; sourceTree = "<group>"; };
 		CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlaceholderView.m; sourceTree = "<group>"; };
 		CED6EE7F1F6906FC004FED7B /* PoliceLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceLocationVC.h; sourceTree = "<group>"; };
@@ -1620,6 +1619,26 @@
 			name = AccidentRemark;
 			sourceTree = "<group>";
 		};
+		CE8CDE591F94544B0018044C /* AKTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				CE8CDE5A1F94544B0018044C /* AKTab.h */,
+				CE8CDE5B1F94544B0018044C /* AKTab.m */,
+				CE8CDE5C1F94544B0018044C /* AKTabBar.h */,
+				CE8CDE5D1F94544B0018044C /* AKTabBar.m */,
+				CE8CDE5E1F94544B0018044C /* AKTabBarController.bundle */,
+				CE8CDE5F1F94544B0018044C /* AKTabBarController.h */,
+				CE8CDE601F94544B0018044C /* AKTabBarController.m */,
+				CE8CDE611F94544B0018044C /* AKTabBarView.h */,
+				CE8CDE621F94544B0018044C /* AKTabBarView.m */,
+				CE8CDE631F94544B0018044C /* UINavigationController+AKTabBarController.h */,
+				CE8CDE641F94544B0018044C /* UINavigationController+AKTabBarController.m */,
+				CE8CDE651F94544B0018044C /* UIViewController+AKTabBarController.h */,
+				CE8CDE661F94544B0018044C /* UIViewController+AKTabBarController.m */,
+			);
+			path = AKTabBarController;
+			sourceTree = "<group>";
+		};
 		CE8EE8601F66354900CC64B0 /* PoliceCommandVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,26 +1843,6 @@
 			path = BaseNetwork;
 			sourceTree = "<group>";
 		};
-		CEAA97241F1CF25B00741A6F /* AKTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				CEAA97251F1CF25B00741A6F /* AKTab.h */,
-				CEAA97261F1CF25B00741A6F /* AKTab.m */,
-				CEAA97271F1CF25B00741A6F /* AKTabBar.h */,
-				CEAA97281F1CF25B00741A6F /* AKTabBar.m */,
-				CEAA97291F1CF25B00741A6F /* AKTabBarController.bundle */,
-				CEAA972A1F1CF25B00741A6F /* AKTabBarController.h */,
-				CEAA972B1F1CF25B00741A6F /* AKTabBarController.m */,
-				CEAA972C1F1CF25B00741A6F /* AKTabBarView.h */,
-				CEAA972D1F1CF25B00741A6F /* AKTabBarView.m */,
-				CEAA972E1F1CF25B00741A6F /* UINavigationController+AKTabBarController.h */,
-				CEAA972F1F1CF25B00741A6F /* UINavigationController+AKTabBarController.m */,
-				CEAA97301F1CF25B00741A6F /* UIViewController+AKTabBarController.h */,
-				CEAA97311F1CF25B00741A6F /* UIViewController+AKTabBarController.m */,
-			);
-			path = AKTabBarController;
-			sourceTree = "<group>";
-		};
 		CED6EE841F69134C004FED7B /* PopMenuTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1939,6 +1938,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE8CDE591F94544B0018044C /* AKTabBarController */,
 				CE96438F1F7A3B0800C72288 /* SuperLogger */,
 				CE496EFD1F6A1ACB004E69C6 /* TTGTagCollectionView */,
 				CED6EE841F69134C004FED7B /* PopMenuTableView */,
@@ -1955,7 +1955,6 @@
 				CE4464D31F218A530056A9EB /* HSUpdateApp */,
 				CE4464CB1F2189E20056A9EB /* SRAlertView */,
 				CE57F7901F1E0F6D00CA9FCF /* LRCountDownButton */,
-				CEAA97241F1CF25B00741A6F /* AKTabBarController */,
 				CEAA96DC1F1CE13200741A6F /* SAMKeychain */,
 				CE0B55911F1CA8D0003CF361 /* LRShowHUD */,
 				CE69156B1F1DE2AC008911A6 /* LSStatusBarHUD */,
@@ -2147,7 +2146,7 @@
 		CEE5E9C31F1C6CBB00AC515C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Hcat;
 				TargetAttributes = {
 					CEE5E9CA1F1C6CBB00AC515C = {
@@ -2249,7 +2248,6 @@
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
 				CE675F361F386F07006FC15F /* AccidentCell.xib in Resources */,
-				CEAA97341F1CF25B00741A6F /* AKTabBarController.bundle in Resources */,
 				CE5C39261F2881BD0055C945 /* btn_unselected.png in Resources */,
 				CE4E3C141F39BB860057148B /* IllegalImageCell.xib in Resources */,
 				CE5C38FB1F28606B0055C945 /* ZLThumbnailViewController.xib in Resources */,
@@ -2362,7 +2360,12 @@
 				CE2C98A71F61AAA3009851F6 /* VehicleMemberCell.m in Sources */,
 				CE5C39051F28606B0055C945 /* ZLPhotoManager.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
-				CEAA97361F1CF25B00741A6F /* AKTabBarView.m in Sources */,
+				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
+				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
+				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
+				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
+				CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */,
+				CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */,
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CED9B0EC1F5D058E0010E68A /* SignAPI.m in Sources */,
@@ -2383,13 +2386,11 @@
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
-				CEAA97331F1CF25B00741A6F /* AKTabBar.m in Sources */,
 				CE61405D1F3184280015B8CE /* AccidentVC.m in Sources */,
 				CE4E3C051F39B63A0057148B /* IllegalDetailVC.m in Sources */,
 				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
 				CEFEFD211F29ED8100C33CBD /* KSYYImageManager.m in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
-				CEAA97351F1CF25B00741A6F /* AKTabBarController.m in Sources */,
 				CE5C39081F28606B0055C945 /* ZLShowBigImgViewController.m in Sources */,
 				CE675F281F384637006FC15F /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE42B9141F1F4694005CC5BD /* FastAccidentDetailModel.m in Sources */,
@@ -2420,7 +2421,6 @@
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
 				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
-				CEAA97371F1CF25B00741A6F /* UINavigationController+AKTabBarController.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE2C98BE1F61D1FF009851F6 /* VehicleRemarkCell.m in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
@@ -2472,7 +2472,6 @@
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
-				CEAA97321F1CF25B00741A6F /* AKTab.m in Sources */,
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
 				CEFEFD1F1F29ED8100C33CBD /* KSPhotoView.m in Sources */,
 				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,
@@ -2535,7 +2534,6 @@
 				CE5A00FE1F60E0D5000F13CC /* VehicleDetailVC.m in Sources */,
 				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
-				CEAA97381F1CF25B00741A6F /* UIViewController+AKTabBarController.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CE0731D31F5ED5DD00B3831B /* VehicleGPSModel.m in Sources */,
@@ -2587,7 +2585,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2595,7 +2595,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2637,7 +2641,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2645,7 +2651,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

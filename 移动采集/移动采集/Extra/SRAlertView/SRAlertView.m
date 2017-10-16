@@ -238,9 +238,9 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
             _leftAction.layer.cornerRadius = 5.0f;
             _leftAction.layer.masksToBounds = YES;
             [_leftAction setTitle:_leftActionTitle forState:UIControlStateNormal];
-            [_leftAction setTitleColor:UIColorFromRGB(0xaaaaaa) forState:UIControlStateNormal];
+            [_leftAction setTitleColor:UIColorFromRGB(0x787878) forState:UIControlStateNormal];
             //[_leftAction setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
-            [_leftAction setBackgroundImage:[self imageWithColor:UIColorFromRGB(0xf0f0f0)] forState:UIControlStateNormal];
+            [_leftAction setBackgroundImage:[self imageWithColor:DefaultBtnNuableColor] forState:UIControlStateNormal];
             [_leftAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
             [_alertView addSubview:_leftAction];
             if (_rightActionTitle) {

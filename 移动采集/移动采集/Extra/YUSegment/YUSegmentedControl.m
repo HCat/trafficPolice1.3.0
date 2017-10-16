@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, YUSegmentedControlContentType) {
 
 static const NSTimeInterval kAnimationDuration      = 0.5;
 static const CGFloat        kSeparatorDefaultHeight = 1.0;
-//static const CGFloat        kIndicatorDefaultHeight = 3.0;
+static const CGFloat        kIndicatorDefaultHeight = 3.0;
 
 @interface YUSegmentedControl ()
 
@@ -442,8 +442,8 @@ static const CGFloat        kSeparatorDefaultHeight = 1.0;
             _indicator = ({
                 YUSegmentedControlIndicator *indicator = [YUSegmentedControlIndicator new];
                 indicator.backgroundColor = [UIColor darkGrayColor];
-                //indicator.height = kIndicatorDefaultHeight;
-                indicator.height = CGRectGetHeight(self.bounds);
+                indicator.height = kIndicatorDefaultHeight;
+                //indicator.height = CGRectGetHeight(self.bounds);
                 indicator.locate = YUSegmentedControlIndicatorLocateBottom;
                 [self addSubview:indicator];
                 

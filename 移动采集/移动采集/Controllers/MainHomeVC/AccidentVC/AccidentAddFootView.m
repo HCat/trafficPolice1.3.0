@@ -951,17 +951,17 @@
     [_segmentedControl setUpWithTitles:@[@"甲方",@"乙方",@"丙方"]];
     [_segmentedControl setTextAttributes:@{
                                            NSFontAttributeName: [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight],
-                                           NSForegroundColorAttributeName: UIColorFromRGB(0x515767)
+                                           NSForegroundColorAttributeName: DefaultMenuUnSelectedColor
                                            } forState:YUSegmentedControlStateNormal];
     [_segmentedControl setTextAttributes:@{
                                            NSFontAttributeName: [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight],
-                                           NSForegroundColorAttributeName: UIColorFromRGB(0xffffff)
+                                           NSForegroundColorAttributeName: DefaultMenuSelectedColor
                                            } forState:YUSegmentedControlStateSelected];
-    _segmentedControl.indicator.backgroundColor = UIColorFromRGB(0x515767);
+    _segmentedControl.indicator.backgroundColor = DefaultMenuSelectedColor;
     [_segmentedControl addTarget:self action:@selector(segmentedControlTapped:) forControlEvents:UIControlEventValueChanged];
-    [_segmentedControl setBackgroundColor:UIColorFromRGB(0xe7edf9)];
+    [_segmentedControl setBackgroundColor:UIColorFromRGB(0xf5f5f5)];
     _segmentedControl.showsVerticalDivider = YES;
-    _segmentedControl.showsTopSeparator = NO;
+    _segmentedControl.showsTopSeparator = YES;
     _segmentedControl.showsBottomSeparator = NO;
     [self judgeTextFieldWithIndex:_segmentedControl.selectedSegmentIndex];
     

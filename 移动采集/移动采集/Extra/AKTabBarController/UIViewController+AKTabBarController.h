@@ -1,46 +1,36 @@
-// UIViewController+AKTabBarController.h
 //
-// Copyright (c) 2012 Ali Karagoz (http://alikaragoz.net)
+//  UIViewController+AKTabBarController.h
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Created by hcat on 2017/10/10.
+//  Copyright © 2017年 Hcat. All rights reserved.
 //
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 
 @class AKTabBarController;
 
 @interface UIViewController (AKTabBarController)
 
+// tab的未选中图片名称
 - (NSString *)tabImageName;
 
+// tab的选中图片名称
 - (NSString *)tabSelectedImageName;
 
+// tab的title
 - (NSString *)tabTitle;
 
+// 当选中相同按钮适合所做的操作
+- (void)tabBarReSelected;
+
+// 是否显示通知标签
+- (BOOL)showMask;
+
+// 显示标签数目
+- (NSInteger)showMaskNumber;
+
+
+-(BOOL)canChangeTab;
 
 - (AKTabBarController*)akTabBarController;
 
-- (void)tabBarReSelected;
-
-- (void)tabBarUmengStatistics;
-
-
--(BOOL)showMask;
--(NSInteger)showMaskNumber;
-
--(BOOL)canChangeTab;
 
 @end

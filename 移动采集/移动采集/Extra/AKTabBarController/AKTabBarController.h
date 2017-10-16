@@ -1,24 +1,9 @@
-// AKTabBarController.h
 //
-// Copyright (c) 2012 Ali Karagoz (http://alikaragoz.net)
+//  AKTabBarController.h
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Created by hcat on 2017/9/25.
+//  Copyright © 2017年 Hcat. All rights reserved.
 //
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 
 #import "AKTabBarView.h"
 #import "AKTabBar.h"
@@ -32,81 +17,49 @@
 
 @end
 
-
-
 @interface AKTabBarController : UIViewController <AKTabBarDelegate, UINavigationControllerDelegate>
-
 
 @property (nonatomic, weak) id<AKTabBarControllerDelegate> delegate;
 
-// View Controllers handled by the tab bar controller.
+// TabBarController包含的视图控制器
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 
-// Current active view controller
+// 当前TabBarController选中的视图
 @property (nonatomic, strong) UIViewController *selectedViewController;
 
-// Current active view controller index
+// 当前TabBarController选中的索引
 @property (nonatomic, assign) NSInteger selectedIndex;
 
-// This is the minimum height to display the title.
-@property (nonatomic, assign) CGFloat minimumHeightToDisplayTitle;
+//***********************  tabBar配置  *************************
 
-// Used to show / hide the tabs title.
-@property (nonatomic, assign) BOOL tabTitleIsHidden;
+// tabBar的顶部横线
+@property (nonatomic, strong) UIColor  * tabBar_topEdgeColor;
 
-// Tabs icon colors.
-@property (nonatomic, strong) NSArray *iconColors;
+// tabBar竖直分割线的颜色
+@property (nonatomic, strong) UIColor  * tabBar_strokeColor;
 
-// Tabs icon shadow color
-@property (nonatomic, strong) UIColor *iconShadowColor;
+// tabBar的背景图片
+@property (nonatomic, copy)   NSString * tabBar_bgImageName;
 
-// Tabs icon shadow offset
-@property (nonatomic) CGSize iconShadowOffset;
+// tabBar的背景颜色
+@property (nonatomic, strong) UIColor  * tabBar_bgColor;
 
-// Tabs selected icon colors.
-@property (nonatomic, strong) NSArray *selectedIconColors;
+//***********************  对单个tab配置  *************************
 
-// Tabs outer glow icon color
-@property (nonatomic, strong) UIColor *selectedIconOuterGlowColor;
-
-// Tabs selected colors.
-@property (nonatomic, strong) NSArray *tabColors;
-
-// Tabs selected colors.
-@property (nonatomic, strong) NSArray *selectedTabColors;
-
-// Tabs icon pre-rendered yes / no
-@property (nonatomic, assign) BOOL tabIconPreRendered;
-
-// Tabs icon glossy show / hide
-@property (nonatomic, assign) BOOL iconGlossyIsHidden;
-
-// Tab stroke Color
-@property (nonatomic, strong) UIColor *tabStrokeColor;
-
-// Tab inner stroke Color
-@property (nonatomic, strong) UIColor *tabInnerStrokeColor;
-
-// Tab top embos Color
-@property (nonatomic, strong) UIColor *tabEdgeColor;
-
-// Tab bar top embos Color. optional, default to tabEdgeColor
-@property (nonatomic, strong) UIColor *topEdgeColor;
-
-// Tab background image
-@property (nonatomic, strong) NSString *backgroundImageName;
-
-// Tab selected background image
-@property (nonatomic, strong) NSString *selectedBackgroundImageName;
-
-// Tab text color
-@property (nonatomic, strong) UIColor *textColor;
-
-// Tab selected text color
-@property (nonatomic, strong) UIColor *selectedTextColor;
-
-// Tab title font
-@property (nonatomic, strong) UIFont *textFont;
+// Tab是否显示或者隐藏title
+@property (nonatomic, assign) BOOL isTitleHidden;
+// Tab选中状态下的背景图片名称
+@property (nonatomic, copy)   NSString * tab_selectedBgImageName;
+// Tab选中状态下的背景颜色
+@property (nonatomic, strong) UIColor  * tab_selectedBgColor;
+// Tab未选中状态下的title字体颜色
+@property (nonatomic, strong) UIColor  * tab_titleColor;
+// Tab选中状态下的title字体颜色
+@property (nonatomic, strong) UIColor  * tab_selectedTitleColor;
+// Tab未选中状态下的显示的title的font
+@property (nonatomic, strong) UIFont   * tab_titleFont;
+// Tab在无选中图片时候，是否显示发光效果
+@property (nonatomic, assign) BOOL isGlossySelected;
 
 // Initialization with a specific height.
 - (id)initWithTabBarHeight:(NSUInteger)height;

@@ -78,7 +78,6 @@
             t_vc.accidentType = AccidentTypeFastAccident;
             t_vc.title = @"快处列表";
             t_vc.isHandle = @1;
-            t_vc.title = @"快处";
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
         };
         [self.mArr_items addObject:item2];

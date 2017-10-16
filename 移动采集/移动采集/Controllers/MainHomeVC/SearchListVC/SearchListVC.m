@@ -189,9 +189,9 @@
     
     NSArray *arr_controllers = [NSArray arrayWithArray:t_arr];
     NSDictionary *dic_options = @{LRPageMenuOptionUseMenuLikeSegmentedControl:@(YES),
-                                  LRPageMenuOptionSelectedTitleColor:UIColorFromRGB(0x253254),
-                                  LRPageMenuOptionUnselectedTitleColor:UIColorFromRGB(0xb5bdd2),
-                                  LRPageMenuOptionSelectionIndicatorColor:DefaultBtnColor,
+                                  LRPageMenuOptionSelectedTitleColor:DefaultMenuSelectedColor,
+                                  LRPageMenuOptionUnselectedTitleColor:DefaultMenuUnSelectedColor,
+                                  LRPageMenuOptionSelectionIndicatorColor:DefaultMenuSelectedColor,
                                   LRPageMenuOptionScrollMenuBackgroundColor:[UIColor whiteColor],
                                   LRPageMenuOptionSelectionIndicatorWidth:@(80),
                                   LRPageMenuOptionBottomMenuHairlineColor:[UIColor clearColor],
