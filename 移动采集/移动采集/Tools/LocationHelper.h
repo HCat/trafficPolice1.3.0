@@ -30,6 +30,7 @@ LRSingletonH(Default)
 @property (assign, nonatomic) double baiduLatitude;
 @property (assign, nonatomic) double baiduLongitude;
 @property (copy, nonatomic) NSString *city;
+@property (copy, nonatomic) NSString *district;
 @property (copy, nonatomic) NSString *streetName;
 @property (copy, nonatomic) NSString *address;
 

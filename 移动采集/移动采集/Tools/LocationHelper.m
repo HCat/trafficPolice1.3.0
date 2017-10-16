@@ -105,6 +105,7 @@ LRSingletonM(Default)
             if (regeocode){
                 
                 strongSelf.city = regeocode.city;
+                strongSelf.district = regeocode.district;
                 strongSelf.streetName = regeocode.street;
                 strongSelf.address = regeocode.formattedAddress;
                 LxDBAnyVar(self.city);
@@ -231,6 +232,7 @@ LRSingletonM(Default)
         BMKAddressComponent *component = result.addressDetail;
         self.city = component.city;
         self.streetName = component.streetName;
+        self.district = component.district;
         self.address = result.address;
         LxDBAnyVar(self.city);
         LxDBAnyVar(self.streetName);

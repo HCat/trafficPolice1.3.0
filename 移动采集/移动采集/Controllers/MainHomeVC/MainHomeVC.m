@@ -28,7 +28,7 @@
 @property (nonatomic,strong) NSArray *arr_items;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_location;
-
+@property (weak, nonatomic) IBOutlet UILabel *lb_weather;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_collection_top; //用于适配不同屏幕大小
 
@@ -52,11 +52,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
     
     if (IS_IPHONE_4_OR_LESS) {
-        self.layout_collection_top.constant = -127.f;
+        self.layout_collection_top.constant = -112.f;
     }else if (IS_IPHONE_5){
-        self.layout_collection_top.constant = -80.f;
+        self.layout_collection_top.constant = -65.f;
     }else{
-        self.layout_collection_top.constant = -47.f;
+        self.layout_collection_top.constant = -32.f;
     }
     [self.view layoutIfNeeded];
     
@@ -73,6 +73,29 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     [super viewWillAppear:animated];
 
 }
+
+#pragma mark - 请求天气状况
+
+- (void) getWeatherData{
+    
+    //获取当前天气
+    WS(weakSelf);
+    CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
+    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    manger.isNeedShowHud = NO;
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            strongSelf.lb_weather.text = manger.weather;
+            
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+    
+}
+
 
 #pragma mark - set
 
@@ -316,6 +339,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 -(void)locationChange{
     
     [self.btn_location setTitle:[LocationHelper sharedDefault].city forState:UIControlStateNormal];
+    [self getWeatherData];
     
 }
 
