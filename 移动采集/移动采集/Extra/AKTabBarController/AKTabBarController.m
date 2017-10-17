@@ -69,6 +69,10 @@ typedef enum {
     CGRect tabBarRect = CGRectMake(0.0, CGRectGetHeight(self.view.bounds) - tabBarHeight, CGRectGetWidth(self.view.frame), tabBarHeight);
     tabBar = [[AKTabBar alloc] initWithFrame:tabBarRect];
     tabBar.delegate = self;
+    tabBar.layer.shadowColor = UIColorFromRGB(0x444444).CGColor;//shadowColor阴影颜色
+    tabBar.layer.shadowOffset = CGSizeMake(0,-2);
+    tabBar.layer.shadowOpacity = 0.1;
+    tabBar.layer.shadowRadius = 2;
     
     tabBarView.tabBar = tabBar;
     tabBarView.contentView = _selectedViewController.view;

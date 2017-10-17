@@ -19,6 +19,7 @@
 #import "LoginHomeVC.h"
 #import "MainHomeVC.h"
 #import "ListHomeVC.h"
+#import "AddressBookHomeVC.h"
 #import "MessageHomeVC.h"
 #import "UserHomeVC.h"
 
@@ -188,13 +189,16 @@ BMKMapManager* _mapManager;
         ListHomeVC *t_vc_list = [ListHomeVC new];
         UINavigationController *t_nav_list = [[UINavigationController alloc] initWithRootViewController:t_vc_list];
         
+        AddressBookHomeVC *t_vc_addressBook = [AddressBookHomeVC new];
+        UINavigationController *t_nav_addressBook = [[UINavigationController alloc] initWithRootViewController:t_vc_addressBook];
+        
         MessageHomeVC *t_vc_message = [MessageHomeVC new];
         UINavigationController *t_nav_message = [[UINavigationController alloc] initWithRootViewController:t_vc_message];
         
         UserHomeVC *t_vc_user = [UserHomeVC new];
         UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
         
-        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_list,t_nav_message,t_nav_user]mutableCopy]];
+        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_list,t_nav_addressBook,t_nav_message,t_nav_user]mutableCopy]];
         
     }
     

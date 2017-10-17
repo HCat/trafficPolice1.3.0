@@ -343,7 +343,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     
 }
 
-
 #pragma mark - AKTabBar Method
 
 - (NSString *)tabImageName{
