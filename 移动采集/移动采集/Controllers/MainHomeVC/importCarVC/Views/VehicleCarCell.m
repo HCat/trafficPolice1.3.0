@@ -78,8 +78,8 @@
         _lb_dvrcard.text = [ShareFun takeStringNoNull:_vehicle.dvrcard];                //车主身份证
         _lb_drivermobile.text = [ShareFun takeStringNoNull:_vehicle.drivermobile];      //车主电话
         
-        //车斗信息
-        _lb_carHopper.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@x%@x%@(单位cm)",_vehicle.carHopperL,_vehicle.carHopperW,_vehicle.carHopperH]];
+        //车厢外高度
+        _lb_carHopper.text = [ShareFun takeStringNoNull:_vehicle.carriageOutsideH];
         
         //车辆状态：1正常 0暂停运营 2停止运营 3未审核 4未提交 5审核未通过
         if ([_vehicle.status isEqualToNumber:@0]) {
