@@ -59,10 +59,10 @@
     if (!_animationLabel)
     {
         _animationLabel = [[UILabel alloc]initWithFrame:CGRectMake(-WIDTH/2 + self.frame.size.width/2, 100, 60, 60)];
-        _animationLabel.center =CGPointMake(WIDTH/2, CGRectGetMidY(self.frame));
+        _animationLabel.center =CGPointMake(-WIDTH/2 + self.frame.size.width/2 + 15, CGRectGetMidY(self.bounds));
         _animationLabel.layer.masksToBounds = YES;
         _animationLabel.layer.cornerRadius = _animationLabel.frame.size.width/2;
-        _animationLabel.backgroundColor = [UIColor orangeColor];
+        _animationLabel.backgroundColor = [UIColor redColor];
         _animationLabel.textColor = [UIColor whiteColor];
         _animationLabel.alpha = 0;
         _animationLabel.textAlignment = NSTextAlignmentCenter;
