@@ -436,8 +436,9 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             VehicleRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleRemarkCellID"];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             cell.remark = (VehicleRemarkModel *)self.arr_content[indexPath.row];
-            
+            return cell;
         }
+        break;
         default:
             break;
     }
