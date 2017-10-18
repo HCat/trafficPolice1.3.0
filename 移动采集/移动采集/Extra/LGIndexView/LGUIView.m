@@ -27,6 +27,7 @@
 {
     self = [super initWithFrame:frame];
     
+    
     if (self)
     {
         self.indexArray = [NSArray arrayWithArray:array];

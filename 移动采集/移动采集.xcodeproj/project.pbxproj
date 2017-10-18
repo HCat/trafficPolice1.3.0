@@ -119,6 +119,10 @@
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
+		CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */; };
+		CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */; };
+		CE55B7FD1F9727F900CD1567 /* AddressBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7FB1F9727F900CD1567 /* AddressBookCell.m */; };
+		CE55B7FE1F9727F900CD1567 /* AddressBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE55B7FC1F9727F900CD1567 /* AddressBookCell.xib */; };
 		CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE56965F1F62341C0073ADB7 /* VehicleCameraVC.m */; };
 		CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5696601F62341C0073ADB7 /* VehicleCameraVC.xib */; };
 		CE5696661F6245950073ADB7 /* VehicleSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5696641F6245950073ADB7 /* VehicleSearchVC.m */; };
@@ -540,6 +544,13 @@
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
 		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
 		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
+		CE55B7F41F96F19F00CD1567 /* AddressBookAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookAPI.h; sourceTree = "<group>"; };
+		CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookAPI.m; sourceTree = "<group>"; };
+		CE55B7F71F96F29F00CD1567 /* AddressBookModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookModel.h; sourceTree = "<group>"; };
+		CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookModel.m; sourceTree = "<group>"; };
+		CE55B7FA1F9727F900CD1567 /* AddressBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookCell.h; sourceTree = "<group>"; };
+		CE55B7FB1F9727F900CD1567 /* AddressBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookCell.m; sourceTree = "<group>"; };
+		CE55B7FC1F9727F900CD1567 /* AddressBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookCell.xib; sourceTree = "<group>"; };
 		CE56965E1F62341C0073ADB7 /* VehicleCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleCameraVC.h; sourceTree = "<group>"; };
 		CE56965F1F62341C0073ADB7 /* VehicleCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleCameraVC.m; sourceTree = "<group>"; };
 		CE5696601F62341C0073ADB7 /* VehicleCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleCameraVC.xib; sourceTree = "<group>"; };
@@ -1254,6 +1265,9 @@
 				CE59BB3C1F95A65800E24D3A /* AddressBookHomeVC.h */,
 				CE59BB3D1F95A65800E24D3A /* AddressBookHomeVC.m */,
 				CE59BB3E1F95A65800E24D3A /* AddressBookHomeVC.xib */,
+				CE55B7FA1F9727F900CD1567 /* AddressBookCell.h */,
+				CE55B7FB1F9727F900CD1567 /* AddressBookCell.m */,
+				CE55B7FC1F9727F900CD1567 /* AddressBookCell.xib */,
 			);
 			path = AddressBookHomeVC;
 			sourceTree = "<group>";
@@ -1822,6 +1836,8 @@
 				CE0731D21F5ED5DD00B3831B /* VehicleGPSModel.m */,
 				CE8EE8691F66926300CC64B0 /* UserGpsListModel.h */,
 				CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */,
+				CE55B7F71F96F29F00CD1567 /* AddressBookModel.h */,
+				CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1851,6 +1867,8 @@
 				CE0731C31F5EC7E400B3831B /* VehicleAPI.m */,
 				CE8EE8661F6690E800CC64B0 /* LocationAPI.h */,
 				CE8EE8671F6690E800CC64B0 /* LocationAPI.m */,
+				CE55B7F41F96F19F00CD1567 /* AddressBookAPI.h */,
+				CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2285,6 +2303,7 @@
 				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
 				CE2C98A81F61AAA3009851F6 /* VehicleMemberCell.xib in Resources */,
 				CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */,
+				CE55B7FE1F9727F900CD1567 /* AddressBookCell.xib in Resources */,
 				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
 				CE424F441F3AE694005741CA /* AccidentPartyCell.xib in Resources */,
 				CE5C38F41F28606B0055C945 /* lock.png in Resources */,
@@ -2497,6 +2516,7 @@
 				CE7348F21F6BC8B700EBDA0A /* CarInfoAddVC.m in Sources */,
 				CE675F2B1F384637006FC15F /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				CE508F391F3D51C60066A9B7 /* AccidentRemarkCell.m in Sources */,
+				CE55B7FD1F9727F900CD1567 /* AddressBookCell.m in Sources */,
 				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
@@ -2568,6 +2588,7 @@
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
+				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,
 				CE0731D31F5ED5DD00B3831B /* VehicleGPSModel.m in Sources */,
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
 				CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */,
@@ -2579,6 +2600,7 @@
 				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
 				CE5C39001F28606B0055C945 /* ZLForceTouchPreviewController.m in Sources */,
+				CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */,
 				CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */,
 				CE8EE8641F66356000CC64B0 /* PoliceCommandVC.m in Sources */,
 				CE496F031F6A1ACB004E69C6 /* TTGTextTagCollectionView.m in Sources */,

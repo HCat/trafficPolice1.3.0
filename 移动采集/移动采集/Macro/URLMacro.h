@@ -129,6 +129,9 @@
 
 #define URL_LOCATION_GETLIST @"app/location/getList.json"   //获取警员位置信息
 
+#pragma mark - 通讯录相关API
+
+#define URL_ADDRESSBOOK_GETLIST @"app/addressBook/getList.json" //获取通讯录
 
 
 #endif /* URLMacro_h */

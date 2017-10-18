@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="KGk-i7-Jjw" customClass="AddressBookCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="黄" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBM-9U-QcY">
+                        <rect key="frame" x="14" y="11" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.47058823529999999" green="0.4941176471" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="tBM-9U-QcY" secondAttribute="height" multiplier="1:1" id="pZL-KM-8ld"/>
+                            <constraint firstAttribute="width" constant="30" id="xTo-f1-1wL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxP-xa-PxJ">
+                        <rect key="frame" x="57" y="17.5" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goY-aZ-zM9">
+                        <rect key="frame" x="250" y="11" width="55" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="Q4i-7j-1fG"/>
+                            <constraint firstAttribute="height" constant="30" id="X8k-uK-sd1"/>
+                        </constraints>
+                        <state key="normal" image="btn_phone_n"/>
+                        <state key="disabled" image="btn_phone_u"/>
+                        <connections>
+                            <action selector="handleBtnPhoneClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="C0F-1u-fKu"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tBM-9U-QcY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Xb-jW-8wt"/>
+                    <constraint firstItem="goY-aZ-zM9" firstAttribute="centerY" secondItem="MxP-xa-PxJ" secondAttribute="centerY" id="Erg-IF-Hyt"/>
+                    <constraint firstItem="MxP-xa-PxJ" firstAttribute="leading" secondItem="tBM-9U-QcY" secondAttribute="trailing" constant="13" id="Ft6-V1-3Is"/>
+                    <constraint firstAttribute="trailing" secondItem="goY-aZ-zM9" secondAttribute="trailing" constant="15" id="sjn-E6-UEI"/>
+                    <constraint firstItem="tBM-9U-QcY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="wpq-Sm-Ogf"/>
+                    <constraint firstItem="MxP-xa-PxJ" firstAttribute="centerY" secondItem="tBM-9U-QcY" secondAttribute="centerY" id="zXF-gF-WHE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn_phone" destination="goY-aZ-zM9" id="qnm-kM-6sw"/>
+                <outlet property="lb_name" destination="MxP-xa-PxJ" id="25Q-Jy-be7"/>
+                <outlet property="lb_tip" destination="tBM-9U-QcY" id="rXZ-fJ-Rb9"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="56"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn_phone_n" width="15" height="15"/>
+        <image name="btn_phone_u" width="15" height="15"/>
+    </resources>
+</document>
