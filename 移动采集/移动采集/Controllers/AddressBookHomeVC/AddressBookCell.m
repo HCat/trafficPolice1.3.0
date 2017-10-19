@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_name;
 @property (weak, nonatomic) IBOutlet UIButton *btn_phone;
 
+
+
+
 @end
 
 @implementation AddressBookCell

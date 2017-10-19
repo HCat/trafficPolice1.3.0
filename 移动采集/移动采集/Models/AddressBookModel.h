@@ -10,12 +10,20 @@
 
 @interface AddressBookModel : NSObject
 
-@property (nonatomic,copy) NSString * userId;
-@property (nonatomic,copy) NSString * name;
-@property (nonatomic,copy) NSString * realName;
-@property (nonatomic,copy) NSString * telNum;
-@property (nonatomic,copy) NSString * deptName;
-@property (nonatomic,copy) NSString * firstChar;
-@property (nonatomic,assign) BOOL canDial;
+@property (nonatomic,copy) NSString * userId;       //用户id
+@property (nonatomic,copy) NSString * name;         //用户名
+@property (nonatomic,copy) NSString * realName;     //真实姓名
+@property (nonatomic,copy) NSString * telNum;       //电话
+@property (nonatomic,copy) NSString * deptName;     //中队名称
+@property (nonatomic,copy) NSString * firstChar;    //首字母
+@property (nonatomic,assign) BOOL canDial;          //是否有权限可以拨号
+
+
+
+
+
+
+
+
 
 @end

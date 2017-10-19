@@ -32,11 +32,12 @@
     {
         self.indexArray = [NSArray arrayWithArray:array];
         
-        CGFloat hh = self.frame.size.height/self.indexArray.count;
+        CGFloat hh = self.frame.size.height/INDEX_NUMBER;
+        CGFloat start_y = self.frame.size.height/2 - self.indexArray.count/2 * hh;
         
-        for (int i = 0; i < array.count; i ++)
-        {
-            UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, i * hh, self.frame.size.width, hh)];
+        for (int i = 0; i < array.count; i ++){
+            
+            UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, start_y + i * hh, self.frame.size.width, hh)];
             label.text = self.indexArray[i];
             label.tag = TAG + i;
             label.textAlignment = NSTextAlignmentCenter;
@@ -87,7 +88,8 @@
 
 -(void)panAnimationFinish
 {
-    CGFloat hh = self.frame.size.height/self.indexArray.count;
+    CGFloat hh = self.frame.size.height/INDEX_NUMBER;
+    CGFloat start_y = self.frame.size.height/2 - self.indexArray.count/2 * hh;
     
     for (int i = 0; i < self.indexArray.count; i ++)
     {
@@ -95,7 +97,7 @@
         
         [UIView animateWithDuration:0.2 animations:^{
             
-            label.center = CGPointMake(self.frame.size.width/2, i * hh + hh/2);
+            label.center = CGPointMake(self.frame.size.width/2, start_y + i * hh + hh/2);
             label.font = FONT_SIZE;
             label.alpha = 1.0;
             label.textColor = STR_COLOR;
@@ -115,7 +117,8 @@
 {
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    CGFloat hh = self.frame.size.height/self.indexArray.count;
+    CGFloat hh = self.frame.size.height/INDEX_NUMBER;
+    CGFloat start_y = self.frame.size.height/2 - self.indexArray.count/2 * hh;
     
     for (int i = 0; i < self.indexArray.count; i ++)
     {
@@ -151,7 +154,7 @@
         {
             [UIView animateWithDuration:0.2 animations:^
              {
-                 label.center = CGPointMake(self.frame.size.width/2, i * hh + hh/2);
+                 label.center = CGPointMake(self.frame.size.width/2, start_y + i * hh + hh/2);
                  label.font = FONT_SIZE;
                  label.alpha = 1.0;
              }];

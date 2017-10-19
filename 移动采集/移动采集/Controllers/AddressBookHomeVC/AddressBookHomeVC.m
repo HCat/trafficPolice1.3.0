@@ -10,14 +10,24 @@
 #import "LGUIView.h"
 #import "AddressBookAPI.h"
 #import "UITableView+Lr_Placeholder.h"
+#import "UINavigationBar+BarItem.h"
 #import "AddressBookCell.h"
 
 @interface AddressBookHomeVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIView *v_search;
+@property (weak, nonatomic) IBOutlet UITextField *tf_search;
+@property (weak, nonatomic) IBOutlet UITableView *tb_search;
+
+
 @property (strong,nonatomic) LGUIView *v_index;
-@property (strong,nonatomic) NSMutableArray * arr_addressBook;
-@property (nonatomic,strong) NSMutableArray * arr_index;
+@property (strong,nonatomic) NSMutableArray * arr_addressBook;  //排序之后的通讯录
+@property (nonatomic,strong) NSMutableArray * arr_index;        //排序索引
+
+@property (nonatomic,strong) NSMutableArray * arr_data;         //服务端返回的数据
+@property (nonatomic,strong) NSMutableArray * arr_search;      //搜索之后的数据
 
 @property (strong,nonatomic) NSString *str_search;
 
@@ -38,6 +48,18 @@
     _tableView.firstReload = YES;
     [_tableView registerNib:[UINib nibWithNibName:@"AddressBookCell" bundle:nil] forCellReuseIdentifier:@"AddressBookCellID"];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    _v_search.hidden = YES;
+    _tf_search.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 0)];
+    //设置显示模式为永远显示(默认不显示)
+    _tf_search.leftViewMode = UITextFieldViewModeAlways;
+    
+    [_tb_search registerNib:[UINib nibWithNibName:@"AddressBookCell" bundle:nil] forCellReuseIdentifier:@"AddressBookCellID"];
+    _tb_search.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [self showRightBarButtonItemWithImage:@"btn_adressBook_search" target:self action:@selector(handleBtnSearchClicked:)];
+    [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+    
     
     [self creatLGIndexView];
     [self requestForAddressBook];
@@ -83,14 +105,14 @@
 
 }
 
-#pragma mark - private
+#pragma mark - 创建IndexView
 
 - (void)creatLGIndexView{
     
     if (_arr_index && _arr_index.count > 0) {
         
-        _v_index = [[LGUIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 40, 20, self.view.bounds.size.height - 80) indexArray:_arr_index];
-        _v_index.backgroundColor = [UIColor redColor];
+        _v_index = [[LGUIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 0, 20, self.view.bounds.size.height) indexArray:_arr_index];
+        _v_index.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_v_index];
         
         [_v_index selectIndexBlock:^(NSInteger section){
@@ -101,6 +123,27 @@
     }
     
 }
+
+#pragma mark - buttonAction
+
+- (IBAction)handleBtnSearchClicked:(id)sender{
+    
+    self.v_search.hidden = NO;
+    
+    
+    
+}
+
+
+- (IBAction)handleBtnCancelClicked:(id)sender {
+    
+    self.v_search.hidden = YES;
+    self.tf_search.text = nil;
+    [self.tb_search reloadData];
+    
+}
+
+
 
 #pragma mark - 对首字母进行排序
 
@@ -142,23 +185,80 @@
 }
 
 
+#pragma mark - 实时监听UITextField内容的变化
+
+-(void)passConTextChange:(id)sender{
+    UITextField* textField = (UITextField*)sender;
+    if (!_arr_data || _arr_data.count == 0) {
+        return;
+    }
+    
+    if (textField.text.length == 0) {
+        self.arr_search = _arr_data;
+        [_tb_search reloadData];
+        return;
+    }
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    [_arr_data enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+       
+        AddressBookModel *model = (AddressBookModel *)obj;
+        
+        if ([model.realName containsString:textField.text]) {
+            [arr addObject:model];
+        }
+        if ([model.name containsString:textField.text]) {
+            [arr addObject:model];
+        }
+    }];
+    self.arr_search = arr;
+    [self.tb_search reloadData];
+}
+
+
+
 
 #pragma mark - tableViewDelegate
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return _arr_index[section];
+    
+    if (tableView == _tableView) {
+        return _arr_index[section];
+    }else{
+        return nil;
+    }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    if (tableView == _tableView) {
+        return 30;
+    }else{
+        return 0;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.arr_addressBook.count;
+    
+    if (tableView == _tableView) {
+        return self.arr_addressBook.count;
+    }else{
+        return 1;
+        
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [(NSMutableArray *)self.arr_addressBook[section] count];
+    
+    if (tableView == _tableView) {
+        return [(NSMutableArray *)self.arr_addressBook[section] count];
+    }else{
+        return [_arr_search count];
+    }
+    
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -15,9 +15,12 @@
 //初始状态索引颜色
 #define STR_COLOR [UIColor blackColor]
 //选中状态索引颜色
-#define MARK_COLOR [UIColor blueColor]
+#define MARK_COLOR DefaultMenuSelectedColor
 //初始状态索引大小
 #define FONT_SIZE [UIFont systemFontOfSize:10]
+//初始化预估索引数目
+#define INDEX_NUMBER 27
+
 //索引label的tag值(防止冲突)
 #define TAG 233333
 //圆的半径
