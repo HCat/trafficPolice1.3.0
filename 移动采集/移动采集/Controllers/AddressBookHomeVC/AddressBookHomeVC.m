@@ -8,16 +8,19 @@
 
 #import "AddressBookHomeVC.h"
 #import "LGUIView.h"
+#import <MJRefresh.h>
 #import "AddressBookAPI.h"
 #import "UITableView+Lr_Placeholder.h"
 #import "UINavigationBar+BarItem.h"
 #import "AddressBookCell.h"
+#import "NetWorkHelper.h"
 
 @interface AddressBookHomeVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIView *v_search;
+@property (weak, nonatomic) IBOutlet UIView *v_top_search;
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
 @property (weak, nonatomic) IBOutlet UITableView *tb_search;
 
@@ -25,11 +28,8 @@
 @property (strong,nonatomic) LGUIView *v_index;
 @property (strong,nonatomic) NSMutableArray * arr_addressBook;  //排序之后的通讯录
 @property (nonatomic,strong) NSMutableArray * arr_index;        //排序索引
-
 @property (nonatomic,strong) NSMutableArray * arr_data;         //服务端返回的数据
 @property (nonatomic,strong) NSMutableArray * arr_search;      //搜索之后的数据
-
-@property (strong,nonatomic) NSString *str_search;
 
 @end
 
@@ -42,34 +42,55 @@
     self.arr_index = [NSMutableArray array];
     
     _tableView.isNeedPlaceholderView = YES;
-    if (_str_search) {
-        _tableView.str_placeholder = @"暂无搜索内容";
-    }
     _tableView.firstReload = YES;
+    
+    [self showRightBarButtonItemWithImage:@"btn_adressBook_search" target:self action:@selector(handleBtnSearchClicked:)];
+    
     [_tableView registerNib:[UINib nibWithNibName:@"AddressBookCell" bundle:nil] forCellReuseIdentifier:@"AddressBookCellID"];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     _v_search.hidden = YES;
-    _tf_search.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 0)];
-    //设置显示模式为永远显示(默认不显示)
-    _tf_search.leftViewMode = UITextFieldViewModeAlways;
+   
     
     [_tb_search registerNib:[UINib nibWithNibName:@"AddressBookCell" bundle:nil] forCellReuseIdentifier:@"AddressBookCellID"];
     _tb_search.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [self showRightBarButtonItemWithImage:@"btn_adressBook_search" target:self action:@selector(handleBtnSearchClicked:)];
+    _tf_search.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 0)];
+    _tf_search.leftViewMode = UITextFieldViewModeAlways;
     [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    _v_top_search.layer.shadowColor = UIColorFromRGB(0x444444).CGColor;//shadowColor阴影颜色
+    _v_top_search.layer.shadowOffset = CGSizeMake(0,3);
+    _v_top_search.layer.shadowOpacity = 0.3;
+    _v_top_search.layer.shadowRadius = 3;
     
     
     [self creatLGIndexView];
     [self requestForAddressBook];
     
+    [self initRefresh];
+    
+    [_tableView.mj_header beginRefreshing];
+    
     WS(weakSelf);
     [_tableView setReloadBlock:^{
         SW(strongSelf, weakSelf);
         strongSelf.tableView.isNetAvailable = NO;
-        [strongSelf requestForAddressBook];
+         [strongSelf.tableView.mj_header beginRefreshing];
     }];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    WS(weakSelf);
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
+        SW(strongSelf, weakSelf);
+        strongSelf.tableView.isNetAvailable = NO;
+        [strongSelf.tableView.mj_header beginRefreshing];
+    };
+    
     
 }
 
@@ -79,27 +100,42 @@
     
     WS(weakSelf);
     AddressBookGetListManger * manger = [[AddressBookGetListManger alloc] init];
-    
-    [manger configLoadingTitle: @"请求"];
-    
+
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
+        [strongSelf.tableView.mj_header endRefreshing];
         
         if (manger.responseModel.code == CODE_SUCCESS) {
-            NSMutableArray *arr_model = [NSMutableArray array];
-            [arr_model addObjectsFromArray:manger.addressBookList];
+            
+            strongSelf.arr_data = [[NSMutableArray alloc] initWithArray:manger.addressBookList];
+            NSMutableArray *arr_model = [[NSMutableArray alloc] initWithArray:manger.addressBookList];
             strongSelf.arr_addressBook = [strongSelf userSorting:arr_model];
             [strongSelf creatLGIndexView];
             [strongSelf.tableView reloadData];
         }
     
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        SW(strongSelf, weakSelf);
-        if (strongSelf.arr_addressBook.count > 0) {
-            [strongSelf.arr_addressBook removeAllObjects];
+   
+        SW(strongSelf,weakSelf);
+        [strongSelf.tableView.mj_header endRefreshing];
+       
+        Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+        NetworkStatus status = [reach currentReachabilityStatus];
+        if (status == NotReachable) {
+            if (strongSelf.arr_addressBook.count > 0) {
+                [strongSelf.arr_addressBook removeAllObjects];
+            }
+            
+            if (strongSelf.v_index) {
+                [strongSelf.v_index removeFromSuperview];
+                strongSelf.v_index = nil;
+            }
+            
+            strongSelf.tableView.isNetAvailable = YES;
+            [strongSelf.tableView reloadData];
         }
-        strongSelf.tableView.isNetAvailable = YES;
-        [strongSelf.tableView reloadData];
+        
+       
         
     }];
 
@@ -110,6 +146,12 @@
 - (void)creatLGIndexView{
     
     if (_arr_index && _arr_index.count > 0) {
+        
+        if (_v_index) {
+            [_v_index removeFromSuperview];
+            _v_index = nil;
+        }
+        
         
         _v_index = [[LGUIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 0, 20, self.view.bounds.size.height) indexArray:_arr_index];
         _v_index.backgroundColor = [UIColor clearColor];
@@ -124,22 +166,36 @@
     
 }
 
+#pragma mark - 创建下拉刷新，以及上拉加载更多
+
+- (void)initRefresh{
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestForAddressBook)];
+    [header setTitle:@"下拉查询" forState:MJRefreshStateIdle];
+    [header setTitle:@"松手开始查询" forState:MJRefreshStatePulling];
+    [header setTitle:@"查询中..." forState:MJRefreshStateRefreshing];
+    header.stateLabel.font = [UIFont systemFontOfSize:15];
+    
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _tableView.mj_header = header;
+
+}
+
 #pragma mark - buttonAction
 
 - (IBAction)handleBtnSearchClicked:(id)sender{
-    
     self.v_search.hidden = NO;
     
-    
-    
 }
-
 
 - (IBAction)handleBtnCancelClicked:(id)sender {
     
     self.v_search.hidden = YES;
     self.tf_search.text = nil;
-    [self.tb_search reloadData];
+    [self.tf_search resignFirstResponder];
+    self.arr_search = [NSMutableArray array];
+    [_tb_search reloadData];
     
 }
 
@@ -148,6 +204,10 @@
 #pragma mark - 对首字母进行排序
 
 -(NSMutableArray *)userSorting:(NSMutableArray *)modelArr{
+    
+    if (_arr_index && _arr_index.count > 0) {
+        [_arr_index removeAllObjects];
+    }
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
@@ -194,7 +254,7 @@
     }
     
     if (textField.text.length == 0) {
-        self.arr_search = _arr_data;
+        self.arr_search = [NSMutableArray array];
         [_tb_search reloadData];
         return;
     }
@@ -269,10 +329,15 @@
     
     AddressBookCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressBookCellID"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSMutableArray *t_arr = _arr_addressBook[indexPath.section];
-    if (t_arr) {
-        cell.model = t_arr[indexPath.row];
-    };
+    if (tableView == _tableView) {
+        NSMutableArray *t_arr = _arr_addressBook[indexPath.section];
+        if (t_arr) {
+            cell.model = t_arr[indexPath.row];
+        };
+    }else{
+        cell.model = _arr_search[indexPath.row];
+    }
+    
     
     return cell;
 }
@@ -280,6 +345,21 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     [cell setSeparatorInset:UIEdgeInsetsMake(0, 47, 0, 0)];
     [cell setLayoutMargins:UIEdgeInsetsMake(0, 47, 0, 0)];
+}
+
+#pragma mark - scrollViewDelegate
+//用于滚动到顶部的时候使得tableView不能再继续下拉
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView == _tb_search){
+    
+        [_tf_search resignFirstResponder];
+        if (scrollView.contentOffset.y < 0) {
+            CGPoint position = CGPointMake(0, 0);
+            [scrollView setContentOffset:position animated:NO];
+            return;
+        }
+    }
 }
 
 #pragma mark - AKTabBar Method
@@ -305,6 +385,8 @@
 }
 
 - (void)dealloc{
+    
+     [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
     
     LxPrintf(@"AddressBookHomeVC dealloc");
 
