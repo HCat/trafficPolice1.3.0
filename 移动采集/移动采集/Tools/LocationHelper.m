@@ -11,7 +11,7 @@
 #import "UserModel.h"
 #import "WebSocketHelper.h"
 
-#define DefaultLocationTimeout 5
+#define DefaultLocationTimeout 2
 #define DefaultReGeocodeTimeout 5
 
 
@@ -35,7 +35,7 @@ LRSingletonM(Default)
         [self.locationManager setDelegate:self];
         
         //设置期望定位精度
-        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         
         //设置不允许系统暂停定位
         [self.locationManager setPausesLocationUpdatesAutomatically:YES];
@@ -53,8 +53,6 @@ LRSingletonM(Default)
         
         [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
             SW(strongSelf, weakSelf);
-            
-            [self stopLocation];
             
             if (error != nil && error.code == AMapLocationErrorLocateFailed){
                 
@@ -118,6 +116,8 @@ LRSingletonM(Default)
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil userInfo:nil];
                 
             }
+            
+            [self stopLocation];
 
         }];
         

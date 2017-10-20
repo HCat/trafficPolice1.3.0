@@ -88,7 +88,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
             strongSelf.lb_weather.text = manger.weather.weather;
-            strongSelf.lb_temperature.text = manger.weather.temperature;
+            strongSelf.lb_temperature.text = [NSString stringWithFormat:@"%@°",manger.weather.temperature];
+            
         }
 
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

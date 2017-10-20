@@ -34,6 +34,7 @@
     //设置显示模式为永远显示(默认不显示)
     _tf_search.leftViewMode = UITextFieldViewModeAlways;
     
+    
     if (_arr_content == nil) {
         
         if (_searchType == SearchLocationTypeIllegal){
@@ -53,7 +54,7 @@
         }
         strongSelf.tb_content.isNetAvailable = NO;
         
-        if (_searchType == SearchLocationTypeIllegal){
+        if (strongSelf.searchType == SearchLocationTypeIllegal){
             [strongSelf getRoadName];
         }else{
             [strongSelf getAccidentCodes];

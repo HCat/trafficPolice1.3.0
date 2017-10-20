@@ -45,7 +45,7 @@ BMKMapManager* _mapManager;
     [self commonConfig];
     [self addThirthPart:launchOptions];
     //设定定位使用高德还是百度地图来定位
-    [[LocationHelper sharedDefault] setLocationType:LocationTypeBaidu];
+    [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
     //同步通知消息数目
     [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
     //添加点击消息通知时候弹出具体详情
