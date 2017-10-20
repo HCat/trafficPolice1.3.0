@@ -127,7 +127,7 @@ BMKMapManager* _mapManager;
      *默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
      *如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
      */
-    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_BD09LL]) {
+    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_COMMON]) {
         LxPrintf(@"经纬度类型设置成功");
     } else {
         LxPrintf(@"经纬度类型设置失败");

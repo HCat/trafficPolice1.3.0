@@ -67,15 +67,20 @@ LRSingletonM(Default)
                 
             }
             
+            
+            
             strongSelf.latitude =  location.coordinate.latitude;
             strongSelf.longitude = location.coordinate.longitude;
             
-        
+            LxPrintf(@"didUpdateUserLocation gaodelat %f,gaodelong %f",strongSelf.latitude,strongSelf.longitude);
+            
             NSDictionary* testdic = BMKConvertBaiduCoorFrom(location.coordinate,BMK_COORDTYPE_COMMON);
             CLLocationCoordinate2D baiduCoor = BMKCoorDictionaryDecode(testdic);
-            
+
             strongSelf.baiduLatitude = baiduCoor.latitude;
             strongSelf.baiduLongitude = baiduCoor.longitude;
+            
+            LxPrintf(@"didUpdateUserLocation baidulat %f,baidulong %f",strongSelf.baiduLatitude,strongSelf.baiduLongitude);
             
             if (error != nil
                      && (error.code == AMapLocationErrorReGeocodeFailed
@@ -182,11 +187,18 @@ LRSingletonM(Default)
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    LxPrintf(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    LxPrintf(@"didUpdateUserLocation gaolat %f,gaolong %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     self.latitude = userLocation.location.coordinate.latitude;
     self.longitude = userLocation.location.coordinate.longitude;
-    self.baiduLatitude = userLocation.location.coordinate.latitude;
-    self.baiduLongitude = userLocation.location.coordinate.longitude;
+    
+    NSDictionary* testdic = BMKConvertBaiduCoorFrom(userLocation.location.coordinate,BMK_COORDTYPE_COMMON);
+    
+    CLLocationCoordinate2D baiduCoor = BMKCoorDictionaryDecode(testdic);
+    
+    self.baiduLatitude = baiduCoor.latitude;
+    self.baiduLongitude = baiduCoor.longitude;
+   
+    LxPrintf(@"didUpdateUserLocation baidulat %f,baidulong %f",self.baiduLatitude,self.baiduLongitude);
     
     [self stopLocation];
     [self startReverseGeocode];
