@@ -27,10 +27,10 @@
 }
 
 //返回参数
-- (NSString *)weather{
+- (WeatherModel *)weather{
     
     if (self.responseModel.data) {
-        return self.responseModel.data[@"weather"];
+        return [WeatherModel modelWithDictionary:self.responseModel.data];
     }
     
     return nil;

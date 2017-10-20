@@ -117,6 +117,7 @@
 		CE508F391F3D51C60066A9B7 /* AccidentRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F371F3D51C60066A9B7 /* AccidentRemarkCell.m */; };
 		CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */; };
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
+		CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE518BC61F99E3F2008F52B5 /* WeatherModel.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
 		CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */; };
@@ -541,6 +542,8 @@
 		CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccidentRemarkCell.xib; path = ../AccidentRemarkCell.xib; sourceTree = "<group>"; };
 		CE508F3B1F3D80F10066A9B7 /* RemarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemarkModel.h; sourceTree = "<group>"; };
 		CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarkModel.m; sourceTree = "<group>"; };
+		CE518BC51F99E3F2008F52B5 /* WeatherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
+		CE518BC61F99E3F2008F52B5 /* WeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
 		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
 		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
@@ -1838,6 +1841,8 @@
 				CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */,
 				CE55B7F71F96F29F00CD1567 /* AddressBookModel.h */,
 				CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */,
+				CE518BC51F99E3F2008F52B5 /* WeatherModel.h */,
+				CE518BC61F99E3F2008F52B5 /* WeatherModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2414,6 +2419,7 @@
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
+				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
 				CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */,
 				CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */,

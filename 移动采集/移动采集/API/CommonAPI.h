@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LRBaseRequest.h"
 #import "ImageFileInfo.h"
+#import "WeatherModel.h"
 
 #pragma mark - 获取当前天气API
 
@@ -19,7 +20,7 @@
 @property (nonatomic, copy) NSString *location; //经度+“,”+纬度,示例（118.184872,24.497949）
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) NSString *weather;  //天气
+@property (nonatomic, copy) WeatherModel *weather;  //天气
 
 @end
 

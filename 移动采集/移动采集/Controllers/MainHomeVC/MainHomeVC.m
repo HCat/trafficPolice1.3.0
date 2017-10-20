@@ -29,6 +29,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_location;
 @property (weak, nonatomic) IBOutlet UILabel *lb_weather;
+@property (weak, nonatomic) IBOutlet UILabel *lb_temperature;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_collection_top; //用于适配不同屏幕大小
 
@@ -79,20 +80,20 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void) getWeatherData{
     
     //获取当前天气
-//    WS(weakSelf);
-//    CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
-//    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    manger.isNeedShowHud = NO;
-//    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        SW(strongSelf, weakSelf);
-//        if (manger.responseModel.code == CODE_SUCCESS) {
-//            strongSelf.lb_weather.text = manger.weather;
-//
-//        }
-//
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//    }];
+    WS(weakSelf);
+    CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
+    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    manger.isNeedShowHud = NO;
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            strongSelf.lb_weather.text = manger.weather.weather;
+            strongSelf.lb_temperature.text = manger.weather.temperature;
+        }
+
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+
+    }];
     
 }
 

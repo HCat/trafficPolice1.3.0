@@ -15,6 +15,7 @@
                 <outlet property="collectionView" destination="UdD-HQ-KKp" id="yen-w6-Xz1"/>
                 <outlet property="collectionViewFlowLayout" destination="4Uo-gT-7bE" id="x7Y-Gq-Q7d"/>
                 <outlet property="layout_collection_top" destination="igb-yE-ZcI" id="ZNF-5r-hW5"/>
+                <outlet property="lb_temperature" destination="Xy9-Sd-ceW" id="9lf-fg-9NQ"/>
                 <outlet property="lb_weather" destination="mwV-4G-1I3" id="DzX-bq-K1I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
