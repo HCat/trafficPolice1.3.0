@@ -26,6 +26,7 @@
     
     if (self = [super init]) {
         
+        self.isNeedShowLocation = YES;
         [self initPageMenu];
     }
     

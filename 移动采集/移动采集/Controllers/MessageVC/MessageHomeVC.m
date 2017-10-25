@@ -30,6 +30,16 @@
 
 @implementation MessageHomeVC
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+       self.isNeedShowLocation = YES;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通知";

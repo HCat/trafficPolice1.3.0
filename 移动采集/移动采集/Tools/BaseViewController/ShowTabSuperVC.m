@@ -62,7 +62,10 @@
 
 -(void)locationChange{
     
-    [self showLocationInfo:[LocationHelper sharedDefault].city image:@"nav_location"];
+    if (self.isNeedShowLocation) {
+        [self showLocationInfo:[LocationHelper sharedDefault].city image:@"nav_location"];
+    }
+    
     
 }
 

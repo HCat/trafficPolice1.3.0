@@ -7,7 +7,9 @@
 //
 
 #import "ShowTabSuperVC.h"
+#import "LRPageMenu.h"
 
 @interface UserHomeVC : ShowTabSuperVC
+@property (nonatomic,strong) LRPageMenu *pageMenu;
 
 @end
