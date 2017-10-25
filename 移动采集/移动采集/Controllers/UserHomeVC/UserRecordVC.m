@@ -13,6 +13,7 @@
 #import "LRSettingSectionModel.h"
 
 #import "UserModel.h"
+#import "UserHomeVC.h"
 
 #import "AccidentListVC.h"
 #import "IllegalListVC.h"
@@ -31,10 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的";
+    self.view.backgroundColor = [UIColor clearColor];
     self.mArr_items = [NSMutableArray array];
     [_tb_content setSeparatorInset:UIEdgeInsetsMake(0, 47, 0, 0)];
     [_tb_content setLayoutMargins:UIEdgeInsetsMake(0, 47, 0, 0)];
+    _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self setupSections];
 }
 
@@ -56,7 +58,8 @@
             t_vc.accidentType = AccidentTypeAccident;
             t_vc.title = @"事故列表";
             t_vc.isHandle = @1;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         
@@ -75,7 +78,8 @@
             t_vc.accidentType = AccidentTypeFastAccident;
             t_vc.title = @"快处列表";
             t_vc.isHandle = @1;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
         };
         [self.mArr_items addObject:item2];
     }
@@ -92,7 +96,8 @@
             t_vc.subType = ParkTypePark;
             t_vc.title = @"违停列表";
             t_vc.isHandle = YES;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item3];
@@ -109,7 +114,8 @@
             t_vc.illegalType = IllegalTypeThrough;
             t_vc.title = @"闯禁令列表";
             t_vc.isHandle = YES;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item4];
@@ -127,7 +133,8 @@
             t_vc.subType = ParkTypeReversePark;
             t_vc.title = @"不按朝向列表";
             t_vc.isHandle = YES;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item4];
@@ -145,7 +152,8 @@
             t_vc.subType = ParkTypeLockPark;
             t_vc.title = @"违停锁车列表";
             t_vc.isHandle = YES;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item4];
@@ -163,7 +171,9 @@
             t_vc.subType = ParkTypeCarInfoAdd;
             t_vc.title = @"车辆录入列表";
             t_vc.isHandle = YES;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+            
             
         };
         [self.mArr_items addObject:item4];
@@ -180,13 +190,20 @@
             SW(strongSelf, weakSelf);
             VideoListVC *t_vc = [[VideoListVC alloc] init];
             t_vc.title = @"视频列表";
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
             
         };
         [self.mArr_items addObject:item5];
     }
     
-    self.tb_content.scrollEnabled = YES;
+    if (IS_IPHONE_5) {
+        self.tb_content.scrollEnabled = YES;
+    }else{
+        self.tb_content.scrollEnabled = NO;
+        
+    }
+    
     LRSettingSectionModel *section1 = [[LRSettingSectionModel alloc]init];
     section1.sectionHeaderHeight = 0;
     
@@ -254,6 +271,20 @@
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     [cell setSeparatorInset:UIEdgeInsetsMake(0, 47, 0, 0)];
     [cell setLayoutMargins:UIEdgeInsetsMake(0, 47, 0, 0)];
+}
+
+#pragma mark - scrollViewDelegate
+//用于滚动到顶部的时候使得tableView不能再继续下拉
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView == _tb_content){
+        
+        if (scrollView.contentOffset.y < 0) {
+            CGPoint position = CGPointMake(0, 0);
+            [scrollView setContentOffset:position animated:NO];
+            return;
+        }
+    }
 }
 
 
