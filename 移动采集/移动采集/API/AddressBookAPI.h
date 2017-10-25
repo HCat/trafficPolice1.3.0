@@ -10,6 +10,8 @@
 #import "LRBaseRequest.h"
 #import "AddressBookModel.h"
 
+#pragma mark - 获取通讯录
+
 @interface AddressBookGetListManger:LRBaseRequest
 
 /****** 请求数据 ******/

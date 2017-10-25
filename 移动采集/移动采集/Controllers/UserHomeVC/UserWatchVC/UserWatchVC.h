@@ -37,6 +37,7 @@
 
 @property (assign, nonatomic) NSInteger dayValue;
 @property (strong, nonatomic) NSDate *dateValue;
+@property (assign, nonatomic) BOOL isDutyDay;
 @property (assign, nonatomic) BOOL isSelectedDay;
 
 @end

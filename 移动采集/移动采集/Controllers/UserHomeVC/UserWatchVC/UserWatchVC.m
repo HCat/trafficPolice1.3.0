@@ -9,6 +9,7 @@
 #import "UserWatchVC.h"
 #import <PureLayout.h>
 #import "NSDate+Formatter.h"
+#import "DutyAPI.h"
 
 #define kWidthSpace 33
 #define KHeightItem 37
@@ -48,16 +49,14 @@
     [_collectionView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_v_month];
     
     self.tempDate = [NSDate date];
-    [self getDataDayModel:self.tempDate];
+    [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    self.tempDate = [NSDate date];
-    [self getDataDayModel:self.tempDate];
-    
+   
 }
 
 
@@ -85,6 +84,63 @@
         
     }
     return _collectionView;
+}
+
+#pragma mark - requestMethods
+
+- (void)requestDuty:(NSString *)date{
+    
+    WS(weakSelf);
+    
+    DutyGetDutyByMonthManger *manger = [[DutyGetDutyByMonthManger alloc] init];
+    manger.dateStr = date;
+    [manger configLoadingTitle:@"请求"];
+    manger.failMessage = nil;
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        SW(strongSelf, weakSelf);
+        
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            
+            if (manger.leaderList && manger.leaderList.count > 0) {
+                
+               strongSelf.lb_lead.text = [manger.leaderList componentsJoinedByString:@","];;
+                
+            }
+            
+            [strongSelf getDataDayModel:strongSelf.tempDate];
+            
+            if (strongSelf.dayModelArray && strongSelf.dayModelArray.count) {
+                for (int i = 0; i < strongSelf.dayModelArray.count; i++) {
+                    if ([strongSelf.dayModelArray[i] isKindOfClass:[MonthModel class]]) {
+                        MonthModel *t_model = strongSelf.dayModelArray[i];
+                        
+                        [manger.dutyDay enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            NSNumber * number = (NSNumber *)obj;
+                            if (number.integerValue == t_model.dayValue) {
+                                t_model.isDutyDay = YES;
+                            }
+                            
+                        }];
+                        
+                    }
+                }
+                
+                [strongSelf.collectionView reloadData];
+            }
+        
+        }else{
+            
+            
+        }
+    
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        SW(strongSelf, weakSelf);
+        [strongSelf getDataDayModel:strongSelf.tempDate];
+        
+    }];
+    
 }
 
 #pragma mark - privateMethods
@@ -202,7 +258,7 @@
 - (IBAction)handleBtnNextMonthClicked:(id)sender {
     
     self.tempDate = [self getNextMonth:self.tempDate];
-    [self getDataDayModel:self.tempDate];
+    [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
     
 }
 
@@ -210,7 +266,7 @@
 - (IBAction)handleBtnPreMonthClicked:(id)sender {
     
     self.tempDate = [self getLastMonth:self.tempDate];
-    [self getDataDayModel:self.tempDate];
+    [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
     
 }
 
@@ -230,6 +286,8 @@
     cell.dayLabel.backgroundColor = [UIColor whiteColor];
     cell.dayLabel.textColor = UIColorFromRGB(0x444444);
     id mon = self.dayModelArray[indexPath.row];
+    cell.dayLabel.layer.borderWidth = 0.f;
+    cell.dayLabel.layer.borderColor = [[UIColor clearColor] CGColor];
     if ([mon isKindOfClass:[MonthModel class]]) {
         cell.monthModel = (MonthModel *)mon;
     }else{
@@ -337,6 +395,28 @@
         [self.contentView addSubview:self.v_today];
         
     }
+    
+    if (monthModel.isDutyDay) {
+        
+        NSComparisonResult result = [monthModel.dateValue compare: [NSDate date]];
+        
+        if (result == NSOrderedDescending) {
+            self.dayLabel.layer.borderWidth = 1.f;
+            self.dayLabel.layer.borderColor = [UIColorFromRGB(0xf5ae42) CGColor];
+        }else if (result == NSOrderedAscending){
+            self.dayLabel.layer.borderWidth = 1.f;
+            self.dayLabel.layer.borderColor = [UIColorFromRGB(0xbbbbbb) CGColor];
+            if ([monthModel.dateValue.yyyyMMddByLineWithDate isEqualToString:[NSDate date].yyyyMMddByLineWithDate]) {
+                self.dayLabel.layer.borderColor = [UIColorFromRGB(0xf5ae42) CGColor];
+            }
+            
+        }else{
+            self.dayLabel.layer.borderWidth = 1.f;
+            self.dayLabel.layer.borderColor = [UIColorFromRGB(0xf5ae42) CGColor];
+        }
+        
+    }
+    
 }
 @end
 

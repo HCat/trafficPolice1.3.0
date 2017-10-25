@@ -279,6 +279,7 @@
 		CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE621F94544B0018044C /* AKTabBarView.m */; };
 		CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE641F94544B0018044C /* UINavigationController+AKTabBarController.m */; };
 		CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8CDE661F94544B0018044C /* UIViewController+AKTabBarController.m */; };
+		CE8EC9901FA06B71002E5456 /* DutyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EC98F1FA06B71002E5456 /* DutyAPI.m */; };
 		CE8EE8641F66356000CC64B0 /* PoliceCommandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8621F66356000CC64B0 /* PoliceCommandVC.m */; };
 		CE8EE8651F66356000CC64B0 /* PoliceCommandVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8EE8631F66356000CC64B0 /* PoliceCommandVC.xib */; };
 		CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8671F6690E800CC64B0 /* LocationAPI.m */; };
@@ -812,6 +813,8 @@
 		CE8CDE641F94544B0018044C /* UINavigationController+AKTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+AKTabBarController.m"; sourceTree = "<group>"; };
 		CE8CDE651F94544B0018044C /* UIViewController+AKTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AKTabBarController.h"; sourceTree = "<group>"; };
 		CE8CDE661F94544B0018044C /* UIViewController+AKTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AKTabBarController.m"; sourceTree = "<group>"; };
+		CE8EC98E1FA06B71002E5456 /* DutyAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DutyAPI.h; sourceTree = "<group>"; };
+		CE8EC98F1FA06B71002E5456 /* DutyAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutyAPI.m; sourceTree = "<group>"; };
 		CE8EE8611F66356000CC64B0 /* PoliceCommandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceCommandVC.h; sourceTree = "<group>"; };
 		CE8EE8621F66356000CC64B0 /* PoliceCommandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceCommandVC.m; sourceTree = "<group>"; };
 		CE8EE8631F66356000CC64B0 /* PoliceCommandVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceCommandVC.xib; sourceTree = "<group>"; };
@@ -1911,6 +1914,8 @@
 				CE8EE8671F6690E800CC64B0 /* LocationAPI.m */,
 				CE55B7F41F96F19F00CD1567 /* AddressBookAPI.h */,
 				CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */,
+				CE8EC98E1FA06B71002E5456 /* DutyAPI.h */,
+				CE8EC98F1FA06B71002E5456 /* DutyAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2442,6 +2447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED797F51F7A3D36003FC68C /* SuperLogerListView.m in Sources */,
+				CE8EC9901FA06B71002E5456 /* DutyAPI.m in Sources */,
 				CED797F61F7A3D36003FC68C /* SuperLogger.m in Sources */,
 				CED797F71F7A3D36003FC68C /* SuperLoggerFunctions.m in Sources */,
 				CED797F81F7A3D36003FC68C /* SuperLoggerPreviewView.m in Sources */,

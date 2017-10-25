@@ -133,5 +133,12 @@
 
 #define URL_ADDRESSBOOK_GETLIST @"app/addressBook/getList.json" //获取通讯录
 
+#pragma mark - 排班相关API
+
+#define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getDutyByMonth.json" //获取月排班
+
+#define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json" //按天获取排班详情
+
+
 
 #endif /* URLMacro_h */
