@@ -20,11 +20,8 @@
 @interface VehicleDriverNoShowCell ()
 
 @property (nonatomic,weak) IBOutlet UILabel * lb_driverName;         //驾驶员姓名
-@property (nonatomic,weak) IBOutlet UILabel * lb_sex;                //驾驶员性别 1：男 2：女
 @property (nonatomic,weak) IBOutlet UILabel * lb_driverCode;         //驾驶证号码
 @property (nonatomic,weak) IBOutlet UILabel * lb_drivingType;        //准驾车型
-@property (nonatomic,weak) IBOutlet UILabel * lb_yearTrialDeadline;  //年审截止日期
-
 @property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;//证件照片
 
 @property (nonatomic,copy)   NSArray <VehicleImageModel *> * driverImgList; //驾驶员证件照片
@@ -55,15 +52,8 @@
     if (_driver) {
         
         _lb_driverName.text = [ShareFun takeStringNoNull:_driver.driverName];
-        
-        if ([_driver.sex isEqualToString:@"1"]) {
-            _lb_sex.text = @"男";
-        }else{
-            _lb_sex.text = @"女";
-        }
         _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
         _lb_driverCode.text = [ShareFun takeStringNoNull:_driver.driverCode];
-        _lb_yearTrialDeadline.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"]];
        
         self.driverImgList = [_driver.driverImgList copy];
         
@@ -112,7 +102,7 @@
                 if ( i % 2 == 0) {
                     
                     if (arr_v && [arr_v count] > 0) {
-                        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
+                        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
                         [arr_v removeAllObjects];
                     }
                     
@@ -132,10 +122,10 @@
             if ([arr_v count] == 1) {
                 
                 UIButton *btn_before = arr_v[0];
-                [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*30)/2];
-                [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:30.0f];
+                [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*35)/2];
+                [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:35.0f];
             }else if ([arr_v count] == 2){
-                [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
+                [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
                 
             }
             
@@ -143,11 +133,11 @@
             
             for (int i = 0;i < [_arr_view count]; i++) {
                 UIButton *t_button  = _arr_view[i];
-                [t_button autoMatchDimension:ALDimensionHeight toDimension:ALDimensionWidth ofView:t_button];
+                [t_button autoSetDimension:ALDimensionHeight toSize:100.f];
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.5f];
                 }
             }
             
@@ -161,7 +151,7 @@
         
     }else{
         
-        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
+        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-50.0f];
         
     }
     

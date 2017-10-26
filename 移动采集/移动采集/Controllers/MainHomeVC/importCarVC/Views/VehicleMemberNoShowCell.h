@@ -14,8 +14,6 @@ typedef void(^VehicleMemberShowBlock)();
 @interface VehicleMemberNoShowCell : UITableViewCell
 
 @property (nonatomic,strong) MemberInfoModel * memberInfo;
-@property (nonatomic,copy) NSString *memberArea;
-
 @property (nonatomic,copy) VehicleMemberShowBlock block;
 
 @end

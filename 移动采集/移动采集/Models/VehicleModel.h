@@ -11,6 +11,9 @@
 @interface VehicleModel : NSObject
 
 @property (nonatomic,copy)   NSString * plateno;                    //车牌号
+@property (nonatomic,copy)   NSString * memFormNo;  //运输主体自编号
+@property (nonatomic,copy)   NSString * selfNo;  //车辆自编号
+
 @property (nonatomic,strong) NSNumber * carType;                    //车辆类型:1土方车 2水泥砼车 3砂石子车
 @property (nonatomic,strong) NSNumber * inspectTimeEnd;             //年审截止日期
 @property (nonatomic,strong) NSNumber * compInsuranceTimeEnd;       //强制险截止日期

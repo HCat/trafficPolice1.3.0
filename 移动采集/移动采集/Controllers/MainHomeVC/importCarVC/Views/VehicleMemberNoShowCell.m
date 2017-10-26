@@ -14,9 +14,7 @@
 
 @property (nonatomic,weak) IBOutlet UILabel * lb_name;               //运输主体名称
 @property (nonatomic,weak) IBOutlet UILabel * lb_memtype;            //运输主体性质:1土方车 2水泥砼车 3砂石子车
-@property (nonatomic,weak) IBOutlet UILabel * lb_memFormNo;          //自编号前缀
-@property (nonatomic,weak) IBOutlet UILabel * lb_licenseTime;   //营业执照有效期,开始时间到结束时间
-@property (nonatomic,weak) IBOutlet UILabel * lb_memberArea;            //所在区域
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_show;
 @property (weak, nonatomic) IBOutlet UIView *v_backgound;
@@ -47,18 +45,7 @@
             _lb_memtype.text = @"砂石子车";
         }
         
-        _lb_memFormNo.text = [ShareFun takeStringNoNull:_memberInfo.memFormNo];
-        _lb_licenseTime.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@到%@",[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeStart dateFormat:@"yyyy年MM月dd日"],[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeEnd dateFormat:@"yyyy年MM月dd日"]]];
-       
     }
-    
-}
-
-- (void)setMemberArea:(NSString *)memberArea{
-    
-    _memberArea = memberArea;
-    
-    _lb_memberArea.text = [ShareFun takeStringNoNull:_memberArea];
     
 }
 

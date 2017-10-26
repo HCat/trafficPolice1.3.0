@@ -13,10 +13,10 @@
 @interface VehicleCarNoShowCell ()
 
 @property (nonatomic,weak) IBOutlet UILabel * lb_plateno;                    //车牌号
+@property (nonatomic,weak) IBOutlet UILabel * lb_jinNumber;                    //晋工号
 @property (nonatomic,weak) IBOutlet UILabel * lb_carType;                    //车辆类型:1土方车 2水泥砼车 3砂石子车
-@property (nonatomic,weak) IBOutlet UILabel * lb_inspectTimeEnd;             //年审截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_compInsuranceTimeEnd;       //强制险截止日期
-@property (nonatomic,weak) IBOutlet UILabel * lb_bussInsuranceTimeEnd;       //商业险截止日期
+@property (nonatomic,weak) IBOutlet UILabel * lb_inspectTimeEnd;             //车厢外高度
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_show;
 @property (weak, nonatomic) IBOutlet UIView *v_backgound;
@@ -39,6 +39,7 @@
     if (_vehicle) {
         
         _lb_plateno.text = [ShareFun takeStringNoNull:_vehicle.plateno];  //车牌号
+        _lb_jinNumber.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@%@",_vehicle.memFormNo,_vehicle.selfNo]];
         
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_vehicle.carType isEqualToNumber:@1]) {
@@ -49,10 +50,8 @@
             _lb_carType.text = @"砂石子车";
         }
         
-        _lb_inspectTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.inspectTimeEnd dateFormat:@"yyyy年MM月dd日"]];             //年审截止日期
-        _lb_compInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.compInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //强制险截止日期
-        _lb_bussInsuranceTimeEnd.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_vehicle.bussInsuranceTimeEnd dateFormat:@"yyyy年MM月dd日"]]; //商业险截止日期
-        
+        _lb_inspectTimeEnd.text = [ShareFun takeStringNoNull:_vehicle.carriageOutsideH];             //年审截止日期
+  
     }
     
 }

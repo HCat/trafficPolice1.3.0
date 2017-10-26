@@ -122,7 +122,7 @@
                 if ( i % 2 == 0) {
                     
                     if (arr_v && [arr_v count] > 0) {
-                        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
+                        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
                         [arr_v removeAllObjects];
                     }
                     
@@ -142,10 +142,10 @@
             if ([arr_v count] == 1) {
                 
                 UIButton *btn_before = arr_v[0];
-                [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*30)/2];
-                [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:30.0f];
+                [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*35)/2];
+                [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:35.0f];
             }else if ([arr_v count] == 2){
-                [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:30.0 insetSpacing:YES matchedSizes:YES];
+                [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
                 
             }
             
@@ -153,11 +153,11 @@
             
             for (int i = 0;i < [_arr_view count]; i++) {
                 UIButton *t_button  = _arr_view[i];
-                [t_button autoMatchDimension:ALDimensionHeight toDimension:ALDimensionWidth ofView:t_button];
+                [t_button autoSetDimension:ALDimensionHeight toSize:100.0f];
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_sex withOffset:-15.f];
                 }
             }
             
@@ -171,7 +171,7 @@
         
     }else{
         
-        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_driverCode withOffset:-15.f];
+        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_sex withOffset:-15.f];
         
     }
     
