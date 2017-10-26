@@ -104,20 +104,22 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
         
         //添加车辆信息
         if (_reponse.vehicle) {
+            _reponse.vehicle.memFormNo = _reponse.memberInfo.memFormNo;
             [self.arr_content addObject:_reponse.vehicle];
         }
         
-        //添加运输主体信息
-        if (_reponse.memberInfo) {
-            [self.arr_content addObject:_reponse.memberInfo];
-        }
-        
+    
         //添加驾驶员资料
         if (_reponse.driverList && _reponse.driverList.count > 0) {
             for (VehicleDriverModel *t_model in _reponse.driverList) {
                 [self.arr_content addObject:t_model];
             }
         
+        }
+        
+        //添加运输主体信息
+        if (_reponse.memberInfo) {
+            [self.arr_content addObject:_reponse.memberInfo];
         }
         
         //添加车辆备注信息
@@ -279,9 +281,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleMemberNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleMemberNoShowCell *cell) {
                     SW(strongSelf, weakSelf);
                     cell.memberInfo = (MemberInfoModel *)strongSelf.arr_content[indexPath.row];
-                    cell.memberArea = strongSelf.reponse.memberArea;
-
-                    
+                
                 }];
                 
             }
@@ -387,7 +387,6 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 VehicleMemberNoShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleMemberNoShowCellID"];
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 cell.memberInfo = (MemberInfoModel *)self.arr_content[indexPath.row];
-                cell.memberArea = _reponse.memberArea;
                 WS(weakSelf);
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
