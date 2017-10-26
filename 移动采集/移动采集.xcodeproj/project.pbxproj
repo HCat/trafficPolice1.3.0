@@ -201,6 +201,10 @@
 		CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */; };
 		CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */; };
 		CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */; };
+		CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D39531FA17CF3004DD9D2 /* UserDutyVC.m */; };
+		CE5D39561FA17CF3004DD9D2 /* UserDutyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5D39541FA17CF3004DD9D2 /* UserDutyVC.xib */; };
+		CE5D395A1FA17F7F004DD9D2 /* DutyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D39581FA17F7F004DD9D2 /* DutyCell.m */; };
+		CE5D395B1FA17F7F004DD9D2 /* DutyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5D39591FA17F7F004DD9D2 /* DutyCell.xib */; };
 		CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */; };
 		CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */; };
 		CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5E20361F32C0AD009D98A6 /* BottomView.m */; };
@@ -679,6 +683,12 @@
 		CE5C3BBC1F5812AC007A7EDD /* MessageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailVC.h; sourceTree = "<group>"; };
 		CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVC.m; sourceTree = "<group>"; };
 		CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailVC.xib; sourceTree = "<group>"; };
+		CE5D39521FA17CF3004DD9D2 /* UserDutyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDutyVC.h; sourceTree = "<group>"; };
+		CE5D39531FA17CF3004DD9D2 /* UserDutyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDutyVC.m; sourceTree = "<group>"; };
+		CE5D39541FA17CF3004DD9D2 /* UserDutyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDutyVC.xib; sourceTree = "<group>"; };
+		CE5D39571FA17F7F004DD9D2 /* DutyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DutyCell.h; sourceTree = "<group>"; };
+		CE5D39581FA17F7F004DD9D2 /* DutyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutyCell.m; sourceTree = "<group>"; };
+		CE5D39591FA17F7F004DD9D2 /* DutyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DutyCell.xib; sourceTree = "<group>"; };
 		CE5E20321F32C0AD009D98A6 /* BottomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomPickerView.h; sourceTree = "<group>"; };
 		CE5E20331F32C0AD009D98A6 /* BottomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomPickerView.m; sourceTree = "<group>"; };
 		CE5E20341F32C0AD009D98A6 /* BottomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomPickerView.xib; sourceTree = "<group>"; };
@@ -1240,6 +1250,12 @@
 				CE490E191F9EE1A500E90FF2 /* UserWatchVC.h */,
 				CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */,
 				CE490E1B1F9EE1A500E90FF2 /* UserWatchVC.xib */,
+				CE5D39521FA17CF3004DD9D2 /* UserDutyVC.h */,
+				CE5D39531FA17CF3004DD9D2 /* UserDutyVC.m */,
+				CE5D39541FA17CF3004DD9D2 /* UserDutyVC.xib */,
+				CE5D39571FA17F7F004DD9D2 /* DutyCell.h */,
+				CE5D39581FA17F7F004DD9D2 /* DutyCell.m */,
+				CE5D39591FA17F7F004DD9D2 /* DutyCell.xib */,
 			);
 			path = UserWatchVC;
 			sourceTree = "<group>";
@@ -2342,12 +2358,14 @@
 				CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */,
 				CE12F8B71F693B7000C1992B /* PoliceLocationCell.xib in Resources */,
 				CE5C39231F2881BD0055C945 /* btn_selected.png in Resources */,
+				CE5D39561FA17CF3004DD9D2 /* UserDutyVC.xib in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
 				CE675F361F386F07006FC15F /* AccidentCell.xib in Resources */,
 				CE490E221F9EE1C500E90FF2 /* UserMissionVC.xib in Resources */,
 				CE5C39261F2881BD0055C945 /* btn_unselected.png in Resources */,
 				CE4E3C141F39BB860057148B /* IllegalImageCell.xib in Resources */,
+				CE5D395B1FA17F7F004DD9D2 /* DutyCell.xib in Resources */,
 				CE5C38FB1F28606B0055C945 /* ZLThumbnailViewController.xib in Resources */,
 				CE2C98B91F61C204009851F6 /* VehicleDriverNoShowCell.xib in Resources */,
 				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
@@ -2465,6 +2483,7 @@
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
+				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
@@ -2669,6 +2688,7 @@
 				CEFEFD061F29C60B00C33CBD /* DeviceOrientation.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,
+				CE5D395A1FA17F7F004DD9D2 /* DutyCell.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
 				CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */,
 				CE12F8B61F693B7000C1992B /* PoliceLocationCell.m in Sources */,

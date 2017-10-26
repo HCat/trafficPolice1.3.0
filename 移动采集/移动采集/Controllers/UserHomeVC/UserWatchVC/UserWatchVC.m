@@ -10,6 +10,8 @@
 #import <PureLayout.h>
 #import "NSDate+Formatter.h"
 #import "DutyAPI.h"
+#import "UserDutyVC.h"
+#import "UserHomeVC.h"
 
 #define kWidthSpace 33
 #define KHeightItem 37
@@ -305,7 +307,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     id mon = self.dayModelArray[indexPath.row];
     if ([mon isKindOfClass:[MonthModel class]]) {
-        
+        MonthModel *t_model = (MonthModel *)mon;
+        UserDutyVC *t_vc = [[UserDutyVC alloc] init];
+        t_vc.dateStr = t_model.dateValue.yyyyMMddByLineWithDate;
+        UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
+        [vc_target.navigationController pushViewController:t_vc animated:YES];
     }
 }
 

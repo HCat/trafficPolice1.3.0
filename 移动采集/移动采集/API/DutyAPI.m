@@ -58,6 +58,17 @@
 
 @end
 
+@implementation DutyGetDutyByDayReponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"leaderList" : [DutyPeopleModel class],
+             @"policeList" : [DutyPeopleModel class],
+             @"othersList" : [DutyPeopleModel class]
+             };
+}
+
+@end
+
 @implementation DutyGetDutyByDayManger
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
@@ -73,40 +84,19 @@
 }
 
 //返回参数
-- (NSArray <DutyPeopleModel *> *)leaderList{
+
+- (DutyGetDutyByDayReponse *)dutyGetDutyByDayReponse{
     
-    if (self.responseModel) {
-        
-        _leaderList = [NSArray modelArrayWithClass:[DutyPeopleModel class] json:self.responseJSONObject[@"data"][@"leaderList"]];
-        return _leaderList;
+    if (self.responseModel.data) {
+        _dutyGetDutyByDayReponse =  [DutyGetDutyByDayReponse modelWithDictionary:self.responseModel.data];
+        return _dutyGetDutyByDayReponse;
     }
     
     return nil;
-}
-
-//返回参数
-- (NSArray <DutyPeopleModel *> *)policeList{
     
-    if (self.responseModel) {
-        
-        _policeList = [NSArray modelArrayWithClass:[DutyPeopleModel class] json:self.responseJSONObject[@"data"][@"policeList"]];
-        return _policeList;
-    }
-    
-    return nil;
 }
 
 
-- (NSArray <DutyPeopleModel *> *)othersList{
-    
-    if (self.responseModel) {
-        
-        _othersList = [NSArray modelArrayWithClass:[DutyPeopleModel class] json:self.responseJSONObject[@"data"][@"othersList"]];
-        return _othersList;
-    }
-    
-    return nil;
-}
 
 @end
 

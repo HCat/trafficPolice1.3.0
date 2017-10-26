@@ -38,6 +38,14 @@
 
 
 #pragma mark - 按天获取排班详
+@interface DutyGetDutyByDayReponse :NSObject
+
+@property (nonatomic, strong) NSArray <DutyPeopleModel *> * leaderList;
+@property (nonatomic, strong) NSArray <DutyPeopleModel *> * policeList;
+@property (nonatomic, strong) NSArray <DutyPeopleModel *> * othersList;
+
+@end
+
 @interface DutyGetDutyByDayManger:LRBaseRequest
 
 /****** 请求数据 ******/
@@ -45,7 +53,6 @@
 @property (nonatomic,copy) NSString * dateStr;
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) NSArray <DutyPeopleModel *> * leaderList;
-@property (nonatomic, strong) NSArray <DutyPeopleModel *> * policeList;
-@property (nonatomic, strong) NSArray <DutyPeopleModel *> * othersList;
+@property (nonatomic,strong) DutyGetDutyByDayReponse *dutyGetDutyByDayReponse;
+
 @end
