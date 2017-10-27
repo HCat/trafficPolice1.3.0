@@ -11,12 +11,18 @@
 #import "LoginAPI.h"
 #import "JPUSHService.h"
 
-
 @interface PhoneLoginVC ()
 
 @property (weak, nonatomic) IBOutlet LRCountDownButton *btn_countDown;
 @property (weak, nonatomic) IBOutlet UITextField *tf_phone;
 @property (weak, nonatomic) IBOutlet UITextField *tf_code;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic , assign) NSInteger count;
+@property (strong , nonatomic) NSMutableArray *textArr;
+@property (nonatomic , assign) NSString *saveTextStr;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_commit;
 
@@ -34,7 +40,13 @@
     self.title = @"短信验证";
     self.isCanCommit = NO;
     
+    self.textArr = [NSMutableArray array];
+    self.count = 6;
+    self.saveTextStr = @"";
+    
     _tf_phone.text = _phone;
+    [self.tf_code setDelegate:(id<UITextFieldDelegate> _Nullable)self];
+    [self.tf_code addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     _btn_countDown.durationOfCountDown = 60;
     _btn_countDown.originalBGColor = DefaultBtnColor;
@@ -87,6 +99,11 @@
     //事故信息里面添加对UITextField的监听
     [self addChangeForEventEditingChanged:self.tf_code];
     
+    [self.collectionView registerClass:[CodeCell class] forCellWithReuseIdentifier:@"CodeCellID"];
+    
+    UITapGestureRecognizer *keyboardUpTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(KeyboardUp)];
+    [self.collectionView addGestureRecognizer:keyboardUpTap];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -104,12 +121,17 @@
         [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
     }else{
         _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:DefaultBtnColor];
+        [_btn_commit setBackgroundColor:UIColorFromRGB(0x1dbe7e)];
     }
 }
 
 
 #pragma mark - ButtonAction
+
+-(void)KeyboardUp
+{
+    [self.tf_code becomeFirstResponder];
+}
 
 
 - (IBAction)handleBtnLoginClicked:(id)sender {
@@ -145,9 +167,9 @@
     LoginCheckManger *manger = [LoginCheckManger new];
     manger.param = param;
     [manger configLoadingTitle:@"登录"];
+    manger.failMessage = nil;
    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-    
         if (manger.responseModel.code == CODE_SUCCESS) {
             /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
@@ -192,6 +214,104 @@
     
 }
 
+- (void)textFieldDidChange:(UITextField *)textField {
+    
+    if (textField == _tf_code) {
+        
+        [self.textArr removeAllObjects];
+        NSLog(@"textField:%@",textField.text);
+        self.saveTextStr = textField.text;
+        
+        for (int i = 0; i < textField.text.length; i ++) {
+            NSRange range;
+            range.location = i;
+            range.length = 1;
+            NSString *tempString = [textField.text substringWithRange:range];
+            [self.textArr addObject:tempString];
+        }
+        
+        if (self.textArr.count == 6) {
+            [self handleBtnLoginClicked:nil];
+        }
+        
+        [self.collectionView reloadData];
+    }
+  
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    if (textField == _tf_code) {
+        if ([string isEqualToString:@""]) {
+            NSLog(@"删除");
+            return YES;
+        }
+        if (self.tf_code.text.length >= self.count)
+        {
+            NSLog(@"超了");
+            NSLog(@"此时的self.textArr:%@",self.textArr);
+    
+            return NO;
+        }
+        
+        return YES;
+    }else{
+        return YES;
+    }
+   
+}
+
+
+#pragma mark - UICollectionView
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    
+    return self.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    CodeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CodeCellID" forIndexPath:indexPath];
+    
+    if (self.textArr.count == 0) {
+        cell.lb_number.text = @"";
+    }else{
+        if (indexPath.row <= self.textArr.count - 1) {
+            cell.lb_number.text = self.textArr[indexPath.row];
+        }else{
+            cell.lb_number.text = @"";
+        }
+    }
+    return cell;
+    
+    
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return CGSizeMake((collectionView.frame.size.width - 5 * ((collectionView.frame.size.width - 6 * 40)/5))/self.count, collectionView.frame.size.height);
+    
+}
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+// 两行之间的最小间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
+    
+}
+
+// 两个cell之间的最小间距，是由API自动计算的，只有当间距小于该值时，cell会进行换行
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return (collectionView.frame.size.width - 6 * 40)/5;
+    
+}
 
 
 #pragma mark -
@@ -207,14 +327,31 @@
 
 }
 
-/*
-#pragma mark - Navigation
+@end
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+@implementation CodeCell
+
+- (id)initWithFrame:(CGRect)frame{
+    
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        
+        self.lb_number = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+        self.lb_number.center = CGPointMake(self.contentView.frame.size.width/2, self.contentView.frame.size.height/2);
+        self.lb_number.textAlignment = NSTextAlignmentCenter;
+        self.lb_number.font = [UIFont systemFontOfSize:20];
+        self.lb_number.textColor = UIColorFromRGB(0x444444);
+        self.lb_number.layer.borderWidth  = 1.f;
+        self.lb_number.layer.borderColor = [DefaultNavColor CGColor];
+        [self.contentView addSubview:self.lb_number];
+        
+    }
+    
+    return self;
+    
 }
-*/
+
 
 @end
