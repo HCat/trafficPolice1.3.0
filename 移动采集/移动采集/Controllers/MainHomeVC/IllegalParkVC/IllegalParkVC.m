@@ -65,6 +65,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }else if(_illegalType == IllegalTypeThrough){
         self.title = @"闯禁令采集";
+        self.subType = ParkTypeThrough;
     }
     
     self.isObserver = NO;
@@ -395,6 +396,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headId forIndexPath:indexPath];
              [_headView setDelegate:(id<IllegalParkAddHeadViewDelegate>)self];
             _headView.param = _param;
+            _headView.subType = _subType;
             
             //监听headView中的isCanCommit来判断是否可以上传
             if (!_isObserver) {
@@ -633,9 +635,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
-    if (![_param.roadId isEqualToNumber:@0]) {
-        _param.roadName = nil;
-    }
     
     [self configParamInFilesAndRemarksAndTimes];
     
@@ -774,6 +773,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 
 - (void)handleBeforeCommit{
 
+    [_headView strogeLocationBeforeCommit];
+    
     [_arr_upImages removeAllObjects];
     [_arr_upImages addObject:[NSNull null]];
     [_arr_upImages addObject:[NSNull null]];

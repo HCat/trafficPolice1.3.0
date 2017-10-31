@@ -19,6 +19,8 @@
 @interface VehicleImageModel : NSObject
 
 @property (nonatomic,copy) NSString *mediaUrl;
+@property (nonatomic,copy) NSString *resType;   //
+@property (nonatomic,copy) NSString *isID;      //是否是身份证
 
 @end
 

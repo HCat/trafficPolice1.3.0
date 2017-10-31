@@ -200,6 +200,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headId forIndexPath:indexPath];
             [_headView setDelegate:(id<IllegalParkAddHeadViewDelegate>)self];
             _headView.param = _param;
+            _headView.subType = ParkTypeCarInfoAdd;
             
             //监听headView中的isCanCommit来判断是否可以上传
             if (!_isObserver) {
@@ -348,10 +349,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
-    if (![_param.roadId isEqualToNumber:@0]) {
-        _param.roadName = nil;
-    }
-
     _param.type = @(2001);
     
     LxDBObjectAsJson(_param);
@@ -406,6 +403,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 #pragma mark - 上传之后页面处理
 
 - (void)handleBeforeCommit{
+    
+    [_headView strogeLocationBeforeCommit];
     
     [_arr_upImages removeAllObjects];
     [_arr_upImages addObject:[NSNull null]];

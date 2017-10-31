@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,7 +58,7 @@
                     <state key="normal" title="识别"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
+                            <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -114,21 +114,18 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0a-jz-LPV">
-                    <rect key="frame" x="251" y="65" width="60" height="27"/>
+                    <rect key="frame" x="251" y="109.5" width="60" height="27"/>
                     <color key="backgroundColor" red="0.42745098040000001" green="0.44705882349999998" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="yXm-km-atA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="重新定位"/>
+                    <state key="normal" title="手动定位"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
+                            <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="handlebtnLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="oSN-E7-TO5"/>
-                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所在位置:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-3T-EPL">
                     <rect key="frame" x="9" y="114" width="62" height="17"/>
@@ -202,6 +199,23 @@
                     <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mP6-ll-0FM">
+                    <rect key="frame" x="251" y="65.5" width="60" height="27"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="FdP-xf-mSY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" image="btn_location_on"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnSwitchLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="xQ5-pR-VnT"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -216,6 +230,7 @@
                 <constraint firstItem="Ecc-Fz-bLF" firstAttribute="top" secondItem="q7Y-J1-dlU" secondAttribute="bottom" constant="14" id="L44-u0-4my"/>
                 <constraint firstItem="5Kx-4w-KdA" firstAttribute="leading" secondItem="Jla-eV-CpK" secondAttribute="leading" id="Ned-e6-nwO"/>
                 <constraint firstAttribute="bottom" secondItem="e2e-yx-tWM" secondAttribute="bottom" constant="7" id="QkO-kK-4hh"/>
+                <constraint firstItem="mP6-ll-0FM" firstAttribute="centerX" secondItem="3yd-cE-Onw" secondAttribute="centerX" id="R41-uH-JG6"/>
                 <constraint firstItem="w0n-gx-Y7q" firstAttribute="leading" secondItem="Zi0-Sg-Tyi" secondAttribute="leading" id="STC-vM-wFJ"/>
                 <constraint firstItem="Jla-eV-CpK" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="9" id="T6a-Uf-0vs"/>
                 <constraint firstItem="Zi0-Sg-Tyi" firstAttribute="leading" secondItem="Jla-eV-CpK" secondAttribute="trailing" constant="10" id="UKO-aJ-Hd3"/>
@@ -225,14 +240,16 @@
                 <constraint firstItem="3yd-cE-Onw" firstAttribute="centerY" secondItem="Zi0-Sg-Tyi" secondAttribute="centerY" id="Xn2-7W-kNW"/>
                 <constraint firstItem="Jla-eV-CpK" firstAttribute="centerY" secondItem="Zi0-Sg-Tyi" secondAttribute="centerY" id="fQY-UE-MHR"/>
                 <constraint firstItem="w0n-gx-Y7q" firstAttribute="trailing" secondItem="Zi0-Sg-Tyi" secondAttribute="trailing" id="kIX-lc-qrc"/>
-                <constraint firstItem="b0a-jz-LPV" firstAttribute="centerY" secondItem="w0n-gx-Y7q" secondAttribute="centerY" id="m5p-bi-D5c"/>
                 <constraint firstItem="Ecc-Fz-bLF" firstAttribute="trailing" secondItem="Zi0-Sg-Tyi" secondAttribute="trailing" id="pLd-n5-XHy"/>
+                <constraint firstItem="mP6-ll-0FM" firstAttribute="centerY" secondItem="LKA-0O-uiE" secondAttribute="centerY" id="pir-io-Y2o"/>
+                <constraint firstItem="b0a-jz-LPV" firstAttribute="centerY" secondItem="q7Y-J1-dlU" secondAttribute="centerY" id="uOJ-Sn-AP7"/>
                 <constraint firstItem="Zi0-Sg-Tyi" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="20" id="v5Y-3t-tfq"/>
                 <constraint firstItem="zfM-3T-EPL" firstAttribute="leading" secondItem="Jla-eV-CpK" secondAttribute="leading" id="wPt-bC-R66"/>
                 <constraint firstItem="Ecc-Fz-bLF" firstAttribute="leading" secondItem="Zi0-Sg-Tyi" secondAttribute="leading" id="y6S-N1-Pmv"/>
                 <constraint firstItem="w0n-gx-Y7q" firstAttribute="top" secondItem="Zi0-Sg-Tyi" secondAttribute="bottom" constant="14" id="zSY-AU-Bee"/>
             </constraints>
             <connections>
+                <outlet property="btn_switchLocation" destination="mP6-ll-0FM" id="jcE-9G-YkS"/>
                 <outlet property="tf_address" destination="q7Y-J1-dlU" id="Kfz-5S-G8Q"/>
                 <outlet property="tf_addressRemarks" destination="KUz-s8-v53" id="LiD-ez-97b"/>
                 <outlet property="tf_carNumber" destination="gcQ-4G-RPe" id="RZM-lD-eiO"/>
@@ -242,6 +259,7 @@
         </collectionReusableView>
     </objects>
     <resources>
+        <image name="btn_location_on" width="60" height="27"/>
         <image name="icon_dropDownArrow" width="8" height="5"/>
     </resources>
 </document>

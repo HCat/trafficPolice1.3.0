@@ -9,6 +9,7 @@
 #import "IllegalParkAddHeadView.h"
 
 #import "IllegalParkVC.h"
+#import "CarInfoAddVC.h"
 #import "SearchLocationVC.h"
 
 @interface IllegalParkAddHeadView()
@@ -17,6 +18,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_roadSection;       //选择路段
 @property (weak, nonatomic) IBOutlet UITextField *tf_address;           //所在位置
 @property (weak, nonatomic) IBOutlet UITextField *tf_addressRemarks;    //地址备注
+
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
+@property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
+
+
 
 @property (nonatomic,assign) NSInteger length;                          //textField的长度，用于判断说如果执行两次相同长度的textField监听
 @property (nonatomic,assign,readwrite) BOOL isCanCommit;
@@ -41,8 +48,6 @@
     
     [super awakeFromNib];
     
-    [[LocationHelper sharedDefault] startLocation];
-    
     _tf_carNumber.attributedPlaceholder   = [ShareFun highlightInString:@"请输入车牌号(必填)" withSubString:@"(必填)"];
     _tf_roadSection.attributedPlaceholder = [ShareFun highlightInString:@"请选择路段(必选)" withSubString:@"(必选)"];
     _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
@@ -60,6 +65,74 @@
     _codes = [ShareValue sharedDefault].roadModels;
     
     return _codes;
+    
+}
+
+
+- (void)setSubType:(ParkType)subType{
+    _subType = subType;
+    
+    if (_subType == ParkTypePark) {
+        
+        self.btnType = [LocationStorage sharedDefault].isPark;
+        
+        if ([LocationStorage sharedDefault].isPark) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].park];
+        }
+        
+    }else if (_subType == ParkTypeReversePark){
+        
+        self.btnType = [LocationStorage sharedDefault].isTowardError;
+        
+        if ([LocationStorage sharedDefault].isTowardError) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].towardError];
+        }
+        
+    }else if (_subType == ParkTypeLockPark){
+        
+         self.btnType = [LocationStorage sharedDefault].isLockCar;
+        
+        if ([LocationStorage sharedDefault].isLockCar) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
+        }
+        
+    }else if (_subType == ParkTypeCarInfoAdd){
+        
+         self.btnType = [LocationStorage sharedDefault].isInforInput;
+        
+        if ([LocationStorage sharedDefault].isInforInput) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
+        }
+        
+    }else if (_subType == ParkTypeThrough){
+        
+         self.btnType = [LocationStorage sharedDefault].isThrough;
+        
+        if ([LocationStorage sharedDefault].isThrough) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].through];
+        }
+        
+    }
+    
+}
+
+- (void)setBtnType:(BOOL)btnType{
+    _btnType = btnType;
+    if (_btnType) {
+        [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_on"] forState:UIControlStateNormal];
+    }else{
+        [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_off"] forState:UIControlStateNormal];
+    }
     
 }
 
@@ -99,7 +172,34 @@
     
 }
 
-#pragma mark - 重新定位按钮事件
+#pragma mark - 切换定位开关
+
+- (IBAction)handleBtnSwitchLocationClicked:(id)sender {
+    
+    if (_btnType) {
+        [[LocationStorage sharedDefault] closeLocation:_subType];
+        if (_subType == ParkTypePark) {
+            [self stopLocationAction:[LocationStorage sharedDefault].park];
+        }else if (_subType == ParkTypeReversePark){
+            [self stopLocationAction:[LocationStorage sharedDefault].towardError];
+        }else if (_subType == ParkTypeLockPark){
+            [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
+        }else if (_subType == ParkTypeCarInfoAdd){
+            [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
+        }else if (_subType == ParkTypeThrough){
+            [self stopLocationAction:[LocationStorage sharedDefault].through];
+        }
+    }else{
+        [[LocationStorage sharedDefault] startLocation:_subType];
+        [self handlebtnLocationClicked:nil];
+    }
+    
+    self.btnType = !_btnType;
+    
+   
+}
+
+#pragma mark - 手动定位按钮事件
 - (IBAction)handlebtnLocationClicked:(id)sender {
     
     _tf_roadSection.text  = nil;
@@ -122,7 +222,6 @@
     
     WS(weakSelf);
     
-    IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
     SearchLocationVC *t_searchLocationvc = [SearchLocationVC new];
     t_searchLocationvc.searchType = SearchLocationTypeIllegal;
     t_searchLocationvc.arr_content = self.codes;
@@ -138,13 +237,21 @@
         strongSelf.isCanCommit =  [strongSelf juegeCanCommit];
         
         //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
-        if (strongSelf.delegate && [strongSelf.delegate performSelector:@selector(listentCarNumber) withObject:nil]) {
+        if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(listentCarNumber)]) {
             [strongSelf.delegate listentCarNumber];
         }
         
     };
     
-    [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
+    if (_subType == ParkTypeCarInfoAdd) {
+        CarInfoAddVC* t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
+        [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
+    }else{
+        IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
+        [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
+    }
+    
+    
     
     
 }
@@ -168,6 +275,43 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(listentCarNumber)]) {
         [self.delegate listentCarNumber];
     }
+    
+}
+
+#pragma mark - 关闭定位之后所做的赋值操作
+
+- (void)stopLocationAction:(LocationStorageModel *)model{
+    
+    _tf_roadSection.text = model.streetName;
+    _tf_address.text     = model.address;
+    
+    _param.longitude     = model.longitude;
+    _param.latitude      = model.latitude;
+    _param.roadName      = model.streetName;
+    _param.address       = model.address;
+    [self getRoadId];
+    
+    self.isCanCommit =  [self juegeCanCommit];
+    
+    //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listentCarNumber)]) {
+        [self.delegate listentCarNumber];
+    }
+    
+}
+
+#pragma mark  - 存储停止定位位置
+
+- (LocationStorageModel *)configurationLocationStorageModel{
+
+    LocationStorageModel * model = [[LocationStorageModel alloc] init];
+    model.longitude     = _param.longitude;
+    model.latitude      = _param.latitude;
+    model.streetName    = _param.roadName;
+    model.address       = _param.address;
+    
+    return model;
+    
     
 }
 
@@ -240,19 +384,79 @@
     self.isCanCommit = [self juegeCanCommit];
 }
 
+#pragma mark - 提交之后headView存储地址的处理
+
+- (void)strogeLocationBeforeCommit{
+    
+    if (_subType == ParkTypePark) {
+        [[LocationStorage sharedDefault] setPark:[self configurationLocationStorageModel]];
+        
+    }else if (_subType == ParkTypeReversePark){
+        [[LocationStorage sharedDefault] setTowardError:[self configurationLocationStorageModel]];
+       
+    }else if (_subType == ParkTypeLockPark){
+        [[LocationStorage sharedDefault] setLockCar:[self configurationLocationStorageModel]];
+       
+    }else if (_subType == ParkTypeCarInfoAdd){
+        [[LocationStorage sharedDefault] setInforInput:[self configurationLocationStorageModel]];
+       
+    }else if (_subType == ParkTypeThrough){
+        [[LocationStorage sharedDefault] setThrough:[self configurationLocationStorageModel]];
+       
+    }
+    
+}
+
 #pragma mark - 提交之后headView所做的处理
 
 - (void)handleBeforeCommit{
-
-    [[LocationHelper sharedDefault] startLocation];
     
     _tf_roadSection.text = nil;
     _tf_address.text     = nil;
     _tf_carNumber.text   = nil;
+   
+
+    if (_subType == ParkTypePark) {
+        if (_btnType) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].park];
+        }
+    }else if (_subType == ParkTypeReversePark){
+        
+        if (_btnType) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].towardError];
+        }
+    }else if (_subType == ParkTypeLockPark){
+        
+        if (_btnType) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
+        }
+    }else if (_subType == ParkTypeCarInfoAdd){
+        
+        if (_btnType) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
+        }
+    }else if (_subType == ParkTypeThrough){
+        
+        if (_btnType) {
+            [[LocationHelper sharedDefault] startLocation];
+        }else{
+            [self stopLocationAction:[LocationStorage sharedDefault].through];
+        }
+    }
+    
     if (_tf_addressRemarks.text.length > 0) {
         _param.addressRemark = _tf_addressRemarks.text;
     }
     self.isCanCommit = [self juegeCanCommit];
+    
     
 }
 

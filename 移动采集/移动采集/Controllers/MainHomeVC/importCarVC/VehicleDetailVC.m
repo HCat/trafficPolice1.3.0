@@ -122,13 +122,13 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             [self.arr_content addObject:_reponse.memberInfo];
         }
         
-        //添加车辆备注信息
-        if (_reponse.vehicleRemarkList && _reponse.vehicleRemarkList.count > 0) {
-            for (VehicleRemarkModel *t_model in _reponse.vehicleRemarkList) {
-                [self.arr_content addObject:t_model];
-            }
-            
-        }
+//        //添加车辆备注信息
+//        if (_reponse.vehicleRemarkList && _reponse.vehicleRemarkList.count > 0) {
+//            for (VehicleRemarkModel *t_model in _reponse.vehicleRemarkList) {
+//                [self.arr_content addObject:t_model];
+//            }
+//
+//        }
         
         
     }

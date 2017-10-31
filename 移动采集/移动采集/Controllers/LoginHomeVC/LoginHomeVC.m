@@ -100,6 +100,9 @@
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 
             } seq:0];
+            /*********** 初始化定位存储 *************/
+            [[LocationStorage sharedDefault] initializationSwitchLocation];
+            
             /*********** 存储token值用于后面的请求 ************/
             [ShareValue sharedDefault].token = manger.userModel.token;
             /*********** 全局为统一的Url添加token ************/
