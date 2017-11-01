@@ -21,6 +21,7 @@
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 @property (nonatomic, strong) AMapSearchAPI *search;
+@property (nonatomic, strong) AMapSearchAPI *geosearch;
 @property (weak, nonatomic) IBOutlet UIImageView *img_certenLocation;
 
 @property (nonatomic,strong) NSMutableArray *arr_content;
@@ -99,6 +100,24 @@
     
 }
 
+/**
+ *  逆向地理编码
+ *
+ *  @param latitude  逆向地理编码搜索需要的latitude
+ *  @param longitude 逆向地理编码搜索需要的longitude
+ */
+- (void)setGeosearchWithLatitude:(float)latitude longitude:(float)longitude{
+   
+    //初始化检索对象
+    self.geosearch = [[AMapSearchAPI alloc] init];
+    self.geosearch.delegate = self;
+    
+    //构造AMapWeatherSearchRequest对象，配置查询参数
+    AMapReGeocodeSearchRequest *request = [[AMapReGeocodeSearchRequest alloc] init];
+    request.location = [AMapGeoPoint locationWithLatitude:latitude longitude:longitude];
+    //发起行政区划查询
+    [self.geosearch AMapReGoecodeSearch:request];
+}
 
 #pragma mark - MAMapViewDelegate
 
@@ -192,10 +211,12 @@
     
     AMapPOI *poi = _arr_content[indexPath.row];
     
+    [self setGeosearchWithLatitude:poi.location.latitude longitude:poi.location.longitude];
 
 }
 
 #pragma mark - AMapSearchDelegate
+
 - (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
 {
     self.arr_content = [NSMutableArray array];
@@ -214,6 +235,22 @@
 }
 
 
+/**
+ *  逆向地理编码回调方法
+ *
+ *  @param request  request 搜索请求
+ *  @param response response 搜索返回
+ */
+- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response{
+    if (response.regeocode != nil) {
+        AMapReGeocode *regeocode = response.regeocode;
+        AMapAddressComponent *addressComponent = regeocode.addressComponent;
+        LxPrintf(@"%@",regeocode.formattedAddress);
+        
+        
+        
+    }
+}
 
 #pragma mark - dealloc
 
