@@ -11,6 +11,7 @@
 #import "IllegalParkVC.h"
 #import "CarInfoAddVC.h"
 #import "SearchLocationVC.h"
+#import "PersonLocationVC.h"
 
 @interface IllegalParkAddHeadView()
 
@@ -21,6 +22,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
+@property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //定位开关
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
 
 
@@ -130,8 +132,12 @@
     _btnType = btnType;
     if (_btnType) {
         [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_on"] forState:UIControlStateNormal];
+        _btn_personLocation.enabled = NO;
+        [_btn_personLocation setBackgroundColor:DefaultBtnNuableColor];
     }else{
         [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_off"] forState:UIControlStateNormal];
+        _btn_personLocation.enabled = YES;
+        [_btn_personLocation setBackgroundColor:DefaultBtnColor];
     }
     
 }
@@ -199,7 +205,7 @@
    
 }
 
-#pragma mark - 手动定位按钮事件
+#pragma mark - 重新定位按钮事件
 - (IBAction)handlebtnLocationClicked:(id)sender {
     
     _tf_roadSection.text  = nil;
@@ -216,6 +222,22 @@
     [[LocationHelper sharedDefault] startLocation];
     
 }
+
+#pragma mark - 手动定位按钮事件
+
+- (IBAction)handlebtnPersonLocationClicked:(id)sender {
+    
+    PersonLocationVC *t_personLocationVc = [PersonLocationVC new];
+    if (_subType == ParkTypeCarInfoAdd) {
+        CarInfoAddVC* t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
+        [t_vc.navigationController pushViewController:t_personLocationVc animated:YES];
+    }else{
+        IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
+        [t_vc.navigationController pushViewController:t_personLocationVc animated:YES];
+    }
+    
+}
+
 
 #pragma mark - 选择路段按钮事件
 - (IBAction)handlebtnChoiceLocationClicked:(id)sender {
@@ -250,9 +272,6 @@
         IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
         [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
     }
-    
-    
-    
     
 }
 

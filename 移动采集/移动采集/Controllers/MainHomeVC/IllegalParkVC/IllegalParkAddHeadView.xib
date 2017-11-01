@@ -126,6 +126,9 @@
                             <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handlebtnPersonLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="FA6-LW-dji"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所在位置:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfM-3T-EPL">
                     <rect key="frame" x="9" y="114" width="62" height="17"/>
@@ -249,6 +252,7 @@
                 <constraint firstItem="w0n-gx-Y7q" firstAttribute="top" secondItem="Zi0-Sg-Tyi" secondAttribute="bottom" constant="14" id="zSY-AU-Bee"/>
             </constraints>
             <connections>
+                <outlet property="btn_personLocation" destination="b0a-jz-LPV" id="UJN-5g-LeN"/>
                 <outlet property="btn_switchLocation" destination="mP6-ll-0FM" id="jcE-9G-YkS"/>
                 <outlet property="tf_address" destination="q7Y-J1-dlU" id="Kfz-5S-G8Q"/>
                 <outlet property="tf_addressRemarks" destination="KUz-s8-v53" id="LiD-ez-97b"/>

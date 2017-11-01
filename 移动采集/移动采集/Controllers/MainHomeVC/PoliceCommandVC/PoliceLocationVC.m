@@ -236,7 +236,6 @@
     
     UITextField* textField = (UITextField*)sender;
     LxDBAnyVar(textField.text);
-    NSInteger length =  textField.text.length;
     if (textField == _tf_search) {
         [self loadData];
     }

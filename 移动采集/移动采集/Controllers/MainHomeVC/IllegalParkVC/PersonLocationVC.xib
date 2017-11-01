@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonLocationVC">
             <connections>
+                <outlet property="img_certenLocation" destination="79K-lT-MZD" id="3I6-1A-KIG"/>
                 <outlet property="tableView" destination="VFO-HT-AQe" id="rll-8V-liU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,13 +26,17 @@
                     <rect key="frame" x="0.0" y="319.5" width="375" height="283.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="7n1-AS-Rxf"/>
-                        <outlet property="delegate" destination="-1" id="ihh-K3-G3C"/>
+                        <outlet property="dataSource" destination="-1" id="oNj-y2-YYP"/>
+                        <outlet property="delegate" destination="-1" id="lyU-bo-Zb9"/>
                     </connections>
                 </tableView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" image="icon_certenLocation" translatesAutoresizingMaskIntoConstraints="NO" id="79K-lT-MZD">
+                    <rect key="frame" x="170" y="134" width="35" height="35"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="79K-lT-MZD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3oJ-DT-tTA"/>
                 <constraint firstAttribute="trailing" secondItem="VFO-HT-AQe" secondAttribute="trailing" id="N7j-en-caf"/>
                 <constraint firstItem="VFO-HT-AQe" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.47" id="pYf-AU-4PR"/>
                 <constraint firstAttribute="bottom" secondItem="VFO-HT-AQe" secondAttribute="bottom" id="qV4-NH-9r9"/>
@@ -41,4 +46,7 @@
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_certenLocation" width="35" height="35"/>
+    </resources>
 </document>
