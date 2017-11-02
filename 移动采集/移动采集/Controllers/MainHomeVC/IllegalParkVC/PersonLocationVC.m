@@ -24,6 +24,8 @@
 @property (nonatomic, strong) AMapSearchAPI *geosearch;
 @property (weak, nonatomic) IBOutlet UIImageView *img_certenLocation;
 
+@property (nonatomic,strong) LocationStorageModel *model;
+
 @property (nonatomic,strong) NSMutableArray *arr_content;
 
 @end
@@ -35,6 +37,7 @@
     [super viewDidLoad];
     self.title = @"获取位置";
     self.arr_content = [NSMutableArray array];
+    self.model = [[LocationStorageModel alloc] init];
     [self initMapView];
     
     _tableView.isNeedPlaceholderView = YES;
@@ -91,9 +94,10 @@
     AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
     
     request.location            = [AMapGeoPoint locationWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
-    request.keywords            = @"道路名";
+    request.keywords            = @"路";
     /* 按照距离排序. */
     request.sortrule            = 0;
+    request.types               = @"道路名";
     request.requireExtension    = YES;
     
     [self.search AMapPOIAroundSearch:request];
@@ -192,6 +196,15 @@
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
     
+    
+    if (indexPath.row == 0) {
+        [cell.imgV_location setImage:[UIImage imageNamed:@"icon_policeLocation_blue"]];
+        cell.lb_name.textColor = UIColorFromRGB(0x4281e8);
+    }else{
+        [cell.imgV_location setImage:[UIImage imageNamed:@"icon_policeLocation"]];
+        cell.lb_name.textColor = UIColorFromRGB(0x444444);
+    }
+    
     AMapPOI *poi = _arr_content[indexPath.row];
     
     cell.poi = poi;
@@ -210,6 +223,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AMapPOI *poi = _arr_content[indexPath.row];
+    LxDBObjectAsJson(poi);
+    
+    self.model.latitude = @(self.mapView.centerCoordinate.latitude);
+    self.model.longitude = @(self.mapView.centerCoordinate.longitude);
+    self.model.streetName = poi.name;
     
     [self setGeosearchWithLatitude:poi.location.latitude longitude:poi.location.longitude];
 
@@ -244,9 +262,16 @@
 - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response{
     if (response.regeocode != nil) {
         AMapReGeocode *regeocode = response.regeocode;
+        LxDBObjectAsJson(regeocode);
         AMapAddressComponent *addressComponent = regeocode.addressComponent;
-        LxPrintf(@"%@",regeocode.formattedAddress);
+        LxDBObjectAsJson(addressComponent);
+        LxDBObjectAsJson(addressComponent.streetNumber);
+        self.model.address = regeocode.formattedAddress;
         
+        if (self.block) {
+            self.block(self.model);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         
         
     }

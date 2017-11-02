@@ -235,7 +235,13 @@
         IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
         [t_vc.navigationController pushViewController:t_personLocationVc animated:YES];
     }
-    
+    WS(weakSelf);
+    t_personLocationVc.block = ^(LocationStorageModel *model) {
+        SW(strongSelf, weakSelf);
+        [strongSelf stopLocationAction:model];
+
+    };
+
 }
 
 

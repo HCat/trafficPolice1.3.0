@@ -219,6 +219,7 @@
 
 ///扩展信息只有在ID查询时有效
 @property (nonatomic, strong) AMapPOIExtension *extensionInfo;
+
 @end
 
 #pragma mark - 逆地理编码 && 地理编码

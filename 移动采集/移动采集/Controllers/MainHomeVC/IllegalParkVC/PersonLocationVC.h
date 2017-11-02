@@ -8,6 +8,11 @@
 
 #import "HideTabSuperVC.h"
 
+typedef void(^PersonLocationVCBlock)(LocationStorageModel *model);
+
 @interface PersonLocationVC : HideTabSuperVC
+
+@property (nonatomic,copy) PersonLocationVCBlock block;
+
 
 @end
