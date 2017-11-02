@@ -96,6 +96,13 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         [weakSelf getCommonRoad];
     };
+    
+#ifdef __IPHONE_11_0
+    if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+#endif
+    
 }
 
 #pragma mark - 返回按钮事件

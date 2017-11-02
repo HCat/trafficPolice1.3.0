@@ -135,8 +135,6 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 
 }
 
-
-
 #pragma mark - 请求代码
 
 - (void)loadVehicleRequest:(VehicleRequestType)type{

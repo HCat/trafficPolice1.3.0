@@ -10,6 +10,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import "UINavigationBar+BarItem.h"
 #import <PureLayout.h>
 
 #import "UITableView+Lr_Placeholder.h"
@@ -39,6 +40,8 @@
     self.arr_content = [NSMutableArray array];
     self.model = [[LocationStorageModel alloc] init];
     [self initMapView];
+    
+    [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
     
     _tableView.isNeedPlaceholderView = YES;
     _tableView.str_placeholder = @"暂无搜索内容";
@@ -86,6 +89,18 @@
     [_mapView setZoomLevel:16.1 animated:YES];
     
 }
+
+#pragma mark - buttonAction
+
+#pragma mark - 让地图的中心点为定位坐标按钮
+
+- (void)makeLocationInCenter{
+    
+    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+    
+    
+}
+
 
 #pragma mark - 请求周边
 
