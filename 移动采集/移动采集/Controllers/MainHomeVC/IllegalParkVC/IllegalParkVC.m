@@ -26,6 +26,7 @@
 
 #import "IllegalSecSaveVC.h"
 
+
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
@@ -65,6 +66,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }else if(_illegalType == IllegalTypeThrough){
         self.title = @"闯禁令采集";
+        self.subType = ParkTypeThrough;
     }
     
     self.isObserver = NO;
@@ -94,6 +96,13 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         [weakSelf getCommonRoad];
     };
+    
+#ifdef __IPHONE_11_0
+    if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+#endif
+    
 }
 
 #pragma mark - 返回按钮事件
@@ -395,6 +404,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headId forIndexPath:indexPath];
              [_headView setDelegate:(id<IllegalParkAddHeadViewDelegate>)self];
             _headView.param = _param;
+            _headView.subType = _subType;
             
             //监听headView中的isCanCommit来判断是否可以上传
             if (!_isObserver) {
@@ -633,9 +643,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
-    if (![_param.roadId isEqualToNumber:@0]) {
-        _param.roadName = nil;
-    }
     
     [self configParamInFilesAndRemarksAndTimes];
     
@@ -774,6 +781,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 
 - (void)handleBeforeCommit{
 
+    [_headView strogeLocationBeforeCommit];
+    
     [_arr_upImages removeAllObjects];
     [_arr_upImages addObject:[NSNull null]];
     [_arr_upImages addObject:[NSNull null]];

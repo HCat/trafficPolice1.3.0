@@ -10,9 +10,6 @@
 
 @interface PoliceLocationCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *lb_name;
-
-@property (weak, nonatomic) IBOutlet UILabel *lb_address;
 
 
 @end

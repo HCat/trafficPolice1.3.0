@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AccidentChangePhotoModel.h"
+#import "VehicleAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDictionary *illegalDic;
 @property (nonatomic, strong) AccidentChangePhotoModel *photo;
+@property (nonatomic, strong) VehicleImageModel *vehicle;
 
 
 
@@ -50,6 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
                           imageUrl:(NSURL *)url withPhotoModel:(AccidentChangePhotoModel *)photo;
 + (instancetype)itemWithSourceView:(UIImageView *)view
                              image:(UIImage *)image withPhotoModel:(AccidentChangePhotoModel *)photo;
+
++ (instancetype)itemWithSourceView:(UIImageView *)view
+                          imageUrl:(NSURL *)url withVehiclePhotoModel:(VehicleImageModel *)photo;
 
 @end
 

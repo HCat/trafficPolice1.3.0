@@ -10,6 +10,7 @@
 #import "KSPhotoView.h"
 #import "UIButton+Block.h"
 #import "UIButton+NoRepeatClick.h"
+#import "VehicleAPI.h"
 
 #if __has_include(<YYKit/UIImageView+YYWebImage.h>)
 #import <YYKit/UIImageView+YYWebImage.h>

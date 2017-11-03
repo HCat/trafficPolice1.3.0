@@ -73,4 +73,7 @@
 // 让NSString不为空
 + (NSString *)takeStringNoNull:(NSString *)t_string;
 
+//讲图片变成马赛克
++ (UIImage *)transToMosaicImage:(UIImage*)orginImage blockLevel:(NSUInteger)level;
+
 @end

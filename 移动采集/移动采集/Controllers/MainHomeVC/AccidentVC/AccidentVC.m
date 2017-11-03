@@ -58,7 +58,12 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+#ifdef __IPHONE_11_0
+    if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+#endif
+    
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         [[ShareValue sharedDefault] accidentCodes];
     };

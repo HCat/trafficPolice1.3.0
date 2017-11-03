@@ -40,8 +40,6 @@
     
     [self initMapView];
     
-    
-    
     WS(weakSelf);
     self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
         

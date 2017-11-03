@@ -11,6 +11,13 @@
 
 @interface PoliceLocationCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_name;
+
+@property (weak, nonatomic) IBOutlet UILabel *lb_address;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgV_location;
+
+
 @property (nonatomic, strong) AMapPOI *poi;
 
 

@@ -121,7 +121,13 @@
                 VehicleImageModel *pic = _imagelists[i];
                 
                 UIButton *t_button  = _arr_view[i];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    if ([pic.isID isEqualToString:@"1"]) {
+                        image = [ShareFun transToMosaicImage:image blockLevel:10];
+                        [t_button setImage:image forState:UIControlStateNormal];
+                    }
+                    
+                }];
             }
             
         }else{
@@ -133,7 +139,16 @@
                 VehicleImageModel *pic = _imagelists[i];
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                
+                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    if ([pic.isID isEqualToString:@"1"]) {
+                        image = [ShareFun transToMosaicImage:image blockLevel:10];
+                        [t_button setImage:image forState:UIControlStateNormal];
+                    }
+                    
+                }];
+                
+        
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
                 t_button.tag = i;
                 t_button.layer.cornerRadius = 5.0f;
@@ -213,7 +228,7 @@
         for (int i = 0; i < _arr_view.count; i++) {
             UIButton *btn = _arr_view[i];
             VehicleImageModel *picModel  = _imagelists[i];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:picModel.mediaUrl]];
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:picModel.mediaUrl] withVehiclePhotoModel:picModel];
             [t_arr addObject:item];
         }
         

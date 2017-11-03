@@ -19,6 +19,8 @@
 @interface VehicleImageModel : NSObject
 
 @property (nonatomic,copy) NSString *mediaUrl;
+@property (nonatomic,copy) NSString *resType;   //
+@property (nonatomic,copy) NSString *isID;      //是否是身份证
 
 @end
 
@@ -74,6 +76,20 @@
 @property (nonatomic, strong) NSNumber * lng;       //经度
 @property (nonatomic, strong) NSNumber * lat;       //纬度
 @property (nonatomic, strong) NSNumber * range;     //范围
+@property (nonatomic, strong) NSNumber * carType;   //车辆类型 1警务车 2土方车
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSArray <VehicleGPSModel *> * vehicleGpsList;
+
+@end
+
+#pragma mark - 获取全部车辆信息
+
+
+@interface VehicleLocationManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
 @property (nonatomic, strong) NSNumber * carType;   //车辆类型 1警务车 2土方车
 
 /****** 返回数据 ******/

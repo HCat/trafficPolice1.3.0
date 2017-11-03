@@ -54,6 +54,7 @@
 #import "ShareFun.h"
 #import "ShareValue.h"
 #import "LocationHelper.h"
+#import "LocationStorage.h"
 
 
 
