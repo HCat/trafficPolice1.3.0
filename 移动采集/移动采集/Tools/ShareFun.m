@@ -550,6 +550,20 @@
     
 }
 
+/*
+ *  隐藏身份证号码中间字符
+ */
+
++ (NSString*)idCardToAsterisk:(NSString *)idCardNum{
+    
+    if (idCardNum && idCardNum.length > 0) {
+        //NSInteger length = idCardNum.length;
+        return [idCardNum stringByReplacingCharactersInRange:NSMakeRange(10, 6) withString:@"******"];
+    }else{
+        return @" ";
+    }
+    
+}
 
 
 @end
