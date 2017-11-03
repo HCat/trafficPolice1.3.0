@@ -116,3 +116,32 @@
 
 
 @end
+
+@implementation VehicleLocationManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_VEHICLE_GETVEHICLELOCATION;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"carType":_carType};
+}
+
+//返回参数
+- (NSArray *)vehicleGpsList{
+    
+    if (self.responseModel) {
+        
+        _vehicleGpsList = [NSArray modelArrayWithClass:[VehicleGPSModel class] json:self.responseJSONObject[@"data"][@"vehicleGpsList"]];
+        return _vehicleGpsList;
+    }
+    
+    return nil;
+}
+
+
+@end

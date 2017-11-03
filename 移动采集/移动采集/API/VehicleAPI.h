@@ -83,5 +83,19 @@
 
 @end
 
+#pragma mark - 获取全部车辆信息
+
+
+@interface VehicleLocationManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, strong) NSNumber * carType;   //车辆类型 1警务车 2土方车
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSArray <VehicleGPSModel *> * vehicleGpsList;
+
+@end
+
 
 

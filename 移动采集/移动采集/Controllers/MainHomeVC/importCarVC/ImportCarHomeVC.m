@@ -172,8 +172,8 @@
         }
     
     }
-    
 }
+
 
 - (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
     MAAnnotationView *view = views[0];
