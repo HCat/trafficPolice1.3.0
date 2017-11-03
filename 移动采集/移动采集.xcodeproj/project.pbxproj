@@ -334,6 +334,14 @@
 		CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F21F5D356E0010E68A /* SignListCell.xib */; };
 		CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0F61F5D358C0010E68A /* SignInCell.m */; };
 		CED9B0F91F5D358C0010E68A /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F71F5D358C0010E68A /* SignInCell.xib */; };
+		CEE45BA31FAC490E00BF472F /* UserTaskListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BA11FAC490E00BF472F /* UserTaskListVC.m */; };
+		CEE45BA41FAC490E00BF472F /* UserTaskListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BA21FAC490E00BF472F /* UserTaskListVC.xib */; };
+		CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */; };
+		CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */; };
+		CEE45BAD1FAC558F00BF472F /* UserTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BAB1FAC558F00BF472F /* UserTaskCell.m */; };
+		CEE45BAE1FAC558F00BF472F /* UserTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BAC1FAC558F00BF472F /* UserTaskCell.xib */; };
+		CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BB01FAC600400BF472F /* TaskAPI.m */; };
+		CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BB31FAC601C00BF472F /* TaskModel.m */; };
 		CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9CF1F1C6CBB00AC515C /* main.m */; };
 		CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */; };
 		CEE5E9DB1F1C6CBB00AC515C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE5E9DA1F1C6CBB00AC515C /* Assets.xcassets */; };
@@ -924,6 +932,19 @@
 		CED9B0F51F5D358C0010E68A /* SignInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInCell.h; sourceTree = "<group>"; };
 		CED9B0F61F5D358C0010E68A /* SignInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInCell.m; sourceTree = "<group>"; };
 		CED9B0F71F5D358C0010E68A /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
+		CEE45BA01FAC490E00BF472F /* UserTaskListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTaskListVC.h; sourceTree = "<group>"; };
+		CEE45BA11FAC490E00BF472F /* UserTaskListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTaskListVC.m; sourceTree = "<group>"; };
+		CEE45BA21FAC490E00BF472F /* UserTaskListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTaskListVC.xib; sourceTree = "<group>"; };
+		CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTaskDetailVC.h; sourceTree = "<group>"; };
+		CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTaskDetailVC.m; sourceTree = "<group>"; };
+		CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTaskDetailVC.xib; sourceTree = "<group>"; };
+		CEE45BAA1FAC558F00BF472F /* UserTaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTaskCell.h; sourceTree = "<group>"; };
+		CEE45BAB1FAC558F00BF472F /* UserTaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTaskCell.m; sourceTree = "<group>"; };
+		CEE45BAC1FAC558F00BF472F /* UserTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTaskCell.xib; sourceTree = "<group>"; };
+		CEE45BAF1FAC600400BF472F /* TaskAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskAPI.h; sourceTree = "<group>"; };
+		CEE45BB01FAC600400BF472F /* TaskAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskAPI.m; sourceTree = "<group>"; };
+		CEE45BB21FAC601C00BF472F /* TaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
+		CEE45BB31FAC601C00BF472F /* TaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
 		CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动采集.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE5E9CF1F1C6CBB00AC515C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1620,6 +1641,7 @@
 		CE69154D1F1DD52B008911A6 /* UserHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CEE45B9F1FAC48DF00BF472F /* UserTaskVC */,
 				CE490E231F9F1E7500E90FF2 /* UserWatchVC */,
 				CE450BB11F272A770025A20C /* FeedbackVC */,
 				CE6915611F1DDA01008911A6 /* UserHomeVC.h */,
@@ -1907,6 +1929,8 @@
 				CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */,
 				CE518BC51F99E3F2008F52B5 /* WeatherModel.h */,
 				CE518BC61F99E3F2008F52B5 /* WeatherModel.m */,
+				CEE45BB21FAC601C00BF472F /* TaskModel.h */,
+				CEE45BB31FAC601C00BF472F /* TaskModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1940,6 +1964,8 @@
 				CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */,
 				CE8EC98E1FA06B71002E5456 /* DutyAPI.h */,
 				CE8EC98F1FA06B71002E5456 /* DutyAPI.m */,
+				CEE45BAF1FAC600400BF472F /* TaskAPI.h */,
+				CEE45BB01FAC600400BF472F /* TaskAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1988,6 +2014,22 @@
 				CED9B0F71F5D358C0010E68A /* SignInCell.xib */,
 			);
 			path = SignInVC;
+			sourceTree = "<group>";
+		};
+		CEE45B9F1FAC48DF00BF472F /* UserTaskVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEE45BA01FAC490E00BF472F /* UserTaskListVC.h */,
+				CEE45BA11FAC490E00BF472F /* UserTaskListVC.m */,
+				CEE45BA21FAC490E00BF472F /* UserTaskListVC.xib */,
+				CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */,
+				CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */,
+				CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */,
+				CEE45BAA1FAC558F00BF472F /* UserTaskCell.h */,
+				CEE45BAB1FAC558F00BF472F /* UserTaskCell.m */,
+				CEE45BAC1FAC558F00BF472F /* UserTaskCell.xib */,
+			);
+			path = UserTaskVC;
 			sourceTree = "<group>";
 		};
 		CEE5E9C21F1C6CBB00AC515C = {
@@ -2377,6 +2419,7 @@
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
 				CE675F361F386F07006FC15F /* AccidentCell.xib in Resources */,
 				CE490E221F9EE1C500E90FF2 /* UserMissionVC.xib in Resources */,
+				CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */,
 				CE5C39261F2881BD0055C945 /* btn_unselected.png in Resources */,
 				CE4E3C141F39BB860057148B /* IllegalImageCell.xib in Resources */,
 				CE5D395B1FA17F7F004DD9D2 /* DutyCell.xib in Resources */,
@@ -2408,6 +2451,7 @@
 				CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */,
 				CE61405E1F3184280015B8CE /* AccidentVC.xib in Resources */,
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
+				CEE45BAE1FAC558F00BF472F /* UserTaskCell.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
 				CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */,
@@ -2419,6 +2463,7 @@
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */,
+				CEE45BA41FAC490E00BF472F /* UserTaskListVC.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2498,6 +2543,7 @@
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
+				CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
@@ -2553,6 +2599,7 @@
 				CED6EE901F691358004FED7B /* UIView+AdjustFrame.m in Sources */,
 				CE5C39041F28606B0055C945 /* ZLPhotoBrowserCell.m in Sources */,
 				CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */,
+				CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */,
 				CE675F181F38411B006FC15F /* IllegalListVC.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
@@ -2574,6 +2621,7 @@
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
 				CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */,
+				CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */,
 				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
 				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
@@ -2608,6 +2656,7 @@
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */,
+				CEE45BA31FAC490E00BF472F /* UserTaskListVC.m in Sources */,
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
@@ -2631,6 +2680,7 @@
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CE0731CD1F5ECF0200B3831B /* VehicleRemarkModel.m in Sources */,
 				CEFEFD021F29C22500C33CBD /* maskingView.m in Sources */,
+				CEE45BAD1FAC558F00BF472F /* UserTaskCell.m in Sources */,
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
 				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,

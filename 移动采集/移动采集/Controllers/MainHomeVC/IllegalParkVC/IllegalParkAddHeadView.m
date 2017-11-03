@@ -288,8 +288,8 @@
     _tf_roadSection.text = [LocationHelper sharedDefault].streetName;
     _tf_address.text     = [LocationHelper sharedDefault].address;
     
-    _param.longitude     = @([LocationHelper sharedDefault].baiduLongitude);
-    _param.latitude      = @([LocationHelper sharedDefault].baiduLatitude);
+    _param.longitude     = @([LocationHelper sharedDefault].longitude);
+    _param.latitude      = @([LocationHelper sharedDefault].latitude);
     _param.roadName      = [LocationHelper sharedDefault].streetName;
     _param.address       = [LocationHelper sharedDefault].address;
     [self getRoadId];

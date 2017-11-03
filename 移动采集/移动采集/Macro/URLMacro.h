@@ -140,6 +140,11 @@
 
 #define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json" //按天获取排班详情
 
+#pragma mark - 警员任务
+
+#define URL_TASK_HISTORYLIST @"app/policeTask/getHistoryList.json"  //查询历史任务
+#define URL_TASK_CURRENTLIST @"app/policeTask/getCurrentList.json"  //查询当前任务
+#define URL_TASK_DETAIL @"app/policeTask/detail.json"   //任务详情
 
 
 #endif /* URLMacro_h */

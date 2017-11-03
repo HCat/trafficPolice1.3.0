@@ -226,8 +226,8 @@
 
 -(void)locationChange{
     _tf_address.text    = [LocationHelper sharedDefault].address;
-    _param.latitude     = @([LocationHelper sharedDefault].baiduLatitude);
-    _param.longitude    = @([LocationHelper sharedDefault].baiduLongitude);
+    _param.latitude     = @([LocationHelper sharedDefault].latitude);
+    _param.longitude    = @([LocationHelper sharedDefault].longitude);
     _param.address      = [LocationHelper sharedDefault].address;
 }
 
