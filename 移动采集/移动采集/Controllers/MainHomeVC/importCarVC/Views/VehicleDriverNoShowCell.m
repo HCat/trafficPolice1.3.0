@@ -53,7 +53,7 @@
         
         _lb_driverName.text = [ShareFun takeStringNoNull:_driver.driverName];
         _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
-        _lb_driverCode.text = [ShareFun takeStringNoNull:_driver.driverCode];
+        _lb_driverCode.text = [ShareFun idCardToAsterisk:[ShareFun takeStringNoNull:_driver.driverCode]];;
        
         self.driverImgList = [_driver.driverImgList copy];
         

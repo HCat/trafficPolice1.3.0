@@ -49,7 +49,7 @@
     [self.tf_code addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     _btn_countDown.durationOfCountDown = 60;
-    _btn_countDown.originalBGColor = DefaultBtnColor;
+    _btn_countDown.originalBGColor = UIColorFromRGB(0x1DBE7E);
     _btn_countDown.processBGColor = DefaultBtnNuableColor;
     _btn_countDown.processFont = [UIFont systemFontOfSize:12.f];
     _btn_countDown.originalFont = [UIFont systemFontOfSize:15.f];

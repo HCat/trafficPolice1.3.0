@@ -76,4 +76,7 @@
 //讲图片变成马赛克
 + (UIImage *)transToMosaicImage:(UIImage*)orginImage blockLevel:(NSUInteger)level;
 
+// 隐藏身份证号码中间字符
++ (NSString*)idCardToAsterisk:(NSString *)idCardNum;
+
 @end

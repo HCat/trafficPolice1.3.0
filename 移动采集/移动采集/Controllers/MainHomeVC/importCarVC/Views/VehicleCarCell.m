@@ -78,7 +78,7 @@
         _lb_motorid.text = [ShareFun takeStringNoNull:_vehicle.motorid];                //发动机号码
         _lb_description.text = [ShareFun takeStringNoNull:_vehicle.description_text];   //车辆描述
         _lb_driver.text = [ShareFun takeStringNoNull:_vehicle.driver];                  //车主姓名
-        _lb_dvrcard.text = [ShareFun takeStringNoNull:_vehicle.dvrcard];                //车主身份证
+        _lb_dvrcard.text = [ShareFun idCardToAsterisk:[ShareFun takeStringNoNull:_vehicle.dvrcard]];                //车主身份证
         _lb_drivermobile.text = [ShareFun takeStringNoNull:_vehicle.drivermobile];      //车主电话
         
         //车厢外高度

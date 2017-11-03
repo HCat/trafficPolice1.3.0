@@ -65,7 +65,7 @@
             _lb_sex.text = @"女";
         }
         
-        _lb_driverCode.text = [ShareFun takeStringNoNull:_driver.driverCode];
+        _lb_driverCode.text = [ShareFun idCardToAsterisk:[ShareFun takeStringNoNull:_driver.driverCode]];
         _lb_yearTrialDeadline.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.yearTrialDeadline dateFormat:@"yyyy年MM月dd日"]];
         _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
         _lb_invalidDate.text = [ShareFun takeStringNoNull:[ShareFun timeWithTimeInterval:_driver.invalidDate dateFormat:@"yyyy年MM月dd日"]];
