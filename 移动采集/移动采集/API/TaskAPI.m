@@ -84,30 +84,6 @@
 
 #pragma mark -
 
-@implementation TaskDetailModel
-
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"taskId" : @"id",
-             };
-}
-
-@end
-
-@implementation ChildTaskDetailModel
-
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"childTaskId" : @"id",
-             };
-}
-
-@end
-
-@implementation TaskGetDetailReponse
-
-
-@end
-
-
 @implementation TaskDetailManger
 
 
@@ -124,11 +100,11 @@
 }
 
 //返回参数
-- (TaskGetDetailReponse *)taskGetDetailReponse{
+- (TaskModel *)task{
     
     if (self.responseModel.data) {
-        _taskGetDetailReponse = [TaskGetDetailReponse modelWithDictionary:self.responseModel.data];
-        return _taskGetDetailReponse;
+        _task = [TaskModel modelWithDictionary:self.responseModel.data];
+        return _task;
     }
     
     return nil;

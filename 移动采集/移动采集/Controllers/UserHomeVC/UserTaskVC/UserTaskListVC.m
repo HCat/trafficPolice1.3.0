@@ -15,6 +15,8 @@
 #import <MJRefresh.h>
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "UITableView+Lr_Placeholder.h"
+#import "UserTaskDetailVC.h"
+#import "UserHomeVC.h"
 
 
 @interface UserTaskListVC ()
@@ -292,7 +294,7 @@
             UserTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTaskCellID"];
             cell.fd_enforceFrameLayout = NO;
             cell.currentTask = self.arr_current[indexPath.row];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             
         }else{
@@ -380,6 +382,21 @@
 // 选中某行cell时会调用
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     NSLog(@"选中didSelectRowAtIndexPath row = %ld", indexPath.row);
+    
+    if (indexPath.section == 0) {
+        UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
+        t_vc.task = _arr_current[indexPath.row];
+        UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
+        [vc_target.navigationController pushViewController:t_vc animated:YES];
+    }else{
+        UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
+        t_vc.task = _arr_history[indexPath.row];
+        UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
+        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        
+    }
+    
+    
 }
 
 // 取消选中某行cell会调用 (当我选中第0行的时候，如果现在要改为选中第1行 - 》会先取消选中第0行，然后调用选中第1行的操作)

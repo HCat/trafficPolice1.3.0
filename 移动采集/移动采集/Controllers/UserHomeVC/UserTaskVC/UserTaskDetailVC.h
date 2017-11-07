@@ -7,7 +7,10 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "TaskModel.h"
 
 @interface UserTaskDetailVC : HideTabSuperVC
+
+@property (nonatomic,strong) TaskModel * task;
 
 @end

@@ -51,40 +51,13 @@
 
 #pragma mark - 任务详情
 
-@interface TaskDetailModel : NSObject
-
-@property (nonatomic, strong) NSNumber * taskId;        //任务id
-@property (nonatomic,copy)    NSString * taskName;      //任务名称
-@property (nonatomic,copy)    NSString * arrivalTime;   //到岗时间
-@property (nonatomic,copy)    NSString * taskStatus;    //任务状态
-@property (nonatomic,copy)    NSString * createTime;    //创建时间
-
-@end
-
-@interface ChildTaskDetailModel : NSObject
-
-@property (nonatomic, strong) NSNumber * childTaskId;   //子任务id
-@property (nonatomic,copy)    NSString * address;       //任务地址
-@property (nonatomic,copy)    NSString * content;       //内容
-@property (nonatomic,strong)  NSNumber * longitude;     //经度
-@property (nonatomic,strong)  NSNumber * latitude;      //纬度
-
-@end
-
-@interface TaskGetDetailReponse :NSObject
-
-@property (nonatomic,strong) TaskDetailModel * task;
-@property (nonatomic,strong) ChildTaskDetailModel * childTask;
-
-@end
-
 @interface TaskDetailManger:LRBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) NSNumber * taskId;   //子任务id
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) TaskGetDetailReponse * taskGetDetailReponse;
+@property (nonatomic,strong) TaskModel * task;
 
 @end
 
