@@ -26,6 +26,24 @@
     // Initialization code
 }
 
+- (void)setCurrentTask:(TaskModel *)currentTask{
+    _currentTask = currentTask;
+    
+    if (_currentTask) {
+        
+        if ([_currentTask.taskStatus isEqualToNumber:@2]) {
+            _v_taskCancel.hidden = NO;
+        }else{
+            _v_taskCancel.hidden = YES;
+            _lb_address.text = _currentTask.address;
+            _lb_name.text = _currentTask.taskName;
+            _lb_time.text = [ShareFun timeWithTimeInterval:_currentTask.arrivalTime];
+            
+        }
+    }
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

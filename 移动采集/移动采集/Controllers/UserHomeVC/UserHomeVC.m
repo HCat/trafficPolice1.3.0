@@ -14,7 +14,7 @@
 
 #import "UserRecordVC.h"
 #import "UserWatchVC.h"
-#import "UserMissionVC.h"
+#import "UserTaskListVC.h"
 
 
 @interface UserHomeVC ()
@@ -53,7 +53,7 @@
     t_watchvc.title = @"值班";
     [t_arr addObject:t_watchvc];
     
-    UserMissionVC *t_missionvc = [UserMissionVC new];
+    UserTaskListVC *t_missionvc = [UserTaskListVC new];
     t_missionvc.title = @"任务";
     [t_arr addObject:t_missionvc];
     

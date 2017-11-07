@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskModel.h"
 
 @interface UserTaskCell : UITableViewCell
+
+@property (nonatomic,strong) TaskModel * currentTask;
+
 
 @end

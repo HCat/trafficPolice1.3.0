@@ -16,9 +16,8 @@
 
 /****** 请求数据 ******/
 
-
 /****** 返回数据 ******/
-@property (nonatomic,strong) TaskModel * task;
+@property (nonatomic,copy) NSArray < TaskModel *> * list;    //包含IllegalParkListModel对象
 
 @end
 
@@ -82,6 +81,7 @@
 @interface TaskDetailManger:LRBaseRequest
 
 /****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * taskId;   //子任务id
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) TaskGetDetailReponse * taskGetDetailReponse;

@@ -26,17 +26,17 @@
 
 //返回参数
 
-- (TaskModel *)task{
+//返回参数
+- (NSArray <TaskModel *> *)list{
     
-    if (self.responseModel.data) {
-        _task =  [TaskModel modelWithDictionary:self.responseModel.data[@"task"]];
-        return _task;
+    if (self.responseModel) {
+        
+        _list = [NSArray modelArrayWithClass:[TaskModel class] json:self.responseJSONObject[@"data"][@"list"]];
+        return _list;
     }
     
     return nil;
-    
 }
-
 
 @end
 
@@ -86,10 +86,19 @@
 
 @implementation TaskDetailModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"taskId" : @"id",
+             };
+}
+
 @end
 
 @implementation ChildTaskDetailModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"childTaskId" : @"id",
+             };
+}
 
 @end
 
@@ -111,7 +120,7 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return nil;
+    return @{@"id":_taskId};
 }
 
 //返回参数
