@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DACHAODEBUG_URL @"http://192.168.10.88/police-admin"
 #define WEBSOCKET_DACHAODEBUG_URL @"ws://192.168.10.88/police-admin/websocket"
