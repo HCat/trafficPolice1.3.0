@@ -20,14 +20,15 @@
 #import "VehicleCameraVC.h"
 #import "VehicleDetailVC.h"
 #import "VehicleSearchVC.h"
+#import "SearchImportCarVC.h"
 
 @interface ImportCarHomeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapLocationManager *locationManager;
-
-
 @property (nonatomic, strong) MAPointAnnotation *positionAnnotation; //定位的坐标点
+
+
 @property (nonatomic, strong) MACircle *positionCircle;              //定位画的圆
 @property (nonatomic, strong) NSNumber *latitude;                    //纬度
 @property (nonatomic, strong) NSNumber *longitude;                   //经度
@@ -38,6 +39,9 @@
 @property (nonatomic, strong) NSMutableArray *arr_vehicles; //用来存储请求数据
 @property (nonatomic, strong) NSMutableArray *arr_point;    //用来存储点数据
 @property (nonatomic, strong) NSNumber *carType;            //车辆类型
+
+@property (weak, nonatomic) IBOutlet UITextField *tf_search;
+
 @end
 
 @implementation ImportCarHomeVC
@@ -53,23 +57,34 @@
     [self initMapView];
     [self configLocation];
     
-    WS(weakSelf);
-    self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
-        
-        SW(strongSelf, weakSelf);
-        [strongSelf loadVehicleData];
-        
-    }];
-    [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
-
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
+    
+    WS(weakSelf);
+    if (!self.loadRequestTime) {
+        self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
+            
+            SW(strongSelf, weakSelf);
+            [strongSelf loadVehicleData];
+            
+        }];
+        [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
 
+    }
+   
+}
 
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    if (self.loadRequestTime) {
+        [self.loadRequestTime timeInterval];
+        self.loadRequestTime = nil;
+    }
+    
+    [super viewDidDisappear:animated];
 }
 
 #pragma mark - init
@@ -166,6 +181,13 @@
     
 }
 
+- (void)searchVehicle{
+   
+    SearchImportCarVC *t_vc = [[SearchImportCarVC alloc] init];
+    t_vc.plateNo = _tf_search.text;
+    [self.navigationController pushViewController:t_vc animated:YES];
+}
+
 #pragma mark - 画定位的圆形还有坐标
 
 - (void) drawPositionRange{
@@ -209,11 +231,16 @@
     
 }
 
+#pragma mark - 让地图的中心点为定位坐标按钮
 
+- (void)makeLocationInCenter{
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]);
+    [_mapView setCenterCoordinate:coordinate animated:YES];
+    
+}
 
 #pragma mark - MAMapViewDelegate
-
-#pragma mark - 画点
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
     if ([annotation isKindOfClass:[VehicleCarAnnotation class]])
@@ -257,8 +284,6 @@
     return nil;
 }
 
-#pragma mark - 点击点
-
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     /* Adjust the map center in order to show the callout view completely. */
     if ([view isKindOfClass:[MAAnnotationView class]]) {
@@ -279,8 +304,6 @@
     
     }
 }
-
-#pragma mark - 画圆
 
 - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
 {
@@ -376,13 +399,22 @@
     
 }
 
-#pragma mark - 让地图的中心点为定位坐标按钮
+- (IBAction)handleBtnCancleBtnClicked:(id)sender {
+    [_tf_search resignFirstResponder];
+    [self searchVehicle];
+    
+}
 
-- (void)makeLocationInCenter{
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]);
-    [_mapView setCenterCoordinate:coordinate animated:YES];
+#pragma mark - UITextFieldDelegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    [self searchVehicle];
     
     
+    return YES;
 }
 
 

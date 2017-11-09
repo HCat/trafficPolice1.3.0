@@ -5,12 +5,15 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImportCarHomeVC">
             <connections>
+                <outlet property="tf_search" destination="EFy-YO-LD4" id="cmY-wF-4H5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,21 +58,77 @@
                         <action selector="handleBtnQRCodeClicked:" destination="-1" eventType="touchUpInside" id="exT-89-5Xe"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMe-x6-XBx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入车牌号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFy-YO-LD4">
+                            <rect key="frame" x="20" y="7" width="298" height="30"/>
+                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="kYJ-0B-F38"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="wMz-qu-RL8"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyD-Pf-MeT">
+                            <rect key="frame" x="320" y="7" width="55" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="aFR-D7-tFo"/>
+                            </constraints>
+                            <state key="normal" title="搜索"/>
+                            <connections>
+                                <action selector="handleBtnCancleBtnClicked:" destination="-1" eventType="touchUpInside" id="RbV-Yk-aw9"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_adressBook_search" translatesAutoresizingMaskIntoConstraints="NO" id="9jq-70-Olq">
+                            <rect key="frame" x="30" y="16" width="13" height="13"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="13" id="FZ3-CP-BvE"/>
+                                <constraint firstAttribute="width" constant="13" id="rvX-Zp-Jpe"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4U1-CN-g2J"/>
+                        <constraint firstAttribute="trailing" secondItem="jyD-Pf-MeT" secondAttribute="trailing" id="4zi-Ly-WBs"/>
+                        <constraint firstItem="jyD-Pf-MeT" firstAttribute="leading" secondItem="EFy-YO-LD4" secondAttribute="trailing" constant="2" id="7xE-pc-vUs"/>
+                        <constraint firstItem="9jq-70-Olq" firstAttribute="leading" secondItem="EFy-YO-LD4" secondAttribute="leading" constant="10" id="J7z-to-Kkc"/>
+                        <constraint firstItem="9jq-70-Olq" firstAttribute="centerY" secondItem="EFy-YO-LD4" secondAttribute="centerY" id="Jwj-a5-3Gv"/>
+                        <constraint firstItem="EFy-YO-LD4" firstAttribute="centerY" secondItem="SMe-x6-XBx" secondAttribute="centerY" id="Xhd-9h-sg1"/>
+                        <constraint firstItem="jyD-Pf-MeT" firstAttribute="centerY" secondItem="EFy-YO-LD4" secondAttribute="centerY" id="iiW-xB-Lv8"/>
+                        <constraint firstItem="EFy-YO-LD4" firstAttribute="leading" secondItem="SMe-x6-XBx" secondAttribute="leading" constant="20" id="ima-XX-z4N"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.98039215690000003" green="0.3803921569" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="cay-JJ-fYn" firstAttribute="width" secondItem="O3K-47-eFg" secondAttribute="width" id="BR0-pb-PYi"/>
                 <constraint firstAttribute="trailing" secondItem="cay-JJ-fYn" secondAttribute="trailing" constant="15" id="GHL-2O-si0"/>
+                <constraint firstAttribute="trailing" secondItem="SMe-x6-XBx" secondAttribute="trailing" id="IV0-J0-7SY"/>
                 <constraint firstItem="cay-JJ-fYn" firstAttribute="leading" secondItem="O3K-47-eFg" secondAttribute="trailing" constant="40" id="K3S-fm-wNn"/>
                 <constraint firstItem="cay-JJ-fYn" firstAttribute="top" secondItem="O3K-47-eFg" secondAttribute="top" id="MXj-m3-Uzm"/>
                 <constraint firstItem="O3K-47-eFg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Mxi-wD-88U"/>
                 <constraint firstAttribute="bottom" secondItem="O3K-47-eFg" secondAttribute="bottom" constant="35" id="YPq-2U-8CH"/>
+                <constraint firstItem="SMe-x6-XBx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mMc-0W-map"/>
+                <constraint firstItem="SMe-x6-XBx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x3a-6t-tkC"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
     <resources>
         <image name="btn_QRCode" width="16" height="16"/>
         <image name="btn_carDiscern" width="20" height="15"/>
+        <image name="icon_adressBook_search" width="13" height="13"/>
     </resources>
 </document>

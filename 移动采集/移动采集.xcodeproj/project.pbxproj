@@ -108,6 +108,8 @@
 		CE496F061F6A1B03004E69C6 /* SearchTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496F051F6A1B03004E69C6 /* SearchTagHelper.m */; };
 		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
 		CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */; };
+		CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */; };
+		CE4D71DE1FB44A86002F39D6 /* SearchImportCarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D71DC1FB44A86002F39D6 /* SearchImportCarVC.xib */; };
 		CE4DACAC1FA87EDD00665536 /* PersonLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4DACAA1FA87EDD00665536 /* PersonLocationVC.m */; };
 		CE4DACAD1FA87EDD00665536 /* PersonLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4DACAB1FA87EDD00665536 /* PersonLocationVC.xib */; };
 		CE4E3C051F39B63A0057148B /* IllegalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3C031F39B63A0057148B /* IllegalDetailVC.m */; };
@@ -555,6 +557,9 @@
 		CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentProcessResultVC.h; sourceTree = "<group>"; };
 		CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentProcessResultVC.m; sourceTree = "<group>"; };
 		CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessResultVC.xib; sourceTree = "<group>"; };
+		CE4D71DA1FB44A86002F39D6 /* SearchImportCarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchImportCarVC.h; sourceTree = "<group>"; };
+		CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchImportCarVC.m; sourceTree = "<group>"; };
+		CE4D71DC1FB44A86002F39D6 /* SearchImportCarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchImportCarVC.xib; sourceTree = "<group>"; };
 		CE4DACA91FA87EDD00665536 /* PersonLocationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonLocationVC.h; sourceTree = "<group>"; };
 		CE4DACAA1FA87EDD00665536 /* PersonLocationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonLocationVC.m; sourceTree = "<group>"; };
 		CE4DACAB1FA87EDD00665536 /* PersonLocationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonLocationVC.xib; sourceTree = "<group>"; };
@@ -1167,6 +1172,9 @@
 				CE41C7B51F5EAC800058FE8D /* ImportCarHomeVC.h */,
 				CE41C7B61F5EAC800058FE8D /* ImportCarHomeVC.m */,
 				CE41C7B71F5EAC800058FE8D /* ImportCarHomeVC.xib */,
+				CE4D71DA1FB44A86002F39D6 /* SearchImportCarVC.h */,
+				CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */,
+				CE4D71DC1FB44A86002F39D6 /* SearchImportCarVC.xib */,
 				CE4F3C131F5FE8C900C6EF64 /* VehicleCarAnnotation.h */,
 				CE4F3C141F5FE8C900C6EF64 /* VehicleCarAnnotation.m */,
 				CE4F3C161F5FFC0000C6EF64 /* QRCodeScanVC.h */,
@@ -2484,6 +2492,7 @@
 				CEE45BAE1FAC558F00BF472F /* UserTaskCell.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
+				CE4D71DE1FB44A86002F39D6 /* SearchImportCarVC.xib in Resources */,
 				CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */,
 				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
 				CE2C98AE1F61AAD7009851F6 /* VehicleMemberNoShowCell.xib in Resources */,
@@ -2738,6 +2747,7 @@
 				CE675F301F386DAE006FC15F /* AccidentListVC.m in Sources */,
 				CEFEFD0F1F29C62900C33CBD /* LLSimpleCamera.m in Sources */,
 				CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
+				CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */,
 				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
 				CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */,
 				CE5C39071F28606B0055C945 /* ZLProgressHUD.m in Sources */,
