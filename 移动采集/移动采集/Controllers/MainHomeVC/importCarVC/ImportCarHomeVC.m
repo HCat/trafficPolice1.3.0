@@ -9,7 +9,10 @@
 #import "ImportCarHomeVC.h"
 #import "NSTimer+UnRetain.h"
 #import "UINavigationBar+BarItem.h"
+
 #import <MAMapKit/MAMapKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+
 #import "VehicleAPI.h"
 #import "VehicleCarAnnotation.h"
 
@@ -18,10 +21,19 @@
 #import "VehicleDetailVC.h"
 #import "VehicleSearchVC.h"
 
-@interface ImportCarHomeVC ()<MAMapViewDelegate>
+@interface ImportCarHomeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
-@property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
+
+
+@property (nonatomic, strong) MAPointAnnotation *positionAnnotation; //定位的坐标点
+@property (nonatomic, strong) MACircle *positionCircle;              //定位画的圆
+@property (nonatomic, strong) NSNumber *latitude;                    //纬度
+@property (nonatomic, strong) NSNumber *longitude;                   //经度
+@property (nonatomic, strong) NSNumber *range;                       //半径
+
+
 @property (nonatomic, strong) NSTimer * loadRequestTime;
 @property (nonatomic, strong) NSMutableArray *arr_vehicles; //用来存储请求数据
 @property (nonatomic, strong) NSMutableArray *arr_point;    //用来存储点数据
@@ -39,6 +51,7 @@
     self.arr_point = [NSMutableArray array];
     
     [self initMapView];
+    [self configLocation];
     
     WS(weakSelf);
     self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
@@ -70,14 +83,43 @@
     [self.view addSubview:_mapView];
     [self.view sendSubviewToBack:_mapView];
     
-    _mapView.showsUserLocation = YES;
+    
     _mapView.distanceFilter = 200;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
+    _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
-    [_mapView setZoomLevel:14.1 animated:YES];
+    _mapView.maxZoomLevel = 20;
+    _mapView.minZoomLevel = 10;
+    [_mapView setZoomLevel:12 animated:YES];
 
 }
+
+- (void)configLocation{
+    
+    self.locationManager = [[AMapLocationManager alloc] init];
+    
+    [self.locationManager setDelegate:self];
+    
+    self.locationManager.distanceFilter = 20.0f;
+    
+    //设置期望定位精度
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    
+    //设置不允许系统暂停定位
+    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+    
+    //设置允许在后台定位
+    [self.locationManager setAllowsBackgroundLocationUpdates:NO];
+    
+    //设置定位超时时间
+    [self.locationManager setLocationTimeout:7];
+
+    [self.locationManager setLocatingWithReGeocode:NO];
+    [self.locationManager startUpdatingLocation];
+    
+}
+
 
 #pragma mark - 请求数据
 - (void)loadVehicleData{
@@ -92,7 +134,6 @@
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
-            
             
             if (strongSelf.arr_point && strongSelf.arr_point.count > 0) {
                 [strongSelf.mapView removeAnnotations:strongSelf.arr_point];
@@ -116,7 +157,6 @@
                 [strongSelf.mapView addAnnotations:strongSelf.arr_point];
             }
             
-            
         }
         
         
@@ -126,7 +166,54 @@
     
 }
 
+#pragma mark - 画定位的圆形还有坐标
+
+- (void) drawPositionRange{
+    
+    _range = @6;
+    
+    if (self.positionAnnotation) {
+        [_mapView removeAnnotation:self.positionAnnotation];
+        self.positionAnnotation = nil;
+    }
+    
+    self.positionAnnotation = [[MAPointAnnotation alloc] init];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]);
+    _positionAnnotation.coordinate = coordinate;
+    _positionAnnotation.title    = @"定位的点";
+    _positionAnnotation.subtitle = @"定位的点";
+    
+    [_mapView addAnnotation:_positionAnnotation];
+    
+    if (self.positionCircle) {
+        [_mapView removeOverlay:self.positionCircle];
+        self.positionCircle = nil;
+    }
+    
+    self.positionCircle = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]) radius:[_range intValue] * 1000];
+    [self.mapView addOverlay:_positionCircle];
+    
+}
+
+- (void)celearPositionRange{
+    
+    if (self.positionAnnotation) {
+        [_mapView removeAnnotation:self.positionAnnotation];
+        self.positionAnnotation = nil;
+    }
+    
+    if (self.positionCircle) {
+        [_mapView removeOverlay:self.positionCircle];
+        self.positionCircle = nil;
+    }
+    
+}
+
+
+
 #pragma mark - MAMapViewDelegate
+
+#pragma mark - 画点
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
     if ([annotation isKindOfClass:[VehicleCarAnnotation class]])
@@ -151,10 +238,26 @@
         }
         
         return vehicleCarView;
+    }else if ([annotation isKindOfClass:[MAPointAnnotation class]]){
+        static NSString *customReuseIndetifier = @"positionAnnotationID";
+        MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (positionView == nil)
+        {
+            positionView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            
+        }
+        
+        positionView.image = [UIImage imageNamed:@"icon_importCarCenter"];
+        
+        
+        return positionView;
     }
     
     return nil;
 }
+
+#pragma mark - 点击点
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     /* Adjust the map center in order to show the callout view completely. */
@@ -169,51 +272,72 @@
             t_vc.type = VehicleRequestTypeCarNumber;
             t_vc.NummberId = vehicle.vehicleCar.plateNo;
             [self.navigationController pushViewController:t_vc animated:YES];
+            
+            
+            
         }
     
     }
 }
 
+#pragma mark - 画圆
 
-- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
-    MAAnnotationView *view = views[0];
-    
-    // 放到该方法中用以保证userlocation的annotationView已经添加到地图上了。
-    if ([view.annotation isKindOfClass:[MAUserLocation class]])
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MACircle class]])
     {
+        MACircleRenderer *circleRenderer = [[MACircleRenderer alloc] initWithCircle:overlay];
         
-        [self loadVehicleData];
-        MAUserLocationRepresentation *pre = [[MAUserLocationRepresentation alloc] init];
-        pre.fillColor = [UIColor colorWithRed:183/255.f green:230/255.f blue:251/255.f alpha:0.3];
-        pre.strokeColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
-        pre.image = [UIImage imageNamed:@"map_location"];
-        pre.lineWidth = 1;
-        //        pre.lineDashPattern = @[@6, @3];
+        circleRenderer.lineWidth   = 1.f;
+        circleRenderer.strokeColor = [UIColor clearColor];
+        circleRenderer.fillColor   = [UIColorFromRGB(0x4281e8) colorWithAlphaComponent:0.3];
         
-        [self.mapView updateUserLocationRepresentation:pre];
-        
-        view.calloutOffset = CGPointMake(0, 0);
-        view.canShowCallout = NO;
-        self.userLocationAnnotationView = view;
+        return circleRenderer;
     }
     
+    return nil;
+}
+
+
+- (void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
+    _latitude = @(_mapView.centerCoordinate.latitude);
+    _longitude = @(_mapView.centerCoordinate.longitude);
+    [self celearPositionRange];
+    [self drawPositionRange];
+    [self loadVehicleData];
     
 }
 
-- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation{
-   
+#pragma mark - AMapDelegate 高德地图定位委托
 
-    if (!updatingLocation && self.userLocationAnnotationView != nil){
-        [UIView animateWithDuration:0.1 animations:^{
-            
-            double degree = userLocation.heading.trueHeading;
-            self.userLocationAnnotationView.transform = CGAffineTransformMakeRotation(degree * M_PI / 180.f );
-            
-        }];
-    }
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
+{
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    self.latitude =  @(location.coordinate.latitude);
+    self.longitude = @(location.coordinate.longitude);
+    
+    [self drawPositionRange];
+    [self makeLocationInCenter];
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager setDelegate:nil];
     
 }
 
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error{
+    
+    [self.locationManager stopUpdatingLocation];
+    
+    if (error != nil && error.code == AMapLocationErrorLocateFailed){
+        
+        //定位错误：此时location和regeocode没有返回值
+        LxPrintf(@"定位错误:{%ld - %@};", (long)error.code, error.localizedDescription);
+        
+        [self performSelector:@selector(configLocation) withObject:nil afterDelay:1.5];
+        
+    }
+    
+}
 
 #pragma mark - button Action
 
@@ -255,8 +379,8 @@
 #pragma mark - 让地图的中心点为定位坐标按钮
 
 - (void)makeLocationInCenter{
-    
-    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_latitude doubleValue], [_longitude doubleValue]);
+    [_mapView setCenterCoordinate:coordinate animated:YES];
     
     
 }

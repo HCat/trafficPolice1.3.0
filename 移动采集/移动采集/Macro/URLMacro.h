@@ -11,15 +11,19 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE NO
+#define ISONLINE YES
 
 #define DACHAODEBUG_URL @"http://192.168.10.88/police-admin"
 #define WEBSOCKET_DACHAODEBUG_URL @"ws://192.168.10.88/police-admin/websocket"
 
 #define DEBUG_URL @"http://h16552j072.51mypc.cn/police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
+//#define RELEASE_URL @"http://jinjiang.degal.cn/police-wx_jj"
+
 #define WEBSOCKET_DEBUG_URL @"ws://h16552j072.51mypc.cn/police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
+//#define WEBSOCKET_RELEASE_URL @"ws://jinjiang.degal.cn/police-wx_jj/websocket"
+
 
 #define Base_URL ISONLINE ? RELEASE_URL : DEBUG_URL
 #define WEBSOCKETURL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
@@ -125,6 +129,7 @@
 #define URL_VEHICLE_GETDETAILINFOBYPLATENO @"app/vehicle/getDetailInfoByPlateNo.json"  //车牌号获取重点车辆
 #define URL_VEHICLE_GETVEHICLERANGELOCATION @"app/vehicle/getVehicleRangeLocation.json"  //获取一定范围内车辆信息
 #define URL_VEHICLE_GETVEHICLELOCATION @"app/vehicle/getVehicleLocation.json"  //获取全部车辆信息
+#define URL_VEHICLE_VEHICLELOCATIONBYPLATENO @"app/vehicle/getVehicleLocationByPlateNo.json"    //通过
 
 #pragma mark - 警员勤务
 

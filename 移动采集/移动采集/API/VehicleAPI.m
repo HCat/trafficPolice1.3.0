@@ -145,3 +145,37 @@
 
 
 @end
+
+@implementation VehicleLocationByPlateNoManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_VEHICLE_VEHICLELOCATIONBYPLATENO;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"plateNo":_plateNo};
+}
+
+//返回参数
+- (VehicleGPSModel *)vehicleGPSModel{
+    
+    if (self.responseModel) {
+        
+        _vehicleGPSModel = [VehicleGPSModel modelWithDictionary:self.responseModel.data];
+        return _vehicleGPSModel;
+    }
+    
+    return nil;
+}
+
+
+@end
+
+
+
+
+
