@@ -97,5 +97,18 @@
 
 @end
 
+#pragma mark - 通过车牌号获取车辆位置信息
+
+
+@interface VehicleLocationByPlateNoManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * plateNo;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) VehicleGPSModel * vehicleGPSModel;
+
+@end
+
 
 

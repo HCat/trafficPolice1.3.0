@@ -87,7 +87,11 @@
     _mapView.distanceFilter = 200;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
-    [_mapView setZoomLevel:14.1 animated:YES];
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    _mapView.maxZoomLevel = 20;
+    _mapView.minZoomLevel = 10;
+    [_mapView setZoomLevel:12 animated:YES];
 
 }
 
