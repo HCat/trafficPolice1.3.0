@@ -556,7 +556,7 @@
 
 + (NSString*)idCardToAsterisk:(NSString *)idCardNum{
     
-    if (idCardNum && idCardNum.length > 0) {
+    if (idCardNum && idCardNum.length > 16) {
         //NSInteger length = idCardNum.length;
         return [idCardNum stringByReplacingCharactersInRange:NSMakeRange(10, 6) withString:@"******"];
     }else{
