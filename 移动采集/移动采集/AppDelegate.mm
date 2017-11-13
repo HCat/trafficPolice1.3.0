@@ -172,13 +172,11 @@
     
 }
 
--(void)reloadTabBar{
-    [_vc_tabBar loadTabs];
-}
+
 
 #pragma mark -AKTabbarDelegete
 - (void)tabBarControllerdidSelectTabAtIndex:(NSInteger)index{
-    if (index == 2) {
+    if (index == 3) {
         [ShareValue sharedDefault].makeNumber = 0;
         [_vc_tabBar loadTabs];
     }
@@ -312,7 +310,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *sound = [aps objectForKey:@"sound"];
         NSNumber *badge =   [aps objectForKey:@"badge"];
         
-        if (_vc_tabBar.selectedIndex == 2) {
+        if (_vc_tabBar.selectedIndex == 3) {
             [ShareValue sharedDefault].makeNumber = 0;
             UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
             MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
@@ -320,7 +318,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             
         }else{
             [ShareValue sharedDefault].makeNumber = [badge integerValue];
-            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[2];
+            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[3];
             MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
             [vc reloadDataUseMJRefresh];
         }
@@ -453,7 +451,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    if (_vc_tabBar.selectedIndex == 2) {
+    if (_vc_tabBar.selectedIndex == 3) {
         [ShareValue sharedDefault].makeNumber = 0;
         UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
         MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];

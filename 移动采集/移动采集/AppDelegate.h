@@ -27,7 +27,6 @@
 
 
 -(void)initAKTabBarController;
--(void)reloadTabBar;
 
 @end
 
