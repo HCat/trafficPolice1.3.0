@@ -7,32 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BaiduMapAPI_Location/BMKLocationComponent.h>
-#import <BaiduMapAPI_Search/BMKSearchComponent.h>
-#import <BaiduMapAPI_Utils/BMKGeometry.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 
-typedef NS_ENUM(NSInteger, LocationTyp) {
-    LocationTypeBaidu,   //百度地图
-    LocationTypeGaode,   //高德地图
-};
 
-@interface LocationHelper : NSObject<BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,AMapLocationManagerDelegate>
+@interface LocationHelper : NSObject<AMapLocationManagerDelegate>
 
 LRSingletonH(Default)
 
-@property (assign, nonatomic) LocationTyp locationType;
-@property (strong, nonatomic) BMKLocationService * locService;
-@property (strong, nonatomic) BMKGeoCodeSearch * geocodesearch;
 @property (nonatomic, strong) AMapLocationManager *locationManager;
-@property (assign, nonatomic) double latitude;
-@property (assign, nonatomic) double longitude;
-@property (assign, nonatomic) double baiduLatitude;
-@property (assign, nonatomic) double baiduLongitude;
-@property (copy, nonatomic) NSString *city;
-@property (copy, nonatomic) NSString *district;
-@property (copy, nonatomic) NSString *streetName;
-@property (copy, nonatomic) NSString *address;
+@property (assign, nonatomic) double latitude;      //纬度
+@property (assign, nonatomic) double longitude;     //经度
+
+
+@property (copy, nonatomic) NSString *city;         //城市
+@property (copy, nonatomic) NSString *district;     //县城
+@property (copy, nonatomic) NSString *streetName;   //街道
+@property (copy, nonatomic) NSString *address;      //详细地址
 
 - (void)startLocation;
 - (void)stopLocation;

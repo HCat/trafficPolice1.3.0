@@ -79,4 +79,7 @@
 // 隐藏身份证号码中间字符
 + (NSString*)idCardToAsterisk:(NSString *)idCardNum;
 
+//打印崩溃日志重定向
++ (void)printCrashLog;
+
 @end

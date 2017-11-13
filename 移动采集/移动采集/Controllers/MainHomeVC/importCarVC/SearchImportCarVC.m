@@ -139,7 +139,6 @@
             t_vc.NummberId = vehicle.vehicleCar.plateNo;
             [self.navigationController pushViewController:t_vc animated:YES];
             
-        
         }
         
     }

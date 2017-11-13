@@ -18,6 +18,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) AMapLocationManager * locationManager;
 @property (nonatomic, strong) NSNumber * latitude;
 @property (nonatomic, strong) NSNumber * longitude;
+
 @property (copy, nonatomic) NSString * city;
 @property (copy, nonatomic) NSString * streetName;
 @property (copy, nonatomic) NSString * address;

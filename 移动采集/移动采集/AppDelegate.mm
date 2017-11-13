@@ -28,7 +28,7 @@
 #import "IdentifyAPI.h"
 #import "MessageDetailVC.h"
 
-#import "SuperLogger.h"
+
 
 @interface AppDelegate ()
 
@@ -36,7 +36,6 @@
 
 @end
 
-BMKMapManager* _mapManager;
 @implementation AppDelegate
 
 
@@ -44,24 +43,16 @@ BMKMapManager* _mapManager;
     
     [self commonConfig];
     [self addThirthPart:launchOptions];
-    //设定定位使用高德还是百度地图来定位
-    [[LocationHelper sharedDefault] setLocationType:LocationTypeGaode];
-    //同步通知消息数目
-    [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    //添加点击消息通知时候弹出具体详情
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationSuccess:) name:NOTIFICATION_RECEIVENOTIFICATION_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
-    
+    [ShareFun printCrashLog];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = DefaultBGColor;
     
-    LxPrintf(@"%@",[ShareValue sharedDefault].token);
+    
     if ([ShareValue sharedDefault].token) {
         
         [ShareFun openWebSocket];
-        LxPrintf(@"%@",[UserModel getUserModel].userId);
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-            
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
         
@@ -69,24 +60,16 @@ BMKMapManager* _mapManager;
         self.window.rootViewController = self.vc_tabBar;
         
     }else{
+        
         LoginHomeVC *vc_login = [LoginHomeVC new];
         UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:vc_login];
         self.window.rootViewController = t_nav;
+        
     }
     
     [self.window makeKeyAndVisible];
     
-    //日子重定向用于记录崩溃日志
-    SuperLogger *logger = [SuperLogger sharedInstance];
-    // Start NSLogToDocument
-    [logger redirectNSLogToDocumentFolder];
-    // Set Email info
-    logger.mailTitle = @"移动采集日志信息";
-    logger.mailContect = @"移动采集日志信息";
-    logger.mailRecipients = @[@"qgwzhuanglr@163.com"];
-    //每次进来清除一周前的日志
-    NSDate *five = [[NSDate date]dateByAddingTimeInterval:-60*60*24*7];
-    [[SuperLogger sharedInstance] cleanLogsBefore:five deleteStarts:YES];
+    
     
     return YES;
 }
@@ -103,8 +86,15 @@ BMKMapManager* _mapManager;
         [UINavigationBar appearance].translucent = NO;
     }
     
+    //开启网络监听通知
     [[NetWorkHelper sharedDefault] startNotification];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReconnection) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];
+
+    //同步通知消息数目
+    [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    //添加点击消息通知时候弹出具体详情
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationSuccess:) name:NOTIFICATION_RECEIVENOTIFICATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     
     //配置统一的网络基地址
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
@@ -119,29 +109,7 @@ BMKMapManager* _mapManager;
     
     [WXApi registerApp:WEIXIN_APP_ID];
     
-    // 要使用百度地图，请先启动BaiduMapManager
-    _mapManager = [[BMKMapManager alloc]init];
-    
-    /**
-     *百度地图SDK所有接口均支持百度坐标（BD09）和国测局坐标（GCJ02），用此方法设置您使用的坐标类型.
-     *默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
-     *如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
-     */
-    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_COMMON]) {
-        LxPrintf(@"经纬度类型设置成功");
-    } else {
-        LxPrintf(@"经纬度类型设置失败");
-    }
-    
-    BOOL ret = [_mapManager start:BAIDUMAP_APP_KEY generalDelegate:self];
-    if (!ret) {
-        LxPrintf(@"manager start failed!");
-    }
-    
-    //百度地图初始化
-    
     [AMapServices sharedServices].apiKey = AMAP_APP_KEY;
-    
     
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
@@ -155,7 +123,7 @@ BMKMapManager* _mapManager;
         // NSSet<UNNotificationCategory *> *categories for iOS10 or later
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
-    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:(id<JPUSHRegisterDelegate>)self];
     
     // Required
     // init Push
@@ -220,10 +188,7 @@ BMKMapManager* _mapManager;
 
 - (void)networkReconnection{
     
-    BOOL ret = [_mapManager start:BAIDUMAP_APP_KEY generalDelegate:self];
-    if (!ret) {
-        LxPrintf(@"manager start failed!");
-    }
+   
     [[LocationHelper sharedDefault] startLocation];
 
 }
@@ -257,17 +222,17 @@ BMKMapManager* _mapManager;
      * @return 成功返回YES，失败返回NO。
      */
     
-    return [WXApi handleOpenURL:url delegate:self];
+    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
 }
 
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    return [WXApi handleOpenURL:url delegate:self];
+    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
     
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
-    return [WXApi handleOpenURL:url delegate:self];
+    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
 }
 
 /*! 微信回调，不管是登录还是分享成功与否，都是走这个方法 @brief 发送一个sendReq后，收到微信的回应

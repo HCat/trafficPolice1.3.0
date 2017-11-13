@@ -12,6 +12,7 @@
 #import "SAMKeychainQuery.h"
 #import "HSUpdateApp.h"
 #import "SRAlertView.h"
+#import "SuperLogger.h"
 
 #import "UserModel.h"
 #import "LoginHomeVC.h"
@@ -550,13 +551,12 @@
     
 }
 
-/*
- *  隐藏身份证号码中间字符
- */
+#pragma mark - 隐藏身份证号码中间字符
+
 
 + (NSString*)idCardToAsterisk:(NSString *)idCardNum{
     
-    if (idCardNum && idCardNum.length > 0) {
+    if (idCardNum && idCardNum.length > 16) {
         //NSInteger length = idCardNum.length;
         return [idCardNum stringByReplacingCharactersInRange:NSMakeRange(10, 6) withString:@"******"];
     }else{
@@ -564,6 +564,25 @@
     }
     
 }
+
+#pragma mark - 打印崩溃日志重定向
++ (void)printCrashLog{
+    
+    //日子重定向用于记录崩溃日志
+    SuperLogger *logger = [SuperLogger sharedInstance];
+    // Start NSLogToDocument
+    [logger redirectNSLogToDocumentFolder];
+    // Set Email info
+    logger.mailTitle = @"移动采集日志信息";
+    logger.mailContect = @"移动采集日志信息";
+    logger.mailRecipients = @[@"qgwzhuanglr@163.com"];
+    //每次进来清除一周前的日志
+    NSDate *five = [[NSDate date]dateByAddingTimeInterval:-60*60*24*7];
+    [[SuperLogger sharedInstance] cleanLogsBefore:five deleteStarts:YES];
+    
+}
+
+
 
 
 @end
