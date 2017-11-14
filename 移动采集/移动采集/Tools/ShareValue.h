@@ -30,16 +30,16 @@ typedef NS_ENUM(NSUInteger, ParkType) {
     ParkTypeReversePark = 1001,     //逆向违停
     ParkTypeLockPark = 1002,        //违停锁车
     ParkTypeCarInfoAdd = 2001,      //车辆录入
-    ParkTypeThrough = 2333         //闯禁令
+    ParkTypeThrough = 2333          //闯禁令
 };
 
 @interface ShareValue : NSObject
 
 LRSingletonH(Default)
 
-@property (nonatomic, copy) NSString *unionid;  //微信unionid
-@property (nonatomic, copy) NSString *token;    //token值
-@property (nonatomic, copy) NSString *phone;    //登录返回的手机号码
+@property (nonatomic, copy) NSString *unionid;      //微信unionid
+@property (nonatomic, copy) NSString *token;        //token值
+@property (nonatomic, copy) NSString *phone;        //登录返回的手机号码
 @property (nonatomic, assign) NSInteger makeNumber; //推送消息数目
 
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值

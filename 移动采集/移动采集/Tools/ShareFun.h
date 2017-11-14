@@ -57,6 +57,9 @@
 //监测版本是否可以更新
 + (void)checkForVersionUpdates;
 
+//检查版本是否强制更新
++ (void)checkForceForVersionUpdates;
+
 //提示无权限操作
 + (void)showNoPermissionsTip;
 
@@ -81,5 +84,8 @@
 
 //打印崩溃日志重定向
 + (void)printCrashLog;
+
+//退出程序
++ (void)exitApplication;
 
 @end

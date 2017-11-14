@@ -86,6 +86,8 @@
         [UINavigationBar appearance].translucent = NO;
     }
     
+    [ShareFun checkForceForVersionUpdates];
+    
     //开启网络监听通知
     [[NetWorkHelper sharedDefault] startNotification];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReconnection) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];

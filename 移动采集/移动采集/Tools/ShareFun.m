@@ -21,6 +21,7 @@
 #import "UserModel.h"
 #import "WebSocketHelper.h"
 #import "SocketModel.h"
+#import "CommonAPI.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 
@@ -380,6 +381,45 @@
 
 }
 
+
+#pragma mark - 检查版本是否强制更新
++ (void)checkForceForVersionUpdates{
+    
+    CommonVersionUpdateManger *manger = [[CommonVersionUpdateManger alloc] init];
+    manger.appType = @"IOS";
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        if (manger.responseModel.code == CODE_SUCCESS) {
+            if ( manger.commonVersionUpdateModel.isForce == YES) {
+                
+                [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+                    
+                    if (isUpdate == YES) {
+                        
+                        [SRAlertView sr_showAlertViewWithTitle:@"版本更新" message:[NSString stringWithFormat:@"发现新的版本(V%@),是否更新？",storeVersion] leftActionTitle:@"取消" rightActionTitle:@"更新" animationStyle:AlertViewAnimationZoom selectAction:^(AlertViewActionType actionType) {
+                            if (actionType == AlertViewActionTypeRight) {
+                                NSURL *url = [NSURL URLWithString:openUrl];
+                                [[UIApplication sharedApplication] openURL:url];
+                            }else if (actionType == AlertViewActionTypeLeft){
+                                [ShareFun exitApplication];
+                                
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+           
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+    
+}
+
 #pragma mark - 提示无权限操作
 
 + (void)showNoPermissionsTip{
@@ -582,7 +622,22 @@
     
 }
 
+#pragma mark -
 
++ (void)exitApplication{
+    
+    AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(window.bounds.size.width/2, window.bounds.size.height/2, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+    
+    
+}
 
 
 @end
