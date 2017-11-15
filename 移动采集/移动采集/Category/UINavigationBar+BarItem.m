@@ -38,7 +38,7 @@
 
 - (void)showRightBarButtonItemWithImage:(NSString *)imageName target:(id)target action:(SEL)action {
     UIImage *image = [UIImage imageNamed:imageName];
-    CGRect buttonFrame = CGRectMake(0, 0, image.size.width + 10.0f, self.navigationController.navigationBar.frame.size.height);
+    CGRect buttonFrame = CGRectMake(0, 0, image.size.width + 10.0f, image.size.height);
     UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];
     button.contentMode = UIViewContentModeScaleAspectFit;
 	button.backgroundColor = [UIColor clearColor];

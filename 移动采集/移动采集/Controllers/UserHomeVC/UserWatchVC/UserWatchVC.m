@@ -52,13 +52,18 @@
     
     self.tempDate = [NSDate date];
     [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(significantTimeChange)
+                                                 name:UIApplicationSignificantTimeChangeNotification
+                                               object:nil];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-   
+    
 }
 
 
@@ -315,6 +320,18 @@
     }
 }
 
+#pragma mark - notication
+
+- (void)significantTimeChange{
+    
+    NSDate *t_tempDate = [NSDate date];
+    
+    if ([t_tempDate.yyyyMMByLineWithDate isEqualToString:self.tempDate.yyyyMMByLineWithDate]) {
+        [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
+    }
+
+}
+
 
 #pragma mark - dealloc
 
@@ -388,10 +405,8 @@
     self.dayLabel.text = [NSString stringWithFormat:@"%ld",monthModel.dayValue];
     
     
-    if (self.v_today) {
-        [self.v_today removeFromSuperview];
-        self.v_today = nil;
-    }
+    [self.v_today removeFromSuperview];
+    self.v_today = nil;
     
     if (monthModel.isSelectedDay) {
         

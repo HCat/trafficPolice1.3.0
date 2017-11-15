@@ -89,6 +89,18 @@
                 [t_lable autoPinEdgeToSuperviewEdge:ALEdgeLeading];
                 [t_lable autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
                 
+                UILabel * t_lable_time = [UILabel newAutoLayoutView];
+                t_lable_time.text = [ShareFun timeWithTimeInterval:picModel.uploadTime dateFormat:@"HH:mm:ss"];
+                t_lable_time.tag = i + 2000;
+                t_lable_time.font = [UIFont systemFontOfSize:14.f];
+                t_lable_time.textColor = UIColorFromRGB(0xe6504a);
+                t_lable_time.textAlignment = NSTextAlignmentCenter;
+                [t_v addSubview:t_lable_time];
+                
+                [t_lable_time autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:t_lable withOffset:5.f];
+                [t_lable_time autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+                [t_lable_time autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+                
                 
                 [_arr_view addObject:t_v];
                 
@@ -140,7 +152,7 @@
             
             for (int i = 0;i < [_arr_view count]; i++) {
                 UIView *t_v  = _arr_view[i];
-                [t_v autoMatchDimension:ALDimensionHeight toDimension:ALDimensionWidth ofView:t_v withOffset:22.f];
+                [t_v autoMatchDimension:ALDimensionHeight toDimension:ALDimensionWidth ofView:t_v withOffset:44.f];
             }
             
             [self setNeedsUpdateConstraints];

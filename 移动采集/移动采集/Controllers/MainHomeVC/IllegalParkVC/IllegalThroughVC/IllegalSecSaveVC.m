@@ -200,7 +200,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
                 NSMutableDictionary *t_dic = _arr_upImages[indexPath.row];
                 ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
                 cell.imageView.image = imageInfo.image;
-                cell.lb_title.text = imageInfo.imageTime;
+                cell.lb_title.text = nil;
                 
             }
         

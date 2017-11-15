@@ -66,7 +66,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-
+    [self getWeatherData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
