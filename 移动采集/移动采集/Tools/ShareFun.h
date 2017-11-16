@@ -88,4 +88,7 @@
 //退出程序
 + (void)exitApplication;
 
+//弹出tip信息框
++ (void)showTipLable:(NSString *)tip;
+
 @end

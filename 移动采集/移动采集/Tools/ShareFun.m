@@ -622,7 +622,7 @@
     
 }
 
-#pragma mark -
+#pragma mark - 退出程序
 
 + (void)exitApplication{
     
@@ -635,6 +635,31 @@
     } completion:^(BOOL finished) {
         exit(0);
     }];
+    
+}
+
+#pragma mark - 弹出tip信息框
+
++ (void)showTipLable:(NSString *)tip{
+    
+    AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    
+    __block UILabel *lb_title = [[UILabel alloc] initWithFrame:CGRectMake(40, ScreenHeight - 100, window.frame.size.width-80, 30)];
+    lb_title.font =[UIFont systemFontOfSize:14];
+    lb_title.textColor = [UIColor whiteColor];
+    lb_title.layer.cornerRadius = 5.0f;
+    
+    lb_title.textAlignment = NSTextAlignmentCenter;
+    lb_title.backgroundColor = [UIColor blackColor];
+    lb_title.text = tip;
+    
+    [window addSubview:lb_title];
+    
+    [[GCDQueue mainQueue] execute:^{
+        [lb_title removeFromSuperview];
+        lb_title = nil;
+    } afterDelay:3.0f*NSEC_PER_SEC];
     
     
 }

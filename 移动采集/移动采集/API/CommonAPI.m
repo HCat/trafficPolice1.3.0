@@ -57,6 +57,11 @@
     return YTKRequestMethodPOST;
 }
 
+- (NSTimeInterval)requestTimeoutInterval
+{
+    return 5.f;
+}
+
 //请求参数
 - (nullable id)requestArgument
 {

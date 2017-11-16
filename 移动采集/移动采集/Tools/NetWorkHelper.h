@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Reachability/Reachability.h>
 
-typedef void(^NetworkReconnectionBlock)();
-typedef void(^NetworkUnconnectionBlock)();
+typedef void(^NetworkReconnectionBlock)(void);
+typedef void(^NetworkUnconnectionBlock)(void);
 
 @interface NetWorkHelper : NSObject
 

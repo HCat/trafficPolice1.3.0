@@ -69,7 +69,7 @@
 //请求超时时间
 - (NSTimeInterval)requestTimeoutInterval
 {
-    return 60;
+    return 30;
 }
 
 - (void)requestCompleteFilter{

@@ -127,6 +127,7 @@
 		CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */; };
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
 		CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE518BC61F99E3F2008F52B5 /* WeatherModel.m */; };
+		CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
 		CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */; };
@@ -587,6 +588,8 @@
 		CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarkModel.m; sourceTree = "<group>"; };
 		CE518BC51F99E3F2008F52B5 /* WeatherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		CE518BC61F99E3F2008F52B5 /* WeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkStatusMonitor.m; sourceTree = "<group>"; };
+		CE53D03A1FBD72FB00445877 /* NetworkStatusMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkStatusMonitor.h; sourceTree = "<group>"; };
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
 		CE555F5C1F20568100829124 /* UserSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetVC.m; sourceTree = "<group>"; };
 		CE555F5D1F20568100829124 /* UserSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSetVC.xib; sourceTree = "<group>"; };
@@ -2196,6 +2199,8 @@
 				CE5E20401F32C2E1009D98A6 /* CountAccidentHelper.m */,
 				CE57F7881F1E017300CA9FCF /* NetWorkHelper.h */,
 				CE57F7891F1E017300CA9FCF /* NetWorkHelper.m */,
+				CE53D03A1FBD72FB00445877 /* NetworkStatusMonitor.h */,
+				CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */,
 				CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */,
 				CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */,
 				CE496F041F6A1B03004E69C6 /* SearchTagHelper.h */,
@@ -2577,6 +2582,7 @@
 				CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */,
 				CE2C98A71F61AAA3009851F6 /* VehicleMemberCell.m in Sources */,
 				CE5C39051F28606B0055C945 /* ZLPhotoManager.m in Sources */,
+				CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,

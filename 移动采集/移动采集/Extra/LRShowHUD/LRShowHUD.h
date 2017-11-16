@@ -23,7 +23,7 @@
 typedef void(^ConfigShowHUDBlock)(LRShowHUD * _Nullable showhud);
 
 /* 配置自定义视图，视图赋值给MBProgressHUD.customView属性 */
-typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)();
+typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)(void);
 
 
 @interface LRShowHUD : NSObject

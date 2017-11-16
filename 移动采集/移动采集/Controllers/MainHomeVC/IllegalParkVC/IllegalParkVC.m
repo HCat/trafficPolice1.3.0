@@ -643,6 +643,16 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
+    [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
+        
+        //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
+        //10为4G网络
+        if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
+            NSLog(@"当前非4G网络,传输速度受影响");
+            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+        }
+    }];
+    
     
     [self configParamInFilesAndRemarksAndTimes];
     
