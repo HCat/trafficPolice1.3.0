@@ -102,7 +102,7 @@
     DutyGetDutyByMonthManger *manger = [[DutyGetDutyByMonthManger alloc] init];
     manger.dateStr = date;
     [manger configLoadingTitle:@"请求"];
-    manger.failMessage = nil;
+    manger.v_showHud = self.view;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);

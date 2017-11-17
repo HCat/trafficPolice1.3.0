@@ -282,7 +282,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 
     WS(weakSelf);
     CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
-    manger.isNeedShowHud = NO;
     manger.isLog = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
@@ -303,20 +302,18 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 #pragma mark - UICollectionView Data Source
 
 //返回多少个组
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView   *)collectionView
-{
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView   *)collectionView{
     return 1;
 }
 
 //返回每组多少个视图
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [self.arr_upImages count] + 1;
 }
 
 //返回视图的具体事例，我们的数据关联就是放在这里
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
    
     [cell setCommonConfig];

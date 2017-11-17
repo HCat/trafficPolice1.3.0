@@ -24,14 +24,13 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayout;
-
-@property (nonatomic,strong) NSArray *arr_items;
-
-@property (weak, nonatomic) IBOutlet UIButton *btn_location;
-@property (weak, nonatomic) IBOutlet UILabel *lb_weather;
-@property (weak, nonatomic) IBOutlet UILabel *lb_temperature;
+@property (weak, nonatomic) IBOutlet UIButton * btn_location;
+@property (weak, nonatomic) IBOutlet UILabel  * lb_weather;
+@property (weak, nonatomic) IBOutlet UILabel  * lb_temperature;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_collection_top; //用于适配不同屏幕大小
+
+@property (nonatomic,strong) NSArray *arr_items;
 
 @end
 
@@ -49,7 +48,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     //定位
     [[LocationHelper sharedDefault] startLocation];
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
     
     if (IS_IPHONE_4_OR_LESS) {
@@ -64,9 +62,10 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    [self getWeatherData];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -83,7 +82,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     WS(weakSelf);
     CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
     manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    manger.isNeedShowHud = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
@@ -156,7 +154,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
             }
             
-        
         }
 
         _arr_items = t_arr.copy;
@@ -170,18 +167,18 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 #pragma mark - UICollectionView Data Source
 
 //返回多少个组
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView   *)collectionView
-{
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView   *)collectionView{
     return 1;
 }
+
 //返回每组多少个视图
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [self.arr_items count];
 }
+
 //返回视图的具体事例，我们的数据关联就是放在这里
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
     cell.isNeedTitle = YES;
@@ -203,19 +200,24 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
-- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
     //设置(Highlight)高亮下的颜色
     [cell setBackgroundColor:DefaultBGColor];
+    
 }
 
-- (void)collectionView:(UICollectionView *)colView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)colView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
     //设置(Nomal)正常状态下的颜色
     [cell setBackgroundColor:[UIColor whiteColor]];
+    
 }
+
+
 //选中时的操作
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -319,11 +321,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 }
 
 #pragma mark - buttonActions
-
-- (IBAction)handleBtnQrCodeClicked:(id)sender {
-    
-    
-}
 
 - (IBAction)handleBtnLocationClicked:(id)sender {
     [[LocationHelper sharedDefault] startLocation];

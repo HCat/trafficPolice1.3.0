@@ -44,7 +44,6 @@ LRSingletonM(Default)
         
         WS(weakSelf);
         AccidentGetCodesManger *manger = [AccidentGetCodesManger new];
-        manger.isNeedShowHud = NO;
         manger.isLog = NO;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
@@ -70,7 +69,6 @@ LRSingletonM(Default)
         
         WS(weakSelf);
         CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
-        manger.isNeedShowHud = NO;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
             if (manger.responseModel.code == CODE_SUCCESS) {
@@ -87,7 +85,7 @@ LRSingletonM(Default)
 }
 
 - (NSInteger)makeNumber{
-    LxPrintf(@"推送消息数目：%ld",(long)[UIApplication sharedApplication].applicationIconBadgeNumber);
+    //LxPrintf(@"推送消息数目：%ld",(long)[UIApplication sharedApplication].applicationIconBadgeNumber);
     return [UIApplication sharedApplication].applicationIconBadgeNumber;
 }
 

@@ -167,8 +167,7 @@
     LoginCheckManger *manger = [LoginCheckManger new];
     manger.param = param;
     [manger configLoadingTitle:@"登录"];
-    manger.failMessage = nil;
-   
+    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         if (manger.responseModel.code == CODE_SUCCESS) {
             /*********** 归档用户 ************/

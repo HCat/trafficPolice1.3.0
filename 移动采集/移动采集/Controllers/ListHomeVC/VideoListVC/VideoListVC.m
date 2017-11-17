@@ -128,8 +128,7 @@
 
     VideoColectListPagingManger *manger = [[VideoColectListPagingManger alloc] init];
     manger.param = param;
-    manger.isNeedShowHud = NO;
-    
+
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
         [strongSelf.collectionView.mj_header endRefreshing];

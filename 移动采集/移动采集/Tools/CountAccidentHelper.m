@@ -36,8 +36,7 @@ LRSingletonM(Default)
             
             manger.carNo = _carNo;
             manger.state = _state;
-            manger.isNeedShowHud = NO;
-            
+        
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 
                 if (manger.responseModel.code == CODE_SUCCESS) {
@@ -92,7 +91,6 @@ LRSingletonM(Default)
             
             manger.idNo = _idNo;
             manger.state = _state;
-            manger.isNeedShowHud = NO;
             
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 
@@ -143,8 +141,7 @@ LRSingletonM(Default)
             
             manger.telNum = _telNum;
             manger.state = _state;
-            manger.isNeedShowHud = NO;
-            
+      
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 
                 if (manger.responseModel.code == CODE_SUCCESS) {

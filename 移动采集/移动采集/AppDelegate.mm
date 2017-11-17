@@ -69,8 +69,6 @@
     
     [self.window makeKeyAndVisible];
     
-    
-    
     return YES;
 }
 
@@ -86,8 +84,6 @@
         [UINavigationBar appearance].translucent = NO;
     }
     
-    [ShareFun checkForceForVersionUpdates];
-    
     //开启网络监听通知
     [[NetWorkHelper sharedDefault] startNotification];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReconnection) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];
@@ -101,6 +97,8 @@
     //配置统一的网络基地址
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = Base_URL;
+    //请求是否强更
+    [ShareFun checkForceForVersionUpdates];
     
 }
 
@@ -181,6 +179,11 @@
     if (index == 3) {
         [ShareValue sharedDefault].makeNumber = 0;
         [_vc_tabBar loadTabs];
+    }else if (index == 0){
+        UINavigationController *t_nav_main = _vc_tabBar.viewControllers[0];
+        MainHomeVC *t_vc = t_nav_main.viewControllers[0];
+        [t_vc getWeatherData];
+        
     }
 }
 

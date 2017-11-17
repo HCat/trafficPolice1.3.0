@@ -220,7 +220,7 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return nil;
+    return @{@"appType":_appType};
 }
 
 //返回参数

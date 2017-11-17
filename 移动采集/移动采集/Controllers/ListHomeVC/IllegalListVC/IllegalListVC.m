@@ -155,8 +155,7 @@
         }
         IllegalParkListPagingManger *manger = [[IllegalParkListPagingManger alloc] init];
         manger.param = param;
-        manger.isNeedShowHud = NO;
-        
+       
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
             [strongSelf.tb_content.mj_header endRefreshing];
@@ -203,8 +202,6 @@
         
         IllegalThroughListPagingManger *manger = [[IllegalThroughListPagingManger alloc] init];
         manger.param = param;
-        manger.isNeedShowHud = NO;
-        
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
             [strongSelf.tb_content.mj_header endRefreshing];

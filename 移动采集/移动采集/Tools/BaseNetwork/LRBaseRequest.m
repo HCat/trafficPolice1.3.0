@@ -83,9 +83,12 @@
     self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
     
     if (_isLog) {
+        LxPrintf(@"======================= 请求成功 =======================");
+        LxPrintf(@"\n");
         LxDBAnyVar(self.description);
-        //LxDBObjectAsJson(self.responseJSONObject);
         LxDBObjectAsJson(self.responseModel);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
     }
     
     if (self.responseModel.code == CODE_FAILED){
@@ -93,12 +96,12 @@
         if (_failMessage) {
             
             if (_failMessage.length != 0) {
-                [LRShowHUD showError:_failMessage duration:1.2f inView:self.v_showHud];
+                [LRShowHUD showError:_failMessage duration:1.2f inView:_v_showHud];
             }
             
         }else{
             
-            [LRShowHUD showError:self.responseModel.msg duration:1.2f inView:self.v_showHud];
+            [LRShowHUD showError:self.responseModel.msg duration:1.2f inView:_v_showHud];
         }
         
     }else if (self.responseModel.code == CODE_SUCCESS){
@@ -108,7 +111,7 @@
             if (_successMessage) {
                 
                 if (_successMessage.length != 0) {
-                    [LRShowHUD showSuccess:_successMessage duration:1.2f inView:self.v_showHud];
+                    [LRShowHUD showSuccess:_successMessage duration:1.2f inView:_v_showHud];
 
                 }
                 
@@ -135,9 +138,13 @@
     
     if (_isLog) {
         
+        LxPrintf(@"======================= 请求失败 =======================");
+        LxPrintf(@"\n");
         LxDBAnyVar(self.description);
         LxDBAnyVar(self.responseStatusCode);
         LxDBAnyVar(self.error.localizedDescription);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
         
     }
     
@@ -149,7 +156,7 @@
         
     }else{
         
-        [LRShowHUD showError:[NSString stringWithFormat:@"网络请求错误:code-%ld",self.responseStatusCode] duration:1.2f inView:self.v_showHud];
+        [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
     }
 
 }
@@ -173,7 +180,6 @@
     _isNeedShowHud = YES;
     self.loadingMessage =  [NSString stringWithFormat:@"%@中..",title];
     self.successMessage =  [NSString stringWithFormat:@"%@成功",title];
-    self.failMessage    =  [NSString stringWithFormat:@"%@失败",title];
 }
 
 - (void)dealloc{

@@ -393,9 +393,9 @@
 
 }
 
-- (void)dealloc
-{
-    NSLog(@"LRShowHUD dealloc");
+- (void)dealloc{
+    
+    //LxPrintf(@"LRShowHUD dealloc");
 }
 
 @end

@@ -128,7 +128,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     WS(weakSelf);
     CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
-    manger.isNeedShowHud = NO;
     manger.isLog = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
