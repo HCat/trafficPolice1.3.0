@@ -14,6 +14,8 @@
 
 typedef void (^fininshCaptureBlock)(LRCameraVC
 *camera);
+typedef void (^errorIdentifyCaptureBlock)(LRCameraVC
+                                    *camera);
 
 @interface LRCameraVC : BaseViewController
 
@@ -37,6 +39,8 @@ typedef void (^fininshCaptureBlock)(LRCameraVC
 
 //拍照完之后调用的block
 @property (nonatomic,copy) fininshCaptureBlock fininshCaptureBlock;
+//拍照完之后调用的block
+@property (nonatomic,copy) errorIdentifyCaptureBlock errorIdentifyCaptureBlock;
 
 //违停或闯禁令拍照之后截取车牌用
 @property (nonatomic,assign) BOOL isIllegal;

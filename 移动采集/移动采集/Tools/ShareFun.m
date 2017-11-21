@@ -649,6 +649,7 @@
     lb_title.font =[UIFont systemFontOfSize:14];
     lb_title.textColor = [UIColor whiteColor];
     lb_title.layer.cornerRadius = 5.0f;
+    lb_title.layer.masksToBounds = YES;
     
     lb_title.textAlignment = NSTextAlignmentCenter;
     lb_title.backgroundColor = [UIColor blackColor];

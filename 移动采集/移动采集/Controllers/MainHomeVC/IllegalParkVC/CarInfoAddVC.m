@@ -66,6 +66,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [_collectionView registerNib:[UINib nibWithNibName:@"IllegalParkAddHeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headId];
     
     [self getCommonRoad];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -75,6 +76,13 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         [weakSelf getCommonRoad];
     };
+    
+#ifdef __IPHONE_11_0
+    if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+#endif
+    
 }
 
 #pragma mark - 返回按钮事件
@@ -176,12 +184,18 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }else{
         
         NSMutableDictionary *t_dic = _arr_upImages[indexPath.row];
-        NSString *t_cutImageUrl = [t_dic objectForKey:@"cutImageUrl"];
         
-        if (t_cutImageUrl) {
+        ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
+        if (imageInfo) {
+            cell.imageView.image = imageInfo.image;
+        }else{
+            NSString *t_cutImageUrl = [t_dic objectForKey:@"cutImageUrl"];
             
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_cutImageUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"]];
-            
+            if (t_cutImageUrl) {
+                 [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_cutImageUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"]];
+                
+                
+            }
         }
         
     }
@@ -251,6 +265,10 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             
                             //识别之后所做的操作
                             [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
+                            
+                        }else{
+                            
+                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:0];
                             
                         }
                         
@@ -348,10 +366,22 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
-    _param.type = @(2001);
+    [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
+        
+        //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
+        //10为4G网络
+        if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
+            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+        }
+    }];
+    
+
+    [self configParamInFilesAndRemarksAndTimes];
     
     LxDBObjectAsJson(_param);
     WS(weakSelf);
+    
+    _param.type = @(2001);
     
     IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
     manger.param = _param;
@@ -393,6 +423,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         _param.taketime    = [ShareFun getCurrentTime];
         [self replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:0];
         
+    }else{
+        [self replaceUpImageItemToUpImagesWithImageInfo:cameraVC.imageInfo remark:@"车牌近照" replaceIndex:0];
+        
     }
     
     [_collectionView reloadData];
@@ -424,14 +457,68 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     NSMutableDictionary *t_dic = [NSMutableDictionary dictionary];
     [t_dic setObject:remark                    forKey:@"remarks"];
-    [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
-    [t_dic setObject:self.param.taketime    forKey:@"taketime"];
+    
+    if (imageFileInfo) {
+        imageFileInfo.name = key_files;
+        [t_dic setObject:imageFileInfo             forKey:@"files"];
+        [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
+    }
+    
+    if (self.param.cutImageUrl) {
+        [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
+        [t_dic setObject:self.param.taketime    forKey:@"taketime"];
+    }
+    
     [self.arr_upImages  replaceObjectAtIndex:index withObject:t_dic];
     
     //判断是否可以提交
     [self judgeIsCanCommit];
     
 }
+
+- (void)configParamInFilesAndRemarksAndTimes{
+    
+    if (_arr_upImages && _arr_upImages.count > 0) {
+        
+        LxDBObjectAsJson(_arr_upImages);
+        
+        NSMutableArray *t_arr_files     = [NSMutableArray array];
+        NSMutableArray *t_arr_remarks   = [NSMutableArray array];
+        NSMutableArray *t_arr_taketimes = [NSMutableArray array];
+        
+        if([_arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]){
+            
+            NSMutableDictionary *t_dic  = _arr_upImages[0];
+            ImageFileInfo *imageInfo    = [t_dic objectForKey:@"files"];
+            
+            if (imageInfo) {
+                
+                NSString* t_title = [t_dic objectForKey:@"remarks"];
+                NSString *t_taketime    = [t_dic objectForKey:@"taketimes"];
+                [t_arr_files     addObject:imageInfo];
+                [t_arr_remarks   addObject:t_title];
+                [t_arr_taketimes addObject:t_taketime];
+                
+            }
+        }
+        
+        if (t_arr_files.count > 0) {
+            _param.files = t_arr_files;
+        }
+        
+        if (t_arr_remarks.count > 0) {
+            _param.remarks = [t_arr_remarks componentsJoinedByString:@","];
+        }
+        
+        if (t_arr_taketimes.count > 0) {
+            _param.taketimes = [t_arr_taketimes componentsJoinedByString:@","];
+        }
+        
+        
+    }
+    
+}
+
 
 #pragma mark - 弹出照相机
 
@@ -479,10 +566,18 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             BaseImageCollectionCell *cell = (BaseImageCollectionCell *)[_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             
             NSDictionary *t_dic = [NSDictionary dictionaryWithDictionary:_arr_upImages[i]];
-            NSString *t_str = t_dic[@"cutImageUrl"];
-            if (t_str) {
-                KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView imageUrl:[NSURL URLWithString:t_str] withDic:t_dic];
+            
+            ImageFileInfo *info = t_dic[@"files"];
+            if (info) {
+                KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView image:info.image withDic:t_dic];
                 [t_arr addObject:item];
+            }else{
+                NSString *t_str = t_dic[@"cutImageUrl"];
+                if (t_str) {
+                    KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView imageUrl:[NSURL URLWithString:t_str] withDic:t_dic];
+                    [t_arr addObject:item];
+                }
+                
             }
             
         }

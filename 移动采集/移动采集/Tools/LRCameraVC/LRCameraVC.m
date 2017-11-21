@@ -161,6 +161,7 @@
                     strongSelf.fininshCaptureBlock(strongSelf);
                 }
                 [strongSelf dismissViewControllerAnimated:YES completion:^{
+                    
                 }];
                 
             }
@@ -168,6 +169,14 @@
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
+        SW(strongSelf, weakSelf);
+        if (strongSelf.fininshCaptureBlock) {
+            strongSelf.fininshCaptureBlock(strongSelf);
+        }
+        
+        [strongSelf dismissViewControllerAnimated:YES completion:^{
+            
+        }];
 
     }];
     

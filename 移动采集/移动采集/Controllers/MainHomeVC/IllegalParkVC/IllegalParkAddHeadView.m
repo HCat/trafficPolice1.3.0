@@ -162,8 +162,10 @@
             
             if (camera.type == 1) {
                 
-                [strongSelf takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
-                
+                if (camera.commonIdentifyResponse) {
+                    [strongSelf takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
+                }
+            
                 if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(recognitionCarNumber:)]) {
                     [strongSelf.delegate recognitionCarNumber:camera];
                 }
@@ -171,6 +173,7 @@
             }
         }
     };
+    
     [t_vc presentViewController:home
                        animated:NO
                      completion:^{

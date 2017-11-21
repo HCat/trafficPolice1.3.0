@@ -454,7 +454,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         if ([_arr_upImages[0] isKindOfClass:[NSNull class]]) {
             
             BOOL isNeedRecognition = YES;
-            if (self.param.cutImageUrl && [self.param.cutImageUrl length] > 0 && self.param.taketime && [self.param.taketime length] > 0) {
+            if ((self.param.cutImageUrl && [self.param.cutImageUrl length] > 0 && self.param.taketime && [self.param.taketime length] > 0 )|| [_arr_upImages[1] isKindOfClass:[NSMutableDictionary class]]) {
                 isNeedRecognition = NO;
             }
             
@@ -487,6 +487,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                                 [strongSelf listentCarNumber];
                                 
                             }
+                    
+                            
                             [strongSelf.collectionView reloadData];
                             
                         }
@@ -515,6 +517,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                         
                         //替换车牌近照的图片
                         if (camera.commonIdentifyResponse && camera.commonIdentifyResponse.cutImageUrl && [camera.commonIdentifyResponse.cutImageUrl length] > 0) {
+                            
                             strongSelf.param.cutImageUrl = camera.commonIdentifyResponse.cutImageUrl;
                             strongSelf.param.taketime = [ShareFun getCurrentTime];
                             
@@ -524,6 +527,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
                             
                             [strongSelf listentCarNumber];
+                            
+                        }else{
+                             [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:1];
                             
                         }
                         
@@ -645,7 +651,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
         //10为4G网络
         if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
-            NSLog(@"当前非4G网络,传输速度受影响");
             [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
         }
     }];
@@ -764,6 +769,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         _param.taketime    = [ShareFun getCurrentTime];
         [self replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:1];
         
+    }else{
+        [self replaceUpImageItemToUpImagesWithImageInfo:cameraVC.imageInfo remark:@"车牌近照" replaceIndex:1];
     }
    
     [_collectionView reloadData];
@@ -818,8 +825,11 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
    
     if (index == 1) {
-        [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
-        [t_dic setObject:self.param.taketime    forKey:@"taketime"];
+        if (self.param.cutImageUrl) {
+            [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
+            [t_dic setObject:self.param.taketime    forKey:@"taketime"];
+        }
+       
     }
     
     [t_dic setObject:@0 forKey:@"isMore"];
@@ -966,7 +976,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             ImageFileInfo *info = t_dic[@"files"];
             if (info) {
                 KSPhotoItem *item = [KSPhotoItem itemWithSourceView:cell.imageView image:info.image withDic:t_dic];
-                [t_arr addObject:item ];
+                [t_arr addObject:item];
             }else{
                 NSString *t_str = t_dic[@"cutImageUrl"];
                 if (t_str) {
