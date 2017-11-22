@@ -43,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通知";
+    self.arr_content = [NSMutableArray array];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
@@ -55,16 +56,14 @@
     [_tb_content setSeparatorInset:UIEdgeInsetsZero];
     [_tb_content setLayoutMargins:UIEdgeInsetsZero];
     
-    self.arr_content = [NSMutableArray array];
-    
     [self initRefresh];
     [_tb_content.mj_header beginRefreshing];
+    
     WS(weakSelf);
     //点击重新加载之后的处理
     [_tb_content setReloadBlock:^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
         [strongSelf.tb_content.mj_header beginRefreshing];
     }];
     
@@ -77,7 +76,6 @@
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
         [strongSelf.tb_content.mj_header beginRefreshing];
     };
     
@@ -236,12 +234,8 @@
     }else{
         [self reloadDataUseMJRefresh];
     }
-
-    
     
 }
-
-
 
 #pragma mark - AKTabBar Method
 

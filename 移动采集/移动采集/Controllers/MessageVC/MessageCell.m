@@ -41,7 +41,7 @@
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xf26262)];
             }else{
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xa8b2cb)];
-                
+            
             }
             
         }else if ([_model.type isEqualToNumber:@2]){
@@ -61,7 +61,7 @@
                 }
             }
             
-        }else{
+        }else if ([_model.type isEqualToNumber:@3]){
         
             _lb_type.text = @"警务消息";
             _imgeV_state.hidden = YES;
@@ -72,8 +72,19 @@
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xa8b2cb)];
                
             }
-
             
+        }else if ([_model.type isEqualToNumber:@100] || [_model.type isEqualToNumber:@101] ){
+            
+            _lb_type.text = @"系统消息";
+            _imgeV_state.hidden = YES;
+            if ([_model.flag isEqualToNumber:@0]) {
+                [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0x868bf4)];
+                
+            }else{
+                [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xa8b2cb)];
+                
+            }
+
         }
         
     }

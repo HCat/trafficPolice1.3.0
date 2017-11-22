@@ -35,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _btn_makesure.hidden = YES;
+    
     _lb_time.text = [ShareFun timeWithTimeInterval:_model.createTime];
     _lb_content.text = _model.content;
     
@@ -46,11 +48,7 @@
         _v_content.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
         _v_content.layer.shadowOpacity = 0.5;//不透明度
         _v_content.layer.shadowRadius = 10.0;//半径
-        
     
-        _layout_btnAndVContent.priority = UILayoutPriorityDefaultLow;
-        [self.view layoutIfNeeded];
-        
         self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
         _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _mapView.showsCompass= NO;
@@ -80,9 +78,7 @@
         
     }else if ([_model.type isEqualToNumber:@2]){
         self.title = @"出警任务";
-        _layout_btnBottom.priority = UILayoutPriorityDefaultLow;
-        [self.view layoutIfNeeded];
-        
+    
         if ([_model.flag isEqualToNumber:@0]) {
             _btn_complete.hidden = YES;
         }else{
@@ -94,17 +90,22 @@
             
         }
         
-    }else{
+    }else if ([_model.type isEqualToNumber:@3]){
+        
         self.title = @"警务消息";
         _btn_complete.hidden = YES;
-        _layout_btnBottom.priority = UILayoutPriorityDefaultLow;
-        [self.view layoutIfNeeded];
+    
+    }else if ([_model.type isEqualToNumber:@100] || [_model.type isEqualToNumber:@101]){
+        
+        self.title = @"系统消息";
+        _btn_complete.hidden = YES;
+
     }
     
-    if ([_model.flag isEqualToNumber:@1]) {
-        _btn_makesure.hidden = YES;
-    }
+    _layout_btnAndVContent.priority = UILayoutPriorityDefaultLow;
+    [self.view layoutIfNeeded];
     
+    [self handleBtnMakeSureClicked:nil];
 }
 
 #pragma mark - 确定按钮事件
@@ -113,11 +114,9 @@
     
     if ([_model.flag isEqualToNumber:@0]) {
         
-    
         IdentifySetMsgReadManger *manger = [[IdentifySetMsgReadManger alloc] init];
         manger.msgId = _model.msgId;
-        [manger configLoadingTitle:@"确认"];
-       
+        
         WS(weakSelf);
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
@@ -125,7 +124,6 @@
             
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.model.flag = @1;
-                strongSelf.btn_makesure.hidden = YES;
                 if ([strongSelf.model.state isEqualToNumber:@0]) {
                     strongSelf.btn_complete.hidden = NO;
                 }else{

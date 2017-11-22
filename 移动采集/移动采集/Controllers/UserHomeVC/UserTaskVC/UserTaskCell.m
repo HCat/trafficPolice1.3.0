@@ -31,7 +31,7 @@
     
     if (_currentTask) {
         
-        if ([_currentTask.taskStatus isEqualToNumber:@2]) {
+        if ([_currentTask.taskStatus isEqualToNumber:@3]) {
             _v_taskCancel.hidden = NO;
         }else{
             _v_taskCancel.hidden = YES;
