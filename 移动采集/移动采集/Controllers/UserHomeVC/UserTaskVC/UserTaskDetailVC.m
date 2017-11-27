@@ -161,8 +161,10 @@
 
 - (void)makeLocationInCenter{
     
-    [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
-    
+    if (_task.latitude && _task.longitude) {
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_task.latitude doubleValue], [_task.longitude doubleValue]);
+        [_mapView setCenterCoordinate:coordinate animated:YES];
+    }
     
 }
 
