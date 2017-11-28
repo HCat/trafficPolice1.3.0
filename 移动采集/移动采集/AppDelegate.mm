@@ -190,8 +190,7 @@
 #pragma mark - 网络改变监听
 
 - (void)networkReconnection{
-    
-   
+
     [[LocationHelper sharedDefault] startLocation];
 
 }
@@ -413,6 +412,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 if (manger.responseModel.code == CODE_SUCCESS) {
                     MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
                     manger.identifyModel.source = @1;
+                    
+                    if ([manger.identifyModel.type isEqualToNumber:@100]) {
+                         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RELOADWATCH_SUCCESS object:nil];
+                    }
+                    
                     t_vc.model = manger.identifyModel;
                     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
                     [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{

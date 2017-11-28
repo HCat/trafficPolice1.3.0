@@ -42,6 +42,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadWatch) name:NOTIFICATION_RELOADWATCH_SUCCESS object:nil];
+    
     [self.v_calendar addSubview:self.collectionView];
     self.v_calendar.layer.borderWidth = 1.0f;
     self.v_calendar.layer.borderColor = [UIColorFromRGB(0xf5ae42) CGColor];
@@ -63,6 +65,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
+}
+
+- (void)reloadWatch{
+    
+    self.tempDate = [NSDate date];
+    [self requestDuty:self.tempDate.yyyyMMByLineWithDate];
     
 }
 
