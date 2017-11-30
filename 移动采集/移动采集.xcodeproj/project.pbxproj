@@ -266,6 +266,8 @@
 		CE7348F31F6BC8B700EBDA0A /* CarInfoAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7348F11F6BC8B700EBDA0A /* CarInfoAddVC.xib */; };
 		CE756AC91F4EBE3A00D08D40 /* FastAccidentProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */; };
 		CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */; };
+		CE763B0C1FCF9CA200EB0815 /* JointEnforceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */; };
+		CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */; };
 		CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE8502151F558C02001DC495 /* VideoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502101F558C02001DC495 /* VideoListVC.m */; };
@@ -813,6 +815,9 @@
 		CE756AC61F4EBE3A00D08D40 /* FastAccidentProcessVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastAccidentProcessVC.h; sourceTree = "<group>"; };
 		CE756AC71F4EBE3A00D08D40 /* FastAccidentProcessVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastAccidentProcessVC.m; sourceTree = "<group>"; };
 		CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastAccidentProcessVC.xib; sourceTree = "<group>"; };
+		CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JointEnforceVC.xib; sourceTree = "<group>"; };
+		CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JointEnforceVC.m; sourceTree = "<group>"; };
+		CE763B0B1FCF9CA200EB0815 /* JointEnforceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JointEnforceVC.h; sourceTree = "<group>"; };
 		CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketHelper.h; sourceTree = "<group>"; };
 		CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketHelper.m; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
@@ -1634,6 +1639,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE763B081FCF9C9000EB0815 /* JointEnforceVC */,
 				CE496EF71F6A1A90004E69C6 /* SearchListVC */,
 				CE8EE8601F66354900CC64B0 /* PoliceCommandVC */,
 				CE41C7B41F5EAA100058FE8D /* importCarVC */,
@@ -1706,6 +1712,16 @@
 				CE69156F1F1DE2AC008911A6 /* LSStatusBarHUDConst.h */,
 			);
 			path = LSStatusBarHUD;
+			sourceTree = "<group>";
+		};
+		CE763B081FCF9C9000EB0815 /* JointEnforceVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE763B0B1FCF9CA200EB0815 /* JointEnforceVC.h */,
+				CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */,
+				CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */,
+			);
+			path = JointEnforceVC;
 			sourceTree = "<group>";
 		};
 		CE85020E1F558BFB001DC495 /* VideoListVC */ = {
@@ -2416,6 +2432,7 @@
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE5C38E81F28606B0055C945 /* btn_circle@2x.png in Resources */,
 				CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */,
+				CE763B0C1FCF9CA200EB0815 /* JointEnforceVC.xib in Resources */,
 				CE4E3C161F39BB860057148B /* IllegalMessageCell.xib in Resources */,
 				CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
@@ -2585,6 +2602,7 @@
 				CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
+				CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
 				CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */,

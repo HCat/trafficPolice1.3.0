@@ -42,6 +42,8 @@
 //通过颜色获取生成图片
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
+//画虚线
+
 //获取缓存目录
 + (NSString *)getCacheSubPath:(NSString *)dirName;
 

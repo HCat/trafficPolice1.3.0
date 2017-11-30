@@ -300,6 +300,29 @@
 
 }
 
+#pragma mark - 画虚线
+
+- (UIImageView *)imageViewWithDottedLine{
+    
+    UIImageView *dashedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
+
+    UIGraphicsBeginImageContext(CGSizeMake(SCREEN_WIDTH-50, 1));   // 开始画线
+    CGContextRef line = UIGraphicsGetCurrentContext();
+    CGContextSetLineCap(line, kCGLineCapRound);  // 设置线条终点形状
+    CGFloat lengths[] = {5, 5};// 设置每画10个point空出1个point
+    CGContextSetStrokeColorWithColor(line, DefaultBtnNuableColor.CGColor); // 设置线条颜色
+    CGContextSetLineWidth(line, 1.0);// 设置线条宽度
+    CGContextSetLineDash(line, 0, lengths, 2); // 画虚线
+    CGContextMoveToPoint(line, 0.0, 0.0); // 开始画线，移动到起点
+    CGContextAddLineToPoint(line, SCREEN_WIDTH-50, 0.0);// 画到终点
+    CGContextStrokePath(line);
+    CGContextClosePath(line);// 结束画线
+    dashedImageView.image = UIGraphicsGetImageFromCurrentImageContext();// 画完后返回UIImage对象
+    
+    return dashedImageView;
+}
+
+
 #pragma mark - 获取缓存目录
 
 + (NSString *)getCacheSubPath:(NSString *)dirName {
