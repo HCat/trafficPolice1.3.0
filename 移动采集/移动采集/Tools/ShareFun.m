@@ -302,7 +302,7 @@
 
 #pragma mark - 画虚线
 
-- (UIImageView *)imageViewWithDottedLine{
++ (UIImageView *)imageViewWithDottedLine{
     
     UIImageView *dashedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
 

@@ -44,6 +44,8 @@
 
 //画虚线
 
++ (UIImageView *)imageViewWithDottedLine;
+
 //获取缓存目录
 + (NSString *)getCacheSubPath:(NSString *)dirName;
 

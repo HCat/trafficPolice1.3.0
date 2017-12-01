@@ -268,6 +268,12 @@
 		CE756ACA1F4EBE3A00D08D40 /* FastAccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */; };
 		CE763B0C1FCF9CA200EB0815 /* JointEnforceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */; };
 		CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */; };
+		CE763B121FCFF0F300EB0815 /* JointImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE763B101FCFF0F300EB0815 /* JointImageCell.m */; };
+		CE763B131FCFF0F300EB0815 /* JointImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE763B111FCFF0F300EB0815 /* JointImageCell.xib */; };
+		CE763B171FCFF10A00EB0815 /* JointVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE763B151FCFF10A00EB0815 /* JointVideoCell.m */; };
+		CE763B181FCFF10A00EB0815 /* JointVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE763B161FCFF10A00EB0815 /* JointVideoCell.xib */; };
+		CE763B1C1FCFF1DB00EB0815 /* JointTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE763B1A1FCFF1DB00EB0815 /* JointTextCell.m */; };
+		CE763B1D1FCFF1DB00EB0815 /* JointTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE763B1B1FCFF1DB00EB0815 /* JointTextCell.xib */; };
 		CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE8502151F558C02001DC495 /* VideoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502101F558C02001DC495 /* VideoListVC.m */; };
@@ -818,6 +824,15 @@
 		CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JointEnforceVC.xib; sourceTree = "<group>"; };
 		CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JointEnforceVC.m; sourceTree = "<group>"; };
 		CE763B0B1FCF9CA200EB0815 /* JointEnforceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JointEnforceVC.h; sourceTree = "<group>"; };
+		CE763B0F1FCFF0F300EB0815 /* JointImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointImageCell.h; sourceTree = "<group>"; };
+		CE763B101FCFF0F300EB0815 /* JointImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointImageCell.m; sourceTree = "<group>"; };
+		CE763B111FCFF0F300EB0815 /* JointImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointImageCell.xib; sourceTree = "<group>"; };
+		CE763B141FCFF10A00EB0815 /* JointVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointVideoCell.h; sourceTree = "<group>"; };
+		CE763B151FCFF10A00EB0815 /* JointVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointVideoCell.m; sourceTree = "<group>"; };
+		CE763B161FCFF10A00EB0815 /* JointVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointVideoCell.xib; sourceTree = "<group>"; };
+		CE763B191FCFF1DB00EB0815 /* JointTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointTextCell.h; sourceTree = "<group>"; };
+		CE763B1A1FCFF1DB00EB0815 /* JointTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointTextCell.m; sourceTree = "<group>"; };
+		CE763B1B1FCFF1DB00EB0815 /* JointTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointTextCell.xib; sourceTree = "<group>"; };
 		CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketHelper.h; sourceTree = "<group>"; };
 		CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketHelper.m; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
@@ -1717,11 +1732,28 @@
 		CE763B081FCF9C9000EB0815 /* JointEnforceVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE763B0E1FCFF0AA00EB0815 /* JointEnforceCell */,
 				CE763B0B1FCF9CA200EB0815 /* JointEnforceVC.h */,
 				CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */,
 				CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */,
 			);
 			path = JointEnforceVC;
+			sourceTree = "<group>";
+		};
+		CE763B0E1FCFF0AA00EB0815 /* JointEnforceCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE763B0F1FCFF0F300EB0815 /* JointImageCell.h */,
+				CE763B101FCFF0F300EB0815 /* JointImageCell.m */,
+				CE763B111FCFF0F300EB0815 /* JointImageCell.xib */,
+				CE763B141FCFF10A00EB0815 /* JointVideoCell.h */,
+				CE763B151FCFF10A00EB0815 /* JointVideoCell.m */,
+				CE763B161FCFF10A00EB0815 /* JointVideoCell.xib */,
+				CE763B191FCFF1DB00EB0815 /* JointTextCell.h */,
+				CE763B1A1FCFF1DB00EB0815 /* JointTextCell.m */,
+				CE763B1B1FCFF1DB00EB0815 /* JointTextCell.xib */,
+			);
+			path = JointEnforceCell;
 			sourceTree = "<group>";
 		};
 		CE85020E1F558BFB001DC495 /* VideoListVC */ = {
@@ -2442,6 +2474,7 @@
 				CE5C38E91F28606B0055C945 /* btn_circle@3x.png in Resources */,
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
+				CE763B1D1FCFF1DB00EB0815 /* JointTextCell.xib in Resources */,
 				CE5B92FC1F2F120E000008AE /* AccidentAddHeadView.xib in Resources */,
 				CE5C3BB81F57B0F2007A7EDD /* MessageCell.xib in Resources */,
 				CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */,
@@ -2507,6 +2540,7 @@
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CE5C39241F2881BD0055C945 /* btn_selected@2x.png in Resources */,
 				CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */,
+				CE763B181FCFF10A00EB0815 /* JointVideoCell.xib in Resources */,
 				CE5C39251F2881BD0055C945 /* btn_selected@3x.png in Resources */,
 				CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */,
 				CE61405E1F3184280015B8CE /* AccidentVC.xib in Resources */,
@@ -2521,6 +2555,7 @@
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
 				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
+				CE763B131FCFF0F300EB0815 /* JointImageCell.xib in Resources */,
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */,
@@ -2606,6 +2641,7 @@
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
 				CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */,
+				CE763B121FCFF0F300EB0815 /* JointImageCell.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
@@ -2707,8 +2743,10 @@
 				CE2C98A21F619607009851F6 /* VehicleCarNoShowCell.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,
 				CED9B0EF1F5D06870010E68A /* SignModel.m in Sources */,
+				CE763B171FCFF10A00EB0815 /* JointVideoCell.m in Sources */,
 				CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */,
 				CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */,
+				CE763B1C1FCFF1DB00EB0815 /* JointTextCell.m in Sources */,
 				CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
