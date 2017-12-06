@@ -64,26 +64,10 @@
 
 - (void)setDriverImgList:(NSArray<VehicleImageModel *> *)driverImgList{
     
-    _driverImgList = driverImgList;
-    
-    if (_driverImgList && _driverImgList.count > 0) {
+    if (!_driverImgList) {
+        _driverImgList = driverImgList;
         
-        if (_arr_view && _arr_view.count > 0) {
-            
-            for (int i = 0;i < [_arr_view count]; i++) {
-                
-                VehicleImageModel *pic = _driverImgList[i];
-                
-                UIButton *t_button  = _arr_view[i];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    
-                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
-                    [t_button setImage:t_image forState:UIControlStateNormal];
-                    
-                }];
-            }
-            
-        }else{
+        if (_driverImgList && _driverImgList.count > 0) {
             
             NSMutableArray *arr_v = [NSMutableArray new];
             
@@ -94,8 +78,12 @@
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     
-                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
-                    [t_button setImage:t_image forState:UIControlStateNormal];
+                    [GCDQueue executeInLowPriorityGlobalQueue:^{
+                        UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" NeedHigh:NO];
+                        [GCDQueue executeInMainQueue:^{
+                            [t_button setImage:t_image forState:UIControlStateNormal];
+                        }];
+                    }];
                     
                 }];
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
@@ -149,14 +137,14 @@
                 }
             }
             
+        }else{
+            
+            [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-50.0f];
+            
         }
         
-    }else{
-        
-        [_lb_vehicleImgList autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-50.0f];
-        
     }
-    
+
 }
 
 

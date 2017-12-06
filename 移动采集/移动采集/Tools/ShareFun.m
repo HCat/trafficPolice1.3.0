@@ -591,51 +591,27 @@
     
 }
 
-/**
- *
- *  @param markString   将要添加的文字
- *  @param point    将要添加的文字在图片上的位置
- *  @param image  将要添加文字的图片
- *
- *  @return 已打好水印的图片
- */
-+ (UIImage *)imageWithStringWaterMark:(NSString *)markString  andImg:(UIImage *)image atPoint:(CGPoint)point
-{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 4.0)
-    {
-        UIGraphicsBeginImageContextWithOptions([image size], NO, 0.0); // 0.0 for scale means "scale for device's main screen".
-    }
-#else
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 4.0)
-    {
-        UIGraphicsBeginImageContext([image size]);
-    }
-#endif
-    
-    // 绘制文字
-    //文字颜色
-    UIColor *magentaColor   = [UIColor whiteColor];
-    [magentaColor set];
-    
-    //原图
-    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
-    
-    //文字类型
-    UIFont *helveticaBold = [UIFont systemFontOfSize:20.f];
-    
-    //水印文字
-    [markString drawInRect:CGRectMake(point.x, point.y, image.size.width, image.size.height)
-            withAttributes:@{NSFontAttributeName: helveticaBold,
-                             NSForegroundColorAttributeName: magentaColor
-                             }];
-    //返回新的图片
-    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newPic;
-}
 
+
++ (UIImage *)addWatemarkTextAfteriOS7_WithLogoImage:(UIImage *)logoImage watemarkText:(NSString *)watemarkText NeedHigh:(BOOL)isHigh{
+
+    int w = logoImage.size.width;
+    int h = logoImage.size.height;
+    if (isHigh) {
+        UIGraphicsBeginImageContextWithOptions(logoImage.size, NO, 0.0);
+    }else{
+        UIGraphicsBeginImageContext(logoImage.size);
+    }
+
+    [logoImage drawInRect:CGRectMake(0, 0, w, h)];
+    UIFont * font = [UIFont systemFontOfSize:w/22.0f];
+
+    [watemarkText drawInRect:CGRectMake(w/12, h/2 - h/30 , w*5/6, h/15) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor],NSBackgroundColorAttributeName:[UIColor colorWithWhite:0.f alpha:0.2]}];
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+    
+}
 
 #pragma mark - 隐藏身份证号码中间字符
 

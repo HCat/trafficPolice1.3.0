@@ -79,7 +79,7 @@
 //讲图片变成马赛克
 + (UIImage *)transToMosaicImage:(UIImage*)orginImage blockLevel:(NSUInteger)level;
 //为图片打上水印
-+ (UIImage *)imageWithStringWaterMark:(NSString *)markString  andImg:(UIImage *)image atPoint:(CGPoint)point;
++ (UIImage *)addWatemarkTextAfteriOS7_WithLogoImage:(UIImage *)logoImage watemarkText:(NSString *)watemarkText NeedHigh:(BOOL)isHigh;
 
 // 隐藏身份证号码中间字符
 + (NSString*)idCardToAsterisk:(NSString *)idCardNum;
