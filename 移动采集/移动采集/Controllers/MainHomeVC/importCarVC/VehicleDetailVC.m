@@ -152,6 +152,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     if (type == VehicleRequestTypeQRCode) {
         VehicleDetailByQrCodeManger *manger = [[VehicleDetailByQrCodeManger alloc] init];
         manger.qrCode = _NummberId;
+        manger.isLog = NO;
         [manger configLoadingTitle:@"加载"];
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -186,6 +187,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     
         VehicleDetailByPlateNoManger *manger = [[VehicleDetailByPlateNoManger alloc] init];
         manger.plateNo = _NummberId;
+        manger.isLog = NO;
         [manger configLoadingTitle:@"加载"];
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -250,9 +252,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarCell *cell) {
                     SW(strongSelf, weakSelf);
                     cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
-                    cell.imagelists = [strongSelf.reponse.vehicleImgList copy];
-                   
-                    
+                    cell.imagelists = strongSelf.reponse.vehicleImgList;
+                
                 }];
             }else{
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarNoShowCell *cell) {
@@ -262,6 +263,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 }];
             
             }
+            
+            LxPrintf(@"VehicleCar:::%f:::%d",height,_isShowVehicleCar);
         
         }
         break;
@@ -271,10 +274,10 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                     SW(strongSelf, weakSelf);
                     cell.memberInfo = (MemberInfoModel *)strongSelf.arr_content[indexPath.row];
                     cell.memberArea = strongSelf.reponse.memberArea;
-                    cell.imagelists = [strongSelf.reponse.memberImgList copy];
-                    
-                    
+                    cell.imagelists = strongSelf.reponse.memberImgList;
+                
                 }];
+              
             }else{
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleMemberNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleMemberNoShowCell *cell) {
                     SW(strongSelf, weakSelf);
@@ -283,6 +286,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 }];
                 
             }
+            
+            LxPrintf(@"VehicleMember:::%f:::%d",height,_isShowVehicleCar);
         
         }
         break;
@@ -302,21 +307,23 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 
             }
             
-        }
-        break;
-        case VehicleCellTypeRemark:{
-            height = [tableView fd_heightForCellWithIdentifier:@"VehicleRemarkCellID" cacheByIndexPath:indexPath configuration:^(VehicleRemarkCell *cell) {
-                SW(strongSelf, weakSelf);
-                cell.remark = (VehicleRemarkModel *)strongSelf.arr_content[indexPath.row];
-            }];
+            LxPrintf(@"VehicleDriver:::%f:::%d",height,_isShowVehicleDriver);
             
         }
         break;
+//        case VehicleCellTypeRemark:{
+//            height = [tableView fd_heightForCellWithIdentifier:@"VehicleRemarkCellID" cacheByIndexPath:indexPath configuration:^(VehicleRemarkCell *cell) {
+//                SW(strongSelf, weakSelf);
+//                cell.remark = (VehicleRemarkModel *)strongSelf.arr_content[indexPath.row];
+//            }];
+//
+//        }
+//        break;
         default:
             break;
     }
     
-    LxPrintf(@"height:%lf",height);
+    //LxPrintf(@"height:%lf",height);
     return height;
 }
 
@@ -334,7 +341,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
                 WS(weakSelf);
-                cell.imagelists = [_reponse.vehicleImgList copy];
+                cell.imagelists = _reponse.vehicleImgList;
                
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
@@ -370,7 +377,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 cell.memberInfo = (MemberInfoModel *)self.arr_content[indexPath.row];
                 cell.memberArea = _reponse.memberArea;
                 WS(weakSelf);
-                cell.imagelists = [_reponse.memberImgList copy];
+                cell.imagelists = _reponse.memberImgList;
                 
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
@@ -429,13 +436,13 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             
         }
         break;
-        case VehicleCellTypeRemark:{
-            VehicleRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleRemarkCellID"];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            cell.remark = (VehicleRemarkModel *)self.arr_content[indexPath.row];
-            return cell;
-        }
-        break;
+//        case VehicleCellTypeRemark:{
+//            VehicleRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleRemarkCellID"];
+//            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//            cell.remark = (VehicleRemarkModel *)self.arr_content[indexPath.row];
+//            return cell;
+//        }
+//        break;
         default:
             break;
     }

@@ -19,7 +19,6 @@
 @property (nonatomic, strong) MAMapView *mapView;
 
 @property (nonatomic, strong) VehicleCarAnnotation *search_annotation; //定位的坐标点
-@property (nonatomic, strong) VehicleGPSModel * search_vehicleModel;
 
 @end
 
@@ -31,44 +30,31 @@
     
     [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
     [self initMapView];
+    [self searchVehicle];
     
 }
 
 #pragma mark - 数据请求
 
 - (void)searchVehicle{
-    WS(weakSelf);
     
-    VehicleLocationByPlateNoManger *manger = [[VehicleLocationByPlateNoManger alloc] init];
-    manger.plateNo = _plateNo;
-    [manger configLoadingTitle:@"搜索"];
-    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        SW(strongSelf, weakSelf);
-        
-        if (strongSelf.search_annotation) {
-            [strongSelf.mapView removeAnnotation:strongSelf.search_annotation];
-            strongSelf.search_annotation = nil;
-        }
-        
-        strongSelf.search_vehicleModel = manger.vehicleGPSModel;
-        strongSelf.search_annotation = [[VehicleCarAnnotation alloc] init];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([strongSelf.search_vehicleModel.latitude doubleValue], [strongSelf.search_vehicleModel.longitude doubleValue]);
-        strongSelf.search_annotation.coordinate = coordinate;
-        strongSelf.search_annotation.title    = [NSString stringWithFormat:@"%ld",[manger.vehicleGPSModel.vehicleId longValue]];
-        strongSelf.search_annotation.subtitle = manger.vehicleGPSModel.plateNo;
-        strongSelf.search_annotation.vehicleCar = manger.vehicleGPSModel;
-        strongSelf.search_annotation.carType = @2;
-        
-        [strongSelf.mapView addAnnotation:strongSelf.search_annotation];
-        
-        CLLocationCoordinate2D center_coordinate = CLLocationCoordinate2DMake([strongSelf.search_vehicleModel.latitude doubleValue], [strongSelf.search_vehicleModel.longitude doubleValue]);
-        [strongSelf.mapView setCenterCoordinate:center_coordinate animated:YES];
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        
-        
-    }];
+    if (self.search_annotation) {
+        [self.mapView removeAnnotation:self.search_annotation];
+        self.search_annotation = nil;
+    }
+    
+    self.search_annotation = [[VehicleCarAnnotation alloc] init];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_search_vehicleModel.latitude doubleValue], [_search_vehicleModel.longitude doubleValue]);
+    self.search_annotation.coordinate = coordinate;
+    self.search_annotation.title    = [NSString stringWithFormat:@"%ld",[_search_vehicleModel.vehicleId longValue]];
+    self.search_annotation.subtitle = _search_vehicleModel.plateNo;
+    self.search_annotation.vehicleCar = _search_vehicleModel;
+    self.search_annotation.carType = @2;
+    
+    [_mapView addAnnotation:_search_annotation];
+    
+    CLLocationCoordinate2D center_coordinate = CLLocationCoordinate2DMake([_search_vehicleModel.latitude doubleValue], [_search_vehicleModel.longitude doubleValue]);
+    [self.mapView setCenterCoordinate:center_coordinate animated:YES];
     
 }
 
@@ -153,8 +139,7 @@
     if ([view.annotation isKindOfClass:[MAUserLocation class]])
     {
         
-        [self searchVehicle];
-        
+
     }
     
     

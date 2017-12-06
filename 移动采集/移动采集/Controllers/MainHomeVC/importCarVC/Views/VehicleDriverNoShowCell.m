@@ -55,7 +55,7 @@
         _lb_drivingType.text = [ShareFun takeStringNoNull:_driver.drivingType];
         _lb_driverCode.text = [ShareFun idCardToAsterisk:[ShareFun takeStringNoNull:_driver.driverCode]];;
        
-        self.driverImgList = [_driver.driverImgList copy];
+        self.driverImgList = _driver.driverImgList;
         
     }
     
@@ -64,11 +64,9 @@
 
 - (void)setDriverImgList:(NSArray<VehicleImageModel *> *)driverImgList{
     
-    
     _driverImgList = driverImgList;
     
     if (_driverImgList && _driverImgList.count > 0) {
-        
         
         if (_arr_view && _arr_view.count > 0) {
             
@@ -78,10 +76,9 @@
                 
                 UIButton *t_button  = _arr_view[i];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                    
+                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
+                    [t_button setImage:t_image forState:UIControlStateNormal];
                     
                 }];
             }
@@ -96,10 +93,9 @@
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                    
+                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
+                    [t_button setImage:t_image forState:UIControlStateNormal];
                     
                 }];
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
@@ -149,15 +145,9 @@
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.5f];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.5f relation:NSLayoutRelationLessThanOrEqual];
                 }
             }
-            
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
-            
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
             
         }
         
@@ -224,8 +214,8 @@
     CGContextSetLineDash(line, 0, lengths, 2); // 画虚线
     CGContextMoveToPoint(line, 0.0, 0.0); // 开始画线，移动到起点
     CGContextAddLineToPoint(line, SCREEN_WIDTH-50, 0.0);// 画到终点
-    CGContextStrokePath(line);
     CGContextClosePath(line);// 结束画线
+    CGContextStrokePath(line);
     dashedImageView.image = UIGraphicsGetImageFromCurrentImageContext();// 画完后返回UIImage对象
     [self.contentView sendSubviewToBack:self.v_backgound];
 }

@@ -84,7 +84,6 @@
 
 - (void)setDriverImgList:(NSArray<VehicleImageModel *> *)driverImgList{
     
-    
     _driverImgList = driverImgList;
     
     if (_driverImgList && _driverImgList.count > 0) {
@@ -98,10 +97,9 @@
                 
                 UIButton *t_button  = _arr_view[i];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                    
+                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
+                    [t_button setImage:t_image forState:UIControlStateNormal];
                     
                 }];
             }
@@ -116,10 +114,9 @@
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                    
+                    UIImage * t_image = [ShareFun imageWithStringWaterMark:@"此证件仅提供交警存档使用，他用无效" andImg:image atPoint:CGPointMake(image.size.width/2,image.size.height/2)];
+                    [t_button setImage:t_image forState:UIControlStateNormal];
                     
                 }];
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
@@ -172,12 +169,6 @@
                     [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_lb_sex withOffset:-15.f];
                 }
             }
-            
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
-            
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
             
         }
         

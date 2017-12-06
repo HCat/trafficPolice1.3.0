@@ -7,10 +7,10 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "VehicleGPSModel.h"
 
 @interface SearchImportCarVC : HideTabSuperVC
 
-@property (nonatomic,strong) NSString *plateNo;
-
+@property (nonatomic, strong) VehicleGPSModel * search_vehicleModel;
 
 @end

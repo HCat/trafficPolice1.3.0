@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
 @property (weak, nonatomic) IBOutlet UILabel *lb_detail;
 @property (weak, nonatomic) IBOutlet UIView *v_detail;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
@@ -36,6 +39,8 @@
     _v_detail.layer.shadowRadius = 10.0;//半径
     [self initMapView];
     [self setTask:_task];
+    
+    _scrollView.contentSize =  CGSizeMake(0, SCREEN_WIDTH - 2*16);
 }
 #pragma mark - init
 

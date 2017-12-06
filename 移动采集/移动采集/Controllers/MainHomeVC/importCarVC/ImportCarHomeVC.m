@@ -68,16 +68,16 @@
     
      WS(weakSelf);
     
-    if (!self.loadRequestTime) {
-        self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
-            
-            SW(strongSelf, weakSelf);
-            [strongSelf loadVehicleData];
-            
-        }];
-        [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
-        
-    }
+//    if (!self.loadRequestTime) {
+//        self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
+//
+//            SW(strongSelf, weakSelf);
+//            [strongSelf loadVehicleData];
+//
+//        }];
+//        [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
+//
+//    }
    
 }
 
@@ -189,10 +189,37 @@
 }
 
 - (void)searchVehicle{
-   
-    SearchImportCarVC *t_vc = [[SearchImportCarVC alloc] init];
-    t_vc.plateNo = _tf_search.text;
-    [self.navigationController pushViewController:t_vc animated:YES];
+    
+    
+    if(![ShareFun validateCarNumber:_tf_search.text]){
+        [LRShowHUD showError:@"请输入正确的车牌号" duration:1.5f];
+        return;
+    }
+    
+    WS(weakSelf);
+    
+    VehicleLocationByPlateNoManger *manger = [[VehicleLocationByPlateNoManger alloc] init];
+    manger.plateNo = _tf_search.text;
+    manger.isNeedLoadHud = YES;
+    manger.loadingMessage =  @"搜索中..";
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        
+        if(manger.vehicleGPSModel){
+            
+            SearchImportCarVC *t_vc = [[SearchImportCarVC alloc] init];
+            t_vc.search_vehicleModel = manger.vehicleGPSModel;
+            [strongSelf.navigationController pushViewController:t_vc animated:YES];
+    
+        }else{
+            [LRShowHUD showError:@"搜索不到相关车辆" duration:1.5f];
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    
+    }];
+    
 }
 
 #pragma mark - 画定位的圆形还有坐标
@@ -420,7 +447,7 @@
     
 }
 
-- (IBAction)handleBtnCancleBtnClicked:(id)sender {
+- (IBAction)handleBtnSearchBtnClicked:(id)sender {
     [_tf_search resignFirstResponder];
     [self searchVehicle];
     
