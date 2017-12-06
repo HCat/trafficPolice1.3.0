@@ -76,10 +76,11 @@
                 VehicleImageModel *pic = _driverImgList[i];
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
+                
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     
                     [GCDQueue executeInLowPriorityGlobalQueue:^{
-                        UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" NeedHigh:NO];
+                        UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:NO];
                         [GCDQueue executeInMainQueue:^{
                             [t_button setImage:t_image forState:UIControlStateNormal];
                         }];

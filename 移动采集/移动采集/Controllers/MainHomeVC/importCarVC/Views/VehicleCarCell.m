@@ -107,11 +107,13 @@
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 
-                LxPrintf(@"%@",pic.mediaUrl);
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                NSMutableString* str8=[[NSMutableString alloc]initWithString:pic.mediaUrl];
+                [str8 insertString:@"-small" atIndex:str8.length-4];
+                
+                [t_button sd_setImageWithURL:[NSURL URLWithString:str8] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     
                     [GCDQueue executeInLowPriorityGlobalQueue:^{
-                         UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" NeedHigh:NO];
+                         UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:NO];
                         [GCDQueue executeInMainQueue:^{
                             [t_button setImage:t_image forState:UIControlStateNormal];
                         }];

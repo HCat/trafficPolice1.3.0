@@ -161,6 +161,8 @@
                 if (strongSelf.commonIdentifyResponse.cutImageUrl.length == 0 || !strongSelf.commonIdentifyResponse.cutImageUrl) {
                     if (strongSelf.type != 1) {
                        [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+                    }else{
+                       [LRShowHUD showError:@"识别失败" duration:1.5f];
                     }
                     
                 }
@@ -182,6 +184,8 @@
             
             if (strongSelf.type != 1) {
                 [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+            }else{
+                [LRShowHUD showError:@"识别失败" duration:1.5f];
             }
             
             strongSelf.fininshCaptureBlock(strongSelf);
