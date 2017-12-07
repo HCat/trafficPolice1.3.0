@@ -68,16 +68,16 @@
     
      WS(weakSelf);
     
-//    if (!self.loadRequestTime) {
-//        self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
-//
-//            SW(strongSelf, weakSelf);
-//            [strongSelf loadVehicleData];
-//
-//        }];
-//        [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
-//
-//    }
+    if (!self.loadRequestTime) {
+        self.loadRequestTime = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
+
+            SW(strongSelf, weakSelf);
+            [strongSelf loadVehicleData];
+
+        }];
+        [[NSRunLoop currentRunLoop] addTimer:self.loadRequestTime forMode:NSRunLoopCommonModes];
+
+    }
    
 }
 

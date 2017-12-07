@@ -85,7 +85,7 @@ const CGFloat kKSPhotoViewMaxScale = 3;
             if (finished) {
             
                 if (item.vehicle) {
-                    UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:YES];
+                    UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效." needHigh:YES];
                     [sself.imageView setImage:t_image];
                 }
                 
