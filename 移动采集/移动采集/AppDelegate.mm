@@ -28,7 +28,9 @@
 #import "IdentifyAPI.h"
 #import "MessageDetailVC.h"
 
-
+#if defined(DEBUG) || defined(_DEBUG)
+#import "FHHFPSIndicator.h"
+#endif
 
 @interface AppDelegate ()
 
@@ -68,6 +70,12 @@
     }
     
     [self.window makeKeyAndVisible];
+    
+    // Add the follwing code after the window become keywindow
+#if defined(DEBUG) || defined(_DEBUG)
+    [[FHHFPSIndicator sharedFPSIndicator] show];
+    //        [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionTopRight;
+#endif
     
     return YES;
 }

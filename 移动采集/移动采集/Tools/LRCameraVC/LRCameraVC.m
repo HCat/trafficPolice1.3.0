@@ -139,6 +139,7 @@
     
     CommonIdentifyManger *manger = [[CommonIdentifyManger alloc] init];
     [manger configLoadingTitle:@"识别"];
+    manger.isNoShowFail = YES;
     
     manger.imageInfo = self.imageInfo;
     manger.type = self.type;
@@ -157,6 +158,15 @@
                 
                 strongSelf.commonIdentifyResponse = manger.commonIdentifyResponse;
                 //这里待优化，需要判断服务端返回来的IdNo,name为""的情况，现阶段不做
+                if (strongSelf.commonIdentifyResponse.cutImageUrl.length == 0 || !strongSelf.commonIdentifyResponse.cutImageUrl) {
+                    if (strongSelf.type != 1) {
+                       [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+                    }else{
+                       [LRShowHUD showError:@"识别失败" duration:1.5f];
+                    }
+                    
+                }
+                
                 if (strongSelf.fininshCaptureBlock) {
                     strongSelf.fininshCaptureBlock(strongSelf);
                 }
@@ -171,6 +181,13 @@
         
         SW(strongSelf, weakSelf);
         if (strongSelf.fininshCaptureBlock) {
+            
+            if (strongSelf.type != 1) {
+                [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+            }else{
+                [LRShowHUD showError:@"识别失败" duration:1.5f];
+            }
+            
             strongSelf.fininshCaptureBlock(strongSelf);
         }
         

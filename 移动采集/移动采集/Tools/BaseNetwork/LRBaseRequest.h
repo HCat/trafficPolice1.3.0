@@ -22,7 +22,10 @@
 @property (nonatomic,assign) BOOL isNeedShowHud;            //是否需要提示信息, 默认是NO
 @property (nonatomic,copy)   NSString *loadingMessage;      //加载的信息
 @property (nonatomic,copy)   NSString *successMessage;      //成功的提示信息
-@property (nonatomic,copy)   NSString *failMessage;         //失败的提示信息
+@property (nonatomic,copy)   NSString *failMessage;         //失败的提示信息 //这个是服务器返回的错误码
+@property (nonatomic,assign) BOOL isNoShowFail;           //是否显示网络报错信息。默认是NO表明显示
+
+
 
 //全局为统一的Url添加参数。比如添加token，或者version
 + (void)setupRequestFilters:(NSDictionary *)arguments;

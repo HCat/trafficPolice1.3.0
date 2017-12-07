@@ -10,7 +10,7 @@
 #import "MemberInfoModel.h"
 #import "VehicleAPI.h"
 
-typedef void(^VehicleMemberNoShowBlock)();
+typedef void(^VehicleMemberNoShowBlock)(void);
 
 @interface VehicleMemberCell : UITableViewCell
 

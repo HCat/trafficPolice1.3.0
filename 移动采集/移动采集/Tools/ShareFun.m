@@ -614,6 +614,38 @@
     
 }
 
+
+
++ (UIImage *)addWatemarkTextAfteriOS7_WithLogoImage:(UIImage *)logoImage watemarkText:(NSString *)watemarkText needHigh:(BOOL)isHigh{
+
+    int w = logoImage.size.width;
+    int h = logoImage.size.height;
+    if (isHigh) {
+        UIGraphicsBeginImageContextWithOptions(logoImage.size, NO, 0.0);
+        [logoImage drawInRect:CGRectMake(0, 0, w, h)];
+        UIFont * font = [UIFont systemFontOfSize:w/22.0f];
+        
+        [watemarkText drawInRect:CGRectMake(w/12, h/2 - h/30 , w*5/6, h/15) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor],NSBackgroundColorAttributeName:[UIColor colorWithWhite:0.f alpha:0.2]}];
+        UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return newImage;
+        
+    }else{
+        
+        UIGraphicsBeginImageContext(logoImage.size);
+        [logoImage drawInRect:CGRectMake(0, 0, w, h)];
+        UIFont * font = [UIFont systemFontOfSize:w/22.0f];
+        
+        [watemarkText drawInRect:CGRectMake(w/12, h/2 - h/30 , w*5/6, h/15) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor],NSBackgroundColorAttributeName:[UIColor colorWithWhite:0.f alpha:0.2]}];
+        UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return newImage;
+    }
+
+    
+    
+}
+
 #pragma mark - 隐藏身份证号码中间字符
 
 

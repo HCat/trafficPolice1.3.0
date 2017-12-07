@@ -69,8 +69,8 @@
     CGContextSetLineDash(line, 0, lengths, 2); // 画虚线
     CGContextMoveToPoint(line, 0.0, 0.0); // 开始画线，移动到起点
     CGContextAddLineToPoint(line, SCREEN_WIDTH-50, 0.0);// 画到终点
-    CGContextStrokePath(line);
     CGContextClosePath(line);// 结束画线
+    CGContextStrokePath(line);
     dashedImageView.image = UIGraphicsGetImageFromCurrentImageContext();// 画完后返回UIImage对象
     [self.contentView sendSubviewToBack:self.v_backgound];
 }

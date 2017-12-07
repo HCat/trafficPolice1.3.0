@@ -83,22 +83,7 @@
         
         //车厢外高度
         _lb_carHopper.text = [ShareFun takeStringNoNull:_vehicle.carriageOutsideH];
-        
-        //车辆状态：1正常 0暂停运营 2停止运营 3未审核 4未提交 5审核未通过
-        if ([_vehicle.status isEqualToNumber:@0]) {
-            _lb_status.text = @"暂停运营";
-        }else if ([_vehicle.status isEqualToNumber:@1]){
-            _lb_status.text = @"正常";
-        }else if ([_vehicle.status isEqualToNumber:@2]){
-            _lb_status.text = @"停止运营";
-        }else if ([_vehicle.status isEqualToNumber:@3]){
-            _lb_status.text = @"未审核";
-        }else if ([_vehicle.status isEqualToNumber:@4]){
-            _lb_status.text = @"未提交";
-        }else{
-            _lb_status.text = @"审核未通过";
-        }
-
+        _lb_status.text = [ShareFun takeStringNoNull:_vehicle.status];                  //车辆状态
         _lb_remark.text = [ShareFun takeStringNoNull:_vehicle.remark];                  //备注
         
         
@@ -108,29 +93,11 @@
 
 - (void)setImagelists:(NSArray<VehicleImageModel *> *)imagelists{
 
-
-    _imagelists = imagelists;
-    
-    if (_imagelists && _imagelists.count > 0) {
-       
+    if (!_imagelists) {
         
-        if (_arr_view && _arr_view.count > 0) {
-            
-            for (int i = 0;i < [_arr_view count]; i++) {
-                
-                VehicleImageModel *pic = _imagelists[i];
-                
-                UIButton *t_button  = _arr_view[i];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
-                    
-                }];
-            }
-            
-        }else{
+        _imagelists = imagelists;
+        
+        if (_imagelists && _imagelists.count > 0) {
             
             NSMutableArray *arr_v = [NSMutableArray new];
             
@@ -140,15 +107,21 @@
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                NSMutableString* str8=[[NSMutableString alloc]initWithString:pic.mediaUrl];
+                [str8 insertString:@"-small" atIndex:str8.length-4];
+                
+                [t_button sd_setImageWithURL:[NSURL URLWithString:str8] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    
+                    [GCDQueue executeInLowPriorityGlobalQueue:^{
+                         UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:NO];
+                        [GCDQueue executeInMainQueue:^{
+                            [t_button setImage:t_image forState:UIControlStateNormal];
+                        }];
+                    }];
                     
                 }];
                 
-        
+                
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
                 t_button.tag = i;
                 t_button.layer.cornerRadius = 5.0f;
@@ -185,7 +158,7 @@
                 [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:35.0f];
             }else if ([arr_v count] == 2){
                 [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
-              
+                
             }
             
             [arr_v removeAllObjects];
@@ -196,24 +169,18 @@
                 
                 if (i == _arr_view.count - 1 ) {
                     UIButton *t_button_last  = _arr_view[i];
-                     [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
+                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
                 }
             }
             
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
+        }else{
             
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
+            [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
             
         }
         
-    }else{
-    
-        [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
-    
     }
-
+    
 }
 
 

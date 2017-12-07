@@ -79,16 +79,14 @@ const CGFloat kKSPhotoViewMaxScale = 3;
         _progressLayer.hidden = NO;
         
         _imageView.image = item.thumbImage;
-        __weak typeof(self) weakSelf = self;
+    
         [_imageManager setImageForImageView:_imageView withURL:item.imageUrl placeholder:item.thumbImage progress:progressBlock completion:^(UIImage *image, NSURL *url, BOOL finished, NSError *error) {
             __strong typeof(wself) sself = wself;
             if (finished) {
-                
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                
-                if ([item.vehicle.isID isEqualToString:@"1"]) {
-                    image = [ShareFun transToMosaicImage:image blockLevel:10];
-                    [strongSelf.imageView setImage:image];
+            
+                if (item.vehicle) {
+                    UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:YES];
+                    [sself.imageView setImage:t_image];
                 }
                 
                 [sself resizeImageView];

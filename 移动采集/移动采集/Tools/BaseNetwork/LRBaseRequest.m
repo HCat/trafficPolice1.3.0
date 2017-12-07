@@ -24,6 +24,7 @@
         _isLog = YES;
         _isNeedShowHud = NO;
         _isNeedLoadHud = NO;
+        _isNoShowFail  = NO;
     
     };
 
@@ -156,7 +157,16 @@
         
     }else{
         
-        [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
+        if (!_isNoShowFail) {
+            [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
+        }else{
+            if (![self.error.localizedDescription isEqualToString:@"请求超时。"]) {
+                 [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
+            }
+            
+        
+        }
+
     }
 
 }

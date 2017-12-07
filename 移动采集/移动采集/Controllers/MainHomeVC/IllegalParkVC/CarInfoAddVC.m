@@ -386,6 +386,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
     manger.param = _param;
     [manger configLoadingTitle:@"提交"];
+    manger.isNoShowFail = YES;
     
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
@@ -408,7 +409,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
+        if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
+            [LRShowHUD showError:@"请重新提交!" duration:1.5f];
+        }
     }];
     
 }

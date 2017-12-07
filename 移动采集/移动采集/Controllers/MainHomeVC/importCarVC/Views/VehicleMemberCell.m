@@ -21,17 +21,12 @@
 
 @property (nonatomic,weak) IBOutlet UILabel * lb_name;               //运输主体名称
 @property (nonatomic,weak) IBOutlet UILabel * lb_memtype;            //运输主体性质:1土方车 2水泥砼车 3砂石子车
-@property (nonatomic,weak) IBOutlet UILabel * lb_memFormNo;          //自编号前缀
 @property (nonatomic,weak) IBOutlet UILabel * lb_licenseTime;   //营业执照有效期,开始时间到结束时间
 @property (nonatomic,weak) IBOutlet UILabel * lb_memberArea;            //所在区域
 @property (nonatomic,weak) IBOutlet UILabel * lb_address;            //详细地址
-@property (nonatomic,weak) IBOutlet UILabel * lb_licenseno;          //组织机构代码
 @property (nonatomic,weak) IBOutlet UILabel * lb_contact;            //法人代表
-@property (nonatomic,weak) IBOutlet UILabel * lb_contactphone;       //法人电话
 @property (nonatomic,weak) IBOutlet UILabel * lb_manager;            //车队管理员
-@property (nonatomic,weak) IBOutlet UILabel * lb_managePhone;        //车队管理员电话
 @property (nonatomic,weak) IBOutlet UILabel * lb_safer;              //安全管理员
-@property (nonatomic,weak) IBOutlet UILabel * lb_safePhone;          //安全管理员电话
 @property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;             //证件照片
 
 @property (nonatomic,strong) NSMutableArray *arr_view;
@@ -64,16 +59,16 @@
             _lb_memtype.text = @"砂石子车";
         }
         
-        _lb_memFormNo.text = [ShareFun takeStringNoNull:_memberInfo.memFormNo];
+
         _lb_licenseTime.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@到%@",[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeStart dateFormat:@"yyyy年MM月dd日"],[ShareFun timeWithTimeInterval:_memberInfo.licenseTimeEnd dateFormat:@"yyyy年MM月dd日"]]];
         _lb_address.text = [ShareFun takeStringNoNull:_memberInfo.address];
-        _lb_licenseno.text = [ShareFun takeStringNoNull:_memberInfo.licenseno];
+        
         _lb_contact.text = [ShareFun takeStringNoNull:_memberInfo.contact];
-        _lb_contactphone.text = [ShareFun takeStringNoNull:_memberInfo.contactphone];
+        
         _lb_manager.text = [ShareFun takeStringNoNull:_memberInfo.manager];
-        _lb_managePhone.text = [ShareFun takeStringNoNull:_memberInfo.managePhone];
+        
         _lb_safer.text = [ShareFun takeStringNoNull:_memberInfo.safer];
-        _lb_safePhone.text = [ShareFun takeStringNoNull:_memberInfo.safePhone];
+        
     
     }
 
@@ -89,29 +84,11 @@
 
 - (void)setImagelists:(NSArray<VehicleImageModel *> *)imagelists{
     
-    
-    _imagelists = imagelists;
-    
-    if (_imagelists && _imagelists.count > 0) {
+    if (!_imagelists) {
+        _imagelists = imagelists;
         
-        
-        if (_arr_view && _arr_view.count > 0) {
+        if (_imagelists && _imagelists.count > 0) {
             
-            for (int i = 0;i < [_arr_view count]; i++) {
-                
-                VehicleImageModel *pic = _imagelists[i];
-                
-                UIButton *t_button  = _arr_view[i];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
-                    
-                }];
-            }
-            
-        }else{
             
             NSMutableArray *arr_v = [NSMutableArray new];
             
@@ -120,11 +97,15 @@
                 VehicleImageModel *pic = _imagelists[i];
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
+                
                 [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    if ([pic.isID isEqualToString:@"1"]) {
-                        image = [ShareFun transToMosaicImage:image blockLevel:10];
-                        [t_button setImage:image forState:UIControlStateNormal];
-                    }
+                    
+                    [GCDQueue executeInLowPriorityGlobalQueue:^{
+                        UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效" needHigh:NO];
+                        [GCDQueue executeInMainQueue:^{
+                            [t_button setImage:t_image forState:UIControlStateNormal];
+                        }];
+                    }];
                     
                 }];
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
@@ -178,17 +159,11 @@
                 }
             }
             
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
+        }else{
             
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
+            [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
             
         }
-        
-    }else{
-        
-        [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
         
     }
     
