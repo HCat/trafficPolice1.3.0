@@ -310,7 +310,7 @@
         cell.dayLabel.text = @"";
         [cell.v_today removeFromSuperview];
         cell.v_today = nil;
-        cell.monthModel = nil;
+        
     }
     
     return cell;
