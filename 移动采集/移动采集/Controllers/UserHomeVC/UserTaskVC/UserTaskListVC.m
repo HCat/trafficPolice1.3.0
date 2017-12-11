@@ -382,17 +382,28 @@
 // 选中某行cell时会调用
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     NSLog(@"选中didSelectRowAtIndexPath row = %ld", indexPath.row);
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
-        t_vc.task = _arr_current[indexPath.row];
-        UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        
+        if (self.arr_current && self.arr_current.count > 0) {
+            
+            UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
+            t_vc.task = _arr_current[indexPath.row];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+            
+        }
+        
     }else{
-        UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
-        t_vc.task = _arr_history[indexPath.row];
-        UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        
+        if (_arr_history && _arr_history.count > 0) {
+            
+            UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
+            t_vc.task = _arr_history[indexPath.row];
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:self.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+            
+        }
         
     }
     
