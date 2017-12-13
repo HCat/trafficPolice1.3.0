@@ -17,6 +17,7 @@
 
 #import "MessageCell.h"
 #import "MessageDetailVC.h"
+#import "IllegalOperatCarVC.h"
 
 
 @interface MessageHomeVC ()
@@ -213,12 +214,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
     IdentifyModel *t_model = _arr_content[indexPath.row];
-    t_model.source = @0;
-    MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
-    t_vc.model = t_model;
-    [self.navigationController pushViewController:t_vc animated:YES];
+    
+    if ([t_model.type isEqualToNumber:@4]) {
+        t_model.source = @0;
+        IllegalOperatCarVC *t_vc = [[IllegalOperatCarVC alloc] init];
+        t_vc.model = t_model;
+        [self.navigationController pushViewController:t_vc animated:YES];
+    }else{
+        t_model.source = @0;
+        MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
+        t_vc.model = t_model;
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }
+    
+  
     
 }
 

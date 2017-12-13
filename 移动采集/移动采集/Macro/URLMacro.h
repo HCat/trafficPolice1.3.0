@@ -11,14 +11,13 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DACHAODEBUG_URL @"http://192.168.10.88/police-admin"
 #define WEBSOCKET_DACHAODEBUG_URL @"ws://192.168.10.88/police-admin/websocket"
 
 #define DEBUG_URL @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
-
 
 #define WEBSOCKET_DEBUG_URL @"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
@@ -139,7 +138,6 @@
 #pragma mark - 排班相关API
 
 #define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getDutyByMonth.json" //获取月排班
-
 #define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json" //按天获取排班详情
 
 #pragma mark - 警员任务
@@ -147,6 +145,12 @@
 #define URL_TASK_HISTORYLIST @"app/policeTask/getHistoryList.json"  //查询历史任务
 #define URL_TASK_CURRENTLIST @"app/policeTask/getCurrentList.json"  //查询当前任务
 #define URL_TASK_DETAIL @"app/policeTask/detail.json"   //任务详情
+
+#pragma mark - 非法营运
+
+#define URL_IllOPERATION_BESUPERVISED @"app/illOperation/toBeSupervisedCarno.json"   //待监管车辆
+#define URL_IllOPERATION_EXEMPTCARNO @"app/illOperation/exemptCarno.json"   //待监管车辆
+#define URL_IllOPERATION_DETAIL @"app/illOperation/detail.json"   //待监管车辆
 
 
 #endif /* URLMacro_h */
