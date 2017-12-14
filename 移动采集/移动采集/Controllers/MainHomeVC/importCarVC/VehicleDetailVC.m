@@ -22,6 +22,7 @@
 #import "VehicleDriverCell.h"
 #import "VehicleDriverNoShowCell.h"
 #import "VehicleRemarkCell.h"
+#import "VehicleRouteCell.h"
 
 
 typedef NS_ENUM(NSUInteger, VehicleCellType) {
@@ -29,6 +30,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     VehicleCellTypeMember,      //运输主体
     VehicleCellTypeDriver,      //驾驶员信息
     VehicleCellTypeRemark,      //备注信息
+    VehicleCellTypeRoute,       //行驶路线
     
 };
 
@@ -66,6 +68,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     [_tableView registerNib:[UINib nibWithNibName:@"VehicleDriverCell" bundle:nil] forCellReuseIdentifier:@"VehicleDriverCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"VehicleDriverNoShowCell" bundle:nil] forCellReuseIdentifier:@"VehicleDriverNoShowCellID"];
     [_tableView registerNib:[UINib nibWithNibName:@"VehicleRemarkCell" bundle:nil] forCellReuseIdentifier:@"VehicleRemarkCellID"];
+    [_tableView registerNib:[UINib nibWithNibName:@"VehicleRouteCell" bundle:nil] forCellReuseIdentifier:@"VehicleRouteCellID"];
+    
     
     WS(weakSelf);
     [_tableView setReloadBlock:^{
@@ -129,6 +133,12 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 //            }
 //
 //        }
+        
+        //添加当前行驶路线
+        if(_reponse.vehicleRoute){
+             [self.arr_content addObject:_reponse.vehicleRoute];
+            
+        }
         
         
     }
@@ -319,6 +329,14 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 //
 //        }
 //        break;
+        case VehicleCellTypeRoute:{
+            height = [tableView fd_heightForCellWithIdentifier:@"VehicleRouteCellID" cacheByIndexPath:indexPath configuration:^(VehicleRouteCell *cell) {
+                SW(strongSelf, weakSelf);
+                cell.route = (VehicleRouteModel *)strongSelf.arr_content[indexPath.row];
+            }];
+            
+        }
+            break;
         default:
             break;
     }
@@ -443,6 +461,14 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 //            return cell;
 //        }
 //        break;
+            
+        case VehicleCellTypeRoute:{
+            VehicleRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleRouteCellID"];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            cell.route = (VehicleRouteModel *)self.arr_content[indexPath.row];
+            return cell;
+        }
+        break;
         default:
             break;
     }
@@ -463,8 +489,11 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             return VehicleCellTypeMember;
         }else if ([obj isKindOfClass:[VehicleDriverModel class]]){
             return VehicleCellTypeDriver;
-        }else{
+        }else if ([obj isKindOfClass:[VehicleRouteModel class]]){
+            return VehicleCellTypeRoute;
+        }else {
             return VehicleCellTypeRemark;
+            
         }
     }else{
         return -1;

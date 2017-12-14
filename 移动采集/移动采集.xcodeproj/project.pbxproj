@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */; };
+		CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0608481FE257A60063B06D /* VehicleRouteModel.m */; };
+		CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06084C1FE25EAE0063B06D /* VehicleRouteCell.m */; };
+		CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE06084D1FE25EAE0063B06D /* VehicleRouteCell.xib */; };
 		CE0731C41F5EC7E400B3831B /* VehicleAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0731C31F5EC7E400B3831B /* VehicleAPI.m */; };
 		CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0731C61F5ECA2D00B3831B /* MemberInfoModel.m */; };
 		CE0731CA1F5ECBF400B3831B /* VehicleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0731C91F5ECBF400B3831B /* VehicleModel.m */; };
@@ -395,6 +398,11 @@
 /* Begin PBXFileReference section */
 		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
 		9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-移动采集.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0608471FE257A60063B06D /* VehicleRouteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleRouteModel.h; sourceTree = "<group>"; };
+		CE0608481FE257A60063B06D /* VehicleRouteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleRouteModel.m; sourceTree = "<group>"; };
+		CE06084B1FE25EAE0063B06D /* VehicleRouteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleRouteCell.h; sourceTree = "<group>"; };
+		CE06084C1FE25EAE0063B06D /* VehicleRouteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleRouteCell.m; sourceTree = "<group>"; };
+		CE06084D1FE25EAE0063B06D /* VehicleRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleRouteCell.xib; sourceTree = "<group>"; };
 		CE0731C21F5EC7E400B3831B /* VehicleAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleAPI.h; sourceTree = "<group>"; };
 		CE0731C31F5EC7E400B3831B /* VehicleAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleAPI.m; sourceTree = "<group>"; };
 		CE0731C51F5ECA2D00B3831B /* MemberInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberInfoModel.h; sourceTree = "<group>"; };
@@ -1100,6 +1108,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE06084A1FE25E720063B06D /* VehicleRouteCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE06084B1FE25EAE0063B06D /* VehicleRouteCell.h */,
+				CE06084C1FE25EAE0063B06D /* VehicleRouteCell.m */,
+				CE06084D1FE25EAE0063B06D /* VehicleRouteCell.xib */,
+			);
+			name = VehicleRouteCell;
+			sourceTree = "<group>";
+		};
 		CE0B55911F1CA8D0003CF361 /* LRShowHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1432,6 +1450,7 @@
 		CE5A01001F611C3A000F13CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE06084A1FE25E720063B06D /* VehicleRouteCell */,
 				CE2C98BA1F61D1C8009851F6 /* VehicleRemarkCell */,
 				CE2C98AF1F61C1B7009851F6 /* VehicleDriverCell */,
 				CE2C98A91F61AAAA009851F6 /* VehicleMemberCell */,
@@ -2044,6 +2063,8 @@
 				CE518BC61F99E3F2008F52B5 /* WeatherModel.m */,
 				CEE45BB21FAC601C00BF472F /* TaskModel.h */,
 				CEE45BB31FAC601C00BF472F /* TaskModel.m */,
+				CE0608471FE257A60063B06D /* VehicleRouteModel.h */,
+				CE0608481FE257A60063B06D /* VehicleRouteModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2558,6 +2579,7 @@
 				CE424F441F3AE694005741CA /* AccidentPartyCell.xib in Resources */,
 				CE5C38F41F28606B0055C945 /* lock.png in Resources */,
 				CE5A01051F611CC6000F13CC /* VehicleCarCell.xib in Resources */,
+				CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
 				CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */,
@@ -2673,6 +2695,7 @@
 				CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
+				CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */,
 				CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */,
 				CE763B121FCFF0F300EB0815 /* JointImageCell.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
@@ -2762,6 +2785,7 @@
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
+				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,

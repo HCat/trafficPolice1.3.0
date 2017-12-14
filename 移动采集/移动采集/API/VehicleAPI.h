@@ -13,6 +13,7 @@
 #import "VehicleRemarkModel.h"
 #import "VehicleDriverModel.h"
 #import "VehicleGPSModel.h"
+#import "VehicleRouteModel.h"
 
 #pragma mark -返回重点车辆信息
 
@@ -36,6 +37,8 @@
 
 @property (nonatomic,copy)   NSArray <VehicleRemarkModel *> * vehicleRemarkList; //车辆备注信息
 @property (nonatomic,copy)   NSArray <VehicleDriverModel *> * driverList;        //驾驶员资料
+
+@property (nonatomic,strong) VehicleRouteModel *vehicleRoute;       //车辆路线信息
 
 @end
 
