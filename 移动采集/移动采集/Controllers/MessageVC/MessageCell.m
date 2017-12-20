@@ -87,7 +87,7 @@
 
         }else if ([_model.type isEqualToNumber:@4]){
             
-            _lb_type.text = @"非法运营车辆";
+            _lb_type.text = @"非法营运";
             _imgeV_state.hidden = YES;
             if ([_model.flag isEqualToNumber:@0]) {
                 [_lb_type setPersistentBackgroundColor:UIColorFromRGB(0xf88852)];

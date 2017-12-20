@@ -136,6 +136,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="zjB-bM-RN2" secondAttribute="trailing" constant="10" id="07I-o6-YaH"/>
                     <constraint firstItem="MaD-uJ-vdo" firstAttribute="leading" secondItem="daW-qg-png" secondAttribute="trailing" constant="5.5" id="2Cd-Pq-QwR"/>
@@ -170,6 +171,7 @@
                     <constraint firstItem="Yy5-ev-33k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="yQ8-sE-zGT"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lZf-se-Pma" firstAttribute="centerX" secondItem="KGk-i7-Jjw" secondAttribute="centerX" id="Eza-9T-Wfg"/>
             </constraints>

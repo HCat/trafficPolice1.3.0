@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IllegalOperatCarVC">
             <connections>
                 <outlet property="imageV_car" destination="7bT-4C-qbd" id="8zH-ul-EfY"/>
+                <outlet property="layout_image_height" destination="VZE-rv-Lup" id="12e-h9-Fpo"/>
                 <outlet property="lb_address" destination="3VX-cs-6EU" id="rE1-oJ-kkF"/>
                 <outlet property="lb_carNumber" destination="ePg-WS-chh" id="FY7-94-aoS"/>
                 <outlet property="lb_deviceNumber" destination="ibe-X2-cQv" id="vFI-Uc-m3J"/>
@@ -164,24 +165,29 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1O-jF-0Hb">
                     <rect key="frame" x="24" y="162" width="326" height="356"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bT-4C-qbd">
-                            <rect key="frame" x="10" y="10" width="306" height="306"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7bT-4C-qbd">
+                            <rect key="frame" x="10" y="10" width="306" height="336"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="336" id="VZE-rv-Lup"/>
+                            </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="7bT-4C-qbd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O1O-jF-0Hb" secondAttribute="top" constant="10" id="Fwi-4H-QNv"/>
-                        <constraint firstItem="7bT-4C-qbd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O1O-jF-0Hb" secondAttribute="leading" constant="10" id="bF4-vn-XjM"/>
-                        <constraint firstItem="7bT-4C-qbd" firstAttribute="centerY" secondItem="O1O-jF-0Hb" secondAttribute="centerY" id="iRD-B5-xRH"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7bT-4C-qbd" secondAttribute="trailing" constant="10" id="k9X-pT-LH8"/>
-                        <constraint firstItem="7bT-4C-qbd" firstAttribute="centerX" secondItem="O1O-jF-0Hb" secondAttribute="centerX" id="otq-kO-lSk"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7bT-4C-qbd" secondAttribute="bottom" constant="10" id="yh5-Te-N2p"/>
+                        <constraint firstItem="7bT-4C-qbd" firstAttribute="height" secondItem="O1O-jF-0Hb" secondAttribute="height" constant="-20" id="9vR-g6-ElN"/>
+                        <constraint firstItem="7bT-4C-qbd" firstAttribute="top" secondItem="O1O-jF-0Hb" secondAttribute="top" constant="10" id="CzU-K5-TkF"/>
+                        <constraint firstItem="7bT-4C-qbd" firstAttribute="leading" secondItem="O1O-jF-0Hb" secondAttribute="leading" constant="10" id="bF4-vn-XjM"/>
+                        <constraint firstAttribute="trailing" secondItem="7bT-4C-qbd" secondAttribute="trailing" constant="10" id="k9X-pT-LH8"/>
+                        <constraint firstAttribute="bottom" secondItem="7bT-4C-qbd" secondAttribute="bottom" constant="10" id="qhn-Al-cym"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="026-PO-in7" appends="YES" id="mc8-du-Alr"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="O1O-jF-0Hb" secondAttribute="bottom" constant="85" id="0Ep-7F-hhV"/>
                 <constraint firstAttribute="trailing" secondItem="O1O-jF-0Hb" secondAttribute="trailing" constant="25" id="COf-YT-VGS"/>
                 <constraint firstItem="I0C-7S-gCc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gnh-5I-0Lm"/>
                 <constraint firstAttribute="bottom" secondItem="Jpq-aN-jF6" secondAttribute="bottom" id="Gzz-eM-b1A"/>
@@ -189,11 +195,17 @@
                 <constraint firstItem="O1O-jF-0Hb" firstAttribute="top" secondItem="I0C-7S-gCc" secondAttribute="bottom" constant="10" id="XK6-7r-o8p"/>
                 <constraint firstAttribute="trailing" secondItem="I0C-7S-gCc" secondAttribute="trailing" id="ieu-7H-ppW"/>
                 <constraint firstItem="Jpq-aN-jF6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ofM-fp-xbJ"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="O1O-jF-0Hb" secondAttribute="bottom" constant="85" id="q73-fs-jE6"/>
                 <constraint firstItem="O1O-jF-0Hb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="qNF-xu-NzF"/>
                 <constraint firstItem="I0C-7S-gCc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="twh-1g-ftL"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
+        <tapGestureRecognizer id="026-PO-in7">
+            <connections>
+                <action selector="handleBtnImageShowClicked:" destination="-1" id="aRU-bk-8Sn"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

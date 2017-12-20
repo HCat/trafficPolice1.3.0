@@ -14,7 +14,7 @@
 @interface IllOperationBeSupervisedManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSNumber * carno;   //子任务id
+@property (nonatomic, copy) NSString * carno;   //子任务id
 
 /****** 返回数据 ******/
 
@@ -27,7 +27,7 @@
 @interface IllOperationExemptCarnoManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSNumber * carno;   //子任务id
+@property (nonatomic, copy) NSString * carno;   //子任务id
 
 /****** 返回数据 ******/
 
@@ -45,12 +45,12 @@
 @property (nonatomic, strong) NSNumber * longitude; //经度
 @property (nonatomic, strong) NSNumber * latitude;  //纬度
 
-@property (nonatomic, strong) NSNumber * devno;//设备编号
-@property (nonatomic, strong) NSNumber * carno;//车牌号
+@property (nonatomic, copy)   NSString * devno;//设备编号
+@property (nonatomic, copy)   NSString * carno;//车牌号
 @property (nonatomic, copy)   NSString * address;//地址
 @property (nonatomic, copy)   NSString * originalPic;//图片地址
 @property (nonatomic, strong) NSNumber * isExempt;//是否豁免
-@property (nonatomic, strong) NSNumber * createTime;//创建时间
+@property (nonatomic, copy) NSString * createTime;//创建时间
 
 @end
 

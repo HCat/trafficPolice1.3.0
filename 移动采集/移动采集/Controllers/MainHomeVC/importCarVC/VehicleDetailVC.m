@@ -106,6 +106,13 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
             [_arr_content removeAllObjects];
         }
         
+        
+        //添加当前行驶路线
+        if(_reponse.vehicleRoute){
+            [self.arr_content addObject:_reponse.vehicleRoute];
+            
+        }
+        
         //添加车辆信息
         if (_reponse.vehicle) {
             _reponse.vehicle.memFormNo = _reponse.memberInfo.memFormNo;
@@ -134,11 +141,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
 //
 //        }
         
-        //添加当前行驶路线
-        if(_reponse.vehicleRoute){
-             [self.arr_content addObject:_reponse.vehicleRoute];
-            
-        }
+        
         
         
     }
