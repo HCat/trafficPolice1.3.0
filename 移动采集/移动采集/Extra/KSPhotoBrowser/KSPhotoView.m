@@ -83,12 +83,6 @@ const CGFloat kKSPhotoViewMaxScale = 3;
         [_imageManager setImageForImageView:_imageView withURL:item.imageUrl placeholder:item.thumbImage progress:progressBlock completion:^(UIImage *image, NSURL *url, BOOL finished, NSError *error) {
             __strong typeof(wself) sself = wself;
             if (finished) {
-            
-                if (item.vehicle) {
-                    UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效." needHigh:YES];
-                    [sself.imageView setImage:t_image];
-                }
-                
                 [sself resizeImageView];
             }
             [sself.progressLayer stopSpin];

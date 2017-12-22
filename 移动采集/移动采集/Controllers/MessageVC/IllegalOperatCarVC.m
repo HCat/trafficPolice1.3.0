@@ -12,6 +12,7 @@
 #import <UIImageView+WebCache.h>
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
+#import "SRAlertView.h"
 
 @interface IllegalOperatCarVC ()
 
@@ -72,8 +73,8 @@
     WS(weakSelf);
     IllOperationDetailManger * manger = [[IllOperationDetailManger alloc] init];
     manger.messageId= messageId;
-    manger.isNeedLoadHud = YES;
     [manger configLoadingTitle:@"请求"];
+    manger.isNeedShowHud = NO;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);
@@ -117,22 +118,36 @@
     
     WS(weakSelf);
     
-    IllOperationBeSupervisedManger *manger = [[IllOperationBeSupervisedManger alloc] init];
-    manger.carno = _illCarDetail.carno;
-    [manger configLoadingTitle:@"请求中..."];
-    manger.successMessage = @"监管成功";
-    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        SW(strongSelf, weakSelf);
-        
-        if (manger.responseModel.code == CODE_SUCCESS) {
-            strongSelf.v_bottom.hidden = YES;
-            
-        }
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-    }];
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:@"以后摄像头捕捉到该车牌号会继续上报,确定射程待监管车辆？"
+                                                leftActionTitle:@"取消"
+                                               rightActionTitle:@"确认"
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:^(AlertViewActionType actionType) {
+                                                       if(actionType == AlertViewActionTypeRight) {
+                                                           
+                                                           SW(strongSelf, weakSelf);
+                                                           
+                                                           IllOperationBeSupervisedManger *manger = [[IllOperationBeSupervisedManger alloc] init];
+                                                           manger.carno = _illCarDetail.carno;
+                                                           [manger configLoadingTitle:@"请求中..."];
+                                                           manger.successMessage = @"监管成功";
+                                                           [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                               
+                                                               if (manger.responseModel.code == CODE_SUCCESS) {
+                                                                   strongSelf.v_bottom.hidden = YES;
+                                                                   
+                                                               }
+                                                               
+                                                           } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                               
+                                                           }];
+                                                       }
+                                                   }];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
+    
+    
     
 }
 
@@ -141,23 +156,38 @@
     
     WS(weakSelf);
     
-    IllOperationExemptCarnoManger *manger = [[IllOperationExemptCarnoManger alloc] init];
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:@"设成豁免后该摄像头将不再上报该车辆信息"
+                                                leftActionTitle:@"取消"
+                                               rightActionTitle:@"确认"
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:^(AlertViewActionType actionType) {
+                                                       if(actionType == AlertViewActionTypeRight) {
+                                                           
+                                                           SW(strongSelf, weakSelf);
+                                                           
+                                                           IllOperationExemptCarnoManger *manger = [[IllOperationExemptCarnoManger alloc] init];
+                                                           
+                                                           manger.carno = _illCarDetail.carno;
+                                                           [manger configLoadingTitle:@"请求中..."];
+                                                           manger.successMessage = @"豁免成功";
+                                                           [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                            
+                                                               if (manger.responseModel.code == CODE_SUCCESS) {
+                                                                   strongSelf.v_bottom.hidden = YES;
+                                                                   
+                                                               }
+                                                               
+                                                           } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                               
+                                                           }];
+                                                       }
+                                                   }];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
     
-    manger.carno = _illCarDetail.carno;
-    [manger configLoadingTitle:@"请求中..."];
-    manger.successMessage = @"豁免成功";
-    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        SW(strongSelf, weakSelf);
-        
-        if (manger.responseModel.code == CODE_SUCCESS) {
-            strongSelf.v_bottom.hidden = YES;
-            
-        }
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-    }];
+    
+   
     
 }
 

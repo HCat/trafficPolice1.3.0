@@ -118,16 +118,4 @@
     
 }
 
-+ (instancetype)itemWithSourceView:(UIImageView *)view
-                          imageUrl:(NSURL *)url withVehiclePhotoModel:(VehicleImageModel *)photo{
-    
-    KSPhotoItem *item =  [[KSPhotoItem alloc] initWithSourceView:view
-                                                        imageUrl:url];
-    
-    item.vehicle = photo;
-    return item;
-    
-    
-}
-
 @end

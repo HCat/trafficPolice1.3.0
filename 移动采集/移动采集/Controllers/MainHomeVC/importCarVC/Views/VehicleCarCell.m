@@ -107,16 +107,9 @@
                 
                 UIButton *t_button = [UIButton newAutoLayoutView];
                 
-                [t_button sd_setImageWithURL:[NSURL URLWithString:pic.mediaUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    
-                    [GCDQueue executeInLowPriorityGlobalQueue:^{
-                         UIImage * t_image = [ShareFun addWatemarkTextAfteriOS7_WithLogoImage:image watemarkText:@"此证件仅提供交警存档使用，他用无效." needHigh:NO];
-                        [GCDQueue executeInMainQueue:^{
-                            [t_button setImage:t_image forState:UIControlStateNormal];
-                        }];
-                    }];
-                    
-                }];
+                NSString *str_url = [NSString stringWithFormat:@"%@%@",Base_URL,pic.mediaThumbUrl];
+                
+                [t_button sd_setImageWithURL:[NSURL URLWithString:str_url] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
                 
                 
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
@@ -124,6 +117,8 @@
                 t_button.layer.cornerRadius = 5.0f;
                 t_button.layer.masksToBounds = YES;
                 t_button.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                t_button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+                t_button.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
                 [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
                 [self.contentView addSubview:t_button];
                 [_arr_view addObject:t_button];
@@ -192,7 +187,10 @@
         for (int i = 0; i < _arr_view.count; i++) {
             UIButton *btn = _arr_view[i];
             VehicleImageModel *picModel  = _imagelists[i];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:picModel.mediaUrl] withVehiclePhotoModel:picModel];
+            
+            NSString *str_url = [NSString stringWithFormat:@"%@%@",Base_URL,picModel.mediaThumbWaterUrl];
+            
+            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:btn.imageView imageUrl:[NSURL URLWithString:str_url]];
             [t_arr addObject:item];
         }
         

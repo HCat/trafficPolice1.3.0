@@ -20,6 +20,8 @@
 @interface VehicleImageModel : NSObject
 
 @property (nonatomic,copy) NSString *mediaUrl;
+@property (nonatomic,copy) NSString *mediaThumbUrl; //缩略图url
+@property (nonatomic,copy) NSString *mediaThumbWaterUrl;   //压缩水印图片url
 @property (nonatomic,copy) NSString *resType;   //
 @property (nonatomic,copy) NSString *isID;      //是否是身份证
 

@@ -71,13 +71,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JointImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointImageCellID"];
-    cell.fd_enforceFrameLayout = NO;
-   
+    if (indexPath.row == 0) {
+        JointImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointImageCellID"];
+        cell.fd_enforceFrameLayout = NO;
+        
+         return cell;
+        
+    }else if (indexPath.row == 1){
+        JointVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointVideoCellID"];
+        cell.fd_enforceFrameLayout = NO;
+        
+        return cell;
+    }else{
+        JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
+        cell.fd_enforceFrameLayout = NO;
+        
+        return cell;
+    }
     
     
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

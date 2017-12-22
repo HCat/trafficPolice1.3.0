@@ -47,6 +47,7 @@
                     <constraint firstItem="0Ua-MR-yLD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="8Og-gH-Yjf"/>
                     <constraint firstItem="0Ua-MR-yLD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="p12-va-wcP"/>
                     <constraint firstItem="NVo-bi-ncp" firstAttribute="centerY" secondItem="0Ua-MR-yLD" secondAttribute="centerY" id="xpU-ZV-gyx"/>
+                    <constraint firstAttribute="bottom" secondItem="0Ua-MR-yLD" secondAttribute="bottom" constant="152.5" id="zZh-d2-QyJ"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="26" y="182"/>

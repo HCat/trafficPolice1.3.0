@@ -70,7 +70,6 @@
     
 }
 
-
 - (void)setSubType:(ParkType)subType{
     _subType = subType;
     
@@ -130,6 +129,7 @@
 
 - (void)setBtnType:(BOOL)btnType{
     _btnType = btnType;
+    _param.isManualPos = @(!_btnType);
     if (_btnType) {
         [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_on"] forState:UIControlStateNormal];
         _btn_personLocation.enabled = NO;
@@ -198,6 +198,7 @@
         }else if (_subType == ParkTypeThrough){
             [self stopLocationAction:[LocationStorage sharedDefault].through];
         }
+        
     }else{
         [[LocationStorage sharedDefault] startLocation:_subType];
         [self handlebtnLocationClicked:nil];
