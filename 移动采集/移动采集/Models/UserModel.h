@@ -59,7 +59,7 @@
 	重点车辆       IMPORTANT_CAR
 	勤务指挥       POLICE_COMMAND
     路面实况       ROAD_INFO
-
+    联合执法       JOINT_LAW_ENFORCEMENT
 
 */
 
@@ -86,6 +86,7 @@
 
 + (BOOL)isPermissionForRoadInfo;        //路面实况权限
 
++ (BOOL)isPermissionForJointEnforcement; //联合执法权限
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;        //事故权限列表

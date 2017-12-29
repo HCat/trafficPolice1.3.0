@@ -318,7 +318,6 @@
 
 @implementation AccidentAddRemarkManger
 
-
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {

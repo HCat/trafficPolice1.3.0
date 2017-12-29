@@ -340,6 +340,24 @@
     
 }
 
+#pragma mark - 获取联合执法权限
+
++ (BOOL)isPermissionForJointEnforcement{
+    
+    NSString *match = @"JOINT_LAW_ENFORCEMENT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+    
+}
+
 
 #pragma mark - 获取事故结案权限
 

@@ -41,11 +41,11 @@
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 3;
     
 }
 
@@ -60,9 +60,7 @@
             
         }];
     }else{
-        return [tableView fd_heightForCellWithIdentifier:@"JointTextCellID" cacheByIndexPath:indexPath configuration:^(JointTextCell *cell) {
-            
-        }];
+        return 785;
     }
     
   
@@ -84,7 +82,7 @@
         return cell;
     }else{
         JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
-        cell.fd_enforceFrameLayout = NO;
+        
         
         return cell;
     }

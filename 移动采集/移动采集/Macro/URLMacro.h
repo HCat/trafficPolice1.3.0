@@ -153,4 +153,8 @@
 #define URL_IllOPERATION_DETAIL @"app/illOperation/detail.json"   //待监管车辆
 
 
+#define URL_JOINTLAW_SAVE @"app/jointLaw/save.json"     //联合执法增加
+#define URL_JOINTLAW_GETILLEGALCODELIST @"app/jointLaw/getIllegalCodeList.json"     //违法条例列表
+#define URL_JOINTLAW_IMGUPLOAD @"app/jointLaw/imgUpload.json"   //联合执法上传照片
+
 #endif /* URLMacro_h */

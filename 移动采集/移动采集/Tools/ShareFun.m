@@ -615,7 +615,6 @@
 }
 
 
-
 + (UIImage *)addWatemarkTextAfteriOS7_WithLogoImage:(UIImage *)logoImage watemarkText:(NSString *)watemarkText needHigh:(BOOL)isHigh{
 
     int w = logoImage.size.width;
