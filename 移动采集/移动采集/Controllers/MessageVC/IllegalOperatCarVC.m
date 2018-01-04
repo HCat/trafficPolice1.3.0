@@ -119,7 +119,7 @@
     WS(weakSelf);
     
     SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
-                                                        message:@"以后摄像头捕捉到该车牌号会继续上报,确定射程待监管车辆？"
+                                                        message:@"以后摄像头捕捉到该车牌号会继续上报,确定设成待监管车辆？"
                                                 leftActionTitle:@"取消"
                                                rightActionTitle:@"确认"
                                                  animationStyle:AlertViewAnimationNone
@@ -137,6 +137,9 @@
                                                                if (manger.responseModel.code == CODE_SUCCESS) {
                                                                    strongSelf.v_bottom.hidden = YES;
                                                                    
+                                                                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
+                                                                   
+                                                                   [strongSelf.navigationController popViewControllerAnimated:YES];
                                                                }
                                                                
                                                            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -176,6 +179,9 @@
                                                                if (manger.responseModel.code == CODE_SUCCESS) {
                                                                    strongSelf.v_bottom.hidden = YES;
                                                                    
+                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
+                                                                   
+                                                                   [strongSelf.navigationController popViewControllerAnimated:YES];
                                                                }
                                                                
                                                            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

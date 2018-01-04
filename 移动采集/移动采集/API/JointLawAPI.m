@@ -73,6 +73,9 @@
 
 @end
 
+
+#pragma mark - 联合执法上传照片
+
 @implementation JointLawImageModel
 
 @end
@@ -124,4 +127,54 @@
 
 @end
 
+
+#pragma mark - 联合执法上传视频
+
+@implementation JointLawVideoModel
+
+@end
+
+@implementation JointLawVideoUploadManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_JOINTLAW_VIDEOUPLOAD;
+}
+
+//请求方式
+- (YTKRequestMethod)requestMethod
+{
+    return YTKRequestMethodPOST;
+}
+
+//上传图片
+- (AFConstructingBlock)constructingBodyBlock {
+    return ^(id<AFMultipartFormData> formData) {
+        
+        [formData appendPartWithFileData:_file.fileData name:_file.name fileName:_file.fileName mimeType:_file.mimeType];
+        
+    };
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"oldVideoId":[_oldVideoId modelToJSONObject]};
+}
+
+//返回参数
+
+- (JointLawImageModel *)jointLawImageModel{
+    
+    if (self.responseModel) {
+        
+        return [JointLawImageModel modelWithDictionary:self.responseModel.data];
+    }
+    
+    return nil;
+}
+
+
+@end
 

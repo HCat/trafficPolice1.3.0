@@ -88,6 +88,31 @@
 @end
 
 
+#pragma mark - 联合执法上传视频
+
+@interface JointLawVideoModel:NSObject
+
+@property (nonatomic,copy)    NSString * videoId;  //视频id
+@property (nonatomic,copy)    NSString * videoUrl;  //视频url
+
+
+@end
+
+
+@interface JointLawVideoUploadManger: LRBaseRequest
+
+//请求数据
+@property (nonatomic,strong)  ImageFileInfo  * file;  //单个文件
+@property (nonatomic,copy)    NSArray  * oldVideoId;  //旧视频id    单个id，删除旧视频用
+
+//返回数据
+
+@property (nonatomic,copy) JointLawImageModel * jointLawImageModel;     //新照片信息列表
+
+@end
+
+
+
 
 
 

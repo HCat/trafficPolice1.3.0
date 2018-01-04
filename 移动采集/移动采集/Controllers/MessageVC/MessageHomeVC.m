@@ -48,6 +48,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
     
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
@@ -239,12 +240,20 @@
 - (void)makesureNotification:(NSNotification *)notification{
     
     NSNumber *source = notification.object;
-    
-    if ([source isEqualToNumber:@0]) {
-        [self.tb_content reloadData];
+    if (source) {
+        
+        if ([source isEqualToNumber:@0]) {
+            [self.tb_content reloadData];
+        }else{
+            [self reloadDataUseMJRefresh];
+        }
+        
     }else{
+        
         [self reloadDataUseMJRefresh];
+        
     }
+    
     
 }
 
