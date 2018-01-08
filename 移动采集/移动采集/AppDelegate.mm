@@ -445,8 +445,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                         
                     }
                     
-                    
-                    
                 }
             
             } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

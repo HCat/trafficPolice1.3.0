@@ -13,11 +13,15 @@
 #import "JointVideoCell.h"
 #import "JointTextCell.h"
 
+#import "JointLawAPI.h"
+
 @interface JointEnforceVC ()
 
 @property(nonatomic,weak) IBOutlet UIView *v_bottom;
-@property (weak, nonatomic) IBOutlet UIButton *btn_bottom;
+@property(weak,nonatomic) IBOutlet UIButton *btn_bottom;
 @property(nonatomic,weak) IBOutlet UITableView *tableView;
+
+@property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
 
 @end
 
@@ -59,8 +63,11 @@
         return [tableView fd_heightForCellWithIdentifier:@"JointVideoCellID" cacheByIndexPath:indexPath configuration:^(JointVideoCell *cell) {
             
         }];
+        
     }else{
+        
         return 785;
+        
     }
     
   
@@ -82,8 +89,7 @@
         return cell;
     }else{
         JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
-        
-        
+
         return cell;
     }
     

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JointLawAPI.h"
 
 @interface JointTextCell : UITableViewCell
+
+@property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
 
 @end
