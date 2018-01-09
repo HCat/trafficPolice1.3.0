@@ -33,6 +33,7 @@
 @implementation IllegalOperatCarVC
 
 - (void)viewDidLoad {
+    self.title = @"非法运营车辆";
     [super viewDidLoad];
     [self makeSureRequest];
     [self illegalCarDetailRequest:_model.msgId];
