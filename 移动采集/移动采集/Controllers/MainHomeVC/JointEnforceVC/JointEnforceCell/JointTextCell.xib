@@ -76,7 +76,7 @@
                             <constraint firstAttribute="width" constant="60" id="SH7-nh-Yja"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="定位"/>
+                        <state key="normal" title="手动定位"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="3"/>

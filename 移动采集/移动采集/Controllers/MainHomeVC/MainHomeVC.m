@@ -295,8 +295,9 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
     }else if ([t_title isEqualToString:@"路面实况"]){
         
+        
     }
-//    }else if ([t_title isEqualToString:@"联合执法"]){
+//    else if ([t_title isEqualToString:@"联合执法"]){
 //        JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
 //        [self.navigationController pushViewController:t_vc animated:YES];
 //
