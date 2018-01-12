@@ -8,8 +8,11 @@
 
 #import "JointTextCell.h"
 #import "FSTextView.h"
+#import "LRCameraVC.h"
+#import "JointEnforceVC.h"
+#import "PGDatePickManager.h"
 
-@interface JointTextCell()
+@interface JointTextCell()<PGDatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *tf_carNumber;
 @property (weak, nonatomic) IBOutlet UITextField *tf_illegalAddress;
@@ -35,10 +38,10 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
         
     }
+    
     return self;
+    
 }
-
-
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -106,8 +109,6 @@
     [textField addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
-#pragma mark - 实时监听UITextField内容的变化
-
 -(void)passConTextChange:(id)sender{
     
     UITextField* textField = (UITextField*)sender;
@@ -173,6 +174,131 @@
     
     _tf_illegalAddress.text = [LocationHelper sharedDefault].address;
     _param.illegalAddress = [LocationHelper sharedDefault].address;
+    
+    
+    
+}
+
+#pragma mark - 车牌号码识别点击事件
+
+- (IBAction)handleBtnCarNumberIdentifyClicked:(id)sender {
+    WS(weakSelf);
+    
+    JointEnforceVC *t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    LRCameraVC *home = [[LRCameraVC alloc] init];
+    home.isAccident = NO;
+    home.type = 1;
+    home.fininshCaptureBlock = ^(LRCameraVC *camera) {
+        SW(strongSelf, weakSelf);
+        if (camera) {
+            if (camera.type == 1) {
+                strongSelf.tf_carNumber.text = camera.commonIdentifyResponse.carNo;
+                strongSelf.param.plateno = camera.commonIdentifyResponse.carNo;
+            }
+        }
+    };
+    [t_vc presentViewController:home
+                       animated:NO
+                     completion:^{
+                     }];
+    
+}
+
+#pragma mark - 车主身份证识别
+
+- (IBAction)handleBtnCarIdCardIdentifyClicked:(id)sender {
+    WS(weakSelf);
+    
+    JointEnforceVC *t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    LRCameraVC *home = [[LRCameraVC alloc] init];
+    home.isAccident = YES;
+    home.type = 2;
+    home.fininshCaptureBlock = ^(LRCameraVC *camera) {
+        SW(strongSelf, weakSelf);
+        if (camera) {
+            if (camera.type == 2) {
+                
+                strongSelf.tf_carName.text = camera.commonIdentifyResponse.name;
+                strongSelf.tf_carIdCard.text = camera.commonIdentifyResponse.idNo;
+                
+                strongSelf.param.ownerName = camera.commonIdentifyResponse.name;
+                strongSelf.param.ownerIdCard = camera.commonIdentifyResponse.idNo;
+            }
+        }
+    };
+    [t_vc presentViewController:home
+                       animated:NO
+                     completion:^{
+                     }];
+    
+}
+
+#pragma mark - 驾驶员身份证识别
+
+- (IBAction)handleBtnDriverIdCardIdentifyClicked:(id)sender {
+    WS(weakSelf);
+    
+    JointEnforceVC *t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    LRCameraVC *home = [[LRCameraVC alloc] init];
+    home.isAccident = YES;
+    home.type = 2;
+    home.fininshCaptureBlock = ^(LRCameraVC *camera) {
+        SW(strongSelf, weakSelf);
+        if (camera) {
+            if (camera.type == 2) {
+                strongSelf.tf_driverName.text = camera.commonIdentifyResponse.name;
+                strongSelf.tf_driverIdCard.text = camera.commonIdentifyResponse.idNo;
+                
+                strongSelf.param.driverName = camera.commonIdentifyResponse.name;
+                strongSelf.param.driverIdCard = camera.commonIdentifyResponse.idNo;
+            }
+        }
+    };
+    [t_vc presentViewController:home
+                       animated:NO
+                     completion:^{
+                     }];
+    
+}
+
+#pragma mark - 选择时间
+
+- (IBAction)handleBtnChooseTimeClicked:(id)sender{
+    
+    JointEnforceVC *t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePickManager.titleLabel.text = @"选择时间";
+    datePickManager.isShadeBackgroud = YES;
+    
+    datePicker.minimumDate = [NSDate setYear:2017 month:1 day:1 hour:00 minute:00];
+    datePicker.maximumDate = [NSDate date];
+    datePicker.datePickerType = PGPickerViewType3;
+    datePicker.datePickerMode = PGDatePickerModeDateHourMinute;
+
+    [t_vc presentViewController:datePickManager
+                       animated:NO
+                     completion:^{
+                     }];
+    
+    
+}
+
+
+#pragma mark - PGDatePickerDelegate
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    
+    NSLog(@"dateComponents = %@", dateComponents);
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *date = [gregorian dateFromComponents:dateComponents];
+    NSDateFormatter *dataFormant = [[NSDateFormatter alloc] init];
+    [dataFormant setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateStr = [dataFormant stringFromDate:date];
+    
+    _tf_illegalTimer.text = dateStr;
+    _param.illegalTimeStr = dateStr;
     
 }
 

@@ -29,7 +29,11 @@
 
 - (void)viewDidLoad {
     
+    self.title = @"联合执法";
     [super viewDidLoad];
+    
+    //重新定位下
+    [[LocationHelper sharedDefault] startLocation];
     
     _v_bottom.layer.shadowColor = UIColorFromRGB(0x444444).CGColor;//shadowColor阴影颜色
     _v_bottom.layer.shadowOffset = CGSizeMake(0,-2);
@@ -41,6 +45,11 @@
     [_tableView registerNib:[UINib nibWithNibName:@"JointTextCell" bundle:nil] forCellReuseIdentifier:@"JointTextCellID"];
     
 }
+
+#pragma mark - 配置UI部分
+
+
+
 
 #pragma mark - UITableViewDelegate
 
@@ -70,8 +79,6 @@
         
     }
     
-  
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,7 +96,8 @@
         return cell;
     }else{
         JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
-
+        cell.param = _param;
+        
         return cell;
     }
     

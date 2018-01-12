@@ -297,6 +297,19 @@
 		CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */; };
 		CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8507EA1F44771D006C459F /* AccidentChangeVC.m */; };
 		CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */; };
+		CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2320089CE5007B20FE /* PGDatePicker.m */; };
+		CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2420089CE5007B20FE /* UIColor+PGHex.m */; };
+		CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2520089CE5007B20FE /* PGDatePickerView.m */; };
+		CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2720089CE5007B20FE /* NSCalendar+PGCurrent.m */; };
+		CE864F3920089CE5007B20FE /* PGDatePickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2820089CE5007B20FE /* PGDatePickManager.m */; };
+		CE864F3A20089CE5007B20FE /* NSBundle+PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2A20089CE5007B20FE /* NSBundle+PGDatePicker.m */; };
+		CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2E20089CE5007B20FE /* NSDate+PGCategory.m */; };
+		CE864F3C20089CE5007B20FE /* PGDatePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE864F3020089CE5007B20FE /* PGDatePicker.bundle */; };
+		CE864F3D20089CE5007B20FE /* PGDatePickManagerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F3320089CE5007B20FE /* PGDatePickManagerHeaderView.m */; };
+		CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F3F20089D53007B20FE /* PGPickerColumnCell.m */; };
+		CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4020089D53007B20FE /* PGPickerColumnView.m */; };
+		CE864F4920089D53007B20FE /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4520089D53007B20FE /* PGPickerView.m */; };
+		CE864F4A20089D53007B20FE /* PGPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4620089D53007B20FE /* PGPickerTableView.m */; };
 		CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
 		CE8C6FC61F418CBD0009B09F /* AccidentAddRemarkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8C6FC41F418CBD0009B09F /* AccidentAddRemarkVC.m */; };
 		CE8C6FC71F418CBD0009B09F /* AccidentAddRemarkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8C6FC51F418CBD0009B09F /* AccidentAddRemarkVC.xib */; };
@@ -881,6 +894,32 @@
 		CE8507E91F44771D006C459F /* AccidentChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangeVC.h; sourceTree = "<group>"; };
 		CE8507EA1F44771D006C459F /* AccidentChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangeVC.m; sourceTree = "<group>"; };
 		CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentChangeVC.xib; sourceTree = "<group>"; };
+		CE864F2320089CE5007B20FE /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
+		CE864F2420089CE5007B20FE /* UIColor+PGHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PGHex.m"; sourceTree = "<group>"; };
+		CE864F2520089CE5007B20FE /* PGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickerView.m; sourceTree = "<group>"; };
+		CE864F2620089CE5007B20FE /* NSDate+PGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PGCategory.h"; sourceTree = "<group>"; };
+		CE864F2720089CE5007B20FE /* NSCalendar+PGCurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+PGCurrent.m"; sourceTree = "<group>"; };
+		CE864F2820089CE5007B20FE /* PGDatePickManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickManager.m; sourceTree = "<group>"; };
+		CE864F2920089CE5007B20FE /* PGDatePickManagerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickManagerHeaderView.h; sourceTree = "<group>"; };
+		CE864F2A20089CE5007B20FE /* NSBundle+PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PGDatePicker.m"; sourceTree = "<group>"; };
+		CE864F2B20089CE5007B20FE /* UIColor+PGHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PGHex.h"; sourceTree = "<group>"; };
+		CE864F2C20089CE5007B20FE /* PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePicker.h; sourceTree = "<group>"; };
+		CE864F2D20089CE5007B20FE /* PGEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGEnumeration.h; sourceTree = "<group>"; };
+		CE864F2E20089CE5007B20FE /* NSDate+PGCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PGCategory.m"; sourceTree = "<group>"; };
+		CE864F2F20089CE5007B20FE /* PGDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickerView.h; sourceTree = "<group>"; };
+		CE864F3020089CE5007B20FE /* PGDatePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PGDatePicker.bundle; sourceTree = "<group>"; };
+		CE864F3120089CE5007B20FE /* NSCalendar+PGCurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+PGCurrent.h"; sourceTree = "<group>"; };
+		CE864F3220089CE5007B20FE /* NSBundle+PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PGDatePicker.h"; sourceTree = "<group>"; };
+		CE864F3320089CE5007B20FE /* PGDatePickManagerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickManagerHeaderView.m; sourceTree = "<group>"; };
+		CE864F3420089CE5007B20FE /* PGDatePickManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickManager.h; sourceTree = "<group>"; };
+		CE864F3F20089D53007B20FE /* PGPickerColumnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnCell.m; sourceTree = "<group>"; };
+		CE864F4020089D53007B20FE /* PGPickerColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnView.m; sourceTree = "<group>"; };
+		CE864F4120089D53007B20FE /* PGPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerView.h; sourceTree = "<group>"; };
+		CE864F4220089D53007B20FE /* PGPickerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerTableView.h; sourceTree = "<group>"; };
+		CE864F4320089D53007B20FE /* PGPickerColumnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnCell.h; sourceTree = "<group>"; };
+		CE864F4420089D53007B20FE /* PGPickerColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnView.h; sourceTree = "<group>"; };
+		CE864F4520089D53007B20FE /* PGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerView.m; sourceTree = "<group>"; };
+		CE864F4620089D53007B20FE /* PGPickerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerTableView.m; sourceTree = "<group>"; };
 		CE8C6FC01F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
 		CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ChangeLineSpaceAndWordSpace.m"; sourceTree = "<group>"; };
 		CE8C6FC31F418CBD0009B09F /* AccidentAddRemarkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentAddRemarkVC.h; sourceTree = "<group>"; };
@@ -1866,6 +1905,55 @@
 			path = AccidentChangeVC;
 			sourceTree = "<group>";
 		};
+		CE864F2120089CD3007B20FE /* PGDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE864F3E20089D53007B20FE /* PGPickerView */,
+				CE864F2220089CE5007B20FE /* PGDatePicker */,
+			);
+			path = PGDatePicker;
+			sourceTree = "<group>";
+		};
+		CE864F2220089CE5007B20FE /* PGDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE864F2D20089CE5007B20FE /* PGEnumeration.h */,
+				CE864F2C20089CE5007B20FE /* PGDatePicker.h */,
+				CE864F2320089CE5007B20FE /* PGDatePicker.m */,
+				CE864F3420089CE5007B20FE /* PGDatePickManager.h */,
+				CE864F2820089CE5007B20FE /* PGDatePickManager.m */,
+				CE864F2920089CE5007B20FE /* PGDatePickManagerHeaderView.h */,
+				CE864F3320089CE5007B20FE /* PGDatePickManagerHeaderView.m */,
+				CE864F2F20089CE5007B20FE /* PGDatePickerView.h */,
+				CE864F2520089CE5007B20FE /* PGDatePickerView.m */,
+				CE864F3220089CE5007B20FE /* NSBundle+PGDatePicker.h */,
+				CE864F2A20089CE5007B20FE /* NSBundle+PGDatePicker.m */,
+				CE864F2B20089CE5007B20FE /* UIColor+PGHex.h */,
+				CE864F2420089CE5007B20FE /* UIColor+PGHex.m */,
+				CE864F2620089CE5007B20FE /* NSDate+PGCategory.h */,
+				CE864F2E20089CE5007B20FE /* NSDate+PGCategory.m */,
+				CE864F3120089CE5007B20FE /* NSCalendar+PGCurrent.h */,
+				CE864F2720089CE5007B20FE /* NSCalendar+PGCurrent.m */,
+				CE864F3020089CE5007B20FE /* PGDatePicker.bundle */,
+			);
+			path = PGDatePicker;
+			sourceTree = "<group>";
+		};
+		CE864F3E20089D53007B20FE /* PGPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE864F3F20089D53007B20FE /* PGPickerColumnCell.m */,
+				CE864F4020089D53007B20FE /* PGPickerColumnView.m */,
+				CE864F4120089D53007B20FE /* PGPickerView.h */,
+				CE864F4220089D53007B20FE /* PGPickerTableView.h */,
+				CE864F4320089D53007B20FE /* PGPickerColumnCell.h */,
+				CE864F4420089D53007B20FE /* PGPickerColumnView.h */,
+				CE864F4520089D53007B20FE /* PGPickerView.m */,
+				CE864F4620089D53007B20FE /* PGPickerTableView.m */,
+			);
+			path = PGPickerView;
+			sourceTree = "<group>";
+		};
 		CE8C6FC81F41A7B00009B09F /* AccidentRemark */ = {
 			isa = PBXGroup;
 			children = (
@@ -2241,6 +2329,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE864F2120089CD3007B20FE /* PGDatePicker */,
 				CE5C6EF61FB0425E005E53BF /* YXGCD */,
 				CE59BB411F95D87D00E24D3A /* LGIndexView */,
 				CE8CDE591F94544B0018044C /* AKTabBarController */,
@@ -2578,6 +2667,7 @@
 				CE2C98B91F61C204009851F6 /* VehicleDriverNoShowCell.xib in Resources */,
 				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
 				CE2C98A81F61AAA3009851F6 /* VehicleMemberCell.xib in Resources */,
+				CE864F3C20089CE5007B20FE /* PGDatePicker.bundle in Resources */,
 				CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */,
 				CE55B7FE1F9727F900CD1567 /* AddressBookCell.xib in Resources */,
 				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
@@ -2688,6 +2778,7 @@
 				CE3C0F6E1F30586A00D3B55D /* VideoColectVC.m in Sources */,
 				CE2AF8801FD68B59005B643E /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE5C3BB71F57B0F2007A7EDD /* MessageCell.m in Sources */,
+				CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */,
 				CE59BB3F1F95A65800E24D3A /* AddressBookHomeVC.m in Sources */,
 				CEAA97191F1CF15900741A6F /* UINavigationBar+Awesome.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
@@ -2727,6 +2818,7 @@
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
+				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
 				CE5C6F011FB0425F005E53BF /* GCDQueue.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
@@ -2760,6 +2852,7 @@
 				CED6EE901F691358004FED7B /* UIView+AdjustFrame.m in Sources */,
 				CE5C39041F28606B0055C945 /* ZLPhotoBrowserCell.m in Sources */,
 				CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */,
+				CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */,
 				CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */,
 				CE675F181F38411B006FC15F /* IllegalListVC.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
@@ -2794,6 +2887,7 @@
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
+				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
 				CE6154BA1F6789CE0018DF71 /* BoradPoliceView.m in Sources */,
 				CE675F351F386F07006FC15F /* AccidentCell.m in Sources */,
@@ -2803,6 +2897,7 @@
 				CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */,
 				CE4F3C191F5FFC0000C6EF64 /* QRCodeScanVC.m in Sources */,
 				CE5C38FD1F28606B0055C945 /* ZLBigImageCell.m in Sources */,
+				CE864F4920089D53007B20FE /* PGPickerView.m in Sources */,
 				CE675F1D1F384350006FC15F /* IllegalCell.m in Sources */,
 				CE8EE86E1F66A6AF00CC64B0 /* PoliceAnnotation.m in Sources */,
 				CE2C98A21F619607009851F6 /* VehicleCarNoShowCell.m in Sources */,
@@ -2850,6 +2945,7 @@
 				CEE45BAD1FAC558F00BF472F /* UserTaskCell.m in Sources */,
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
+				CE864F3920089CE5007B20FE /* PGDatePickManager.m in Sources */,
 				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,
 				CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */,
 				CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */,
@@ -2862,6 +2958,7 @@
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */,
 				CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */,
+				CE864F4A20089D53007B20FE /* PGPickerTableView.m in Sources */,
 				CE0731CA1F5ECBF400B3831B /* VehicleModel.m in Sources */,
 				CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */,
 				CE5C6EF41FB0339A005E53BF /* UserNullCell.m in Sources */,
@@ -2874,7 +2971,9 @@
 				CEFEFD0F1F29C62900C33CBD /* LLSimpleCamera.m in Sources */,
 				CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */,
+				CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */,
 				CE42B9481F1F4D13005CC5BD /* PartyFactory.m in Sources */,
+				CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */,
 				CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */,
 				CE5C39071F28606B0055C945 /* ZLProgressHUD.m in Sources */,
 				CE2AF8821FD68B59005B643E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
@@ -2896,6 +2995,7 @@
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
 				CE6154B01F67896D0018DF71 /* OnePoliceView.m in Sources */,
 				CE2AF8891FD68C42005B643E /* UIWindow+FHH.m in Sources */,
+				CE864F3A20089CE5007B20FE /* NSBundle+PGDatePicker.m in Sources */,
 				CE5A00FE1F60E0D5000F13CC /* VehicleDetailVC.m in Sources */,
 				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
@@ -2919,6 +3019,7 @@
 				CE496F031F6A1ACB004E69C6 /* TTGTextTagCollectionView.m in Sources */,
 				CE42B9081F1F42B9005CC5BD /* AccidentCountModel.m in Sources */,
 				CE5C38E71F28606B0055C945 /* NSBundle+ZLPhotoBrowser.m in Sources */,
+				CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
 				CE2C98B31F61C1E9009851F6 /* VehicleDriverCell.m in Sources */,
@@ -2926,6 +3027,7 @@
 				CEFEFD061F29C60B00C33CBD /* DeviceOrientation.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,
+				CE864F3D20089CE5007B20FE /* PGDatePickManagerHeaderView.m in Sources */,
 				CE5D395A1FA17F7F004DD9D2 /* DutyCell.m in Sources */,
 				CE42B90B1F1F42D4005CC5BD /* AccidentDetailModel.m in Sources */,
 				CE4DACAC1FA87EDD00665536 /* PersonLocationVC.m in Sources */,

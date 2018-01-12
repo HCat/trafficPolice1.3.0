@@ -155,9 +155,9 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
             }
                         
-//            if ([UserModel isPermissionForJointEnforcement]) {
-//                [t_arr  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
-//            }
+            if ([UserModel isPermissionForJointEnforcement]) {
+                [t_arr  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
+            }
             
             
         }
@@ -296,12 +296,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     }else if ([t_title isEqualToString:@"路面实况"]){
         
         
+    }else if ([t_title isEqualToString:@"联合执法"]){
+        JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
+
     }
-//    else if ([t_title isEqualToString:@"联合执法"]){
-//        JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
-//        [self.navigationController pushViewController:t_vc animated:YES];
-//
-//    }
 
 }
 

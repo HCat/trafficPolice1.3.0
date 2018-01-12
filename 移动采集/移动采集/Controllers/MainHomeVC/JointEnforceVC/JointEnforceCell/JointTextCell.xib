@@ -54,6 +54,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnCarNumberIdentifyClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vo0-5r-Ose"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CA9-i0-uDH">
                         <rect key="frame" x="255" y="174" width="60" height="27"/>
@@ -68,6 +71,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnCarIdCardIdentifyClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4FE-hA-STA"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQK-e9-OcH">
                         <rect key="frame" x="255" y="63" width="60" height="27"/>
@@ -96,6 +102,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnChooseTimeClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rv8-YG-Kfq"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="违法地点:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-hv-ZWm">
                         <rect key="frame" x="13" y="68" width="62" height="17"/>
@@ -371,6 +380,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnDriverIdCardIdentifyClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6d0-da-K9d"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
