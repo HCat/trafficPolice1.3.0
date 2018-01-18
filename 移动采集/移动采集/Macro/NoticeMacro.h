@@ -33,6 +33,8 @@
 
 #define NOTIFICATION_RELOADWATCH_SUCCESS @"NOTIFICATION_RELOADWATCH_SUCCESS"                    //重新刷新值班
 
+#define NOTIFICATION_RELOADJOINTLAWIMAGE @"NOTIFICATION_RELOADJOINTLAWIMAGE"                    //选中联合执法图片之后的操作
+
 
 
 #endif /* NoticeMacro_h */

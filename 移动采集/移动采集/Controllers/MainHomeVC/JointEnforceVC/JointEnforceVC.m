@@ -22,6 +22,7 @@
 @property(nonatomic,weak) IBOutlet UITableView *tableView;
 
 @property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
+@property (nonatomic,strong) NSMutableArray <JointLawImageModel *> *imageList;//要上传图片数据
 
 @end
 
@@ -31,6 +32,9 @@
     
     self.title = @"联合执法";
     [super viewDidLoad];
+
+    self.imageList = [NSMutableArray array];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageDoneNotification:) name:NOTIFICATION_RELOADJOINTLAWIMAGE object:nil];
     
     //重新定位下
     [[LocationHelper sharedDefault] startLocation];
@@ -86,7 +90,7 @@
     if (indexPath.row == 0) {
         JointImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointImageCellID"];
         cell.fd_enforceFrameLayout = NO;
-        
+        cell.imageList = _imageList;
          return cell;
         
     }else if (indexPath.row == 1){
@@ -109,6 +113,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+
+#pragma mark - noticaiton
+
+- (void)imageDoneNotification:(NSNotification *)notification{
+    
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    
+}
+
 
 #pragma mark - dealloc
 

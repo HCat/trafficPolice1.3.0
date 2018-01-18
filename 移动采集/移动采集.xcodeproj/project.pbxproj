@@ -100,6 +100,8 @@
 		CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464CE1F2189E20056A9EB /* FXBlurView.m */; };
 		CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D01F2189E20056A9EB /* SRAlertView.m */; };
 		CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D51F218A530056A9EB /* HSUpdateApp.m */; };
+		CE44BED0200E0182000357E4 /* DMProgressImgs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE44BECE200E0182000357E4 /* DMProgressImgs.bundle */; };
+		CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44BECF200E0182000357E4 /* DMProgressHUD.m */; };
 		CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BB31F272A920025A20C /* FeedbackVC.m */; };
 		CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BB41F272A920025A20C /* FeedbackVC.xib */; };
 		CE450BBA1F272F3B0025A20C /* FeedbackHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BB81F272F3B0025A20C /* FeedbackHeadView.m */; };
@@ -108,6 +110,8 @@
 		CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BBE1F272F810025A20C /* FeedbackFootView.xib */; };
 		CE450BC41F2730160025A20C /* FSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC31F2730160025A20C /* FSTextView.m */; };
 		CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */; };
+		CE48DE57200C7F6F00AF6958 /* JointImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48DE55200C7F6F00AF6958 /* JointImageVC.m */; };
+		CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */; };
 		CE490E171F9ED62100E90FF2 /* UserRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE490E151F9ED62100E90FF2 /* UserRecordVC.m */; };
 		CE490E181F9ED62100E90FF2 /* UserRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */; };
 		CE490E1C1F9EE1A500E90FF2 /* UserWatchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */; };
@@ -578,6 +582,9 @@
 		CE4464D01F2189E20056A9EB /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
 		CE4464D41F218A530056A9EB /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
 		CE4464D51F218A530056A9EB /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
+		CE44BECD200E0182000357E4 /* DMProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProgressHUD.h; sourceTree = "<group>"; };
+		CE44BECE200E0182000357E4 /* DMProgressImgs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DMProgressImgs.bundle; sourceTree = "<group>"; };
+		CE44BECF200E0182000357E4 /* DMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProgressHUD.m; sourceTree = "<group>"; };
 		CE450BB21F272A920025A20C /* FeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackVC.h; sourceTree = "<group>"; };
 		CE450BB31F272A920025A20C /* FeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackVC.m; sourceTree = "<group>"; };
 		CE450BB41F272A920025A20C /* FeedbackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
@@ -591,6 +598,9 @@
 		CE450BC31F2730160025A20C /* FSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTextView.m; sourceTree = "<group>"; };
 		CE450BC61F2741050025A20C /* BaseImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageCollectionCell.h; sourceTree = "<group>"; };
 		CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageCollectionCell.m; sourceTree = "<group>"; };
+		CE48DE54200C7F6F00AF6958 /* JointImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointImageVC.h; sourceTree = "<group>"; };
+		CE48DE55200C7F6F00AF6958 /* JointImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointImageVC.m; sourceTree = "<group>"; };
+		CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointImageVC.xib; sourceTree = "<group>"; };
 		CE490E141F9ED62100E90FF2 /* UserRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRecordVC.h; sourceTree = "<group>"; };
 		CE490E151F9ED62100E90FF2 /* UserRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRecordVC.m; sourceTree = "<group>"; };
 		CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserRecordVC.xib; sourceTree = "<group>"; };
@@ -1368,6 +1378,16 @@
 			path = HSUpdateApp;
 			sourceTree = "<group>";
 		};
+		CE44BECC200E0182000357E4 /* DMProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CE44BECD200E0182000357E4 /* DMProgressHUD.h */,
+				CE44BECF200E0182000357E4 /* DMProgressHUD.m */,
+				CE44BECE200E0182000357E4 /* DMProgressImgs.bundle */,
+			);
+			path = DMProgressHUD;
+			sourceTree = "<group>";
+		};
 		CE450BB11F272A770025A20C /* FeedbackVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1825,6 +1845,9 @@
 				CE763B0B1FCF9CA200EB0815 /* JointEnforceVC.h */,
 				CE763B0A1FCF9CA100EB0815 /* JointEnforceVC.m */,
 				CE763B091FCF9CA100EB0815 /* JointEnforceVC.xib */,
+				CE48DE54200C7F6F00AF6958 /* JointImageVC.h */,
+				CE48DE55200C7F6F00AF6958 /* JointImageVC.m */,
+				CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */,
 			);
 			path = JointEnforceVC;
 			sourceTree = "<group>";
@@ -2329,6 +2352,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE44BECC200E0182000357E4 /* DMProgressHUD */,
 				CE864F2120089CD3007B20FE /* PGDatePicker */,
 				CE5C6EF61FB0425E005E53BF /* YXGCD */,
 				CE59BB411F95D87D00E24D3A /* LGIndexView */,
@@ -2688,6 +2712,7 @@
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CE5C39241F2881BD0055C945 /* btn_selected@2x.png in Resources */,
+				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
 				CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */,
 				CE763B181FCFF10A00EB0815 /* JointVideoCell.xib in Resources */,
 				CE5C39251F2881BD0055C945 /* btn_selected@3x.png in Resources */,
@@ -2700,6 +2725,7 @@
 				CE4D71DE1FB44A86002F39D6 /* SearchImportCarVC.xib in Resources */,
 				CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */,
 				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
+				CE44BED0200E0182000357E4 /* DMProgressImgs.bundle in Resources */,
 				CE2C98AE1F61AAD7009851F6 /* VehicleMemberNoShowCell.xib in Resources */,
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
@@ -2793,6 +2819,7 @@
 				CE5D39551FA17CF3004DD9D2 /* UserDutyVC.m in Sources */,
 				CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */,
 				CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */,
+				CE48DE57200C7F6F00AF6958 /* JointImageVC.m in Sources */,
 				CE763B121FCFF0F300EB0815 /* JointImageCell.m in Sources */,
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
@@ -2922,6 +2949,7 @@
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
+				CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */,
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
 				CEFEFD1F1F29ED8100C33CBD /* KSPhotoView.m in Sources */,
 				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,

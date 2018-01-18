@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JointLawAPI.h"
 
 @interface JointImageCell : UITableViewCell
+
+@property (nonatomic,strong) NSMutableArray <JointLawImageModel *> *imageList;
 
 @end

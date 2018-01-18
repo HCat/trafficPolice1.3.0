@@ -13,8 +13,8 @@
 
 #define ISONLINE NO
 
-#define DACHAODEBUG_URL @"http://192.168.10.88/police-admin"
-#define WEBSOCKET_DACHAODEBUG_URL @"ws://192.168.10.88/police-admin/websocket"
+#define DACHAODEBUG_URL @"http://192.168.10.199:8280/police-admin" //@"http://192.168.10.88/police-admin"
+#define WEBSOCKET_DACHAODEBUG_URL  @"ws://192.168.10.199:8280/police-admin/websocket" //@"ws://192.168.10.88/police-admin/websocket"
 
 #define DEBUG_URL @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"

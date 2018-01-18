@@ -7,6 +7,7 @@
 //
 
 #import "BaseImageCollectionCell.h"
+#import "UIButton+Block.h"
 
 @interface BaseImageCollectionCell()
 
@@ -60,6 +61,25 @@
     }
 
     return  _lb_title;
+}
+
+
+- (UIButton *)btn_delete{
+    
+    if (!_btn_delete) {
+        
+        _btn_delete = [UIButton new];
+        _btn_delete.hidden = YES;
+        [self.contentView addSubview:_btn_delete];
+        [_btn_delete configureForAutoLayout];
+        [_btn_delete autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.contentView withOffset:1.f];
+        [_btn_delete autoPinEdge:ALEdgeTrailing toEdge:ALEdgeTrailing ofView:self.contentView withOffset:-1.f];
+        [_btn_delete autoSetDimensionsToSize:CGSizeMake(15.f, 15.f)];
+        [_btn_delete setEnlargeEdgeWithTop:15.0f right:15.0f bottom:15.0f left:15.0f];
+        [_btn_delete setImage:[UIImage imageNamed:@"btn_jointImageDelete"] forState:UIControlStateNormal];
+    }
+    
+    return  _btn_delete;
 }
 
 - (void)setIsNeedTitle:(BOOL)isNeedTitle{
