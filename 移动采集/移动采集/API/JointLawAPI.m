@@ -109,7 +109,7 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"oldImgIds":[_oldImgIds modelToJSONObject]};
+    return @{@"oldImgIds":_oldImgIds};
 }
 
 //返回参数

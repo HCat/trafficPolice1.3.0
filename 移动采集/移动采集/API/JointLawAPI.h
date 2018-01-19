@@ -79,7 +79,7 @@
 
 //请求数据
 @property (nonatomic,copy)    NSArray  * files;  //照片文件集合    文件数组[]
-@property (nonatomic,copy)    NSArray  * oldImgIds;  //旧照片id集合    数组[]
+@property (nonatomic,copy)    NSString  * oldImgIds;  //旧照片id集合    数组[]
 
 //返回数据
 

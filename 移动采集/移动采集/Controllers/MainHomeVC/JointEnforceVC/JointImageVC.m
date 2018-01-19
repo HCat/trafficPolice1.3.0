@@ -261,7 +261,12 @@ static NSString *const cellId = @"BaseImageCollectionCellID";
     
     JointLawImgUploadManger * manager = [[JointLawImgUploadManger alloc] init];
     manager.files = t_arr;
-    manager.oldImgIds = @[@""];
+    if (_oldIds) {
+        manager.oldImgIds = [_oldIds componentsJoinedByString:@","];  ;
+    }else{
+        manager.oldImgIds = @"";
+    }
+    
     [manager configLoadingTitle:@"上传"];
     [manager startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         

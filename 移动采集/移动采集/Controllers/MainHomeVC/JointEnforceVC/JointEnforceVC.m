@@ -67,11 +67,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     if (indexPath.row == 0) {
-        return [tableView fd_heightForCellWithIdentifier:@"JointImageCellID" cacheByIndexPath:indexPath configuration:^(JointImageCell *cell) {
+        if (self.imageList.count > 0 && self.imageList) {
+            return [tableView fd_heightForCellWithIdentifier:@"JointImageCellID" cacheByIndexPath:indexPath configuration:^(JointImageCell *cell) {
+                SW(strongSelf, weakSelf);
+                cell.imageList = strongSelf.imageList;
+            }];
+        }else{
+            return 70;
             
-        }];
+        }
+        
     }else if (indexPath.row == 1){
         return [tableView fd_heightForCellWithIdentifier:@"JointVideoCellID" cacheByIndexPath:indexPath configuration:^(JointVideoCell *cell) {
             

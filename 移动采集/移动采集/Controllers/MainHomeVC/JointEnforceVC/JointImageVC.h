@@ -14,5 +14,6 @@ typedef void (^JointImageVCComitDoneBlock)(NSArray <JointLawImageModel *> *image
 @interface JointImageVC : HideTabSuperVC
 
 @property (nonatomic,copy) JointImageVCComitDoneBlock block;
+@property (nonatomic,strong) NSArray * oldIds;
 
 @end
