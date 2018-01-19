@@ -40,6 +40,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnVideaAddClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c30-j9-bKx"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_joint_line" translatesAutoresizingMaskIntoConstraints="NO" id="UKQ-Mg-l51">
                         <rect key="frame" x="0.0" y="152" width="320" height="1"/>

@@ -301,6 +301,8 @@
 		CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */; };
 		CE8507EC1F44771D006C459F /* AccidentChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8507EA1F44771D006C459F /* AccidentChangeVC.m */; };
 		CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */; };
+		CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85A2C42011D69A005A3175 /* JointVideoVC.m */; };
+		CE85A2C72011D69A005A3175 /* JointVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE85A2C52011D69A005A3175 /* JointVideoVC.xib */; };
 		CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2320089CE5007B20FE /* PGDatePicker.m */; };
 		CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2420089CE5007B20FE /* UIColor+PGHex.m */; };
 		CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2520089CE5007B20FE /* PGDatePickerView.m */; };
@@ -904,6 +906,9 @@
 		CE8507E91F44771D006C459F /* AccidentChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangeVC.h; sourceTree = "<group>"; };
 		CE8507EA1F44771D006C459F /* AccidentChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangeVC.m; sourceTree = "<group>"; };
 		CE8507EB1F44771D006C459F /* AccidentChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentChangeVC.xib; sourceTree = "<group>"; };
+		CE85A2C32011D69A005A3175 /* JointVideoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointVideoVC.h; sourceTree = "<group>"; };
+		CE85A2C42011D69A005A3175 /* JointVideoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointVideoVC.m; sourceTree = "<group>"; };
+		CE85A2C52011D69A005A3175 /* JointVideoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointVideoVC.xib; sourceTree = "<group>"; };
 		CE864F2320089CE5007B20FE /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
 		CE864F2420089CE5007B20FE /* UIColor+PGHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PGHex.m"; sourceTree = "<group>"; };
 		CE864F2520089CE5007B20FE /* PGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickerView.m; sourceTree = "<group>"; };
@@ -1848,6 +1853,9 @@
 				CE48DE54200C7F6F00AF6958 /* JointImageVC.h */,
 				CE48DE55200C7F6F00AF6958 /* JointImageVC.m */,
 				CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */,
+				CE85A2C32011D69A005A3175 /* JointVideoVC.h */,
+				CE85A2C42011D69A005A3175 /* JointVideoVC.m */,
+				CE85A2C52011D69A005A3175 /* JointVideoVC.xib */,
 			);
 			path = JointEnforceVC;
 			sourceTree = "<group>";
@@ -2642,6 +2650,7 @@
 				CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */,
 				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CE5C38E91F28606B0055C945 /* btn_circle@3x.png in Resources */,
+				CE85A2C72011D69A005A3175 /* JointVideoVC.xib in Resources */,
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
 				CE763B1D1FCFF1DB00EB0815 /* JointTextCell.xib in Resources */,
@@ -2843,6 +2852,7 @@
 				CE2AF8831FD68B59005B643E /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
+				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JointVideoVC">
+            <connections>
+                <outlet property="btn_bottom" destination="TgQ-VN-1cv" id="MpT-50-p2S"/>
+                <outlet property="btn_videoAdd" destination="4HF-e6-4yb" id="yrG-fS-R7K"/>
+                <outlet property="btn_videoPlay" destination="Wb6-uH-kci" id="Yjr-Xa-nb0"/>
+                <outlet property="v_bottom" destination="BfI-ll-IEa" id="lrI-5k-4nm"/>
+                <outlet property="v_video" destination="6h6-nk-Fo9" id="KBS-UP-MKS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现场视频：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvL-Uo-0Rd">
+                    <rect key="frame" x="15" y="23" width="71.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfI-ll-IEa">
+                    <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-VN-1cv">
+                            <rect key="frame" x="13" y="16" width="349" height="33"/>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="提交"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="TgQ-VN-1cv" secondAttribute="trailing" constant="13" id="1EE-0j-POt"/>
+                        <constraint firstItem="TgQ-VN-1cv" firstAttribute="leading" secondItem="BfI-ll-IEa" secondAttribute="leading" constant="13" id="1nq-oB-rpH"/>
+                        <constraint firstItem="TgQ-VN-1cv" firstAttribute="centerX" secondItem="BfI-ll-IEa" secondAttribute="centerX" id="Q9V-zP-sgs"/>
+                        <constraint firstItem="TgQ-VN-1cv" firstAttribute="centerY" secondItem="BfI-ll-IEa" secondAttribute="centerY" id="mhT-oL-ta4"/>
+                        <constraint firstAttribute="height" constant="64" id="wWQ-Wi-Xb1"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HF-e6-4yb">
+                    <rect key="frame" x="20" y="55" width="335" height="250"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="7ei-hS-rmS"/>
+                    </constraints>
+                    <state key="normal" image="btn_jointVideoAdd"/>
+                    <connections>
+                        <action selector="handlebtnInputVideoClicked:" destination="-1" eventType="touchUpInside" id="JDI-Gp-Zcb"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h6-nk-Fo9">
+                    <rect key="frame" x="20" y="55" width="335" height="250"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-uH-kci">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="250"/>
+                            <connections>
+                                <action selector="handleBtnVideoPlayClicked:" destination="-1" eventType="touchUpInside" id="t7Y-Jg-BfT"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_jointVideoPlay" translatesAutoresizingMaskIntoConstraints="NO" id="Jm9-Ye-TSK">
+                            <rect key="frame" x="151" y="107.5" width="34" height="34"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Wb6-uH-kci" secondAttribute="bottom" id="ElF-gH-CmN"/>
+                        <constraint firstItem="Jm9-Ye-TSK" firstAttribute="centerY" secondItem="6h6-nk-Fo9" secondAttribute="centerY" id="KF3-f8-6Sk"/>
+                        <constraint firstItem="Wb6-uH-kci" firstAttribute="leading" secondItem="6h6-nk-Fo9" secondAttribute="leading" id="kUD-lu-EbS"/>
+                        <constraint firstItem="Jm9-Ye-TSK" firstAttribute="centerX" secondItem="6h6-nk-Fo9" secondAttribute="centerX" id="p9n-C8-Xz8"/>
+                        <constraint firstAttribute="trailing" secondItem="Wb6-uH-kci" secondAttribute="trailing" id="yq7-y8-KsB"/>
+                        <constraint firstItem="Wb6-uH-kci" firstAttribute="top" secondItem="6h6-nk-Fo9" secondAttribute="top" id="zbL-Ee-2oS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RvL-Uo-0Rd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="577-74-TBz"/>
+                <constraint firstItem="4HF-e6-4yb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8Vv-EQ-PPh"/>
+                <constraint firstAttribute="trailing" secondItem="4HF-e6-4yb" secondAttribute="trailing" constant="20" id="AXm-PH-ujH"/>
+                <constraint firstAttribute="bottom" secondItem="BfI-ll-IEa" secondAttribute="bottom" id="LPo-UA-lf4"/>
+                <constraint firstItem="4HF-e6-4yb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bw1-3b-A1T"/>
+                <constraint firstItem="6h6-nk-Fo9" firstAttribute="height" secondItem="4HF-e6-4yb" secondAttribute="height" id="eWg-Bk-cDh"/>
+                <constraint firstAttribute="trailing" secondItem="BfI-ll-IEa" secondAttribute="trailing" id="i81-42-ZPi"/>
+                <constraint firstItem="BfI-ll-IEa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lPD-bg-wBr"/>
+                <constraint firstItem="4HF-e6-4yb" firstAttribute="top" secondItem="RvL-Uo-0Rd" secondAttribute="bottom" constant="15" id="nqZ-Za-0xM"/>
+                <constraint firstItem="6h6-nk-Fo9" firstAttribute="leading" secondItem="4HF-e6-4yb" secondAttribute="leading" id="rsA-Ix-eHX"/>
+                <constraint firstItem="6h6-nk-Fo9" firstAttribute="width" secondItem="4HF-e6-4yb" secondAttribute="width" id="slM-ep-fIK"/>
+                <constraint firstItem="RvL-Uo-0Rd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="w9O-IK-sll"/>
+                <constraint firstItem="6h6-nk-Fo9" firstAttribute="top" secondItem="4HF-e6-4yb" secondAttribute="top" id="wCK-gh-Qih"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_jointVideoAdd" width="33" height="33"/>
+        <image name="btn_jointVideoPlay" width="34" height="34"/>
+    </resources>
+</document>

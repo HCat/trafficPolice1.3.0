@@ -7,6 +7,7 @@
 //
 
 #import "LRBaseRequest.h"
+#import "ArtVideoModel.h"
 
 #pragma mark - 联合执法增加
 
@@ -102,12 +103,12 @@
 @interface JointLawVideoUploadManger: LRBaseRequest
 
 //请求数据
-@property (nonatomic,strong)  ImageFileInfo  * file;  //单个文件
-@property (nonatomic,copy)    NSArray  * oldVideoId;  //旧视频id    单个id，删除旧视频用
+@property (nonatomic,strong)  ArtVideoModel  * file;        //视频文件 文件格式
+@property (nonatomic,copy)    NSString  * oldVideoId;       //旧视频id    单个id，删除旧视频用
 
 //返回数据
 
-@property (nonatomic,copy) JointLawImageModel * jointLawImageModel;     //新照片信息列表
+@property (nonatomic,copy) JointLawVideoModel * jointLawVideoModel;     //新照片信息列表
 
 @end
 

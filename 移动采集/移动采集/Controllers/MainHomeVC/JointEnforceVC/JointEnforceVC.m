@@ -23,6 +23,7 @@
 
 @property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
 @property (nonatomic,strong) NSMutableArray <JointLawImageModel *> *imageList;//要上传图片数据
+@property (nonatomic,strong) JointLawVideoModel *videoModel;
 
 @end
 
@@ -34,7 +35,9 @@
     [super viewDidLoad];
 
     self.imageList = [NSMutableArray array];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageDoneNotification:) name:NOTIFICATION_RELOADJOINTLAWIMAGE object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDoneNotification:) name:NOTIFICATION_RELOADJOINTLAWVIDEO object:nil];
     
     //重新定位下
     [[LocationHelper sharedDefault] startLocation];
@@ -80,9 +83,15 @@
         }
         
     }else if (indexPath.row == 1){
-        return [tableView fd_heightForCellWithIdentifier:@"JointVideoCellID" cacheByIndexPath:indexPath configuration:^(JointVideoCell *cell) {
-            
-        }];
+        
+        if (self.videoModel) {
+            return [tableView fd_heightForCellWithIdentifier:@"JointVideoCellID" cacheByIndexPath:indexPath configuration:^(JointVideoCell *cell) {
+                SW(strongSelf, weakSelf);
+                cell.videoModel = strongSelf.videoModel;
+            }];
+        }else{
+            return 70;
+        }
         
     }else{
         
@@ -103,6 +112,7 @@
     }else if (indexPath.row == 1){
         JointVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointVideoCellID"];
         cell.fd_enforceFrameLayout = NO;
+        cell.videoModel = _videoModel;
         
         return cell;
     }else{
@@ -126,6 +136,17 @@
 - (void)imageDoneNotification:(NSNotification *)notification{
     
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    
+}
+
+- (void)videoDoneNotification:(NSNotification *)notification{
+    
+    JointLawVideoModel *t_model = (JointLawVideoModel *)notification.object;
+    self.videoModel = t_model;
+    
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];
+    
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     
 }

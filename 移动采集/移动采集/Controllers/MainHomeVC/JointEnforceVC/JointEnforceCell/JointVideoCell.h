@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JointLawAPI.h"
 
 @interface JointVideoCell : UITableViewCell
+
+@property (nonatomic,strong) JointLawVideoModel * videoModel;
 
 @end
