@@ -88,6 +88,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnPersonLocationClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DRF-tP-gvJ"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D44-Bj-jIT">
                         <rect key="frame" x="255" y="107" width="60" height="27"/>
@@ -293,7 +296,7 @@
                         <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-Ok-FoJ" customClass="FSTextView">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-Ok-FoJ" customClass="FSTextView">
                         <rect key="frame" x="13" y="519" width="294" height="99"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -333,6 +336,9 @@
                                 <integer key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleBtnJointPenaltiesClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3qt-cD-Au5"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注内容:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgz-mb-Whi">
                         <rect key="frame" x="13" y="633" width="62" height="17"/>
@@ -366,6 +372,9 @@
                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="6UX-Wl-Gn1"/>
+                        </connections>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nag-7W-azo">
                         <rect key="frame" x="255" y="329" width="60" height="27"/>

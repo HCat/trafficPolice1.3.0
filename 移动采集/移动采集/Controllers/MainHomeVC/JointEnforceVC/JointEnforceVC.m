@@ -14,6 +14,9 @@
 #import "JointTextCell.h"
 
 #import "JointLawAPI.h"
+#import "ArtVideoModel.h"
+#import "ArtVideoUtil.h"
+#import "SRAlertView.h"
 
 @interface JointEnforceVC ()
 
@@ -25,6 +28,8 @@
 @property (nonatomic,strong) NSMutableArray <JointLawImageModel *> *imageList;//要上传图片数据
 @property (nonatomic,strong) JointLawVideoModel *videoModel;
 
+@property(nonatomic,assign) BOOL isCanCommit;
+
 @end
 
 @implementation JointEnforceVC
@@ -35,6 +40,8 @@
     [super viewDidLoad];
 
     self.imageList = [NSMutableArray array];
+    self.param = [[JointLawSaveParam alloc] init];
+    self.isCanCommit = NO;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageDoneNotification:) name:NOTIFICATION_RELOADJOINTLAWIMAGE object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDoneNotification:) name:NOTIFICATION_RELOADJOINTLAWVIDEO object:nil];
@@ -53,9 +60,47 @@
     
 }
 
-#pragma mark - 配置UI部分
+#pragma mark - 返回事件
 
+-(void)handleBtnBackClicked{
+    
+    if (_param.imgIds || _param.videoIds || _param.illegalTimeStr || _param.plateno || _param.ownerName || _param.ownerIdCard || _param.ownerName || _param.ownerPhone || _param.driverName || _param.driverIdCard || _param.driverPhone || _param.dealResult || _param.dealRemark) {
+        
+        WS(weakSelf);
+        
+        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"当前已编辑，是否退出编辑"
+                                                    leftActionTitle:@"取消"
+                                                   rightActionTitle:@"退出"
+                                                     animationStyle:AlertViewAnimationNone
+                                                       selectAction:^(AlertViewActionType actionType) {
+                                                           if(actionType == AlertViewActionTypeRight) {
+                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                           }
+                                                       }];
+        alertView.blurCurrentBackgroundView = NO;
+        [alertView show];
+        
+        
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    
+}
 
+#pragma mark - set&&get
+
+-(void)setIsCanCommit:(BOOL)isCanCommit{
+    _isCanCommit = isCanCommit;
+    if (_isCanCommit == NO) {
+        _btn_bottom.enabled = NO;
+        [_btn_bottom setBackgroundColor:DefaultBtnNuableColor];
+    }else{
+        _btn_bottom.enabled = YES;
+        [_btn_bottom setBackgroundColor:DefaultBtnColor];
+    }
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -110,14 +155,28 @@
          return cell;
         
     }else if (indexPath.row == 1){
+        WS(weakSelf);
+        
         JointVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointVideoCellID"];
         cell.fd_enforceFrameLayout = NO;
         cell.videoModel = _videoModel;
+        cell.block = ^(JointLawVideoModel *video) {
+            SW(strongSelf, weakSelf);
+            
+            strongSelf.videoModel = video;
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];
+            [strongSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        };
         
         return cell;
     }else{
+        WS(weakSelf);
         JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
         cell.param = _param;
+        cell.block = ^(BOOL isCommit) {
+            SW(strongSelf, weakSelf);
+             strongSelf.isCanCommit = isCommit;
+        };
         
         return cell;
     }
@@ -128,6 +187,47 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+#pragma mark - 提交按钮事件
+
+- (IBAction)handleBtnCommitClicked:(id)sender {
+    
+    WS(weakSelf);
+    
+    if (![ShareFun validateCarNumber:_param.plateno]) {
+        [LRShowHUD showError:@"请输入正确的车牌号码" duration:1.5f];
+        return;
+    }
+
+    if (_imageList && _imageList.count > 0) {
+        NSMutableArray *arr = [NSMutableArray array];
+        for (JointLawImageModel * model in _imageList) {
+            [arr addObject:model.imgId];
+            
+        }
+        _param.imgIds = [arr componentsJoinedByString:@","];
+    }
+    
+    if (_videoModel) {
+        _param.videoIds =_videoModel.videoId;
+    }
+    
+    _param.launchOrgType = @2;
+    
+    LxJsonFromObject(_param);
+    
+    JointLawSaveManger *manger = [[JointLawSaveManger alloc] init];
+    manger.param = _param;
+    [manger configLoadingTitle:@"上传"];
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
     
 }
 

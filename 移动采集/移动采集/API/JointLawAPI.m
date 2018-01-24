@@ -160,16 +160,17 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"oldVideoId":[_oldVideoId modelToJSONObject]};
+    return @{@"oldVideoId":_oldVideoId};
 }
 
 //返回参数
 
-- (JointLawImageModel *)jointLawImageModel{
+- (JointLawVideoModel *)jointLawVideoModel{
     
-    if (self.responseModel) {
+    if (self.responseModel.data) {
         
-        return [JointLawImageModel modelWithDictionary:self.responseModel.data];
+        _jointLawVideoModel =  [JointLawVideoModel modelWithDictionary:self.responseModel.data];
+        return _jointLawVideoModel;
     }
     
     return nil;

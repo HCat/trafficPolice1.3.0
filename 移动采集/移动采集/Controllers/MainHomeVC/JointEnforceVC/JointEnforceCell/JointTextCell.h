@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "JointLawAPI.h"
 
+typedef void(^JointTextCellBlock)(BOOL isCommit);
+
 @interface JointTextCell : UITableViewCell
 
 @property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
+@property(nonatomic,copy) JointTextCellBlock block;
 
 @end

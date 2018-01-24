@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "JointLawAPI.h"
 
+typedef void (^JointVideoCellBlock)(JointLawVideoModel *video);
+
 @interface JointVideoCell : UITableViewCell
 
 @property (nonatomic,strong) JointLawVideoModel * videoModel;
+@property (nonatomic,copy) JointVideoCellBlock block;
 
 @end

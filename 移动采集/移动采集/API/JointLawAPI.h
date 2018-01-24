@@ -13,20 +13,20 @@
 
 @interface JointLawSaveParam: NSObject
 
-@property (nonatomic,copy)    NSString * illegalTimeStr;   //执法时间    格式：yyyy-MM-dd HH:mm:ss
-@property (nonatomic,copy)    NSString * plateno;   //车牌号    必填
-@property (nonatomic,copy)    NSString * illegalAddress;   //执法地点
-@property (nonatomic,copy)    NSString * ownerName;   //车主姓名
-@property (nonatomic,copy)    NSString * ownerIdCard;   //车主身份证
-@property (nonatomic,copy)    NSString * ownerPhone;   //车主电话
-@property (nonatomic,copy)    NSString * driverName;   //驾驶员姓名
-@property (nonatomic,copy)    NSString * driverIdCard;   //驾驶员身份证
-@property (nonatomic,copy)    NSString * driverPhone;   //驾驶员电话
-@property (nonatomic,copy)    NSString * dealResult;   //处罚结果    119900,118800,117700   用这种格式字符串，中间用逗号隔开
-@property (nonatomic,copy)    NSString * dealRemark;   //处罚结果备注
-@property (nonatomic,copy)    NSArray  * imgIds;   //照片id集合    传数组[]
-@property (nonatomic,copy)    NSArray  * videoIds;   //视频id集合    传数组[]
-@property (nonatomic,strong)  NSNumber * launchOrgType;   //发起方机构类型    2交警 6渣土办 7交通局 8行政执法办 这个可以不用传，看后续需求，现在app都是交警用，后台默认为交警
+@property (nonatomic,copy)    NSString * illegalTimeStr;    //执法时间    格式：yyyy-MM-dd HH:mm:ss
+@property (nonatomic,copy)    NSString * plateno;           //车牌号    必填
+@property (nonatomic,copy)    NSString * illegalAddress;    //执法地点
+@property (nonatomic,copy)    NSString * ownerName;         //车主姓名
+@property (nonatomic,copy)    NSString * ownerIdCard;       //车主身份证
+@property (nonatomic,copy)    NSString * ownerPhone;        //车主电话
+@property (nonatomic,copy)    NSString * driverName;        //驾驶员姓名
+@property (nonatomic,copy)    NSString * driverIdCard;      //驾驶员身份证
+@property (nonatomic,copy)    NSString * driverPhone;       //驾驶员电话
+@property (nonatomic,copy)    NSString * dealResult;        //处罚结果    119900,118800,117700   用这种格式字符串，中间用逗号隔开
+@property (nonatomic,copy)    NSString * dealRemark;        //处罚结果备注
+@property (nonatomic,copy)    NSString  * imgIds;           //照片id集合    传数组[]
+@property (nonatomic,copy)    NSString  * videoIds;         //视频id集合    传数组[]
+@property (nonatomic,strong)  NSNumber * launchOrgType;     //发起方机构类型    2交警 6渣土办 7交通局 8行政执法办 这个可以不用传，看后续需求，现在app都是交警用，后台默认为交警
 
 @end
 
@@ -34,7 +34,7 @@
 @interface JointLawSaveManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) AccidentSaveParam *param;
+@property (nonatomic, strong) JointLawSaveParam *param;
 
 /****** 返回数据 ******/
 //无返回参数
@@ -46,9 +46,10 @@
 @interface JointLawIllegalCodeModel : NSObject
 
 @property (nonatomic,strong)  NSNumber * illegalCode;   //违法代码    119900
-@property (nonatomic,copy)    NSString * content;   //违法内容    超速
-@property (nonatomic,copy)    NSString * points;   //扣分
-@property (nonatomic,copy)    NSString * fines;   //罚款
+@property (nonatomic,copy)    NSString * content;       //违法内容    超速
+@property (nonatomic,copy)    NSString * points;        //扣分
+@property (nonatomic,copy)    NSString * fines;         //罚款
+@property (nonatomic,assign)  BOOL isSelected;          //是否被选中
 
 @end
 
@@ -93,8 +94,10 @@
 
 @interface JointLawVideoModel:NSObject
 
-@property (nonatomic,copy)    NSString * videoId;  //视频id
+@property (nonatomic,copy)    NSString * videoId;   //视频id
 @property (nonatomic,copy)    NSString * videoUrl;  //视频url
+@property (nonatomic,copy)    NSString * videoImg;  //视频截图
+@property (nonatomic,copy)    NSString * videoPath; //本地视频路径
 
 
 @end
@@ -108,7 +111,7 @@
 
 //返回数据
 
-@property (nonatomic,copy) JointLawVideoModel * jointLawVideoModel;     //新照片信息列表
+@property (nonatomic,strong) JointLawVideoModel * jointLawVideoModel;     //新照片信息列表
 
 @end
 

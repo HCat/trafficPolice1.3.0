@@ -9,9 +9,9 @@
 #import "HideTabSuperVC.h"
 #import "JointLawAPI.h"
 
-@interface JointVideoVC : HideTabSuperVC
-
 typedef void (^JointVideoVCComitDoneBlock)(JointLawVideoModel *video);
+
+@interface JointVideoVC : HideTabSuperVC
 
 @property (nonatomic,strong) NSString * oldVideoId;
 @property (nonatomic,copy) JointVideoVCComitDoneBlock block;

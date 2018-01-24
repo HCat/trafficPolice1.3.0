@@ -15,15 +15,28 @@
 
 @property (nonatomic,strong) AVPlayer *player;
 @property (nonatomic,assign) BOOL isPlaying;    //是否在播放
+@property (nonatomic,strong) UIButton *trachBtn;
+
 
 @end
 
 @implementation LRPlayVC
 
+- (instancetype)init{
+
+    if (self = [super init]) {
+        self.isNeedDeleteBtn = YES;
+    }
+    
+    return self;
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createViews];
-    
+    self.title = @"视频播放";
+
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:[NSURL fileURLWithPath:self.videoUrl]];
     _player = [AVPlayer playerWithPlayerItem:playerItem];
     if([[UIDevice currentDevice] systemVersion].intValue>=10){
@@ -42,22 +55,31 @@
     
 }
 
-- (void)createViews {
-   
-    self.title = @"视频播放";
+- (void)setIsNeedDeleteBtn:(BOOL)isNeedDeleteBtn{
     
-    UIButton *trachBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    trachBtn.frame = CGRectMake(0, 0, 18, 18);
-    [trachBtn setImage:[UIImage imageNamed:@"btn_trash_photoBrowser"] forState:UIControlStateNormal];
-    [trachBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [trachBtn addTarget:self action:@selector(trachBtn) forControlEvents:UIControlEventTouchUpInside];
-    [trachBtn setEnlargeEdgeWithTop:25.f right:25.f bottom:25.f left:25.f];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:trachBtn];
+    _isNeedDeleteBtn = isNeedDeleteBtn;
+    
+    if (_isNeedDeleteBtn) {
+        
+        self.trachBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _trachBtn.frame = CGRectMake(0, 0, 18, 18);
+        [_trachBtn setImage:[UIImage imageNamed:@"btn_trash_photoBrowser"] forState:UIControlStateNormal];
+        [_trachBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_trachBtn addTarget:self action:@selector(trachBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_trachBtn setEnlargeEdgeWithTop:25.f right:25.f bottom:25.f left:25.f];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_trachBtn];
+        
+    }else{
+        
+        _trachBtn.hidden = YES;
+        
+    }
+
 }
 
 #pragma mark - 垃圾桶按钮
 
-- (void)trachBtn{
+- (void)trachBtn:(id)sender{
     
     [ArtVideoUtil deleteVideo:self.videoUrl];
     

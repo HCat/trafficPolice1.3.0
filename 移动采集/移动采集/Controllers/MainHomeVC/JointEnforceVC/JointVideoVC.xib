@@ -43,6 +43,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleBtnCommit:" destination="-1" eventType="touchUpInside" id="Xnt-ZH-vrn"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

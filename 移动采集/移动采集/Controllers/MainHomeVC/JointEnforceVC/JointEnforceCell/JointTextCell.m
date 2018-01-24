@@ -11,6 +11,8 @@
 #import "LRCameraVC.h"
 #import "JointEnforceVC.h"
 #import "PGDatePickManager.h"
+#import "PersonLocationVC.h"
+#import "JointPenaltiesVC.h"
 
 @interface JointTextCell()<PGDatePickerDelegate>
 
@@ -26,6 +28,8 @@
 
 @property (weak, nonatomic) IBOutlet FSTextView *tv_illegalDone;           //违法处理
 @property (weak, nonatomic) IBOutlet FSTextView *tv_describe;           //备注内容
+
+@property (nonatomic,strong) NSMutableArray * arr_penalties;
 
 @end
 
@@ -46,7 +50,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self configTextField];
-    
+    [self.tv_describe setDelegate:(id<UITextViewDelegate> _Nullable)self];
 }
 
 #pragma mark - set&&get
@@ -70,9 +74,26 @@
         
         _tv_illegalDone.text = _param.dealResult;
         _tv_describe.text = _param.dealRemark;
+    
+        [self judgeCommit];
+    }
+    
+
+}
+
+- (void)judgeCommit{
+    if (_tf_carNumber.text.length > 0) {
+        if (self.block) {
+            self.block(YES);
+        }
+    }else{
+        if (self.block) {
+            self.block(NO);
+        }
         
     }
-
+    
+    
 }
 
 
@@ -90,6 +111,16 @@
     [self setUpCommonUITextField:_tf_driverIdCard];
     [self setUpCommonUITextField:_tf_driverPhone];
     _tf_carNumber.attributedPlaceholder = [ShareFun highlightInString:@"请输入车牌号码(必填)" withSubString:@"(必填)"];
+    
+    [self addChangeForEventEditingChanged:_tf_carNumber];
+    [self addChangeForEventEditingChanged:_tf_illegalAddress];
+    [self addChangeForEventEditingChanged:_tf_illegalTimer];
+    [self addChangeForEventEditingChanged:_tf_carName];
+    [self addChangeForEventEditingChanged:_tf_carIdCard];
+    [self addChangeForEventEditingChanged:_tf_carPhone];
+    [self addChangeForEventEditingChanged:_tf_driverName];
+    [self addChangeForEventEditingChanged:_tf_driverIdCard];
+    [self addChangeForEventEditingChanged:_tf_driverPhone];
     
 }
 
@@ -151,7 +182,7 @@
         _param.driverPhone = length > 0 ? _tf_driverPhone.text : nil;
     }
     
-    
+    [self judgeCommit];
 }
 
 #pragma mark - 实时监听UITextView内容的变化
@@ -194,6 +225,7 @@
             if (camera.type == 1) {
                 strongSelf.tf_carNumber.text = camera.commonIdentifyResponse.carNo;
                 strongSelf.param.plateno = camera.commonIdentifyResponse.carNo;
+                [strongSelf judgeCommit];
             }
         }
     };
@@ -233,6 +265,25 @@
     
 }
 
+#pragma mark - 手动定位事件
+
+- (IBAction)handleBtnPersonLocationClicked:(id)sender{
+    
+    JointEnforceVC *t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    
+    PersonLocationVC *t_personLocationVc = [PersonLocationVC new];
+    WS(weakSelf);
+    t_personLocationVc.block = ^(LocationStorageModel *model) {
+        SW(strongSelf, weakSelf);
+        strongSelf.tf_illegalAddress.text = model.address;
+        strongSelf.param.illegalAddress = model.address;
+        
+    };
+    [t_vc.navigationController pushViewController:t_personLocationVc animated:YES];
+
+}
+
+
 #pragma mark - 驾驶员身份证识别
 
 - (IBAction)handleBtnDriverIdCardIdentifyClicked:(id)sender {
@@ -261,7 +312,40 @@
     
 }
 
-#pragma mark - 选择时间
+#pragma mark - 违法条例
+
+- (IBAction)handleBtnJointPenaltiesClicked:(id)sender {
+    
+    WS(weakSelf);
+    
+    JointEnforceVC * t_vc = (JointEnforceVC *)[ShareFun findViewController:self withClass:[JointEnforceVC class]];
+    
+    JointPenaltiesVC* t_jointPenalties = [[JointPenaltiesVC alloc] init];
+    t_jointPenalties.arr_penalts = _arr_penalties;
+    t_jointPenalties.block = ^(NSArray *arr_penalties) {
+        SW(strongSelf, weakSelf);
+        strongSelf.arr_penalties = arr_penalties.mutableCopy;
+        
+        NSMutableArray *t_arr_str = [NSMutableArray array];
+        NSString *t_str_content = [NSString new];
+        for (int i = 0; i < arr_penalties.count; i++) {
+            JointLawIllegalCodeModel * model = arr_penalties[i];
+            [t_arr_str addObject:model.illegalCode];
+            NSString *t_string = [NSString stringWithFormat:@"%@ %@\n",model.illegalCode,model.content];
+            t_str_content = [t_str_content stringByAppendingString:t_string];
+            
+        }
+        
+        strongSelf.tv_illegalDone.text = t_str_content;
+        strongSelf.param.dealResult = [t_arr_str componentsJoinedByString:@","];
+        
+    };
+    [t_vc.navigationController pushViewController:t_jointPenalties animated:YES];
+    
+
+
+}
+#pragma mark - 选择时间事件
 
 - (IBAction)handleBtnChooseTimeClicked:(id)sender{
     

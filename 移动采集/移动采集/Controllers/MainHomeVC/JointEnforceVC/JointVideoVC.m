@@ -12,7 +12,6 @@
 #import "LRPlayVC.h"
 #import "JointLawAPI.h"
 
-
 #import "ArtVideoModel.h"
 #import "ArtVideoUtil.h"
 
@@ -184,7 +183,11 @@
         
         if (manager.responseModel.code == CODE_SUCCESS) {
             
-            strongSelf.block(manager.jointLawVideoModel);
+            JointLawVideoModel *model = manager.jointLawVideoModel;
+            model.videoImg = strongSelf.currentRecord.thumAbsolutePath;
+            model.videoPath = strongSelf.currentRecord.videoAbsolutePath;
+            
+            strongSelf.block(model);
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }
         

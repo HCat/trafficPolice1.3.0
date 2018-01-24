@@ -14,6 +14,7 @@
 @interface LRPlayVC : HideTabSuperVC
 
 @property (nonatomic, copy) NSString *videoUrl;
+@property (nonatomic, assign) BOOL isNeedDeleteBtn;     //是否需要删除
 @property (nonatomic,copy) void(^deleteBlock)();
 
 @end

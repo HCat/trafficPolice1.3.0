@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="154" id="KGk-i7-Jjw" customClass="JointVideoCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="219" id="KGk-i7-Jjw" customClass="JointVideoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="153.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="218.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现场视频:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvd-V3-Bt5">
@@ -45,28 +45,61 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_joint_line" translatesAutoresizingMaskIntoConstraints="NO" id="UKQ-Mg-l51">
-                        <rect key="frame" x="0.0" y="152" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="217.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="adK-hQ-1wI"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="din-tZ-WBu">
+                        <rect key="frame" x="20" y="52" width="200" height="150"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jW-zh-7bz">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                <connections>
+                                    <action selector="handleBtnPlayVideoClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="C4R-Pt-Iy6"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_jointVideoPlay" translatesAutoresizingMaskIntoConstraints="NO" id="kgf-DQ-9z5">
+                                <rect key="frame" x="83" y="58" width="34" height="34"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2jW-zh-7bz" secondAttribute="bottom" id="FPT-kp-K5l"/>
+                            <constraint firstAttribute="height" constant="150" id="Klv-a9-UFr"/>
+                            <constraint firstItem="2jW-zh-7bz" firstAttribute="top" secondItem="din-tZ-WBu" secondAttribute="top" id="USo-kK-tEX"/>
+                            <constraint firstItem="kgf-DQ-9z5" firstAttribute="centerX" secondItem="din-tZ-WBu" secondAttribute="centerX" id="Yx5-Ln-f2f"/>
+                            <constraint firstItem="2jW-zh-7bz" firstAttribute="leading" secondItem="din-tZ-WBu" secondAttribute="leading" id="g0n-fa-sel"/>
+                            <constraint firstItem="kgf-DQ-9z5" firstAttribute="centerY" secondItem="din-tZ-WBu" secondAttribute="centerY" id="i4g-RX-r7n"/>
+                            <constraint firstAttribute="trailing" secondItem="2jW-zh-7bz" secondAttribute="trailing" id="o4s-So-JXT"/>
+                            <constraint firstAttribute="width" constant="200" id="oWZ-n9-abw"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="uyw-DQ-gDK" secondAttribute="trailing" constant="9" id="EOR-Xq-1bs"/>
-                    <constraint firstAttribute="bottom" secondItem="pvd-V3-Bt5" secondAttribute="bottom" constant="116.5" id="Ewq-WY-6WU"/>
+                    <constraint firstAttribute="bottom" secondItem="uyw-DQ-gDK" secondAttribute="bottom" constant="178.5" id="KvX-r5-4yo"/>
                     <constraint firstAttribute="trailing" secondItem="UKQ-Mg-l51" secondAttribute="trailing" id="Lec-lP-5bf"/>
                     <constraint firstItem="pvd-V3-Bt5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Ohn-cX-tVM"/>
                     <constraint firstAttribute="bottom" secondItem="UKQ-Mg-l51" secondAttribute="bottom" id="Ruf-r0-veU"/>
                     <constraint firstItem="UKQ-Mg-l51" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TUA-YA-ZNE"/>
+                    <constraint firstItem="2jW-zh-7bz" firstAttribute="top" secondItem="uyw-DQ-gDK" secondAttribute="bottom" constant="12" id="Ufw-Js-Oq1"/>
                     <constraint firstItem="uyw-DQ-gDK" firstAttribute="centerY" secondItem="pvd-V3-Bt5" secondAttribute="centerY" id="aQH-FJ-4Yq"/>
                     <constraint firstItem="pvd-V3-Bt5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="eah-2d-4Du"/>
+                    <constraint firstItem="din-tZ-WBu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="oph-Sg-pDz"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="45" y="114"/>
+            <connections>
+                <outlet property="btn_videoPlay" destination="2jW-zh-7bz" id="ymD-z4-FqX"/>
+                <outlet property="layout_bottom" destination="KvX-r5-4yo" id="502-m8-29a"/>
+                <outlet property="v_video" destination="din-tZ-WBu" id="WH3-fF-U7D"/>
+            </connections>
+            <point key="canvasLocation" x="45" y="146.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="btn_jointVideoPlay" width="34" height="34"/>
         <image name="image_joint_line" width="1" height="1"/>
     </resources>
 </document>
