@@ -20,6 +20,7 @@
 @property (nonatomic,copy)   NSString * address;              //事故地点 必填
 @property (nonatomic,copy)   NSString * addressRemark;        //地址备注 非必填
 @property (nonatomic,copy)   NSString * carNo;                //车牌号 必填
+@property (nonatomic,copy)   NSString * carColor;             //车牌颜色
 @property (nonatomic,strong) NSNumber * longitude;            //经度 必填
 @property (nonatomic,strong) NSNumber * latitude;             //纬度 必填
 @property (nonatomic,copy)   NSArray  * files;                //事故图片 列表，最多可上传30张

@@ -188,16 +188,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
         if (imageInfo) {
             cell.imageView.image = imageInfo.image;
-        }else{
-            NSString *t_cutImageUrl = [t_dic objectForKey:@"cutImageUrl"];
-            
-            if (t_cutImageUrl) {
-                 [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_cutImageUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"]];
-                
-                
-            }
         }
-        
+    
     }
     
     return cell;
@@ -258,19 +250,13 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                         
                         //替换车牌近照的图片
                         if (camera.commonIdentifyResponse && camera.commonIdentifyResponse.cutImageUrl && [camera.commonIdentifyResponse.cutImageUrl length] > 0) {
-                            strongSelf.param.cutImageUrl = camera.commonIdentifyResponse.cutImageUrl;
-                            strongSelf.param.taketime = [ShareFun getCurrentTime];
-                            
-                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:0];
-                            
+                    
                             //识别之后所做的操作
-                            [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
-                            
-                        }else{
-                            
-                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:0];
-                            
+                            [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
+    
                         }
+                        
+                        [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:0];
                         
                         [strongSelf.collectionView reloadData];
                         
@@ -422,14 +408,11 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     if (cameraVC.commonIdentifyResponse.cutImageUrl) {
         
-        _param.cutImageUrl = cameraVC.commonIdentifyResponse.cutImageUrl;
-        _param.taketime    = [ShareFun getCurrentTime];
-        [self replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:0];
-        
-    }else{
-        [self replaceUpImageItemToUpImagesWithImageInfo:cameraVC.imageInfo remark:@"车牌近照" replaceIndex:0];
+       [self.headView takePhotoToDiscernmentWithCarNumber:cameraVC.commonIdentifyResponse.carNo withCarcolor:cameraVC.carColor];
         
     }
+    
+    [self replaceUpImageItemToUpImagesWithImageInfo:cameraVC.imageInfo remark:@"车牌近照" replaceIndex:0];
     
     [_collectionView reloadData];
     
@@ -465,11 +448,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         imageFileInfo.name = key_files;
         [t_dic setObject:imageFileInfo             forKey:@"files"];
         [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
-    }
-    
-    if (self.param.cutImageUrl) {
-        [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
-        [t_dic setObject:self.param.taketime    forKey:@"taketime"];
     }
     
     [self.arr_upImages  replaceObjectAtIndex:index withObject:t_dic];

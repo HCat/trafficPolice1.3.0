@@ -31,7 +31,7 @@
 
 //拍照识别车牌照片之后做的处理
 
-- (void)takePhotoToDiscernmentWithCarNumber:(NSString *)carNummber;
+- (void)takePhotoToDiscernmentWithCarNumber:(NSString *)carNummber withCarcolor:(NSString *)carColor;
 
 #pragma mark - 提交之后headView存储地址的处理
 

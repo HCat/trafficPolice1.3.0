@@ -151,7 +151,15 @@
     
     WS(weakSelf);
     
-    IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
+    UIViewController *t_vc = nil;
+    
+    if (_subType != ParkTypeCarInfoAdd) {
+        t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
+    }else{
+        t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
+        
+    }
+    
     LRCameraVC *home = [[LRCameraVC alloc] init];
     home.type = 1;
     home.fininshCaptureBlock = ^(LRCameraVC *camera) {
@@ -163,7 +171,7 @@
             if (camera.type == 1) {
                 
                 if (camera.commonIdentifyResponse) {
-                    [strongSelf takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
+                    [strongSelf takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
                 }
             
                 if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(recognitionCarNumber:)]) {
@@ -405,10 +413,13 @@
 
 #pragma mark - 拍照识别车牌照片之后做的处理
 
-- (void)takePhotoToDiscernmentWithCarNumber:(NSString *)carNummber{
+- (void)takePhotoToDiscernmentWithCarNumber:(NSString *)carNummber withCarcolor:(NSString *)carColor{
 
     _tf_carNumber.text  = carNummber;
     _param.carNo        = carNummber;
+    if (carColor) {
+        _param.carColor = carColor;
+    }
     
     self.isCanCommit = [self juegeCanCommit];
 }

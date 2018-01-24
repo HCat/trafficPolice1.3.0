@@ -158,6 +158,10 @@
                 
                 strongSelf.commonIdentifyResponse = manger.commonIdentifyResponse;
                 
+                if (manger.commonIdentifyResponse.color) {
+                    strongSelf.carColor = manger.commonIdentifyResponse.color;
+                }
+                
                 if (strongSelf.commonIdentifyResponse.cutImageUrl.length == 0 || !strongSelf.commonIdentifyResponse.cutImageUrl) {
                     if (strongSelf.type == 5 && strongSelf.isIllegal) {
                        [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];

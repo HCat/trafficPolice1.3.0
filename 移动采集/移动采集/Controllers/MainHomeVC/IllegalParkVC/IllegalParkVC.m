@@ -482,7 +482,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                                 
                                 [strongSelf replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:1];
                                 
-                                [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
+                                [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
                                 
                                 [strongSelf listentCarNumber];
                                 
@@ -524,7 +524,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             [strongSelf replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:1];
                             
                             //识别之后所做的操作
-                            [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo];
+                            [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
                             
                             [strongSelf listentCarNumber];
                             

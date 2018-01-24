@@ -28,6 +28,8 @@ typedef void (^errorIdentifyCaptureBlock)(LRCameraVC
 //获取得到的照片转换成需要的imageInfo信息，具体可以查看这个类中拥有的属性
 @property (nonatomic,strong) ImageFileInfo *imageInfo;
 
+@property (nonatomic,strong) NSString *carColor;
+
 //获取得到压缩的图片
 @property (nonatomic,strong) UIImage *image;
 
