@@ -331,7 +331,27 @@
         for (int i = 0; i < arr_penalties.count; i++) {
             JointLawIllegalCodeModel * model = arr_penalties[i];
             [t_arr_str addObject:model.illegalCode];
-            NSString *t_string = [NSString stringWithFormat:@"%@ %@\n",model.illegalCode,model.content];
+            
+            NSString *t_formatString = nil;
+            NSString *t_string = nil;
+            if (model.fines.length > 0 && model.points.length > 0) {
+                t_formatString = @"%@ %@.  罚款:%@  扣分:%@\n";
+                t_string = [NSString stringWithFormat:t_formatString,model.illegalCode,model.content,model.fines,model.points];
+            }else{
+                
+                if (model.fines.length > 0) {
+                    t_formatString = @"%@ %@.  罚款:%@\n";
+                    t_string = [NSString stringWithFormat:t_formatString,model.illegalCode,model.content,model.fines];
+                }else if (model.points.length > 0){
+                    t_formatString = @"%@ %@.  扣分:%@\n";
+                    t_string = [NSString stringWithFormat:t_formatString,model.illegalCode,model.content,model.points];
+                }else{
+                    t_formatString = @"%@ %@.\n";
+                    t_string = [NSString stringWithFormat:t_formatString,model.illegalCode,model.content];
+                }
+                
+            }
+            
             t_str_content = [t_str_content stringByAppendingString:t_string];
             
         }

@@ -152,6 +152,7 @@
 - (AFConstructingBlock)constructingBodyBlock {
     return ^(id<AFMultipartFormData> formData) {
         
+        LxPrintf(@"视频数据长度:%ld",_file.fileData.length/1024);
         [formData appendPartWithFileData:_file.fileData name:_file.name fileName:_file.fileName mimeType:_file.mimeType];
         
     };
