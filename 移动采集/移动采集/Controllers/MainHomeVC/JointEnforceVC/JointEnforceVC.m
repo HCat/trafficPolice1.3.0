@@ -27,6 +27,7 @@
 @property(nonatomic,strong) JointLawSaveParam *param;   //上传的参数
 @property (nonatomic,strong) NSMutableArray <JointLawImageModel *> *imageList;//要上传图片数据
 @property (nonatomic,strong) JointLawVideoModel *videoModel;
+@property (nonatomic,strong) NSMutableArray *arr_penalties;
 
 @property(nonatomic,assign) BOOL isCanCommit;
 
@@ -173,10 +174,16 @@
         WS(weakSelf);
         JointTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JointTextCellID"];
         cell.param = _param;
+        cell.arr_penalties = _arr_penalties;
         cell.block = ^(BOOL isCommit) {
             SW(strongSelf, weakSelf);
-             strongSelf.isCanCommit = isCommit;
+            strongSelf.isCanCommit = isCommit;
         };
+        cell.penaltDoneBlock = ^(NSMutableArray *arr_penalties) {
+            SW(strongSelf, weakSelf);
+            strongSelf.arr_penalties = arr_penalties;
+        };
+        
         
         return cell;
     }
