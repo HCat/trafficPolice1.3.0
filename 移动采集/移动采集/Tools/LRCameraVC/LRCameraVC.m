@@ -277,6 +277,11 @@
             
             TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
             cropController.delegate = weakSelf;
+            cropController.cropView.gridOverlayView.hidden = YES;
+            cropController.toolbar.clampButtonHidden = YES;
+            cropController.toolbar.rotateCounterclockwiseButtonHidden = YES;
+            cropController.toolbar.rotateClockwiseButtonHidden = YES;
+            
             [weakSelf presentViewController:cropController animated:YES completion:nil];
             
         }else {
