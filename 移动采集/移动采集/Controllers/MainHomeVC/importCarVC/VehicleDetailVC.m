@@ -200,7 +200,7 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
     
         VehicleDetailByPlateNoManger *manger = [[VehicleDetailByPlateNoManger alloc] init];
         manger.plateNo = _NummberId;
-        manger.isLog = NO;
+        manger.isLog = YES;
         [manger configLoadingTitle:@"加载"];
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -266,13 +266,13 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                     SW(strongSelf, weakSelf);
                     cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
                     cell.imagelists = strongSelf.reponse.vehicleImgList;
-                
+                    
                 }];
             }else{
                 height = [tableView fd_heightForCellWithIdentifier:@"VehicleCarNoShowCellID" cacheByIndexPath:indexPath configuration:^(VehicleCarNoShowCell *cell) {
                     SW(strongSelf, weakSelf);
                     cell.vehicle = (VehicleModel *)strongSelf.arr_content[indexPath.row];
-                   
+                    cell.imagelists = strongSelf.reponse.vehicleImgList;
                 }];
             
             }
@@ -363,12 +363,17 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
                 WS(weakSelf);
                 cell.imagelists = _reponse.vehicleImgList;
-               
+                cell.isReportEdit = _reponse.isReportEdit;
                 cell.block = ^{
                     SW(strongSelf, weakSelf);
                     strongSelf.isShowVehicleCar = NO;
                     [strongSelf.tableView reloadData];
                     
+                };
+                
+                cell.editBlock = ^{
+                    SW(strongSelf, weakSelf);
+                    [strongSelf.tableView reloadData];
                 };
                 
                 return cell;
@@ -377,6 +382,8 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                 VehicleCarNoShowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCarNoShowCellID"];
                 [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 cell.vehicle = (VehicleModel *)self.arr_content[indexPath.row];
+                cell.imagelists = _reponse.vehicleImgList;
+                cell.isReportEdit = _reponse.isReportEdit;
                 WS(weakSelf);
                 cell.block = ^{
                     SW(strongSelf, weakSelf);

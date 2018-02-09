@@ -10,6 +10,7 @@
 
 @interface VehicleModel : NSObject
 
+@property (nonatomic,copy)   NSString *vehicleid;                   //车辆ID
 @property (nonatomic,copy)   NSString * plateno;                    //车牌号
 @property (nonatomic,copy)   NSString * memFormNo;  //运输主体自编号
 @property (nonatomic,copy)   NSString * selfNo;  //车辆自编号

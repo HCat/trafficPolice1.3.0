@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "VehicleModel.h"
+#import "VehicleAPI.h"
 
-typedef void(^VehicleCarShowBlock)();
+typedef void(^VehicleCarShowBlock)(void);
+typedef void(^VehicleCarEditBlock)(void);
 
 @interface VehicleCarNoShowCell : UITableViewCell
 
 @property (nonatomic,strong) VehicleModel * vehicle;
+@property (nonatomic,strong) NSMutableArray <VehicleImageModel *> * imagelists;
+@property (nonatomic,strong) NSNumber *isReportEdit;
 
 @property (nonatomic,copy) VehicleCarShowBlock block;
+@property (nonatomic,copy) VehicleCarEditBlock editBlock;
 
 @end

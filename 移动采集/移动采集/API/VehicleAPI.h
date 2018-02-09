@@ -19,11 +19,13 @@
 
 @interface VehicleImageModel : NSObject
 
+@property (nonatomic,copy) NSString *mediaId;       //照片Id
 @property (nonatomic,copy) NSString *mediaUrl;
 @property (nonatomic,copy) NSString *mediaThumbUrl; //缩略图url
 @property (nonatomic,copy) NSString *mediaThumbWaterUrl;   //压缩水印图片url
-@property (nonatomic,copy) NSString *resType;   //
+@property (nonatomic,copy) NSString *resType;   //图片类型
 @property (nonatomic,copy) NSString *isID;      //是否是身份证
+
 
 @end
 
@@ -31,7 +33,7 @@
 @interface VehicleDetailReponse : NSObject
 
 @property (nonatomic,strong) VehicleModel * vehicle;                //车辆信息
-@property (nonatomic,copy)   NSArray <VehicleImageModel *> * vehicleImgList; //车辆证件照片
+@property (nonatomic,copy)   NSMutableArray <VehicleImageModel *> * vehicleImgList; //车辆证件照片
 
 @property (nonatomic,strong) MemberInfoModel * memberInfo;          //运输主体信息
 @property (nonatomic,copy)   NSString * memberArea;                 //运输主体所在区域
@@ -41,6 +43,8 @@
 @property (nonatomic,copy)   NSArray <VehicleDriverModel *> * driverList;        //驾驶员资料
 
 @property (nonatomic,strong) VehicleRouteModel *vehicleRoute;       //车辆路线信息
+@property (nonatomic,strong) NSNumber *isReportEdit;    //车辆路线信息
+
 
 @end
 
@@ -116,4 +120,49 @@
 @end
 
 
+#pragma mark - 根据车牌id获取车辆报备信息
+
+@interface VehicleReportInfoReponse : NSObject
+
+
+@property (nonatomic,copy)   NSString * carriageOutsideH;  //车辆外高度
+@property (nonatomic,copy)   NSString * mediaId;  //晋工车辆照id
+@property (nonatomic,copy)   NSString * mediaUrl;  //晋工车辆照Url
+@property (nonatomic,copy)   NSString * mediaThumbUrl;  //晋工车辆缩略照Url
+@property (nonatomic,copy)   NSString * mediaThumbWaterUrl;  //晋工车辆缩略水印照Url
+
+@end
+
+@interface VehicleReportInfoManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * vehicleId;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) VehicleReportInfoReponse * vehicleReportInfo;
+
+@end
+
+#pragma mark - 更新车辆报备信息
+
+
+@interface VehicleUpReportInfoParam : NSObject
+
+
+@property (nonatomic, copy) NSString * vehicleId;  //车辆id
+@property (nonatomic, copy) NSString * carriageOutsideH;  //车辆外高低
+@property (nonatomic, copy) NSString *oldImgId;  //晋工车辆照旧id
+@property (nonatomic, strong) ImageFileInfo * imgFile;  //晋工车辆照文件
+
+@end
+
+@interface VehicleUpReportInfoManger :LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) VehicleUpReportInfoParam *param;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) VehicleImageModel *imageModel;
+
+@end
 

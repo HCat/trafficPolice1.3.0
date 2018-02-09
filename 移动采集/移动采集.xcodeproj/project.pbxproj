@@ -339,6 +339,8 @@
 		CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8671F6690E800CC64B0 /* LocationAPI.m */; };
 		CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */; };
 		CE8EE86E1F66A6AF00CC64B0 /* PoliceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE86D1F66A6AF00CC64B0 /* PoliceAnnotation.m */; };
+		CEA50C01202C47F2006E5A55 /* VehicleReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */; };
+		CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */; };
 		CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DA1F1CDFE300741A6F /* ShareFun.m */; };
 		CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DE1F1CE13200741A6F /* SAMKeychain.m */; };
 		CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96E01F1CE13200741A6F /* SAMKeychainQuery.m */; };
@@ -989,6 +991,9 @@
 		CE9643971F7A3B0800C72288 /* SuperLoggerFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLoggerFunctions.m; sourceTree = "<group>"; };
 		CE9643981F7A3B0800C72288 /* SuperLoggerPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperLoggerPreviewView.h; sourceTree = "<group>"; };
 		CE9643991F7A3B0800C72288 /* SuperLoggerPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperLoggerPreviewView.m; sourceTree = "<group>"; };
+		CEA50BFE202C47F2006E5A55 /* VehicleReportVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleReportVC.h; sourceTree = "<group>"; };
+		CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleReportVC.m; sourceTree = "<group>"; };
+		CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleReportVC.xib; sourceTree = "<group>"; };
 		CEAA96D91F1CDFE300741A6F /* ShareFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFun.h; sourceTree = "<group>"; };
 		CEAA96DA1F1CDFE300741A6F /* ShareFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFun.m; sourceTree = "<group>"; };
 		CEAA96DD1F1CE13200741A6F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
@@ -1335,6 +1340,9 @@
 				CE5696631F6245950073ADB7 /* VehicleSearchVC.h */,
 				CE5696641F6245950073ADB7 /* VehicleSearchVC.m */,
 				CE5696651F6245950073ADB7 /* VehicleSearchVC.xib */,
+				CEA50BFE202C47F2006E5A55 /* VehicleReportVC.h */,
+				CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */,
+				CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */,
 			);
 			path = importCarVC;
 			sourceTree = "<group>";
@@ -2743,6 +2751,7 @@
 				CE5C38F91F28606B0055C945 /* ZLPhotoBrowser.bundle in Resources */,
 				CE5C38F31F28606B0055C945 /* defaultphoto.png in Resources */,
 				CE2C98B41F61C1E9009851F6 /* VehicleDriverCell.xib in Resources */,
+				CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */,
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CE5C39241F2881BD0055C945 /* btn_selected@2x.png in Resources */,
@@ -3002,6 +3011,7 @@
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
 				CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */,
 				CE0731C41F5EC7E400B3831B /* VehicleAPI.m in Sources */,
+				CEA50C01202C47F2006E5A55 /* VehicleReportVC.m in Sources */,
 				CE1B96B41F42E95200A75397 /* AccidentProcessVC.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
 				CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */,

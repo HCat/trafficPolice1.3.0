@@ -15,6 +15,7 @@
 #import "KSSDImageManager.h"
 
 #import "VehicleDetailVC.h"
+#import "VehicleReportVC.h"
 
 @interface VehicleCarCell()
 
@@ -34,7 +35,7 @@
 @property (nonatomic,weak) IBOutlet UILabel * lb_status;                     //车辆状态
 @property (nonatomic,weak) IBOutlet UILabel * lb_remark;                     //备注
 @property (nonatomic,weak) IBOutlet UILabel * lb_vehicleImgList;             //证件照片
-
+@property (weak, nonatomic) IBOutlet UIButton *btn_edit;
 @property (nonatomic,strong) NSMutableArray *arr_view;
 
 @end
@@ -91,7 +92,7 @@
 
 }
 
-- (void)setImagelists:(NSArray<VehicleImageModel *> *)imagelists{
+- (void)setImagelists:(NSMutableArray <VehicleImageModel *> *)imagelists{
 
     if (!_imagelists) {
         
@@ -175,6 +176,17 @@
     
 }
 
+- (void)setIsReportEdit:(NSNumber *)isReportEdit{
+    _isReportEdit = isReportEdit;
+    
+    if ([_isReportEdit isEqualToNumber:@1]) {
+        _btn_edit.hidden = NO;
+    }else{
+        _btn_edit.hidden = YES;
+    }
+    
+}
+
 
 - (IBAction)btnTagAction:(id)sender{
 
@@ -224,6 +236,50 @@
     
 }
 
+//编辑按钮事件
+- (IBAction)handleBtnEditClicked:(id)sender {
+    
+    VehicleDetailVC *vc_target = (VehicleDetailVC *)[ShareFun findViewController:self withClass:[VehicleDetailVC class]];
+    
+    VehicleReportVC *t_vc = [[VehicleReportVC alloc] init];
+    WS(weakSelf);
+    t_vc.block = ^(VehicleImageModel *imageModel, NSString *oldImgId) {
+        SW(strongSelf, weakSelf);
+        if (imageModel && imageModel.mediaId.length > 0) {
+            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                if([t_image.mediaId isEqualToString:oldImgId]){
+                    *stop = YES;
+                    [strongSelf.imagelists removeObject:obj];
+                }
+                
+            }];
+            [strongSelf.imagelists addObject:imageModel];
+            strongSelf.editBlock();
+            
+            return;
+        }
+        
+        if (oldImgId) {
+            
+            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                if([t_image.mediaId isEqualToString:oldImgId]){
+                    *stop = YES;
+                    [strongSelf.imagelists removeObject:obj];
+                }
+                
+            }];
+            strongSelf.editBlock();
+            
+        }
+    };
+    t_vc.platNo = _vehicle.vehicleid;
+    [vc_target.navigationController pushViewController:t_vc animated:YES];
+
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

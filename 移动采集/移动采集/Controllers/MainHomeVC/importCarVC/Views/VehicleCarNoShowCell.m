@@ -9,6 +9,8 @@
 #import "VehicleCarNoShowCell.h"
 #import <PureLayout.h>
 #import "CALayer+Additions.h"
+#import "VehicleDetailVC.h"
+#import "VehicleReportVC.h"
 
 @interface VehicleCarNoShowCell ()
 
@@ -19,6 +21,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_show;
+@property (weak, nonatomic) IBOutlet UIButton *btn_edit;
 @property (weak, nonatomic) IBOutlet UIView *v_backgound;
 
 @end
@@ -56,6 +59,17 @@
     
 }
 
+- (void)setIsReportEdit:(NSNumber *)isReportEdit{
+    _isReportEdit = isReportEdit;
+    
+    if ([_isReportEdit isEqualToNumber:@1]) {
+        _btn_edit.hidden = NO;
+    }else{
+        _btn_edit.hidden = YES;
+    }
+
+}
+
 #pragma mark - 画虚线的ImageView
 
 - (void)imageViewWithDottedLine{
@@ -90,6 +104,50 @@
         self.block();
     }
     
+}
+
+//编辑按钮事件
+- (IBAction)handleBtnEditClicked:(id)sender {
+    
+    VehicleDetailVC *vc_target = (VehicleDetailVC *)[ShareFun findViewController:self withClass:[VehicleDetailVC class]];
+    
+    VehicleReportVC *t_vc = [[VehicleReportVC alloc] init];
+    WS(weakSelf);
+    t_vc.block = ^(VehicleImageModel *imageModel, NSString *oldImgId) {
+        SW(strongSelf, weakSelf);
+        if (imageModel && imageModel.mediaId.length > 0) {
+            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                if([t_image.mediaId isEqualToString:oldImgId]){
+                    *stop = YES;
+                    [strongSelf.imagelists removeObject:obj];
+                }
+                
+            }];
+            [strongSelf.imagelists addObject:imageModel];
+            strongSelf.editBlock();
+            
+            return;
+        }
+        
+        if (oldImgId) {
+            
+            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                if([t_image.mediaId isEqualToString:oldImgId]){
+                    *stop = YES;
+                    [strongSelf.imagelists removeObject:obj];
+                }
+                
+            }];
+            strongSelf.editBlock();
+            
+        }
+    };
+    t_vc.platNo = _vehicle.vehicleid;
+    [vc_target.navigationController pushViewController:t_vc animated:YES];
     
 }
 

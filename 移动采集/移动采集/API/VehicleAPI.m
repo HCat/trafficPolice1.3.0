@@ -10,6 +10,11 @@
 
 @implementation VehicleImageModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"mediaId" : @"id",
+             };
+}
+
 @end
 
 
@@ -175,7 +180,96 @@
 
 @end
 
+#pragma mark - 根据车牌id获取车辆报备信息
 
+@implementation VehicleReportInfoReponse
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"mediaId" : @"id",
+             };
+}
+
+@end
+
+@implementation VehicleReportInfoManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_VEHICLE_VEHICLEREPORTINFO;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"vehicleId":_vehicleId};
+}
+
+//返回参数
+- (VehicleReportInfoReponse *)vehicleReportInfo{
+    
+    if (self.responseModel) {
+        
+        _vehicleReportInfo = [VehicleReportInfoReponse modelWithDictionary:self.responseModel.data];
+        return _vehicleReportInfo;
+    }
+    
+    return nil;
+}
+
+@end
+
+#pragma mark - 更新车辆报备信息
+
+@implementation VehicleUpReportInfoParam : NSObject
+
+//黑名单，不被转换
++ (NSArray *)modelPropertyBlacklist {
+    return @[@"imgFile"];
+}
+
+@end
+
+@implementation VehicleUpReportInfoManger :LRBaseRequest
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_VEHICLE_UPREPORTINFO;
+}
+
+//请求方式
+- (YTKRequestMethod)requestMethod
+{
+    return YTKRequestMethodPOST;
+}
+
+//上传图片
+- (AFConstructingBlock)constructingBodyBlock {
+    return ^(id<AFMultipartFormData> formData) {
+         [formData appendPartWithFileData:self.param.imgFile.fileData name:self.param.imgFile.name fileName:self.param.imgFile.fileName mimeType:self.param.imgFile.mimeType];
+        
+    };
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (VehicleImageModel *)imageModel{
+    
+    if (self.responseModel) {
+        
+        _imageModel = [VehicleImageModel modelWithDictionary:self.responseModel.data];
+        return _imageModel;
+    }
+    
+    return nil;
+}
+
+@end
 
 
