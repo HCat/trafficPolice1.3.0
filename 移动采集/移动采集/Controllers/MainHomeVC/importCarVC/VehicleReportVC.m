@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"车厢外高度";
     _tf_info.attributedPlaceholder = [ShareFun highlightInString:@"请输入(必填)" withSubString:@"(必填)"];
     [_tf_info addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
     _tf_info.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 0)];
