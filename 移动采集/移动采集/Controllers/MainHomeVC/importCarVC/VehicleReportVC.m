@@ -55,6 +55,7 @@
     
     self.param = [[VehicleUpReportInfoParam alloc] init];
     self.param.vehicleId = _platNo;
+    
     [self loadReportInfo];
 }
 
@@ -93,6 +94,7 @@
             strongSelf.reponse = manger.vehicleReportInfo;
             
             strongSelf.tf_info.text = manger.vehicleReportInfo.carriageOutsideH;
+            strongSelf.param.carriageOutsideH = manger.vehicleReportInfo.carriageOutsideH;
             if(strongSelf.reponse.mediaThumbUrl.length > 0 && strongSelf.reponse.mediaThumbUrl){
                 strongSelf.isHaveImage = YES;
                 NSString *str_url = [NSString stringWithFormat:@"%@%@",Base_URL,_reponse.mediaThumbUrl];
