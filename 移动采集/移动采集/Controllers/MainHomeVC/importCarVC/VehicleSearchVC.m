@@ -72,23 +72,17 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     [theTextField resignFirstResponder];
     
-    VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
-    t_vc.type = VehicleRequestTypeCarNumber;
-    t_vc.NummberId = _tf_search.text;
-    [self.navigationController pushViewController:t_vc animated:YES];
-    
-    
-//    if ([ShareFun validateCarNumber:_tf_search.text]) {
-//
-//        VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
-//        t_vc.type = VehicleRequestTypeCarNumber;
-//        t_vc.NummberId = _tf_search.text;
-//        [self.navigationController pushViewController:t_vc animated:YES];
-//
-//    }else{
-//
-//        [LRShowHUD showError:@"请输入正确的车牌号" duration:1.5f];
-//    }
+    if ([ShareFun validateCarNumber:_tf_search.text]) {
+
+        VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
+        t_vc.type = VehicleRequestTypeCarNumber;
+        t_vc.NummberId = _tf_search.text;
+        [self.navigationController pushViewController:t_vc animated:YES];
+
+    }else{
+
+        [LRShowHUD showError:@"请输入正确的车牌号" duration:1.5f];
+    }
     
     return YES;
 }
