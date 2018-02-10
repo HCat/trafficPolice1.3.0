@@ -9,7 +9,7 @@
 #import "HideTabSuperVC.h"
 #import "VehicleAPI.h"
 
-typedef void(^VehicleReportVCBlock)(VehicleImageModel *imageModel,NSString *oldImgId);
+typedef void(^VehicleReportVCBlock)(VehicleImageModel *imageModel,NSString *oldImgId,NSString *carriageOutsideH);
 
 @interface VehicleReportVC : HideTabSuperVC
 

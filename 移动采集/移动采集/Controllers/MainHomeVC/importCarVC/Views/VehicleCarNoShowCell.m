@@ -113,20 +113,26 @@
     
     VehicleReportVC *t_vc = [[VehicleReportVC alloc] init];
     WS(weakSelf);
-    t_vc.block = ^(VehicleImageModel *imageModel, NSString *oldImgId) {
+    t_vc.block = ^(VehicleImageModel *imageModel, NSString *oldImgId,NSString *carriageOutsideH) {
         SW(strongSelf, weakSelf);
         if (imageModel && imageModel.mediaId.length > 0) {
-            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                VehicleImageModel *t_image = (VehicleImageModel *)obj;
-                if([t_image.mediaId isEqualToString:oldImgId]){
-                    *stop = YES;
-                    [strongSelf.imagelists removeObject:obj];
-                }
-                
-            }];
+            if (oldImgId) {
+                [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                    if([t_image.mediaId isEqualToString:oldImgId]){
+                        *stop = YES;
+                        [strongSelf.imagelists removeObject:obj];
+                    }
+                    
+                }];
+            }
+            
             [strongSelf.imagelists addObject:imageModel];
-            strongSelf.editBlock();
+            
+            if (strongSelf.editBlock) {
+                strongSelf.editBlock();
+            }
             
             return;
         }
@@ -142,8 +148,17 @@
                 }
                 
             }];
+           
+        }
+        
+        if (carriageOutsideH && carriageOutsideH.length > 0) {
+            strongSelf.vehicle.carriageOutsideH = carriageOutsideH;
+        }
+        
+        
+        
+        if (strongSelf.editBlock) {
             strongSelf.editBlock();
-            
         }
     };
     t_vc.platNo = _vehicle.vehicleid;

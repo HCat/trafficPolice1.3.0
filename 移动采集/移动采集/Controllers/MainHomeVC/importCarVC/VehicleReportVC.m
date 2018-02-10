@@ -53,7 +53,7 @@
     self.isCanCommit = NO;
     
     self.param = [[VehicleUpReportInfoParam alloc] init];
-    
+    self.param.vehicleId = _platNo;
     [self loadReportInfo];
 }
 
@@ -123,11 +123,12 @@
     
     VehicleUpReportInfoManger *manger = [[VehicleUpReportInfoManger alloc] init];
     manger.param = _param;
+    [manger configLoadingTitle:@"提交"];
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf,weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
-            strongSelf.block(manger.imageModel,manger.param.oldImgId);
+            strongSelf.block(manger.imageModel,manger.param.oldImgId,manger.param.carriageOutsideH);
             [strongSelf.navigationController popViewControllerAnimated:YES];
             
             
@@ -186,6 +187,7 @@
                 if (camera.type == 5) {
                     
                     strongSelf.imageInfo = camera.imageInfo;
+                    strongSelf.imageInfo.name = @"imgFile";
                     strongSelf.isHaveImage = YES;
                     strongSelf.isChangeImage = YES;
                     strongSelf.btn_image.imageView.contentMode = UIViewContentModeScaleAspectFill;

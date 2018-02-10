@@ -247,7 +247,11 @@
 //上传图片
 - (AFConstructingBlock)constructingBodyBlock {
     return ^(id<AFMultipartFormData> formData) {
-         [formData appendPartWithFileData:self.param.imgFile.fileData name:self.param.imgFile.name fileName:self.param.imgFile.fileName mimeType:self.param.imgFile.mimeType];
+        
+        if (self.param.imgFile) {
+             [formData appendPartWithFileData:self.param.imgFile.fileData name:self.param.imgFile.name fileName:self.param.imgFile.fileName mimeType:self.param.imgFile.mimeType];
+        }
+        
         
     };
 }

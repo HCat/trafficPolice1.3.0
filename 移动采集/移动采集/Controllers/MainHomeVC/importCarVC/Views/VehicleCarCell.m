@@ -94,83 +94,88 @@
 
 - (void)setImagelists:(NSMutableArray <VehicleImageModel *> *)imagelists{
 
-    if (!_imagelists) {
+    _imagelists = imagelists;
+    
+    if (_imagelists && _imagelists.count > 0) {
         
-        _imagelists = imagelists;
         
-        if (_imagelists && _imagelists.count > 0) {
+        if (_arr_view && _arr_view.count > 0) {
+            for (UIButton *t_button in _arr_view) {
+                [t_button removeFromSuperview];
+               
+            }
+            [_arr_view removeAllObjects];
+        }
+        
+        NSMutableArray *arr_v = [NSMutableArray new];
+        
+        for (int i = 0;i < [_imagelists count]; i++) {
             
-            NSMutableArray *arr_v = [NSMutableArray new];
+            VehicleImageModel *pic = _imagelists[i];
             
-            for (int i = 0;i < [_imagelists count]; i++) {
+            UIButton *t_button = [UIButton newAutoLayoutView];
+            
+            NSString *str_url = [NSString stringWithFormat:@"%@%@",Base_URL,pic.mediaThumbUrl];
+            
+            [t_button sd_setImageWithURL:[NSURL URLWithString:str_url] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+            
+            
+            [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
+            t_button.tag = i;
+            t_button.layer.cornerRadius = 5.0f;
+            t_button.layer.masksToBounds = YES;
+            t_button.imageView.contentMode = UIViewContentModeScaleAspectFill;
+            t_button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+            t_button.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+            [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self.contentView addSubview:t_button];
+            [_arr_view addObject:t_button];
+            
+            if ( i % 2 == 0) {
                 
-                VehicleImageModel *pic = _imagelists[i];
+                if (arr_v && [arr_v count] > 0) {
+                    [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
+                    [arr_v removeAllObjects];
+                }
                 
-                UIButton *t_button = [UIButton newAutoLayoutView];
-                
-                NSString *str_url = [NSString stringWithFormat:@"%@%@",Base_URL,pic.mediaThumbUrl];
-                
-                [t_button sd_setImageWithURL:[NSURL URLWithString:str_url] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
-                
-                
-                [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
-                t_button.tag = i;
-                t_button.layer.cornerRadius = 5.0f;
-                t_button.layer.masksToBounds = YES;
-                t_button.imageView.contentMode = UIViewContentModeScaleAspectFill;
-                t_button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
-                t_button.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
-                [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
-                [self.contentView addSubview:t_button];
-                [_arr_view addObject:t_button];
-                
-                if ( i % 2 == 0) {
-                    
-                    if (arr_v && [arr_v count] > 0) {
-                        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
-                        [arr_v removeAllObjects];
-                    }
-                    
-                    if ( i ==  0){
-                        [t_button autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_lb_vehicleImgList withOffset:20.0];
-                    }else{
-                        UIButton *btn_before = _arr_view[i - 2];
-                        [t_button autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:btn_before withOffset:10.0];
-                        
-                    }
+                if ( i ==  0){
+                    [t_button autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_lb_vehicleImgList withOffset:20.0];
+                }else{
+                    UIButton *btn_before = _arr_view[i - 2];
+                    [t_button autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:btn_before withOffset:10.0];
                     
                 }
                 
-                [arr_v addObject:t_button];
             }
             
-            if ([arr_v count] == 1) {
-                
-                UIButton *btn_before = arr_v[0];
-                [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*35)/2];
-                [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:35.0f];
-            }else if ([arr_v count] == 2){
-                [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
-                
-            }
+            [arr_v addObject:t_button];
+        }
+        
+        if ([arr_v count] == 1) {
             
-            [arr_v removeAllObjects];
-            
-            for (int i = 0;i < [_arr_view count]; i++) {
-                UIButton *t_button  = _arr_view[i];
-                [t_button autoSetDimension:ALDimensionHeight toSize:100.f];
-                
-                if (i == _arr_view.count - 1 ) {
-                    UIButton *t_button_last  = _arr_view[i];
-                    [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
-                }
-            }
-            
-        }else{
-            
-            [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
+            UIButton *btn_before = arr_v[0];
+            [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 3*35)/2];
+            [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:35.0f];
+        }else if ([arr_v count] == 2){
+            [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:35.0 insetSpacing:YES matchedSizes:YES];
             
         }
+        
+        [arr_v removeAllObjects];
+        
+        for (int i = 0;i < [_arr_view count]; i++) {
+            UIButton *t_button  = _arr_view[i];
+            [t_button autoSetDimension:ALDimensionHeight toSize:100.f];
+            
+            if (i == _arr_view.count - 1 ) {
+                UIButton *t_button_last  = _arr_view[i];
+                [t_button_last autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-55.0];
+            }
+        }
+        
+    }else{
+        
+        [_lb_vehicleImgList autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
         
     }
     
@@ -243,20 +248,25 @@
     
     VehicleReportVC *t_vc = [[VehicleReportVC alloc] init];
     WS(weakSelf);
-    t_vc.block = ^(VehicleImageModel *imageModel, NSString *oldImgId) {
+    t_vc.block = ^(VehicleImageModel *imageModel,NSString *oldImgId,NSString *carriageOutsideH) {
         SW(strongSelf, weakSelf);
         if (imageModel && imageModel.mediaId.length > 0) {
-            [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                VehicleImageModel *t_image = (VehicleImageModel *)obj;
-                if([t_image.mediaId isEqualToString:oldImgId]){
-                    *stop = YES;
-                    [strongSelf.imagelists removeObject:obj];
-                }
-                
-            }];
+            if (oldImgId) {
+                [strongSelf.imagelists enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    VehicleImageModel *t_image = (VehicleImageModel *)obj;
+                    if([t_image.mediaId isEqualToString:oldImgId]){
+                        *stop = YES;
+                        [strongSelf.imagelists removeObject:obj];
+                    }
+                    
+                }];
+            }
+            
             [strongSelf.imagelists addObject:imageModel];
-            strongSelf.editBlock();
+            if (strongSelf.editBlock) {
+                strongSelf.editBlock();
+            }
             
             return;
         }
@@ -272,9 +282,18 @@
                 }
                 
             }];
-            strongSelf.editBlock();
             
+        
         }
+        
+        if (carriageOutsideH && carriageOutsideH.length > 0) {
+            strongSelf.vehicle.carriageOutsideH = carriageOutsideH;
+        }
+        
+        if (strongSelf.editBlock) {
+            strongSelf.editBlock();
+        }
+        
     };
     t_vc.platNo = _vehicle.vehicleid;
     [vc_target.navigationController pushViewController:t_vc animated:YES];

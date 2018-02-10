@@ -33,7 +33,7 @@
 @interface VehicleDetailReponse : NSObject
 
 @property (nonatomic,strong) VehicleModel * vehicle;                //车辆信息
-@property (nonatomic,copy)   NSMutableArray <VehicleImageModel *> * vehicleImgList; //车辆证件照片
+@property (nonatomic,strong)   NSMutableArray <VehicleImageModel *> * vehicleImgList; //车辆证件照片
 
 @property (nonatomic,strong) MemberInfoModel * memberInfo;          //运输主体信息
 @property (nonatomic,copy)   NSString * memberArea;                 //运输主体所在区域

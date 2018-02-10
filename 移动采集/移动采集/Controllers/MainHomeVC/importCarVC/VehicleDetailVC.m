@@ -391,7 +391,11 @@ typedef NS_ENUM(NSUInteger, VehicleCellType) {
                     [strongSelf.tableView reloadData];
                     
                 };
-                 return cell;
+                cell.editBlock = ^{
+                    SW(strongSelf, weakSelf);
+                    [strongSelf.tableView reloadData];
+                };
+                return cell;
             }
             
         }
