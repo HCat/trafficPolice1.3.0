@@ -20,6 +20,7 @@
 #import "IllegalParkAPI.h"
 
 #import "SRAlertView.h"
+#import "AlertView.h"
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
 
@@ -92,18 +93,23 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     if (_headView.param.addressRemark || _headView.param.carNo || (_arr_upImages.count > 0 && ![self.arr_upImages[0] isKindOfClass:[NSNull class]] )) {
         
         WS(weakSelf);
-        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
-                                                            message:@"当前已编辑，是否退出编辑"
-                                                    leftActionTitle:@"取消"
-                                                   rightActionTitle:@"退出"
-                                                     animationStyle:AlertViewAnimationNone
-                                                       selectAction:^(AlertViewActionType actionType) {
-                                                           if(actionType == AlertViewActionTypeRight) {
-                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                           }
-                                                       }];
-        alertView.blurCurrentBackgroundView = NO;
-        [alertView show];
+        [AlertView showWindowWithIllegalParkAlertViewSelectAction:^(ParkAlertActionType actionType) {
+            if(actionType == ParkAlertActionTypeRight) {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+//        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+//                                                            message:@"当前已编辑，是否退出编辑"
+//                                                    leftActionTitle:@"取消"
+//                                                   rightActionTitle:@"退出"
+//                                                     animationStyle:AlertViewAnimationNone
+//                                                       selectAction:^(AlertViewActionType actionType) {
+//                                                           if(actionType == AlertViewActionTypeRight) {
+//                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
+//                                                           }
+//                                                       }];
+//        alertView.blurCurrentBackgroundView = NO;
+//        [alertView show];
         
     }else{
         

@@ -171,6 +171,17 @@ typedef UIView * _Nullable (^ConfigShowHUDCustomViewBlock)(void);
 
 #pragma mark - 显示错误的HUD
 
+
+/**
+ 显示车辆识别错误提示信息的HUD，并且在几秒之后消失
+ 
+ @param text        提示信息 备注:text可为空，如果为空则只显示菊花加载
+ @param duration    持续多久时间之后隐藏
+ */
++ (void)showCarError:(nullable NSString *)text
+         duration:(NSTimeInterval)duration;
+
+
 /**
  显示错误提示信息的HUD，并且在几秒之后消失
  

@@ -74,8 +74,11 @@
 }
 
 - (void)requestCompleteFilter{
-    
+
     [super requestCompleteFilter];
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    [[DMProgressHUD progressHUDForView:window] dismiss];
     
     if (self.hud) {
         [self.hud hide];
@@ -132,6 +135,9 @@
 
 - (void)requestFailedFilter {
     [super requestFailedFilter];
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    [[DMProgressHUD progressHUDForView:window] dismiss];
     
     if (self.hud) {
         [self.hud hide];

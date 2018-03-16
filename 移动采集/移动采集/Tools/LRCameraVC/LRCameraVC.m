@@ -164,9 +164,12 @@
                 
                 if (strongSelf.commonIdentifyResponse.cutImageUrl.length == 0 || !strongSelf.commonIdentifyResponse.cutImageUrl) {
                     if (strongSelf.type == 5 && strongSelf.isIllegal) {
-                       [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+                       [LRShowHUD showCarError:@"请上传车牌近照" duration:1.5];
+                        
+                       //[LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
                     }else if(strongSelf.type == 1){
-                       [LRShowHUD showError:@"识别失败" duration:1.5f];
+                       [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+                       //[LRShowHUD showError:@"识别失败" duration:1.5f];
                     }
                     
                 }
@@ -187,10 +190,20 @@
         if (strongSelf.fininshCaptureBlock) {
             
             if (strongSelf.type == 5 && strongSelf.isIllegal) {
-                [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+                [LRShowHUD showCarError:@"请上传车牌近照" duration:1.5];
+                
+                //[LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
             }else if(strongSelf.type == 1){
-                [LRShowHUD showError:@"识别失败" duration:1.5f];
+                [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+                //[LRShowHUD showError:@"识别失败" duration:1.5f];
             }
+            
+            
+//            if (strongSelf.type == 5 && strongSelf.isIllegal) {
+//                [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+//            }else if(strongSelf.type == 1){
+//                [LRShowHUD showError:@"识别失败" duration:1.5f];
+//            }
             
             strongSelf.fininshCaptureBlock(strongSelf);
         }

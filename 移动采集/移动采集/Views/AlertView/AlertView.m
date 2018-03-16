@@ -41,7 +41,9 @@
     NSArray *windows = [UIApplication sharedApplication].windows;
     LxDBAnyVar(windows);
     
+    
     AlertView *window = [[AlertView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
     window.title = title;
     window.content = contents;
     
@@ -85,6 +87,32 @@
 
 
 }
+
++ (void)showWindowWithIllegalParkAlertViewSelectAction:(ParkDidSelectAction)selectAction{
+    
+    AlertView *window = [[AlertView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    window.keyWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    window.keyWindow.backgroundColor = [UIColor clearColor];
+    window.keyWindow.windowLevel = UIWindowLevelAlert+100000000;
+    [window.keyWindow makeKeyAndVisible];
+    [[UIApplication sharedApplication].keyWindow addSubview:window];
+    
+    
+    
+    IllegalParkAlertView *view = [IllegalParkAlertView initCustomView];
+    view.block = selectAction;
+    window.contentView = view;
+    window.contentView.center = window.center;
+    window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                           CGAffineTransformMakeScale(1.1f, 1.1f));
+    [UIView animateWithDuration:.2 animations:^{
+        window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                               CGAffineTransformMakeScale(1.0f, 1.0f));
+    }];
+    
+    
+}
+
 
 
 #pragma mark -

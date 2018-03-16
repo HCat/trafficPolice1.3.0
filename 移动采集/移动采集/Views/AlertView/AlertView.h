@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IllegalParkAlertView.h"
 
 @interface AlertView : UIView
 
@@ -15,5 +16,9 @@
 
 + (void)showWindowWithContentView:(UIView*)contentView;
 
+
++ (void)showWindowWithIllegalParkAlertViewSelectAction:(ParkDidSelectAction)selectAction;
+
+- (void)handleBtnDismissClick:(id)sender;
 
 @end

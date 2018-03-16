@@ -10,7 +10,6 @@
 #import "BaseImageCollectionCell.h"
 #import "ZLPhotoActionSheet.h"
 #import "ZLPhotoModel.h"
-#import "DMProgressHUD.h"
 #import <PureLayout.h>
 
 
@@ -268,6 +267,7 @@ static NSString *const cellId = @"BaseImageCollectionCellID";
     }
     
     [manager configLoadingTitle:@"上传"];
+    
     [manager startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);

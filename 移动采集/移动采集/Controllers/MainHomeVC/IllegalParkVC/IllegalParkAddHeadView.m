@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_address;           //所在位置
 @property (weak, nonatomic) IBOutlet UITextField *tf_addressRemarks;    //地址备注
 
-
 @property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //定位开关
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
@@ -51,8 +50,11 @@
     [super awakeFromNib];
     
     _tf_carNumber.attributedPlaceholder   = [ShareFun highlightInString:@"请输入车牌号(必填)" withSubString:@"(必填)"];
+
     _tf_roadSection.attributedPlaceholder = [ShareFun highlightInString:@"请选择路段(必选)" withSubString:@"(必选)"];
+
     _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
+  
     
     [self addChangeForEventEditingChanged:_tf_carNumber];
     [self addChangeForEventEditingChanged:_tf_address];

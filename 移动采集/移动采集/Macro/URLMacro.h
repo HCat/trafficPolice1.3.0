@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.115:8280//police-admin"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.115:8280//police-admin/websocket"
@@ -133,34 +133,34 @@
 
 #pragma mark - 警员勤务
 
-#define URL_LOCATION_GETLIST @"app/location/getList.json"   //获取警员位置信息
+#define URL_LOCATION_GETLIST @"app/location/getList.json"            //获取警员位置信息
 
 #pragma mark - 通讯录相关API
 
-#define URL_ADDRESSBOOK_GETLIST @"app/addressBook/getList.json" //获取通讯录
+#define URL_ADDRESSBOOK_GETLIST @"app/addressBook/getList.json"      //获取通讯录
 
 #pragma mark - 排班相关API
 
 #define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getDutyByMonth.json" //获取月排班
-#define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json" //按天获取排班详情
+#define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json"     //按天获取排班详情
 
 #pragma mark - 警员任务
 
 #define URL_TASK_HISTORYLIST @"app/policeTask/getHistoryList.json"  //查询历史任务
 #define URL_TASK_CURRENTLIST @"app/policeTask/getCurrentList.json"  //查询当前任务
-#define URL_TASK_DETAIL @"app/policeTask/detail.json"   //任务详情
+#define URL_TASK_DETAIL @"app/policeTask/detail.json"               //任务详情
 
 #pragma mark - 非法营运
 
 #define URL_IllOPERATION_BESUPERVISED @"app/illOperation/toBeSupervisedCarno.json"   //待监管车辆
-#define URL_IllOPERATION_EXEMPTCARNO @"app/illOperation/exemptCarno.json"   //待监管车辆
-#define URL_IllOPERATION_DETAIL @"app/illOperation/detail.json"   //待监管车辆
+#define URL_IllOPERATION_EXEMPTCARNO @"app/illOperation/exemptCarno.json"            //待监管车辆
+#define URL_IllOPERATION_DETAIL @"app/illOperation/detail.json"                      //待监管车辆
 
 
-#define URL_JOINTLAW_SAVE @"app/jointLaw/save.json"     //联合执法增加
+#define URL_JOINTLAW_SAVE @"app/jointLaw/save.json"                                 //联合执法增加
 #define URL_JOINTLAW_GETILLEGALCODELIST @"app/jointLaw/getIllegalCodeList.json"     //违法条例列表
-#define URL_JOINTLAW_IMGUPLOAD @"app/jointLaw/imgUpload.json"   //联合执法上传照片
-#define URL_JOINTLAW_VIDEOUPLOAD @"app/jointLaw/videoUpload.json"   //联合执法视频上传
+#define URL_JOINTLAW_IMGUPLOAD @"app/jointLaw/imgUpload.json"                       //联合执法上传照片
+#define URL_JOINTLAW_VIDEOUPLOAD @"app/jointLaw/videoUpload.json"                   //联合执法视频上传
 
 
 #endif /* URLMacro_h */

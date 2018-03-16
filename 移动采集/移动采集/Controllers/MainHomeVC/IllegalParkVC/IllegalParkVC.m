@@ -21,11 +21,11 @@
 #import "IllegalThroughAPI.h"
 
 #import "SRAlertView.h"
+#import "AlertView.h"
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
 
 #import "IllegalSecSaveVC.h"
-
 
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -112,18 +112,25 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     if (_headView.param.addressRemark || _headView.param.carNo || (_arr_upImages.count > 0 && ![self.arr_upImages[0] isKindOfClass:[NSNull class]] && ![self.arr_upImages[1] isKindOfClass:[NSNull class]])) {
         
         WS(weakSelf);
-        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
-                                                            message:@"当前已编辑，是否退出编辑"
-                                                    leftActionTitle:@"取消"
-                                                   rightActionTitle:@"退出"
-                                                     animationStyle:AlertViewAnimationNone
-                                                       selectAction:^(AlertViewActionType actionType) {
-                                                           if(actionType == AlertViewActionTypeRight) {
-                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                           }
-                                                       }];
-        alertView.blurCurrentBackgroundView = NO;
-        [alertView show];
+        
+        [AlertView showWindowWithIllegalParkAlertViewSelectAction:^(ParkAlertActionType actionType) {
+            if(actionType == ParkAlertActionTypeRight) {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+        
+//        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+//                                                            message:@"当前已编辑，是否退出编辑"
+//                                                    leftActionTitle:@"取消"
+//                                                   rightActionTitle:@"退出"
+//                                                     animationStyle:AlertViewAnimationNone
+//                                                       selectAction:^(AlertViewActionType actionType) {
+//                                                           if(actionType == AlertViewActionTypeRight) {
+//                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
+//                                                           }
+//                                                       }];
+//        alertView.blurCurrentBackgroundView = NO;
+//        [alertView show];
     
     }else{
         
@@ -189,20 +196,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             };
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
-            
-//            [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
-//                if (actionType == AlertViewActionTypeRight) {
-//                    NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
-//                    IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
-//                    t_vc.illegalThroughId = illegalThroughId;
-//                    t_vc.saveSuccessBlock = ^{
-//                        [strongSelf handleBeforeCommit];
-//                        
-//                    };
-//                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
-//                }
-//            }];
-            
         }else if (manger.responseModel.code == 13){
             
             [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:@"取消" rightTitle:@"重新录入" block:^(AlertViewActionType actionType) {
@@ -239,6 +232,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
 
 }
+
+// 查询是否有违停记录
 
 - (void)judgeNeedJudgeIllegalRecord:(NSString *)carNumber{
     
@@ -673,7 +668,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             SW(strongSelf, weakSelf);
-            
+    
             //异步请求通用路名ID,这里需要请求的原因是当传入的roadID为0的情况下，需要重新去服务器里面拉取路名来匹配
             if ([strongSelf.param.roadId isEqualToNumber:@0]) {
                 [ShareValue sharedDefault].roadModels = nil;

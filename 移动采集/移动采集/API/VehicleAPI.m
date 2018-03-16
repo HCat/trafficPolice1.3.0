@@ -252,8 +252,37 @@
              [formData appendPartWithFileData:self.param.imgFile.fileData name:self.param.imgFile.name fileName:self.param.imgFile.fileName mimeType:self.param.imgFile.mimeType];
         }
         
-        
     };
+}
+
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.param.imgFile) {
+        self.isNeedLoadHud = NO;
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+        
+    }else{
+        return nil;
+        
+    }
+    
+   
 }
 
 //请求参数

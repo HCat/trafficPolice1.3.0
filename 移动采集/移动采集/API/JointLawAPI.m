@@ -106,6 +106,33 @@
     };
 }
 
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.files.count > 0) {
+        self.isNeedLoadHud = NO;
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+    }else{
+        return nil;
+    }
+    
+}
+
 //请求参数
 - (nullable id)requestArgument
 {
@@ -156,6 +183,36 @@
         [formData appendPartWithFileData:_file.fileData name:_file.name fileName:_file.fileName mimeType:_file.mimeType];
         
     };
+}
+
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.file) {
+        
+        self.isNeedLoadHud = NO;
+        
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+    }else{
+        return nil;
+    }
+    
+    
 }
 
 //请求参数

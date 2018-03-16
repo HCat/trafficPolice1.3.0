@@ -169,6 +169,9 @@
     NSString *url = [self buildRequestUrl:request];
     id param = request.requestArgument;
     AFConstructingBlock constructingBlock = [request constructingBodyBlock];
+    AFURLSessionTaskProgressBlock uploadProgressBlock = [request uploadProgressBlock];
+    AFURLSessionTaskProgressBlock downloadProgressBlock = [request downloadProgressBlock];
+    
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
 
     switch (method) {
@@ -179,7 +182,7 @@
                 return [self dataTaskWithHTTPMethod:@"GET" requestSerializer:requestSerializer URLString:url parameters:param error:error];
             }
         case YTKRequestMethodPOST:
-            return [self dataTaskWithHTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock error:error];
+            return [self dataTaskWithHTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock uploadProgress:uploadProgressBlock downloadProgress:downloadProgressBlock  error:error];
         case YTKRequestMethodHEAD:
             return [self dataTaskWithHTTPMethod:@"HEAD" requestSerializer:requestSerializer URLString:url parameters:param error:error];
         case YTKRequestMethodPUT:
@@ -460,6 +463,35 @@
 
     return dataTask;
 }
+
+
+- (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)method
+                               requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
+                                       URLString:(NSString *)URLString
+                                      parameters:(id)parameters
+                       constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
+                                  uploadProgress:(nullable void (^)(NSProgress *uploadProgress)) uploadProgressBlock
+                                downloadProgress:(nullable void (^)(NSProgress *downloadProgress)) downloadProgressBlock
+                                           error:(NSError * _Nullable __autoreleasing *)error {
+    NSMutableURLRequest *request = nil;
+    
+    if (block) {
+        request = [requestSerializer multipartFormRequestWithMethod:method URLString:URLString parameters:parameters constructingBodyWithBlock:block error:error];
+    } else {
+        request = [requestSerializer requestWithMethod:method URLString:URLString parameters:parameters error:error];
+    }
+    
+    __block NSURLSessionDataTask *dataTask = nil;
+    dataTask = [_manager dataTaskWithRequest:request
+                              uploadProgress:uploadProgressBlock
+                            downloadProgress:downloadProgressBlock
+                           completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *_error) {
+                               [self handleRequestResult:dataTask responseObject:responseObject error:_error];
+                           }];
+    
+    return dataTask;
+}
+
 
 - (NSURLSessionDownloadTask *)downloadTaskWithDownloadPath:(NSString *)downloadPath
                                          requestSerializer:(AFHTTPRequestSerializer *)requestSerializer

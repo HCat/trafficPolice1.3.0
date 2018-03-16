@@ -66,6 +66,33 @@
     };
 }
 
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.param.files.count > 0) {
+        self.isNeedLoadHud = NO;
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+    }else{
+        return nil;
+    }
+    
+}
+
 //返回参数
 
 @end
@@ -144,6 +171,33 @@
             [formData appendPartWithFileData:filesImage.fileData name:filesImage.name fileName:filesImage.fileName mimeType:filesImage.mimeType];
         }
     };
+}
+
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.param.files.count > 0) {
+        self.isNeedLoadHud = NO;
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+    }else{
+        return nil;
+    }
+    
 }
 
 

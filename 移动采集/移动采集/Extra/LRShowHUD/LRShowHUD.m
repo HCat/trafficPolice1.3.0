@@ -235,9 +235,9 @@
 + (instancetype)showWhiteLoadingWithText:(NSString*)text inView:(UIView*)view config:(ConfigShowHUDBlock)config
 {
     LRShowHUD *hud = [LRShowHUD showCustomView:^UIView *{
-        return [LRShowHUD showAnimatedWithImage:[UIImage imageNamed:@"LRShowHUD.bundle/loading_white"]];
+        return [LRShowHUD showAnimatedWithImage:[UIImage imageNamed:@"icon_HUDLoading"]];
     } inView:view  config:^(LRShowHUD * _Nullable showhud) {
-        [showhud setUpCommonConfig:text];
+        //[showhud setUpCommonConfig:text];
         
     }];
     
@@ -245,10 +245,37 @@
         config(hud);
     }
     
+    hud.hud.margin =  30;
+    hud.hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    
     return hud;
 }
 
 #pragma mark - 显示错误的HUD
+
+/**
+ 显示车辆识别错误提示信息的HUD，并且在几秒之后消失
+ 
+ @param text        提示信息 备注:text可为空，如果为空则只显示菊花加载
+ @param duration    持续多久时间之后隐藏
+ */
++ (void)showCarError:(nullable NSString *)text
+            duration:(NSTimeInterval)duration{
+    
+    LRShowHUD * hud = [LRShowHUD showCustomView:^UIView * _Nullable{
+        return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_carNoIdentify"]];
+    } inView:nil config:^(LRShowHUD * _Nullable showhud) {
+        [showhud setUpCommonConfig:text];
+    }];
+    
+    hud.hud.margin = 25;
+    hud.hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    hud.hud.label.textColor = [UIColor whiteColor];
+    
+    [hud hideAnimated:YES afterDelay:duration];
+    
+}
+
 
 + (void)showError:(nullable NSString *)text
          duration:(NSTimeInterval)duration{

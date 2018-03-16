@@ -146,6 +146,8 @@
 		CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE508F381F3D51C60066A9B7 /* AccidentRemarkCell.xib */; };
 		CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */; };
 		CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE518BC61F99E3F2008F52B5 /* WeatherModel.m */; };
+		CE5328682057FD3C003D6152 /* IllegalParkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5328672057FD3C003D6152 /* IllegalParkAlertView.m */; };
+		CE53286A2057FD50003D6152 /* IllegalParkAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */; };
 		CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */; };
 		CE555F5E1F20568100829124 /* UserSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE555F5C1F20568100829124 /* UserSetVC.m */; };
 		CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE555F5D1F20568100829124 /* UserSetVC.xib */; };
@@ -663,6 +665,9 @@
 		CE508F3C1F3D80F10066A9B7 /* RemarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemarkModel.m; sourceTree = "<group>"; };
 		CE518BC51F99E3F2008F52B5 /* WeatherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		CE518BC61F99E3F2008F52B5 /* WeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		CE5328662057FD3C003D6152 /* IllegalParkAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalParkAlertView.h; sourceTree = "<group>"; };
+		CE5328672057FD3C003D6152 /* IllegalParkAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalParkAlertView.m; sourceTree = "<group>"; };
+		CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalParkAlertView.xib; sourceTree = "<group>"; };
 		CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkStatusMonitor.m; sourceTree = "<group>"; };
 		CE53D03A1FBD72FB00445877 /* NetworkStatusMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkStatusMonitor.h; sourceTree = "<group>"; };
 		CE555F5B1F20568100829124 /* UserSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetVC.h; sourceTree = "<group>"; };
@@ -1704,6 +1709,9 @@
 			children = (
 				CE5E20431F32C325009D98A6 /* AlertView.h */,
 				CE5E20441F32C325009D98A6 /* AlertView.m */,
+				CE5328662057FD3C003D6152 /* IllegalParkAlertView.h */,
+				CE5328672057FD3C003D6152 /* IllegalParkAlertView.m */,
+				CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -2753,6 +2761,7 @@
 				CE2C98B41F61C1E9009851F6 /* VehicleDriverCell.xib in Resources */,
 				CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */,
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
+				CE53286A2057FD50003D6152 /* IllegalParkAlertView.xib in Resources */,
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CE5C39241F2881BD0055C945 /* btn_selected@2x.png in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
@@ -2992,6 +3001,7 @@
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */,
+				CE5328682057FD3C003D6152 /* IllegalParkAlertView.m in Sources */,
 				CEE45BA31FAC490E00BF472F /* UserTaskListVC.m in Sources */,
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,

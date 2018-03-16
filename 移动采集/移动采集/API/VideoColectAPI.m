@@ -53,6 +53,37 @@
 }
 
 
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.param.file || self.param.preview) {
+        
+        self.isNeedLoadHud = NO;
+        
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+    }else{
+        
+        return nil;
+    }
+    
+    
+}
+
 @end
 
 #pragma mark - 警情反馈采集列表API

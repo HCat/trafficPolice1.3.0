@@ -209,6 +209,13 @@ typedef void(^YTKRequestCompletionBlock)(__kindof YTKBaseRequest *request);
 ///  This can be use to construct HTTP body when needed in POST request. Default is nil.
 @property (nonatomic, copy, nullable) AFConstructingBlock constructingBodyBlock;
 
+///  You can use this block to track the upload progress.
+@property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock uploadProgressBlock;
+
+///  You can use this block to track the download progress.
+@property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock downloadProgressBlock;
+
+
 ///  This value is used to perform resumable download request. Default is nil.
 ///
 ///  @discussion NSURLSessionDownloadTask is used when this value is not nil.

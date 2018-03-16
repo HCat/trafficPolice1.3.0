@@ -134,10 +134,18 @@
 #pragma mark - 车牌号验证
 
 + (BOOL) validateCarNumber:(NSString *) carNumber{
-    NSString *CarkNum = @"^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\u4e00-\u9fa5]$";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CarkNum];
-    BOOL isMatch = [pred evaluateWithObject:carNumber];
-    return isMatch;
+    if (carNumber.length > 7 ) {
+        NSString *CarkNum = @"^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CarkNum];
+        BOOL isMatch = [pred evaluateWithObject:carNumber];
+        return isMatch;
+    }else{
+        NSString *CarkNum = @"^[\u4e00-\u9fa5]{1}[a-zA-Z]{1}[a-zA-Z_0-9]{4}[a-zA-Z_0-9_\u4e00-\u9fa5]$";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",CarkNum];
+        BOOL isMatch = [pred evaluateWithObject:carNumber];
+        return isMatch;
+    }
+   
 }
 
 #pragma mark - 获取机器唯一标识符
@@ -696,7 +704,7 @@
 
 + (void)showTipLable:(NSString *)tip{
     
-    AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+    AppDelegate * app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIWindow *window = app.window;
     
     __block UILabel *lb_title = [[UILabel alloc] initWithFrame:CGRectMake(40, ScreenHeight - 100, window.frame.size.width-80, 30)];
