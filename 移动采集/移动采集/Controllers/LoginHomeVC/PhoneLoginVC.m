@@ -83,12 +83,16 @@
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.acId = manger.acId;
             }else{
+                
+                [LRShowHUD showError:@"获取验证码失败" duration:1.5f];
                 [strongSelf.btn_countDown endCountDown];
             
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-
+            
+            [LRShowHUD showError:@"获取验证码失败" duration:1.5f];
+            
             [strongSelf.btn_countDown endCountDown];
         }];
     

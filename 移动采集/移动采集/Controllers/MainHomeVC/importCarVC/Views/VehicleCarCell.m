@@ -61,7 +61,9 @@
         
         _lb_plateno.text = [ShareFun takeStringNoNull:_vehicle.plateno];  //车牌号
         
-        _lb_jinNumber.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@%@",_vehicle.memFormNo,_vehicle.selfNo]];
+        NSLog(@"%@",_vehicle.selfNo);
+        
+        _lb_jinNumber.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@%@",_vehicle.memFormNo,_vehicle.selfNo == nil ? @"" : _vehicle.selfNo]];
         
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_vehicle.carType isEqualToNumber:@1]) {
@@ -86,8 +88,7 @@
         _lb_carHopper.text = [ShareFun takeStringNoNull:_vehicle.carriageOutsideH];
         _lb_status.text = [ShareFun takeStringNoNull:_vehicle.status];                  //车辆状态
         _lb_remark.text = [ShareFun takeStringNoNull:_vehicle.remark];                  //备注
-        
-        
+                
     }
 
 }

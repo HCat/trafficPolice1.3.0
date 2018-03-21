@@ -42,7 +42,7 @@
     if (_vehicle) {
         
         _lb_plateno.text = [ShareFun takeStringNoNull:_vehicle.plateno];  //车牌号
-        _lb_jinNumber.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@%@",_vehicle.memFormNo,_vehicle.selfNo]];
+        _lb_jinNumber.text = [ShareFun takeStringNoNull:[NSString stringWithFormat:@"%@%@",_vehicle.memFormNo,_vehicle.selfNo == nil ? @"" : _vehicle.selfNo]];
         
         //车辆类型:1土方车 2水泥砼车 3砂石子车
         if ([_vehicle.carType isEqualToNumber:@1]) {
