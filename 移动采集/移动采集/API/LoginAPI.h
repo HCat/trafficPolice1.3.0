@@ -20,7 +20,7 @@
 
 /****** 返回数据 ******/
 @property (nonatomic, copy) NSString *phone; //手机号码
-
+@property (nonatomic, copy) NSString *interfaceUrl; //返回的服务器地址
 
 @end
 

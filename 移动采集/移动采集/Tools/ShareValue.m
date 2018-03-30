@@ -12,6 +12,36 @@
 
 LRSingletonM(Default)
 
+- (void)setServer_url:(NSString *)server_url{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:server_url forKey:USERDEFAULT_KEY_SERVER_URL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (NSString *)server_url{
+    
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_SERVER_URL];
+    
+}
+
+
+- (void)setWebSocket_url:(NSString *)webSocket_url{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:webSocket_url forKey:USERDEFAULT_KEY_WEBSOCKET_URL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (NSString *)webSocket_url{
+    
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_WEBSOCKET_URL];
+    
+}
+
+
+
+
 - (void)setToken:(NSString *)token{
 
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:USERDEFAULT_KEY_TOKEN];

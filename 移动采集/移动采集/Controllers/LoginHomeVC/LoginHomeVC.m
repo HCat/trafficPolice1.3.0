@@ -182,6 +182,17 @@
                 
                 PhoneLoginVC *t_vc = [PhoneLoginVC new];
                 t_vc.phone = [ShareValue sharedDefault].phone;
+                
+                NSString *server_url = [NSString stringWithFormat:@"http://%@",t_loginManger.interfaceUrl];
+                NSString *webSocket_url = [NSString stringWithFormat:@"ws://%@/websocket",t_loginManger.interfaceUrl];
+                
+                [ShareValue sharedDefault].server_url = server_url;
+                [ShareValue sharedDefault].webSocket_url = webSocket_url;
+                
+                //配置统一的网络基地址
+                YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+                config.baseUrl = Base_URL;
+                
                 [strongSelf.navigationController pushViewController:t_vc animated:YES];
             }
             

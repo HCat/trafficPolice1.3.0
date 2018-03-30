@@ -373,6 +373,13 @@
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
     [ShareValue sharedDefault].makeNumber = 0;
+    
+    [ShareValue sharedDefault].server_url = nil;
+    [ShareValue sharedDefault].webSocket_url = nil;
+    //配置统一的网络基地址
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = KBase_URL;
+    
     [UserModel setUserModel:nil];
     [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         

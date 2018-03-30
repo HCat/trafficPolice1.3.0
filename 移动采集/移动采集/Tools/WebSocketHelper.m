@@ -43,6 +43,7 @@ LRSingletonM(Default)
 - (void)startConnect{
     
     [self closeConnect];
+    NSLog(@"%@",WEBSOCKETURL);
     self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:WEBSOCKETURL]]];
     _webSocket.delegate = self;
     [_webSocket open];

@@ -33,6 +33,14 @@
     return nil;
 }
 
+- (NSString *)interfaceUrl{
+    
+    if (self.responseModel.data) {
+        return self.responseModel.data[@"interfaceUrl"];
+    }
+    return nil;
+}
+
 @end
 
 #pragma mark - 登录发送验证码API

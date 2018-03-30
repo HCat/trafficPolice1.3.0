@@ -42,6 +42,10 @@ LRSingletonH(Default)
 @property (nonatomic, copy) NSString *phone;        //登录返回的手机号码
 @property (nonatomic, assign) NSInteger makeNumber; //推送消息数目
 
+@property (nonatomic, copy) NSString *server_url;       //服务器地址
+@property (nonatomic, copy) NSString *webSocket_url;    //webSocket地址
+
+
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值
 

@@ -105,7 +105,7 @@
     
     //配置统一的网络基地址
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = Base_URL;
+    config.baseUrl = KBase_URL;
     //请求是否强更
     [ShareFun checkForceForVersionUpdates];
     

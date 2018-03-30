@@ -22,8 +22,12 @@
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //@"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
-#define Base_URL ISONLINE ? RELEASE_URL : DEBUG_URL
-#define WEBSOCKETURL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
+
+#define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
+#define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
+
+#define Base_URL ([ShareValue sharedDefault].server_url == nil) ? (KBase_URL) : [ShareValue sharedDefault].server_url
+#define WEBSOCKETURL ([ShareValue sharedDefault].webSocket_url == nil) ? (KwebSocket_URL) : [ShareValue sharedDefault].webSocket_url
 
 #define JPUSH_PRODUCTION ISONLINE ? YES : NO
 
