@@ -22,6 +22,7 @@
 #import "VehicleDetailVC.h"
 #import "VehicleSearchVC.h"
 #import "SearchImportCarVC.h"
+#import "VehicleSearchListVC.h"
 
 @interface ImportCarHomeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
@@ -448,12 +449,39 @@
 }
 
 - (IBAction)handleBtnSearchBtnClicked:(id)sender {
+    
     [_tf_search resignFirstResponder];
-    [self searchVehicle];
+    VehicleSearchListVC *t_vc = [[VehicleSearchListVC alloc] init];
+    [self.navigationController pushViewController:t_vc animated:YES];
+    
+   
+    //[self searchVehicle];
     
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (textField == _tf_search){
+        
+        VehicleSearchListVC *t_vc = [[VehicleSearchListVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
+        return NO;
+    }
+
+    return YES;
+}
+
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+}
+
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     

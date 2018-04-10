@@ -133,7 +133,7 @@
 
 #define URL_VEHICLE_VEHICLEREPORTINFO @"app/vehicle/getVehicleReportInfo.json"     //根据车牌id获取车辆报备信息
 #define URL_VEHICLE_UPREPORTINFO @"app/vehicle/updateVehicleReportInfo.json" //更新车辆报备信息
-
+#define URL_VEHICLE_VEHICLEGETVEHICLELIST @"app/vehicle/getVehicleList.json" //获取车辆列表
 
 #pragma mark - 警员勤务
 

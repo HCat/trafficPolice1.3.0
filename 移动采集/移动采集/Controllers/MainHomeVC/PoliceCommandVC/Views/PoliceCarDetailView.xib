@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PoliceCarDetailView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.44999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLE-Tw-Jt5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="j8e-Vg-Vkx" appends="YES" id="56S-Ga-QoR"/>
+                    </connections>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfe-pc-RCp">
+                    <rect key="frame" x="38" y="261.5" width="299" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车牌号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-XI-EbB">
+                            <rect key="frame" x="45" y="31" width="60" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="7Uf-Gy-aDR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7V-hs-hfI">
+                            <rect key="frame" x="113" y="21" width="165" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="lxL-RY-rfq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="299" id="42B-bx-XQ8"/>
+                        <constraint firstItem="Ka4-XI-EbB" firstAttribute="centerY" secondItem="Mfe-pc-RCp" secondAttribute="centerY" id="Llf-XB-wFJ"/>
+                        <constraint firstAttribute="height" constant="80" id="fPC-Tv-aa4"/>
+                        <constraint firstItem="p7V-hs-hfI" firstAttribute="leading" secondItem="Ka4-XI-EbB" secondAttribute="trailing" constant="8" id="iz2-YP-0oI"/>
+                        <constraint firstItem="Ka4-XI-EbB" firstAttribute="leading" secondItem="Mfe-pc-RCp" secondAttribute="leading" constant="45" id="qN7-oK-q89"/>
+                        <constraint firstItem="p7V-hs-hfI" firstAttribute="centerY" secondItem="Ka4-XI-EbB" secondAttribute="centerY" id="sF7-0a-MPl"/>
+                        <constraint firstAttribute="trailing" secondItem="p7V-hs-hfI" secondAttribute="trailing" constant="21" id="z41-nX-v9H"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="DLE-Tw-Jt5" secondAttribute="trailing" id="3Cb-2e-lCl"/>
+                <constraint firstItem="Mfe-pc-RCp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ML7-4v-JMb"/>
+                <constraint firstItem="Mfe-pc-RCp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-32" id="TXz-dq-tVs"/>
+                <constraint firstItem="DLE-Tw-Jt5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="boQ-YY-plJ"/>
+                <constraint firstItem="DLE-Tw-Jt5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fZ2-X7-Z6c"/>
+                <constraint firstAttribute="bottom" secondItem="DLE-Tw-Jt5" secondAttribute="bottom" id="r4U-bm-LEa"/>
+            </constraints>
+            <connections>
+                <outlet property="lb_carName" destination="p7V-hs-hfI" id="XzT-hA-sLt"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="52.5"/>
+        </view>
+        <tapGestureRecognizer id="j8e-Vg-Vkx">
+            <connections>
+                <action selector="handleBtnCancleClicked:" destination="iN0-l3-epB" id="H6B-G2-7zR"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

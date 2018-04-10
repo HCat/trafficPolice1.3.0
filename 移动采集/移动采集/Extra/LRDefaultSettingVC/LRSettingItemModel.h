@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, LRSettingAccessoryType) {
 
 
 @property (nonatomic,assign) LRSettingAccessoryType  accessoryType;    /**< accessory */
-@property (nonatomic,copy) void (^executeCode)();     /**< 点击item要执行的代码*/
+@property (nonatomic,copy) void (^executeCode)(void);     /**< 点击item要执行的代码*/
 @property (nonatomic,copy) void (^switchValueChanged)(BOOL isOn); /**< XBSettingAccessoryTypeSwitch下开关变化 */
 
 @end

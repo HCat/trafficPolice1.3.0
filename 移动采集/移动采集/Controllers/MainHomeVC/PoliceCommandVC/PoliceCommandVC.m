@@ -26,6 +26,7 @@
 #import "GroupPoliceView.h"
 #import "BoradPoliceView.h"
 #import "PoliceDetailView.h"
+#import "PoliceCarDetailView.h"
 
 #import "PoliceLocationVC.h"
 
@@ -61,6 +62,7 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
 @property (nonatomic,strong) GroupPoliceView * groupPoliceView;     //警察小组弹出框
 @property (nonatomic,strong) BoradPoliceView *boradPoliceView;      //广播弹出框
 @property (nonatomic,strong) PoliceDetailView *policeDetailView;    //警员详情
+@property (nonatomic,strong) PoliceCarDetailView *policeCarDetailView; //警车详情
 
 
 @property (nonatomic,strong) NSArray <CommonGetGroupListModel *> * arr_groupList;
@@ -414,6 +416,26 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
             NSString *groupString = [policeAnnotation.userModel.groupNames componentsJoinedByString:@","];
             _policeDetailView.policeGroup = groupString;
             
+        }
+        
+        if ([view.annotation isKindOfClass:[VehicleCarAnnotation class]])
+        {
+            
+            VehicleCarAnnotation *policeCarAnnotation = (VehicleCarAnnotation *)view.annotation;
+            LxDBAnyVar(policeCarAnnotation);
+            
+            if (_policeCarDetailView == nil) {
+                self.policeCarDetailView = [PoliceCarDetailView initCustomView];
+                [_policeCarDetailView configureForAutoLayout];
+                
+            }
+            
+            [self.view addSubview:_policeCarDetailView];
+            [_policeCarDetailView autoPinEdgesToSuperviewEdges];
+            
+            _policeCarDetailView.policeCarName = policeCarAnnotation.vehicleCar.plateNo;
+            
+
         }
         
     }

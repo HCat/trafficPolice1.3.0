@@ -33,6 +33,8 @@
 		CE1B96B41F42E95200A75397 /* AccidentProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B96B21F42E95200A75397 /* AccidentProcessVC.m */; };
 		CE1B96B51F42E95200A75397 /* AccidentProcessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1B96B31F42E95200A75397 /* AccidentProcessVC.xib */; };
 		CE240AD71FDFC3DC002EA369 /* IllOperationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE240AD61FDFC3DC002EA369 /* IllOperationAPI.m */; };
+		CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2607D0207CB5FF00EFB1A0 /* PoliceCarDetailView.m */; };
+		CE2607D3207CB60A00EFB1A0 /* PoliceCarDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2607D2207CB60A00EFB1A0 /* PoliceCarDetailView.xib */; };
 		CE2AF8801FD68B59005B643E /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */; };
 		CE2AF8811FD68B59005B643E /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */; };
 		CE2AF8821FD68B59005B643E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87B1FD68B58005B643E /* UITableView+FDTemplateLayoutCellDebug.m */; };
@@ -279,6 +281,8 @@
 		CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69156E1F1DE2AC008911A6 /* LSStatusBarHUD.m */; };
 		CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915731F1DE672008911A6 /* LocationHelper.m */; };
 		CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915761F1DED15008911A6 /* ImageFileInfo.m */; };
+		CE6C681F20747E2E009A0E14 /* VehicleSearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6C681D20747E2E009A0E14 /* VehicleSearchListVC.m */; };
+		CE6C682020747E2E009A0E14 /* VehicleSearchListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6C681E20747E2E009A0E14 /* VehicleSearchListVC.xib */; };
 		CE6D2DA41F6AF81400293753 /* PoliceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */; };
 		CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */; };
 		CE7348F21F6BC8B700EBDA0A /* CarInfoAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7348F01F6BC8B700EBDA0A /* CarInfoAddVC.m */; };
@@ -472,6 +476,9 @@
 		CE1B96B31F42E95200A75397 /* AccidentProcessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessVC.xib; sourceTree = "<group>"; };
 		CE240AD51FDFC3DC002EA369 /* IllOperationAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllOperationAPI.h; sourceTree = "<group>"; };
 		CE240AD61FDFC3DC002EA369 /* IllOperationAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllOperationAPI.m; sourceTree = "<group>"; };
+		CE2607CF207CB5FF00EFB1A0 /* PoliceCarDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceCarDetailView.h; sourceTree = "<group>"; };
+		CE2607D0207CB5FF00EFB1A0 /* PoliceCarDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceCarDetailView.m; sourceTree = "<group>"; };
+		CE2607D2207CB60A00EFB1A0 /* PoliceCarDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliceCarDetailView.xib; sourceTree = "<group>"; };
 		CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		CE2AF8791FD68B57005B643E /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
 		CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
@@ -879,6 +886,9 @@
 		CE6915731F1DE672008911A6 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		CE6915751F1DED15008911A6 /* ImageFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileInfo.h; sourceTree = "<group>"; };
 		CE6915761F1DED15008911A6 /* ImageFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileInfo.m; sourceTree = "<group>"; };
+		CE6C681C20747E2E009A0E14 /* VehicleSearchListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleSearchListVC.h; sourceTree = "<group>"; };
+		CE6C681D20747E2E009A0E14 /* VehicleSearchListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleSearchListVC.m; sourceTree = "<group>"; };
+		CE6C681E20747E2E009A0E14 /* VehicleSearchListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleSearchListVC.xib; sourceTree = "<group>"; };
 		CE6D2DA21F6AF81400293753 /* PoliceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceDetailView.h; sourceTree = "<group>"; };
 		CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceDetailView.m; sourceTree = "<group>"; };
 		CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceDetailView.xib; sourceTree = "<group>"; };
@@ -1348,6 +1358,9 @@
 				CEA50BFE202C47F2006E5A55 /* VehicleReportVC.h */,
 				CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */,
 				CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */,
+				CE6C681C20747E2E009A0E14 /* VehicleSearchListVC.h */,
+				CE6C681D20747E2E009A0E14 /* VehicleSearchListVC.m */,
+				CE6C681E20747E2E009A0E14 /* VehicleSearchListVC.xib */,
 			);
 			path = importCarVC;
 			sourceTree = "<group>";
@@ -1743,6 +1756,9 @@
 				CE6D2DA21F6AF81400293753 /* PoliceDetailView.h */,
 				CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */,
 				CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */,
+				CE2607CF207CB5FF00EFB1A0 /* PoliceCarDetailView.h */,
+				CE2607D0207CB5FF00EFB1A0 /* PoliceCarDetailView.m */,
+				CE2607D2207CB60A00EFB1A0 /* PoliceCarDetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2751,6 +2767,7 @@
 				CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
 				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
+				CE6C682020747E2E009A0E14 /* VehicleSearchListVC.xib in Resources */,
 				CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
 				CE8EE8651F66356000CC64B0 /* PoliceCommandVC.xib in Resources */,
@@ -2774,6 +2791,7 @@
 				CEE45BAE1FAC558F00BF472F /* UserTaskCell.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
+				CE2607D3207CB60A00EFB1A0 /* PoliceCarDetailView.xib in Resources */,
 				CE4D71DE1FB44A86002F39D6 /* SearchImportCarVC.xib in Resources */,
 				CE5696671F6245950073ADB7 /* VehicleSearchVC.xib in Resources */,
 				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
@@ -2883,6 +2901,7 @@
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
 				CED9B0EC1F5D058E0010E68A /* SignAPI.m in Sources */,
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
+				CE6C681F20747E2E009A0E14 /* VehicleSearchListVC.m in Sources */,
 				CE6D2DA41F6AF81400293753 /* PoliceDetailView.m in Sources */,
 				CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */,
 				CE5C39021F28606B0055C945 /* ZLPhotoActionSheet.m in Sources */,
@@ -3038,6 +3057,7 @@
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
 				CE5C39011F28606B0055C945 /* ZLNoAuthorityViewController.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
+				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
 				CE61406B1F31CBBA0015B8CE /* YUSegmentedControlItem.m in Sources */,
 				CE672D151FA6D8D400CB3081 /* LocationStorage.m in Sources */,

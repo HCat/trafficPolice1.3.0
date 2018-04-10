@@ -166,3 +166,25 @@
 
 @end
 
+#pragma mark - 获取车辆列表
+
+@interface VehicleListModel : NSObject
+
+@property (nonatomic,copy)   NSString *vehicleid;   //车辆ID
+@property (nonatomic,copy)   NSString * plateNo;    //车牌号
+@property (nonatomic,copy)   NSString * selfNo;     //车辆自编号
+
+@end
+
+@interface VehicleGetVehicleListManger: LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * content; //搜索内容
+@property (nonatomic, strong) NSNumber * searchType; //搜索类型 1 搜车牌 2搜晋工号
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSArray <VehicleListModel *> * vehicleList;
+
+@end
+
+

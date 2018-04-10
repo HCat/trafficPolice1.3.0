@@ -305,4 +305,42 @@
 
 @end
 
+#pragma mark - 获取车辆列表
+
+@implementation VehicleListModel
+
+@end
+
+@implementation VehicleGetVehicleListManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_VEHICLE_VEHICLEGETVEHICLELIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"content" : _content,
+             @"searchType" : _searchType
+             };
+}
+
+//返回参数
+- (NSArray <VehicleListModel *> *) vehicleList{
+    
+    if (self.responseModel) {
+        
+        _vehicleList = [NSArray modelArrayWithClass:[VehicleListModel class] json:self.responseJSONObject[@"data"][@"vehicleList"]];
+        return _vehicleList;
+    }
+    
+    return nil;
+}
+
+
+
+@end
+
 
