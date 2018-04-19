@@ -11,6 +11,8 @@
 #import "UITableView+Lr_Placeholder.h"
 #import "LRSettingCell.h"
 #import "SearchImportCarVC.h"
+#import "SRAlertView.h"
+#import "VehicleDetailVC.h"
 
 @implementation SearchCarItemModel
 
@@ -127,8 +129,6 @@
             item.executeCode = ^{
                 [strongSelf searchVehicle:item.vehicleModel.plateNo];
                 
-                
-                
             };
             
             [strongSelf.mArr_items addObject:item];
@@ -168,7 +168,19 @@
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
             
         }else{
-            [LRShowHUD showError:@"搜索不到相关车辆" duration:1.5f];
+           
+            [strongSelf showAlertViewWithcontent:@"未找到车辆相关位置,点击按钮查看车辆相关信息?" leftTitle:nil rightTitle:@"查看车辆信息" block:^(AlertViewActionType actionType) {
+                if (actionType == AlertViewActionTypeRight) {
+                    VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
+                    t_vc.type = VehicleRequestTypeCarNumber;
+                    t_vc.NummberId = manger.plateNo;
+                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
+                    
+                }
+            }];
+            
+            
+            
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -177,6 +189,22 @@
     }];
     
 }
+
+#pragma mark - 弹出提示框
+
+-(void)showAlertViewWithcontent:(NSString *)content leftTitle:(NSString *)leftTitle rightTitle:(NSString *)rightTitle block:(AlertViewDidSelectAction)selectAction{
+    
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:content
+                                                leftActionTitle:leftTitle
+                                               rightActionTitle:rightTitle
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:selectAction];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
+    
+}
+
 
 #pragma mark - Table view data source
 

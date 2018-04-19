@@ -487,7 +487,7 @@
     
     [textField resignFirstResponder];
     
-    [self searchVehicle];
+    //[self searchVehicle];
     
     
     return YES;
