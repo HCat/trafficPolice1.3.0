@@ -111,6 +111,7 @@
                         <constraint firstItem="3VX-cs-6EU" firstAttribute="top" secondItem="VrX-cz-BGM" secondAttribute="top" id="oIO-eO-qS8"/>
                         <constraint firstAttribute="trailing" secondItem="ibe-X2-cQv" secondAttribute="trailing" constant="25" id="sWX-sk-lWW"/>
                         <constraint firstItem="KG7-Zy-QEk" firstAttribute="leading" secondItem="Ye6-S2-Chg" secondAttribute="leading" id="v7d-A5-yAL"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="152" id="whD-4G-Cul"/>
                         <constraint firstAttribute="trailing" secondItem="3VX-cs-6EU" secondAttribute="trailing" constant="25" id="wmW-45-NrS"/>
                         <constraint firstItem="ibe-X2-cQv" firstAttribute="leading" secondItem="Ye6-S2-Chg" secondAttribute="trailing" constant="6" id="zze-aN-N7z"/>
                     </constraints>

@@ -648,6 +648,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
             [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
         }
+        
+        [_param saveInDB];
     }];
     
     
