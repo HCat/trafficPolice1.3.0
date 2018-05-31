@@ -378,7 +378,7 @@
     [ShareValue sharedDefault].webSocket_url = nil;
     //配置统一的网络基地址
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = KBase_URL;
+    config.baseUrl = Base_URL;
     
     [UserModel setUserModel:nil];
     [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {

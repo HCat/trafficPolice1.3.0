@@ -44,7 +44,7 @@ LRSingletonM(Default)
     [self setIsTowardError:YES];
     [self setIsLockCar:YES];
     [self setIsInforInput:YES];
-    
+    [self setIsVehicle:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -144,6 +144,19 @@ LRSingletonM(Default)
 
 - (BOOL)isInforInput{
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISINFORINPUT];
+    
+}
+
+
+#pragma mark -
+- (void)setIsVehicle:(BOOL)isVehicle{
+    [[NSUserDefaults standardUserDefaults] setBool:isVehicle forKey:USERDEFAULT_KEY_ISVEHICLE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isVehicle{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISVEHICLE];
     
 }
 
@@ -256,6 +269,27 @@ LRSingletonM(Default)
     }
     
     return inforInput;
+    
+}
+
+#pragma mark -
+- (void)setVehicle:(LocationStorageModel *)vehicle{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:vehicle];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_VEHICLE];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)vehicle{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_VEHICLE];
+    LocationStorageModel *vehicle = nil;
+    if (data) {
+        vehicle = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return vehicle;
     
 }
 

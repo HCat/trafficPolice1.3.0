@@ -27,6 +27,7 @@ LRSingletonH(Default)
 @property (nonatomic, assign) BOOL isTowardError;
 @property (nonatomic, assign) BOOL isLockCar;
 @property (nonatomic, assign) BOOL isInforInput;
+@property (nonatomic, assign) BOOL isVehicle;
 
 
 @property (nonatomic, strong) LocationStorageModel *park;
@@ -34,7 +35,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *towardError;
 @property (nonatomic, strong) LocationStorageModel *lockCar;
 @property (nonatomic, strong) LocationStorageModel *inforInput;
-
+@property (nonatomic, strong) LocationStorageModel *vehicle;
 
 - (void)initializationSwitchLocation; //默认开启定位开关
 - (void)closeLocation:(ParkType)type;

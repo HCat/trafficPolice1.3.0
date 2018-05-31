@@ -37,7 +37,7 @@
             //self.image = [ShareFun scaleFromImage:image];
             
             
-            NSInteger kb = 400;
+            NSInteger kb = 50;
             
             kb*=1024;
             

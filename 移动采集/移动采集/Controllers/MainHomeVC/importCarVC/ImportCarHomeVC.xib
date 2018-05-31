@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImportCarHomeVC">
             <connections>
-                <outlet property="tf_search" destination="EFy-YO-LD4" id="cmY-wF-4H5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,113 +19,106 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3K-47-eFg">
-                    <rect key="frame" x="15" y="518" width="152.5" height="50"/>
-                    <color key="backgroundColor" red="0.47058823529411764" green="0.49411764705882355" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="dRt-ST-Fy5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="车牌识别" image="btn_carDiscern"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="handleBtnCarNumberClicked:" destination="-1" eventType="touchUpInside" id="npY-HO-iuV"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cay-JJ-fYn">
-                    <rect key="frame" x="207.5" y="518" width="152.5" height="50"/>
-                    <color key="backgroundColor" red="0.96078431372549022" green="0.68235294117647061" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="gc8-je-KcC"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="二维码" image="btn_QRCode"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="handleBtnQRCodeClicked:" destination="-1" eventType="touchUpInside" id="exT-89-5Xe"/>
-                    </connections>
-                </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMe-x6-XBx">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8D-ev-l72">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFy-YO-LD4">
-                            <rect key="frame" x="20" y="7" width="298" height="30"/>
-                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18d-A2-tnl">
+                            <rect key="frame" x="5" y="0.0" width="91.5" height="68"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="kYJ-0B-F38"/>
+                                <constraint firstAttribute="height" constant="68" id="DyT-Kq-GiI"/>
                             </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="14"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-40" maxY="19"/>
+                            <state key="normal" title="扫一扫" image="btn_importCar_scan">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
-                                <outlet property="delegate" destination="-1" id="wMz-qu-RL8"/>
-                            </connections>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyD-Pf-MeT">
-                            <rect key="frame" x="320" y="7" width="55" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="55" id="aFR-D7-tFo"/>
-                            </constraints>
-                            <state key="normal" title="搜索"/>
-                            <connections>
-                                <action selector="handleBtnSearchBtnClicked:" destination="-1" eventType="touchUpInside" id="2CD-nr-sjT"/>
+                                <action selector="handleBtnQRCodeClicked:" destination="-1" eventType="touchUpInside" id="0my-ax-GIU"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_adressBook_search" translatesAutoresizingMaskIntoConstraints="NO" id="9jq-70-Olq">
-                            <rect key="frame" x="30" y="16" width="13" height="13"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="13" id="FZ3-CP-BvE"/>
-                                <constraint firstAttribute="width" constant="13" id="rvX-Zp-Jpe"/>
-                            </constraints>
-                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsu-Qw-W1u">
+                            <rect key="frame" x="96.5" y="0.0" width="91" height="68"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-40" maxY="19"/>
+                            <state key="normal" title="查车牌" image="btn_importCar_searchcar">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnCarNumberClicked:" destination="-1" eventType="touchUpInside" id="QUn-Lz-hS6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1x-0k-Zfi">
+                            <rect key="frame" x="187.5" y="0.0" width="91.5" height="68"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-30" maxY="19"/>
+                            <state key="normal" title="搜索" image="btn_importCar_search">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnSearchBtnClicked:" destination="-1" eventType="touchUpInside" id="MUS-UC-88w"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHx-y3-Jat">
+                            <rect key="frame" x="279" y="0.0" width="91" height="68"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-30" maxY="19"/>
+                            <state key="normal" title="上报" image="btn_importCar_up">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnUpBtnClicked:" destination="-1" eventType="touchUpInside" id="DUc-Zk-3A4"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="4U1-CN-g2J"/>
-                        <constraint firstAttribute="trailing" secondItem="jyD-Pf-MeT" secondAttribute="trailing" id="4zi-Ly-WBs"/>
-                        <constraint firstItem="jyD-Pf-MeT" firstAttribute="leading" secondItem="EFy-YO-LD4" secondAttribute="trailing" constant="2" id="7xE-pc-vUs"/>
-                        <constraint firstItem="9jq-70-Olq" firstAttribute="leading" secondItem="EFy-YO-LD4" secondAttribute="leading" constant="10" id="J7z-to-Kkc"/>
-                        <constraint firstItem="9jq-70-Olq" firstAttribute="centerY" secondItem="EFy-YO-LD4" secondAttribute="centerY" id="Jwj-a5-3Gv"/>
-                        <constraint firstItem="EFy-YO-LD4" firstAttribute="centerY" secondItem="SMe-x6-XBx" secondAttribute="centerY" id="Xhd-9h-sg1"/>
-                        <constraint firstItem="jyD-Pf-MeT" firstAttribute="centerY" secondItem="EFy-YO-LD4" secondAttribute="centerY" id="iiW-xB-Lv8"/>
-                        <constraint firstItem="EFy-YO-LD4" firstAttribute="leading" secondItem="SMe-x6-XBx" secondAttribute="leading" constant="20" id="ima-XX-z4N"/>
+                        <constraint firstAttribute="trailing" secondItem="kHx-y3-Jat" secondAttribute="trailing" constant="5" id="4st-rt-huf"/>
+                        <constraint firstItem="fsu-Qw-W1u" firstAttribute="top" secondItem="18d-A2-tnl" secondAttribute="top" id="5id-Yn-pyd"/>
+                        <constraint firstItem="fsu-Qw-W1u" firstAttribute="leading" secondItem="18d-A2-tnl" secondAttribute="trailing" id="CiZ-B8-FZN"/>
+                        <constraint firstItem="fsu-Qw-W1u" firstAttribute="height" secondItem="18d-A2-tnl" secondAttribute="height" id="Eyq-dy-Oc3"/>
+                        <constraint firstItem="kHx-y3-Jat" firstAttribute="width" secondItem="18d-A2-tnl" secondAttribute="width" id="R39-RY-S7S"/>
+                        <constraint firstItem="kHx-y3-Jat" firstAttribute="top" secondItem="18d-A2-tnl" secondAttribute="top" id="SLa-ab-bJA"/>
+                        <constraint firstItem="j1x-0k-Zfi" firstAttribute="width" secondItem="18d-A2-tnl" secondAttribute="width" id="STy-Kk-B4e"/>
+                        <constraint firstItem="j1x-0k-Zfi" firstAttribute="leading" secondItem="fsu-Qw-W1u" secondAttribute="trailing" id="TPO-un-ufR"/>
+                        <constraint firstItem="j1x-0k-Zfi" firstAttribute="top" secondItem="18d-A2-tnl" secondAttribute="top" id="XuF-MZ-n1J"/>
+                        <constraint firstItem="kHx-y3-Jat" firstAttribute="leading" secondItem="j1x-0k-Zfi" secondAttribute="trailing" id="ezy-rR-gqN"/>
+                        <constraint firstItem="18d-A2-tnl" firstAttribute="top" secondItem="n8D-ev-l72" secondAttribute="top" id="iOH-OR-0cw"/>
+                        <constraint firstItem="kHx-y3-Jat" firstAttribute="height" secondItem="18d-A2-tnl" secondAttribute="height" id="oYa-SE-zFc"/>
+                        <constraint firstItem="fsu-Qw-W1u" firstAttribute="width" secondItem="18d-A2-tnl" secondAttribute="width" id="qOO-Tx-Uab"/>
+                        <constraint firstItem="18d-A2-tnl" firstAttribute="leading" secondItem="n8D-ev-l72" secondAttribute="leading" constant="5" id="qls-q6-1Z7"/>
+                        <constraint firstItem="j1x-0k-Zfi" firstAttribute="height" secondItem="18d-A2-tnl" secondAttribute="height" id="vcT-0M-Z0h"/>
+                        <constraint firstAttribute="height" constant="73" id="wdu-6b-jEg"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvi-c0-4da">
+                    <rect key="frame" x="8" y="528" width="54" height="54"/>
+                    <state key="normal" image="btn_importCar_center"/>
+                    <connections>
+                        <action selector="makeLocationInCenter:" destination="-1" eventType="touchUpInside" id="AZW-5u-JTV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.98039215690000003" green="0.3803921569" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="cay-JJ-fYn" firstAttribute="width" secondItem="O3K-47-eFg" secondAttribute="width" id="BR0-pb-PYi"/>
-                <constraint firstAttribute="trailing" secondItem="cay-JJ-fYn" secondAttribute="trailing" constant="15" id="GHL-2O-si0"/>
-                <constraint firstAttribute="trailing" secondItem="SMe-x6-XBx" secondAttribute="trailing" id="IV0-J0-7SY"/>
-                <constraint firstItem="cay-JJ-fYn" firstAttribute="leading" secondItem="O3K-47-eFg" secondAttribute="trailing" constant="40" id="K3S-fm-wNn"/>
-                <constraint firstItem="cay-JJ-fYn" firstAttribute="top" secondItem="O3K-47-eFg" secondAttribute="top" id="MXj-m3-Uzm"/>
-                <constraint firstItem="O3K-47-eFg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Mxi-wD-88U"/>
-                <constraint firstAttribute="bottom" secondItem="O3K-47-eFg" secondAttribute="bottom" constant="35" id="YPq-2U-8CH"/>
-                <constraint firstItem="SMe-x6-XBx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mMc-0W-map"/>
-                <constraint firstItem="SMe-x6-XBx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x3a-6t-tkC"/>
+                <constraint firstItem="n8D-ev-l72" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IWb-tY-SNg"/>
+                <constraint firstAttribute="bottom" secondItem="Jvi-c0-4da" secondAttribute="bottom" constant="21" id="PiK-K8-htB"/>
+                <constraint firstItem="Jvi-c0-4da" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="QCZ-bC-wIy"/>
+                <constraint firstItem="n8D-ev-l72" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kME-hH-ue6"/>
+                <constraint firstAttribute="trailing" secondItem="n8D-ev-l72" secondAttribute="trailing" id="sU6-uM-OrT"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
     <resources>
-        <image name="btn_QRCode" width="16" height="16"/>
-        <image name="btn_carDiscern" width="20" height="15"/>
-        <image name="icon_adressBook_search" width="13" height="13"/>
+        <image name="btn_importCar_center" width="54" height="54"/>
+        <image name="btn_importCar_scan" width="40" height="40"/>
+        <image name="btn_importCar_search" width="40" height="40"/>
+        <image name="btn_importCar_searchcar" width="40" height="40"/>
+        <image name="btn_importCar_up" width="40" height="40"/>
     </resources>
 </document>

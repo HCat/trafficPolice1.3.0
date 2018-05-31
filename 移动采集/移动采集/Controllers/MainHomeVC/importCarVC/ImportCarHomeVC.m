@@ -16,13 +16,14 @@
 
 #import "VehicleAPI.h"
 #import "VehicleCarAnnotation.h"
+#import "VehicleCarAnnotationView.h"
 
+#import "VehicleCarMoreVC.h"
 #import "QRCodeScanVC.h"
 #import "VehicleCameraVC.h"
-#import "VehicleDetailVC.h"
-#import "VehicleSearchVC.h"
-#import "SearchImportCarVC.h"
+
 #import "VehicleSearchListVC.h"
+#import "VehicleUpVC.h"
 
 @interface ImportCarHomeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
@@ -44,8 +45,6 @@
 @property (nonatomic, strong) NSMutableArray *arr_point;    //用来存储点数据
 @property (nonatomic, strong) NSNumber *carType;            //车辆类型
 
-@property (weak, nonatomic) IBOutlet UITextField *tf_search;
-
 @end
 
 @implementation ImportCarHomeVC
@@ -53,8 +52,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"重点车辆";
-    
-    [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
+
     self.carType = @2;
     self.arr_point = [NSMutableArray array];
     
@@ -153,6 +151,7 @@
     manger.lat = @(_mapView.centerCoordinate.latitude);
     manger.lng = @(_mapView.centerCoordinate.longitude);
     manger.range = @5;
+    manger.isLog = NO;
     manger.carType = _carType;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
@@ -189,39 +188,6 @@
     
 }
 
-- (void)searchVehicle{
-    
-    
-    if(![ShareFun validateCarNumber:_tf_search.text]){
-        [LRShowHUD showError:@"请输入正确的车牌号" duration:1.5f];
-        return;
-    }
-    
-    WS(weakSelf);
-    
-    VehicleLocationByPlateNoManger *manger = [[VehicleLocationByPlateNoManger alloc] init];
-    manger.plateNo = _tf_search.text;
-    manger.isNeedLoadHud = YES;
-    manger.loadingMessage =  @"搜索中..";
-    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        SW(strongSelf, weakSelf);
-        
-        if(manger.vehicleGPSModel){
-            
-            SearchImportCarVC *t_vc = [[SearchImportCarVC alloc] init];
-            t_vc.search_vehicleModel = manger.vehicleGPSModel;
-            [strongSelf.navigationController pushViewController:t_vc animated:YES];
-    
-        }else{
-            [LRShowHUD showError:@"搜索不到相关车辆" duration:1.5f];
-        }
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-    
-    }];
-    
-}
 
 #pragma mark - 画定位的圆形还有坐标
 
@@ -266,14 +232,7 @@
     
 }
 
-#pragma mark - 让地图的中心点为定位坐标按钮
 
-- (void)makeLocationInCenter{
-    
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_location_latitude doubleValue], [_location_longitude doubleValue]);
-    [_mapView setCenterCoordinate:coordinate animated:YES];
-    
-}
 
 #pragma mark - MAMapViewDelegate
 
@@ -284,22 +243,34 @@
         VehicleCarAnnotation *vehicle = (VehicleCarAnnotation *)annotation;
         
         static NSString *customReuseIndetifier = @"VehicleCarViewID";
-        MAAnnotationView *vehicleCarView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-        
+        VehicleCarAnnotationView *vehicleCarView = (VehicleCarAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        WS(weakSelf);
         if (vehicleCarView == nil)
         {
-            vehicleCarView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            vehicleCarView = [[VehicleCarAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            vehicleCarView.block = ^(VehicleCarAnnotation *carAnnotation) {
+                
+                LxDBAnyVar(carAnnotation);
             
+                [VehicleCarMoreVC loadVehicleRequest:VehicleRequestTypeCarNumber withNumber:vehicle.vehicleCar.plateNo withBlock:^(VehicleDetailReponse *vehicleDetailReponse) {
+                    SW(strongSelf, weakSelf);
+                    VehicleCarMoreVC * t_vc = [[VehicleCarMoreVC alloc] init];
+                    t_vc.type = VehicleRequestTypeCarNumber;
+                    t_vc.numberId = carAnnotation.vehicleCar.plateNo;
+                    t_vc.reponse = vehicleDetailReponse;
+                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
+                    
+                }];
+                
+            };
         }
         
-        if ([vehicle.carType isEqualToNumber:@1]) {
-            vehicleCarView.image = [UIImage imageNamed:@"map_policeCar"];
-        }else{
-            vehicleCarView.image = [UIImage imageNamed:@"map_truck"];
-            
-        }
+        //很重要的，配置关联的模型数据
+        vehicleCarView.annotation = vehicle;
+        
         
         return vehicleCarView;
+        
     }else if ([annotation isKindOfClass:[MAPointAnnotation class]]){
         static NSString *customReuseIndetifier = @"positionAnnotationID";
         MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
@@ -321,19 +292,11 @@
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     /* Adjust the map center in order to show the callout view completely. */
-    if ([view isKindOfClass:[MAAnnotationView class]]) {
+    if ([view isKindOfClass:[VehicleCarAnnotationView class]]) {
         
         if ([view.annotation isKindOfClass:[VehicleCarAnnotation class]]){
             
-            VehicleCarAnnotation *vehicle = (VehicleCarAnnotation *)view.annotation;
-            LxDBAnyVar(vehicle);
-            
-            VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
-            t_vc.type = VehicleRequestTypeCarNumber;
-            t_vc.NummberId = vehicle.vehicleCar.plateNo;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
-            
+           
             
         }
     
@@ -388,7 +351,7 @@
     self.location_latitude = @(location.coordinate.latitude);
     self.location_longitude = @(location.coordinate.longitude);
     [self drawPositionRange];
-    [self makeLocationInCenter];
+    [self makeLocationInCenter:nil];
     [self.locationManager stopUpdatingLocation];
     [self.locationManager setDelegate:nil];
     
@@ -428,15 +391,20 @@
             
             if (camera.isHandSearch) {
                 
-                VehicleSearchVC *t_vc = [[VehicleSearchVC alloc] init];
-                [strongSelf.navigationController pushViewController:t_vc animated:YES];
-                
-            }else{
             
-                VehicleDetailVC * t_vc = [[VehicleDetailVC alloc] init];
-                t_vc.type = VehicleRequestTypeCarNumber;
-                t_vc.NummberId = camera.commonIdentifyResponse.carNo;
-                [strongSelf.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                
+                [VehicleCarMoreVC loadVehicleRequest:VehicleRequestTypeCarNumber withNumber:camera.commonIdentifyResponse.carNo withBlock:^(VehicleDetailReponse *vehicleDetailReponse) {
+                   
+                    VehicleCarMoreVC * t_vc = [[VehicleCarMoreVC alloc] init];
+                    t_vc.type = VehicleRequestTypeCarNumber;
+                    t_vc.numberId = camera.commonIdentifyResponse.carNo;
+                    t_vc.reponse = vehicleDetailReponse;
+                    [strongSelf.navigationController pushViewController:t_vc animated:YES];
+                    
+                }];
+                
+
             }
             
         }
@@ -450,48 +418,31 @@
 
 - (IBAction)handleBtnSearchBtnClicked:(id)sender {
     
-    [_tf_search resignFirstResponder];
     VehicleSearchListVC *t_vc = [[VehicleSearchListVC alloc] init];
     [self.navigationController pushViewController:t_vc animated:YES];
     
-   
-    //[self searchVehicle];
-    
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+- (IBAction)handleBtnUpBtnClicked:(id)sender {
     
-    if (textField == _tf_search){
-        
-        VehicleSearchListVC *t_vc = [[VehicleSearchListVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        return NO;
-    }
-
-    return YES;
-}
-
-
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    VehicleUpVC *t_vc = [[VehicleUpVC alloc] init];
+    t_vc.param = [[VehicleCarlUpParam alloc] init];
+    [self.navigationController pushViewController:t_vc animated:YES];
     
-    [textField resignFirstResponder];
     
 }
 
 
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
+#pragma mark - 让地图的中心点为定位坐标按钮
+
+- (IBAction)makeLocationInCenter:(id)sender{
     
-    [textField resignFirstResponder];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([_location_latitude doubleValue], [_location_longitude doubleValue]);
+    [_mapView setCenterCoordinate:coordinate animated:YES];
     
-    //[self searchVehicle];
-    
-    
-    return YES;
 }
+
 
 
 #pragma mark - dealloc
@@ -512,14 +463,6 @@
 
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

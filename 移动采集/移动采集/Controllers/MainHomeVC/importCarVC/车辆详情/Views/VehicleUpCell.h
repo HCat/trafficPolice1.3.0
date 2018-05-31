@@ -1,0 +1,18 @@
+//
+//  VehicleUpCell.h
+//  移动采集
+//
+//  Created by hcat on 2018/5/21.
+//  Copyright © 2018年 Hcat. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "VehicleAPI.h"
+
+
+@interface VehicleUpCell : UITableViewCell
+
+@property(nonatomic,strong) VehicleUpDetailModel *model;
+
+
+@end

@@ -11,9 +11,9 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.115:8280//police-admin"
+#define DEBUG_DACAO_URL @"http://192.168.10.172/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.115:8280//police-admin/websocket"
 
 #define DEBUG_URL @"http://192.168.10.201:8280//police-admin" //@"http://h16552j072.51mypc.cn//police-admin"
@@ -125,15 +125,25 @@
 
 #pragma mark - 重点车辆相关API
 
-#define URL_VEHICLE_GETDETAILINFOBYQRCODE @"app/vehicle/getDetailInfo.json"  //二维码编号获取重点车辆
-#define URL_VEHICLE_GETDETAILINFOBYPLATENO @"app/vehicle/getDetailInfoByPlateNo.json"  //车牌号获取重点车辆
-#define URL_VEHICLE_GETVEHICLERANGELOCATION @"app/vehicle/getVehicleRangeLocation.json"  //获取一定范围内车辆信息
-#define URL_VEHICLE_GETVEHICLELOCATION @"app/vehicle/getVehicleLocation.json"  //获取全部车辆信息
-#define URL_VEHICLE_VEHICLELOCATIONBYPLATENO @"app/vehicle/getVehicleLocationByPlateNo.json"    //通过
+#define URL_VEHICLE_GETDETAILINFOBYQRCODE @"app/vehicle/getDetailInfo.json"                 //二维码编号获取重点车辆
+#define URL_VEHICLE_GETDETAILINFOBYPLATENO @"app/vehicle/getDetailInfoByPlateNo.json"       //车牌号获取重点车辆
+#define URL_VEHICLE_GETVEHICLERANGELOCATION @"app/vehicle/getVehicleRangeLocation.json"     //获取一定范围内车辆信息
+#define URL_VEHICLE_GETVEHICLELOCATION @"app/vehicle/getVehicleLocation.json"               //获取全部车辆信息
+#define URL_VEHICLE_VEHICLELOCATIONBYPLATENO @"app/vehicle/getVehicleLocationByPlateNo.json"//通过车牌获取重点车位置
 
-#define URL_VEHICLE_VEHICLEREPORTINFO @"app/vehicle/getVehicleReportInfo.json"     //根据车牌id获取车辆报备信息
-#define URL_VEHICLE_UPREPORTINFO @"app/vehicle/updateVehicleReportInfo.json" //更新车辆报备信息
-#define URL_VEHICLE_VEHICLEGETVEHICLELIST @"app/vehicle/getVehicleList.json" //获取车辆列表
+#define URL_VEHICLE_VEHICLEREPORTINFO @"app/vehicle/getVehicleReportInfo.json"              //根据车牌id获取车辆报备信息
+#define URL_VEHICLE_UPREPORTINFO @"app/vehicle/updateVehicleReportInfo.json"                //更新车辆报备信息
+#define URL_VEHICLE_VEHICLEGETVEHICLELIST @"app/vehicle/getVehicleList.json"                //获取车辆列表
+#define URL_VEHICLE_VEHICLEALARMRECORD @"app/vehicle/getVehicleAlarmRecordByVehicleId.json" //获取车辆相关报警信息
+
+#define URL_VEHICLE_VEHICLESPEEDALARMLIST @"app/vehicle/getVehicleSpeedAlarmListPage.json"  //获取超速报警列表
+#define URL_VEHICLE_VEHICLETIREDIMAGELIST @"app/vehicle/getFatigueAlarmImageList.json"      //获取疲劳驾驶报警图片列表
+#define URL_VEHICLE_CARUP @"app/illegalController/saveIllegalEntry.json"                    //违法录入增加
+#define URL_VEHICLE_VEHICLEGETCODETYPE @"app/illegalController/getCodeType.json"            //违法类型获取
+#define URL_VEHICLE_VEHICLEUPCARLIST @"app/illegalController/getIllegalEntry.json"         //违法录入列表
+#define URL_VEHICLE_VEHICLEUPCARDETAILE @"app/illegalController/getDetail.json"
+#define URL_VEHICLE_VEHICLEGETROUTEAPPROVAL @"app/vehicle/getRouteApproval.json"
+
 
 #pragma mark - 警员勤务
 

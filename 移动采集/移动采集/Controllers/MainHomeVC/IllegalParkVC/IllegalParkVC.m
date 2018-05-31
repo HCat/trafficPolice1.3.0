@@ -649,7 +649,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
         }
         
-        [_param saveInDB];
+        //[_param saveInDB];
     }];
     
     

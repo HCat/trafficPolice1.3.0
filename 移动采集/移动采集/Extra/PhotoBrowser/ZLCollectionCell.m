@@ -11,6 +11,7 @@
 #import "ZLPhotoManager.h"
 #import "ZLDefine.h"
 #import "ToastUtils.h"
+#import "UIButton+Block.h"
 
 @interface ZLCollectionCell ()
 
@@ -60,6 +61,7 @@
 {
     if (!_btnSelect) {
         _btnSelect = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnSelect setEnlargeEdgeWithTop:10.f right:10.f bottom:10.f left:10.f];
         _btnSelect.frame = CGRectMake(GetViewWidth(self.contentView)-26, 5, 23, 23);
         [_btnSelect setBackgroundImage:GetImageWithName(@"btn_unselected.png") forState:UIControlStateNormal];
         [_btnSelect setBackgroundImage:GetImageWithName(@"btn_selected.png") forState:UIControlStateSelected];

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IllegalParkAlertView.h"
+#import "DriverChooseView.h"
+#import "VehicleAPI.h"
 
 @interface AlertView : UIView
 
@@ -18,6 +20,8 @@
 
 
 + (void)showWindowWithIllegalParkAlertViewSelectAction:(ParkDidSelectAction)selectAction;
+
++ (void)showWindowWithDriverChooseViewWith:(NSArray *)drivers complete:(DriverChooseViewBlock)complete;
 
 - (void)handleBtnDismissClick:(id)sender;
 

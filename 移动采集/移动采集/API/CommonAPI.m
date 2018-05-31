@@ -59,7 +59,12 @@
 
 - (NSTimeInterval)requestTimeoutInterval
 {
-    return 5.f;
+    if (_type == 1) {
+        return 5.f;
+    }else{
+        return 30.f;
+    }
+    
 }
 
 //请求参数
