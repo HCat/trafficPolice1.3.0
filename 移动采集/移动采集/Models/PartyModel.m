@@ -24,6 +24,7 @@
 
 @synthesize partyVehicleId = _partyVehicleId;
 @synthesize partyInsuranceCompanyId = _partyInsuranceCompanyId;
+@synthesize partyPolicyNo = _partyPolicyNo;
 @synthesize partyResponsibilityId = _partyResponsibilityId;
 @synthesize partyDirectId = _partyDirectId;
 @synthesize partyBehaviourId = _partyBehaviourId;
@@ -106,6 +107,20 @@
     
 }
 
+- (void)setPartyPolicyNo:(NSString *)partyPolicyNo{
+    
+    _partyPolicyNo = partyPolicyNo;
+    
+    if (self.type == 0) {
+        self.param.ptaPolicyNo = _partyPolicyNo;
+    }else if (self.type == 1){
+        self.param.ptbPolicyNo = _partyPolicyNo;
+    }else{
+        self.param.ptcPolicyNo = _partyPolicyNo;
+    }
+    
+}
+
 
 - (void)setPartyVehicleId:(NSNumber *)partyVehicleId{
     
@@ -119,7 +134,6 @@
         self.param.ptcVehicleId = _partyVehicleId;
     }
 
-    
 }
 
 
@@ -309,6 +323,21 @@
     return _partyPhone;
     
 }
+
+- (NSString *)partyPolicyNo{
+    
+    if (self.type == 0) {
+        _partyPolicyNo = self.param.ptaPolicyNo;
+    }else if (self.type == 1){
+        _partyPolicyNo = self.param.ptbPolicyNo;
+    }else{
+        _partyPolicyNo = self.param.ptcPolicyNo;
+    }
+    
+    return _partyPolicyNo;
+    
+}
+
 
 - (NSNumber *)partyVehicleId{
     

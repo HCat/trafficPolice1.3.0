@@ -118,11 +118,11 @@
         
         if (manger.responseModel.code == CODE_SUCCESS) {
             
-            if (manger.leaderList && manger.leaderList.count > 0) {
-                
-               strongSelf.lb_lead.text = [manger.leaderList componentsJoinedByString:@","];;
-                
-            }
+//            if (manger.leaderList && manger.leaderList.count > 0) {
+//
+//               strongSelf.lb_lead.text = [manger.leaderList componentsJoinedByString:@","];;
+//
+//            }
             
             [strongSelf getDataDayModel:strongSelf.tempDate];
             
@@ -131,9 +131,9 @@
                     if ([strongSelf.dayModelArray[i] isKindOfClass:[MonthModel class]]) {
                         MonthModel *t_model = strongSelf.dayModelArray[i];
                         
-                        [manger.dutyDay enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                            NSNumber * number = (NSNumber *)obj;
-                            if (number.integerValue == t_model.dayValue) {
+                        [manger.monthReponse enumerateObjectsUsingBlock:^(DutyMonthModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            DutyMonthModel * number = (DutyMonthModel *)obj;
+                            if (number.dutyDay.integerValue == t_model.dayValue) {
                                 t_model.isDutyDay = YES;
                             }
                             

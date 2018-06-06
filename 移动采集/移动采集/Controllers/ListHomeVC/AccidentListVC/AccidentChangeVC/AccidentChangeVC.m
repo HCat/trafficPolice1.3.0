@@ -227,12 +227,12 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 //footer底部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (_footView.isShowMoreAccidentInfo && _footView.isShowMoreInfo) {
-        return (CGSize){ScreenWidth,1224-88-124};
+        return (CGSize){ScreenWidth,1265-88-124};
     }else{
         if (_footView.isShowMoreAccidentInfo) {
-            return (CGSize){ScreenWidth,1224-88};
+            return (CGSize){ScreenWidth,1265-88};
         }else if(_footView.isShowMoreInfo){
-            return (CGSize){ScreenWidth,1224-124};
+            return (CGSize){ScreenWidth,1265-124};
         }
         
     }
@@ -242,11 +242,11 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1224-88-124};
+            return (CGSize){ScreenWidth,1265-88-124};
             
         }else{
             
-            return (CGSize){ScreenWidth,1224-88-124-24-20};
+            return (CGSize){ScreenWidth,1265-88-124-24-20};
             
         }
         
@@ -254,11 +254,11 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1224};
+            return (CGSize){ScreenWidth,1265};
             
         }else{
             
-            return (CGSize){ScreenWidth,1224-88-124-24-20};
+            return (CGSize){ScreenWidth,1265-88-124-24-20};
             
         }
     }

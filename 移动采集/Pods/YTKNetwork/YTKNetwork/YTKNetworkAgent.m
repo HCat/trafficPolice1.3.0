@@ -47,6 +47,7 @@
     dispatch_queue_t _processingQueue;
     pthread_mutex_t _lock;
     NSIndexSet *_allStatusCodes;
+    NSSet *_allContentTypes;
 }
 
 + (YTKNetworkAgent *)sharedAgent {
@@ -66,10 +67,13 @@
         _requestsRecord = [NSMutableDictionary dictionary];
         _processingQueue = dispatch_queue_create("com.yuantiku.networkagent.processing", DISPATCH_QUEUE_CONCURRENT);
         _allStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 500)];
+        _allContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",@"application/xml", @"text/xml", nil];
         pthread_mutex_init(&_lock, NULL);
+        
 
         _manager.securityPolicy = _config.securityPolicy;
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _manager.responseSerializer.acceptableContentTypes = _allContentTypes;
         // Take over the status code validation
         _manager.responseSerializer.acceptableStatusCodes = _allStatusCodes;
         _manager.completionQueue = _processingQueue;
@@ -81,6 +85,7 @@
     if (!_jsonResponseSerializer) {
         _jsonResponseSerializer = [AFJSONResponseSerializer serializer];
         _jsonResponseSerializer.acceptableStatusCodes = _allStatusCodes;
+        _jsonResponseSerializer.acceptableContentTypes = _allContentTypes;
 
     }
     return _jsonResponseSerializer;
@@ -90,6 +95,7 @@
     if (!_xmlParserResponseSerialzier) {
         _xmlParserResponseSerialzier = [AFXMLParserResponseSerializer serializer];
         _xmlParserResponseSerialzier.acceptableStatusCodes = _allStatusCodes;
+        _xmlParserResponseSerialzier.acceptableContentTypes = _allContentTypes;
     }
     return _xmlParserResponseSerialzier;
 }

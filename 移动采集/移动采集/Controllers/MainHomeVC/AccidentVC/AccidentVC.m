@@ -74,7 +74,7 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 
 -(void)handleBtnBackClicked{
     
-    if (_footView.partyFactory.param.address || _footView.partyFactory.param.causesType || _footView.partyFactory.param.injuredNum || _footView.partyFactory.param.roadType || _footView.partyFactory.param.ptaName || _footView.partyFactory.param.ptaIdNo || _footView.partyFactory.param.ptaVehicleId || _footView.partyFactory.param.ptaCarNo || _footView.partyFactory.param.ptaPhone || _footView.partyFactory.param.ptaInsuranceCompanyId || _footView.partyFactory.param.ptaResponsibilityId || _footView.partyFactory.param.ptaDirect || _footView.partyFactory.param.ptaBehaviourId || _footView.partyFactory.param.ptbName || _footView.partyFactory.param.ptbIdNo || _footView.partyFactory.param.ptbVehicleId || _footView.partyFactory.param.ptbCarNo || _footView.partyFactory.param.ptbPhone || _footView.partyFactory.param.ptbInsuranceCompanyId || _footView.partyFactory.param.ptbResponsibilityId || _footView.partyFactory.param.ptbDirect || _footView.partyFactory.param.ptbBehaviourId || _footView.partyFactory.param.ptcName || _footView.partyFactory.param.ptcIdNo || _footView.partyFactory.param.ptcVehicleId || _footView.partyFactory.param.ptcCarNo || _footView.partyFactory.param.ptcPhone || _footView.partyFactory.param.ptcInsuranceCompanyId || _footView.partyFactory.param.ptcResponsibilityId || _footView.partyFactory.param.ptcDirect || _footView.partyFactory.param.ptcBehaviourId || _arr_photos.count > 0) {
+    if (_footView.partyFactory.param.address || _footView.partyFactory.param.causesType || _footView.partyFactory.param.injuredNum || _footView.partyFactory.param.roadType || _footView.partyFactory.param.ptaName || _footView.partyFactory.param.ptaIdNo || _footView.partyFactory.param.ptaVehicleId || _footView.partyFactory.param.ptaCarNo || _footView.partyFactory.param.ptaPhone|| _footView.partyFactory.param.ptaPolicyNo || _footView.partyFactory.param.ptaInsuranceCompanyId || _footView.partyFactory.param.ptaResponsibilityId || _footView.partyFactory.param.ptaDirect || _footView.partyFactory.param.ptaBehaviourId || _footView.partyFactory.param.ptbName || _footView.partyFactory.param.ptbIdNo || _footView.partyFactory.param.ptbVehicleId || _footView.partyFactory.param.ptbCarNo || _footView.partyFactory.param.ptbPhone ||_footView.partyFactory.param.ptbPolicyNo || _footView.partyFactory.param.ptbInsuranceCompanyId || _footView.partyFactory.param.ptbResponsibilityId || _footView.partyFactory.param.ptbDirect || _footView.partyFactory.param.ptbBehaviourId || _footView.partyFactory.param.ptcName || _footView.partyFactory.param.ptcIdNo || _footView.partyFactory.param.ptcVehicleId || _footView.partyFactory.param.ptcCarNo || _footView.partyFactory.param.ptcPhone ||_footView.partyFactory.param.ptcPolicyNo || _footView.partyFactory.param.ptcInsuranceCompanyId || _footView.partyFactory.param.ptcResponsibilityId || _footView.partyFactory.param.ptcDirect || _footView.partyFactory.param.ptcBehaviourId || _arr_photos.count > 0) {
         
         WS(weakSelf);
         
@@ -261,12 +261,12 @@ static NSString *const headId = @"AccidentAddHeadViewID";
 //footer底部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (_footView.isShowMoreAccidentInfo && _footView.isShowMoreInfo) {
-        return (CGSize){ScreenWidth,1224-88-124};
+        return (CGSize){ScreenWidth,1265-88-124};
     }else{
         if (_footView.isShowMoreAccidentInfo) {
-            return (CGSize){ScreenWidth,1224-88};
+            return (CGSize){ScreenWidth,1265-88};
         }else if(_footView.isShowMoreInfo){
-            return (CGSize){ScreenWidth,1224-124};
+            return (CGSize){ScreenWidth,1265-124};
         }
     
     }
@@ -276,11 +276,11 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1224-88-124};
+            return (CGSize){ScreenWidth,1265-88-124};
             
         }else{
             
-            return (CGSize){ScreenWidth,1224-88-124-24-20};
+            return (CGSize){ScreenWidth,1265-88-124-24-20};
             
         }
         
@@ -288,11 +288,11 @@ static NSString *const headId = @"AccidentAddHeadViewID";
         
         if (_accidentType == AccidentTypeAccident) {
             
-            return (CGSize){ScreenWidth,1224};
+            return (CGSize){ScreenWidth,1265};
             
         }else{
             
-            return (CGSize){ScreenWidth,1224-88-124-24-20};
+            return (CGSize){ScreenWidth,1265-88-124-24-20};
             
         }
     }

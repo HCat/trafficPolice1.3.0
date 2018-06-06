@@ -302,6 +302,11 @@
         }
     }
     
+    if (accident.ptaPolicyNo && accident.ptaPolicyNo.length > 0) {
+        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptaPolicyNo WithArr:_arr_lables_a inView:_v_a];
+    }
+    
+    
     if (accident.ptaResponsibilityId) {
         if (self.codes) {
             NSString * t_str = [self.codes searchNameWithModelId:[accident.ptaResponsibilityId integerValue] WithArray:self.codes.responsibility];
@@ -356,6 +361,10 @@
             NSString * t_str = [self.codes searchNameWithModelId:[accident.ptbInsuranceCompanyId integerValue] WithArray:self.codes.insuranceCompany];
             [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
         }
+    }
+    
+    if (accident.ptbPolicyNo && accident.ptbPolicyNo.length > 0) {
+        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptbPolicyNo WithArr:_arr_lables_b inView:_v_b];
     }
     
     if (accident.ptbResponsibilityId) {
@@ -413,6 +422,11 @@
             [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
         }
     }
+    
+    if (accident.ptcPolicyNo && accident.ptcPolicyNo.length > 0) {
+        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptcPolicyNo WithArr:_arr_lables_c inView:_v_c];
+    }
+    
     
     if (accident.ptcResponsibilityId) {
         if (self.codes) {

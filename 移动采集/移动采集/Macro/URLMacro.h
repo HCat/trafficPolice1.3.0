@@ -16,10 +16,10 @@
 #define DEBUG_DACAO_URL @"http://192.168.10.172/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.115:8280//police-admin/websocket"
 
-#define DEBUG_URL @"http://192.168.10.201:8280//police-admin" //@"http://h16552j072.51mypc.cn//police-admin"
+#define DEBUG_URL @"http://192.168.10.201:8280//police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
-#define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //@"ws://h16552j072.51mypc.cn//police-admin/websocket"
+#define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
 

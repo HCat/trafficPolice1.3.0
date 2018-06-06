@@ -8,7 +8,9 @@
 
 #import "DutyAPI.h"
 
+@implementation DutyMonthModel
 
+@end
 
 @implementation DutyGetDutyByMonthManger
 
@@ -26,27 +28,16 @@
 
 
 //返回参数
-- (NSArray <NSString *> *)dutyDay{
+- (NSArray <DutyMonthModel *> *)monthReponse{
     
     if (self.responseModel) {
         
-        _dutyDay = (NSArray *)self.responseJSONObject[@"data"][@"dutyDay"];
-        return _dutyDay;
+        _monthReponse = [NSArray modelArrayWithClass:[DutyMonthModel class] json:self.responseJSONObject[@"data"]];
+        return _monthReponse;
     }
     
     return nil;
-}
 
-
-- (NSArray <NSString *> *)leaderList{
-    
-    if (self.responseModel) {
-        
-        _leaderList = self.responseJSONObject[@"data"][@"leaderArr"];
-        return _leaderList;
-    }
-    
-    return nil;
 }
 
 @end

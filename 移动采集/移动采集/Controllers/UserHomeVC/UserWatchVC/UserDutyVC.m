@@ -180,7 +180,7 @@
         }
         
     }else if (indexPath.row == 3){
-        cell.lb_title.text = @"值班警员";
+        cell.lb_title.text = @"值班辅警";
         cell.lb_title.backgroundColor = UIColorFromRGB(0x787ef3);
         if (self.othersList.count > 0) {
             NSMutableArray *t_arr = [NSMutableArray array];

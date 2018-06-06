@@ -77,6 +77,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_drivingState;      //行驶状态
 @property (weak, nonatomic) IBOutlet UITextField *tf_illegalBehavior;   //违法行为
 @property (weak, nonatomic) IBOutlet UITextField *tf_insuranceCompany;  //保险公司
+@property (weak, nonatomic) IBOutlet UITextField *tf_policyNo;          //保险单号
 @property (weak, nonatomic) IBOutlet UITextField *tf_responsibility;    //责任
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_temporaryCar;
@@ -195,7 +196,7 @@
     [self addChangeForEventEditingChanged:self.tf_identityCard];
     [self addChangeForEventEditingChanged:self.tf_carNumber];
     [self addChangeForEventEditingChanged:self.tf_phone];
-    
+    [self addChangeForEventEditingChanged:self.tf_policyNo];
     //配置点击UITextField
     [self setUpClickUITextField:self.tf_accidentCauses];
     [self setUpClickUITextField:self.tf_location];
@@ -217,7 +218,7 @@
     [self setUpCommonUITextField:self.tf_identityCard];
     [self setUpCommonUITextField:self.tf_carNumber];
     [self setUpCommonUITextField:self.tf_phone];
-    
+    [self setUpCommonUITextField:self.tf_policyNo];
 
     //配置FSTextView
     [self.tv_describe setDelegate:(id<UITextViewDelegate> _Nullable)self];
@@ -1067,6 +1068,12 @@
         //用于请求是否有违规行为
         [[CountAccidentHelper sharedDefault] setTelNum:_tf_phone.text];
     }
+    
+    if (textField == _tf_policyNo) {
+        
+        _partyFactory.partModel.partyPolicyNo = length > 0 ? _tf_policyNo.text : nil;
+    }
+    
     self.isCanCommit = [_partyFactory juegeCanCommit];
     
 }
@@ -1103,6 +1110,7 @@
     self.tf_carType.text =  self.partyFactory.partModel.partycarType;
     self.tf_carNumber.text = self.partyFactory.partModel.partyCarNummber;
     self.tf_phone.text = self.partyFactory.partModel.partyPhone;
+    self.tf_policyNo.text = self.partyFactory.partModel.partyPolicyNo;
     self.tf_drivingState.text = self.partyFactory.partModel.partyDriverDirect;
     self.tf_illegalBehavior.text = self.partyFactory.partModel.partyBehaviour;
     self.tf_insuranceCompany.text = self.partyFactory.partModel.partyInsuranceCompany;

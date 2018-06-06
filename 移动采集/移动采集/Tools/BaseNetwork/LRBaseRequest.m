@@ -105,7 +105,7 @@
             
         }else{
             
-            [LRShowHUD showError:self.responseModel.msg duration:1.2f inView:_v_showHud];
+            [LRShowHUD showError:@"请求失败" duration:1.2f inView:_v_showHud];
         }
         
     }else if (self.responseModel.code == CODE_SUCCESS){

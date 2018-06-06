@@ -22,6 +22,13 @@
 @end
 
 #pragma mark - 获取月排班
+@interface DutyMonthModel:NSObject
+
+@property(nonatomic,copy) NSString *dutyDay;
+@property(nonatomic,copy) NSArray <NSString *> * leaderList;
+
+@end
+
 
 @interface DutyGetDutyByMonthManger:LRBaseRequest
 
@@ -30,8 +37,8 @@
 @property (nonatomic,copy) NSString * dateStr;
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) NSArray <NSString *> * dutyDay;
-@property (nonatomic, strong) NSArray <NSString *> * leaderList;
+@property (nonatomic, strong) NSArray <DutyMonthModel *> * monthReponse;
+
 
 @end
 

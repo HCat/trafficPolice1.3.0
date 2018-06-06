@@ -15,6 +15,7 @@
 @property (nonatomic,copy)   NSString * partyIdNummber;             //身份证号码
 @property (nonatomic,copy)   NSString * partyCarNummber;            //车牌号
 @property (nonatomic,copy)   NSString * partyPhone;                 //联系电话
+@property (nonatomic,copy)   NSString * partyPolicyNo;              //保险单号
 
 @property (nonatomic,strong) NSNumber * partyVehicleId;             //车辆类型ID
 @property (nonatomic,strong) NSNumber * partyInsuranceCompanyId;    //保险公司ID

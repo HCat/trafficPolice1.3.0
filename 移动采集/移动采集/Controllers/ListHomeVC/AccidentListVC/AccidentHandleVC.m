@@ -101,6 +101,7 @@
     _param.ptaCarNo              = accidentModel.ptaCarNo;
     _param.ptaPhone              = accidentModel.ptaPhone;
     _param.ptaInsuranceCompanyId = accidentModel.ptaInsuranceCompanyId;
+    _param.ptaPolicyNo           = accidentModel.ptaPolicyNo;
     _param.ptaResponsibilityId   = accidentModel.ptaResponsibilityId;
     _param.ptaDirect             = accidentModel.ptaDirect;
     _param.ptaBehaviourId        = accidentModel.ptaBehaviourId;
@@ -119,6 +120,7 @@
     _param.ptbPhone              = accidentModel.ptbPhone;
     _param.ptbInsuranceCompanyId = accidentModel.ptbInsuranceCompanyId;
     _param.ptbResponsibilityId   = accidentModel.ptbResponsibilityId;
+    _param.ptbPolicyNo           = accidentModel.ptbPolicyNo;
     _param.ptbDirect             = accidentModel.ptbDirect;
     _param.ptbBehaviourId        = accidentModel.ptbBehaviourId;
     _param.ptbDescribe           = accidentModel.ptbDescribe;
@@ -135,6 +137,7 @@
     _param.ptcCarNo              = accidentModel.ptcCarNo;
     _param.ptcPhone              = accidentModel.ptcPhone;
     _param.ptcInsuranceCompanyId = accidentModel.ptcInsuranceCompanyId;
+    _param.ptcPolicyNo           = accidentModel.ptcPolicyNo;
     _param.ptcResponsibilityId   = accidentModel.ptcResponsibilityId;
     _param.ptcDirect             = accidentModel.ptcDirect;
     _param.ptcBehaviourId        = accidentModel.ptcBehaviourId;
