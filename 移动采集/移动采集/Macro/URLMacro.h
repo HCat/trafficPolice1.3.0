@@ -155,8 +155,8 @@
 
 #pragma mark - 排班相关API
 
-#define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getDutyByMonth.json" //获取月排班
-#define URL_DUTY_GETDUTYBYDAY @"app/workshift/getDutyByDay.json"     //按天获取排班详情
+#define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getHolidayDutyByMonth.json" //获取月排班
+#define URL_DUTY_GETDUTYBYDAY @"app/workshift/geHolidaytDutyByDay.json"     //按天获取排班详情
 
 #pragma mark - 警员任务
 
