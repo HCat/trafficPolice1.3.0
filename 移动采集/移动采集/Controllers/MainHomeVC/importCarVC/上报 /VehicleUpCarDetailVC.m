@@ -132,6 +132,11 @@
                     SW(strongSelf, weakSelf);
                     cell.model = strongSelf.model;
                 }];
+            }else if (_model.remark.length > 0 && _model.remark) {
+                return [tableView fd_heightForCellWithIdentifier:@"VehicleUpRemarkDetailCellID" cacheByIndexPath:indexPath configuration:^(VehicleUpRemarkDetailCell *cell) {
+                    SW(strongSelf, weakSelf);
+                    cell.model = strongSelf.model;
+                }];
             }
             
         }else if (indexPath.row == 2){
@@ -143,12 +148,7 @@
             }
             
         }
-        
-        
-        
-       
-        
-        
+
     }
     
     return 0;
@@ -170,6 +170,12 @@
             
             if (_model.imgList.count > 0 && _model.imgList) {
                 VehicleUpImageDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleUpImageDetailCellID"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.fd_enforceFrameLayout = NO;
+                cell.model = _model;
+                return cell;
+            }else if (_model.remark.length > 0 && _model.remark) {
+                VehicleUpRemarkDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleUpRemarkDetailCellID"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.fd_enforceFrameLayout = NO;
                 cell.model = _model;
