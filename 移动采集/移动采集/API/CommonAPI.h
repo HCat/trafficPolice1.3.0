@@ -17,10 +17,10 @@
 
 /****** 请求数据 ******/
 
-@property (nonatomic, copy) NSString *location; //经度+“,”+纬度,示例（118.184872,24.497949）
+@property (nonatomic, copy) NSString * location;        //经度+“,”+纬度,示例（118.184872,24.497949）
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) WeatherModel *weather;  //天气
+@property (nonatomic, strong) WeatherModel * weather;   //天气
 
 @end
 
@@ -29,12 +29,12 @@
 
 @interface CommonIdentifyResponse : NSObject
 
-@property (nonatomic, copy) NSString *carNo;        //车牌号
-@property (nonatomic, copy) NSString *vehicleType;  //车辆类型
-@property (nonatomic, copy) NSString *color;        //车牌颜色
-@property (nonatomic, copy) NSString *name;         //姓名，或者车辆所有人
-@property (nonatomic, copy) NSString *idNo;         //证件号码
-@property (nonatomic, copy) NSString *cutImageUrl;  //车牌号近照路径
+@property (nonatomic, copy) NSString * carNo;        //车牌号
+@property (nonatomic, copy) NSString * vehicleType;  //车辆类型
+@property (nonatomic, copy) NSString * color;        //车牌颜色
+@property (nonatomic, copy) NSString * name;         //姓名，或者车辆所有人
+@property (nonatomic, copy) NSString * idNo;         //证件号码
+@property (nonatomic, copy) NSString * cutImageUrl;  //车牌号近照路径
 
 @end
 
@@ -42,11 +42,11 @@
 
 /****** 请求数据 ******/
 
-@property (nonatomic, strong) ImageFileInfo *imageInfo; //文件
-@property (nonatomic, assign) NSInteger type; //文件类型1：车牌号 2：身份证 3：驾驶证 4：行驶证
+@property (nonatomic, strong) ImageFileInfo * imageInfo;    //图片文件
+@property (nonatomic, assign) NSInteger type;               //文件类型1：车牌号 2：身份证 3：驾驶证 4：行驶证
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) CommonIdentifyResponse *commonIdentifyResponse; //证件信息
+@property (nonatomic, strong) CommonIdentifyResponse * commonIdentifyResponse; //证件信息
 
 @end
 
@@ -54,8 +54,8 @@
 
 @interface CommonGetRoadModel : NSObject
 
-@property (nonatomic,copy) NSNumber *getRoadId;     //通用值id
-@property (nonatomic,copy) NSString *getRoadName;   //通用值名称
+@property (nonatomic,copy) NSNumber * getRoadId;     //通用值id
+@property (nonatomic,copy) NSString * getRoadName;   //通用值名称
 
 
 @end
@@ -67,7 +67,7 @@
 /***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) NSArray<CommonGetRoadModel *> *commonGetRoadResponse; //证件信息
+@property (nonatomic, copy) NSArray<CommonGetRoadModel * > * commonGetRoadResponse; //路名信息
 
 @end
 
@@ -75,8 +75,8 @@
 
 @interface CommonGetGroupListModel : NSObject
 
-@property (nonatomic,copy) NSNumber *getGroupId;     //通用值id
-@property (nonatomic,copy) NSString *getGroupName;   //通用值名称
+@property (nonatomic,copy) NSNumber * getGroupId;     //通用值id
+@property (nonatomic,copy) NSString * getGroupName;   //通用值名称
 
 
 @end
@@ -88,7 +88,7 @@
 /***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) NSArray<CommonGetGroupListModel *> *commonGetGroupListResponse; //证件信息
+@property (nonatomic, copy) NSArray<CommonGetGroupListModel * > * commonGetGroupListResponse; //警员信息
 
 @end
 
@@ -96,9 +96,9 @@
 
 @interface CommonGetImgPlayModel : NSObject
 
-@property (nonatomic,copy) NSString *getImgPlayTitle;     //图片名称(预留)
-@property (nonatomic,copy) NSString *getImgPlayImgUrl;    //图片地址
-@property (nonatomic,copy) NSString *getImgPlayUrl;       //图片地址
+@property (nonatomic,copy) NSString * getImgPlayTitle;     //图片名称(预留)
+@property (nonatomic,copy) NSString * getImgPlayImgUrl;    //图片地址
+@property (nonatomic,copy) NSString * getImgPlayUrl;       //图片地址
 
 @end
 
@@ -109,7 +109,7 @@
 /***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) NSArray<CommonGetImgPlayModel *> *commonGetImgPlayModel; //轮播图片信息
+@property (nonatomic, copy) NSArray<CommonGetImgPlayModel * > * commonGetImgPlayModel; //轮播图片信息
 
 @end
 
@@ -117,11 +117,11 @@
 
 @interface CommonVersionUpdateModel : NSObject
 
-@property (nonatomic,copy) NSString *versionCode;       //版本号
-@property (nonatomic,copy) NSString *versionName;       //版本名称
-@property (nonatomic,copy) NSString *versionUrl;        //下载地址
-@property (nonatomic,copy) NSString *versionMemo;       //版本说明
-@property (nonatomic,assign) BOOL isForce;              //是否强制更新
+@property (nonatomic,copy) NSString * versionCode;       //版本号
+@property (nonatomic,copy) NSString * versionName;       //版本名称
+@property (nonatomic,copy) NSString * versionUrl;        //下载地址
+@property (nonatomic,copy) NSString * versionMemo;       //版本说明
+@property (nonatomic,assign) BOOL isForce;               //是否强制更新
 
 @end
 
@@ -129,8 +129,6 @@
 @interface CommonVersionUpdateManger : LRBaseRequest
 
 /****** 请求数据 ******/
-/***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
-/****** 返回数据 ******/
 @property (nonatomic, copy) NSString *appType; //IOS:苹果设备，ANDROID或空：安卓设备
 
 
@@ -144,8 +142,8 @@
 
 @interface CommonAdviceParam : NSObject
 
-@property(nonatomic,copy)     NSString *msg;
-@property (nonatomic,copy)    NSArray  * files;
+@property(nonatomic,copy)     NSString * msg;                       //投诉内容
+@property (nonatomic,copy)    NSArray <ImageFileInfo *> * files;    //建议图片
 
 @end
 
@@ -153,8 +151,7 @@
 @interface CommonAdviceManger : LRBaseRequest
 
 /****** 请求数据 ******/
-/***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
-@property(nonatomic,strong) CommonAdviceParam *param;
+@property(nonatomic,strong) CommonAdviceParam * param;
 /****** 返回数据 ******/
 //无返回参数
 
@@ -166,7 +163,7 @@
 @interface CommonValidVisitorManger : LRBaseRequest
 
 /****** 请求数据 ******/
-/***请求参数中有token值，运用统一添加参数的办法添加到后面所有需要token参数的请求中,具体调用LRBaseRequest中的+ (void)setupRequestFilters:(NSDictionary *)arguments 方法***/
+
 
 /****** 返回数据 ******/
 //msg 0 不显示游客登录  1显示游客登录

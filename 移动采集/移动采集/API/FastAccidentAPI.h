@@ -15,8 +15,6 @@
 
 #pragma mark - 获取快处事故通用值API
 
-
-
 @interface FastAccidentGetCodesManger:LRBaseRequest
 
 /****** 请求数据 ******/
@@ -80,14 +78,13 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 
 #pragma mark - 快处事件详情API
 
-
 @interface FastAccidentDetailManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSNumber *fastaccidentId;
+@property (nonatomic, strong) NSNumber * fastaccidentId;
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) AccidentDetailModel *fastAccidentDetailModel;
+@property (nonatomic, strong) AccidentDetailModel * fastAccidentDetailModel;
 
 
 @end

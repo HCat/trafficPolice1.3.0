@@ -73,7 +73,7 @@
     self.arcLayer = [CAShapeLayer layer];
     self.arcLayer.path = path.CGPath;//46,169,230
     self.arcLayer.fillColor = [UIColor clearColor].CGColor;
-    self.arcLayer.strokeColor = UIColorFromRGB(0x4281E8).CGColor;
+    self.arcLayer.strokeColor = DefaultColor.CGColor;
     self.arcLayer.lineWidth = kCircleLineWidth;
     self.arcLayer.frame = rect;
     [self.startImageView.layer addSublayer:self.arcLayer];

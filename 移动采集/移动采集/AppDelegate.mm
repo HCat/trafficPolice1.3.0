@@ -157,7 +157,7 @@
         [_vc_tabBar setTabBar_bgImageName:@"tabbar_bg"];
         [_vc_tabBar setTab_selectedBgImageName:@"tabbar_bg"];
         [_vc_tabBar setTab_titleColor:UIColorFromRGB(0xbbbbbb)];
-        [_vc_tabBar setTab_selectedTitleColor:UIColorFromRGB(0x4281e8)];
+        [_vc_tabBar setTab_selectedTitleColor:DefaultColor];
         [_vc_tabBar setTab_titleFont:[UIFont systemFontOfSize:11.f]];
         
         MainHomeVC *t_vc_main = [MainHomeVC new];

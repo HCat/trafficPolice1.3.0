@@ -347,9 +347,9 @@
         self.lb_number.center = CGPointMake(self.contentView.frame.size.width/2, self.contentView.frame.size.height/2);
         self.lb_number.textAlignment = NSTextAlignmentCenter;
         self.lb_number.font = [UIFont systemFontOfSize:20];
-        self.lb_number.textColor = UIColorFromRGB(0x444444);
+        self.lb_number.textColor = DefaultTextColor;
         self.lb_number.layer.borderWidth  = 1.f;
-        self.lb_number.layer.borderColor = [DefaultNavColor CGColor];
+        self.lb_number.layer.borderColor = [DefaultColor CGColor];
         [self.contentView addSubview:self.lb_number];
         
     }

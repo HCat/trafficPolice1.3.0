@@ -76,7 +76,7 @@
     {
         if (singleLine.frame.size.height < 1)
         {
-            singleLine.backgroundColor = DefaultNavColor;
+            singleLine.backgroundColor = DefaultColor;
         }
     }
     
@@ -107,7 +107,7 @@
     }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[NSForegroundColorAttributeName] = UIColorFromRGB(0x444444);
+    dic[NSForegroundColorAttributeName] = DefaultTextColor;
     dic[NSFontAttributeName] = [UIFont systemFontOfSize:17];
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:genderLabel.text];

@@ -262,7 +262,7 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
             [_rightAction setTitle:_rightActionTitle forState:UIControlStateNormal];
             [_rightAction setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
             //[_rightAction setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
-            [_rightAction setBackgroundImage:[self imageWithColor:DefaultNavColor] forState:UIControlStateNormal];
+            [_rightAction setBackgroundImage:[self imageWithColor:DefaultColor] forState:UIControlStateNormal];
             [_rightAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
             [_alertView addSubview:_rightAction];
             if (_leftActionTitle) {

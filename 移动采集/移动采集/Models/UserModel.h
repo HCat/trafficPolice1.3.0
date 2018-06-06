@@ -55,12 +55,12 @@
     闯禁令采集      ILLEGAL_THROUGH
 	闯禁令列表      THROUGH_LIST
 	视频采集        VIDEO_COLLECT
-	视频采集列表    VIDEO_COLLECT_LIST
-	重点车辆       IMPORTANT_CAR
-	勤务指挥       POLICE_COMMAND
-    路面实况       ROAD_INFO
-    联合执法       JOINT_LAW_ENFORCEMENT
-
+	视频采集列表     VIDEO_COLLECT_LIST
+	重点车辆        IMPORTANT_CAR
+	勤务指挥        POLICE_COMMAND
+    路面实况        ROAD_INFO
+    联合执法        JOINT_LAW_ENFORCEMENT
+    事故结案权限     accident-list-06
 */
 
 
@@ -71,36 +71,35 @@
 + (UserModel *)getUserModel;
 
 //获取录入权限
-+ (BOOL)isPermissionForAccident;        //事故录入权限
-+ (BOOL)isPermissionForFastAccident;    //快处录入权限
-+ (BOOL)isPermissionForIllegal;         //违章录入权限
-+ (BOOL)isPermissionForThrough;         //闯禁令录入权限
-+ (BOOL)isPermissionForVideoCollect;    //视频录入权限
++ (BOOL)isPermissionForAccident;                //事故录入权限
++ (BOOL)isPermissionForFastAccident;            //快处录入权限
++ (BOOL)isPermissionForIllegal;                 //违章录入权限
++ (BOOL)isPermissionForThrough;                 //闯禁令录入权限
++ (BOOL)isPermissionForVideoCollect;            //视频录入权限
 
 + (BOOL)isPermissionForIllegalReverseParking;   //获取不按朝向采集权限
-+ (BOOL)isPermissionForLockParking;     //获取违停锁车采集权限
-+ (BOOL)isPermissionForCarInfoAdd;      //获取车辆录入权限
++ (BOOL)isPermissionForLockParking;             //获取违停锁车采集权限
++ (BOOL)isPermissionForCarInfoAdd;              //获取车辆录入权限
 
-+ (BOOL)isPermissionForImportantCar;    //获取重点车辆权限
-+ (BOOL)isPermissionForPoliceCommand;   //获取勤务指挥权限
++ (BOOL)isPermissionForImportantCar;            //获取重点车辆权限
++ (BOOL)isPermissionForPoliceCommand;           //获取勤务指挥权限
 
-+ (BOOL)isPermissionForRoadInfo;        //路面实况权限
-
-+ (BOOL)isPermissionForJointEnforcement; //联合执法权限
++ (BOOL)isPermissionForRoadInfo;                //路面实况权限
++ (BOOL)isPermissionForJointEnforcement;        //联合执法权限
 
 //获取列表权限
-+ (BOOL)isPermissionForAccidentList;        //事故权限列表
-+ (BOOL)isPermissionForFastAccidentList;    //快处权限列表
-+ (BOOL)isPermissionForIllegalList;         //违章权限列表
-+ (BOOL)isPermissionForThroughList;         //闯禁令权限列表
-+ (BOOL)isPermissionForVideoCollectList;    //视频录入权限列表
++ (BOOL)isPermissionForAccidentList;            //事故权限列表
++ (BOOL)isPermissionForFastAccidentList;        //快处权限列表
++ (BOOL)isPermissionForIllegalList;             //违章权限列表
++ (BOOL)isPermissionForThroughList;             //闯禁令权限列表
++ (BOOL)isPermissionForVideoCollectList;        //视频录入权限列表
 
-+ (BOOL)isPermissionForIllegalReverseList;  //不按朝向列表权限
-+ (BOOL)isPermissionForIllegalLockList;     //违停锁车列表权限
-+ (BOOL)isPermissionForCarInfoList;         //车辆列表
++ (BOOL)isPermissionForIllegalReverseList;      //不按朝向列表权限
++ (BOOL)isPermissionForIllegalLockList;         //违停锁车列表权限
++ (BOOL)isPermissionForCarInfoList;             //车辆列表
 
 //获取一些功能性权限
-+ (BOOL)isPermissionForAccidentCase;        //事故结案权限
++ (BOOL)isPermissionForAccidentCase;            //事故结案权限
 
 
  

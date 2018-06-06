@@ -11,13 +11,16 @@
 
 #define ITUNESAPPID @"1252501276"
 
-#define DefaultBGColor UIColorFromRGB(0xf2f2f2)
-#define DefaultNavColor UIColorFromRGB(0x4281e8)
+#define DefaultColor UIColorFromRGB(0x3396fc)
+#define DefaultTextColor UIColorFromRGB(0x444444)
 
-#define DefaultMenuSelectedColor UIColorFromRGB(0x4281e8)
-#define DefaultMenuUnSelectedColor UIColorFromRGB(0x444444)
+#define DefaultBGColor UIColorFromRGB(0xf0f4f5)
+#define DefaultNavColor UIColorFromRGB(0x3396fc)
 
-#define DefaultBtnColor UIColorFromRGB(0x4281e8)
+#define DefaultMenuSelectedColor UIColorFromRGB(0x3396fc)       //滑动选项选中颜色
+#define DefaultMenuUnSelectedColor UIColorFromRGB(0x444444)     //滑动选项未选中颜色
+
+#define DefaultBtnColor UIColorFromRGB(0x3396fc)
 #define DefaultBtnNuableColor UIColorFromRGB(0xe6e6e6)
 
 #define WS(__KEY)  __weak typeof(self)__KEY = self

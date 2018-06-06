@@ -11,7 +11,6 @@
 #pragma mark - 登录API
 @implementation LoginManger
 
-
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
@@ -28,7 +27,8 @@
 - (NSString *)phone{
     
     if (self.responseModel.data) {
-        return self.responseModel.data[@"phone"];
+        _phone = self.responseModel.data[@"phone"];
+        return _phone;
     }
     return nil;
 }
@@ -36,9 +36,10 @@
 - (NSString *)interfaceUrl{
     
     if (self.responseModel.data) {
-        return self.responseModel.data[@"interfaceUrl"];
+        _interfaceUrl =  self.responseModel.data[@"interfaceUrl"];
+        return _interfaceUrl;
     }
-    return nil;
+    return _interfaceUrl;
 }
 
 @end
@@ -122,7 +123,8 @@
 - (UserModel *)userModel{
     
     if (self.responseModel.data) {
-        return [UserModel modelWithDictionary:self.responseModel.data];
+        _userModel = [UserModel modelWithDictionary:self.responseModel.data];
+        return _userModel;
     }
     
     return nil;

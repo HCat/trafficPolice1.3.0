@@ -200,7 +200,7 @@
 #pragma mark - 配置按钮高亮背景色
 
 - (void)setupConfigButtons{
-    UIImage *image = [ShareFun imageWithColor:DefaultNavColor size:CGSizeMake(SCREEN_WIDTH/3, 44)];
+    UIImage *image = [ShareFun imageWithColor:DefaultColor size:CGSizeMake(SCREEN_WIDTH/3, 44)];
     [_btn_change setBackgroundImage:image forState:UIControlStateHighlighted];
     [_btn_tip setBackgroundImage:image forState:UIControlStateHighlighted];
     [_btn_handle setBackgroundImage:image forState:UIControlStateHighlighted];

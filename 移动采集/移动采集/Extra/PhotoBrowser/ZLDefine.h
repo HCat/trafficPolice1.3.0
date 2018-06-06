@@ -45,7 +45,7 @@
 #define kNavBar_tintColor kRGB(255, 255, 255)
 #define kBottomView_color kRGB(255, 255, 255)
 #define kDoneButton_textColor kRGB(255, 255, 255)
-#define kDoneButton_bgColor DefaultNavColor
+#define kDoneButton_bgColor DefaultColor
 #define kButtonUnable_textColor kRGB(200, 200, 200)
 
 #define weakify(var)   __weak typeof(var) weakSelf = var

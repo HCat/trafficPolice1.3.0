@@ -203,7 +203,7 @@
     if (!_lb_title) {
         self.lb_title = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, _contentView.frame.size.width - 40, 20)];
         _lb_title.backgroundColor = [UIColor clearColor];
-        _lb_title.textColor = UIColorFromRGB(0x444444);
+        _lb_title.textColor = DefaultTextColor;
         _lb_title.font = [UIFont systemFontOfSize:15.f];
         _lb_title.textAlignment = NSTextAlignmentCenter;
         _lb_title.text = _title;
@@ -216,7 +216,7 @@
     if (!_lb_content) {
         self.lb_content = [[UILabel alloc] initWithFrame:CGRectMake(24, CGRectGetMaxY(_lb_title.frame), CGRectGetWidth(_contentView.frame) - 48, 150)];
         _lb_content.backgroundColor = [UIColor clearColor];
-        _lb_content.textColor = UIColorFromRGB(0x444444);
+        _lb_content.textColor = DefaultTextColor;
         _lb_content.font = [UIFont systemFontOfSize:14.f];
         _lb_content.textAlignment = NSTextAlignmentLeft;
         _lb_content.numberOfLines = 0;
@@ -244,11 +244,8 @@
     if(!_btn_quit){
         
         _btn_quit = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_contentView.frame)-12-20, 10, 20, 20)];
-        //[_btn_quit setTitle:@"x" forState:UIControlStateNormal];
         [_btn_quit setImage:[UIImage imageNamed:@"icon_dacha"] forState:UIControlStateNormal];
         [_btn_quit addTarget:self action:@selector(handleBtnDismissClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_btn_quit setTitleColor:UIColorFromRGB(0x444444) forState:UIControlStateNormal];
-        
     }
 
     return _btn_quit;

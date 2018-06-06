@@ -30,7 +30,8 @@
 - (WeatherModel *)weather{
     
     if (self.responseModel.data) {
-        return [WeatherModel modelWithDictionary:self.responseModel.data];
+        _weather =  [WeatherModel modelWithDictionary:self.responseModel.data];
+        return _weather;
     }
     
     return nil;
@@ -84,7 +85,8 @@
 - (CommonIdentifyResponse *)commonIdentifyResponse{
     
     if (self.responseModel.data) {
-        return [CommonIdentifyResponse modelWithDictionary:self.responseModel.data];
+        _commonIdentifyResponse = [CommonIdentifyResponse modelWithDictionary:self.responseModel.data];
+        return _commonIdentifyResponse;
     }
     
     return nil;
@@ -119,10 +121,11 @@
 }
 
 //返回参数
-- (NSArray *)commonGetRoadResponse{
+- (NSArray <CommonGetRoadModel * > *)commonGetRoadResponse{
     
     if (self.responseModel) {
-        return [NSArray modelArrayWithClass:[CommonGetRoadModel class] json:self.responseJSONObject[@"data"]];
+        _commonGetRoadResponse = [NSArray modelArrayWithClass:[CommonGetRoadModel class] json:self.responseJSONObject[@"data"]];
+        return _commonGetRoadResponse;
     }
     
     return nil;
@@ -130,7 +133,7 @@
 
 @end
 
-#pragma mark - 获取路名API
+#pragma mark - 获取警员群组API
 
 @implementation CommonGetGroupListModel
 
@@ -157,10 +160,11 @@
 }
 
 //返回参数
-- (NSArray *)commonGetGroupListResponse{
+- (NSArray<CommonGetGroupListModel *> *)commonGetGroupListResponse{
     
     if (self.responseModel) {
-        return [NSArray modelArrayWithClass:[CommonGetGroupListModel class] json:self.responseJSONObject[@"data"]];
+        _commonGetGroupListResponse = [NSArray modelArrayWithClass:[CommonGetGroupListModel class] json:self.responseJSONObject[@"data"]];
+        return _commonGetGroupListResponse;
     }
     
     return nil;
@@ -197,11 +201,11 @@
 }
 
 //返回参数
-- (NSArray *)commonGetImgPlayModel{
+- (NSArray<CommonGetImgPlayModel *> *)commonGetImgPlayModel{
     
     if (self.responseModel) {
-        
-        return [NSArray modelArrayWithClass:[CommonGetImgPlayModel class] json:self.responseJSONObject[@"data"]];
+        _commonGetImgPlayModel = [NSArray modelArrayWithClass:[CommonGetImgPlayModel class] json:self.responseJSONObject[@"data"]];
+        return _commonGetImgPlayModel;
     }
     
     return nil;
@@ -233,7 +237,8 @@
 - (CommonVersionUpdateModel *)commonVersionUpdateModel{
     
     if (self.responseModel.data) {
-         return [CommonVersionUpdateModel modelWithDictionary:self.responseModel.data];
+        _commonVersionUpdateModel = [CommonVersionUpdateModel modelWithDictionary:self.responseModel.data];
+        return _commonVersionUpdateModel;
     }
     
     return nil;
@@ -318,6 +323,8 @@
 //无返回参数
 
 @end
+
+#pragma mark - 查询是否需要游客登录API
 
 @implementation CommonValidVisitorManger
 

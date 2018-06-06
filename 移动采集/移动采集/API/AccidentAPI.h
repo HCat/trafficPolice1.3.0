@@ -17,21 +17,21 @@
 
 @interface AccidentGetCodesModel:NSObject
 
-@property (nonatomic,assign)    NSInteger   modelId;
-@property (nonatomic,copy)      NSString *  modelName;
-@property (nonatomic,assign)    NSInteger   modelType;
+@property (nonatomic,assign)    NSInteger  modelId;
+@property (nonatomic,copy)      NSString * modelName;
+@property (nonatomic,assign)    NSInteger  modelType;
 @end
 
 @interface AccidentGetCodesResponse : NSObject
 
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *road;               //道路
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *cause;              //事故成因
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *behaviour;          //违法行为
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *vehicle;            //车辆类型
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *insuranceCompany;   //保险公司
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *responsibility;     //事故责任
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *roadType;           //事故地点类型  是Type
-@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> *driverDirect;       //行驶状态 是Type
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * road;               //道路
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * cause;              //事故成因
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * behaviour;          //违法行为
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * vehicle;            //车辆类型
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * insuranceCompany;   //保险公司
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * responsibility;     //事故责任
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * roadType;           //事故地点类型  是Type
+@property (nonatomic,copy) NSArray<AccidentGetCodesModel *> * driverDirect;       //行驶状态 是Type
 
 - (NSString *)searchNameWithModelId:(NSInteger)modelId WithArray:(NSArray <AccidentGetCodesModel *>*)items;
 - (NSString *)searchNameWithModelType:(NSInteger)modelType WithArray:(NSArray <AccidentGetCodesModel *>*)items;
@@ -158,7 +158,7 @@
 
 @interface AccidentListPagingReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<AccidentListModel *> *list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<AccidentListModel * > * list;    //包含AccidentListModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 
@@ -222,11 +222,11 @@
 @interface AccidentCountByidNoManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, strong) NSString * idNo;      //车牌号
+@property (nonatomic, copy) NSString * idNo;        //车牌号
 @property (nonatomic, strong) NSNumber * state;     //查询事故数的state
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) AccidentCountModel *accidentCountModel;
+@property (nonatomic, strong) AccidentCountModel * accidentCountModel;
 
 @end
 
@@ -253,7 +253,7 @@
 @property (nonatomic, strong) NSNumber * accidentId; //事故ID
 
 /****** 返回数据 ******/
-@property (nonatomic,copy)   NSArray<RemarkModel *> *list;    //包含RemarkModel对象的list
+@property (nonatomic,copy)    NSArray<RemarkModel *> * list;    //包含RemarkModel对象的list
 
 @end
 

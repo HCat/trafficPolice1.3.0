@@ -58,7 +58,7 @@
 @interface IdentifyNoticeParam :NSObject
 
 
-@property (nonatomic,copy)  NSString * idArr;         //用户id（数组）
+@property (nonatomic,copy)    NSString * idArr;         //用户id（数组）
 @property (nonatomic,copy)    NSString * msgType;       //通知类型（数组） 1为推送通知，2为短信通知
 @property (nonatomic,copy)    NSString * message;                    //消息
 
