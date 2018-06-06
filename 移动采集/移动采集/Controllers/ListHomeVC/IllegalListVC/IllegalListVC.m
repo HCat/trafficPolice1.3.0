@@ -19,7 +19,6 @@
 #import "ListHomeVC.h"
 #import "NetWorkHelper.h"
 #import "IllegalDetailVC.h"
-#import "SearchListVC.h"
 
 
 @interface IllegalListVC ()
@@ -52,9 +51,6 @@
     }
     
     _tb_content.isNeedPlaceholderView = YES;
-    if (_str_search) {
-        _tb_content.str_placeholder = @"暂无搜索内容";
-    }
     _tb_content.firstReload = YES;
     //隐藏多余行的分割线
     _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -147,12 +143,8 @@
         IllegalParkListPagingParam *param = [[IllegalParkListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_str_search) {
-            param.search = _str_search;
-            param.type = @(1);
-        }else{
-            param.type = @(_subType);
-        }
+        param.type = @(_subType);
+        
         IllegalParkListPagingManger *manger = [[IllegalParkListPagingManger alloc] init];
         manger.param = param;
        
@@ -196,10 +188,7 @@
         IllegalThroughListPagingParam *param = [[IllegalThroughListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_str_search) {
-            param.search = _str_search;
-        }
-        
+    
         IllegalThroughListPagingManger *manger = [[IllegalThroughListPagingManger alloc] init];
         manger.param = param;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -291,16 +280,11 @@
         
         UIViewController *vc_target = nil;
         //搜索时候的跳转
-        if (_str_search) {
-            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
+        if (_isHandle) {
+            vc_target = self;
         }else{
-            if (_isHandle) {
-                vc_target = self;
-            }else{
-                vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
-                
-            }
-           
+            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
+            
         }
         
         IllegalParkListModel *t_model = _arr_content[indexPath.row];

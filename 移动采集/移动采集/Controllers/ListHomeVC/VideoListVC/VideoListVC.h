@@ -10,6 +10,5 @@
 
 @interface VideoListVC : BaseViewController
 
-@property(nonatomic,copy) NSString *str_search;
 
 @end

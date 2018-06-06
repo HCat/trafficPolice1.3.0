@@ -16,6 +16,5 @@
 
 @property (nonatomic,assign) BOOL isNeedShowLocation;
 
-- (void)showLocationInfo:(NSString *)title image:(NSString *)imageName;
 
 @end

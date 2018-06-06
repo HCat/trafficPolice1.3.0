@@ -127,11 +127,8 @@
 		CE490E181F9ED62100E90FF2 /* UserRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */; };
 		CE490E1C1F9EE1A500E90FF2 /* UserWatchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */; };
 		CE490E1D1F9EE1A500E90FF2 /* UserWatchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE490E1B1F9EE1A500E90FF2 /* UserWatchVC.xib */; };
-		CE496EFB1F6A1A9D004E69C6 /* SearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496EF91F6A1A9D004E69C6 /* SearchListVC.m */; };
-		CE496EFC1F6A1A9D004E69C6 /* SearchListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE496EFA1F6A1A9D004E69C6 /* SearchListVC.xib */; };
 		CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */; };
 		CE496F031F6A1ACB004E69C6 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496F011F6A1ACB004E69C6 /* TTGTextTagCollectionView.m */; };
-		CE496F061F6A1B03004E69C6 /* SearchTagHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496F051F6A1B03004E69C6 /* SearchTagHelper.m */; };
 		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
 		CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */; };
 		CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */; };
@@ -691,15 +688,10 @@
 		CE490E191F9EE1A500E90FF2 /* UserWatchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserWatchVC.h; sourceTree = "<group>"; };
 		CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserWatchVC.m; sourceTree = "<group>"; };
 		CE490E1B1F9EE1A500E90FF2 /* UserWatchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserWatchVC.xib; sourceTree = "<group>"; };
-		CE496EF81F6A1A9D004E69C6 /* SearchListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchListVC.h; sourceTree = "<group>"; };
-		CE496EF91F6A1A9D004E69C6 /* SearchListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchListVC.m; sourceTree = "<group>"; };
-		CE496EFA1F6A1A9D004E69C6 /* SearchListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchListVC.xib; sourceTree = "<group>"; };
 		CE496EFE1F6A1ACB004E69C6 /* TTGTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
 		CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
 		CE496F001F6A1ACB004E69C6 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		CE496F011F6A1ACB004E69C6 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
-		CE496F041F6A1B03004E69C6 /* SearchTagHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTagHelper.h; sourceTree = "<group>"; };
-		CE496F051F6A1B03004E69C6 /* SearchTagHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTagHelper.m; sourceTree = "<group>"; };
 		CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentProcessResultVC.h; sourceTree = "<group>"; };
 		CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentProcessResultVC.m; sourceTree = "<group>"; };
 		CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessResultVC.xib; sourceTree = "<group>"; };
@@ -1664,16 +1656,6 @@
 			path = UserWatchVC;
 			sourceTree = "<group>";
 		};
-		CE496EF71F6A1A90004E69C6 /* SearchListVC */ = {
-			isa = PBXGroup;
-			children = (
-				CE496EF81F6A1A9D004E69C6 /* SearchListVC.h */,
-				CE496EF91F6A1A9D004E69C6 /* SearchListVC.m */,
-				CE496EFA1F6A1A9D004E69C6 /* SearchListVC.xib */,
-			);
-			path = SearchListVC;
-			sourceTree = "<group>";
-		};
 		CE496EFD1F6A1ACB004E69C6 /* TTGTagCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2021,7 +2003,6 @@
 			isa = PBXGroup;
 			children = (
 				CE763B081FCF9C9000EB0815 /* JointEnforceVC */,
-				CE496EF71F6A1A90004E69C6 /* SearchListVC */,
 				CE8EE8601F66354900CC64B0 /* PoliceCommandVC */,
 				CE41C7B41F5EAA100058FE8D /* importCarVC */,
 				CED9B0E11F5CFB1D0010E68A /* SignInVC */,
@@ -2814,8 +2795,6 @@
 				CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */,
 				CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */,
 				CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */,
-				CE496F041F6A1B03004E69C6 /* SearchTagHelper.h */,
-				CE496F051F6A1B03004E69C6 /* SearchTagHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -3026,7 +3005,6 @@
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
 				CE5C38EA1F28606B0055C945 /* btn_original_circle.png in Resources */,
 				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
-				CE496EFC1F6A1A9D004E69C6 /* SearchListVC.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE5C38E81F28606B0055C945 /* btn_circle@2x.png in Resources */,
 				CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */,
@@ -3283,7 +3261,6 @@
 				CE6AE96C20B65E2C005781DA /* VehicleExpireAlarmVC.m in Sources */,
 				CE0731D01F5ECF9A00B3831B /* VehicleDriverModel.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
-				CE496EFB1F6A1A9D004E69C6 /* SearchListVC.m in Sources */,
 				CE2AF8831FD68B59005B643E /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
@@ -3483,7 +3460,6 @@
 				CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */,
 				CE36A03B1FF4D06800BAAD18 /* JointLawAPI.m in Sources */,
 				CE65B90120AAFEF300AA97BB /* VehicleUpVC.m in Sources */,
-				CE496F061F6A1B03004E69C6 /* SearchTagHelper.m in Sources */,
 				CE42B9361F1F4AE4005CC5BD /* ArtPlayerView.m in Sources */,
 				CE6154B01F67896D0018DF71 /* OnePoliceView.m in Sources */,
 				CE2AF8891FD68C42005B643E /* UIWindow+FHH.m in Sources */,

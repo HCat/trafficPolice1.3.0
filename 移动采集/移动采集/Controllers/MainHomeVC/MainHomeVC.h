@@ -10,6 +10,4 @@
 
 @interface MainHomeVC : ShowTabSuperVC
 
-- (void) getWeatherData;
-
 @end

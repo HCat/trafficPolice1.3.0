@@ -17,7 +17,6 @@
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
 #import "PoliceCommandVC.h"
-#import "SearchListVC.h"
 #import "JointEnforceVC.h"
 
 
@@ -25,13 +24,10 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayout;
-@property (weak, nonatomic) IBOutlet UIButton * btn_location;
-@property (weak, nonatomic) IBOutlet UILabel  * lb_weather;
-@property (weak, nonatomic) IBOutlet UILabel  * lb_temperature;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_collection_top; //用于适配不同屏幕大小
-
-@property (nonatomic,strong) NSArray *arr_items;
+@property (nonatomic,strong) NSMutableArray * arr_illegal;
+@property (nonatomic,strong) NSMutableArray * arr_accident;
+@property (nonatomic,strong) NSMutableArray * arr_policeMatter;
 
 @end
 
@@ -42,144 +38,133 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //            [t_arr addObject:@{@"image":@"menu_signIn",@"title":@"签到"}];
+    //
+    //            if ([UserModel isPermissionForRoadInfo]) {
+    //                [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
+    //            }
+    
+    
     //这里获取事故通用值
     [[ShareValue sharedDefault] accidentCodes];
     //这里获取道路通用值通用值
     [[ShareValue sharedDefault] roadModels];
-    //定位
-    [[LocationHelper sharedDefault] startLocation];
     
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
     
-    if (IS_IPHONE_4_OR_LESS) {
-        self.layout_collection_top.constant = -112.f;
-    }else if (IS_IPHONE_5){
-        self.layout_collection_top.constant = -65.f;
-    }else{
-        self.layout_collection_top.constant = -32.f;
-    }
-    [self.view layoutIfNeeded];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+#pragma mark - set&&get
+
+- (NSMutableArray *)arr_illegal{
     
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
-    [super viewWillAppear:animated];
-
-}
-
-#pragma mark - 请求天气状况
-
-- (void) getWeatherData{
-    
-    //获取当前天气
-    WS(weakSelf);
-    CommonGetWeatherManger *manger = [CommonGetWeatherManger new];
-    manger.location = [[NSString stringWithFormat:@"%f,%f",[LocationHelper sharedDefault].longitude,[LocationHelper sharedDefault].latitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        SW(strongSelf, weakSelf);
-        if (manger.responseModel.code == CODE_SUCCESS) {
-            strongSelf.lb_weather.text = manger.weather.weather;
-            strongSelf.lb_temperature.text = [NSString stringWithFormat:@"%@°",manger.weather.temperature];
-            
-        }
-
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-
-    }];
-    
-}
-
-
-#pragma mark - set
-
--(NSArray *)arr_items{
-    
-    if (!_arr_items) {
-        
-        NSMutableArray *t_arr = [NSMutableArray array];
+    if (!_arr_illegal) {
+        _arr_illegal = [NSMutableArray array];
         
         if ([UserModel getUserModel]) {
             
-            [t_arr addObject:@{@"image":@"menu_signIn",@"title":@"签到"}];
-            
             if ([UserModel isPermissionForIllegal]) {
-                [t_arr  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
             }
             
             if ([UserModel isPermissionForIllegalReverseParking]) {
-                [t_arr  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
             }
             
             if ([UserModel isPermissionForIllegalReverseParking]) {
-                [t_arr  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
             }
             
             if ([UserModel isPermissionForIllegalReverseParking]) {
-                [t_arr  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
             }
-            
             
             if ([UserModel isPermissionForThrough]) {
-                [t_arr  addObject:@{@"image":@"menu_through",@"title":@"闯禁令录入"}];
-            }
-            
-            if ([UserModel isPermissionForAccident]) {
-                [t_arr  addObject:@{@"image":@"menu_accident",@"title":@"事故录入"}];
-            }
-            
-            if ([UserModel isPermissionForFastAccident]) {
-                [t_arr  addObject:@{@"image":@"menu_fastAccident",@"title":@"快处录入"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"闯禁令录入"}];
             }
             
             if ([UserModel isPermissionForVideoCollect]) {
-                [t_arr  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
             }
             
-            if ([UserModel isPermissionForImportantCar]) {
-                [t_arr  addObject:@{@"image":@"menu_keyPointCar",@"title":@"重点车辆"}];
-            }
-            
-            if ([UserModel isPermissionForPoliceCommand]) {
-               [t_arr  addObject:@{@"image":@"menu_serviceCommand",@"title":@"勤务指挥"}];
-            }
-            
-            if ([UserModel isPermissionForRoadInfo]) {
-                [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
-            }
-                        
             if ([UserModel isPermissionForJointEnforcement]) {
-                [t_arr  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
             }
             
             
         }
-
-        _arr_items = t_arr.copy;
-        
     }
     
-    return _arr_items;
+    return _arr_illegal;
 }
 
+- (NSMutableArray *)arr_accident{
+    
+    if (!_arr_accident) {
+        _arr_accident = [NSMutableArray array];
+        
+        if ([UserModel getUserModel]) {
+            
+            if ([UserModel isPermissionForFastAccident]) {
+                [_arr_accident  addObject:@{@"image":@"menu_fastAccident",@"title":@"快处录入"}];
+            }
+            
+            if ([UserModel isPermissionForAccident]) {
+                [_arr_accident  addObject:@{@"image":@"menu_accident",@"title":@"事故录入"}];
+            }
+            
+        }
+    }
+    
+    return _arr_accident;
+    
+}
+
+
+- (NSMutableArray *)arr_policeMatter{
+    
+    if (!_arr_policeMatter) {
+        _arr_policeMatter = [NSMutableArray array];
+        
+        if ([UserModel getUserModel]) {
+            
+            if ([UserModel isPermissionForImportantCar]) {
+                [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"重点车辆"}];
+            }
+            
+            if ([UserModel isPermissionForPoliceCommand]) {
+                [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"勤务指挥"}];
+            }
+            
+        }
+    }
+    
+    return _arr_policeMatter;
+    
+}
 
 #pragma mark - UICollectionView Data Source
 
 //返回多少个组
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView   *)collectionView{
-    return 1;
+    
+    NSInteger section = 0;
+    
+    if (self.arr_illegal && self.arr_illegal.count > 0) {
+        section += 1;
+    }else if (self.arr_accident && self.arr_accident.count > 0){
+        section += 1;
+    }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+        section += 1;
+    }
+    
+    return section;
 }
 
 //返回每组多少个视图
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.arr_items count];
+    return [self.arr_accident count];
 }
 
 //返回视图的具体事例，我们的数据关联就是放在这里
@@ -190,7 +175,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     cell.isNeedTitle = YES;
     cell.imageView.contentMode = UIViewContentModeCenter;
     cell.layer.cornerRadius = 0.0f;
-    cell.lb_title.textColor = UIColorFromRGB(0x444444);
+    cell.lb_title.textColor = DefaultTextColor;
     cell.layout_imageWithLb.constant = -20;
     [cell layoutIfNeeded];
 
@@ -329,28 +314,6 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return 1.0f;
-}
-
-#pragma mark - buttonActions
-
-- (IBAction)handleBtnLocationClicked:(id)sender {
-    [[LocationHelper sharedDefault] startLocation];
-}
-
-- (IBAction)handlleBtnSearchClicked:(id)sender {
-    SearchListVC *t_vc = [SearchListVC new];
-    [self.navigationController pushViewController:t_vc animated:YES];
-    
-}
-
-
-#pragma mark - 
-
--(void)locationChange{
-    
-    [self.btn_location setTitle:[LocationHelper sharedDefault].city forState:UIControlStateNormal];
-    [self getWeatherData];
-    
 }
 
 #pragma mark - AKTabBar Method

@@ -11,7 +11,7 @@
 #import "CALayer+Additions.h"
 #import "ListHomeVC.h"
 #import "SRAlertView.h"
-#import "SearchListVC.h"
+
 
 @interface FastAccidentProcessVC ()
 
@@ -110,10 +110,7 @@
                 if([controller isKindOfClass:[ListHomeVC class]]) {
                     [strongSelf.navigationController popToViewController:controller animated:YES];
                 }
-                if([controller isKindOfClass:[SearchListVC class]]) {
-                    [strongSelf.navigationController popToViewController:controller animated:YES];
-                }
-                
+               
             }
             
         }

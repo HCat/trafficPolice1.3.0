@@ -38,7 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的";
-    [self showLocationInfo:[UserModel getUserModel].realName image:@"btn_user"];
     [self showRightBarButtonItemWithImage:@"btn_setting" target:self action:@selector(handleBtnSettingClicked:)];
 }
 

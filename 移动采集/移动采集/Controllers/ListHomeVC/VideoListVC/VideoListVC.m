@@ -14,7 +14,7 @@
 #import "VideoListCell.h"
 #import "VideoDetailVC.h"
 #import "NetWorkHelper.h"
-#import "SearchListVC.h"
+
 
 @interface VideoListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -36,9 +36,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoSuccess:) name:NOTIFICATION_VIDEO_SUCCESS object:nil];
     
     _collectionView.isNeedPlaceholderView = YES;
-    if (_str_search) {
-        _collectionView.str_placeholder = @"暂无搜索内容";
-    }
     _collectionView.firstReload = YES;
     
     self.arr_content = [NSMutableArray array];
@@ -201,16 +198,10 @@
     
     if (_arr_content && _arr_content.count > 0) {
         
-        UIViewController *vc_target = self;
-        //搜索时候的跳转
-        if (_str_search) {
-            vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
-        }
-        
         VideoColectListModel *model = _arr_content[indexPath.row];
         VideoDetailVC * t_vc = [[VideoDetailVC alloc] init];
         t_vc.path = model.path;
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        [self.navigationController pushViewController:t_vc animated:YES];
     }
     
 }

@@ -20,7 +20,6 @@
 
 #import "AccidentHandleVC.h"
 #import "AccidentCompleteVC.h"
-#import "SearchListVC.h"
 #import "ListHomeVC.h"
 #import "UINavigationBar+BarItem.h"
 
@@ -52,9 +51,6 @@
     }
     
     _tb_content.isNeedPlaceholderView = YES;
-    if (_str_search) {
-        _tb_content.str_placeholder = @"暂无搜索内容";
-    }
     _tb_content.firstReload = YES;
     //隐藏多余行的分割线
     _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -146,12 +142,8 @@
         AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        param.isHandle = _isHandle;
         
-        if (_str_search) {
-            param.search = _str_search;
-        }else{
-            param.isHandle = _isHandle;
-        }
         AccidentListPagingManger *manger = [[AccidentListPagingManger alloc] init];
         manger.param = param;
        
@@ -195,11 +187,8 @@
         FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_str_search) {
-            param.search = _str_search;
-        }else{
-            param.isHandle = _isHandle;
-        }
+        param.isHandle = _isHandle;
+        
         FastAccidentListPagingManger *manger = [[FastAccidentListPagingManger alloc] init];
         manger.param = param;
        
@@ -297,25 +286,15 @@
         
         if ([t_model.state isEqualToNumber:@1] || [t_model.state isEqualToNumber:@9]) {
             
-            if (_str_search) {
-                vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
-            }else{
-                vc_target = self;
-            }
-            
             AccidentListModel *t_model = _arr_content[indexPath.row];
             AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
             t_vc.accidentType = _accidentType;
             t_vc.accidentId = t_model.accidentId;
-            [vc_target.navigationController pushViewController:t_vc animated:YES];
+            [self.navigationController pushViewController:t_vc animated:YES];
             
         }else{
             
-            if (_str_search) {
-                vc_target = (SearchListVC *)[ShareFun findViewController:self.view withClass:[SearchListVC class]];
-            }else{
-               vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
-            }
+            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
 
             AccidentListModel *t_model = _arr_content[indexPath.row];
             AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];

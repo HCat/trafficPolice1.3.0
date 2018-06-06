@@ -12,7 +12,6 @@
 #import "ListHomeVC.h"
 #import "SRAlertView.h"
 #import "UserModel.h"
-#import "SearchListVC.h"
 
 @interface AccidentProcessVC ()
 
@@ -179,10 +178,7 @@
                     [strongSelf.navigationController popToViewController:controller animated:YES];
                 }
                 
-                if([controller isKindOfClass:[SearchListVC class]]) {
-                    [strongSelf.navigationController popToViewController:controller animated:YES];
-                }
-            
+        
             }
             
         }

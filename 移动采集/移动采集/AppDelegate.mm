@@ -188,11 +188,6 @@
     if (index == 3) {
         [ShareValue sharedDefault].makeNumber = 0;
         [_vc_tabBar loadTabs];
-    }else if (index == 0){
-        UINavigationController *t_nav_main = _vc_tabBar.viewControllers[0];
-        MainHomeVC *t_vc = t_nav_main.viewControllers[0];
-        [t_vc getWeatherData];
-        
     }
 }
 

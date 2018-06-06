@@ -12,7 +12,7 @@
 #define ITUNESAPPID @"1252501276"
 
 #define DefaultColor UIColorFromRGB(0x3396fc)
-#define DefaultTextColor UIColorFromRGB(0x444444)
+#define DefaultTextColor UIColorFromRGB(0x333333)
 
 #define DefaultBGColor UIColorFromRGB(0xf0f4f5)
 #define DefaultNavColor UIColorFromRGB(0x3396fc)
