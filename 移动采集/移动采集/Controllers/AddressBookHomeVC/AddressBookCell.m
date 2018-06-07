@@ -42,14 +42,10 @@
         }
         
         _lb_name.text = _model.realName;
-        _lb_tip.text = [_model.realName substringWithRange:NSMakeRange(0, 1)];
-        NSArray *t_arr = [[NSArray alloc] initWithObjects:@0xfa6166,@0x29a6e6,@0xfbae50,@0x747dee,nil];
-        
-        int r = arc4random() % [t_arr count];
-        
-        NSNumber *t_num = t_arr[r];
-        
-        _lb_tip.backgroundColor = UIColorFromRGB([t_num intValue]);
+        _lb_tip.text = [_model.realName substringWithRange:NSMakeRange(_model.realName.length - 1, 1)];
+        _lb_tip.layer.cornerRadius = 18.f;
+        _lb_tip.layer.masksToBounds = YES;
+        _lb_tip.backgroundColor = DefaultColor;
         
     }
 

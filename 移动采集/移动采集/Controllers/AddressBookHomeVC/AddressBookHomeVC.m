@@ -378,11 +378,11 @@
 }
 
 - (NSString *)tabSelectedImageName{
-    return @"tabbar_addressBook_n";
+    return @"tabbar_addressBook_h";
 }
 
 - (NSString *)tabTitle{
-    return nil;
+    return NSLocalizedString(@"通讯录", nil);
 }
 
 

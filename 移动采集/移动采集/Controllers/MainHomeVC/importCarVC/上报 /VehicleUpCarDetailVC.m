@@ -132,7 +132,9 @@
                     SW(strongSelf, weakSelf);
                     cell.model = strongSelf.model;
                 }];
-            }else if(_model.remark.length > 0 && _model.remark) {
+
+            }else if (_model.remark.length > 0 && _model.remark) {
+
                 return [tableView fd_heightForCellWithIdentifier:@"VehicleUpRemarkDetailCellID" cacheByIndexPath:indexPath configuration:^(VehicleUpRemarkDetailCell *cell) {
                     SW(strongSelf, weakSelf);
                     cell.model = strongSelf.model;
@@ -150,6 +152,7 @@
         }
         
     }
+
     
     return 0;
     

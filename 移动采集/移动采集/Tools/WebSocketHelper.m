@@ -27,6 +27,17 @@
 LRSingletonM(Default)
 
 
+- (instancetype)init{
+    
+    self = [super init];
+    if (self) {
+        _isOpen = NO;
+    }
+    
+    return self;
+    
+}
+
 #pragma mark - public
 
 - (void)startServer{
@@ -68,6 +79,7 @@ LRSingletonM(Default)
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket{
     LxPrintf(@"************ Websocket opend!***************");
     
+    _isOpen = NO;
     //****************  webSocket开启的时候就开启后台定位，获取位置信息来上传 *****************//
     
     if ([UserModel getUserModel].workstate == YES) {
@@ -99,6 +111,7 @@ LRSingletonM(Default)
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
 
+    _isOpen = NO;
     if ([reason isEqualToString:@"closeBySignOut"]) {
         //****************  webSocket关闭的时候就关闭后台定位 *****************//
         [[BackgroundLocationHelper sharedDefault] stopLocation];

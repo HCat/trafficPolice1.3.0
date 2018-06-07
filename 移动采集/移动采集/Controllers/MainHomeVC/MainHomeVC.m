@@ -19,11 +19,15 @@
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
 
+#import "MainCellLayout.h"
 
 @interface MainHomeVC ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayout;
+@property (weak, nonatomic) IBOutlet UILabel *lb_departmentName;
+
+
 
 @property (nonatomic,strong) NSMutableArray * arr_illegal;
 @property (nonatomic,strong) NSMutableArray * arr_accident;
@@ -38,19 +42,26 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //            [t_arr addObject:@{@"image":@"menu_signIn",@"title":@"签到"}];
-    //
-    //            if ([UserModel isPermissionForRoadInfo]) {
-    //                [t_arr  addObject:@{@"image":@"menu_roadLive",@"title":@"路面实况"}];
-    //            }
-    
-    
     //这里获取事故通用值
     [[ShareValue sharedDefault] accidentCodes];
     //这里获取道路通用值通用值
     [[ShareValue sharedDefault] roadModels];
     
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:cellId];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"mainCollectHeader"];
+    
+    MainCellLayout *layout=[[MainCellLayout alloc] init];
+    [_collectionView setCollectionViewLayout:layout];
+    
+    if ([UserModel getUserModel] != nil) {
+        _lb_departmentName.text = [UserModel getUserModel].departmentName;
+    }
+   
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
     
 }
@@ -130,17 +141,26 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         if ([UserModel getUserModel]) {
             
             if ([UserModel isPermissionForImportantCar]) {
-                [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"重点车辆"}];
+                [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"工程车辆"}];
             }
             
             if ([UserModel isPermissionForPoliceCommand]) {
-                [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"勤务指挥"}];
+                [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
             }
             
         }
     }
     
     return _arr_policeMatter;
+    
+}
+
+#pragma mark - ButtonAction
+
+- (IBAction)handleBtnSignInClicked:(id)sender {
+    
+    SignInVC *t_vc = [[SignInVC alloc] init];
+    [self.navigationController pushViewController:t_vc animated:YES];
     
 }
 
@@ -153,9 +173,12 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     
     if (self.arr_illegal && self.arr_illegal.count > 0) {
         section += 1;
-    }else if (self.arr_accident && self.arr_accident.count > 0){
+    }
+    if (self.arr_accident && self.arr_accident.count > 0){
         section += 1;
-    }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+    }
+    
+    if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
         section += 1;
     }
     
@@ -164,144 +187,198 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 
 //返回每组多少个视图
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.arr_accident count];
+    
+    NSMutableArray *t_arr = [self arrayFromSection:section];
+    return t_arr.count;
+    
 }
 
 //返回视图的具体事例，我们的数据关联就是放在这里
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    NSMutableArray *t_arr = [self arrayFromSection:indexPath.section];
     
-    cell.isNeedTitle = YES;
-    cell.imageView.contentMode = UIViewContentModeCenter;
-    cell.layer.cornerRadius = 0.0f;
-    cell.lb_title.textColor = DefaultTextColor;
-    cell.layout_imageWithLb.constant = -20;
-    [cell layoutIfNeeded];
-
-    NSDictionary *t_dic = [_arr_items objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:[t_dic objectForKey:@"image"]];
-    cell.lb_title.text = [t_dic objectForKey:@"title"];
+    if (t_arr) {
+        BaseImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+        
+        cell.isNeedTitle = YES;
+        cell.imageView.contentMode = UIViewContentModeCenter;
+        cell.layer.cornerRadius = 0.0f;
+        cell.lb_title.textColor = DefaultTextColor;
+        cell.layout_imageWithLb.constant = -20;
+        [cell layoutIfNeeded];
+        
+        NSDictionary *t_dic = [t_arr objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:[t_dic objectForKey:@"image"]];
+        cell.lb_title.text = [t_dic objectForKey:@"title"];
+        
+        return cell;
+    }
    
-    return cell;
+    return nil;
 }
 
-#pragma mark - UICollectionView Delegate method
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *t_title = nil;
+    if (indexPath.section == 0) {
+        if (self.arr_illegal && self.arr_illegal.count > 0) {
+            t_title = @"违章采集";
+        }else if (self.arr_accident && self.arr_accident.count > 0){
+            t_title = @"事故纠纷";
+        }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            t_title = @"警务管理";
+        }
+        
+    }else if (indexPath.section == 1){
+        if (self.arr_accident && self.arr_accident.count > 0){
+            t_title = @"事故纠纷";
+        }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            t_title = @"警务管理";
+        }
+        
+    }else if (indexPath.section == 2){
+        if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            t_title = @"警务管理";
+        }
+    }
+    
+    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"mainCollectHeader" forIndexPath:indexPath];
+    headerView.backgroundColor =[UIColor clearColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 0, headerView.bounds.size.width - 15.f, headerView.bounds.size.height)];
+    label.text = t_title;
+    label.textColor = DefaultTextColor;
+    label.font = [UIFont boldSystemFontOfSize:17.f];
+    [headerView addSubview:label];
+    return headerView;
 }
 
-- (void)collectionView:(UICollectionView *)colView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
-    //设置(Highlight)高亮下的颜色
-    [cell setBackgroundColor:DefaultBGColor];
-    
-}
-
-- (void)collectionView:(UICollectionView *)colView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell* cell = [colView cellForItemAtIndexPath:indexPath];
-    //设置(Nomal)正常状态下的颜色
-    [cell setBackgroundColor:[UIColor whiteColor]];
-    
-}
 
 
 //选中时的操作
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSDictionary *t_dic = [_arr_items objectAtIndex:indexPath.row];
-    NSString *t_title = [t_dic objectForKey:@"title"];
     
-    if ([t_title isEqualToString:@"签到"]) {
-        SignInVC *t_vc = [[SignInVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"违停录入"]) {
-        
-        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-        t_vc.illegalType = IllegalTypePark;
-        t_vc.subType = ParkTypePark;
-        [self.navigationController pushViewController:t_vc animated:YES];
+    NSMutableArray * t_arr = [self arrayFromSection:indexPath.section];
     
-    }else if ([t_title isEqualToString:@"不按朝向"]) {
+    if (t_arr) {
         
-        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-        t_vc.illegalType = IllegalTypePark;
-        t_vc.subType = ParkTypeReversePark;
-        [self.navigationController pushViewController:t_vc animated:YES];
+        NSDictionary *t_dic = [t_arr objectAtIndex:indexPath.row];
+        NSString *t_title = [t_dic objectForKey:@"title"];
         
-    }else if ([t_title isEqualToString:@"车辆录入"]) {
-        
-        CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"违停锁车"]) {
-        
-        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-        t_vc.illegalType = IllegalTypePark;
-        t_vc.subType = ParkTypeLockPark;
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"闯禁令录入"]){
-        
-        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-        t_vc.illegalType = IllegalTypeThrough;
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"事故录入"]){
-        
-        AccidentVC *t_vc = [[AccidentVC alloc] init];
-        t_vc.accidentType = AccidentTypeAccident;
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"快处录入"]){
-        
-        AccidentVC *t_vc = [[AccidentVC alloc] init];
-        t_vc.accidentType = AccidentTypeFastAccident;
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"视频录入"]){
-        
-        VideoColectVC *t_vc = [[VideoColectVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"重点车辆"]){
-        ImportCarHomeVC * t_vc = [[ImportCarHomeVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-        
-    }else if ([t_title isEqualToString:@"勤务指挥"]){
-        
-        PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else if ([t_title isEqualToString:@"路面实况"]){
-        
-        
-    }else if ([t_title isEqualToString:@"联合执法"]){
-        JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
-        [self.navigationController pushViewController:t_vc animated:YES];
-
+        if ([t_title isEqualToString:@"违停录入"]) {
+            
+            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypePark;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"不按朝向"]) {
+            
+            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeReversePark;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"车辆录入"]) {
+            
+            CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"违停锁车"]) {
+            
+            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeLockPark;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"闯禁令录入"]){
+            
+            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+            t_vc.illegalType = IllegalTypeThrough;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"事故录入"]){
+            
+            AccidentVC *t_vc = [[AccidentVC alloc] init];
+            t_vc.accidentType = AccidentTypeAccident;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"快处录入"]){
+            
+            AccidentVC *t_vc = [[AccidentVC alloc] init];
+            t_vc.accidentType = AccidentTypeFastAccident;
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"视频录入"]){
+            
+            VideoColectVC *t_vc = [[VideoColectVC alloc] init];
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"工程车辆"]){
+            ImportCarHomeVC * t_vc = [[ImportCarHomeVC alloc] init];
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+            
+        }else if ([t_title isEqualToString:@"警力分布"]){
+            
+            PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else if ([t_title isEqualToString:@"联合执法"]){
+            JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }
     }
+    
+    
 
 }
+
+- (NSMutableArray *)arrayFromSection:(NSInteger)section{
+    
+    if (section == 0) {
+        if (self.arr_illegal && self.arr_illegal.count > 0) {
+            return  _arr_illegal;
+        }else if (self.arr_accident && self.arr_accident.count > 0){
+            return _arr_accident;
+        }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            return _arr_policeMatter;
+        }
+        
+    }else if (section == 1){
+        if (self.arr_accident && self.arr_accident.count > 0){
+            return _arr_accident;
+        }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            return _arr_policeMatter;
+        }
+        
+    }else if (section == 2){
+        if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
+            return _arr_policeMatter;
+        }
+    }
+    
+    return nil;
+    
+}
+
 
 #pragma mark - UICollectionView Delegate FlowLayout
 
 // cell 尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    float width=(ScreenWidth - 30 -2.1f)/3.f;
+    float width=(ScreenWidth - 30 -3.1f)/4.f;
     return CGSizeMake(width, width+10);
 }
 
 // 装载内容 cell 的内边距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5, 0, 0, 0);
+    return UIEdgeInsetsMake(0, 15, 0, 15);
 }
 
 //最小行间距
@@ -316,6 +393,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     return 1.0f;
 }
 
+//header头部大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return (CGSize){ScreenWidth,46};
+}
+
 #pragma mark - AKTabBar Method
 
 - (NSString *)tabImageName{
@@ -327,7 +409,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 }
 
 - (NSString *)tabTitle{
-    return NSLocalizedString(@"首页", nil);
+    return NSLocalizedString(@"工作", nil);
 }
 
 

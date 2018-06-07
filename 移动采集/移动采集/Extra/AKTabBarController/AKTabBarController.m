@@ -110,12 +110,6 @@ typedef enum {
             
         }
         
-        if (![vc tabTitle]) {
-            tab.keepFlag = YES;
-            [tab setImage:[UIImage imageNamed:tab.tab_imageName] forState:UIControlStateNormal];
-        }
-        
-        
         
         if ([[vc class] isSubclassOfClass:[UINavigationController class]])
             ((UINavigationController *)vc).delegate = self;

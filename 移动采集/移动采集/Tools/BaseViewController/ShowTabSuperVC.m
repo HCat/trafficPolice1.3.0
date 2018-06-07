@@ -39,6 +39,7 @@
     
     [super viewWillAppear:animated];
     [ApplicationDelegate.vc_tabBar showTabBarAnimated:NO];
+    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
     self.navigationController.navigationBarHidden = YES;
     
 }

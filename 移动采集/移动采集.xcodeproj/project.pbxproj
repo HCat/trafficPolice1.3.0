@@ -418,6 +418,8 @@
 		CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97161F1CF15900741A6F /* CALayer+Additions.m */; };
 		CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97221F1CF17A00741A6F /* ShareValue.m */; };
 		CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */; };
+		CEAAC2D220C8267D009DCC5E /* MainCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */; };
+		CEAAC2D720C82AFE009DCC5E /* MainCellBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */; };
 		CED6EE821F6906FC004FED7B /* PoliceLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE801F6906FC004FED7B /* PoliceLocationVC.m */; };
 		CED6EE831F6906FC004FED7B /* PoliceLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED6EE811F6906FC004FED7B /* PoliceLocationVC.xib */; };
 		CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE861F691358004FED7B /* CommonMenuView.m */; };
@@ -1181,6 +1183,9 @@
 		CEAA97221F1CF17A00741A6F /* ShareValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareValue.m; sourceTree = "<group>"; };
 		CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlaceholderView.h; sourceTree = "<group>"; };
 		CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlaceholderView.m; sourceTree = "<group>"; };
+		CEAAC2D020C8267D009DCC5E /* MainCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCellLayout.h; sourceTree = "<group>"; };
+		CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCellLayout.m; sourceTree = "<group>"; };
+		CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCellBgView.xib; sourceTree = "<group>"; };
 		CED6EE7F1F6906FC004FED7B /* PoliceLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceLocationVC.h; sourceTree = "<group>"; };
 		CED6EE801F6906FC004FED7B /* PoliceLocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceLocationVC.m; sourceTree = "<group>"; };
 		CED6EE811F6906FC004FED7B /* PoliceLocationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceLocationVC.xib; sourceTree = "<group>"; };
@@ -2013,6 +2018,9 @@
 				CE6915571F1DD90E008911A6 /* MainHomeVC.h */,
 				CE6915581F1DD90E008911A6 /* MainHomeVC.m */,
 				CE6915591F1DD90E008911A6 /* MainHomeVC.xib */,
+				CEAAC2D020C8267D009DCC5E /* MainCellLayout.h */,
+				CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */,
+				CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */,
 			);
 			path = MainHomeVC;
 			sourceTree = "<group>";
@@ -3096,6 +3104,7 @@
 				CE88FC5520A998CE0011B729 /* VehicleAlarmInfoVC.xib in Resources */,
 				CE8EE8651F66356000CC64B0 /* PoliceCommandVC.xib in Resources */,
 				CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */,
+				CEAAC2D720C82AFE009DCC5E /* MainCellBgView.xib in Resources */,
 				CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */,
 				CE5C38F91F28606B0055C945 /* ZLPhotoBrowser.bundle in Resources */,
 				CE5C38F31F28606B0055C945 /* defaultphoto.png in Resources */,
@@ -3466,6 +3475,7 @@
 				CE864F3A20089CE5007B20FE /* NSBundle+PGDatePicker.m in Sources */,
 				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
 				CE42B9471F1F4D13005CC5BD /* PartyModel.m in Sources */,
+				CEAAC2D220C8267D009DCC5E /* MainCellLayout.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,

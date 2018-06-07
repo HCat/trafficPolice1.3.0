@@ -13,6 +13,7 @@
 @interface WebSocketHelper : NSObject
 
 @property(nonatomic,strong) SRWebSocket *webSocket;
+@property(nonatomic,assign) BOOL isOpen;
 
 LRSingletonH(Default)
 

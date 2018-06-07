@@ -43,6 +43,10 @@
     self.btn_visitor.hidden = YES;
     [self judgeNeedShowVisitor];
     
+    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showVisitor)];
+    tapGesture.numberOfTapsRequired = 15;
+    [self.view addGestureRecognizer:tapGesture];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -72,6 +76,11 @@
         strongSelf.btn_visitor.hidden = YES;
     }];
     
+}
+
+- (void)showVisitor{
+    
+    self.btn_visitor.hidden = NO;
 }
 
 #pragma mark - buttonAction 

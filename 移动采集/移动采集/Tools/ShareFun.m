@@ -493,7 +493,9 @@
     t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
     t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOGINOUT);
     NSString *json_string = t_socketModel.modelToJSONString;
-    [[WebSocketHelper sharedDefault].webSocket send:json_string];
+    if ([WebSocketHelper sharedDefault].isOpen) {
+        [[WebSocketHelper sharedDefault].webSocket send:json_string];
+    }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[WebSocketHelper sharedDefault] closeServer];

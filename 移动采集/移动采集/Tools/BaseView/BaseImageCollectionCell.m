@@ -52,6 +52,7 @@
     if (!_lb_title) {
         _lb_title = [UILabel new];
         _lb_title.textAlignment = NSTextAlignmentCenter;
+        _lb_title.textColor = DefaultTextColor;
         _lb_title.font = [UIFont systemFontOfSize:14.f];
         [self.contentView addSubview:_lb_title];
         [_lb_title configureForAutoLayout];

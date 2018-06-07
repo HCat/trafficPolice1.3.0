@@ -267,7 +267,7 @@
 }
 
 - (NSString *)tabTitle{
-    return NSLocalizedString(@"消息", nil);
+    return NSLocalizedString(@"报警", nil);
 }
 
 -(BOOL)showMask{

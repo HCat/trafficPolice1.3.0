@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="collectionView" destination="UdD-HQ-KKp" id="yen-w6-Xz1"/>
                 <outlet property="collectionViewFlowLayout" destination="4Uo-gT-7bE" id="x7Y-Gq-Q7d"/>
+                <outlet property="lb_departmentName" destination="p4C-e4-mvJ" id="TLg-Ed-kLZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,17 +31,30 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qg-yL-1bc">
+                            <rect key="frame" x="327" y="22" width="48" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="GEh-em-q3e"/>
+                                <constraint firstAttribute="height" constant="42" id="cCi-e6-iv1"/>
+                            </constraints>
+                            <state key="normal" image="menu_signIn"/>
+                            <connections>
+                                <action selector="handleBtnSignInClicked:" destination="-1" eventType="touchUpInside" id="WiN-Ky-bVL"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="5Qg-yL-1bc" secondAttribute="bottom" id="4ZG-lt-ang"/>
                         <constraint firstItem="p4C-e4-mvJ" firstAttribute="top" secondItem="l13-dc-bfy" secondAttribute="top" constant="32" id="7Ix-hg-PtQ"/>
+                        <constraint firstAttribute="trailing" secondItem="5Qg-yL-1bc" secondAttribute="trailing" id="Jkp-KY-X8y"/>
                         <constraint firstItem="p4C-e4-mvJ" firstAttribute="leading" secondItem="l13-dc-bfy" secondAttribute="leading" constant="15" id="a4X-8f-1eM"/>
                         <constraint firstAttribute="height" constant="64" id="svC-tb-wBt"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UdD-HQ-KKp">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Uo-gT-7bE">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,4 +79,7 @@
             <point key="canvasLocation" x="25.5" y="50.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="menu_signIn" width="23" height="24"/>
+    </resources>
 </document>
