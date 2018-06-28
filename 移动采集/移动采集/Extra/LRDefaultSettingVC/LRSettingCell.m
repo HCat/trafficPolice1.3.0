@@ -10,16 +10,16 @@
 #import <PureLayout.h>
 
 //功能图片到左边界的距离
-#define XBFuncImgToLeftGap 15
+#define XBFuncImgToLeftGap 21
 
 //功能名称字体
-#define XBFuncLabelFont 14
+#define XBFuncLabelFont 15
 
 //功能名称到功能图片的距离,当功能图片funcImg不存在时,等于到左边界的距离
-#define XBFuncLabelToFuncImgGap 12
+#define XBFuncLabelToFuncImgGap 18
 
 //指示箭头或开关到右边界的距离
-#define XBIndicatorToRightGap 15
+#define XBIndicatorToRightGap 20
 
 //详情文字字体
 #define XBDetailLabelFont 12
@@ -177,7 +177,7 @@
 {
     self.funcNameLabel = [[UILabel alloc]init];
     self.funcNameLabel.text = self.item.funcName;
-    self.funcNameLabel.textColor = UIColorFromRGB(0x444444);
+    self.funcNameLabel.textColor = DefaultTextColor;
     self.funcNameLabel.font = [UIFont systemFontOfSize:XBFuncLabelFont];
     [self.contentView addSubview:self.funcNameLabel];
     [self.funcNameLabel configureForAutoLayout];

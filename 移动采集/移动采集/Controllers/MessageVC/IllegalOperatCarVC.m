@@ -13,16 +13,23 @@
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
 #import "SRAlertView.h"
+#import "IllegalCarView.h"
+#import "BottomView.h"
 
 @interface IllegalOperatCarVC ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgV_type;
 @property (weak, nonatomic) IBOutlet UILabel *lb_deviceNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_carNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
-@property (weak, nonatomic) IBOutlet UILabel *lb_service;
 @property (weak, nonatomic) IBOutlet UILabel *lb_address;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_car;
-@property (weak, nonatomic) IBOutlet UIView *v_bottom;
+
+@property (weak, nonatomic) IBOutlet UIView *v_message;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_handle;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_image_height;
 
 @property (nonatomic,strong)  IllOperationCarDetail *illCarDetail;
@@ -33,8 +40,17 @@
 @implementation IllegalOperatCarVC
 
 - (void)viewDidLoad {
-    self.title = @"非法运营车辆";
     [super viewDidLoad];
+    self.title = @"非法运营车辆";
+    [_imgV_type setImage:[UIImage imageNamed:@"img_message_illegalCar"]];
+    
+    _btn_handle.hidden = YES;
+    _v_message.layer.cornerRadius = 5.f;
+    _v_message.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
+    _v_message.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
+    _v_message.layer.shadowOpacity = 0.3;//不透明度
+    _v_message.layer.shadowRadius = 5.0;//半径
+    
     [self makeSureRequest];
     [self illegalCarDetailRequest:_model.msgId];
 }
@@ -56,7 +72,7 @@
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.model.flag = @1;
                
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:_model.source];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:strongSelf.model.source];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -66,6 +82,39 @@
     }
     
 }
+
+#pragma mark - 请求处理结果
+
+- (IBAction)handleBtnManageClicked:(id)sender {
+    
+    
+    WS(weakSelf);
+    //调用身份证和驾驶证模态视图
+    IllegalCarView *t_view = [IllegalCarView initCustomView];
+    [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 103)];
+    t_view.superviseBlock = ^(){
+        LxPrintf(@"待监管点击");
+        SW(strongSelf, weakSelf);
+        [strongSelf handleBtnSuperviseClicked:nil];
+       
+        
+        [BottomView dismissWindow];
+        
+    };
+    t_view.exemptCarBlock = ^(){
+        
+        LxPrintf(@"豁免该人");
+        SW(strongSelf, weakSelf);
+        [strongSelf handleBtnExemptCarClicked:nil];
+        
+        [BottomView dismissWindow];
+        
+    };
+    [BottomView showWindowWithBottomView:t_view];
+    
+}
+
+
 
 #pragma mark - 请求非法营运车辆详情
 
@@ -86,7 +135,6 @@
             strongSelf.lb_carNumber.text = strongSelf.illCarDetail.carno ;
             strongSelf.lb_deviceNumber.text = strongSelf.illCarDetail.devno;
             strongSelf.lb_time.text =strongSelf.illCarDetail.createTime;
-            
             strongSelf.lb_address.text = strongSelf.illCarDetail.address;
             
             strongSelf.illCarDetail.originalPic = [strongSelf.illCarDetail.originalPic stringByReplacingOccurrencesOfString:@" "withString:@""];
@@ -96,13 +144,14 @@
                                          forHTTPHeaderField:@"Accept"];
             [strongSelf.imageV_car sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                 strongSelf.layout_image_height.constant = image.size.height/2;
+                strongSelf.imageV_car.contentMode = UIViewContentModeScaleToFill;
                 [strongSelf.view layoutIfNeeded];
                 
                 
                 
             }];
             
-            strongSelf.v_bottom.hidden = [strongSelf.illCarDetail.isExempt isEqualToNumber:@1] ? YES : NO;
+            strongSelf.btn_handle.hidden = [strongSelf.illCarDetail.isExempt isEqualToNumber:@1] ? YES : NO;
             
         }
     
@@ -111,6 +160,9 @@
     }];
 
 }
+
+
+
 
 #pragma mark - buttonMethods
 
@@ -130,15 +182,15 @@
                                                            SW(strongSelf, weakSelf);
                                                            
                                                            IllOperationBeSupervisedManger *manger = [[IllOperationBeSupervisedManger alloc] init];
-                                                           manger.carno = _illCarDetail.carno;
+                                                           manger.carno = strongSelf.illCarDetail.carno;
                                                            [manger configLoadingTitle:@"请求中..."];
                                                            manger.successMessage = @"监管成功";
                                                            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                                                                
                                                                if (manger.responseModel.code == CODE_SUCCESS) {
-                                                                   strongSelf.v_bottom.hidden = YES;
+                                                                   strongSelf.btn_handle.hidden = YES;
                                                                    
-                                                                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
+                                                                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:strongSelf.model.source];
                                                                    
                                                                    [strongSelf.navigationController popViewControllerAnimated:YES];
                                                                }
@@ -172,15 +224,15 @@
                                                            
                                                            IllOperationExemptCarnoManger *manger = [[IllOperationExemptCarnoManger alloc] init];
                                                            
-                                                           manger.carno = _illCarDetail.carno;
+                                                           manger.carno = strongSelf.illCarDetail.carno;
                                                            [manger configLoadingTitle:@"请求中..."];
                                                            manger.successMessage = @"豁免成功";
                                                            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                                                             
                                                                if (manger.responseModel.code == CODE_SUCCESS) {
-                                                                   strongSelf.v_bottom.hidden = YES;
+                                                                   strongSelf.btn_handle.hidden = YES;
                                                                    
-                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
+                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:strongSelf.model.source];
                                                                    
                                                                    [strongSelf.navigationController popViewControllerAnimated:YES];
                                                                }

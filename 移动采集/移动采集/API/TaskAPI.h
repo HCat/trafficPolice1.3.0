@@ -49,6 +49,34 @@
 
 @end
 
+#pragma mark - 根据类型选择任务
+
+@interface TaskGetTypeListParam : NSObject
+
+@property (nonatomic,assign) NSInteger  start;   //开始的索引号 从0开始
+@property (nonatomic,assign) NSInteger  length;  //显示的记录数 默认为10
+@property (nonatomic,assign) NSInteger  taskStatus;  //任务状态  0未开始，1进行中，2已完成，3已取消
+@end
+
+
+@interface TaskGetTypeListReponse : NSObject
+
+@property (nonatomic,copy) NSArray < TaskModel *> * list;    //包含IllegalParkListModel对象
+@property (nonatomic,assign) NSInteger total;                           //总数
+
+@end
+
+
+@interface TaskGetTypeListManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) TaskGetTypeListParam * param;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) TaskGetTypeListReponse * taskGetTypeListReponse;
+
+@end
+
 #pragma mark - 任务详情
 
 @interface TaskDetailManger:LRBaseRequest

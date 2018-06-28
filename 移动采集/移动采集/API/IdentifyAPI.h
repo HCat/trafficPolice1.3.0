@@ -39,6 +39,36 @@
 @end
 
 
+#pragma mark - 根据tpye请求消息列表
+
+
+@interface IdentifyMsgListWithTypeParam : NSObject
+
+@property (nonatomic,assign) NSInteger start;   //开始的索引号 从0开始
+@property (nonatomic,assign) NSInteger length;  //显示的记录数 默认为10
+@property (nonatomic,assign) NSInteger type;    //消息类型请求消息列表
+@end
+
+
+@interface IdentifyMsgListWithTypeReponse : NSObject
+
+@property (nonatomic,copy)   NSArray < IdentifyModel *> * list;   //包含IdentifyModel对象
+@property (nonatomic,assign) NSInteger total;                     //总数
+
+@end
+
+
+@interface IdentifyMsgListWithTypeManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) IdentifyMsgListWithTypeParam * param;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) IdentifyMsgListWithTypeReponse * identifyMsgListReponse;
+
+@end
+
+
 #pragma mark - 确认接收消息
 
 @interface IdentifySetMsgReadManger : LRBaseRequest

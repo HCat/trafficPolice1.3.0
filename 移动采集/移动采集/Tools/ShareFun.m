@@ -736,5 +736,12 @@
     
 }
 
+#pragma mark - 获取随机数
+
++(int)getRandomNumber:(int)from to:(int)to{
+    
+    return (int)(from + (arc4random() % (to - from + 1)));
+}
+
 
 @end

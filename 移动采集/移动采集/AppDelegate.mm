@@ -17,9 +17,9 @@
 
 
 #import "LoginHomeVC.h"
-#import "MainHomeVC.h"
-#import "ListHomeVC.h"
 #import "AddressBookHomeVC.h"
+#import "ScheduleVC.h"
+#import "MainHomeVC.h"
 #import "MessageHomeVC.h"
 #import "UserHomeVC.h"
 
@@ -163,8 +163,8 @@
         MainHomeVC *t_vc_main = [MainHomeVC new];
         UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];
         
-        ListHomeVC *t_vc_list = [ListHomeVC new];
-        UINavigationController *t_nav_list = [[UINavigationController alloc] initWithRootViewController:t_vc_list];
+        ScheduleVC *t_vc_schedule = [ScheduleVC new];
+        UINavigationController *t_nav_schedule = [[UINavigationController alloc] initWithRootViewController:t_vc_schedule];
         
         AddressBookHomeVC *t_vc_addressBook = [AddressBookHomeVC new];
         UINavigationController *t_nav_addressBook = [[UINavigationController alloc] initWithRootViewController:t_vc_addressBook];
@@ -175,7 +175,7 @@
         UserHomeVC *t_vc_user = [UserHomeVC new];
         UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
         
-        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_list,t_nav_addressBook,t_nav_message,t_nav_user]mutableCopy]];
+        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_schedule,t_nav_addressBook,t_nav_message,t_nav_user]mutableCopy]];
         
     }
     

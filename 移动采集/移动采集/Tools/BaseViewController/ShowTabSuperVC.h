@@ -14,7 +14,5 @@
  */
 @interface ShowTabSuperVC : BaseViewController
 
-@property (nonatomic,assign) BOOL isNeedShowLocation;
-
 
 @end

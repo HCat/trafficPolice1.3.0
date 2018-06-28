@@ -205,7 +205,12 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         cell.imageView.contentMode = UIViewContentModeCenter;
         cell.layer.cornerRadius = 0.0f;
         cell.lb_title.textColor = DefaultTextColor;
-        cell.layout_imageWithLb.constant = -20;
+        if (SCREEN_WIDTH > 320) {
+            cell.layout_imageWithLb.constant = -15;
+        }else{
+            cell.layout_imageWithLb.constant = -10;
+        }
+        
         [cell layoutIfNeeded];
         
         NSDictionary *t_dic = [t_arr objectAtIndex:indexPath.row];
@@ -372,7 +377,12 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     float width=(ScreenWidth - 30 -3.1f)/4.f;
-    return CGSizeMake(width, width+10);
+    if (SCREEN_WIDTH > 320) {
+        return CGSizeMake(width, width+10);
+    }else{
+        return CGSizeMake(width, width+20);
+    }
+    
 }
 
 // 装载内容 cell 的内边距

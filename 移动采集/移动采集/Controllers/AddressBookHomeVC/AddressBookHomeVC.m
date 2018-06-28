@@ -11,7 +11,6 @@
 #import <MJRefresh.h>
 #import "AddressBookAPI.h"
 #import "UITableView+Lr_Placeholder.h"
-#import "UINavigationBar+BarItem.h"
 #import "AddressBookCell.h"
 #import "NetWorkHelper.h"
 
@@ -35,15 +34,6 @@
 
 @implementation AddressBookHomeVC
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.isNeedShowLocation = YES;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通讯录";
@@ -52,8 +42,6 @@
     
     _tableView.isNeedPlaceholderView = YES;
     _tableView.firstReload = YES;
-    
-    [self showRightBarButtonItemWithImage:@"btn_adressBook_search" target:self action:@selector(handleBtnSearchClicked:)];
     
     [_tableView registerNib:[UINib nibWithNibName:@"AddressBookCell" bundle:nil] forCellReuseIdentifier:@"AddressBookCellID"];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -68,16 +56,12 @@
     _tf_search.leftViewMode = UITextFieldViewModeAlways;
     [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
     
-    _v_top_search.layer.shadowColor = UIColorFromRGB(0x444444).CGColor;//shadowColor阴影颜色
-    _v_top_search.layer.shadowOffset = CGSizeMake(0,3);
-    _v_top_search.layer.shadowOpacity = 0.3;
-    _v_top_search.layer.shadowRadius = 3;
-    
-    
     [self creatLGIndexView];
     [self requestForAddressBook];
     
     [self initRefresh];
+    
+    
     
     [_tableView.mj_header beginRefreshing];
     
@@ -165,9 +149,10 @@
         _v_index = [[LGUIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 0, 20, self.view.bounds.size.height) indexArray:_arr_index];
         _v_index.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_v_index];
-        
+        WS(weakSelf);
         [_v_index selectIndexBlock:^(NSInteger section){
-             [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]
+            SW(strongSelf, weakSelf);
+             [strongSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]
                                      animated:NO
                                scrollPosition:UITableViewScrollPositionTop];
          }];
@@ -195,7 +180,7 @@
 
 - (IBAction)handleBtnSearchClicked:(id)sender{
     self.v_search.hidden = NO;
-    
+    [self.view bringSubviewToFront:_v_search];
 }
 
 - (IBAction)handleBtnCancelClicked:(id)sender {
@@ -303,7 +288,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (tableView == _tableView) {
-        return 30;
+        return 25;
     }else{
         return 0;
     }

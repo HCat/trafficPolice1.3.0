@@ -55,7 +55,7 @@
 
 - (IBAction)handleBtnPhoneClicked:(id)sender {
     
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_model.telNum];
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel://%@",_model.telNum];
     //            NSLog(@"str======%@",str);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     

@@ -97,4 +97,8 @@
 //弹出tip信息框
 + (void)showTipLable:(NSString *)tip;
 
+//获取随机数
+
++(int)getRandomNumber:(int)from to:(int)to;
+
 @end

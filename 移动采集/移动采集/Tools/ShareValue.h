@@ -33,6 +33,18 @@ typedef NS_ENUM(NSUInteger, ParkType) {
     ParkTypeThrough = 2333          //闯禁令
 };
 
+typedef NS_ENUM(NSUInteger, MessageType) {
+    MessageTypeAll = 0,         //全部
+    MessageTypeCar = 1,         //识别车牌通知
+    MessageTypeAccident = 2,    //出警推送消息
+    MessageTypePolice = 3,      //警务消息(指挥中心)
+    MessageTypeIllegalCar = 4,  //非法营运车辆通知
+    MessageTypeTask   = 101,    //101任务通知
+    MessageTypeWatch  = 100,    //100排班通知
+   
+};
+
+
 @interface ShareValue : NSObject
 
 LRSingletonH(Default)

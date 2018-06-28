@@ -59,7 +59,8 @@
 - (void)makeDefaultNetAvailableView{
     
     LRPlaceholderView *placeholderView = [[LRPlaceholderView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    placeholderView.isNetvailable = self.isNetAvailable;
+    placeholderView.img_netVailable = [UIImage imageNamed:@"icon_tablePlaceholder_error"];
+    placeholderView.isNetvailable = YES;
 
     __weak typeof(self) weakSelf = self;
     [placeholderView setReloadClickBlock:^{
@@ -76,6 +77,7 @@
 - (void)makeDefaultPlaceholderView{
     
     LRPlaceholderView *placeholderView = [[LRPlaceholderView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    placeholderView.img_dataNull = [UIImage imageNamed:@"icon_tablePlaceholder_null"];
     placeholderView.isNetvailable = self.isNetAvailable;
     placeholderView.str_placeholder = self.str_placeholder;
     

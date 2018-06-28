@@ -245,8 +245,11 @@
         config(hud);
     }
     
-    hud.hud.margin =  30;
-    hud.hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+    hud.hud.margin = 30.0f;
+    hud.hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    
+//    hud.hud.margin =  30;
+//    hud.hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
     
     return hud;
 }

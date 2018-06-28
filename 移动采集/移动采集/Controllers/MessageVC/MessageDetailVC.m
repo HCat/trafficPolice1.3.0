@@ -18,14 +18,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_content;
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_makesure;
+@property (weak, nonatomic) IBOutlet UIImageView *imgV_message;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *btn_complete;
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_btnAndVContent;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_btnBottom;
 
 
 @end
@@ -35,19 +34,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _btn_makesure.hidden = YES;
-    
     _lb_time.text = [ShareFun timeWithTimeInterval:_model.createTime];
     _lb_content.text = _model.content;
     
     if ([_model.type isEqualToNumber:@1]) {
         self.title = @"特殊车辆通知";
+         [_imgV_message setImage:[UIImage imageNamed:@"img_message_specialCar"]];
         
         _btn_complete.hidden = YES;
-        _v_content.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
-        _v_content.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
-        _v_content.layer.shadowOpacity = 0.5;//不透明度
-        _v_content.layer.shadowRadius = 10.0;//半径
+//        _v_content.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
+//        _v_content.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
+//        _v_content.layer.shadowOpacity = 0.5;//不透明度
+//        _v_content.layer.shadowRadius = 10.0;//半径
     
         self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
         _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -77,8 +75,8 @@
         
         
     }else if ([_model.type isEqualToNumber:@2]){
-        self.title = @"出警任务";
-    
+        self.title = @"事故报警";
+        [_imgV_message setImage:[UIImage imageNamed:@"img_message_accident"]];
         if ([_model.flag isEqualToNumber:@0]) {
             _btn_complete.hidden = YES;
         }else{
@@ -93,17 +91,17 @@
     }else if ([_model.type isEqualToNumber:@3]){
         
         self.title = @"警务消息";
+        [_imgV_message setImage:[UIImage imageNamed:@"img_message_police"]];
         _btn_complete.hidden = YES;
     
     }else if ([_model.type isEqualToNumber:@100] || [_model.type isEqualToNumber:@101]){
         
         self.title = @"系统消息";
+        [_imgV_message setImage:[UIImage imageNamed:@"img_message_system"]];
         _btn_complete.hidden = YES;
 
     }
     
-    _layout_btnAndVContent.priority = UILayoutPriorityDefaultLow;
-    [self.view layoutIfNeeded];
     
     [self handleBtnMakeSureClicked:nil];
 }
@@ -130,7 +128,7 @@
                     strongSelf.btn_complete.hidden = YES;
                 }
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:_model.source];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:strongSelf.model.source];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -150,7 +148,7 @@
         
         IdentifyFinishPoliceCallManger *manger = [[IdentifyFinishPoliceCallManger alloc] init];
         manger.msgId = _model.msgId;
-        [manger configLoadingTitle:@"请求"];
+        [manger configLoadingTitle:@"接警"];
         
         WS(weakSelf);
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -161,7 +159,7 @@
                 strongSelf.model.state = @1;
                 strongSelf.btn_complete.hidden = YES;
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:_model.source];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:strongSelf.model.source];
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {

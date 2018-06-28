@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ils-zX-gb8" customClass="IllegalCarView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-q2-M1Y">
+                    <rect key="frame" x="0.0" y="54" width="375" height="49"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idQ-yN-Lv6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="豁免该车">
+                                <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnExemptCarClick:" destination="Ils-zX-gb8" eventType="touchUpInside" id="Rfi-8n-dIh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="idQ-yN-Lv6" firstAttribute="top" secondItem="Fxx-q2-M1Y" secondAttribute="top" id="02i-QV-h21"/>
+                        <constraint firstAttribute="height" constant="49" id="0pU-AE-2qU"/>
+                        <constraint firstItem="idQ-yN-Lv6" firstAttribute="leading" secondItem="Fxx-q2-M1Y" secondAttribute="leading" id="0yJ-eC-0j8"/>
+                        <constraint firstAttribute="bottom" secondItem="idQ-yN-Lv6" secondAttribute="bottom" id="Icl-Og-Yur"/>
+                        <constraint firstAttribute="trailing" secondItem="idQ-yN-Lv6" secondAttribute="trailing" id="eHS-kB-Yys"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXK-Iy-vDx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxS-oq-bre">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="待监管">
+                                <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnSuperviseClick:" destination="Ils-zX-gb8" eventType="touchUpInside" id="96u-Ed-y6G"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="PxS-oq-bre" secondAttribute="trailing" id="0vf-su-07S"/>
+                        <constraint firstAttribute="height" constant="49" id="56X-pt-0gk"/>
+                        <constraint firstItem="PxS-oq-bre" firstAttribute="leading" secondItem="ZXK-Iy-vDx" secondAttribute="leading" id="LPp-bI-xtz"/>
+                        <constraint firstAttribute="bottom" secondItem="PxS-oq-bre" secondAttribute="bottom" id="mdb-8g-Irm"/>
+                        <constraint firstItem="PxS-oq-bre" firstAttribute="top" secondItem="ZXK-Iy-vDx" secondAttribute="top" id="oiH-V3-Q80"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Fxx-q2-M1Y" secondAttribute="bottom" id="DIz-ce-juO"/>
+                <constraint firstItem="idQ-yN-Lv6" firstAttribute="top" secondItem="PxS-oq-bre" secondAttribute="bottom" constant="5" id="bye-wb-bOO"/>
+                <constraint firstItem="ZXK-Iy-vDx" firstAttribute="leading" secondItem="Ils-zX-gb8" secondAttribute="leading" id="cwC-v8-Jfq"/>
+                <constraint firstItem="Fxx-q2-M1Y" firstAttribute="leading" secondItem="Ils-zX-gb8" secondAttribute="leading" id="gIU-hi-vOF"/>
+                <constraint firstAttribute="trailing" secondItem="ZXK-Iy-vDx" secondAttribute="trailing" id="izJ-pW-Kju"/>
+                <constraint firstAttribute="trailing" secondItem="Fxx-q2-M1Y" secondAttribute="trailing" id="wfE-bP-PGI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="25.5" y="-215"/>
+        </view>
+    </objects>
+</document>

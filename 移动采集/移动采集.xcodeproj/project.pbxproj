@@ -24,8 +24,12 @@
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
+		CE12794B20E109A500ED9948 /* IllegalCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12794A20E109A500ED9948 /* IllegalCarView.m */; };
+		CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12794C20E109B100ED9948 /* IllegalCarView.xib */; };
 		CE12F8B61F693B7000C1992B /* PoliceLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12F8B41F693B7000C1992B /* PoliceLocationCell.m */; };
 		CE12F8B71F693B7000C1992B /* PoliceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12F8B51F693B7000C1992B /* PoliceLocationCell.xib */; };
+		CE175B8120E48650009E2282 /* MakePhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE175B8020E48650009E2282 /* MakePhoneView.m */; };
+		CE175B8320E4865C009E2282 /* MakePhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE175B8220E4865C009E2282 /* MakePhoneView.xib */; };
 		CE188E432015E9ED008418B9 /* JointPenaltiesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE188E412015E9ED008418B9 /* JointPenaltiesVC.m */; };
 		CE188E442015E9ED008418B9 /* JointPenaltiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE188E422015E9ED008418B9 /* JointPenaltiesVC.xib */; };
 		CE188E482015EA0C008418B9 /* JointPenaltiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE188E462015EA0C008418B9 /* JointPenaltiesCell.m */; };
@@ -39,6 +43,8 @@
 		CE2607D3207CB60A00EFB1A0 /* PoliceCarDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2607D2207CB60A00EFB1A0 /* PoliceCarDetailView.xib */; };
 		CE270E1120BF923D00746AC6 /* VehicleTrafficPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE270E0F20BF923D00746AC6 /* VehicleTrafficPlaceCell.m */; };
 		CE270E1220BF923D00746AC6 /* VehicleTrafficPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE270E1020BF923D00746AC6 /* VehicleTrafficPlaceCell.xib */; };
+		CE27A9FB20CA2D9E00AA922D /* ScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */; };
+		CE27A9FC20CA2D9E00AA922D /* ScheduleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */; };
 		CE2AF8801FD68B59005B643E /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */; };
 		CE2AF8811FD68B59005B643E /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */; };
 		CE2AF8821FD68B59005B643E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87B1FD68B58005B643E /* UITableView+FDTemplateLayoutCellDebug.m */; };
@@ -123,8 +129,6 @@
 		CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */; };
 		CE48DE57200C7F6F00AF6958 /* JointImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48DE55200C7F6F00AF6958 /* JointImageVC.m */; };
 		CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */; };
-		CE490E171F9ED62100E90FF2 /* UserRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE490E151F9ED62100E90FF2 /* UserRecordVC.m */; };
-		CE490E181F9ED62100E90FF2 /* UserRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */; };
 		CE490E1C1F9EE1A500E90FF2 /* UserWatchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */; };
 		CE490E1D1F9EE1A500E90FF2 /* UserWatchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE490E1B1F9EE1A500E90FF2 /* UserWatchVC.xib */; };
 		CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */; };
@@ -155,6 +159,9 @@
 		CE538E0320AD230C006B3E44 /* VehicleUpImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE538E0120AD230C006B3E44 /* VehicleUpImageCell.m */; };
 		CE538E0420AD230C006B3E44 /* VehicleUpImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE538E0220AD230C006B3E44 /* VehicleUpImageCell.xib */; };
 		CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */; };
+		CE54C22520D210A900BE2693 /* NSArray+PureLayoutMore.m in Sources */ = {isa = PBXBuildFile; fileRef = CE54C22420D210A900BE2693 /* NSArray+PureLayoutMore.m */; };
+		CE54C22920D2A28200BE2693 /* DutyHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE54C22720D2A28200BE2693 /* DutyHeaderCell.m */; };
+		CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE54C22820D2A28200BE2693 /* DutyHeaderCell.xib */; };
 		CE553FF920B564A700DF3C0B /* VehicleSpeedAlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553FF720B564A700DF3C0B /* VehicleSpeedAlarmCell.m */; };
 		CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE553FF820B564A700DF3C0B /* VehicleSpeedAlarmCell.xib */; };
 		CE553FFE20B56FDA00DF3C0B /* VehicleSpeedAlarmListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE553FFC20B56FDA00DF3C0B /* VehicleSpeedAlarmListVC.m */; };
@@ -230,7 +237,6 @@
 		CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C39221F2881BD0055C945 /* btn_unselected@3x.png */; };
 		CE5C3BB71F57B0F2007A7EDD /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BB51F57B0F2007A7EDD /* MessageCell.m */; };
 		CE5C3BB81F57B0F2007A7EDD /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C3BB61F57B0F2007A7EDD /* MessageCell.xib */; };
-		CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */; };
 		CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */; };
 		CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */; };
 		CE5C6EF41FB0339A005E53BF /* UserNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6EF21FB0339A005E53BF /* UserNullCell.m */; };
@@ -312,6 +318,8 @@
 		CE6D0A9620B6DD7E00B45EAD /* VehicleCarAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D0A9520B6DD7E00B45EAD /* VehicleCarAnnotationView.m */; };
 		CE6D2DA41F6AF81400293753 /* PoliceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */; };
 		CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */; };
+		CE6DC22120D3A757001FC1EB /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6DC21F20D3A757001FC1EB /* TaskCell.m */; };
+		CE6DC22220D3A757001FC1EB /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6DC22020D3A757001FC1EB /* TaskCell.xib */; };
 		CE71424E20B29F1E00F9FCC2 /* VehicleUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71424C20B29F1E00F9FCC2 /* VehicleUpCell.m */; };
 		CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE71424D20B29F1E00F9FCC2 /* VehicleUpCell.xib */; };
 		CE71425620B2EDBC00F9FCC2 /* VehicleAreaAlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71425420B2EDBC00F9FCC2 /* VehicleAreaAlarmCell.m */; };
@@ -365,6 +373,15 @@
 		CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4020089D53007B20FE /* PGPickerColumnView.m */; };
 		CE864F4920089D53007B20FE /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4520089D53007B20FE /* PGPickerView.m */; };
 		CE864F4A20089D53007B20FE /* PGPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F4620089D53007B20FE /* PGPickerTableView.m */; };
+		CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87041D20CE52B700E206AE /* LTSCalendarDayItem.m */; };
+		CE87043320CE52B700E206AE /* LTSCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87041F20CE52B700E206AE /* LTSCalendarManager.m */; };
+		CE87043420CE52B700E206AE /* LTSCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042120CE52B700E206AE /* LTSCircleView.m */; };
+		CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042220CE52B700E206AE /* LTSCalendarAppearance.m */; };
+		CE87043620CE52B700E206AE /* LTSCalendarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042520CE52B700E206AE /* LTSCalendarContentView.m */; };
+		CE87043820CE52B700E206AE /* LTSCalendarCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042720CE52B700E206AE /* LTSCalendarCollectionCell.m */; };
+		CE87043920CE52B700E206AE /* LTSCalendarScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042B20CE52B700E206AE /* LTSCalendarScrollView.m */; };
+		CE87043A20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042E20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m */; };
+		CE87043B20CE52B700E206AE /* LTSCalendarWeekDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87042F20CE52B700E206AE /* LTSCalendarWeekDayView.m */; };
 		CE88FC4420A974DC0011B729 /* VehicleCarMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88FC4220A974DC0011B729 /* VehicleCarMoreVC.m */; };
 		CE88FC4520A974DC0011B729 /* VehicleCarMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88FC4320A974DC0011B729 /* VehicleCarMoreVC.xib */; };
 		CE88FC4A20A998690011B729 /* VehicleTrafficInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88FC4820A998690011B729 /* VehicleTrafficInfoVC.m */; };
@@ -420,6 +437,15 @@
 		CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */; };
 		CEAAC2D220C8267D009DCC5E /* MainCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */; };
 		CEAAC2D720C82AFE009DCC5E /* MainCellBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */; };
+		CECF753320C9505300A4DAC4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752820C9505300A4DAC4 /* PFConfiguration.m */; };
+		CECF753420C9505300A4DAC4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752920C9505300A4DAC4 /* PFNavigationDropdownMenu.m */; };
+		CECF753520C9505300A4DAC4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752A20C9505300A4DAC4 /* PFTableView.m */; };
+		CECF753620C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CECF752F20C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle */; };
+		CECF753720C9505300A4DAC4 /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF753020C9505300A4DAC4 /* PFTableViewCell.m */; };
+		CED5A86520D10B9500953852 /* DutyLeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED5A86320D10B9500953852 /* DutyLeaderCell.m */; };
+		CED5A86620D10B9500953852 /* DutyLeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED5A86420D10B9500953852 /* DutyLeaderCell.xib */; };
+		CED5A86A20D10BB500953852 /* DutyPoliceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED5A86820D10BB500953852 /* DutyPoliceCell.m */; };
+		CED5A86B20D10BB500953852 /* DutyPoliceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED5A86920D10BB500953852 /* DutyPoliceCell.xib */; };
 		CED6EE821F6906FC004FED7B /* PoliceLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE801F6906FC004FED7B /* PoliceLocationVC.m */; };
 		CED6EE831F6906FC004FED7B /* PoliceLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED6EE811F6906FC004FED7B /* PoliceLocationVC.xib */; };
 		CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6EE861F691358004FED7B /* CommonMenuView.m */; };
@@ -514,9 +540,15 @@
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
 		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
+		CE12794920E109A500ED9948 /* IllegalCarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalCarView.h; sourceTree = "<group>"; };
+		CE12794A20E109A500ED9948 /* IllegalCarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalCarView.m; sourceTree = "<group>"; };
+		CE12794C20E109B100ED9948 /* IllegalCarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalCarView.xib; sourceTree = "<group>"; };
 		CE12F8B31F693B7000C1992B /* PoliceLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceLocationCell.h; sourceTree = "<group>"; };
 		CE12F8B41F693B7000C1992B /* PoliceLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceLocationCell.m; sourceTree = "<group>"; };
 		CE12F8B51F693B7000C1992B /* PoliceLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceLocationCell.xib; sourceTree = "<group>"; };
+		CE175B7F20E48650009E2282 /* MakePhoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakePhoneView.h; sourceTree = "<group>"; };
+		CE175B8020E48650009E2282 /* MakePhoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakePhoneView.m; sourceTree = "<group>"; };
+		CE175B8220E4865C009E2282 /* MakePhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakePhoneView.xib; sourceTree = "<group>"; };
 		CE188E402015E9ED008418B9 /* JointPenaltiesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointPenaltiesVC.h; sourceTree = "<group>"; };
 		CE188E412015E9ED008418B9 /* JointPenaltiesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointPenaltiesVC.m; sourceTree = "<group>"; };
 		CE188E422015E9ED008418B9 /* JointPenaltiesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointPenaltiesVC.xib; sourceTree = "<group>"; };
@@ -537,6 +569,9 @@
 		CE270E0E20BF923D00746AC6 /* VehicleTrafficPlaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleTrafficPlaceCell.h; sourceTree = "<group>"; };
 		CE270E0F20BF923D00746AC6 /* VehicleTrafficPlaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleTrafficPlaceCell.m; sourceTree = "<group>"; };
 		CE270E1020BF923D00746AC6 /* VehicleTrafficPlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleTrafficPlaceCell.xib; sourceTree = "<group>"; };
+		CE27A9F820CA2D9E00AA922D /* ScheduleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleVC.h; sourceTree = "<group>"; };
+		CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleVC.m; sourceTree = "<group>"; };
+		CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleVC.xib; sourceTree = "<group>"; };
 		CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		CE2AF8791FD68B57005B643E /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
 		CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
@@ -684,9 +719,6 @@
 		CE48DE54200C7F6F00AF6958 /* JointImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointImageVC.h; sourceTree = "<group>"; };
 		CE48DE55200C7F6F00AF6958 /* JointImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointImageVC.m; sourceTree = "<group>"; };
 		CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointImageVC.xib; sourceTree = "<group>"; };
-		CE490E141F9ED62100E90FF2 /* UserRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRecordVC.h; sourceTree = "<group>"; };
-		CE490E151F9ED62100E90FF2 /* UserRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRecordVC.m; sourceTree = "<group>"; };
-		CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserRecordVC.xib; sourceTree = "<group>"; };
 		CE490E191F9EE1A500E90FF2 /* UserWatchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserWatchVC.h; sourceTree = "<group>"; };
 		CE490E1A1F9EE1A500E90FF2 /* UserWatchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserWatchVC.m; sourceTree = "<group>"; };
 		CE490E1B1F9EE1A500E90FF2 /* UserWatchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserWatchVC.xib; sourceTree = "<group>"; };
@@ -735,6 +767,11 @@
 		CE538E0220AD230C006B3E44 /* VehicleUpImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleUpImageCell.xib; sourceTree = "<group>"; };
 		CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkStatusMonitor.m; sourceTree = "<group>"; };
 		CE53D03A1FBD72FB00445877 /* NetworkStatusMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkStatusMonitor.h; sourceTree = "<group>"; };
+		CE54C22320D210A900BE2693 /* NSArray+PureLayoutMore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayoutMore.h"; sourceTree = "<group>"; };
+		CE54C22420D210A900BE2693 /* NSArray+PureLayoutMore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayoutMore.m"; sourceTree = "<group>"; };
+		CE54C22620D2A28200BE2693 /* DutyHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DutyHeaderCell.h; sourceTree = "<group>"; };
+		CE54C22720D2A28200BE2693 /* DutyHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutyHeaderCell.m; sourceTree = "<group>"; };
+		CE54C22820D2A28200BE2693 /* DutyHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DutyHeaderCell.xib; sourceTree = "<group>"; };
 		CE553FF620B564A700DF3C0B /* VehicleSpeedAlarmCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleSpeedAlarmCell.h; sourceTree = "<group>"; };
 		CE553FF720B564A700DF3C0B /* VehicleSpeedAlarmCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleSpeedAlarmCell.m; sourceTree = "<group>"; };
 		CE553FF820B564A700DF3C0B /* VehicleSpeedAlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleSpeedAlarmCell.xib; sourceTree = "<group>"; };
@@ -849,8 +886,6 @@
 		CE5C3BB41F57B0F2007A7EDD /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		CE5C3BB51F57B0F2007A7EDD /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		CE5C3BB61F57B0F2007A7EDD /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
-		CE5C3BB91F580EDE007A7EDD /* PersistentBackgroundLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentBackgroundLabel.h; sourceTree = "<group>"; };
-		CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentBackgroundLabel.m; sourceTree = "<group>"; };
 		CE5C3BBC1F5812AC007A7EDD /* MessageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailVC.h; sourceTree = "<group>"; };
 		CE5C3BBD1F5812AC007A7EDD /* MessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVC.m; sourceTree = "<group>"; };
 		CE5C3BBE1F5812AC007A7EDD /* MessageDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailVC.xib; sourceTree = "<group>"; };
@@ -985,6 +1020,9 @@
 		CE6D2DA21F6AF81400293753 /* PoliceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceDetailView.h; sourceTree = "<group>"; };
 		CE6D2DA31F6AF81400293753 /* PoliceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceDetailView.m; sourceTree = "<group>"; };
 		CE6D2DA71F6AF83700293753 /* PoliceDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceDetailView.xib; sourceTree = "<group>"; };
+		CE6DC21E20D3A757001FC1EB /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		CE6DC21F20D3A757001FC1EB /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		CE6DC22020D3A757001FC1EB /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		CE71424B20B29F1E00F9FCC2 /* VehicleUpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleUpCell.h; sourceTree = "<group>"; };
 		CE71424C20B29F1E00F9FCC2 /* VehicleUpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleUpCell.m; sourceTree = "<group>"; };
 		CE71424D20B29F1E00F9FCC2 /* VehicleUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleUpCell.xib; sourceTree = "<group>"; };
@@ -1073,6 +1111,25 @@
 		CE864F4420089D53007B20FE /* PGPickerColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnView.h; sourceTree = "<group>"; };
 		CE864F4520089D53007B20FE /* PGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerView.m; sourceTree = "<group>"; };
 		CE864F4620089D53007B20FE /* PGPickerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerTableView.m; sourceTree = "<group>"; };
+		CE87041D20CE52B700E206AE /* LTSCalendarDayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarDayItem.m; sourceTree = "<group>"; };
+		CE87041E20CE52B700E206AE /* LTSCalendarCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarCollectionCell.h; sourceTree = "<group>"; };
+		CE87041F20CE52B700E206AE /* LTSCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarManager.m; sourceTree = "<group>"; };
+		CE87042020CE52B700E206AE /* LTSCalendarScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarScrollView.h; sourceTree = "<group>"; };
+		CE87042120CE52B700E206AE /* LTSCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCircleView.m; sourceTree = "<group>"; };
+		CE87042220CE52B700E206AE /* LTSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarAppearance.m; sourceTree = "<group>"; };
+		CE87042320CE52B700E206AE /* LTSCalendarWeekDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarWeekDayView.h; sourceTree = "<group>"; };
+		CE87042420CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		CE87042520CE52B700E206AE /* LTSCalendarContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarContentView.m; sourceTree = "<group>"; };
+		CE87042720CE52B700E206AE /* LTSCalendarCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarCollectionCell.m; sourceTree = "<group>"; };
+		CE87042820CE52B700E206AE /* LTSCalendarDayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarDayItem.h; sourceTree = "<group>"; };
+		CE87042920CE52B700E206AE /* LTSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarAppearance.h; sourceTree = "<group>"; };
+		CE87042A20CE52B700E206AE /* LTSCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCircleView.h; sourceTree = "<group>"; };
+		CE87042B20CE52B700E206AE /* LTSCalendarScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarScrollView.m; sourceTree = "<group>"; };
+		CE87042C20CE52B700E206AE /* LTSCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarManager.h; sourceTree = "<group>"; };
+		CE87042D20CE52B700E206AE /* LTSCalendarContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarContentView.h; sourceTree = "<group>"; };
+		CE87042E20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		CE87042F20CE52B700E206AE /* LTSCalendarWeekDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSCalendarWeekDayView.m; sourceTree = "<group>"; };
+		CE87043120CE52B700E206AE /* LTSCalendarEventSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSCalendarEventSource.h; sourceTree = "<group>"; };
 		CE88FC4120A974DC0011B729 /* VehicleCarMoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleCarMoreVC.h; sourceTree = "<group>"; };
 		CE88FC4220A974DC0011B729 /* VehicleCarMoreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleCarMoreVC.m; sourceTree = "<group>"; };
 		CE88FC4320A974DC0011B729 /* VehicleCarMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleCarMoreVC.xib; sourceTree = "<group>"; };
@@ -1186,6 +1243,21 @@
 		CEAAC2D020C8267D009DCC5E /* MainCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCellLayout.h; sourceTree = "<group>"; };
 		CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCellLayout.m; sourceTree = "<group>"; };
 		CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCellBgView.xib; sourceTree = "<group>"; };
+		CECF752820C9505300A4DAC4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
+		CECF752920C9505300A4DAC4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
+		CECF752A20C9505300A4DAC4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
+		CECF752B20C9505300A4DAC4 /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
+		CECF752C20C9505300A4DAC4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
+		CECF752D20C9505300A4DAC4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
+		CECF752F20C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PFNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		CECF753020C9505300A4DAC4 /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
+		CECF753120C9505300A4DAC4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
+		CED5A86220D10B9500953852 /* DutyLeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DutyLeaderCell.h; sourceTree = "<group>"; };
+		CED5A86320D10B9500953852 /* DutyLeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutyLeaderCell.m; sourceTree = "<group>"; };
+		CED5A86420D10B9500953852 /* DutyLeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DutyLeaderCell.xib; sourceTree = "<group>"; };
+		CED5A86720D10BB500953852 /* DutyPoliceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DutyPoliceCell.h; sourceTree = "<group>"; };
+		CED5A86820D10BB500953852 /* DutyPoliceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutyPoliceCell.m; sourceTree = "<group>"; };
+		CED5A86920D10BB500953852 /* DutyPoliceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DutyPoliceCell.xib; sourceTree = "<group>"; };
 		CED6EE7F1F6906FC004FED7B /* PoliceLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceLocationVC.h; sourceTree = "<group>"; };
 		CED6EE801F6906FC004FED7B /* PoliceLocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceLocationVC.m; sourceTree = "<group>"; };
 		CED6EE811F6906FC004FED7B /* PoliceLocationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceLocationVC.xib; sourceTree = "<group>"; };
@@ -1398,6 +1470,31 @@
 				CE756AC81F4EBE3A00D08D40 /* FastAccidentProcessVC.xib */,
 			);
 			path = AccidentProcessVC;
+			sourceTree = "<group>";
+		};
+		CE27A9F720CA2D2B00AA922D /* ScheduleVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE27A9F820CA2D9E00AA922D /* ScheduleVC.h */,
+				CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */,
+				CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */,
+				CED5A86220D10B9500953852 /* DutyLeaderCell.h */,
+				CED5A86320D10B9500953852 /* DutyLeaderCell.m */,
+				CED5A86420D10B9500953852 /* DutyLeaderCell.xib */,
+				CED5A86720D10BB500953852 /* DutyPoliceCell.h */,
+				CED5A86820D10BB500953852 /* DutyPoliceCell.m */,
+				CED5A86920D10BB500953852 /* DutyPoliceCell.xib */,
+				CE54C22620D2A28200BE2693 /* DutyHeaderCell.h */,
+				CE54C22720D2A28200BE2693 /* DutyHeaderCell.m */,
+				CE54C22820D2A28200BE2693 /* DutyHeaderCell.xib */,
+				CE6DC21E20D3A757001FC1EB /* TaskCell.h */,
+				CE6DC21F20D3A757001FC1EB /* TaskCell.m */,
+				CE6DC22020D3A757001FC1EB /* TaskCell.xib */,
+				CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */,
+				CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */,
+				CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */,
+			);
+			path = ScheduleVC;
 			sourceTree = "<group>";
 		};
 		CE2AF8841FD68C42005B643E /* FHHFPSIndicator */ = {
@@ -1872,6 +1969,9 @@
 				CE5E20371F32C0AD009D98A6 /* CertificateView.h */,
 				CE5E20381F32C0AD009D98A6 /* CertificateView.m */,
 				CE5E20391F32C0AD009D98A6 /* CertificateView.xib */,
+				CE12794920E109A500ED9948 /* IllegalCarView.h */,
+				CE12794A20E109A500ED9948 /* IllegalCarView.m */,
+				CE12794C20E109B100ED9948 /* IllegalCarView.xib */,
 			);
 			path = BottomView;
 			sourceTree = "<group>";
@@ -1884,6 +1984,9 @@
 				CE5328662057FD3C003D6152 /* IllegalParkAlertView.h */,
 				CE5328672057FD3C003D6152 /* IllegalParkAlertView.m */,
 				CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */,
+				CE175B7F20E48650009E2282 /* MakePhoneView.h */,
+				CE175B8020E48650009E2282 /* MakePhoneView.m */,
+				CE175B8220E4865C009E2282 /* MakePhoneView.xib */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -2069,9 +2172,6 @@
 				CE555F5B1F20568100829124 /* UserSetVC.h */,
 				CE555F5C1F20568100829124 /* UserSetVC.m */,
 				CE555F5D1F20568100829124 /* UserSetVC.xib */,
-				CE490E141F9ED62100E90FF2 /* UserRecordVC.h */,
-				CE490E151F9ED62100E90FF2 /* UserRecordVC.m */,
-				CE490E161F9ED62100E90FF2 /* UserRecordVC.xib */,
 			);
 			path = UserHomeVC;
 			sourceTree = "<group>";
@@ -2307,6 +2407,32 @@
 			path = PGPickerView;
 			sourceTree = "<group>";
 		};
+		CE87041C20CE52B700E206AE /* LTSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				CE87043120CE52B700E206AE /* LTSCalendarEventSource.h */,
+				CE87042920CE52B700E206AE /* LTSCalendarAppearance.h */,
+				CE87042220CE52B700E206AE /* LTSCalendarAppearance.m */,
+				CE87042820CE52B700E206AE /* LTSCalendarDayItem.h */,
+				CE87041D20CE52B700E206AE /* LTSCalendarDayItem.m */,
+				CE87042420CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.h */,
+				CE87042E20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m */,
+				CE87042320CE52B700E206AE /* LTSCalendarWeekDayView.h */,
+				CE87042F20CE52B700E206AE /* LTSCalendarWeekDayView.m */,
+				CE87042D20CE52B700E206AE /* LTSCalendarContentView.h */,
+				CE87042520CE52B700E206AE /* LTSCalendarContentView.m */,
+				CE87041E20CE52B700E206AE /* LTSCalendarCollectionCell.h */,
+				CE87042720CE52B700E206AE /* LTSCalendarCollectionCell.m */,
+				CE87042C20CE52B700E206AE /* LTSCalendarManager.h */,
+				CE87041F20CE52B700E206AE /* LTSCalendarManager.m */,
+				CE87042A20CE52B700E206AE /* LTSCircleView.h */,
+				CE87042120CE52B700E206AE /* LTSCircleView.m */,
+				CE87042020CE52B700E206AE /* LTSCalendarScrollView.h */,
+				CE87042B20CE52B700E206AE /* LTSCalendarScrollView.m */,
+			);
+			path = LTSCalendar;
+			sourceTree = "<group>";
+		};
 		CE88FC3D20A96C120011B729 /* 查车牌 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2472,6 +2598,8 @@
 				CEAA97161F1CF15900741A6F /* CALayer+Additions.m */,
 				CE8C6FC01F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.h */,
 				CE8C6FC11F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m */,
+				CE54C22320D210A900BE2693 /* NSArray+PureLayoutMore.h */,
+				CE54C22420D210A900BE2693 /* NSArray+PureLayoutMore.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2484,8 +2612,6 @@
 				CE42B92A1F1F4AE4005CC5BD /* LRVideoView */,
 				CEAA97391F1CF2AD00741A6F /* LRPlaceholderView.h */,
 				CEAA973A1F1CF2AD00741A6F /* LRPlaceholderView.m */,
-				CE5C3BB91F580EDE007A7EDD /* PersistentBackgroundLabel.h */,
-				CE5C3BBA1F580EDE007A7EDD /* PersistentBackgroundLabel.m */,
 				CED9B0E71F5CFFBC0010E68A /* BorderLabel.h */,
 				CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */,
 			);
@@ -2619,6 +2745,22 @@
 			path = BaseNetwork;
 			sourceTree = "<group>";
 		};
+		CECF752620C9505300A4DAC4 /* PFDropdownView */ = {
+			isa = PBXGroup;
+			children = (
+				CECF752C20C9505300A4DAC4 /* PFNavigationDropdownMenu.h */,
+				CECF752920C9505300A4DAC4 /* PFNavigationDropdownMenu.m */,
+				CECF753120C9505300A4DAC4 /* PFTableView.h */,
+				CECF752A20C9505300A4DAC4 /* PFTableView.m */,
+				CECF752B20C9505300A4DAC4 /* PFTableViewCell.h */,
+				CECF753020C9505300A4DAC4 /* PFTableViewCell.m */,
+				CECF752D20C9505300A4DAC4 /* PFConfiguration.h */,
+				CECF752820C9505300A4DAC4 /* PFConfiguration.m */,
+				CECF752F20C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle */,
+			);
+			path = PFDropdownView;
+			sourceTree = "<group>";
+		};
 		CED6EE841F69134C004FED7B /* PopMenuTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2656,9 +2798,6 @@
 				CEE45BA01FAC490E00BF472F /* UserTaskListVC.h */,
 				CEE45BA11FAC490E00BF472F /* UserTaskListVC.m */,
 				CEE45BA21FAC490E00BF472F /* UserTaskListVC.xib */,
-				CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */,
-				CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */,
-				CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */,
 				CEE45BAA1FAC558F00BF472F /* UserTaskCell.h */,
 				CEE45BAB1FAC558F00BF472F /* UserTaskCell.m */,
 				CEE45BAC1FAC558F00BF472F /* UserTaskCell.xib */,
@@ -2721,8 +2860,9 @@
 		CEE5E9E81F1C819F00AC515C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE59BB3B1F95A5B100E24D3A /* AddressBookHomeVC */,
 				CEE5E9F01F1C872800AC515C /* LoginHomeVC */,
+				CE59BB3B1F95A5B100E24D3A /* AddressBookHomeVC */,
+				CE27A9F720CA2D2B00AA922D /* ScheduleVC */,
 				CE69154A1F1DD47A008911A6 /* MainHomeVC */,
 				CE69154B1F1DD48C008911A6 /* ListHomeVC */,
 				CE69154C1F1DD4A8008911A6 /* MessageVC */,
@@ -2734,6 +2874,8 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE87041C20CE52B700E206AE /* LTSCalendar */,
+				CECF752620C9505300A4DAC4 /* PFDropdownView */,
 				CE44BECC200E0182000357E4 /* DMProgressHUD */,
 				CE864F2120089CD3007B20FE /* PGDatePicker */,
 				CE5C6EF61FB0425E005E53BF /* YXGCD */,
@@ -3006,14 +3148,17 @@
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
 				CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */,
+				CED5A86620D10B9500953852 /* DutyLeaderCell.xib in Resources */,
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
 				CE675F191F38411B006FC15F /* IllegalListVC.xib in Resources */,
+				CE6DC22220D3A757001FC1EB /* TaskCell.xib in Resources */,
 				CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */,
 				CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */,
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
 				CE5C38EA1F28606B0055C945 /* btn_original_circle.png in Resources */,
 				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
+				CE27A9FC20CA2D9E00AA922D /* ScheduleVC.xib in Resources */,
 				CE5C38E81F28606B0055C945 /* btn_circle@2x.png in Resources */,
 				CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */,
 				CE763B0C1FCF9CA200EB0815 /* JointEnforceVC.xib in Resources */,
@@ -3037,6 +3182,7 @@
 				CE6140631F31AD9E0015B8CE /* AccidentAddFootView.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE1B96B51F42E95200A75397 /* AccidentProcessVC.xib in Resources */,
+				CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */,
 				CE65B90220AAFEF300AA97BB /* VehicleUpVC.xib in Resources */,
 				CE57620B20AEB91B00C81289 /* VehicleUpMoreCell.xib in Resources */,
 				CE63DE911FDE7DCF00DA1788 /* IllegalOperatCarVC.xib in Resources */,
@@ -3046,7 +3192,6 @@
 				CE424F421F3AE694005741CA /* AccidentMessageCell.xib in Resources */,
 				CE5C39271F2881BD0055C945 /* btn_unselected@2x.png in Resources */,
 				CE5C38F81F28606B0055C945 /* ZLPhotoActionSheet.xib in Resources */,
-				CE490E181F9ED62100E90FF2 /* UserRecordVC.xib in Resources */,
 				CE6154B41F6789930018DF71 /* GroupPoliceView.xib in Resources */,
 				CE59BB401F95A65800E24D3A /* AddressBookHomeVC.xib in Resources */,
 				CE490E1D1F9EE1A500E90FF2 /* UserWatchVC.xib in Resources */,
@@ -3059,6 +3204,7 @@
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE5C38F61F28606B0055C945 /* ZLCollectionCell.xib in Resources */,
 				CE6AE96D20B65E2C005781DA /* VehicleExpireAlarmVC.xib in Resources */,
+				CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */,
 				CE7348F31F6BC8B700EBDA0A /* CarInfoAddVC.xib in Resources */,
 				CE5C6EF51FB0339A005E53BF /* UserNullCell.xib in Resources */,
 				CE5C38FA1F28606B0055C945 /* ZLPhotoBrowserCell.xib in Resources */,
@@ -3070,6 +3216,7 @@
 				CE5C39231F2881BD0055C945 /* btn_selected.png in Resources */,
 				CE5D39561FA17CF3004DD9D2 /* UserDutyVC.xib in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
+				CE175B8320E4865C009E2282 /* MakePhoneView.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
 				CE675F361F386F07006FC15F /* AccidentCell.xib in Resources */,
 				CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */,
@@ -3111,6 +3258,7 @@
 				CE2C98B41F61C1E9009851F6 /* VehicleDriverCell.xib in Resources */,
 				CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */,
 				CE71426620B2F01D00F9FCC2 /* VehicleExpireAlarmCell.xib in Resources */,
+				CED5A86B20D10BB500953852 /* DutyPoliceCell.xib in Resources */,
 				CE6A2E7F20BD4B7F00EA58DA /* VehicleUpRemarkDetailCell.xib in Resources */,
 				CE5C38EC1F28606B0055C945 /* btn_original_circle@3x.png in Resources */,
 				CE53286A2057FD50003D6152 /* IllegalParkAlertView.xib in Resources */,
@@ -3127,6 +3275,7 @@
 				CE61405E1F3184280015B8CE /* AccidentVC.xib in Resources */,
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
 				CEE45BAE1FAC558F00BF472F /* UserTaskCell.xib in Resources */,
+				CECF753620C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
 				CE675F311F386DAE006FC15F /* AccidentListVC.xib in Resources */,
 				CE2607D3207CB60A00EFB1A0 /* PoliceCarDetailView.xib in Resources */,
@@ -3249,6 +3398,7 @@
 				CE8CDE691F9455F80018044C /* AKTabBarController.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
+				CE54C22920D2A28200BE2693 /* DutyHeaderCell.m in Sources */,
 				CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */,
 				CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */,
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
@@ -3272,12 +3422,14 @@
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
 				CE2AF8831FD68B59005B643E /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
+				CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
 				CE5C6F011FB0425F005E53BF /* GCDQueue.m in Sources */,
+				CE87043920CE52B700E206AE /* LTSCalendarScrollView.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
 				CE61405D1F3184280015B8CE /* AccidentVC.m in Sources */,
@@ -3305,7 +3457,6 @@
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE5C38FF1F28606B0055C945 /* ZLEditViewController.m in Sources */,
 				CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */,
-				CE5C3BBB1F580EDE007A7EDD /* PersistentBackgroundLabel.m in Sources */,
 				CE42B9111F1F45E2005CC5BD /* AccidentModel.m in Sources */,
 				CE5B92FB1F2F120E000008AE /* AccidentAddHeadView.m in Sources */,
 				CED6EE901F691358004FED7B /* UIView+AdjustFrame.m in Sources */,
@@ -3341,6 +3492,7 @@
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
 				CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */,
 				CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */,
+				CECF753720C9505300A4DAC4 /* PFTableViewCell.m in Sources */,
 				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
 				CE7E9F2920BC0FE40018583A /* DriverChooseView.m in Sources */,
 				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
@@ -3348,7 +3500,9 @@
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
+				CE6DC22120D3A757001FC1EB /* TaskCell.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
+				CE87043A20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m in Sources */,
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
 				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
@@ -3357,6 +3511,7 @@
 				CE675F351F386F07006FC15F /* AccidentCell.m in Sources */,
 				CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */,
 				CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */,
+				CE12794B20E109A500ED9948 /* IllegalCarView.m in Sources */,
 				CE71424E20B29F1E00F9FCC2 /* VehicleUpCell.m in Sources */,
 				CE2AF8811FD68B59005B643E /* UITableView+FDKeyedHeightCache.m in Sources */,
 				CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */,
@@ -3379,6 +3534,7 @@
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE7348F21F6BC8B700EBDA0A /* CarInfoAddVC.m in Sources */,
 				CE508F391F3D51C60066A9B7 /* AccidentRemarkCell.m in Sources */,
+				CE87043420CE52B700E206AE /* LTSCircleView.m in Sources */,
 				CE55B7FD1F9727F900CD1567 /* AddressBookCell.m in Sources */,
 				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
@@ -3386,9 +3542,12 @@
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */,
 				CE5328682057FD3C003D6152 /* IllegalParkAlertView.m in Sources */,
+				CECF753420C9505300A4DAC4 /* PFNavigationDropdownMenu.m in Sources */,
 				CEE45BA31FAC490E00BF472F /* UserTaskListVC.m in Sources */,
 				CE5C38FE1F28606B0055C945 /* ZLCollectionCell.m in Sources */,
+				CECF753320C9505300A4DAC4 /* PFConfiguration.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
+				CE87043B20CE52B700E206AE /* LTSCalendarWeekDayView.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
 				CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */,
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
@@ -3398,6 +3557,7 @@
 				CE71426520B2F01D00F9FCC2 /* VehicleExpireAlarmCell.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
 				CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */,
+				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
 				CE5C390B1F28606B0055C945 /* ZLShowVideoViewController.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */,
@@ -3425,9 +3585,12 @@
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
 				CE5C39011F28606B0055C945 /* ZLNoAuthorityViewController.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
+				CE175B8120E48650009E2282 /* MakePhoneView.m in Sources */,
 				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
+				CECF753520C9505300A4DAC4 /* PFTableView.m in Sources */,
 				CE61406B1F31CBBA0015B8CE /* YUSegmentedControlItem.m in Sources */,
+				CE87043320CE52B700E206AE /* LTSCalendarManager.m in Sources */,
 				CE672D151FA6D8D400CB3081 /* LocationStorage.m in Sources */,
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */,
@@ -3451,6 +3614,7 @@
 				CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */,
 				CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */,
 				CE5C39071F28606B0055C945 /* ZLProgressHUD.m in Sources */,
+				CED5A86A20D10BB500953852 /* DutyPoliceCell.m in Sources */,
 				CE2AF8821FD68B59005B643E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
 				CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */,
@@ -3459,9 +3623,10 @@
 				CE4E3C151F39BB860057148B /* IllegalMessageCell.m in Sources */,
 				CE5C39061F28606B0055C945 /* ZLPhotoModel.m in Sources */,
 				CE5C6F031FB0425F005E53BF /* GCDTimer.m in Sources */,
-				CE490E171F9ED62100E90FF2 /* UserRecordVC.m in Sources */,
 				CE6154B71F67899D0018DF71 /* GroupPoliceView.m in Sources */,
 				CEAA96F71F1CE97B00741A6F /* BaseModel.m in Sources */,
+				CE87043820CE52B700E206AE /* LTSCalendarCollectionCell.m in Sources */,
+				CE27A9FB20CA2D9E00AA922D /* ScheduleVC.m in Sources */,
 				CEFEFD101F29C62900C33CBD /* UIImage+FixOrientation.m in Sources */,
 				CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */,
 				CE65B90A20AB039400AA97BB /* VehicleUpBasicInfoCell.m in Sources */,
@@ -3485,6 +3650,7 @@
 				CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */,
 				CE6AE97620B6901E005781DA /* VehicleTiredListCell.m in Sources */,
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
+				CE87043620CE52B700E206AE /* LTSCalendarContentView.m in Sources */,
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
 				CEFD55801F3C40EC0082060B /* AccidentHandleVC.m in Sources */,
 				CE8C6FC61F418CBD0009B09F /* AccidentAddRemarkVC.m in Sources */,
@@ -3517,7 +3683,9 @@
 				CE6A2E7920BD3C2600EA58DA /* VehicleUpImageDetailCell.m in Sources */,
 				CE5C39031F28606B0055C945 /* ZLPhotoBrowser.m in Sources */,
 				CE6A2E7E20BD4B7F00EA58DA /* VehicleUpRemarkDetailCell.m in Sources */,
+				CE54C22520D210A900BE2693 /* NSArray+PureLayoutMore.m in Sources */,
 				CE424F341F3AE1F1005741CA /* AccidentDetailVC.m in Sources */,
+				CED5A86520D10B9500953852 /* DutyLeaderCell.m in Sources */,
 				CEFEFD1E1F29ED8100C33CBD /* KSPhotoItem.m in Sources */,
 				CE553FF920B564A700DF3C0B /* VehicleSpeedAlarmCell.m in Sources */,
 				CE3C0F6A1F30586A00D3B55D /* LRPlayVC.m in Sources */,

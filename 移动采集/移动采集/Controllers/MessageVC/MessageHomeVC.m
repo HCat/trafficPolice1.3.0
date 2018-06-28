@@ -19,55 +19,38 @@
 #import "MessageDetailVC.h"
 #import "IllegalOperatCarVC.h"
 
+#import "PFNavigationDropdownMenu.h"
+#import <PureLayout.h>
 
 @interface MessageHomeVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 @property (nonatomic,strong) NSMutableArray *arr_content;
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
+@property (nonatomic, assign) MessageType messageType;
+@property (strong,nonatomic) PFNavigationDropdownMenu *menuView;
+
+@property (weak, nonatomic) IBOutlet UIView *navbar;
 
 
 @end
 
 @implementation MessageHomeVC
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-       self.isNeedShowLocation = YES;
-    }
-    return self;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通知";
+    
+    self.messageType = MessageTypeAll;
     self.arr_content = [NSMutableArray array];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETENOTIFICATION_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_COMPLETEOPERATCAR_SUCCESS object:nil];
     
-    _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = YES;
+    [self setUpDropdownMenu];
+    [self setUpTableView];
     
-    //隐藏多余行的分割线
-    _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [_tb_content setSeparatorInset:UIEdgeInsetsZero];
-    [_tb_content setLayoutMargins:UIEdgeInsetsZero];
-    
-    [self initRefresh];
-    [_tb_content.mj_header beginRefreshing];
-    
-    WS(weakSelf);
-    //点击重新加载之后的处理
-    [_tb_content setReloadBlock:^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        [strongSelf.tb_content.mj_header beginRefreshing];
-    }];
     
 }
 
@@ -81,6 +64,81 @@
         [strongSelf.tb_content.mj_header beginRefreshing];
     };
     
+}
+
+#pragma mark - set
+
+- (void)setUpTableView{
+    
+    _tb_content.isNeedPlaceholderView = YES;
+    _tb_content.firstReload = YES;
+    
+    [self initRefresh];
+    [_tb_content.mj_header beginRefreshing];
+    
+    [_tb_content registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"MessageCellID"];
+    
+    WS(weakSelf);
+    //点击重新加载之后的处理
+    [_tb_content setReloadBlock:^{
+        SW(strongSelf, weakSelf);
+        strongSelf.tb_content.isNetAvailable = NO;
+        [strongSelf.tb_content.mj_header beginRefreshing];
+    }];
+    
+}
+
+- (void)setUpDropdownMenu{
+    WS(weakSelf);
+    NSArray *items = @[@"全部", @"系统消息",@"警务消息", @"事故报警", @"特殊车辆报警", @"非法营运工程车报警"];
+    
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 44)
+                                                                                   title:items.firstObject
+                                                                                   items:items
+                                                                           containerView:self.view];
+    _menuView.backgroundColor = [UIColor whiteColor];
+    
+    _menuView.cellHeight = 50;
+    _menuView.cellBackgroundColor = [UIColor whiteColor];
+    _menuView.cellSelectionColor = [UIColor whiteColor];
+    _menuView.cellTextLabelColor = DefaultTextColor;
+    _menuView.cellTextLabelFont = [UIFont systemFontOfSize:14.f];
+    _menuView.arrowImage = [UIImage imageNamed:@"icon_dropdown_down"];
+    _menuView.checkMarkImage = [UIImage imageNamed:@"icon_dropdown_selected"];
+    _menuView.arrowPadding = 15;
+    _menuView.animationDuration = 0.5f;
+    _menuView.maskBackgroundColor = [UIColor blackColor];
+    _menuView.maskBackgroundOpacity = 0.3f;
+    
+    _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
+        NSLog(@"Did select item at index: %ld", indexPath);
+        SW(strongSelf, weakSelf);
+        if (indexPath == 0) {
+            strongSelf.messageType = MessageTypeAll;
+        }else if (indexPath == 1){
+            strongSelf.messageType = MessageTypeWatch;
+        }else if (indexPath == 2){
+            strongSelf.messageType = MessageTypePolice;
+        }else if (indexPath == 3){
+            strongSelf.messageType = MessageTypeAccident;
+        }else if (indexPath == 4){
+            strongSelf.messageType = MessageTypeCar;
+        }else if (indexPath == 5){
+            strongSelf.messageType = MessageTypeIllegalCar;
+        }
+        
+        [strongSelf reloadDataUseMJRefresh];
+    };
+    
+    [self.view addSubview:_menuView];
+    [_menuView configureForAutoLayout];
+    [_menuView autoSetDimension:ALDimensionHeight toSize:44];
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [self.view layoutIfNeeded];
+    
+    [self.view bringSubviewToFront:_navbar];
 }
 
 #pragma mark - 创建下拉刷新，以及上拉加载更多
@@ -130,11 +188,12 @@
         }
     }
     
-    IdentifyMsgListParam *param = [[IdentifyMsgListParam alloc] init];
+    IdentifyMsgListWithTypeParam *param = [[IdentifyMsgListWithTypeParam alloc] init];
     param.start = _index;
     param.length = 10;
+    param.type = self.messageType;
     
-    IdentifyMsgListManger *manger = [[IdentifyMsgListManger alloc] init];
+    IdentifyMsgListWithTypeManger *manger = [[IdentifyMsgListWithTypeManger alloc] init];
     manger.param = param;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
@@ -186,7 +245,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 80;
+    WS(weakSelf);
+    return [tableView fd_heightForCellWithIdentifier:@"MessageCellID" cacheByIndexPath:indexPath configuration:^(MessageCell *cell) {
+        SW(strongSelf,weakSelf);
+        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
+            IdentifyModel *t_model = strongSelf.arr_content[indexPath.row];
+            cell.model = t_model;
+            
+        }
+    }];
     
 }
 
@@ -194,10 +261,6 @@
     
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCellID"];
     
-    if (cell == nil) {
-        [_tb_content registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"MessageCellID"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCellID"];
-    }
     if (_arr_content && _arr_content.count > 0) {
         IdentifyModel *t_model = _arr_content[indexPath.row];
         cell.model = t_model;
@@ -205,12 +268,6 @@
     
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    [cell setSeparatorInset:UIEdgeInsetsZero];
-    [cell setLayoutMargins:UIEdgeInsetsZero];
-}
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     

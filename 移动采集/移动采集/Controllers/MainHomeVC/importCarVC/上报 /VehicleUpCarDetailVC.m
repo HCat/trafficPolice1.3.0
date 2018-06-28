@@ -232,6 +232,7 @@
 }
 
 - (void)dealloc{
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
     LxPrintf(@"VehicleUpCarDetailVC dealloc");
     
 }

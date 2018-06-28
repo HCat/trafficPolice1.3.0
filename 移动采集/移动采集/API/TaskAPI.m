@@ -84,6 +84,48 @@
 
 #pragma mark -
 
+@implementation TaskGetTypeListParam
+
+@end
+
+@implementation TaskGetTypeListReponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"list" : [TaskModel class]
+             };
+}
+
+@end
+
+@implementation TaskGetTypeListManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_TASK_TYPELIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (TaskGetTypeListReponse *)taskGetTypeListReponse{
+    
+    if (self.responseModel.data) {
+        _taskGetTypeListReponse = [TaskGetTypeListReponse modelWithDictionary:self.responseModel.data];
+        return _taskGetTypeListReponse;
+    }
+    
+    return nil;
+}
+
+@end
+
+#pragma mark -
+
 @implementation TaskDetailManger
 
 

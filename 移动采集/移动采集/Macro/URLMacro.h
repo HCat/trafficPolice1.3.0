@@ -13,10 +13,11 @@
 
 #define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.172/police-admin/"
-#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.115:8280//police-admin/websocket"
+#define DEBUG_DACAO_URL @"http://192.168.10.200:8080/police-admin/"
+#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.200:8080/police-admin/websocket"
 
-#define DEBUG_URL @"http://192.168.10.201:8280//police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
+
+#define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
@@ -111,6 +112,7 @@
 #pragma mark - 消息相关API
 
 #define URL_IDENTIFY_LIST @"identify/identifyMsgList.json"                  //消息列表
+#define URL_IDENTIFYWITHTYPE_LIST @"identify/identifyMsgList.json"         //根据TYPE请求相应的消息
 #define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json"                    //确认接收消息
 #define URL_IDENTIFY_NOTICE @"identify/notice.json"                         //消息通知
 #define URL_IDENTIFY_MSGDETAIL @"identify/msgDetail.json"                   //消息详情
@@ -157,10 +159,12 @@
 
 #define URL_DUTY_GETDUTYBYMONTH @"app/workshift/getHolidayDutyByMonth.json" //获取月排班
 #define URL_DUTY_GETDUTYBYDAY @"app/workshift/geHolidaytDutyByDay.json"     //按天获取排班详情
+#define URL_DUTY_GETWORKBYDAY @"app/workshift/getWorkShiftDetailByDay.json" //按天获取排班详情（按分组显示
 
 #pragma mark - 警员任务
 
 #define URL_TASK_HISTORYLIST @"app/policeTask/getHistoryList.json"  //查询历史任务
+#define URL_TASK_TYPELIST @"app2/policeTask/getTypeList.json"       //根据类型选择任务
 #define URL_TASK_CURRENTLIST @"app/policeTask/getCurrentList.json"  //查询当前任务
 #define URL_TASK_DETAIL @"app/policeTask/detail.json"               //任务详情
 

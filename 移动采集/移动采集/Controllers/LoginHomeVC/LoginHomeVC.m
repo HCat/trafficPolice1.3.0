@@ -105,6 +105,7 @@
             
             /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
+            [ShareValue sharedDefault].phone = [UserModel getUserModel].phone;
             [ShareFun openWebSocket];
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 

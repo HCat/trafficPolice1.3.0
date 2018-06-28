@@ -105,7 +105,7 @@
             
         }else{
             
-            [LRShowHUD showError:@"请求失败" duration:1.2f inView:_v_showHud];
+            [LRShowHUD showError:self.responseModel.msg duration:1.2f inView:_v_showHud];
         }
         
     }else if (self.responseModel.code == CODE_SUCCESS){
@@ -167,7 +167,7 @@
             [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
         }else{
             if (![self.error.localizedDescription isEqualToString:@"请求超时。"]) {
-                 [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
+                 [LRShowHUD showError:@"请求失败" duration:1.2f inView:self.v_showHud];
             }
             
         

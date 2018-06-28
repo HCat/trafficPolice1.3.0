@@ -138,10 +138,31 @@
                                                                CGAffineTransformMakeScale(1.0f, 1.0f));
     }];
     
-    
-    
 }
 
+
++ (void)showWindowWithMakePhoneViewWith:(DutyPeopleModel *)people{
+    
+    AlertView *window = [[AlertView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    window.keyWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    window.keyWindow.backgroundColor = [UIColor clearColor];
+    window.keyWindow.windowLevel = UIWindowLevelAlert+100000000;
+    [window.keyWindow makeKeyAndVisible];
+    [[UIApplication sharedApplication].keyWindow addSubview:window];
+    
+    
+    MakePhoneView *view = [MakePhoneView initCustomView];
+    view.people = people;
+    window.contentView = view;
+    window.contentView.center = window.center;
+    window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                           CGAffineTransformMakeScale(1.1f, 1.1f));
+    [UIView animateWithDuration:.2 animations:^{
+        window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                               CGAffineTransformMakeScale(1.0f, 1.0f));
+    }];
+    
+}
 
 #pragma mark -
 

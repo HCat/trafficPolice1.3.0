@@ -32,10 +32,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qg-yL-1bc">
-                            <rect key="frame" x="327" y="22" width="48" height="42"/>
+                            <rect key="frame" x="315" y="20" width="60" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="48" id="GEh-em-q3e"/>
-                                <constraint firstAttribute="height" constant="42" id="cCi-e6-iv1"/>
+                                <constraint firstAttribute="width" constant="60" id="GEh-em-q3e"/>
+                                <constraint firstAttribute="height" constant="44" id="cCi-e6-iv1"/>
                             </constraints>
                             <state key="normal" image="menu_signIn"/>
                             <connections>

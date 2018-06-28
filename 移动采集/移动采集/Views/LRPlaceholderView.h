@@ -12,5 +12,7 @@
 
 @property (nonatomic, copy) void(^reloadClickBlock)(void);
 @property (nonatomic, assign) BOOL isNetvailable;
+@property (nonatomic, strong) UIImage *img_netVailable;
+@property (nonatomic, strong) UIImage *img_dataNull;
 @property (nonatomic, copy) NSString *str_placeholder;
 @end
