@@ -13,7 +13,7 @@
 #import "AccidentRemarkListCell.h"
 #import <MJRefresh.h>
 #import "NetWorkHelper.h"
-#import "AccidentAddRemarkVC.h"
+
 
 @interface AccidentRemarkListVC ()
 
@@ -179,10 +179,6 @@
 
 - (IBAction)handleBtnAddRemarkClicked:(id)sender {
     
-    AccidentAddRemarkVC *t_vc = [AccidentAddRemarkVC new];
-    t_vc.accidentId = _accidentId;
-    [self.navigationController pushViewController:t_vc animated:YES];
-
 }
 
 #pragma mark - 通知事件

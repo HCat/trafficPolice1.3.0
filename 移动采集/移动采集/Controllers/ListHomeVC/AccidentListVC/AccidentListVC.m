@@ -18,7 +18,6 @@
 
 #import "NetWorkHelper.h"
 
-#import "AccidentHandleVC.h"
 #import "AccidentCompleteVC.h"
 #import "ListHomeVC.h"
 #import "UINavigationBar+BarItem.h"
@@ -277,19 +276,6 @@
         t_vc.accidentId = t_model.accidentId;
         [self.navigationController pushViewController:t_vc animated:YES];
         
-//        if ([t_model.state isEqualToNumber:@1] || [t_model.state isEqualToNumber:@9]) {
-//            
-//            
-//        }else{
-//            
-//    
-//            AccidentListModel *t_model = _arr_content[indexPath.row];
-//            AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
-//            t_vc.accidentType = _accidentType;
-//            t_vc.accidentId = t_model.accidentId;
-//            [self.navigationController pushViewController:t_vc animated:YES];
-//            
-//        }
         
     }
 }

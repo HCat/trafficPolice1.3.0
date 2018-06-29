@@ -20,7 +20,6 @@
 #import "AccidentImageCell.h"
 #import "AccidentMessageCell.h"
 #import "AccidentPartyCell.h"
-#import "AccidentHandleVC.h"
 #import "AccidentRemarkListVC.h"
 
 
@@ -232,19 +231,9 @@
         if (indexPath.row == 0) {
             
             AccidentRemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentRemarkCellID"];
-            
-            WS(weakSelf);
+    
             cell.remarkModel = _remarkModel;
             cell.remarkCount = _remarkCount;
-            cell.countBlock = ^{
-                SW(strongSelf, weakSelf);
-                AccidentHandleVC *t_vc = (AccidentHandleVC *)[ShareFun findViewController:strongSelf.view withClass:[AccidentHandleVC class]];
-                
-                AccidentRemarkListVC *t_listVC = [AccidentRemarkListVC new];
-                t_listVC.accidentId = strongSelf.accidentId;
-                [t_vc.navigationController pushViewController:t_listVC animated:YES];
-                
-            };
             return cell;
            
         }
