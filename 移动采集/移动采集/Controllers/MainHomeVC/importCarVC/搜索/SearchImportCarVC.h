@@ -12,5 +12,5 @@
 @interface SearchImportCarVC : HideTabSuperVC
 
 @property (nonatomic, strong) VehicleGPSModel * search_vehicleModel;
-
+@property (nonatomic, assign) NSInteger type; //0 表示查找重点车辆 1表示违法位置
 @end

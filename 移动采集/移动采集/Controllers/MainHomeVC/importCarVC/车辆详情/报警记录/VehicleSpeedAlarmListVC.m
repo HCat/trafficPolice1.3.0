@@ -36,7 +36,7 @@
     
     
     if ([_alarmType isEqualToString:@"1"]) {
-        self.title = @"路口超速";
+        self.title = @"区域超速";
     }else if ([_alarmType isEqualToString:@"111"]){
         self.title = @"路口超速";
     }
@@ -182,11 +182,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     CGFloat height = [tableView fd_heightForCellWithIdentifier:@"VehicleSpeedAlarmCellID" cacheByIndexPath:indexPath configuration:^(VehicleSpeedAlarmCell *cell) {
-        
-        if (_arr_content && _arr_content.count > 0) {
-            VehicleSpeedAlarmModel *t_model = _arr_content[indexPath.row];
+        SW(strongSelf, weakSelf);
+        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
+            VehicleSpeedAlarmModel *t_model = strongSelf.arr_content[indexPath.row];
             cell.speedAlarmModel = t_model;
             
         }
@@ -209,6 +209,7 @@
             gps_model.latitude = t_model.latitude;
             gps_model.longitude = t_model.longitude;
             SearchImportCarVC *t_vc = [[SearchImportCarVC alloc ] init];
+            t_vc.type = 1;
             t_vc.search_vehicleModel = gps_model;
             [strongSelf.navigationController pushViewController:t_vc animated:YES];
         };

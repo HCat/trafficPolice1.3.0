@@ -63,6 +63,8 @@
 		CE2C98BE1F61D1FF009851F6 /* VehicleRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C98BC1F61D1FE009851F6 /* VehicleRemarkCell.m */; };
 		CE2C98BF1F61D1FF009851F6 /* VehicleRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2C98BD1F61D1FE009851F6 /* VehicleRemarkCell.xib */; };
 		CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2CE43B1F9F357A00E63953 /* NSDate+Formatter.m */; };
+		CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3285D820E60B6D002B3B43 /* NoticeVC.m */; };
+		CE3285DB20E60B6D002B3B43 /* NoticeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3285D920E60B6D002B3B43 /* NoticeVC.xib */; };
 		CE36A03B1FF4D06800BAAD18 /* JointLawAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */; };
 		CE3C0F6A1F30586A00D3B55D /* LRPlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F621F30586A00D3B55D /* LRPlayVC.m */; };
 		CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */; };
@@ -281,8 +283,6 @@
 		CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915541F1DD70A008911A6 /* ShowTabSuperVC.m */; };
 		CE69155A1F1DD90E008911A6 /* MainHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915581F1DD90E008911A6 /* MainHomeVC.m */; };
 		CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6915591F1DD90E008911A6 /* MainHomeVC.xib */; };
-		CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69155D1F1DD9C4008911A6 /* ListHomeVC.m */; };
-		CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE69155E1F1DD9C4008911A6 /* ListHomeVC.xib */; };
 		CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915621F1DDA01008911A6 /* UserHomeVC.m */; };
 		CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6915631F1DDA01008911A6 /* UserHomeVC.xib */; };
 		CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE69156C1F1DE2AC008911A6 /* LSStatusBarHUD.bundle */; };
@@ -583,6 +583,9 @@
 		CE2C98BD1F61D1FE009851F6 /* VehicleRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleRemarkCell.xib; sourceTree = "<group>"; };
 		CE2CE43A1F9F357A00E63953 /* NSDate+Formatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatter.h"; sourceTree = "<group>"; };
 		CE2CE43B1F9F357A00E63953 /* NSDate+Formatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatter.m"; sourceTree = "<group>"; };
+		CE3285D720E60B6D002B3B43 /* NoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeVC.h; sourceTree = "<group>"; };
+		CE3285D820E60B6D002B3B43 /* NoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeVC.m; sourceTree = "<group>"; };
+		CE3285D920E60B6D002B3B43 /* NoticeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeVC.xib; sourceTree = "<group>"; };
 		CE36A0391FF4D06800BAAD18 /* JointLawAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointLawAPI.h; sourceTree = "<group>"; };
 		CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointLawAPI.m; sourceTree = "<group>"; };
 		CE3C0F611F30586A00D3B55D /* LRPlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlayVC.h; sourceTree = "<group>"; };
@@ -942,9 +945,6 @@
 		CE6915571F1DD90E008911A6 /* MainHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHomeVC.h; sourceTree = "<group>"; };
 		CE6915581F1DD90E008911A6 /* MainHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHomeVC.m; sourceTree = "<group>"; };
 		CE6915591F1DD90E008911A6 /* MainHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainHomeVC.xib; sourceTree = "<group>"; };
-		CE69155C1F1DD9C4008911A6 /* ListHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListHomeVC.h; sourceTree = "<group>"; };
-		CE69155D1F1DD9C4008911A6 /* ListHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListHomeVC.m; sourceTree = "<group>"; };
-		CE69155E1F1DD9C4008911A6 /* ListHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListHomeVC.xib; sourceTree = "<group>"; };
 		CE6915611F1DDA01008911A6 /* UserHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHomeVC.h; sourceTree = "<group>"; };
 		CE6915621F1DDA01008911A6 /* UserHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHomeVC.m; sourceTree = "<group>"; };
 		CE6915631F1DDA01008911A6 /* UserHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHomeVC.xib; sourceTree = "<group>"; };
@@ -1547,6 +1547,16 @@
 			name = VehicleRemarkCell;
 			sourceTree = "<group>";
 		};
+		CE3285D620E60B4E002B3B43 /* NoticeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE3285D720E60B6D002B3B43 /* NoticeVC.h */,
+				CE3285D820E60B6D002B3B43 /* NoticeVC.m */,
+				CE3285D920E60B6D002B3B43 /* NoticeVC.xib */,
+			);
+			path = NoticeVC;
+			sourceTree = "<group>";
+		};
 		CE3C0F601F30586A00D3B55D /* VideoColectVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,6 +2053,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE3285D620E60B4E002B3B43 /* NoticeVC */,
 				CE763B081FCF9C9000EB0815 /* JointEnforceVC */,
 				CE8EE8601F66354900CC64B0 /* PoliceCommandVC */,
 				CE41C7B41F5EAA100058FE8D /* importCarVC */,
@@ -2067,9 +2078,6 @@
 				CE85020E1F558BFB001DC495 /* VideoListVC */,
 				CE675F2C1F386DA7006FC15F /* AccidentListVC */,
 				CE675F141F383C40006FC15F /* IllegalListVC */,
-				CE69155C1F1DD9C4008911A6 /* ListHomeVC.h */,
-				CE69155D1F1DD9C4008911A6 /* ListHomeVC.m */,
-				CE69155E1F1DD9C4008911A6 /* ListHomeVC.xib */,
 			);
 			path = ListHomeVC;
 			sourceTree = "<group>";
@@ -2096,6 +2104,7 @@
 		CE69154D1F1DD52B008911A6 /* UserHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE69154B1F1DD48C008911A6 /* ListHomeVC */,
 				CE450BB11F272A770025A20C /* FeedbackVC */,
 				CE6915611F1DDA01008911A6 /* UserHomeVC.h */,
 				CE6915621F1DDA01008911A6 /* UserHomeVC.m */,
@@ -2776,7 +2785,6 @@
 				CE59BB3B1F95A5B100E24D3A /* AddressBookHomeVC */,
 				CE27A9F720CA2D2B00AA922D /* ScheduleVC */,
 				CE69154A1F1DD47A008911A6 /* MainHomeVC */,
-				CE69154B1F1DD48C008911A6 /* ListHomeVC */,
 				CE69154C1F1DD4A8008911A6 /* MessageVC */,
 				CE69154D1F1DD52B008911A6 /* UserHomeVC */,
 			);
@@ -3147,7 +3155,6 @@
 				CE5A01051F611CC6000F13CC /* VehicleCarCell.xib in Resources */,
 				CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
-				CE6915601F1DD9C4008911A6 /* ListHomeVC.xib in Resources */,
 				CE6C682020747E2E009A0E14 /* VehicleSearchListVC.xib in Resources */,
 				CE8507ED1F44771D006C459F /* AccidentChangeVC.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
@@ -3192,6 +3199,7 @@
 				CE5B92F61F2F100D000008AE /* IllegalSecSaveVC.xib in Resources */,
 				CE450BB61F272A920025A20C /* FeedbackVC.xib in Resources */,
 				CE5C3BC01F5812AC007A7EDD /* MessageDetailVC.xib in Resources */,
+				CE3285DB20E60B6D002B3B43 /* NoticeVC.xib in Resources */,
 				CE763B131FCFF0F300EB0815 /* JointImageCell.xib in Resources */,
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
@@ -3454,6 +3462,7 @@
 				CED6EE8E1F691358004FED7B /* MenuTableViewCell.m in Sources */,
 				CE71426520B2F01D00F9FCC2 /* VehicleExpireAlarmCell.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
+				CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */,
 				CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */,
 				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
 				CE5C390B1F28606B0055C945 /* ZLShowVideoViewController.m in Sources */,
@@ -3475,7 +3484,6 @@
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
 				CE864F3920089CE5007B20FE /* PGDatePickManager.m in Sources */,
-				CE69155F1F1DD9C4008911A6 /* ListHomeVC.m in Sources */,
 				CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */,
 				CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */,
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,

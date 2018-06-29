@@ -18,8 +18,10 @@
 #import "ImportCarHomeVC.h"
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
+#import "NoticeVC.h"
 
 #import "MainCellLayout.h"
+#import "CommonAPI.h"
 
 @interface MainHomeVC ()
 
@@ -67,6 +69,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         _lb_departmentName.text = [UserModel getUserModel].departmentName;
     }
    
+    _v_notice.hidden = YES;
     [self requestNotice];
 }
 
@@ -168,6 +171,29 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 #pragma mark - 通知数据请求
 
 - (void)requestNotice{
+
+    WS(weakSelf);
+    CommonPoliceAnounceManger *manger = [[CommonPoliceAnounceManger alloc] init];
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        if (manger.responseModel.code == CODE_SUCCESS) {
+
+            if (manger.swicth) {
+                strongSelf.v_notice.hidden = NO;
+                strongSelf.lb_notice.text = manger.content;
+                strongSelf.layout_top_colectionVIew.constant = 74;
+                [strongSelf.view setNeedsLayout];
+            }else{
+                strongSelf.v_notice.hidden = YES;
+
+            }
+
+
+        }
+
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+
+    }];
     
     
     
@@ -182,6 +208,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     [self.navigationController pushViewController:t_vc animated:YES];
     
 }
+
+- (IBAction)handleBtnNoticeClicked:(id)sender {
+    
+    NoticeVC *t_vc = [[NoticeVC alloc] init];
+    t_vc.content = _lb_notice.text;
+    [self.navigationController pushViewController:t_vc animated:YES];
+}
+
+
 
 #pragma mark - UICollectionView Data Source
 

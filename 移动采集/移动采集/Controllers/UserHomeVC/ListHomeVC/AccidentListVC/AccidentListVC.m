@@ -9,17 +9,16 @@
 #import "AccidentListVC.h"
 #import <MJRefresh.h>
 
+#import "NetWorkHelper.h"
 #import "UITableView+Lr_Placeholder.h"
-#import "AccidentCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
 #import "AccidentAPI.h"
 #import "FastAccidentAPI.h"
 
-#import "NetWorkHelper.h"
-
+#import "AccidentCell.h"
 #import "AccidentCompleteVC.h"
-#import "ListHomeVC.h"
+
 #import "UINavigationBar+BarItem.h"
 
 @interface AccidentListVC ()

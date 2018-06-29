@@ -160,14 +160,15 @@
         [_vc_tabBar setTab_selectedTitleColor:DefaultColor];
         [_vc_tabBar setTab_titleFont:[UIFont systemFontOfSize:11.f]];
         
-        MainHomeVC *t_vc_main = [MainHomeVC new];
-        UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];
+
+        AddressBookHomeVC *t_vc_addressBook = [AddressBookHomeVC new];
+        UINavigationController *t_nav_addressBook = [[UINavigationController alloc] initWithRootViewController:t_vc_addressBook];
         
         ScheduleVC *t_vc_schedule = [ScheduleVC new];
         UINavigationController *t_nav_schedule = [[UINavigationController alloc] initWithRootViewController:t_vc_schedule];
         
-        AddressBookHomeVC *t_vc_addressBook = [AddressBookHomeVC new];
-        UINavigationController *t_nav_addressBook = [[UINavigationController alloc] initWithRootViewController:t_vc_addressBook];
+        MainHomeVC *t_vc_main = [MainHomeVC new];
+        UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];
         
         MessageHomeVC *t_vc_message = [MessageHomeVC new];
         UINavigationController *t_nav_message = [[UINavigationController alloc] initWithRootViewController:t_vc_message];
@@ -175,7 +176,8 @@
         UserHomeVC *t_vc_user = [UserHomeVC new];
         UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
         
-        [_vc_tabBar setViewControllers:[@[t_nav_main,t_nav_schedule,t_nav_addressBook,t_nav_message,t_nav_user]mutableCopy]];
+        [_vc_tabBar setViewControllers:[@[t_nav_addressBook,t_nav_schedule,t_nav_main,t_nav_message,t_nav_user]mutableCopy]];
+        _vc_tabBar.selectedIndex = 2;
         
     }
     

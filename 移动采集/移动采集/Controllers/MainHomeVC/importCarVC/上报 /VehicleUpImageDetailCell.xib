@@ -23,9 +23,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exy-hY-lBx">
                                 <rect key="frame" x="15" y="14" width="3" height="14"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vehicle_tip" translatesAutoresizingMaskIntoConstraints="NO" id="D6z-Uc-Kn4">
+                                        <rect key="frame" x="0.0" y="0.0" width="3" height="14"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="D6z-Uc-Kn4" secondAttribute="trailing" id="2rK-RL-jjs"/>
                                     <constraint firstAttribute="width" constant="3" id="4i9-pS-afk"/>
+                                    <constraint firstAttribute="bottom" secondItem="D6z-Uc-Kn4" secondAttribute="bottom" id="Olc-17-Pwg"/>
+                                    <constraint firstItem="D6z-Uc-Kn4" firstAttribute="top" secondItem="exy-hY-lBx" secondAttribute="top" id="nl0-G0-hhk"/>
+                                    <constraint firstItem="D6z-Uc-Kn4" firstAttribute="leading" secondItem="exy-hY-lBx" secondAttribute="leading" id="vdb-Gi-Qxt"/>
                                     <constraint firstAttribute="height" constant="14" id="xvy-mg-bEo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -62,4 +71,7 @@
             <point key="canvasLocation" x="25" y="177"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_vehicle_tip" width="2" height="13"/>
+    </resources>
 </document>

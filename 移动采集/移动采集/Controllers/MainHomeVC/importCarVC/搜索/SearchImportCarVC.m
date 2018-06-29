@@ -26,7 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"搜索重点车辆";
+    
+    
+    self.title = @"重点车辆位置";
+    
+    if (self.type == 1) {
+        self.title = @"超速位置";
+    }
     
     [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
     [self initMapView];
@@ -110,6 +116,11 @@
             vehicleCarView.image = [UIImage imageNamed:@"icon_searchImportCar"];
             
         }
+        
+        if (self.type == 1) {
+            vehicleCarView.image = [UIImage imageNamed:@"map_speedPosition"];
+        }
+        
         
         return vehicleCarView;
     }

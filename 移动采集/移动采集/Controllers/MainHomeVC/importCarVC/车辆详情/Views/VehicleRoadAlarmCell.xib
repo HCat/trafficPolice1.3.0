@@ -23,10 +23,19 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ6-J2-Pc2">
                                 <rect key="frame" x="15" y="14" width="3" height="14"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vehicle_tip" translatesAutoresizingMaskIntoConstraints="NO" id="5lA-CX-Ttn">
+                                        <rect key="frame" x="0.0" y="0.0" width="3" height="14"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="3" id="DzT-5m-SYS"/>
                                     <constraint firstAttribute="height" constant="14" id="Enx-B5-MqK"/>
+                                    <constraint firstItem="5lA-CX-Ttn" firstAttribute="leading" secondItem="nZ6-J2-Pc2" secondAttribute="leading" id="MNT-0J-Pay"/>
+                                    <constraint firstAttribute="trailing" secondItem="5lA-CX-Ttn" secondAttribute="trailing" id="Q7D-cM-Ynj"/>
+                                    <constraint firstItem="5lA-CX-Ttn" firstAttribute="top" secondItem="nZ6-J2-Pc2" secondAttribute="top" id="US9-5k-fj0"/>
+                                    <constraint firstAttribute="bottom" secondItem="5lA-CX-Ttn" secondAttribute="bottom" id="V7M-2R-mOh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -165,5 +174,6 @@
     </objects>
     <resources>
         <image name="btn_vehicle_carInfoMore" width="6" height="12"/>
+        <image name="icon_vehicle_tip" width="2" height="13"/>
     </resources>
 </document>

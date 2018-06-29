@@ -164,7 +164,7 @@
     }else{
         
         if (!_isNoShowFail) {
-            [LRShowHUD showError:self.error.localizedDescription duration:1.2f inView:self.v_showHud];
+            [LRShowHUD showError:@"请求失败" duration:1.2f inView:self.v_showHud];
         }else{
             if (![self.error.localizedDescription isEqualToString:@"请求超时。"]) {
                  [LRShowHUD showError:@"请求失败" duration:1.2f inView:self.v_showHud];

@@ -20,9 +20,18 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0i4-1M-vwb">
                         <rect key="frame" x="15" y="20" width="3" height="12"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vehicle_tip" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-sk-rt8">
+                                <rect key="frame" x="0.0" y="0.0" width="3" height="12"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="CuM-sk-rt8" firstAttribute="top" secondItem="0i4-1M-vwb" secondAttribute="top" id="1Jh-dy-igb"/>
                             <constraint firstAttribute="width" constant="3" id="6MS-DJ-rAo"/>
+                            <constraint firstAttribute="trailing" secondItem="CuM-sk-rt8" secondAttribute="trailing" id="EBg-R0-atk"/>
+                            <constraint firstItem="CuM-sk-rt8" firstAttribute="leading" secondItem="0i4-1M-vwb" secondAttribute="leading" id="Qc4-43-SqA"/>
+                            <constraint firstAttribute="bottom" secondItem="CuM-sk-rt8" secondAttribute="bottom" id="sPk-3w-Rix"/>
                             <constraint firstAttribute="height" constant="12" id="xfC-ep-Yy5"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -34,7 +43,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="违法类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0n4-Nd-OF2">
                         <rect key="frame" x="25" y="17" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-9C-mKO">
@@ -131,8 +140,12 @@
                 <outlet property="lb_textCount" destination="rb3-QV-m3W" id="WbF-Kk-yBl"/>
                 <outlet property="tv_describe" destination="aO2-K5-5VM" id="CFp-Hc-1YE"/>
                 <outlet property="v_tag" destination="tqu-V5-TvE" id="d4K-3W-IhX"/>
+                <outlet property="v_tip" destination="0i4-1M-vwb" id="tvA-O2-tTh"/>
             </connections>
             <point key="canvasLocation" x="29" y="244"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_vehicle_tip" width="2" height="13"/>
+    </resources>
 </document>

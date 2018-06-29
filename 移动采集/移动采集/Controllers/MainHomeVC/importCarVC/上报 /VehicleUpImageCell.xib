@@ -20,10 +20,19 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-fX-UrM">
                         <rect key="frame" x="15" y="20" width="3" height="12"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_vehicle_tip" translatesAutoresizingMaskIntoConstraints="NO" id="4ET-ha-XYj">
+                                <rect key="frame" x="0.0" y="0.0" width="3" height="12"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="1bu-Nj-6GM"/>
+                            <constraint firstItem="4ET-ha-XYj" firstAttribute="leading" secondItem="nu6-fX-UrM" secondAttribute="leading" id="4PC-z3-Xfw"/>
+                            <constraint firstAttribute="trailing" secondItem="4ET-ha-XYj" secondAttribute="trailing" id="4xf-AO-ipd"/>
                             <constraint firstAttribute="width" constant="3" id="Jgg-ud-I4t"/>
+                            <constraint firstItem="4ET-ha-XYj" firstAttribute="top" secondItem="nu6-fX-UrM" secondAttribute="top" id="hmA-SH-kPS"/>
+                            <constraint firstAttribute="bottom" secondItem="4ET-ha-XYj" secondAttribute="bottom" id="sUc-9p-4bw"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -34,7 +43,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现场照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHY-ca-bsO">
                         <rect key="frame" x="25" y="17" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.25882352939999997" green="0.50588235290000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6B0-FC-nPO">
@@ -58,4 +67,7 @@
             <point key="canvasLocation" x="25" y="96.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_vehicle_tip" width="2" height="13"/>
+    </resources>
 </document>

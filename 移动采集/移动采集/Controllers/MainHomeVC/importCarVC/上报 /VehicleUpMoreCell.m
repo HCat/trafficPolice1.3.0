@@ -13,6 +13,8 @@
 
 @interface VehicleUpMoreCell()
 
+@property (weak, nonatomic) IBOutlet UIView *v_tip;
+
 @property (weak, nonatomic) IBOutlet TTGTextTagCollectionView *v_tag;
 
 @property (weak, nonatomic) IBOutlet FSTextView *tv_describe;           //简述
