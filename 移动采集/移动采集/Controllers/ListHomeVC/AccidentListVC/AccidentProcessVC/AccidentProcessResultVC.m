@@ -34,7 +34,7 @@
     if (_accidentType == AccidentTypeAccident) {
         self.arr_content = [[NSArray alloc] initWithObjects:@"伤亡情况：",@"事故成因：",@"中队调解记录：",@"备注记录与领导记录：", nil];
     }else if (_accidentType == AccidentTypeFastAccident){
-     self.arr_content = [[NSArray alloc] initWithObjects:@"事故责任认定建议：",@"备注：", nil];
+        self.arr_content = [[NSArray alloc] initWithObjects:@"事故责任认定建议：",@"备注：", nil];
     }
     
     _tb_content.isNeedPlaceholderView = YES;
@@ -162,38 +162,38 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-
+    WS(weakSelf);
     return [tableView fd_heightForCellWithIdentifier:@"ProcessResultCellID" cacheByIndexPath:indexPath configuration:^(ProcessResultCell *cell) {
+        SW(strongSelf, weakSelf);
+        cell.title = strongSelf.arr_content[indexPath.row];
         
-        cell.title = _arr_content[indexPath.row];
-        
-        if (_accidentType == AccidentTypeAccident) {
+        if (strongSelf.accidentType == AccidentTypeAccident) {
             
             switch (indexPath.row) {
                 case 0:
-                    cell.content = _model.accident.casualties;
+                    cell.content = strongSelf.model.accident.casualties;
                     break;
                 case 1:
-                    cell.content = _model.accident.causes;
+                    cell.content = strongSelf.model.accident.causes;
                     break;
                 case 2:
-                    cell.content = _model.accident.mediationRecord;
+                    cell.content = strongSelf.model.accident.mediationRecord;
                     break;
                 case 3:
-                    cell.content = _model.accident.memo;
+                    cell.content = strongSelf.model.accident.memo;
                     break;
                 default:
                     break;
             }
         
-        }else if (_accidentType == AccidentTypeFastAccident){
+        }else if (strongSelf.accidentType == AccidentTypeFastAccident){
             
             switch (indexPath.row) {
                 case 0:
-                    cell.content = _model.accident.responsibility;
+                    cell.content = strongSelf.model.accident.responsibility;
                     break;
                 case 1:
-                    cell.content = _model.accident.memo;
+                    cell.content = strongSelf.model.accident.memo;
                     break;
                 default:
                     break;

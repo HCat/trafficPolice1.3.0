@@ -6,11 +6,10 @@
 //  Copyright © 2017年 Degal. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "HideTabSuperVC.h"
 
-@interface AccidentListVC : BaseViewController
+@interface AccidentListVC : HideTabSuperVC
 
 @property(nonatomic,assign) AccidentType accidentType;
-@property(nonatomic,strong) NSNumber *isHandle;
 
 @end

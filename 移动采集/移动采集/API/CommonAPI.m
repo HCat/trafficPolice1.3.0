@@ -336,6 +336,34 @@
 
 @end
 
+#pragma mark - 警务详情公告
+@implementation CommonPoliceAnounceManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_COMMON_POLICEANOUNCE;
+}
+
+- (BOOL)swicth{
+    if (self.responseModel) {
+        _swicth = self.responseJSONObject[@"data"][@"swicth"];
+    }
+    
+    return _swicth;
+}
+
+- (NSString *)content{
+    
+    if (self.responseModel) {
+        _content = self.responseJSONObject[@"data"][@"content"];
+    }
+    
+    return _content;
+}
+
+
+@end
 
 
 

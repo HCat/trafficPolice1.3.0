@@ -79,8 +79,10 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     };
     
 #ifdef __IPHONE_11_0
-    if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
-        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    if (IS_IPHONE_X == NO) {
+        if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
 #endif
     

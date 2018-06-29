@@ -16,6 +16,8 @@
 
 @interface AddressBookHomeVC ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIView *v_search;
@@ -37,6 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通讯录";
+    
+    if (IS_IPHONE_X) {
+        _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    }
+    
     self.arr_addressBook = [NSMutableArray array];
     self.arr_index = [NSMutableArray array];
     

@@ -56,7 +56,7 @@
 #define URL_COMMON_VERSIONUPDATE @"app/common/versionUpdate.json"               //版本更新
 #define URL_COMMON_ADVICE @"app/common/advice.json"                             //投诉建议
 #define URL_COMMON_VALIDVISITOR @"app/common/validVisitor.json"                 //查询是否需要游客登录
-
+#define URL_COMMON_POLICEANOUNCE @"app2/policeAnounce/getAnounce.json"          //警务详情
 
 
 #pragma mark - 事故相关API

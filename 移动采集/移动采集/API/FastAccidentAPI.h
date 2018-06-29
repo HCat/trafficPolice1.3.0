@@ -51,7 +51,7 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 @property (nonatomic,assign) NSInteger  start;      //开始的索引号 从0开始
 @property (nonatomic,assign) NSInteger  length;     //显示的记录数 默认为10
 @property (nonatomic,copy)   NSString * search;     //搜索的关键字
-@property (nonatomic,strong) NSNumber * isHandle;   //选填，1已处理 0未处理
+//@property (nonatomic,strong) NSNumber * isHandle;   //选填，1已处理 0未处理
 
 @end
 

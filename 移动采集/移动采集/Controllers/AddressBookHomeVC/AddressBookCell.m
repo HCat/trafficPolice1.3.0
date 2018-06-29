@@ -7,6 +7,8 @@
 //
 
 #import "AddressBookCell.h"
+#import "AlertView.h"
+#import "DutyAPI.h"
 
 #define random(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.f]
 
@@ -55,10 +57,12 @@
 
 - (IBAction)handleBtnPhoneClicked:(id)sender {
     
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel://%@",_model.telNum];
-    //            NSLog(@"str======%@",str);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    
+    DutyPeopleModel *t_model = [[DutyPeopleModel alloc] init];
+    t_model.realName = _model.realName;
+    t_model.telNum = _model.telNum;
+    t_model.name = _model.name;
+    [AlertView showWindowWithMakePhoneViewWith:t_model];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

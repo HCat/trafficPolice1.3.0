@@ -24,6 +24,7 @@
 
 @interface MessageHomeVC ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 @property (nonatomic,strong) NSMutableArray *arr_content;
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
@@ -40,6 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通知";
+    if (IS_IPHONE_X) {
+        _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    }
     
     self.messageType = MessageTypeAll;
     self.arr_content = [NSMutableArray array];
@@ -92,7 +96,7 @@
     WS(weakSelf);
     NSArray *items = @[@"全部", @"系统消息",@"警务消息", @"事故报警", @"特殊车辆报警", @"非法营运工程车报警"];
     
-    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 44)
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, IS_IPHONE_X ? 88 : 64, SCREEN_WIDTH, 44)
                                                                                    title:items.firstObject
                                                                                    items:items
                                                                            containerView:self.view];
@@ -133,7 +137,13 @@
     [self.view addSubview:_menuView];
     [_menuView configureForAutoLayout];
     [_menuView autoSetDimension:ALDimensionHeight toSize:44];
-    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    
+    if (IS_IPHONE_X) {
+        [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
+    }else{
+        [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+    }
+    
     [_menuView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
     [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
     [self.view layoutIfNeeded];

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressBookHomeVC">
             <connections>
+                <outlet property="layout_topHeight" destination="H1i-mo-6MX" id="lP6-tz-oAb"/>
                 <outlet property="tableView" destination="qVJ-vZ-Ofn" id="OeQ-rl-1iR"/>
                 <outlet property="tb_search" destination="hWZ-Mn-vhG" id="y4b-Hb-tRX"/>
                 <outlet property="tf_search" destination="1M8-nT-SuL" id="abR-Bb-K18"/>
@@ -49,7 +50,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="O53-kd-nJS" secondAttribute="bottom" id="2Z0-Bo-pZV"/>
                         <constraint firstAttribute="height" constant="64" id="H1i-mo-6MX"/>
-                        <constraint firstItem="bAp-of-o6M" firstAttribute="top" secondItem="wHz-Ou-n11" secondAttribute="top" constant="32" id="cRI-1x-y7L"/>
+                        <constraint firstAttribute="bottom" secondItem="bAp-of-o6M" secondAttribute="bottom" constant="10" id="LzB-bm-g8Q"/>
                         <constraint firstAttribute="trailing" secondItem="O53-kd-nJS" secondAttribute="trailing" id="dZu-BR-VUG"/>
                         <constraint firstItem="bAp-of-o6M" firstAttribute="leading" secondItem="wHz-Ou-n11" secondAttribute="leading" constant="15" id="sdv-uM-hzj"/>
                     </constraints>
@@ -151,12 +152,12 @@
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="F3f-qQ-GfS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="CEr-m2-XkU"/>
                 <constraint firstAttribute="trailing" secondItem="wHz-Ou-n11" secondAttribute="trailing" id="CV8-Nd-GYM"/>
                 <constraint firstItem="wHz-Ou-n11" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="E8z-yQ-eDp"/>
-                <constraint firstItem="qVJ-vZ-Ofn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="NV7-jC-iHQ"/>
+                <constraint firstItem="F3f-qQ-GfS" firstAttribute="top" secondItem="wHz-Ou-n11" secondAttribute="bottom" id="Kbv-je-KaF"/>
                 <constraint firstAttribute="bottom" secondItem="qVJ-vZ-Ofn" secondAttribute="bottom" id="Rsv-Uh-EdV"/>
                 <constraint firstItem="wHz-Ou-n11" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZGh-dl-8fM"/>
+                <constraint firstItem="qVJ-vZ-Ofn" firstAttribute="top" secondItem="wHz-Ou-n11" secondAttribute="bottom" id="anz-1r-7T8"/>
                 <constraint firstAttribute="trailing" secondItem="F3f-qQ-GfS" secondAttribute="trailing" id="cWf-07-Hc8"/>
                 <constraint firstItem="qVJ-vZ-Ofn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hTR-BF-vFn"/>
                 <constraint firstAttribute="trailing" secondItem="qVJ-vZ-Ofn" secondAttribute="trailing" id="iTm-gc-ISA"/>

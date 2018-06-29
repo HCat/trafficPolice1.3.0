@@ -10,6 +10,7 @@
 #import <PureLayout.h>
 #import "NSArray+PureLayoutMore.h"
 #import "DutyAPI.h"
+#import "AlertView.h"
 
 @interface DutyLeaderCell()
 
@@ -51,7 +52,7 @@
                 t_button.titleLabel.font = [UIFont systemFontOfSize:15];
                 [t_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [t_button setBackgroundColor:DefaultColor];
-                t_button.tag = i;
+                t_button.tag = i + 100;
                 t_button.layer.cornerRadius = 5.0f;
                 t_button.layer.masksToBounds = YES;
                 [t_button addTarget:self action:@selector(btnTagAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -128,7 +129,16 @@
 
 - (IBAction)btnTagAction:(id)sender{
     
+    UIButton *t_btn = (UIButton *)sender;
+    NSInteger  tag = t_btn.tag;
+
+    NSInteger line = tag - 100;
     
+    if (_arr_leader && _arr_leader.count > 0) {
+        DutyPeopleModel *peopleModel = _arr_leader[line];
+        [AlertView showWindowWithMakePhoneViewWith:peopleModel];
+        
+    }
     
     
     

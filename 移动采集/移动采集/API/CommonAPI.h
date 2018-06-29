@@ -171,7 +171,19 @@
 
 @end
 
+#pragma mark - 警务详情公告
 
+@interface CommonPoliceAnounceManger : LRBaseRequest
+
+/****** 请求数据 ******/
+
+
+/****** 返回数据 ******/
+@property (nonatomic,assign) BOOL swicth;
+@property (nonatomic,copy) NSString * content;
+
+
+@end
 
 
 

@@ -16,7 +16,6 @@
 #import "IllegalThroughAPI.h"
 #import "IllegalCell.h"
 
-#import "ListHomeVC.h"
 #import "NetWorkHelper.h"
 #import "IllegalDetailVC.h"
 
@@ -37,12 +36,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (!_isHandle) {
-        self.view.backgroundColor = [UIColor clearColor];
-    }else{
-        self.canBack = YES;
-    }
     
     if (_illegalType == IllegalTypePark) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALPARK_SUCCESS object:nil];
@@ -80,10 +73,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    if (_isHandle) {
-        [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
-    }
     
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
@@ -278,21 +267,12 @@
     
     if (_arr_content && _arr_content.count > 0) {
         
-        UIViewController *vc_target = nil;
-        //搜索时候的跳转
-        if (_isHandle) {
-            vc_target = self;
-        }else{
-            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
-            
-        }
-        
         IllegalParkListModel *t_model = _arr_content[indexPath.row];
         IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
         t_vc.illegalType = _illegalType;
         t_vc.subType = _subType;
         t_vc.illegalId = t_model.illegalParkId;
-        [vc_target.navigationController pushViewController:t_vc animated:YES];
+        [self.navigationController pushViewController:t_vc animated:YES];
     }
     
 }

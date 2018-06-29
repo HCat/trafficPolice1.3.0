@@ -38,12 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([_isHandle isEqualToNumber:@0]) {
-        self.view.backgroundColor = [UIColor clearColor];
-    }else{
-        self.canBack = YES;
-    }
-
     if (_accidentType == AccidentTypeAccident) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
     }else if (_accidentType == AccidentTypeFastAccident){
@@ -80,10 +74,7 @@
     [super viewWillAppear:animated];
     WS(weakSelf);
     
-    if ([_isHandle isEqualToNumber:@1]) {
-        [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
-    }
-    
+
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
@@ -142,8 +133,7 @@
         AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        param.isHandle = _isHandle;
-        
+       
         AccidentListPagingManger *manger = [[AccidentListPagingManger alloc] init];
         manger.param = param;
        
@@ -187,8 +177,7 @@
         FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        param.isHandle = _isHandle;
-        
+
         FastAccidentListPagingManger *manger = [[FastAccidentListPagingManger alloc] init];
         manger.param = param;
        
@@ -243,11 +232,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    WS(weakSelf);
     CGFloat height = [tableView fd_heightForCellWithIdentifier:@"AccidentCellID" cacheByIndexPath:indexPath configuration:^(AccidentCell *cell) {
-        
-        if (_arr_content && _arr_content.count > 0) {
-            AccidentListModel *t_model = _arr_content[indexPath.row];
-            cell.accidentType = _accidentType;
+        SW(strongSelf, weakSelf);
+        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
+            AccidentListModel *t_model = strongSelf.arr_content[indexPath.row];
+            cell.accidentType = strongSelf.accidentType;
             cell.model = t_model;
             
         }
@@ -281,28 +271,25 @@
     if (_arr_content && _arr_content.count > 0) {
         
         AccidentListModel *t_model = _arr_content[indexPath.row];
+    
+        AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
+        t_vc.accidentType = _accidentType;
+        t_vc.accidentId = t_model.accidentId;
+        [self.navigationController pushViewController:t_vc animated:YES];
         
-        UIViewController *vc_target = nil;
-        
-        if ([t_model.state isEqualToNumber:@1] || [t_model.state isEqualToNumber:@9]) {
-            
-            AccidentListModel *t_model = _arr_content[indexPath.row];
-            AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
-            t_vc.accidentType = _accidentType;
-            t_vc.accidentId = t_model.accidentId;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
-        }else{
-            
-            vc_target = (ListHomeVC *)[ShareFun findViewController:self.view withClass:[ListHomeVC class]];
-
-            AccidentListModel *t_model = _arr_content[indexPath.row];
-            AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
-            t_vc.accidentType = _accidentType;
-            t_vc.accidentId = t_model.accidentId;
-            [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-        }
+//        if ([t_model.state isEqualToNumber:@1] || [t_model.state isEqualToNumber:@9]) {
+//            
+//            
+//        }else{
+//            
+//    
+//            AccidentListModel *t_model = _arr_content[indexPath.row];
+//            AccidentHandleVC *t_vc = [[AccidentHandleVC alloc] init];
+//            t_vc.accidentType = _accidentType;
+//            t_vc.accidentId = t_model.accidentId;
+//            [self.navigationController pushViewController:t_vc animated:YES];
+//            
+//        }
         
     }
 }

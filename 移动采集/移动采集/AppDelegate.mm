@@ -49,7 +49,7 @@
     [ShareFun printCrashLog];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = DefaultBGColor;
+    self.window.backgroundColor = [UIColor whiteColor];
     
     
     if ([ShareValue sharedDefault].token) {

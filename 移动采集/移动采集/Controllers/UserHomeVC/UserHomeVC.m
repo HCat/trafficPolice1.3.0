@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_userUnit;
 @property (weak, nonatomic) IBOutlet UIImageView *imgV_userIcon;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
+
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 
 @property (nonatomic,strong) NSArray  *sectionArray; /**< section模型数组*/
@@ -39,6 +41,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (IS_IPHONE_X) {
+        _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    }
     
     self.mArr_items = [NSMutableArray array];
     [self setupTopView];
@@ -76,7 +81,7 @@
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeAccident;
             t_vc.title = @"事故列表";
-            t_vc.isHandle = @1;
+            
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
@@ -96,7 +101,7 @@
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeFastAccident;
             t_vc.title = @"快处列表";
-            t_vc.isHandle = @1;
+            
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
         };
@@ -114,7 +119,6 @@
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypePark;
             t_vc.title = @"违停列表";
-            t_vc.isHandle = YES;
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
@@ -132,7 +136,6 @@
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypeThrough;
             t_vc.title = @"闯禁令列表";
-            t_vc.isHandle = YES;
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
@@ -151,7 +154,6 @@
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeReversePark;
             t_vc.title = @"不按朝向列表";
-            t_vc.isHandle = YES;
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
@@ -170,7 +172,6 @@
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeLockPark;
             t_vc.title = @"违停锁车列表";
-            t_vc.isHandle = YES;
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
@@ -189,7 +190,6 @@
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeCarInfoAdd;
             t_vc.title = @"车辆录入列表";
-            t_vc.isHandle = YES;
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             

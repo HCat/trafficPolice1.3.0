@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_state;
 
+@property (weak, nonatomic) IBOutlet UIImageView *img_state;
+
 @end
 
 
@@ -49,6 +51,22 @@
         if ([_model.state isEqualToNumber:@3] && _accidentType != AccidentTypeFastAccident) {
             _lb_state.hidden = NO;
         }
+        
+        if (_accidentType == AccidentTypeAccident) {
+            if ([_model.state isEqualToNumber:@1]) {
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_done"]];
+            }else{
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_undone"]];
+            }
+        }else{
+            if ([_model.state isEqualToNumber:@9]) {
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_done"]];
+            }else{
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_undone"]];
+            }
+            
+        }
+        
         
         _lb_time.text       = [ShareFun timeWithTimeInterval:_model.happenTime];
         _lb_roadName.text   = [NSString stringWithFormat:@"%@%@",_model.roadName,_model.address];

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageHomeVC">
             <connections>
+                <outlet property="layout_topHeight" destination="UEP-HZ-a84" id="sh7-oA-Yja"/>
                 <outlet property="navbar" destination="F6t-8m-Lei" id="QmA-IJ-xY0"/>
                 <outlet property="tb_content" destination="kkZ-GL-fYk" id="rl9-Nd-c47"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,7 +36,7 @@
                     <constraints>
                         <constraint firstItem="CZx-Op-efo" firstAttribute="leading" secondItem="F6t-8m-Lei" secondAttribute="leading" constant="15" id="2ig-dw-Byc"/>
                         <constraint firstAttribute="height" constant="64" id="UEP-HZ-a84"/>
-                        <constraint firstItem="CZx-Op-efo" firstAttribute="top" secondItem="F6t-8m-Lei" secondAttribute="top" constant="32" id="r3T-CZ-tZ9"/>
+                        <constraint firstAttribute="bottom" secondItem="CZx-Op-efo" secondAttribute="bottom" constant="10" id="ZQD-n4-h1a"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kkZ-GL-fYk">
@@ -55,7 +56,7 @@
                 <constraint firstItem="F6t-8m-Lei" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QVj-BA-jXA"/>
                 <constraint firstAttribute="trailing" secondItem="F6t-8m-Lei" secondAttribute="trailing" id="YRy-kf-fFn"/>
                 <constraint firstItem="kkZ-GL-fYk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o3i-PY-3X3"/>
-                <constraint firstItem="kkZ-GL-fYk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="108" id="yPT-jz-nSR"/>
+                <constraint firstItem="kkZ-GL-fYk" firstAttribute="top" secondItem="F6t-8m-Lei" secondAttribute="bottom" constant="44" id="r9U-cI-NQ2"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <point key="canvasLocation" x="25.5" y="51.5"/>

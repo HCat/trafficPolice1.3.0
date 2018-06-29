@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btn_task" destination="q2C-G9-RlM" id="kUK-UT-PfD"/>
                 <outlet property="btn_watch" destination="S62-a7-kNI" id="kXM-Al-tSn"/>
+                <outlet property="layout_topHeight" destination="6Rf-YX-PpH" id="2fa-iG-hb0"/>
                 <outlet property="lb_title" destination="AGA-9r-acp" id="auC-Xg-sTk"/>
                 <outlet property="tb_task" destination="o8p-xz-pn9" id="H8X-Lh-wql"/>
                 <outlet property="v_nav" destination="faY-F3-kDq" id="sdw-xX-S5d"/>
@@ -79,8 +80,8 @@
                         <constraint firstAttribute="height" constant="111" id="6Rf-YX-PpH"/>
                         <constraint firstItem="S62-a7-kNI" firstAttribute="top" secondItem="AGA-9r-acp" secondAttribute="bottom" constant="18" id="QWi-ZP-FFF"/>
                         <constraint firstItem="q2C-G9-RlM" firstAttribute="centerY" secondItem="S62-a7-kNI" secondAttribute="centerY" id="TOc-l3-kY8"/>
+                        <constraint firstAttribute="bottom" secondItem="AGA-9r-acp" secondAttribute="bottom" constant="57" id="omw-BJ-ZBz"/>
                         <constraint firstItem="q2C-G9-RlM" firstAttribute="leading" secondItem="S62-a7-kNI" secondAttribute="trailing" constant="18" id="s3D-XU-BJh"/>
-                        <constraint firstItem="AGA-9r-acp" firstAttribute="top" secondItem="faY-F3-kDq" secondAttribute="top" constant="32" id="wqG-JR-Y5S"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-pA-jxY">

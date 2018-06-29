@@ -27,6 +27,12 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayout;
 @property (weak, nonatomic) IBOutlet UILabel *lb_departmentName;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
+
+@property (weak, nonatomic) IBOutlet UIView *v_notice;
+@property (weak, nonatomic) IBOutlet UILabel *lb_notice;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_top_colectionVIew;
 
 
 @property (nonatomic,strong) NSMutableArray * arr_illegal;
@@ -41,6 +47,10 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (IS_IPHONE_X) {
+        _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    }
     
     //这里获取事故通用值
     [[ShareValue sharedDefault] accidentCodes];
@@ -57,7 +67,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         _lb_departmentName.text = [UserModel getUserModel].departmentName;
     }
    
-    
+    [self requestNotice];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -154,6 +164,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     return _arr_policeMatter;
     
 }
+
+#pragma mark - 通知数据请求
+
+- (void)requestNotice{
+    
+    
+    
+}
+
 
 #pragma mark - ButtonAction
 

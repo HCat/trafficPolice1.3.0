@@ -43,6 +43,7 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *arr_tasks;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
 
 @property (assign, nonatomic) NSInteger pageType; //页面类型：0代表值班 1代表行动
 
@@ -54,7 +55,8 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-       
+      
+        
     }
     return self;
 }
@@ -67,6 +69,12 @@
     self.taskStatus = -1;
     self.pageType = 0;
  
+    if (IS_IPHONE_X) {
+          _layout_topHeight.constant = _layout_topHeight.constant + 24;
+        [self.view setNeedsLayout];
+        [self.view layoutIfNeeded];
+    }
+    
     [self configWatchView];
     [self configTaskView];
 }
@@ -141,6 +149,7 @@
     if (self.pageType == 0) {
         _lb_title.text = self.date;
         [self requestDuty:self.manager.calenderScrollView.calendarView.currentDate.yyyyMMByLineWithDate];
+        [self requestDutyDetail:self.manager.calenderScrollView.calendarView.currentDate];
     }
     
 }

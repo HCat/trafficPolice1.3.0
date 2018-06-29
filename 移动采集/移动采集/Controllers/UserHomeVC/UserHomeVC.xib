@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserHomeVC">
             <connections>
                 <outlet property="imgV_userIcon" destination="PSS-Ax-mXj" id="HUl-xU-f3J"/>
+                <outlet property="layout_topHeight" destination="QjK-Wh-xBp" id="vBD-eS-7Sw"/>
                 <outlet property="lb_userName" destination="AJl-w9-aVJ" id="1tb-5L-UZY"/>
                 <outlet property="lb_userPhone" destination="Awq-RA-WC2" id="x03-bF-ar5"/>
                 <outlet property="lb_userUnit" destination="R61-Bn-1V9" id="3Mh-L1-fdD"/>
