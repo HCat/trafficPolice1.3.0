@@ -42,7 +42,7 @@
             self.title = @"车辆录入详情";
         }
     }else if(_illegalType == IllegalTypeThrough){
-        self.title = @"闯禁令详情";
+        self.title = @"违反禁令详情";
     }
     
     _tb_content.isNeedPlaceholderView = YES;

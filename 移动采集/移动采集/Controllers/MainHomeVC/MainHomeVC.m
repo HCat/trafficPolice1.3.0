@@ -105,7 +105,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             }
             
             if ([UserModel isPermissionForThrough]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"闯禁令录入"}];
+                [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
             }
             
             if ([UserModel isPermissionForVideoCollect]) {
@@ -352,7 +352,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             t_vc.subType = ParkTypeLockPark;
             [self.navigationController pushViewController:t_vc animated:YES];
             
-        }else if ([t_title isEqualToString:@"闯禁令录入"]){
+        }else if ([t_title isEqualToString:@"违反禁令"]){
             
             IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
             t_vc.illegalType = IllegalTypeThrough;

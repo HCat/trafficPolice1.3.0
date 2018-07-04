@@ -129,13 +129,13 @@
     if ([UserModel isPermissionForThroughList]) {
         LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
         item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"闯禁令列表";
+        item4.funcName = @"违反禁令列表";
         item4.img = [UIImage imageNamed:@"list_through"];
         item4.executeCode = ^{
             SW(strongSelf, weakSelf);
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypeThrough;
-            t_vc.title = @"闯禁令列表";
+            t_vc.title = @"违反禁令列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             

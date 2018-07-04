@@ -51,7 +51,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     
     [super viewDidLoad];
     
-    self.title = @"闯禁令二次采集";
+    self.title = @"违反禁令二次采集";
     
     self.arr_upImages = [NSMutableArray array];
     if (_illegal_image) {

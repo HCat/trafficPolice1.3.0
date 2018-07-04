@@ -65,7 +65,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         }
         
     }else if(_illegalType == IllegalTypeThrough){
-        self.title = @"闯禁令采集";
+        self.title = @"违反禁令采集";
         self.subType = ParkTypeThrough;
     }
     
@@ -189,8 +189,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
             IllegalSecSaveVC *t_vc = [[IllegalSecSaveVC alloc] init];
             t_vc.illegalThroughId = illegalThroughId;
-            if ([_arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]) {
-                t_vc.illegal_image = _arr_upImages[0];
+            if ([strongSelf.arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]) {
+                t_vc.illegal_image = strongSelf.arr_upImages[0];
             };
             t_vc.saveSuccessBlock = ^{
                 [strongSelf handleBeforeCommit];
@@ -335,7 +335,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                 
                 //cell.lb_title.text = @"违停照片";
             }else if(_illegalType == IllegalTypeThrough){
-                cell.lb_title.text = @"闯禁令照片";
+                cell.lb_title.text = @"违反禁令照片";
             }
             
         }else if(indexPath.row == 1){
@@ -354,7 +354,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                 }
                 
             }else if(_illegalType == IllegalTypeThrough){
-                cell.lb_title.text = [NSString stringWithFormat:@"闯禁令照片%ld",indexPath.row];
+                cell.lb_title.text = [NSString stringWithFormat:@"违反禁令照片%ld",indexPath.row];
             }
         
         }
@@ -465,7 +465,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违停照片" replaceIndex:0];
                             [strongSelf.collectionView reloadData];
                         }else if(strongSelf.illegalType == IllegalTypeThrough){
-                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"闯禁令照片" replaceIndex:0];
+                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违反禁令照片" replaceIndex:0];
                             [strongSelf.collectionView reloadData];
                         }
                         
@@ -897,7 +897,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             
                             
                         }else if(self.illegalType == IllegalTypeThrough){
-                            t_title = [NSString stringWithFormat:@"闯禁令照片%ld",j];
+                            t_title = [NSString stringWithFormat:@"违反禁令照片%ld",j];
                         }
                         
                         j++;
@@ -1043,7 +1043,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                             
                 }else if (self.illegalType == IllegalTypeThrough){
                             
-                    if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"闯禁令照片"]) {
+                    if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违反禁令照片"]) {
     
                         if ([t_str isEqualToString:@"车牌近照"]) {
                             self.param.cutImageUrl = nil;
