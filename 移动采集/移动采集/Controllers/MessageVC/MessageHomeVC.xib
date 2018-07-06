@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageHomeVC">
             <connections>
                 <outlet property="layout_topHeight" destination="UEP-HZ-a84" id="sh7-oA-Yja"/>
+                <outlet property="lb_departmentName" destination="CZx-Op-efo" id="tot-S5-VdK"/>
                 <outlet property="navbar" destination="F6t-8m-Lei" id="QmA-IJ-xY0"/>
                 <outlet property="tb_content" destination="kkZ-GL-fYk" id="rl9-Nd-c47"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

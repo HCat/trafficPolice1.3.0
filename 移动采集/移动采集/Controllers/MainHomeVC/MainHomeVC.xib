@@ -125,6 +125,6 @@
     </objects>
     <resources>
         <image name="icon_main_notice" width="44" height="44"/>
-        <image name="menu_signIn" width="23" height="24"/>
+        <image name="menu_signIn" width="23" height="23"/>
     </resources>
 </document>

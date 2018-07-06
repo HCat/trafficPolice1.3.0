@@ -8,6 +8,9 @@
 
 #import "MessageHomeVC.h"
 #import <MJRefresh.h>
+#import <PureLayout.h>
+
+#import "UserModel.h"
 
 #import "UITableView+Lr_Placeholder.h"
 #import "UITableView+FDTemplateLayoutCell.h"
@@ -20,10 +23,11 @@
 #import "IllegalOperatCarVC.h"
 
 #import "PFNavigationDropdownMenu.h"
-#import <PureLayout.h>
+
 
 @interface MessageHomeVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_departmentName;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 @property (nonatomic,strong) NSMutableArray *arr_content;
@@ -43,6 +47,10 @@
     self.title = @"通知";
     if (IS_IPHONE_X) {
         _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    }
+    
+    if ([UserModel getUserModel] != nil) {
+        _lb_departmentName.text = [UserModel getUserModel].departmentName;
     }
     
     self.messageType = MessageTypeAll;

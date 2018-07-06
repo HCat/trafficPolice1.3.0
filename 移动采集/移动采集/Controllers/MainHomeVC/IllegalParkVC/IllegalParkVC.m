@@ -226,6 +226,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         }else if (manger.responseModel.code == 999){
             //不做处理
             //无任何记录，无需做处理
+        }else if (manger.responseModel.code == 1){
+             [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
         }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -263,7 +265,10 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                     }
                 }];
                 
+            }else if (manger.responseModel.code == 1){
+                [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
             }
+
         
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             

@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_addressRemarks;    //地址备注
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
-@property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //定位开关
+@property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
 
 
@@ -79,9 +79,9 @@
         
         self.btnType = [LocationStorage sharedDefault].isPark;
         
-        if ([LocationStorage sharedDefault].isPark) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        [[LocationHelper sharedDefault] startLocation];
+        
+        if ([LocationStorage sharedDefault].isPark == NO) {
             [self stopLocationAction:[LocationStorage sharedDefault].park];
         }
         
@@ -89,39 +89,36 @@
         
         self.btnType = [LocationStorage sharedDefault].isTowardError;
         
-        if ([LocationStorage sharedDefault].isTowardError) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        [[LocationHelper sharedDefault] startLocation];
+        
+        if ([LocationStorage sharedDefault].isTowardError == NO) {
             [self stopLocationAction:[LocationStorage sharedDefault].towardError];
         }
         
     }else if (_subType == ParkTypeLockPark){
         
          self.btnType = [LocationStorage sharedDefault].isLockCar;
+         [[LocationHelper sharedDefault] startLocation];
         
-        if ([LocationStorage sharedDefault].isLockCar) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if ([LocationStorage sharedDefault].isLockCar == NO) {
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
         }
         
     }else if (_subType == ParkTypeCarInfoAdd){
         
          self.btnType = [LocationStorage sharedDefault].isInforInput;
+         [[LocationHelper sharedDefault] startLocation];
         
-        if ([LocationStorage sharedDefault].isInforInput) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if ([LocationStorage sharedDefault].isInforInput == NO) {
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
         }
         
     }else if (_subType == ParkTypeThrough){
         
          self.btnType = [LocationStorage sharedDefault].isThrough;
+         [[LocationHelper sharedDefault] startLocation];
         
-        if ([LocationStorage sharedDefault].isThrough) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if ([LocationStorage sharedDefault].isThrough == NO) {
             [self stopLocationAction:[LocationStorage sharedDefault].through];
         }
         
@@ -216,6 +213,8 @@
     
     self.btnType = !_btnType;
     
+    [[LocationHelper sharedDefault] startLocation];
+    
    
 }
 
@@ -232,8 +231,6 @@
     _param.address        = nil;
     
     self.isCanCommit =  [self juegeCanCommit];
-    
-    [[LocationHelper sharedDefault] startLocation];
     
 }
 
@@ -299,14 +296,20 @@
 
 -(void)locationChange{
     
-    _tf_roadSection.text = [LocationHelper sharedDefault].streetName;
-    _tf_address.text     = [LocationHelper sharedDefault].address;
     
+    if (self.btnType == 1) {
+        
+        _tf_roadSection.text = [LocationHelper sharedDefault].streetName;
+        _tf_address.text     = [LocationHelper sharedDefault].address;
+        _param.roadName      = [LocationHelper sharedDefault].streetName;
+        _param.address       = [LocationHelper sharedDefault].address;
+        
+        [self getRoadId];
+        
+    }
+
     _param.longitude     = @([LocationHelper sharedDefault].longitude);
     _param.latitude      = @([LocationHelper sharedDefault].latitude);
-    _param.roadName      = [LocationHelper sharedDefault].streetName;
-    _param.address       = [LocationHelper sharedDefault].address;
-    [self getRoadId];
     
     self.isCanCommit =  [self juegeCanCommit];
     
@@ -324,8 +327,8 @@
     _tf_roadSection.text = model.streetName;
     _tf_address.text     = model.address;
     
-    _param.longitude     = model.longitude;
-    _param.latitude      = model.latitude;
+//    _param.longitude     = model.longitude;
+//    _param.latitude      = model.latitude;
     _param.roadName      = model.streetName;
     _param.address       = model.address;
     [self getRoadId];
@@ -344,8 +347,8 @@
 - (LocationStorageModel *)configurationLocationStorageModel{
 
     LocationStorageModel * model = [[LocationStorageModel alloc] init];
-    model.longitude     = _param.longitude;
-    model.latitude      = _param.latitude;
+//    model.longitude     = _param.longitude;
+//    model.latitude      = _param.latitude;
     model.streetName    = _param.roadName;
     model.address       = _param.address;
     

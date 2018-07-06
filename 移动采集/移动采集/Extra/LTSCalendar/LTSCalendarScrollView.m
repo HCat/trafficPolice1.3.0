@@ -47,6 +47,11 @@
         self.arr_police = [NSMutableArray arrayWithArray:_reponse.policeTeam];
         self.arr_help = [NSMutableArray arrayWithArray:_reponse.helpTeam];
         [self.tableView reloadData];
+    }else{
+        self.arr_leading = [NSMutableArray array];
+        self.arr_police = [NSMutableArray array];
+        self.arr_help = [NSMutableArray array];
+        [self.tableView reloadData];
     }
 
 }
