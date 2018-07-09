@@ -345,8 +345,9 @@
     return URL_COMMON_POLICEANOUNCE;
 }
 
-- (BOOL)swicth{
+- (NSNumber *)swicth{
     if (self.responseModel) {
+        
         _swicth = self.responseJSONObject[@"data"][@"swicth"];
     }
     

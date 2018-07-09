@@ -179,7 +179,7 @@
 
 
 /****** 返回数据 ******/
-@property (nonatomic,assign) BOOL swicth;
+@property (nonatomic,strong) NSNumber * swicth;
 @property (nonatomic,copy) NSString * content;
 
 

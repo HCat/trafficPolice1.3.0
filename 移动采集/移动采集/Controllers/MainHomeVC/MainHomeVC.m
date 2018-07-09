@@ -178,17 +178,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         SW(strongSelf, weakSelf);
         if (manger.responseModel.code == CODE_SUCCESS) {
 
-            if (manger.swicth) {
+            if ([manger.swicth isEqualToNumber:@1]) {
                 strongSelf.v_notice.hidden = NO;
                 strongSelf.lb_notice.text = manger.content;
                 strongSelf.layout_top_colectionVIew.constant = 74;
                 [strongSelf.view setNeedsLayout];
             }else{
                 strongSelf.v_notice.hidden = YES;
-
             }
-
-
+            
         }
 
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
