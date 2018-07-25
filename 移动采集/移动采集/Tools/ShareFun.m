@@ -743,5 +743,21 @@
     return (int)(from + (arc4random() % (to - from + 1)));
 }
 
+#pragma mark - 通过UITableViewCell 获取UITableView
++ (UITableView *)getTableView:(UITableViewCell *)cell{
+    
+    UIView *superView = cell.superview;
+    
+    while (superView && ![superView isKindOfClass:[UITableView class]]) {
+        superView = superView.superview;
+    }
+    
+    if (superView) {
+        return (UITableView *)superView;
+    }
+    
+    return nil;
+}
+
 
 @end

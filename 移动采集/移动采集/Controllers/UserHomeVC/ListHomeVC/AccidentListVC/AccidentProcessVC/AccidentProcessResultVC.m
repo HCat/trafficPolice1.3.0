@@ -19,7 +19,7 @@
 @interface AccidentProcessResultVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
-@property (nonatomic,strong,readwrite) AccidentDetailModel * model;
+@property (nonatomic,strong,readwrite) AccidentDetailsModel * model;
 @property (nonatomic,strong) NSArray *arr_content;
 
 
@@ -88,7 +88,7 @@
 - (void)loadAccidentDetail{
     
     WS(weakSelf);
-    AccidentDetailManger *manger = [[AccidentDetailManger alloc] init];
+    AccidentDetailsManger *manger = [[AccidentDetailsManger alloc] init];
     manger.accidentId = _accidentId;
     
     LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];
@@ -117,7 +117,7 @@
 - (void)loadAccidentFastDetail{
     
     WS(weakSelf);
-    FastAccidentDetailManger *manger = [[FastAccidentDetailManger alloc] init];
+    FastAccidentDetailsManger *manger = [[FastAccidentDetailsManger alloc] init];
     manger.fastaccidentId = _accidentId;
     
     LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];

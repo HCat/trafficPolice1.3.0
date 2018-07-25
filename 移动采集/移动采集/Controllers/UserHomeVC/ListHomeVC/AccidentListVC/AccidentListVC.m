@@ -29,6 +29,8 @@
 
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
 
+@property (weak, nonatomic) IBOutlet UITextField *tf_search;
+
 @end
 
 @implementation AccidentListVC
@@ -131,6 +133,9 @@
         AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        if (_tf_search.text.length > 0) {
+            param.search = _tf_search.text;
+        }
        
         AccidentListPagingManger *manger = [[AccidentListPagingManger alloc] init];
         manger.param = param;
@@ -175,6 +180,9 @@
         FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        if (_tf_search.text.length > 0) {
+            param.search = _tf_search.text;
+        }
 
         FastAccidentListPagingManger *manger = [[FastAccidentListPagingManger alloc] init];
         manger.param = param;
@@ -278,6 +286,24 @@
         
     }
 }
+
+#pragma mark - buttonAction
+
+- (IBAction)handleBtnSearchClicked:(id)sender {
+    
+    [self.tb_content.mj_header beginRefreshing];
+    
+}
+
+#pragma mark - UItextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField
+{
+    [textField resignFirstResponder];
+    [self.tb_content.mj_header beginRefreshing];
+    return YES;
+}
+
 
 #pragma mark - Notication
 

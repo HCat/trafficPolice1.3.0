@@ -99,6 +99,7 @@ LRSingletonM(Default)
         
         WS(weakSelf);
         CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
+        manger.isLog = NO;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
             if (manger.responseModel.code == CODE_SUCCESS) {

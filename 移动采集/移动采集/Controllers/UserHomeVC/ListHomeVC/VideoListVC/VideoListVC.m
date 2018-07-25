@@ -24,6 +24,8 @@
 
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
 
+@property (weak, nonatomic) IBOutlet UITextField *tf_search;
+
 @end
 
 @implementation VideoListVC
@@ -122,6 +124,9 @@
     VideoColectListPagingParam *param = [[VideoColectListPagingParam alloc] init];
     param.start = _index;
     param.length = 10;
+    if (_tf_search.text.length > 0) {
+        param.search = _tf_search.text;
+    }
 
     VideoColectListPagingManger *manger = [[VideoColectListPagingManger alloc] init];
     manger.param = param;
@@ -239,6 +244,25 @@
 {
     return 5.0f;
 }
+
+
+#pragma mark - buttonAction
+
+- (IBAction)handleBtnSearchClicked:(id)sender {
+    
+    [self.collectionView.mj_header beginRefreshing];
+    
+}
+
+#pragma mark - UItextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField
+{
+    [textField resignFirstResponder];
+    [self.collectionView.mj_header beginRefreshing];
+    return YES;
+}
+
 
 #pragma mark -notification
 

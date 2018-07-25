@@ -28,7 +28,7 @@
 
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
 
-
+@property (weak, nonatomic) IBOutlet UITextField *tf_search;
 
 @end
 
@@ -133,6 +133,9 @@
         param.start = _index;
         param.length = 10;
         param.type = @(_subType);
+        if (_tf_search.text.length > 0) {
+            param.search = _tf_search.text;
+        }
         
         IllegalParkListPagingManger *manger = [[IllegalParkListPagingManger alloc] init];
         manger.param = param;
@@ -177,6 +180,9 @@
         IllegalThroughListPagingParam *param = [[IllegalThroughListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
+        if (_tf_search.text.length > 0) {
+            param.search = _tf_search.text;
+        }
     
         IllegalThroughListPagingManger *manger = [[IllegalThroughListPagingManger alloc] init];
         manger.param = param;
@@ -232,10 +238,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     return [tableView fd_heightForCellWithIdentifier:@"IllegalCellID" cacheByIndexPath:indexPath configuration:^(IllegalCell *cell) {
-        if (_arr_content && _arr_content.count > 0) {
-            IllegalParkListModel *t_model = _arr_content[indexPath.row];
+        SW(strongSelf, weakSelf);
+        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
+            IllegalParkListModel *t_model = strongSelf.arr_content[indexPath.row];
             cell.model = t_model;
 
         }
@@ -275,6 +282,23 @@
         [self.navigationController pushViewController:t_vc animated:YES];
     }
     
+}
+
+#pragma mark - buttonAction
+
+- (IBAction)handleBtnSearchClicked:(id)sender {
+    
+    [self.tb_content.mj_header beginRefreshing];
+    
+}
+
+#pragma mark - UItextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField
+{
+    [textField resignFirstResponder];
+    [self.tb_content.mj_header beginRefreshing];
+    return YES;
 }
 
 #pragma mark - Notification

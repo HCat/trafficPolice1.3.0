@@ -26,7 +26,7 @@
 @interface AccidentDetailVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
-@property (nonatomic,strong,readwrite) AccidentDetailModel * model;
+@property (nonatomic,strong,readwrite) AccidentDetailsModel * model;
 @property(nonatomic,strong)  AccidentPartyCell * partycell;
 
 @end
@@ -119,7 +119,7 @@
 - (void)loadAccidentDetail{
 
     WS(weakSelf);
-    AccidentDetailManger *manger = [[AccidentDetailManger alloc] init];
+    AccidentDetailsManger *manger = [[AccidentDetailsManger alloc] init];
     manger.accidentId = _accidentId;
     
     LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];
@@ -148,7 +148,7 @@
 - (void)loadAccidentFastDetail{
 
     WS(weakSelf);
-    FastAccidentDetailManger *manger = [[FastAccidentDetailManger alloc] init];
+    FastAccidentDetailsManger *manger = [[FastAccidentDetailsManger alloc] init];
     manger.fastaccidentId = _accidentId;
     
     LRShowHUD *hud = [LRShowHUD showWhiteLoadingWithText:@"加载中..." inView:self.view config:nil];
@@ -199,10 +199,10 @@
     if (_remarkModel) {
         
         if (indexPath.row == 0) {
-            
+            WS(weakSelf);
             return [tableView fd_heightForCellWithIdentifier:@"AccidentRemarkCellID" cacheByIndexPath:indexPath configuration:^(AccidentRemarkCell *cell) {
-                
-                cell.remarkModel = _remarkModel;
+                SW(strongSelf, weakSelf);
+                cell.remarkModel = strongSelf.remarkModel;
                 
             }];
             
@@ -282,22 +282,18 @@
         
         _partycell.accidentType = _accidentType;
         if (_model) {
-            if (_model.accident ) {
-                _partycell.accident = _model.accident;
+            if (_model.accidentList) {
+                _partycell.list = _model.accidentList;
                 WS(weakSelf);
                 _partycell.block = ^() {
                     SW(strongSelf, weakSelf);
                     [strongSelf.tb_content beginUpdates];
                     [strongSelf.tb_content endUpdates];
-                    
                     [strongSelf.tb_content scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                    
                 };
             }
             
-            _partycell.accidentVo = _model.accidentVo;
         }
-        
         
         return _partycell;
         

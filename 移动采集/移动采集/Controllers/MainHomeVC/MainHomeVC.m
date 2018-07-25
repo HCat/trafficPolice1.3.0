@@ -13,6 +13,7 @@
 #import "IllegalParkVC.h"
 #import "CarInfoAddVC.h"
 #import "AccidentVC.h"
+#import "AccidentManageVC.h"
 #import "VideoColectVC.h"
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
@@ -358,13 +359,13 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
         }else if ([t_title isEqualToString:@"事故录入"]){
             
-            AccidentVC *t_vc = [[AccidentVC alloc] init];
+            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
             t_vc.accidentType = AccidentTypeAccident;
             [self.navigationController pushViewController:t_vc animated:YES];
             
         }else if ([t_title isEqualToString:@"快处录入"]){
             
-            AccidentVC *t_vc = [[AccidentVC alloc] init];
+            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
             t_vc.accidentType = AccidentTypeFastAccident;
             [self.navigationController pushViewController:t_vc animated:YES];
             

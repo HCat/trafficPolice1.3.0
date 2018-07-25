@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LRBaseRequest.h"
 #import "AccidentListModel.h"
-#import "AccidentDetailModel.h"
+#import "AccidentDetailsModel.h"
 #import "AccidentCountModel.h"
 #import "RemarkModel.h"
 
@@ -49,7 +49,7 @@
 
 @end
 
-#pragma mark - 事故增加API
+#pragma mark - 事故增加API(2.0.1之前版本。三方事故录入)
 
 @interface AccidentSaveParam : NSObject
 
@@ -144,6 +144,44 @@
 @end
 
 
+#pragma mark - 事故录入（五方事故录入。2.0.1版本之后使用）
+
+@interface AccidentUpParam : NSObject
+
+@property (nonatomic,strong)  NSNumber * accidentId;         //有id为修改功能，无id则是新增
+@property (nonatomic,copy)    NSString * happenTimeStr;     //事故时间 必填，格式：yyyy-MM-dd HH:mm:ss
+@property (nonatomic,strong)  NSNumber * roadId;            //道路ID 必填，从通用值【道路】获取ID
+@property (nonatomic,strong)  NSString * roadName;          //道路名称
+@property (nonatomic,copy)    NSString * address;           //事故地点
+@property (nonatomic,strong)  NSNumber * causesType;        //事故成因ID 从通用值【事故成因】获取ID
+@property (nonatomic,copy)    NSString * weather;           //天气 默认值从天气接口获取，可编辑
+@property (nonatomic,copy)    NSString * injuredNum;        //受伤人数
+@property (nonatomic,strong)  NSNumber * roadType;          //事故地点类型 从通用值【事故地点类型】获取ID
+@property (nonatomic,copy)    NSString * accidentInfoStr;   //事故人员信息
+@property (nonatomic,copy)    NSArray  * files;             //事故图片 列表，最多可上传30张
+@property (nonatomic,copy)    NSArray  * certFiles;         //证件图片 识别的图片，文件格式列表。识别后图片不需要显示出来
+@property (nonatomic,copy)    NSArray  * certRemarks;       //证件图片名称 识别的图片名称，字符串列表。和证件图片一对一，名称统一命名，命名规则如下
+/*
+ 证件图片名称：
+ 1方身份证 1方驾驶证 1方行驶证
+ 2方身份证 2方驾驶证 2方行驶证
+ 3方身份证 3方驾驶证 3方行驶证
+ */
+
+@end
+
+@interface AccidentUpManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) AccidentUpParam *param;
+
+/****** 返回数据 ******/
+//无返回参数
+
+@end
+
+
+
 #pragma mark - 事故列表API
 
 @interface AccidentListPagingParam : NSObject
@@ -178,15 +216,16 @@
 
 #pragma mark - 事件详情API
 
-@interface AccidentDetailManger:LRBaseRequest
+@interface AccidentDetailsManger:LRBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) NSNumber * accidentId; //事故ID
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) AccidentDetailModel * accidentDetailModel;
+@property (nonatomic, strong) AccidentDetailsModel * accidentDetailModel;
 
 @end
+
 
 #pragma mark - 通过车牌号统计事故数量API
 

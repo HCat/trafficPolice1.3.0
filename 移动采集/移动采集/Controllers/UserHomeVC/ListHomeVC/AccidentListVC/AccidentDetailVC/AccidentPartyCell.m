@@ -11,19 +11,38 @@
 #import <PureLayout.h>
 
 
+@interface AccidentPeopleViewManger:NSObject
+
+@property (nonatomic,copy)  NSString *title;
+@property (nonatomic,strong) AccidentPeopleModel *model;
+@property (nonatomic,strong) NSMutableArray * labelMarray;
+@property (nonatomic,strong) UIView * view;
+
+@end
+
+@implementation AccidentPeopleViewManger
+
+- (instancetype)init{
+    
+    if (self = [super init]) {
+        self.labelMarray = [NSMutableArray array];
+        self.view = [UIView newAutoLayoutView];
+    }
+    
+    return self;
+    
+}
+
+
+@end
+
 @interface AccidentPartyCell ()
 
 //分段控件，分别为甲方，乙方，丙方
 @property (weak, nonatomic) IBOutlet YUSegmentedControl *segmentedControl;
 
-@property (nonatomic,strong) UIView * v_a;
-@property (nonatomic,strong) UIView * v_b;
-@property (nonatomic,strong) UIView * v_c;
+@property (nonatomic,strong) NSMutableArray * mangerMarray;
 
-
-@property (nonatomic,strong) NSMutableArray * arr_lables_a;
-@property (nonatomic,strong) NSMutableArray * arr_lables_b;
-@property (nonatomic,strong) NSMutableArray * arr_lables_c;
 
 @property(nonatomic,strong) AccidentGetCodesResponse *codes;
 
@@ -39,18 +58,46 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
     self.isDone = NO;
-    self.arr_lables_a = [NSMutableArray array];
-    self.arr_lables_b = [NSMutableArray array];
-    self.arr_lables_c = [NSMutableArray array];
-    self.v_a = [UIView newAutoLayoutView];
-    self.v_b = [UIView newAutoLayoutView];
-    self.v_c = [UIView newAutoLayoutView];
-    
-    //配置SegmentedControl分段
-    [self setUpSegmentedControl];
-    
+    self.mangerMarray = [NSMutableArray array];
+
+}
+
+#pragma mark - set&&get
+
+- (void)setList:(NSArray<AccidentPeopleModel *> *)list{
+    if (_list) {
+        return;
+    }else{
+        _list = list;
+        
+        if (_list && _list.count > 0) {
+            
+            for (int i = 0; i < _list.count; i++) {
+                AccidentPeopleModel *model = _list[i];
+                
+                AccidentPeopleViewManger *manger = [[AccidentPeopleViewManger alloc] init];
+                manger.model = model;
+                manger.title = [NSString stringWithFormat:@"%d号",[manger.model.sorting intValue]];
+                [self.mangerMarray addObject:manger];
+            }
+            
+            [self setUpSegmentedControl];
+            
+            if (_mangerMarray.count > 0) {
+                for (int i = 0; i < _mangerMarray.count ; i++) {
+                    AccidentPeopleViewManger *t_model =_mangerMarray[i];
+                    [self buildParty:t_model];
+                }
+                
+            }
+            
+            
+            
+        }
+        
+    }
+   
 }
 
 - (AccidentGetCodesResponse *)codes{
@@ -64,7 +111,16 @@
 
 -(void)setUpSegmentedControl{
     
-    [_segmentedControl setUpWithTitles:@[@"甲方",@"乙方",@"丙方"]];
+    NSMutableArray *t_marray = [NSMutableArray array];
+    if (_mangerMarray.count > 0) {
+        for (int i = 0; i < _mangerMarray.count ; i++) {
+            AccidentPeopleViewManger *t_model =_mangerMarray[i];
+            [t_marray addObject:t_model.title];
+        }
+        
+    }
+    
+    [_segmentedControl setUpWithTitles:t_marray];
     [_segmentedControl setTextAttributes:@{
                                            NSFontAttributeName: [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight],
                                            NSForegroundColorAttributeName: DefaultMenuUnSelectedColor
@@ -83,19 +139,18 @@
 
     _indexSelected = _segmentedControl.selectedSegmentIndex;
     
-    if (_indexSelected == 0) {
-        [self.contentView addSubview:_v_a];
-        [_v_a autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-        [_v_a autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
+    
+    if (_mangerMarray.count > 0) {
+        for (int i = 0; i < _mangerMarray.count ; i++) {
+            AccidentPeopleViewManger *t_model =_mangerMarray[i];
+            if (_indexSelected == i) {
+                [self.contentView addSubview:t_model.view];
+                [t_model.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
+                [t_model.view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
+                
+            }
+        }
         
-    }else if (_indexSelected == 1){
-        [self.contentView addSubview:_v_b];
-        [_v_b autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-        [_v_b autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
-    }else if (_indexSelected == 2){
-        [self.contentView addSubview:_v_c];
-        [_v_c autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-        [_v_c autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
     }
     
     [self setNeedsUpdateConstraints];
@@ -106,334 +161,97 @@
     
 }
 
-
-#pragma mark - set && get 
-
-- (void)setAccidentVo:(AccidentVoModel *)accidentVo{
-    if (_accidentVo) {
-        return;
-    }else{
-        _accidentVo = accidentVo;
-        if (_accidentVo) {
-        
-            /**************************/
-            if (accidentVo.ptaIsZkCl && accidentVo.ptaIsZkCl.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣车辆:"  WithArr:_arr_lables_a inView:_v_a];
-            }
-            
-            if (accidentVo.ptaIsZkXsz && accidentVo.ptaIsZkXsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣行驶证:"  WithArr:_arr_lables_a inView:_v_a];
-            }
-            
-            if (accidentVo.ptaIsZkJsz && accidentVo.ptaIsZkJsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣驾驶证:"  WithArr:_arr_lables_a inView:_v_a];
-            }
-            
-            if (accidentVo.ptaIsZkSfz && accidentVo.ptaIsZkSfz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣身份证:"  WithArr:_arr_lables_a inView:_v_a];
-            }
-            
-            [self addLayoutInViews:_arr_lables_a];
-            
-            /**************************/
-            if (accidentVo.ptbIsZkCl && accidentVo.ptbIsZkCl.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣车辆:"  WithArr:_arr_lables_b inView:_v_b];
-            }
-            
-            if (accidentVo.ptbIsZkXsz && accidentVo.ptbIsZkXsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣行驶证:"  WithArr:_arr_lables_b inView:_v_b];
-            }
-            
-            if (accidentVo.ptbIsZkJsz && accidentVo.ptbIsZkJsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣驾驶证:"  WithArr:_arr_lables_b inView:_v_b];
-            }
-            
-            if (accidentVo.ptbIsZkSfz && accidentVo.ptbIsZkSfz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣身份证:"  WithArr:_arr_lables_b inView:_v_b];
-            }
-            
-            
-            [self addLayoutInViews:_arr_lables_b];
-            
-            
-            
-            /**************************/
-            if (accidentVo.ptcIsZkCl && accidentVo.ptcIsZkCl.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣车辆:"  WithArr:_arr_lables_c inView:_v_c];
-            }
-            
-            if (accidentVo.ptcIsZkXsz && accidentVo.ptcIsZkXsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣行驶证:"  WithArr:_arr_lables_c inView:_v_c];
-            }
-            
-            if (accidentVo.ptcIsZkJsz && accidentVo.ptcIsZkJsz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣驾驶证:"  WithArr:_arr_lables_c inView:_v_c];
-            }
-            
-            if (accidentVo.ptcIsZkSfz && accidentVo.ptcIsZkSfz.integerValue == 1) {
-                [self buildLableWithTitle:@"是否暂扣身份证:"  WithArr:_arr_lables_c inView:_v_c];
-                
-            }
-            
-            [self addLayoutInViews:_arr_lables_c];
-            
-            /**************************/
-            
-            if (_accident.ptaDescribe && _accident.ptaDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptaDescribe BottomInArr:_arr_lables_a InView:_v_a];
-            }
-            
-            if (_accident.ptbDescribe && _accident.ptbDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptbDescribe BottomInArr:_arr_lables_b InView:_v_b];
-            }
-            
-            if (_accident.ptcDescribe &&_accident.ptcDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptcDescribe BottomInArr:_arr_lables_c InView:_v_c];
-            }
-            
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
-            
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
-            
-        }else{
-            
-            if (_isDone) {
-                return;
-            }
-            
-            /************************************/
-            
-            [self addLayoutInViews:_arr_lables_a];
-            [self addLayoutInViews:_arr_lables_b];
-            [self addLayoutInViews:_arr_lables_c];
-            
-            /************************************/
-            if (_accident.ptaDescribe && _accident.ptaDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptaDescribe BottomInArr:_arr_lables_a InView:_v_a];
-            }
-            
-            if (_accident.ptbDescribe && _accident.ptbDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptbDescribe BottomInArr:_arr_lables_b InView:_v_b];
-            }
-            
-            if (_accident.ptcDescribe && _accident.ptcDescribe.length > 0) {
-                [self buildTextViewWithText:_accident.ptcDescribe BottomInArr:_arr_lables_c InView:_v_c];
-            }
-            
-            [self setNeedsUpdateConstraints];
-            [self updateConstraintsIfNeeded];
-            
-            [self setNeedsLayout];
-            [self layoutIfNeeded];
-            
-            self.isDone = YES;
-        }
-        
-    }
-
-}
-
-
-- (void)setAccident:(AccidentModel *)accident{
-    
-    if (_accident) {
-        return;
-    }else{
-        _accident = accident;
-        if (_accident) {
-            
-            [self buildPartyA:_accident];
-            [self buildPartyB:_accident];
-            [self buildPartyC:_accident];
-            
-            
-            
-        }
-    }
-}
-
 #pragma mark -
 
-- (void)buildPartyA:(AccidentModel *)accident{
+- (void)buildParty:(AccidentPeopleViewManger *)accident{
 
-    if (accident.ptaName && accident.ptaName.length > 0) {
-        [self buildLableWithTitle:@"姓 名:" AndText:accident.ptaName WithArr:_arr_lables_a inView:_v_a];
+    if (accident.model.name && accident.model.name.length > 0) {
+        [self buildLableWithTitle:@"姓 名:" AndText:accident.model.name WithArr:accident.labelMarray inView:accident.view];
     }
     
-    if (accident.ptaIdNo && accident.ptaIdNo.length > 0) {
-        [self buildLableWithTitle:@"身份证号:" AndText:accident.ptaIdNo WithArr:_arr_lables_a inView:_v_a];
+    if (accident.model.idNo && accident.model.idNo.length > 0) {
+        [self buildLableWithTitle:@"身份证号:" AndText:accident.model.idNo WithArr:accident.labelMarray inView:accident.view];
     }
     
-    if (accident.ptaVehicleId) {
+    if (accident.model.vehicleId) {
         if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptaVehicleId integerValue] WithArray:self.codes.vehicle];
-            [self buildLableWithTitle:@"车辆类型:" AndText:t_str WithArr:_arr_lables_a inView:_v_a];
+            NSString * t_str = [self.codes searchNameWithModelId:[accident.model.vehicleId integerValue] WithArray:self.codes.vehicle];
+            [self buildLableWithTitle:@"车辆类型:" AndText:t_str WithArr:accident.labelMarray inView:accident.view];
         }
     }
     
-    if (accident.ptaCarNo && accident.ptaCarNo.length > 0) {
-        [self buildLableWithTitle:@"车牌号码:" AndText:accident.ptaCarNo WithArr:_arr_lables_a inView:_v_a];
+    if (accident.model.carNo && accident.model.carNo.length > 0) {
+        [self buildLableWithTitle:@"车牌号码:" AndText:accident.model.carNo WithArr:accident.labelMarray inView:accident.view];
     }
     
-    if (accident.ptaPhone && accident.ptaPhone.length > 0) {
-        [self buildLableWithTitle:@"联系电话:" AndText:accident.ptaPhone WithArr:_arr_lables_a inView:_v_a];
+    if (accident.model.phone && accident.model.phone.length > 0) {
+        [self buildLableWithTitle:@"联系电话:" AndText:accident.model.phone WithArr:accident.labelMarray inView:accident.view];
     }
     
-    if (accident.ptaDirect) {
+    if (accident.model.directId) {
         if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelType:[accident.ptaDirect integerValue] WithArray:self.codes.driverDirect];
-            [self buildLableWithTitle:@"行驶状态:" AndText:t_str WithArr:_arr_lables_a inView:_v_a];
+            NSString * t_str = [self.codes searchNameWithModelType:[accident.model.directId integerValue] WithArray:self.codes.driverDirect];
+            [self buildLableWithTitle:@"行驶状态:" AndText:t_str WithArr:accident.labelMarray inView:accident.view];
         }
     }
     
-    if (accident.ptaBehaviourId) {
+    if (accident.model.behaviourId) {
         if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptaBehaviourId integerValue] WithArray:self.codes.behaviour];
-            [self buildLableWithTitle:@"违法行为:" AndText:t_str WithArr:_arr_lables_a inView:_v_a];
+            NSString * t_str = [self.codes searchNameWithModelId:[accident.model.behaviourId integerValue] WithArray:self.codes.behaviour];
+            [self buildLableWithTitle:@"违法行为:" AndText:t_str WithArr:accident.labelMarray inView:accident.view];
         }
     }
     
-    if (accident.ptaInsuranceCompanyId) {
+    if (accident.model.insuranceCompanyId) {
         if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptaInsuranceCompanyId integerValue] WithArray:self.codes.insuranceCompany];
-            [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:_arr_lables_a inView:_v_a];
+            NSString * t_str = [self.codes searchNameWithModelId:[accident.model.insuranceCompanyId integerValue] WithArray:self.codes.insuranceCompany];
+            [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:accident.labelMarray inView:accident.view];
         }
     }
     
-    if (accident.ptaPolicyNo && accident.ptaPolicyNo.length > 0) {
-        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptaPolicyNo WithArr:_arr_lables_a inView:_v_a];
+    if (accident.model.policyNo && accident.model.policyNo.length > 0) {
+        [self buildLableWithTitle:@"保险单号:" AndText:accident.model.policyNo WithArr:accident.labelMarray inView:accident.view];
     }
     
     
-    if (accident.ptaResponsibilityId) {
+    if (accident.model.responsibilityId) {
         if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptaResponsibilityId integerValue] WithArray:self.codes.responsibility];
-            [self buildLableWithTitle:@"责 任:" AndText:t_str WithArr:_arr_lables_a inView:_v_a];
+            NSString * t_str = [self.codes searchNameWithModelId:[accident.model.responsibilityId integerValue] WithArray:self.codes.responsibility];
+            [self buildLableWithTitle:@"责 任:" AndText:t_str WithArr:accident.labelMarray inView:accident.view];
         }
     }
     
-}
+    /**************************/
+    if (accident.model.isZkCl && accident.model.isZkCl.integerValue == 1) {
+        [self buildLableWithTitle:@"是否暂扣车辆:"   WithArr:accident.labelMarray inView:accident.view];
+    }
+    
+    if (accident.model.isZkXsz && accident.model.isZkXsz.integerValue == 1) {
+        [self buildLableWithTitle:@"是否暂扣行驶证:"   WithArr:accident.labelMarray inView:accident.view];
+    }
+    
+    if (accident.model.isZkJsz && accident.model.isZkJsz.integerValue == 1) {
+        [self buildLableWithTitle:@"是否暂扣驾驶证:"  WithArr:accident.labelMarray inView:accident.view];
+    }
+    
+    if (accident.model.isZkSfz && accident.model.isZkSfz.integerValue == 1) {
+        [self buildLableWithTitle:@"是否暂扣身份证:"   WithArr:accident.labelMarray inView:accident.view];
+        
+    }
 
+    [self addLayoutInViews:accident.labelMarray];
+    
+    /**************************/
+    
+    if (accident.model.resume && accident.model.resume.length > 0) {
+        [self buildTextViewWithText:accident.model.resume BottomInArr:accident.labelMarray InView:accident.view];
+    }
 
-- (void)buildPartyB:(AccidentModel *)accident{
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
     
-    if (accident.ptbName && accident.ptbName.length > 0) {
-        [self buildLableWithTitle:@"姓 名:" AndText:accident.ptbName WithArr:_arr_lables_b inView:_v_b];
-    }
-    
-    if (accident.ptbIdNo && accident.ptbIdNo.length > 0) {
-        [self buildLableWithTitle:@"身份证号:" AndText:accident.ptbIdNo WithArr:_arr_lables_b inView:_v_b];
-    }
-    
-    if (accident.ptbVehicleId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptbVehicleId integerValue] WithArray:self.codes.vehicle];
-            [self buildLableWithTitle:@"车辆类型:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
-        }
-    }
-    
-    if (accident.ptbCarNo && accident.ptbCarNo.length > 0) {
-        [self buildLableWithTitle:@"车牌号码:" AndText:accident.ptbCarNo WithArr:_arr_lables_b inView:_v_b];
-    }
-    
-    if (accident.ptbPhone && accident.ptbPhone.length > 0) {
-        [self buildLableWithTitle:@"联系电话:" AndText:accident.ptbPhone WithArr:_arr_lables_b inView:_v_b];
-    }
-    
-    if (accident.ptbDirect) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelType:[accident.ptbDirect integerValue] WithArray:self.codes.driverDirect];
-            [self buildLableWithTitle:@"行驶状态:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
-        }
-    }
-    
-    if (accident.ptbBehaviourId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptbBehaviourId integerValue] WithArray:self.codes.behaviour];
-            [self buildLableWithTitle:@"违法行为:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
-        }
-    }
-    
-    if (accident.ptbInsuranceCompanyId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptbInsuranceCompanyId integerValue] WithArray:self.codes.insuranceCompany];
-            [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
-        }
-    }
-    
-    if (accident.ptbPolicyNo && accident.ptbPolicyNo.length > 0) {
-        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptbPolicyNo WithArr:_arr_lables_b inView:_v_b];
-    }
-    
-    if (accident.ptbResponsibilityId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptbResponsibilityId integerValue] WithArray:self.codes.responsibility];
-            [self buildLableWithTitle:@"责 任:" AndText:t_str WithArr:_arr_lables_b inView:_v_b];
-        }
-    }
-    
-}
-
-- (void)buildPartyC:(AccidentModel *)accident{
-    
-    
-    if (accident.ptcName && accident.ptcName.length > 0) {
-        [self buildLableWithTitle:@"姓 名:" AndText:accident.ptcName WithArr:_arr_lables_c inView:_v_c];
-    }
-    
-    if (accident.ptcIdNo && accident.ptcIdNo.length > 0) {
-        [self buildLableWithTitle:@"身份证号:" AndText:accident.ptcIdNo WithArr:_arr_lables_c inView:_v_c];
-    }
-    
-    if (accident.ptcVehicleId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptcVehicleId integerValue] WithArray:self.codes.vehicle];
-            [self buildLableWithTitle:@"车辆类型:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
-        }
-    }
-    
-    if (accident.ptcCarNo && accident.ptcCarNo.length > 0) {
-        [self buildLableWithTitle:@"车牌号码:" AndText:accident.ptcCarNo WithArr:_arr_lables_c inView:_v_c];
-    }
-    
-    if (accident.ptcPhone && accident.ptcPhone.length > 0) {
-        [self buildLableWithTitle:@"联系电话:" AndText:accident.ptcPhone WithArr:_arr_lables_c inView:_v_c];
-    }
-    
-    if (accident.ptcDirect) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelType:[accident.ptcDirect integerValue] WithArray:self.codes.driverDirect];
-            [self buildLableWithTitle:@"行驶状态:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
-        }
-    }
-    
-    if (accident.ptcBehaviourId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptcBehaviourId integerValue] WithArray:self.codes.behaviour];
-            [self buildLableWithTitle:@"违法行为:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
-        }
-    }
-    
-    if (accident.ptcInsuranceCompanyId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptcInsuranceCompanyId integerValue] WithArray:self.codes.insuranceCompany];
-            [self buildLableWithTitle:@"保险公司:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
-        }
-    }
-    
-    if (accident.ptcPolicyNo && accident.ptcPolicyNo.length > 0) {
-        [self buildLableWithTitle:@"保险单号:" AndText:accident.ptcPolicyNo WithArr:_arr_lables_c inView:_v_c];
-    }
-    
-    
-    if (accident.ptcResponsibilityId) {
-        if (self.codes) {
-            NSString * t_str = [self.codes searchNameWithModelId:[accident.ptcResponsibilityId integerValue] WithArray:self.codes.responsibility];
-            [self buildLableWithTitle:@"责 任:" AndText:t_str WithArr:_arr_lables_c inView:_v_c];
-        }
-    }
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 
 }
 
@@ -535,28 +353,27 @@
     LxDBAnyVar(selectedIndex);
     
     if (_indexSelected != selectedIndex) {
-        if (_indexSelected == 0) {
-            [_v_a removeFromSuperview];
-        }else if (_indexSelected == 1){
-            [_v_b removeFromSuperview];
-        }else if (_indexSelected == 2){
-            [_v_c removeFromSuperview];
+        
+        for (int i = 0; i < _mangerMarray.count ; i++) {
+            AccidentPeopleViewManger *t_model =_mangerMarray[i];
+            if (_indexSelected == i) {
+                [t_model.view removeFromSuperview];
+                break;
+            }
+        
         }
         
-        if (selectedIndex == 0) {
-            [self.contentView addSubview:_v_a];
-            [_v_a autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-            [_v_a autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
+        for (int i = 0; i < _mangerMarray.count ; i++) {
+            AccidentPeopleViewManger *t_model =_mangerMarray[i];
+            if (selectedIndex == i) {
+                [self.contentView addSubview:t_model.view];
+                [t_model.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
+                [t_model.view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
+                 break;
+            }
             
-        }else if (selectedIndex == 1){
-            [self.contentView addSubview:_v_b];
-            [_v_b autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-            [_v_b autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
-        }else if (selectedIndex == 2){
-            [self.contentView addSubview:_v_c];
-            [_v_c autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeTop];
-            [_v_c autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_segmentedControl withOffset:15.f];
         }
+        
         
         [self setNeedsUpdateConstraints];
         [self updateConstraintsIfNeeded];
@@ -578,78 +395,44 @@
 
 - (float)heightWithAccident{
     
-    if (_indexSelected == 0) {
+    
+    if (_mangerMarray && _mangerMarray.count > 0) {
         
-        if (_arr_lables_a && _arr_lables_a.count > 0) {
+        for (int i = 0; i < _mangerMarray.count; i++) {
+            AccidentPeopleViewManger *manger = _mangerMarray[i];
             
-            UILabel *t_lb = (UILabel *)_arr_lables_a[0];
-            
-            if (_accident.ptaDescribe && _accident.ptaDescribe.length > 0) {
-                return 84 + 15 + _arr_lables_a.count * (t_lb.frame.size.height + 18) + t_lb.frame.size.height + 10 + 99 + 10;
+            if (_indexSelected == i) {
                 
-            }else{
-                return 84 + 15 + _arr_lables_a.count * (t_lb.frame.size.height + 18);
+                if (manger.labelMarray && manger.labelMarray.count > 0) {
+                    
+                    UILabel *t_lb = (UILabel *)manger.labelMarray[0];
+                    
+                    if (manger.model.resume && manger.model.resume.length > 0) {
+                        return 84 + 15 + manger.labelMarray.count * (t_lb.frame.size.height + 18) + t_lb.frame.size.height + 10 + 99 + 10;
+                        
+                    }else{
+                        return 84 + 15 + manger.labelMarray.count * (t_lb.frame.size.height + 18);
+                        
+                    }
+                    
+                }else{
+                    
+                    if (manger.model.resume && manger.model.resume.length > 0) {
+                        //segenControl底部距离顶部高度 + 15间距 + label高度 + textView和简述间隔 + textView高度 + textView到底部
+                        return 84 + 15 + 17 + 10 + 99  + 10;
+                    }else{
+                        return 84 + 15;
+                    }
+                    
+                }
                 
             }
             
-        }else{
-            
-            if (_accident.ptaDescribe && _accident.ptaDescribe.length > 0) {
-                //segenControl底部距离顶部高度 + 15间距 + label高度 + textView和简述间隔 + textView高度 + textView到底部
-                return 84 + 15 + 17 + 10 + 99  + 10;
-            }else{
-                return 84 + 15;
-            }
-            
-        }
-        
-    }else if (_indexSelected == 1){
-        
-        if (_arr_lables_b && _arr_lables_b.count > 0) {
-            
-            UILabel *t_lb = (UILabel *)_arr_lables_b[0];
-            
-            if (_accident.ptbDescribe && _accident.ptbDescribe.length > 0) {
-                return 84 + 15 + _arr_lables_b.count * (t_lb.frame.size.height + 18) + t_lb.frame.size.height + 10 + 99 + 10;
-            }else{
-                return 84 + 15 + _arr_lables_b.count * (t_lb.frame.size.height + 18);
-            }
-            
-        }else{
-        
-            if (_accident.ptbDescribe && _accident.ptbDescribe.length > 0) {
-                //segenControl底部距离顶部高度 + 15间距 + label高度 + textView和简述间隔 + textView高度 + textView到底部
-                return 84 + 15 + 17 + 10 + 99  + 10;
-            }else{
-                return 84 + 15;
-            }
             
         }
     
-    }else if (_indexSelected == 2){
-        
-        if (_arr_lables_c && _arr_lables_c.count > 0) {
-            
-            UILabel *t_lb = (UILabel *)_arr_lables_c[0];
-            
-            if (_accident.ptcDescribe && _accident.ptcDescribe.length > 0) {
-                return 84 + 15 + _arr_lables_c.count * (t_lb.frame.size.height + 18) + t_lb.frame.size.height + 10 + 99 + 10;
-            }else{
-                return 84 + 15 + _arr_lables_c.count * (t_lb.frame.size.height + 18);
-            }
-            
-        }else{
-            
-            if (_accident.ptcDescribe && _accident.ptcDescribe.length > 0) {
-                //segenControl底部距离顶部高度 + 15间距 + label高度 + textView和简述间隔 + textView高度 + textView到底部
-                return 84 + 15 + 17 + 10 + 99  + 10;
-            }else{
-                return 84 + 15;
-            }
-        
-        }
-
     }
+    
     return 84 + 15;
 }
 

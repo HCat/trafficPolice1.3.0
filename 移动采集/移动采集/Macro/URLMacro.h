@@ -11,10 +11,10 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.200:8080/police-admin/"
-#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.200:8080/police-admin/websocket"
+#define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
+#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
 
 
 #define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
@@ -63,8 +63,9 @@
 
 #define URL_ACCIDENT_GETCODES @"app/accident/getCodes.json"                     //获取事故通用值
 #define URL_ACCIDENT_SAVE @"app/accident/save.json"                             //事故增加
+#define URL_ACCIDENT_UP @"app/accident/saveApp.json"                            //事故增加
 #define URL_ACCIDENT_LISTPAGING @"app/accident/listPaging.json"                 //事故列表
-#define URL_ACCIDENT_DETAIL @"app/accident/detail.json"                         //事故详情
+#define URL_ACCIDENT_DETAILS @"app/accident/detailApp.json"                     //事故详情
 #define URL_ACCIDENT_COUNTBYCARNO @"app/accident/countAccidentByCarno.json"     //通过车牌号统计事故数量
 #define URL_ACCIDENT_COUNTBYTELNUM @"app/accident/countAccidentByTelNum.json"   //通过手机号统计事故数量
 #define URL_ACCIDENT_COUNTBYIDNO @"app/accident/countAccidentByIdNo.json"       //通过身份证号统计事故数量
@@ -76,9 +77,9 @@
 
 #define URL_FASTACCIDENT_GETCODES @"app/fastAccident/getCodes.json"             //获取快处事故通用值
 #define URL_FASTACCIDENT_SAVE @"app/fastAccident/save.json"                     //快处事故增加
+#define URL_FASTACCIDENT_UP @"app/fastAccident/saveApp.json"                    //快处事故增加
 #define URL_FASTACCIDENT_LISTPAGING @"app/fastAccident/listPaging.json"         //快处事故列表
-#define URL_FASTACCIDENT_DETAIL @"app/fastAccident/detail.json"                 //快处事故详情
-
+#define URL_FASTACCIDENT_DETAILS @"app/fastAccident/detailApp.json"             //快处事故详情
 
 
 #pragma mark - 违停相关API

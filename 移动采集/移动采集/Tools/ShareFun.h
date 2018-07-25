@@ -101,4 +101,7 @@
 
 +(int)getRandomNumber:(int)from to:(int)to;
 
+//通过UITableViewCell 获取UITableView
++ (UITableView *)getTableView:(UITableViewCell *)cell;
+
 @end

@@ -34,7 +34,7 @@
 
 }
 
-- (void)setAccident:(AccidentModel *)accident{
+- (void)setAccident:(AccidentInfoModel *)accident{
 
     _accident = accident;
     if (_accident) {

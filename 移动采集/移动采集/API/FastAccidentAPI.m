@@ -111,6 +111,78 @@
 
 @end
 
+
+#pragma mark - 快处增加接口
+
+@implementation FastAccidentUpManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_FASTACCIDENT_UP;
+}
+
+//请求方式
+- (YTKRequestMethod)requestMethod
+{
+    return YTKRequestMethodPOST;
+}
+
+//上传图片
+- (AFConstructingBlock)constructingBodyBlock {
+    return ^(id<AFMultipartFormData> formData) {
+        for (ImageFileInfo *filesImage in self.param.files){
+            [formData appendPartWithFileData:filesImage.fileData name:filesImage.name fileName:filesImage.fileName mimeType:filesImage.mimeType];
+        }
+        for (ImageFileInfo *certFilesImage in self.param.certFiles){
+            [formData appendPartWithFileData:certFilesImage.fileData name:certFilesImage.name fileName:certFilesImage.fileName mimeType:certFilesImage.mimeType];
+        }
+        
+    };
+}
+
+//上传进度
+- (AFURLSessionTaskProgressBlock)uploadProgressBlock{
+    
+    if (self.param.files.count > 0 || self.param.certFiles.count > 0) {
+        self.isNeedLoadHud = NO;
+        return ^(NSProgress *progress){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                if (hud == nil) {
+                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                    hud.mode = DMProgressHUDModeProgress;
+                    hud.style = DMProgressHUDStyleDark;
+                    hud.text = @"正在上传...";
+                }
+                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                
+            });
+            
+        };
+        
+    }else{
+        
+        return  nil ;
+        
+    }
+    
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+
+@end
+
+
+
 #pragma mark - 快处事件列表API
 
 @implementation FastAccidentListPagingParam
@@ -156,12 +228,12 @@
 #pragma mark - 快处事件详情API
 
 
-@implementation FastAccidentDetailManger
+@implementation FastAccidentDetailsManger
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
-    return URL_FASTACCIDENT_DETAIL;
+    return URL_FASTACCIDENT_DETAILS;
 }
 
 //请求参数
@@ -171,10 +243,11 @@
 }
 
 //返回参数
-- (AccidentDetailModel *)fastAccidentDetailModel{
+- (AccidentDetailsModel *)fastAccidentDetailModel{
     
     if (self.responseModel.data) {
-        return [AccidentDetailModel modelWithDictionary:self.responseModel.data];
+        _fastAccidentDetailModel = [AccidentDetailsModel modelWithDictionary:self.responseModel.data];
+        return _fastAccidentDetailModel;
     }
     
     return nil;

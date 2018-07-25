@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LRBaseRequest.h"
 #import "AccidentListModel.h"
-#import "FastAccidentDetailModel.h"
-
-#import "AccidentAPI.h"
+#import "AccidentDetailsModel.h"
 
 #pragma mark - 获取快处事故通用值API
 
@@ -43,6 +41,21 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 //无返回参数
 
 @end
+
+
+#pragma mark - 快处事故增加API
+
+@interface FastAccidentUpManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) AccidentUpParam *param;
+
+/****** 返回数据 ******/
+//无返回参数
+
+@end
+
+
 
 #pragma mark - 快处事故列表API
 
@@ -78,13 +91,13 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 
 #pragma mark - 快处事件详情API
 
-@interface FastAccidentDetailManger:LRBaseRequest
+@interface FastAccidentDetailsManger:LRBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) NSNumber * fastaccidentId;
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) AccidentDetailModel * fastAccidentDetailModel;
+@property (nonatomic, strong) AccidentDetailsModel * fastAccidentDetailModel;
 
 
 @end

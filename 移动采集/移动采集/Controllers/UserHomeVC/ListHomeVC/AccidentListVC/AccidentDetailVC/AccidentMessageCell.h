@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AccidentAPI.h"
+#import "AccidentDetailsModel.h"
 
 
 @interface AccidentMessageCell : UITableViewCell
 
-@property(nonatomic,strong) AccidentModel *accident;
+@property(nonatomic,strong) AccidentInfoModel *accident;
 
 
 - (float)heightWithAccident;
