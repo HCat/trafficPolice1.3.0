@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,12 +57,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vyi-QR-OBw">
+                                <rect key="frame" x="218" y="0.0" width="86" height="75"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QbD-DW-zQ3" firstAttribute="leading" secondItem="YAa-zi-Sac" secondAttribute="leading" id="4kv-ci-tay"/>
                             <constraint firstAttribute="bottom" secondItem="QbD-DW-zQ3" secondAttribute="bottom" constant="16" id="6n7-EL-K9Q"/>
                             <constraint firstAttribute="trailing" secondItem="YAa-zi-Sac" secondAttribute="trailing" constant="15" id="6oc-2y-Ptr"/>
+                            <constraint firstAttribute="trailing" secondItem="vyi-QR-OBw" secondAttribute="trailing" id="CBu-Ll-K8Q"/>
                             <constraint firstItem="YAa-zi-Sac" firstAttribute="leading" secondItem="HWc-tR-FbV" secondAttribute="trailing" constant="5" id="CGA-kr-BAt"/>
                             <constraint firstItem="hUU-TG-Ca9" firstAttribute="top" secondItem="7AQ-sx-NKY" secondAttribute="top" constant="15.5" id="IOJ-o4-2z4"/>
                             <constraint firstAttribute="trailing" secondItem="QbD-DW-zQ3" secondAttribute="trailing" constant="15" id="MM3-Eu-tfI"/>
@@ -74,6 +78,7 @@
                             <constraint firstItem="zlW-XA-M30" firstAttribute="leading" secondItem="HWc-tR-FbV" secondAttribute="leading" id="iOU-YB-ZTP"/>
                             <constraint firstAttribute="trailing" secondItem="hUU-TG-Ca9" secondAttribute="trailing" constant="15" id="kxe-NS-ISW"/>
                             <constraint firstItem="HWc-tR-FbV" firstAttribute="leading" secondItem="gAL-3h-Elf" secondAttribute="leading" id="ppw-Nx-l4L"/>
+                            <constraint firstItem="vyi-QR-OBw" firstAttribute="top" secondItem="7AQ-sx-NKY" secondAttribute="top" id="shb-KB-wBd"/>
                             <constraint firstItem="HWc-tR-FbV" firstAttribute="leading" secondItem="7AQ-sx-NKY" secondAttribute="leading" constant="15" id="uSg-tB-Cih"/>
                             <constraint firstItem="HWc-tR-FbV" firstAttribute="top" secondItem="YAa-zi-Sac" secondAttribute="top" id="zyW-QT-9Um"/>
                         </constraints>
@@ -100,6 +105,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="img_statues" destination="vyi-QR-OBw" id="MdL-d6-cHM"/>
                 <outlet property="lb_carNumber" destination="YAa-zi-Sac" id="B8P-4O-bBb"/>
                 <outlet property="lb_roadName" destination="hUU-TG-Ca9" id="bWr-Us-AES"/>
                 <outlet property="lb_time" destination="QbD-DW-zQ3" id="p0s-VA-sgc"/>

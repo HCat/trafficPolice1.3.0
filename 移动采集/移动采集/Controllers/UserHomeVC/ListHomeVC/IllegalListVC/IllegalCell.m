@@ -18,6 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
 
+@property (weak, nonatomic) IBOutlet UIImageView *img_statues;
+
+
 @end
 
 @implementation IllegalCell
@@ -36,7 +39,15 @@
         
         _lb_roadName.text = _model.roadName;
         _lb_carNumber.text = _model.carNo;
-        _lb_time.text = [ShareFun timeWithTimeInterval:_model.collectTime];;
+        _lb_time.text = [ShareFun timeWithTimeInterval:_model.collectTime];
+        
+        if (_model.sendStatus == 1) {
+            [_img_statues setImage:[UIImage imageNamed:@"icon_illegal_notice_h"]];
+        }else{
+            [_img_statues setImage:[UIImage imageNamed:@"icon_illegal_notice_n"]];
+            
+        }
+        
         
     }
     

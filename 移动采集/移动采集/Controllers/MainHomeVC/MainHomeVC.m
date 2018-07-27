@@ -12,7 +12,6 @@
 
 #import "IllegalParkVC.h"
 #import "CarInfoAddVC.h"
-#import "AccidentVC.h"
 #import "AccidentManageVC.h"
 #import "VideoColectVC.h"
 #import "SignInVC.h"

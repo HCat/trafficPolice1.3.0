@@ -14,6 +14,6 @@
 @property (nonatomic,strong) NSNumber * collectTime ;   //采集时间
 @property (nonatomic,copy)   NSString * roadName ;      //路名
 @property (nonatomic,copy)   NSString * carNo;          //车牌号
-
+@property (nonatomic,assign) NSInteger sendStatus;      //0 未通知 1 已通知
 
 @end
