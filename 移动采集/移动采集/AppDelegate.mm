@@ -88,10 +88,9 @@
     //设置导航栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setBarTintColor:DefaultNavColor];
+    [[UINavigationBar appearance] setTranslucent:NO];
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    if([[UIDevice currentDevice].systemVersion floatValue] >= 8 && [UINavigationBar conformsToProtocol:@protocol(UIAppearanceContainer)]) {
-        [UINavigationBar appearance].translucent = NO;
-    }
+    
     
     //开启网络监听通知
     [[NetWorkHelper sharedDefault] startNotification];

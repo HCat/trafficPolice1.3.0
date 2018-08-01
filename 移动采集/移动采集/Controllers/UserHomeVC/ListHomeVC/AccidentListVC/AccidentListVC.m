@@ -44,6 +44,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
     }
     
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
     //隐藏多余行的分割线

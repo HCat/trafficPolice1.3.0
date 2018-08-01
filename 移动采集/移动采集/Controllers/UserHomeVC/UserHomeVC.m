@@ -70,14 +70,13 @@
     
     WS(weakSelf);
     
-    if ([UserModel isPermissionForAccidentList]) {
-        
-        LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
-        item1.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item1.funcName = @"事故列表";
-        item1.img = [UIImage imageNamed:@"list_accident"];
-        item1.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
+    item1.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item1.funcName = @"事故列表";
+    item1.img = [UIImage imageNamed:@"list_accident"];
+    item1.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForAccidentList]) {
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeAccident;
             t_vc.title = @"事故列表";
@@ -85,36 +84,45 @@
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
-        };
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
         
-        [self.mArr_items addObject:item1];
-        
-    }
+    };
     
-    if ([UserModel isPermissionForFastAccidentList]) {
-        LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
-        item2.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item2.funcName = @"快处列表";
-        item2.img = [UIImage imageNamed:@"list_fastAccident"];
-        item2.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    [self.mArr_items addObject:item1];
+    
+    LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
+    item2.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item2.funcName = @"快处列表";
+    item2.img = [UIImage imageNamed:@"list_fastAccident"];
+    item2.executeCode = ^{
+        
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForFastAccidentList]) {
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeFastAccident;
             t_vc.title = @"快处列表";
             
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-        };
-        [self.mArr_items addObject:item2];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+        
+        
+    };
     
-    if ([UserModel isPermissionForIllegalList]) {
-        LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
-        item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item3.funcName = @"违停列表";
-        item3.img = [UIImage imageNamed:@"list_illegalPark"];
-        item3.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    [self.mArr_items addObject:item2];
+    
+    
+    LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
+    item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item3.funcName = @"违停列表";
+    item3.img = [UIImage imageNamed:@"list_illegalPark"];
+    item3.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForIllegalList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypePark;
@@ -122,100 +130,116 @@
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
             
-        };
-        [self.mArr_items addObject:item3];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+       
+    };
     
-    if ([UserModel isPermissionForThroughList]) {
-        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
-        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"违反禁令列表";
-        item4.img = [UIImage imageNamed:@"list_through"];
-        item4.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    [self.mArr_items addObject:item3];
+    
+    LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+    item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item4.funcName = @"违反禁令列表";
+    item4.img = [UIImage imageNamed:@"list_through"];
+    item4.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForThroughList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypeThrough;
             t_vc.title = @"违反禁令列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-        };
-        [self.mArr_items addObject:item4];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+
+    };
     
-    if ([UserModel isPermissionForIllegalReverseList]) {
-        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
-        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"不按朝向列表";
-        item4.img = [UIImage imageNamed:@"list_receverPark"];
-        item4.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    [self.mArr_items addObject:item4];
+    
+    LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
+    item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item5.funcName = @"不按朝向列表";
+    item5.img = [UIImage imageNamed:@"list_receverPark"];
+    item5.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForIllegalReverseList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeReversePark;
             t_vc.title = @"不按朝向列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-        };
-        [self.mArr_items addObject:item4];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+  
+    };
+    [self.mArr_items addObject:item5];
     
-    if ([UserModel isPermissionForIllegalLockList]) {
-        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
-        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"违停锁车列表";
-        item4.img = [UIImage imageNamed:@"list_lockPark"];
-        item4.executeCode = ^{
-            SW(strongSelf, weakSelf);
+    LRSettingItemModel *item6 = [[LRSettingItemModel alloc]init];
+    item6.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item6.funcName = @"违停锁车列表";
+    item6.img = [UIImage imageNamed:@"list_lockPark"];
+    item6.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForIllegalLockList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeLockPark;
             t_vc.title = @"违停锁车列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-        };
-        [self.mArr_items addObject:item4];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+
+    };
+    [self.mArr_items addObject:item6];
     
-    if ([UserModel isPermissionForCarInfoList]) {
-        LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
-        item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item4.funcName = @"车辆录入列表";
-        item4.img = [UIImage imageNamed:@"list_carInfoAdd"];
-        item4.executeCode = ^{
-            SW(strongSelf, weakSelf);
+   
+    LRSettingItemModel *item7 = [[LRSettingItemModel alloc]init];
+    item7.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item7.funcName = @"车辆录入列表";
+    item7.img = [UIImage imageNamed:@"list_carInfoAdd"];
+    item7.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForCarInfoList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeCarInfoAdd;
             t_vc.title = @"车辆录入列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-            
-        };
-        [self.mArr_items addObject:item4];
-    }
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+
+    };
     
+    [self.mArr_items addObject:item7];
+   
     
-    if ([UserModel isPermissionForVideoCollectList]) {
-        LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
-        item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-        item5.funcName = @"视频列表";
-        item5.img = [UIImage imageNamed:@"list_video"];
-        item5.executeCode = ^{
-            
-            SW(strongSelf, weakSelf);
+    LRSettingItemModel *item8 = [[LRSettingItemModel alloc]init];
+    item8.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item8.funcName = @"视频列表";
+    item8.img = [UIImage imageNamed:@"list_video"];
+    item8.executeCode = ^{
+        
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForVideoCollectList]) {
             VideoListVC *t_vc = [[VideoListVC alloc] init];
             t_vc.title = @"视频列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];
-            
-        };
-        [self.mArr_items addObject:item5];
-    }
-    
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+
+    };
+    [self.mArr_items addObject:item8];
+   
     if (IS_IPHONE_5) {
         self.tb_content.scrollEnabled = YES;
     }else{

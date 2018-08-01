@@ -175,11 +175,18 @@
 #define URL_IllOPERATION_EXEMPTCARNO @"app/illOperation/exemptCarno.json"            //待监管车辆
 #define URL_IllOPERATION_DETAIL @"app/illOperation/detail.json"                      //待监管车辆
 
+#pragma mark - 联合执法
 
 #define URL_JOINTLAW_SAVE @"app/jointLaw/save.json"                                 //联合执法增加
 #define URL_JOINTLAW_GETILLEGALCODELIST @"app/jointLaw/getIllegalCodeList.json"     //违法条例列表
 #define URL_JOINTLAW_IMGUPLOAD @"app/jointLaw/imgUpload.json"                       //联合执法上传照片
 #define URL_JOINTLAW_VIDEOUPLOAD @"app/jointLaw/videoUpload.json"                   //联合执法视频上传
+
+#pragma mark - 行动
+
+#define URL_ACTION_PAGELIST @"app/actionManage/getActionPageList.json"              //获取行动分页列表
+#define URL_ACTION_DETAIL @"app/actionManage/getActionDetail.json"                  //获取行动详情
+#define URL_ACTION_CHANGESTATUS @"app/actionManage/changeActionStatus.json"         //更改行动状态
 
 
 #endif /* URLMacro_h */

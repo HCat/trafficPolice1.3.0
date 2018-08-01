@@ -49,7 +49,7 @@
                                 <constraint firstAttribute="height" constant="44" id="nc3-yn-EB4"/>
                             </constraints>
                             <state key="normal" image="btn_search">
-                                <color key="titleColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
                             </state>
                             <connections>
                                 <action selector="handleBtnSearchClicked:" destination="-1" eventType="touchUpInside" id="6t4-wp-ADV"/>
@@ -63,7 +63,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstItem="6H2-3g-lpE" firstAttribute="leading" secondItem="0Xg-kt-tog" secondAttribute="leading" constant="20" id="0he-df-x18"/>
                         <constraint firstItem="yCe-r0-jui" firstAttribute="centerY" secondItem="6H2-3g-lpE" secondAttribute="centerY" id="IJC-fB-LGC"/>

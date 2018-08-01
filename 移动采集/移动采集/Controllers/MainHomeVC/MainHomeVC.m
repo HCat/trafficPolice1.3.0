@@ -88,35 +88,14 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         if ([UserModel getUserModel]) {
             
-            if ([UserModel isPermissionForIllegal]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
-            }
-            
-            if ([UserModel isPermissionForIllegalReverseParking]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
-            }
-            
-            if ([UserModel isPermissionForIllegalReverseParking]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
-            }
-            
-            if ([UserModel isPermissionForIllegalReverseParking]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
-            }
-            
-            if ([UserModel isPermissionForThrough]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
-            }
-            
-            if ([UserModel isPermissionForVideoCollect]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
-            }
-            
-            if ([UserModel isPermissionForJointEnforcement]) {
-                [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
-            }
-            
-            
+            [_arr_illegal  addObject:@{@"image":@"menu_illegal",@"title":@"违停录入"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
+             
         }
     }
     
@@ -130,13 +109,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         if ([UserModel getUserModel]) {
             
-            if ([UserModel isPermissionForFastAccident]) {
-                [_arr_accident  addObject:@{@"image":@"menu_fastAccident",@"title":@"快处录入"}];
-            }
-            
-            if ([UserModel isPermissionForAccident]) {
-                [_arr_accident  addObject:@{@"image":@"menu_accident",@"title":@"事故录入"}];
-            }
+            [_arr_accident  addObject:@{@"image":@"menu_fastAccident",@"title":@"快处录入"}];
+            [_arr_accident  addObject:@{@"image":@"menu_accident",@"title":@"事故录入"}];
             
         }
     }
@@ -153,13 +127,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         if ([UserModel getUserModel]) {
             
-            if ([UserModel isPermissionForImportantCar]) {
-                [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"工程车辆"}];
-            }
-            
-            if ([UserModel isPermissionForPoliceCommand]) {
-                [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
-            }
+            [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"工程车辆"}];
+            [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
             
         }
     }
@@ -320,78 +289,121 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     NSMutableArray * t_arr = [self arrayFromSection:indexPath.section];
     
     if (t_arr) {
-        
+
         NSDictionary *t_dic = [t_arr objectAtIndex:indexPath.row];
         NSString *t_title = [t_dic objectForKey:@"title"];
         
         if ([t_title isEqualToString:@"违停录入"]) {
             
-            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-            t_vc.illegalType = IllegalTypePark;
-            t_vc.subType = ParkTypePark;
-            [self.navigationController pushViewController:t_vc animated:YES];
+            if ([UserModel isPermissionForIllegal]) {
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypePark;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
             
         }else if ([t_title isEqualToString:@"不按朝向"]) {
             
-            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-            t_vc.illegalType = IllegalTypePark;
-            t_vc.subType = ParkTypeReversePark;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForIllegalReverseParking]) {
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeReversePark;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+ 
         }else if ([t_title isEqualToString:@"车辆录入"]) {
             
-            CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForCarInfoAdd]) {
+                CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+ 
         }else if ([t_title isEqualToString:@"违停锁车"]) {
             
-            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-            t_vc.illegalType = IllegalTypePark;
-            t_vc.subType = ParkTypeLockPark;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForLockParking]) {
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeLockPark;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"违反禁令"]){
             
-            IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-            t_vc.illegalType = IllegalTypeThrough;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForThrough]) {
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypeThrough;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"事故录入"]){
-            
-            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-            t_vc.accidentType = AccidentTypeAccident;
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+
+            if ([UserModel isPermissionForAccident]) {
+                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
+                t_vc.accidentType = AccidentTypeAccident;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"快处录入"]){
-            
-            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-            t_vc.accidentType = AccidentTypeFastAccident;
-            [self.navigationController pushViewController:t_vc animated:YES];
+
+            if ([UserModel isPermissionForFastAccident]) {
+                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
+                t_vc.accidentType = AccidentTypeFastAccident;
+                [self.navigationController pushViewController:t_vc animated:YES];
+                
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
             
         }else if ([t_title isEqualToString:@"视频录入"]){
             
-            VideoColectVC *t_vc = [[VideoColectVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForVideoCollect]) {
+                VideoColectVC *t_vc = [[VideoColectVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"工程车辆"]){
-            ImportCarHomeVC * t_vc = [[ImportCarHomeVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
             
-            
+            if ([UserModel isPermissionForImportantCar]) {
+                ImportCarHomeVC * t_vc = [[ImportCarHomeVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"警力分布"]){
             
-            PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
-            
+            if ([UserModel isPermissionForPoliceCommand]) {
+                PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }else if ([t_title isEqualToString:@"联合执法"]){
-            JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
             
+            if ([UserModel isPermissionForJointEnforcement]) {
+                JointEnforceVC *t_vc = [[JointEnforceVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+
         }
     }
-    
-    
-
 }
 
 - (NSMutableArray *)arrayFromSection:(NSInteger)section{
