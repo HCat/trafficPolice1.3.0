@@ -44,4 +44,6 @@
 //通过所在路段的名字获取得到roadId
 - (void)getRoadId;
 
+- (void)takeCarNumberDown;
+
 @end

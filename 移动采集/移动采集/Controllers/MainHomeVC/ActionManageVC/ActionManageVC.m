@@ -13,6 +13,9 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "NetWorkHelper.h"
 #import "PFNavigationDropdownMenu.h"
+#import "ActionAPI.h"
+#import "ActionListCell.h"
+#import "ActionDetailVC.h"
 
 
 @interface ActionManageVC ()
@@ -38,9 +41,9 @@
         _layout_topHeight.constant = _layout_topHeight.constant + 24;
     }
     
-   
-    
-    self.statusType = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpNotification:) name:NOTIFICATION_ACTION_UP object:nil];
+
+    self.statusType = -1;
     self.arr_content = [NSMutableArray array];
         
     [self setUpDropdownMenu];
@@ -50,7 +53,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBarHidden = YES;
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -60,17 +63,25 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+    [super viewWillAppear:animated];
+    
+}
+
+
+
 #pragma mark - set
 
 - (void)setUpTableView{
     
     _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = YES;
+    _tb_content.firstReload = NO;
     
     [self initRefresh];
     [_tb_content.mj_header beginRefreshing];
     
-    [_tb_content registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"MessageCellID"];
+    [_tb_content registerNib:[UINib nibWithNibName:@"ActionListCell" bundle:nil] forCellReuseIdentifier:@"ActionListCellID"];
     
     WS(weakSelf);
     //点击重新加载之后的处理
@@ -108,13 +119,13 @@
         NSLog(@"Did select item at index: %ld", indexPath);
         SW(strongSelf, weakSelf);
         if (indexPath == 0) {
-            strongSelf.statusType = 0;
+            strongSelf.statusType = -1;
         }else if (indexPath == 1){
-            strongSelf.statusType = 1;
+            strongSelf.statusType = 0;
         }else if (indexPath == 2){
-            strongSelf.statusType = 2;
+            strongSelf.statusType = 1;
         }else if (indexPath == 3){
-            strongSelf.statusType = 3;
+            strongSelf.statusType = 2;
         }
         
         [strongSelf reloadDataUseMJRefresh];
@@ -184,12 +195,19 @@
         }
     }
     
-    IdentifyMsgListWithTypeParam *param = [[IdentifyMsgListWithTypeParam alloc] init];
+
+    ActionPageListParam *param = [[ActionPageListParam alloc] init];
     param.start = _index;
     param.length = 10;
-    param.type = self.messageType;
+    if (self.statusType >= 0) {
+        param.status = @(self.statusType);
+    }
+    if (_tf_search.text.length > 0) {
+        param.actionName = _tf_search.text;
+    }
     
-    IdentifyMsgListWithTypeManger *manger = [[IdentifyMsgListWithTypeManger alloc] init];
+    LxDBObjectAsJson(param);
+    ActionPageListManger *manger = [[ActionPageListManger alloc] init];
     manger.param = param;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
@@ -198,8 +216,8 @@
         
         if (manger.responseModel.code == CODE_SUCCESS) {
             
-            [strongSelf.arr_content addObjectsFromArray:manger.identifyMsgListReponse.list];
-            if (strongSelf.arr_content.count == manger.identifyMsgListReponse.total) {
+            [strongSelf.arr_content addObjectsFromArray:manger.acctionReponse.list];
+            if (strongSelf.arr_content.count == manger.acctionReponse.total) {
                 [strongSelf.tb_content.mj_footer endRefreshingWithNoMoreData];
             }else{
                 strongSelf.index += param.length;
@@ -210,7 +228,10 @@
             [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
         }
         
+        
+        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
         SW(strongSelf,weakSelf);
         [strongSelf.tb_content.mj_header endRefreshing];
         [strongSelf.tb_content.mj_footer endRefreshing];
@@ -224,6 +245,7 @@
             strongSelf.tb_content.isNetAvailable = YES;
             [strongSelf.tb_content reloadData];
         }
+        
     }];
     
 }
@@ -242,23 +264,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WS(weakSelf);
-    return [tableView fd_heightForCellWithIdentifier:@"MessageCellID" cacheByIndexPath:indexPath configuration:^(MessageCell *cell) {
-        SW(strongSelf,weakSelf);
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionListCellID" configuration:^(ActionListCell *cell) {
+        SW(strongSelf, weakSelf);
         if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
-            IdentifyModel *t_model = strongSelf.arr_content[indexPath.row];
+            ActionListModel *t_model = strongSelf.arr_content[indexPath.row];
             cell.model = t_model;
-            
         }
     }];
+    
+    return height;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCellID"];
+    ActionListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionListCellID"];
     
     if (_arr_content && _arr_content.count > 0) {
-        IdentifyModel *t_model = _arr_content[indexPath.row];
+        ActionListModel *t_model = _arr_content[indexPath.row];
         cell.model = t_model;
     }
     
@@ -268,20 +291,51 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    IdentifyModel *t_model = _arr_content[indexPath.row];
+    ActionListModel *t_model = _arr_content[indexPath.row];
+    ActionDetailVC *t_vc = [[ActionDetailVC alloc] init];
+    t_vc.actionId = t_model.actionId;
+    [self.navigationController pushViewController:t_vc animated:YES];
+   
+}
+
+#pragma mark - buttonAction
+
+- (IBAction)handleBtnSearchClicked:(id)sender {
     
-    if ([t_model.type isEqualToNumber:@4]) {
-        t_model.source = @0;
-        IllegalOperatCarVC *t_vc = [[IllegalOperatCarVC alloc] init];
-        t_vc.model = t_model;
-        [self.navigationController pushViewController:t_vc animated:YES];
+    [self.tb_content.mj_header beginRefreshing];
+    
+}
+
+- (IBAction)handleBtnBackClicked:(id)sender {
+    if (self.navigationController.viewControllers.count == 1) {
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
     }else{
-        t_model.source = @0;
-        MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
-        t_vc.model = t_model;
-        [self.navigationController pushViewController:t_vc animated:YES];
+        
+        [self.navigationController popViewControllerAnimated:YES];
         
     }
+    
+}
+
+
+#pragma mark - UItextFieldDelegate
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField
+{
+    [textField resignFirstResponder];
+    [self.tb_content.mj_header beginRefreshing];
+    return YES;
+}
+
+#pragma mark - Notification
+
+- (void)receiveUpNotification:(NSNotification *)sender{
+    
+    [self.tb_content.mj_header beginRefreshing];
     
     
 }

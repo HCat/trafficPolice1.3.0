@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "UINavigationBar+BarItem.h"
+#import <JANALYTICSService.h>
 
 @interface BaseViewController ()
 
@@ -19,6 +20,21 @@
     [super viewDidLoad];
     self.view.backgroundColor = DefaultBGColor;
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",[NSString stringWithUTF8String:object_getClassName(self)]);
+    [JANALYTICSService startLogPageView:[NSString stringWithUTF8String:object_getClassName(self)]];
+    
+    
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [JANALYTICSService stopLogPageView:[NSString stringWithUTF8String:object_getClassName(self)]];
+    
 }
 
 #pragma mark - set && get

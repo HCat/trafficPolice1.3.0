@@ -18,6 +18,8 @@
                 <outlet property="tb_task" destination="o8p-xz-pn9" id="H8X-Lh-wql"/>
                 <outlet property="v_nav" destination="faY-F3-kDq" id="sdw-xX-S5d"/>
                 <outlet property="v_task" destination="ZBM-pA-jxY" id="0Kk-SL-pKG"/>
+                <outlet property="v_tip_action" destination="FHh-yf-lBA" id="TDa-ZL-c4W"/>
+                <outlet property="v_tip_duty" destination="HtR-c1-dby" id="Jyp-0x-WCq"/>
                 <outlet property="v_watch" destination="XvH-bU-gpi" id="yuY-Ap-Hbt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -72,14 +74,44 @@
                                 <action selector="handleBtnTaskClicked:" destination="-1" eventType="touchUpInside" id="8fu-HU-j40"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtR-c1-dby">
+                            <rect key="frame" x="77" y="72" width="8" height="8"/>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="5uX-L4-gQf"/>
+                                <constraint firstAttribute="width" constant="8" id="hFO-bp-AEe"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-yf-lBA">
+                            <rect key="frame" x="165" y="72" width="8" height="8"/>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="S55-LW-xfw"/>
+                                <constraint firstAttribute="width" constant="8" id="V7U-pN-ade"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="S62-a7-kNI" firstAttribute="leading" secondItem="AGA-9r-acp" secondAttribute="leading" id="2fX-0F-31T"/>
+                        <constraint firstItem="HtR-c1-dby" firstAttribute="top" secondItem="S62-a7-kNI" secondAttribute="top" id="4q6-ZM-Cey"/>
                         <constraint firstItem="AGA-9r-acp" firstAttribute="leading" secondItem="faY-F3-kDq" secondAttribute="leading" constant="15" id="5lg-Ss-k3p"/>
                         <constraint firstAttribute="height" constant="111" id="6Rf-YX-PpH"/>
+                        <constraint firstItem="FHh-yf-lBA" firstAttribute="trailing" secondItem="q2C-G9-RlM" secondAttribute="trailing" id="Bg2-nk-xZv"/>
                         <constraint firstItem="S62-a7-kNI" firstAttribute="top" secondItem="AGA-9r-acp" secondAttribute="bottom" constant="18" id="QWi-ZP-FFF"/>
                         <constraint firstItem="q2C-G9-RlM" firstAttribute="centerY" secondItem="S62-a7-kNI" secondAttribute="centerY" id="TOc-l3-kY8"/>
+                        <constraint firstItem="HtR-c1-dby" firstAttribute="trailing" secondItem="S62-a7-kNI" secondAttribute="trailing" id="iso-Qm-zGc"/>
+                        <constraint firstItem="FHh-yf-lBA" firstAttribute="top" secondItem="q2C-G9-RlM" secondAttribute="top" id="kc1-0Y-rPh"/>
                         <constraint firstAttribute="bottom" secondItem="AGA-9r-acp" secondAttribute="bottom" constant="57" id="omw-BJ-ZBz"/>
                         <constraint firstItem="q2C-G9-RlM" firstAttribute="leading" secondItem="S62-a7-kNI" secondAttribute="trailing" constant="18" id="s3D-XU-BJh"/>
                     </constraints>

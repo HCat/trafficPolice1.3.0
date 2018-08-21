@@ -280,6 +280,10 @@
 + (NSString *)timeWithTimeInterval:(NSNumber *)timeString
 {
     // 格式化时间
+    if (!timeString) {
+        return nil;
+    }
+    
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
     [formatter setDateStyle:NSDateFormatterMediumStyle];

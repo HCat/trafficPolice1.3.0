@@ -10,4 +10,7 @@
 
 @interface ScheduleVC : ShowTabSuperVC
 
+//选中的是值班还是行动
+- (void)setButtonIndex:(NSInteger)index;
+
 @end

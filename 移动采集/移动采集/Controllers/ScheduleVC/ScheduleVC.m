@@ -11,7 +11,7 @@
 #import "LTSCalendarManager.h"
 #import "NSDate+Formatter.h"
 #import "DutyAPI.h"
-#import "TaskAPI.h"
+#import "ActionAPI.h"
 
 #import <MJRefresh.h>
 #import "UITableView+Lr_Placeholder.h"
@@ -19,8 +19,9 @@
 
 #import "PFNavigationDropdownMenu.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "TaskCell.h"
+#import "ActionDetailCell.h"
 #import "UserTaskDetailVC.h"
+#import "SRAlertView.h"
 
 @interface ScheduleVC ()<LTSCalendarEventSource>
 
@@ -38,7 +39,7 @@
 /******************** 任务视图相关 ********************/
 @property (weak, nonatomic) IBOutlet UIView *v_task;    //任务视图
 @property (weak, nonatomic) IBOutlet UITableView *tb_task;
-@property (nonatomic, assign) NSInteger taskStatus; // -1全部，0未开始，1进行中，2已完成，3已取消
+@property (nonatomic, assign) NSInteger taskStatus; // -1 全部，1进行中，2已完成
 @property (strong,nonatomic) PFNavigationDropdownMenu *menuView;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *arr_tasks;
@@ -46,6 +47,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
 
 @property (assign, nonatomic) NSInteger pageType; //页面类型：0代表值班 1代表行动
+
+@property (weak, nonatomic) IBOutlet UIView *v_tip_duty;
+@property (weak, nonatomic) IBOutlet UIView *v_tip_action;
+
+
 
 @end
 
@@ -69,11 +75,17 @@
     self.taskStatus = -1;
     self.pageType = 0;
  
+    self.v_tip_duty.hidden = YES;
+    self.v_tip_action.hidden = YES;
+    
     if (IS_IPHONE_X) {
           _layout_topHeight.constant = _layout_topHeight.constant + 24;
         [self.view setNeedsLayout];
         [self.view layoutIfNeeded];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDuty:) name:NOTIFICATION_RECEIVENOTIFICATION_DUTY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveAction:) name:NOTIFICATION_RECEIVENOTIFICATION_ACTION object:nil];
     
     [self configWatchView];
     [self configTaskView];
@@ -82,6 +94,15 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
+    if ([ShareValue sharedDefault].dutyTip) {
+        self.v_tip_duty.hidden = NO;
+    }
+    
+    if ([ShareValue sharedDefault].actionTip) {
+        self.v_tip_action.hidden = NO;
+    }
+    
     
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
@@ -163,7 +184,7 @@
     [self initRefresh];
     [_tb_task.mj_header beginRefreshing];
     
-    [_tb_task registerNib:[UINib nibWithNibName:@"TaskCell" bundle:nil] forCellReuseIdentifier:@"TaskCellID"];
+    [_tb_task registerNib:[UINib nibWithNibName:@"ActionDetailCell" bundle:nil] forCellReuseIdentifier:@"ActionDetailCellID"];
     
     WS(weakSelf);
     //点击重新加载之后的处理
@@ -179,7 +200,7 @@
 
 - (void)setUpDropdownMenu{
     
-    NSArray *items = @[@"全部", @"未开始", @"进行中", @"已完成", @"已取消"];
+    NSArray *items = @[@"全部", @"进行中", @"已完成"];
     
     _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)
                                                           title:items.firstObject
@@ -202,7 +223,12 @@
     _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
         NSLog(@"Did select item at index: %ld", indexPath);
         SW(strongSelf, weakSelf);
-        strongSelf.taskStatus = indexPath - 1;
+        if (indexPath == 0) {
+            strongSelf.taskStatus = - 1;
+        }else{
+            strongSelf.taskStatus = indexPath;
+        }
+        
         [strongSelf reloadTaskData];
         
     };
@@ -275,6 +301,18 @@
         [self.view sendSubviewToBack:_v_watch];
         [self.view bringSubviewToFront:_v_nav];
         _lb_title.text = @"行动";
+    }
+
+}
+
+- (void)setButtonIndex:(NSInteger)index{
+    
+    if (index == 0) {
+        [self setPageType:0];
+        [self receiveDuty:nil];
+    }else{
+        [self setPageType:1];
+        [self receiveAction:nil];
     }
 
 }
@@ -357,12 +395,14 @@
     }
     
     WS(weakSelf);
-    TaskGetTypeListParam *param = [[TaskGetTypeListParam alloc] init];
+    ActionGetTypeListParam *param = [[ActionGetTypeListParam alloc] init];
     param.start = _index;
     param.length = 10;
-    param.taskStatus = self.taskStatus;
-    
-    TaskGetTypeListManger *manger = [[TaskGetTypeListManger alloc] init];
+    if (self.taskStatus != -1 ) {
+         param.actionStatus = @(self.taskStatus);
+    }
+   
+    ActionGetTypeListManger *manger = [[ActionGetTypeListManger alloc] init];
     manger.param = param;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         SW(strongSelf, weakSelf);
@@ -372,8 +412,8 @@
         
         if (manger.responseModel.code == CODE_SUCCESS) {
             
-            [strongSelf.arr_tasks addObjectsFromArray:manger.taskGetTypeListReponse.list];
-            if (strongSelf.arr_tasks.count == manger.taskGetTypeListReponse.total) {
+            [strongSelf.arr_tasks addObjectsFromArray:manger.actionReponse.list];
+            if (strongSelf.arr_tasks.count == manger.actionReponse.total) {
                 [strongSelf.tb_task.mj_footer endRefreshingWithNoMoreData];
             }else{
                 strongSelf.index += param.length;
@@ -407,10 +447,14 @@
 
 - (IBAction)handleBtnWatchClicked:(id)sender {
     self.pageType = 0;
+    [[ShareValue sharedDefault] setDutyTip:NO];
+    _v_tip_duty.hidden = YES;
 }
 
 - (IBAction)handleBtnTaskClicked:(id)sender {
     self.pageType = 1;
+    [[ShareValue sharedDefault] setActionTip:NO];
+    _v_tip_action.hidden = YES;
 }
 
 #pragma mark - UITableViewDelegate
@@ -426,11 +470,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     WS(weakSelf);
-    return [tableView fd_heightForCellWithIdentifier:@"TaskCellID" cacheByIndexPath:indexPath configuration:^(TaskCell *cell) {
+    return [tableView fd_heightForCellWithIdentifier:@"ActionDetailCellID" cacheByIndexPath:indexPath configuration:^(ActionDetailCell *cell) {
         SW(strongSelf,weakSelf);
         if (strongSelf.arr_tasks && strongSelf.arr_tasks.count > 0) {
-            TaskModel *t_model = strongSelf.arr_tasks[indexPath.row];
-            cell.currentTask = t_model;
+            ActionTaskListModel *t_model = strongSelf.arr_tasks[indexPath.row];
+            cell.model = t_model;
             
         }
     }];
@@ -439,11 +483,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCellID"];
+    ActionDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionDetailCellID"];
     
     if (_arr_tasks && _arr_tasks.count > 0) {
-        TaskModel *t_model = _arr_tasks[indexPath.row];
-        cell.currentTask = t_model;
+        ActionTaskListModel *t_model = _arr_tasks[indexPath.row];
+        cell.model = t_model;
     }
     
     return cell;
@@ -456,7 +500,7 @@
     if (_arr_tasks && _arr_tasks.count > 0) {
         
         UserTaskDetailVC *t_vc = [[UserTaskDetailVC alloc] init];
-        t_vc.task = _arr_tasks[indexPath.row];
+        t_vc.model = _arr_tasks[indexPath.row];
         [self.navigationController pushViewController:t_vc animated:YES];
         
     }
@@ -523,6 +567,66 @@
 }
 
 
+#pragma mark - notification
+
+- (void)receiveDuty:(NSNotification *)notice{
+    
+    NSDictionary *aps = notice.object;
+
+    if (aps) {
+        WS(weakSelf);
+        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:[aps objectForKey:@"alert"]
+                                                    leftActionTitle:nil
+                                                   rightActionTitle:@"确定"
+                                                     animationStyle:AlertViewAnimationNone
+                                                       selectAction:^(AlertViewActionType actionType) {
+                                                           SW(strongSelf, weakSelf);
+                                                           [strongSelf requestDuty:strongSelf.manager.calenderScrollView.calendarView.currentDate.yyyyMMByLineWithDate];
+                                                           [strongSelf requestDutyDetail:strongSelf.manager.calenderScrollView.calendarView.currentDate];
+                                                           
+                                                           
+                                                       }];
+        alertView.blurCurrentBackgroundView = NO;
+        [alertView show];
+        
+        return;
+        
+    }
+    
+    [self requestDuty:self.manager.calenderScrollView.calendarView.currentDate.yyyyMMByLineWithDate];
+    [self requestDutyDetail:self.manager.calenderScrollView.calendarView.currentDate];
+    
+    
+}
+
+- (void)receiveAction:(NSNotification *)notice{
+    
+    NSDictionary *aps = notice.object;
+    
+    if (aps) {
+        WS(weakSelf);
+        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:[aps objectForKey:@"alert"]
+                                                    leftActionTitle:nil
+                                                   rightActionTitle:@"确定"
+                                                     animationStyle:AlertViewAnimationNone
+                                                       selectAction:^(AlertViewActionType actionType) {
+                                                           SW(strongSelf, weakSelf);
+                                                           [strongSelf reloadTaskData];
+                                                           
+                                                           
+                                                       }];
+        alertView.blurCurrentBackgroundView = NO;
+        [alertView show];
+        
+        return;
+    }
+    
+    [self reloadTaskData];
+    
+}
+
 #pragma mark - AKTabBar Method
 
 - (NSString *)tabImageName{
@@ -535,6 +639,16 @@
 
 - (NSString *)tabTitle{
     return NSLocalizedString(@"日程", nil);
+}
+
+-(BOOL)showTip{
+    
+    if (ApplicationDelegate.vc_tabBar.selectedIndex == 1) {
+        return NO;
+    }else{
+        return [ShareValue sharedDefault].dutyTip || [ShareValue sharedDefault].actionTip;
+    }
+    
 }
 
 

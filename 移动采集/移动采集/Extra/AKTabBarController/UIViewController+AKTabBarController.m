@@ -34,6 +34,10 @@
     return NO;
 }
 
+-(BOOL)showTip{
+    return NO;
+}
+
 -(NSInteger)showMaskNumber{
     return 0;
 }

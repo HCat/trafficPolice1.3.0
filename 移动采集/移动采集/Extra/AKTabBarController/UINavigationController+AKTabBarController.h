@@ -15,6 +15,8 @@
 
 - (BOOL)showMask;
 
+- (BOOL)showTip;
+
 - (NSInteger)showMaskNumber;
 
 - (BOOL)canChangeTab;

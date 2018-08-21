@@ -24,8 +24,10 @@
 #import "AlertView.h"
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
+#import "IllegalListView.h"
 
 #import "IllegalSecSaveVC.h"
+#import "IllegalRecordVC.h"
 
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -120,19 +122,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             }
         }];
-        
-//        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
-//                                                            message:@"当前已编辑，是否退出编辑"
-//                                                    leftActionTitle:@"取消"
-//                                                   rightActionTitle:@"退出"
-//                                                     animationStyle:AlertViewAnimationNone
-//                                                       selectAction:^(AlertViewActionType actionType) {
-//                                                           if(actionType == AlertViewActionTypeRight) {
-//                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
-//                                                           }
-//                                                       }];
-//        alertView.blurCurrentBackgroundView = NO;
-//        [alertView show];
     
     }else{
         
@@ -170,8 +159,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         WS(weakSelf);
 
         [_headView getRoadId];
-        
-        IllegalThroughQuerySecManger *manger = [[IllegalThroughQuerySecManger alloc] init];
+    
+    
+        IllegalThroughCarNoSecManger * manger = [[IllegalThroughCarNoSecManger alloc] init];
         manger.carNo = carNumber;
         manger.roadId = _param.roadId;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -180,6 +170,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
           code:110 提示“同路段当天已有违章行为，请不要重复采集！”
           code:13 提示“同路段该车1分30秒内有采集记录，是否重新采集？”
           code:999 无采集记录,不用任何提示
+          code:1 提示24小时到48小时内违章的提醒，如果无违章则为套牌提醒
          */
         SW(strongSelf, weakSelf);
         LxPrintf(@"%ld",(long)manger.responseModel.code);
@@ -200,7 +191,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         }else if (manger.responseModel.code == 13){
             
-            [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:@"取消" rightTitle:@"重新录入" block:^(AlertViewActionType actionType) {
+            [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:@"退出" rightTitle:@"重新采集" block:^(AlertViewActionType actionType) {
                 
                 if (actionType == AlertViewActionTypeRight) {
                     
@@ -221,13 +212,68 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         }else if (manger.responseModel.code == 110){
         
-           [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
+            IllegalListView *view = [IllegalListView initCustomView];
+            view.block = ^(ParkAlertActionType actionType) {
+                if (actionType == AlertViewActionTypeLeft){
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                }else if (actionType == AlertViewActionTypeRight){
+                    [strongSelf handleBeforeCommit];
+                }
+                
+            };
+            view.btnTitleString = @"重新采集";
+            view.illegalList = manger.illegalList;
+            view.deckCarNo = manger.deckCarNo;
+            view.selectedBlock = ^(NSNumber *illegalId) {
+                IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                vc.illegalId = illegalId;
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+                
+            };
+            [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
+            
+            
             
         }else if (manger.responseModel.code == 999){
             //不做处理
             //无任何记录，无需做处理
         }else if (manger.responseModel.code == 1){
-             [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
+            
+            
+            if (manger.illegalList && manger.illegalList.count > 0) {
+                
+                IllegalListView *view = [IllegalListView initCustomView];
+                view.block = ^(ParkAlertActionType actionType) {
+                    if (actionType == AlertViewActionTypeLeft){
+                        [strongSelf.navigationController popViewControllerAnimated:YES];
+                    }
+                };
+                view.btnTitleString = @"继续采集";
+                view.illegalList = manger.illegalList;
+                view.deckCarNo = manger.deckCarNo;
+                view.selectedBlock = ^(NSNumber *illegalId) {
+                    IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                    vc.illegalId = illegalId;
+                    [strongSelf.navigationController pushViewController:vc animated:YES];
+                };
+                [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
+                
+                
+            }else{
+                
+                [strongSelf showAlertViewWithcontent:manger.deckCarNo leftTitle:@"退出" rightTitle:@"继续采集" block:^(AlertViewActionType actionType) {
+                    
+                    if (actionType == AlertViewActionTypeLeft){
+                        
+                        [strongSelf.navigationController popViewControllerAnimated:YES];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            
         }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -245,8 +291,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         WS(weakSelf);
     
+        
         [_headView getRoadId];
-        IllegalParkQueryRecordManger *manger = [[IllegalParkQueryRecordManger alloc] init];
+        IllegalParkCarNoRecordManger *manger = [[IllegalParkCarNoRecordManger alloc] init];
         manger.carNo = carNumber;
         manger.roadId = _param.roadId;
         manger.type = @(_subType);
@@ -256,20 +303,66 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             LxPrintf(@"%ld",(long)manger.responseModel.code);
             
             if (manger.responseModel.code == 110) {
+                [strongSelf.headView takeCarNumberDown];
                 
-                [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
-                    if (actionType == AlertViewActionTypeRight) {
-                
+                IllegalListView *view = [IllegalListView initCustomView];
+                view.block = ^(ParkAlertActionType actionType) {
+                    if (actionType == AlertViewActionTypeLeft){
+                        [strongSelf.navigationController popViewControllerAnimated:YES];
+                    }else if (actionType == AlertViewActionTypeRight){
                         [strongSelf handleBeforeCommit];
-
                     }
-                }];
+                    
+                };
+                view.btnTitleString = @"重新采集";
+                view.illegalList = manger.illegalList;
+                view.deckCarNo = manger.deckCarNo;
+                view.selectedBlock = ^(NSNumber *illegalId) {
+                    IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                    vc.illegalId = illegalId;
+                    [strongSelf.navigationController pushViewController:vc animated:YES];
+                };
+                [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
                 
             }else if (manger.responseModel.code == 1){
-                [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
+                
+                if (manger.illegalList && manger.illegalList.count > 0) {
+                    
+                    [strongSelf.headView takeCarNumberDown];
+                    
+                    IllegalListView *view = [IllegalListView initCustomView];
+                    view.block = ^(ParkAlertActionType actionType) {
+                        if (actionType == AlertViewActionTypeLeft){
+                            [strongSelf.navigationController popViewControllerAnimated:YES];
+                        }
+                    };
+                    view.btnTitleString = @"继续采集";
+                    view.illegalList = manger.illegalList;
+                    view.deckCarNo = manger.deckCarNo;
+                    view.selectedBlock = ^(NSNumber *illegalId) {
+                        IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                        vc.illegalId = illegalId;
+                        [strongSelf.navigationController pushViewController:vc animated:YES];
+                    };
+                    [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
+                    
+                    
+                }else{
+                    
+                    [strongSelf showAlertViewWithcontent:manger.deckCarNo leftTitle:@"退出" rightTitle:@"继续采集" block:^(AlertViewActionType actionType) {
+                        
+                        if (actionType == AlertViewActionTypeLeft){
+                            
+                            [strongSelf.navigationController popViewControllerAnimated:YES];
+                            
+                        }
+                        
+                    }];
+                    
+                }
+                
             }
 
-        
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             
         }];

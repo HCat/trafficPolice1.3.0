@@ -376,5 +376,48 @@
 }
 
 
+#pragma mark - 获取行动管理权限
++ (BOOL)isPermissionForAcitonManage{
+    NSString *match = @"ACTION_MANAGE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+#pragma mark - 获取行动管理发布
++ (BOOL)isPermissionForAcitonPublish{
+    NSString *match = @"ACTIONMANAGE06";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].userPrivileges filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+#pragma mark - 获取行动管理结束
++ (BOOL)isPermissionForAcitonEnd{
+    NSString *match = @"ACTIONMANAGE08";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].userPrivileges filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
 
 @end

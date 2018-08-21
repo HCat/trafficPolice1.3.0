@@ -25,6 +25,10 @@
     return [(self.viewControllers)[0] showMask];
 }
 
+-(BOOL)showTip{
+    return [(self.viewControllers)[0] showTip];
+}
+
 -(NSInteger)showMaskNumber{
     return [(self.viewControllers)[0] showMaskNumber];;
 }

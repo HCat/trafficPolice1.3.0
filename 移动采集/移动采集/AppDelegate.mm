@@ -21,6 +21,7 @@
 #import "ScheduleVC.h"
 #import "MainHomeVC.h"
 #import "MessageHomeVC.h"
+#import "ScheduleVC.h"
 #import "UserHomeVC.h"
 
 #import "UserModel.h"
@@ -28,6 +29,7 @@
 #import "IdentifyAPI.h"
 #import "MessageDetailVC.h"
 #import "IllegalOperatCarVC.h"
+#import "ScheduleVC.h"
 
 #if defined(DEBUG) || defined(_DEBUG)
 #import "FHHFPSIndicator.h"
@@ -142,6 +144,13 @@
                  apsForProduction:JPUSH_PRODUCTION
             advertisingIdentifier:nil];
     
+    
+    JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
+    config.appKey = JPUSH_APP_KEY;
+    config.channel = JPUSH_APP_CHANNEL;
+    [JANALYTICSService setupWithConfig:config];
+    
+    
 }
 
 #pragma mark - 初始化Tabbar
@@ -189,6 +198,9 @@
     if (index == 3) {
         [ShareValue sharedDefault].makeNumber = 0;
         [_vc_tabBar loadTabs];
+    }else if(index == 1){
+        [_vc_tabBar loadTabs];
+        
     }
 }
 
@@ -315,22 +327,59 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         
+        
         NSDictionary *aps = [userInfo objectForKey:@"aps"];
         NSString *sound = [aps objectForKey:@"sound"];
         NSNumber *badge =   [aps objectForKey:@"badge"];
         
-        if (_vc_tabBar.selectedIndex == 3) {
-            [ShareValue sharedDefault].makeNumber = 0;
-            UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
-            MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
-            [vc reloadDataUseMJRefresh];
+        NSString *type = [userInfo objectForKey:@"type"];
+        if ([type isEqualToString:@"100"] || [type isEqualToString:@"101"]) {
+            
+            NSDictionary *apsd = nil;
+            
+            if (_vc_tabBar.selectedIndex == 1) {
+                apsd = aps;
+                
+            }else{
+                
+                if ([type isEqualToString:@"100"]) {
+                    [ShareValue sharedDefault].dutyTip = YES;
+                }
+                
+                if ([type isEqualToString:@"101"]) {
+                    [ShareValue sharedDefault].actionTip = YES;
+                }
+                
+            }
+            
+            if ([type isEqualToString:@"100"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RECEIVENOTIFICATION_DUTY object:apsd];
+            }
+            
+            if ([type isEqualToString:@"101"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RECEIVENOTIFICATION_ACTION object:apsd];
+            }
+            
             
         }else{
-            [ShareValue sharedDefault].makeNumber = [badge integerValue];
-            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[3];
-            MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
-            [vc reloadDataUseMJRefresh];
+            
+            if (_vc_tabBar.selectedIndex == 3) {
+                [ShareValue sharedDefault].makeNumber = 0;
+                UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
+                MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
+                [vc reloadDataUseMJRefresh];
+                
+            }else{
+                
+                [ShareValue sharedDefault].makeNumber = [badge integerValue];
+                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[3];
+                MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
+                [vc reloadDataUseMJRefresh];
+            }
+            
         }
+        
+        
         [_vc_tabBar loadTabs];
         
         
@@ -342,10 +391,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             }
             
             NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
-            self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
+            NSError *err=nil;
+            self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:&err];
             self.player.numberOfLoops = 1000;
             self.player.volume = 1.0;
-            [self.player play];
+            [self.player prepareToPlay];
+            if (err!=nil) {
+                NSLog(@"move player init error:%@",err);
+            }else {
+                [self.player play];
+            }
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WILLPRESENTNOTIFICATION object:userInfo];
@@ -380,7 +435,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
             self.player.numberOfLoops = 1000;
             self.player.volume = 1.0;
-            [self.player play];
+            if([self.player prepareToPlay]){
+                NSLog(@"");
+            }else{
+                 [self.player play];
+            }
+           
         }
     
     }
@@ -406,49 +466,79 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary * userInfo = notication.object;
     if (userInfo) {
         NSNumber *msgId = [userInfo objectForKey:@"id"];
-        if (msgId) {
-            IdentifyMsgDetailManger *manger = [[IdentifyMsgDetailManger alloc] init];
-            manger.msgId =msgId;
-            [manger configLoadingTitle:@"请求"];
-            
-            WS(weakSelf);
-            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *type = [userInfo objectForKey:@"type"];
+        
+        if ([type isEqualToString:@"100"] || [type isEqualToString:@"101"]) {
+
+            if ([type isEqualToString:@"100"]) {
+                [ShareValue sharedDefault].dutyTip = NO;
                 
-                if (manger.responseModel.code == CODE_SUCCESS) {
+                
+                [_vc_tabBar setSelectedIndex:1];
+                
+                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[1];
+                ScheduleVC *vc = (ScheduleVC *)nav.viewControllers[0];
+                [vc setButtonIndex:0];
+                
+                [_vc_tabBar loadTabs];
+            }
+            
+            if ([type isEqualToString:@"101"]) {
+                [ShareValue sharedDefault].actionTip = NO;
+                
+                [_vc_tabBar setSelectedIndex:1];
+                
+                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[1];
+                ScheduleVC *vc = (ScheduleVC *)nav.viewControllers[0];
+                [vc setButtonIndex:1];
+                
+                 [_vc_tabBar loadTabs];
+            }
+            
+    
+        }else{
+            
+            if (msgId) {
+                IdentifyMsgDetailManger *manger = [[IdentifyMsgDetailManger alloc] init];
+                manger.msgId =msgId;
+                [manger configLoadingTitle:@"请求"];
+                
+                WS(weakSelf);
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
-                    if ([manger.identifyModel.type isEqualToNumber:@4]) {
+                    if (manger.responseModel.code == CODE_SUCCESS) {
                         
-                        IllegalOperatCarVC *t_vc = [[IllegalOperatCarVC alloc] init];
-                        manger.identifyModel.source = @1;
-                        t_vc.model = manger.identifyModel;
-                        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
-                        [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
-                        }];
-                        
-                    }else{
-                        
-                        MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
-                        manger.identifyModel.source = @1;
-                        
-                        if ([manger.identifyModel.type isEqualToNumber:@100]) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RELOADWATCH_SUCCESS object:nil];
+                        if ([manger.identifyModel.type isEqualToNumber:@4]) {
+                            
+                            IllegalOperatCarVC *t_vc = [[IllegalOperatCarVC alloc] init];
+                            manger.identifyModel.source = @1;
+                            t_vc.model = manger.identifyModel;
+                            UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
+                            [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                            }];
+                            
+                        }else{
+                            
+                            MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
+                            manger.identifyModel.source = @1;
+                            t_vc.model = manger.identifyModel;
+                            UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
+                            [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                            }];
+                            
                         }
-                        
-                        t_vc.model = manger.identifyModel;
-                        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
-                        [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
-                        }];
                         
                     }
                     
-                }
-            
-            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                }];
                 
-            }];
-            
+                
+            }
             
         }
+  
     }
 }
 

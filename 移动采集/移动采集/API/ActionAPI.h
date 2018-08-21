@@ -12,7 +12,7 @@
 
 @interface ActionListModel : NSObject
 
-@property (nonatomic,copy) NSString   * actionId;           //行动id
+@property (nonatomic,strong) NSNumber   * actionId;           //行动id
 @property (nonatomic,copy) NSString   * actionName;         //行动名称
 @property (nonatomic,strong) NSNumber * status;             //行动状态
 @property (nonatomic,copy) NSString   * createName;         //创建人名称
@@ -32,7 +32,7 @@
 
 @property (nonatomic,assign) NSInteger  start;      //开始的索引号 从0开始
 @property (nonatomic,assign) NSInteger  length;     //显示的记录数 默认为10
-@property (nonatomic,assign) NSInteger  status;     //显示的记录数 默认为10
+@property (nonatomic,strong) NSNumber  *status;     //显示的记录数 默认为10
 @property (nonatomic,copy)   NSString * actionName;     //搜索的关键字
 
 @end
@@ -86,7 +86,11 @@
 
 @property (nonatomic,copy)   NSArray<ActionShowListModel * > *taskShowList;           //任务展示列表
 @property (nonatomic, strong) NSNumber * taskId;                 //任务id
-@property (nonatomic, copy) NSString * taskTitle;              //任务标题
+@property (nonatomic, copy) NSString * taskTitle;               //任务标题
+@property (nonatomic, strong) NSNumber * actionStatus;          //行动状态    0=未发布  1=已发布 2=已结束
+@property (nonatomic, strong) NSNumber * longitude;             //经度
+@property (nonatomic, strong) NSNumber * latitude;              //维度
+
 
 
 @end
@@ -94,10 +98,10 @@
 
 @interface ActionInfoModel : NSObject
 
-@property (nonatomic, strong) NSNumber * actionId;           //行动id
+@property (nonatomic, strong) NSNumber * actionId;         //行动id
 @property (nonatomic, copy) NSString * actionName;         //行动名称
 @property (nonatomic, copy) NSString * actionContent;      //行动内容
-@property (nonatomic, strong) NSNumber * status;             //任务状态
+@property (nonatomic, strong) NSNumber * status;           //任务状态
 
 
 @end
@@ -128,6 +132,34 @@
 @property (nonatomic, strong) NSNumber * actionId; //行动ID
 @property (nonatomic, strong) NSNumber * status; //行动状态
 
+
+@end
+
+
+#pragma mark - 根据类型选择行动
+
+@interface ActionGetTypeListParam : NSObject
+
+@property (nonatomic,assign) NSInteger  start;   //开始的索引号 从0开始
+@property (nonatomic,assign) NSInteger  length;  //显示的记录数 默认为10
+@property (nonatomic,strong) NSNumber  *actionStatus;  //0=未发布  1=已发布 2=已结束，全部不传
+@end
+
+
+@interface ActionGetTypeListReponse : NSObject
+
+@property (nonatomic,copy) NSArray < ActionTaskListModel *> * list;    //包含IllegalParkListModel对象
+@property (nonatomic,assign) NSInteger total;                           //总数
+
+@end
+
+@interface ActionGetTypeListManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) ActionGetTypeListParam * param;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) ActionGetTypeListReponse * actionReponse;
 
 @end
 

@@ -18,6 +18,7 @@
 #import "ImportCarHomeVC.h"
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
+#import "ActionManageVC.h"
 #import "NoticeVC.h"
 
 #import "MainCellLayout.h"
@@ -129,7 +130,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"工程车辆"}];
             [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
-            
+            [_arr_policeMatter addObject:@{@"image":@"menu_action",@"title":@"行动管理"}];
         }
     }
     
@@ -402,6 +403,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }
 
+        }else if ([t_title isEqualToString:@"行动管理"]){
+            
+            if ([UserModel isPermissionForAcitonManage]) {
+                ActionManageVC *t_vc = [[ActionManageVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
         }
     }
 }

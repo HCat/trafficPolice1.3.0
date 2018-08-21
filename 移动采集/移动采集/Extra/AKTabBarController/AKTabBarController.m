@@ -106,6 +106,7 @@ typedef enum {
             tab.tab_selectedImageName = [vc tabSelectedImageName];
             tab.tab_title = [vc tabTitle];
             tab.showMark = [vc showMask];
+            tab.showTip = [vc showTip];
             tab.markNumber = [vc showMaskNumber];
             
         }

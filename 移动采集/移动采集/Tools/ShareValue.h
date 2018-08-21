@@ -54,6 +54,9 @@ LRSingletonH(Default)
 @property (nonatomic, copy) NSString *phone;        //登录返回的手机号码
 @property (nonatomic, assign) NSInteger makeNumber; //推送消息数目
 
+@property (nonatomic, assign) BOOL dutyTip; //值班通知点 0为无值班通知点  1为有值班通知点
+@property (nonatomic, assign) BOOL actionTip; //行动通知点 0为无行动通知点  1为有行动通知点
+
 @property (nonatomic, copy) NSString *server_url;       //服务器地址
 @property (nonatomic, copy) NSString *webSocket_url;    //webSocket地址
 

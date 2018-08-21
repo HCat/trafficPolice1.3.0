@@ -109,7 +109,7 @@
 
 @end
 
-#pragma mark - 查询是否有违停记录API
+#pragma mark - 查询是否有违停记录API(旧)
 
 @interface IllegalParkQueryRecordManger:LRBaseRequest
 
@@ -128,5 +128,68 @@
 
 @end
 
+#pragma mark - 查询是否有违停记录API(新)
 
+@interface IllegalListModel:NSObject
+
+@property (nonatomic, strong) NSNumber * illegalId;  //违章记录ID
+@property (nonatomic, copy) NSString * timeAgo;    //采集记录时间和当前时间间隔
+@property (nonatomic, copy) NSString * address;    //违章采集地址
+
+@end
+
+@interface IllegalParkCarNoRecordManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * carNo;    //车牌号
+@property (nonatomic, strong) NSNumber * roadId; //道路ID
+@property (nonatomic, strong) NSNumber * type;   //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
+
+
+/****** 返回数据 ******/
+
+@property (nonatomic,strong) NSArray <IllegalListModel *> * illegalList;
+@property (nonatomic,copy) NSString * deckCarNo;
+/******
+ code:0 无记录
+ code:110 有记录
+ code:1套牌提醒信息以及其他违章信息
+ 
+ ******/
+
+@end
+
+#pragma mark - 查看违章详细信息
+
+@interface IllegalImageModel:NSObject
+
+@property (nonatomic,copy) NSString * imgUrl;
+
+@end
+
+@interface IllegalParkIllegalDetailResponse:NSObject
+
+@property (nonatomic,copy) NSString * carNo;    //车牌号
+@property (nonatomic,copy) NSString * address;    //采集地址
+@property (nonatomic,strong) NSNumber * collectTime;    //采集时间
+@property (nonatomic,copy) NSString * illegalType;  //违章类型
+@property (nonatomic,strong) NSArray <IllegalImageModel *> * pictureList;
+
+
+@end
+
+
+@interface IllegalParkIllegalDetailManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic,strong) NSNumber * illegalId;
+
+
+/****** 返回数据 ******/
+
+@property (nonatomic,strong) IllegalParkIllegalDetailResponse *illegalResponse;
+
+
+
+@end
 

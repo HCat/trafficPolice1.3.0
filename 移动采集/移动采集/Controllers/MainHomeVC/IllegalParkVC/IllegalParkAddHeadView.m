@@ -277,6 +277,7 @@
         
         //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
         if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(listentCarNumber)]) {
+           
             [strongSelf.delegate listentCarNumber];
         }
         
@@ -347,8 +348,6 @@
 - (LocationStorageModel *)configurationLocationStorageModel{
 
     LocationStorageModel * model = [[LocationStorageModel alloc] init];
-//    model.longitude     = _param.longitude;
-//    model.latitude      = _param.latitude;
     model.streetName    = _param.roadName;
     model.address       = _param.address;
     
@@ -462,40 +461,35 @@
    
 
     if (_subType == ParkTypePark) {
-        if (_btnType) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if (_btnType != 1) {
             [self stopLocationAction:[LocationStorage sharedDefault].park];
         }
+        
     }else if (_subType == ParkTypeReversePark){
         
-        if (_btnType) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if (_btnType != 1 ) {
             [self stopLocationAction:[LocationStorage sharedDefault].towardError];
         }
+        
     }else if (_subType == ParkTypeLockPark){
         
-        if (_btnType) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if (_btnType != 1) {
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
         }
+        
     }else if (_subType == ParkTypeCarInfoAdd){
         
-        if (_btnType) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if (_btnType != 1 ) {
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
         }
     }else if (_subType == ParkTypeThrough){
         
-        if (_btnType) {
-            [[LocationHelper sharedDefault] startLocation];
-        }else{
+        if (_btnType != 1) {
             [self stopLocationAction:[LocationStorage sharedDefault].through];
         }
     }
+    
+    [[LocationHelper sharedDefault] startLocation];
     
     if (_tf_addressRemarks.text.length > 0) {
         _param.addressRemark = _tf_addressRemarks.text;
@@ -521,6 +515,13 @@
     if (!_param.roadId) {
          _param.roadId = @0;
     }
+    
+}
+
+#pragma mark -
+
+- (void)takeCarNumberDown{
+    [self.tf_carNumber resignFirstResponder];
     
 }
 

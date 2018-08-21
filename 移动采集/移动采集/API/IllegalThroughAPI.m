@@ -32,6 +32,55 @@
 
 @end
 
+#pragma mark - 违反禁令查询是否需要二次采集API
+
+@implementation IllegalThroughCarNoSecManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ILLEGALTHROUGH_CARNOSEC;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"carNo": _carNo,
+             @"roadId":_roadId
+             };
+}
+
+//返回参数
+
+//返回参数
+- (NSArray <IllegalListModel *>*)illegalList{
+    
+    if (self.responseModel) {
+        
+        _illegalList = [NSArray modelArrayWithClass:[IllegalListModel class] json:self.responseJSONObject[@"data"][@"illegalList"]];
+        return _illegalList;
+    }
+    
+    return nil;
+}
+
+- (NSString *)deckCarNo{
+    
+    if (self.responseModel) {
+        _deckCarNo = self.responseModel.data[@"deckCarNo"];
+        return _deckCarNo;
+    }
+    
+    return nil;
+}
+
+@end
+
+
+
+
+
+
 #pragma mark - 违反禁令采集增加API
 
 @implementation IllegalThroughSaveManger

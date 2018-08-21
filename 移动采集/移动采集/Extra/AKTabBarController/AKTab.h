@@ -39,6 +39,8 @@
 // Tab在无选中图片时候，是否显示发光效果
 @property (nonatomic, assign) BOOL isGlossySelected;
 
+// tab设置是否显示通知点
+@property (nonatomic, assign) BOOL showTip;
 
 // tab设置是否显示通知圆点
 @property (nonatomic, assign) BOOL showMark;

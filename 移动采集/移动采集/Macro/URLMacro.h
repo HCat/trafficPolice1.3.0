@@ -11,10 +11,10 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
-#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
+#define DEBUG_DACAO_URL @"http://192.168.10.113:8080/police-admin/"
+#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.113:8080/police-admin/websocket"
 
 
 #define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
@@ -88,13 +88,16 @@
 #define URL_ILLEGALPARK_LISTPAGING @"app/illegalPark/listPaging.json"           //违停采集列表
 #define URL_ILLEGALPARK_DETAIL @"app/illegalPark/detail.json"                   //违停采集详情
 #define URL_ILLEGALPARK_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"   //违停、违法禁令上报异常
-#define URL_ILLEGALPARK_QUERYRECORD @"app/illegalPark/queryRecord.json"         //查询是否已有违停记录
-
+#define URL_ILLEGALPARK_QUERYRECORD @"app/illegalPark/queryRecord.json"         //查询是否已有违停记录(旧)
+#define URL_ILLEGALPARK_CARNORECORD @"app/illegalPark/queryCarNoRecord.json"    //查询是否已有违章记录(新)
+#define URL_ILLEGALPARK_ILLEGALDETAIL @"app/illegalPark/illegalDetail.json"     //查看违章详细信息
 
 
 #pragma mark - 违反禁令相关API
 
-#define URL_ILLEGALTHROUGH_QUERYSEC @"app/illegalThrough/querySec.json"         //违反禁令查询是否需要二次采集
+#define URL_ILLEGALTHROUGH_QUERYSEC @"app/illegalThrough/querySec.json"         //违反禁令查询是否需要二次采集(旧)
+#define URL_ILLEGALTHROUGH_CARNOSEC @"app/illegalThrough/queryCarNoSec.json"         //违反禁令查询是否需要二次采集(新)
+
 #define URL_ILLEGALTHROUGH_SAVE @"app/illegalThrough/save.json"                 //违反禁令采集增加
 #define URL_ILLEGALTHROUGH_SECADD @"app/illegalThrough/secAdd.json"             //违反禁令采集增加违反禁令二次采集加载数据
 #define URL_ILLEGALTHROUGH_SECSAVE @"app/illegalThrough/secSave.json"           //违反禁令二次采集保存
@@ -187,6 +190,6 @@
 #define URL_ACTION_PAGELIST @"app/actionManage/getActionPageList.json"              //获取行动分页列表
 #define URL_ACTION_DETAIL @"app/actionManage/getActionDetail.json"                  //获取行动详情
 #define URL_ACTION_CHANGESTATUS @"app/actionManage/changeActionStatus.json"         //更改行动状态
-
+#define URL_ACTION_TYPELIST @"app/actionManage/getActionTaskList.json"              //根据类型选择行动
 
 #endif /* URLMacro_h */

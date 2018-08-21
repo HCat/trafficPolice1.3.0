@@ -205,6 +205,7 @@
 @end
 
 
+#pragma mark - 查询是否有违停记录API(旧)
 
 @implementation IllegalParkQueryRecordManger
 
@@ -218,11 +219,114 @@
 - (nullable id)requestArgument
 {
     return @{@"carNo": _carNo,
-             @"roadId":_roadId};
+             @"roadId":_roadId,
+             @"type":_type
+             };
 }
 
 //返回参数
 
 
 @end
+
+
+
+#pragma mark - 查询是否有违停记录API(新)
+
+@implementation IllegalListModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"illegalId" : @"id",
+             };
+}
+
+
+@end
+
+@implementation IllegalParkCarNoRecordManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ILLEGALPARK_CARNORECORD;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"carNo": _carNo,
+             @"roadId":_roadId,
+             @"type":_type
+             };
+}
+
+//返回参数
+
+//返回参数
+- (NSArray <IllegalListModel *>*)illegalList{
+    
+    if (self.responseModel) {
+        
+        _illegalList = [NSArray modelArrayWithClass:[IllegalListModel class] json:self.responseJSONObject[@"data"][@"illegalList"]];
+        return _illegalList;
+    }
+    
+    return nil;
+}
+
+- (NSString *)deckCarNo{
+    
+    if (self.responseModel) {
+        _deckCarNo = self.responseModel.data[@"deckCarNo"];
+        return _deckCarNo;
+    }
+    
+    return nil;
+}
+
+@end
+
+#pragma mark - 查看违章详细信息
+
+@implementation IllegalImageModel
+
+@end
+
+@implementation IllegalParkIllegalDetailResponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"pictureList" : [IllegalImageModel class]
+             };
+}
+
+@end
+
+@implementation IllegalParkIllegalDetailManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ILLEGALPARK_ILLEGALDETAIL;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_illegalId};
+}
+
+- (IllegalParkIllegalDetailResponse *)illegalResponse{
+    
+    if (self.responseModel.data) {
+       _illegalResponse = [IllegalParkIllegalDetailResponse modelWithDictionary:self.responseModel.data];
+        return _illegalResponse;
+    }
+    
+    return nil;
+    
+}
+
+
+@end
+
 

@@ -312,12 +312,13 @@ static const float kTopMargin = 2.0;
     /****************  设置显示标签通知 ***************/
     if (_showMark) {
         
-        CGFloat center_x = content.size.width;
-        CGFloat center_y = content.origin.y;
+        CGFloat center_x = imageRect.origin.x + imageRect.size.width + 5;
+        CGFloat center_y = imageRect.origin.y ;
         
         UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
         NSString *str_number = nil;
         
+       
         if (_markNumber > 99) {
             str_number = @"99+";
         }else{
@@ -332,13 +333,26 @@ static const float kTopMargin = 2.0;
         CGFloat nameH = 16;
         CGFloat nameW = size.width + 6 < 16 ? 16 :size.width + 6;
         lb_number.frame = CGRectMake(0,0, nameW,nameH);
-        if (_markNumber > 99) {
-            lb_number.center = CGPointMake(self.bounds.size.width - nameW/2, center_y);
-        }else{
-            lb_number.center = CGPointMake(center_x, center_y);
-        }
+        lb_number.center = CGPointMake(center_x, center_y);
         
         lb_number.layer.cornerRadius = 8.f;
+        lb_number.layer.masksToBounds = YES;
+        [self addSubview:lb_number];
+        
+    }
+    
+    
+    /****************  设置显示标签通知 ***************/
+    if (_showTip) {
+        
+        CGFloat center_x = imageRect.origin.x + imageRect.size.width + 5;
+        CGFloat center_y = imageRect.origin.y;
+        
+        UILabel *lb_number = [[UILabel alloc] initWithFrame:CGRectZero];
+        lb_number.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
+        lb_number.frame = CGRectMake(0,0, 8,8);
+        lb_number.center = CGPointMake(center_x, center_y);
+        lb_number.layer.cornerRadius = 4.f;
         lb_number.layer.masksToBounds = YES;
         [self addSubview:lb_number];
         

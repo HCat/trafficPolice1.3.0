@@ -24,6 +24,10 @@
 // 是否显示通知标签
 - (BOOL)showMask;
 
+//
+- (BOOL)showTip;
+
+
 // 显示标签数目
 - (NSInteger)showMaskNumber;
 

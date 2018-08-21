@@ -68,6 +68,26 @@ LRSingletonM(Default)
     
 }
 
+- (void)setDutyTip:(BOOL)dutyTip{
+    [[NSUserDefaults standardUserDefaults] setBool:dutyTip forKey:USERDEFAULT_KEY_DUTY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)dutyTip{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_DUTY];
+}
+
+- (void)setActionTip:(BOOL)actionTip{
+    [[NSUserDefaults standardUserDefaults] setBool:actionTip forKey:USERDEFAULT_KEY_ACTION];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)actionTip{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ACTION];
+}
+
+
+
 - (AccidentGetCodesResponse *)accidentCodes{
 
     if (!_accidentCodes) {

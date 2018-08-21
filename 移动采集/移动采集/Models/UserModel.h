@@ -61,6 +61,10 @@
     路面实况        ROAD_INFO
     联合执法        JOINT_LAW_ENFORCEMENT
     事故结案权限     accident-list-06
+    行动管理        ACTION_MANAGE
+    行动管理-发布    ACTIONMANAGE06
+    行动管理-结束    ACTIONMANAGE08
+
 */
 
 
@@ -101,6 +105,11 @@
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限
 
-
+//获取一些功能性权限
++ (BOOL)isPermissionForAcitonManage;            //行动管理权限
+//获取一些功能性权限
++ (BOOL)isPermissionForAcitonPublish;           //行动管理发布
+//获取一些功能性权限
++ (BOOL)isPermissionForAcitonEnd;               //行动管理结束
  
 @end

@@ -150,6 +150,47 @@
              };
 }
 
+@end
+
+
+#pragma mark - 根据类型选择行动
+
+@implementation ActionGetTypeListParam
 
 @end
 
+@implementation ActionGetTypeListReponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"list" : [ActionTaskListModel class]
+             };
+}
+
+@end
+
+@implementation ActionGetTypeListManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ACTION_TYPELIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (ActionGetTypeListReponse *)actionReponse{
+    
+    if (self.responseModel.data) {
+        _actionReponse = [ActionGetTypeListReponse modelWithDictionary:self.responseModel.data];
+        return _actionReponse;
+    }
+    
+    return nil;
+}
+
+@end

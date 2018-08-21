@@ -11,6 +11,7 @@
 #import "DriverChooseView.h"
 #import "VehicleAPI.h"
 #import "MakePhoneView.h"
+#import "IllegalListView.h"
 
 @interface AlertView : UIView
 
@@ -25,6 +26,8 @@
 + (void)showWindowWithDriverChooseViewWith:(NSArray *)drivers complete:(DriverChooseViewBlock)complete;
 
 + (void)showWindowWithMakePhoneViewWith:(DutyPeopleModel *)people;
+
++ (void)showWindowWithIllegalListViewWith:(IllegalListView *)view inView:(UIView *)contentView;
 
 - (void)handleBtnDismissClick:(id)sender;
 
