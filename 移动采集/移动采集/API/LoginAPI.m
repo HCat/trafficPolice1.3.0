@@ -20,7 +20,16 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"openId":_openId};
+    
+    if (_orgId) {
+        return @{@"openId":_openId,
+                 @"orgId":_orgId
+                 };
+    }else{
+        return @{@"openId":_openId
+                 };
+    }
+    
 }
 
 //返回参数

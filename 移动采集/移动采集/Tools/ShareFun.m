@@ -376,6 +376,7 @@
     [LRBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
+    [ShareValue sharedDefault].orgId = nil;
     [ShareValue sharedDefault].makeNumber = 0;
     
     [ShareValue sharedDefault].server_url = nil;

@@ -16,6 +16,7 @@
 
 /****** 请求数据 ******/
 @property (nonatomic, copy) NSString * openId;           //实际是微信的unionid
+@property (nonatomic, copy) NSString * orgId;           //机构编码
 
 /****** 返回数据 ******/
 @property (nonatomic, copy) NSString * phone;            //手机号码

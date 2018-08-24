@@ -50,6 +50,7 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 LRSingletonH(Default)
 
 @property (nonatomic, copy) NSString *unionid;      //微信unionid
+@property (nonatomic, copy) NSString *orgId;        //机构ID
 @property (nonatomic, copy) NSString *token;        //token值
 @property (nonatomic, copy) NSString *phone;        //登录返回的手机号码
 @property (nonatomic, assign) NSInteger makeNumber; //推送消息数目

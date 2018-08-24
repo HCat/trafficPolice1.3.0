@@ -366,5 +366,38 @@
 
 @end
 
+#pragma mark - 获取机构列表
+
+@implementation PoliceOrgModel
+
+
+@end
+
+@implementation CommonPoliceOrgManger
+
+
+- (NSString *)requestUrl
+{
+    return URL_COMMON_POLICEORG;
+}
+
+- (NSArray <PoliceOrgModel *> *)commonReponse{
+    
+    if (self.responseModel) {
+        _commonReponse = [NSArray modelArrayWithClass:[PoliceOrgModel class] json:self.responseJSONObject[@"data"]];
+        
+        
+        return _commonReponse;
+    }
+    
+    return nil;
+    
+}
+
+
+
+@end
+
+
 
 

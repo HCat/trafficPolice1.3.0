@@ -185,6 +185,29 @@
 
 @end
 
+#pragma mark - 获取机构列表
+
+@interface PoliceOrgModel : NSObject
+
+@property (nonatomic,copy) NSString * password;   //校对密码
+@property (nonatomic,copy) NSString * name;   //机构名称
+@property (nonatomic,copy) NSString * code;   //机构编码
+
+@end
+
+
+
+@interface CommonPoliceOrgManger : LRBaseRequest
+
+/****** 请求数据 ******/
+
+
+/****** 返回数据 ******/
+@property (nonatomic,copy) NSArray < PoliceOrgModel * > * commonReponse;
+
+
+@end
+
 
 
 

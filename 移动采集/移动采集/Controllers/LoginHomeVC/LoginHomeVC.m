@@ -14,6 +14,7 @@
 #import "CommonAPI.h"
 
 #import "PhoneLoginVC.h"
+#import "LoginDeveloperVC.h"
 
 
 
@@ -44,8 +45,15 @@
     [self judgeNeedShowVisitor];
     
     UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showVisitor)];
-    tapGesture.numberOfTapsRequired = 15;
+    tapGesture.numberOfTapsRequired = 10;
+    tapGesture.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:tapGesture];
+    
+    
+    UITapGestureRecognizer*tapGesture_2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showDevelopmentModel)];
+    tapGesture_2.numberOfTapsRequired = 10;
+    tapGesture_2.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tapGesture_2];
     
 }
 
@@ -82,6 +90,15 @@
     
     self.btn_visitor.hidden = NO;
 }
+
+- (void)showDevelopmentModel{
+    
+    LoginDeveloperVC *vc = [[LoginDeveloperVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+
 
 #pragma mark - buttonAction 
 
@@ -183,6 +200,7 @@
         
         LoginManger *t_loginManger = [[LoginManger alloc] init];
         t_loginManger.openId = unionid;
+        t_loginManger.orgId = [ShareValue sharedDefault].orgId;
         [t_loginManger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             [hud hide];

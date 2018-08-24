@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE NO
+#define ISONLINE YES
 
 #define DEBUG_DACAO_URL @"http://192.168.10.113:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.113:8080/police-admin/websocket"
@@ -57,6 +57,7 @@
 #define URL_COMMON_ADVICE @"app/common/advice.json"                             //投诉建议
 #define URL_COMMON_VALIDVISITOR @"app/common/validVisitor.json"                 //查询是否需要游客登录
 #define URL_COMMON_POLICEANOUNCE @"app2/policeAnounce/getAnounce.json"          //警务详情
+#define URL_COMMON_POLICEORG @"app/common/getPoliceOrg.json"
 
 
 #pragma mark - 事故相关API

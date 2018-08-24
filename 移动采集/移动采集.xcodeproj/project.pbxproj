@@ -78,6 +78,10 @@
 		CE270E1220BF923D00746AC6 /* VehicleTrafficPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE270E1020BF923D00746AC6 /* VehicleTrafficPlaceCell.xib */; };
 		CE27A9FB20CA2D9E00AA922D /* ScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */; };
 		CE27A9FC20CA2D9E00AA922D /* ScheduleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */; };
+		CE2AAEA4212BB32E009088C3 /* LoginDeveloperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AAEA2212BB32E009088C3 /* LoginDeveloperVC.m */; };
+		CE2AAEA5212BB32E009088C3 /* LoginDeveloperVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2AAEA3212BB32E009088C3 /* LoginDeveloperVC.xib */; };
+		CE2AAEA9212BE228009088C3 /* LoginDevelopListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AAEA7212BE228009088C3 /* LoginDevelopListVC.m */; };
+		CE2AAEAA212BE228009088C3 /* LoginDevelopListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2AAEA8212BE228009088C3 /* LoginDevelopListVC.xib */; };
 		CE2AF8801FD68B59005B643E /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */; };
 		CE2AF8811FD68B59005B643E /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */; };
 		CE2AF8821FD68B59005B643E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2AF87B1FD68B58005B643E /* UITableView+FDTemplateLayoutCellDebug.m */; };
@@ -637,6 +641,12 @@
 		CE27A9F820CA2D9E00AA922D /* ScheduleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleVC.h; sourceTree = "<group>"; };
 		CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleVC.m; sourceTree = "<group>"; };
 		CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleVC.xib; sourceTree = "<group>"; };
+		CE2AAEA1212BB32E009088C3 /* LoginDeveloperVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginDeveloperVC.h; sourceTree = "<group>"; };
+		CE2AAEA2212BB32E009088C3 /* LoginDeveloperVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginDeveloperVC.m; sourceTree = "<group>"; };
+		CE2AAEA3212BB32E009088C3 /* LoginDeveloperVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginDeveloperVC.xib; sourceTree = "<group>"; };
+		CE2AAEA6212BE228009088C3 /* LoginDevelopListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginDevelopListVC.h; sourceTree = "<group>"; };
+		CE2AAEA7212BE228009088C3 /* LoginDevelopListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginDevelopListVC.m; sourceTree = "<group>"; };
+		CE2AAEA8212BE228009088C3 /* LoginDevelopListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginDevelopListVC.xib; sourceTree = "<group>"; };
 		CE2AF8781FD68B57005B643E /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		CE2AF8791FD68B57005B643E /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
 		CE2AF87A1FD68B57005B643E /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
@@ -3067,6 +3077,12 @@
 				CE57F78B1F1E0EE000CA9FCF /* PhoneLoginVC.h */,
 				CE57F78C1F1E0EE000CA9FCF /* PhoneLoginVC.m */,
 				CE57F78D1F1E0EE000CA9FCF /* PhoneLoginVC.xib */,
+				CE2AAEA1212BB32E009088C3 /* LoginDeveloperVC.h */,
+				CE2AAEA2212BB32E009088C3 /* LoginDeveloperVC.m */,
+				CE2AAEA3212BB32E009088C3 /* LoginDeveloperVC.xib */,
+				CE2AAEA6212BE228009088C3 /* LoginDevelopListVC.h */,
+				CE2AAEA7212BE228009088C3 /* LoginDevelopListVC.m */,
+				CE2AAEA8212BE228009088C3 /* LoginDevelopListVC.xib */,
 			);
 			path = LoginHomeVC;
 			sourceTree = "<group>";
@@ -3348,6 +3364,7 @@
 				CE6AE97220B68D35005781DA /* VehicleTiredAlarmVC.xib in Resources */,
 				CE424F441F3AE694005741CA /* AccidentPartyCell.xib in Resources */,
 				CE25F50321255A140067E125 /* IllegalRecordVC.xib in Resources */,
+				CE2AAEAA212BE228009088C3 /* LoginDevelopListVC.xib in Resources */,
 				CE88FC4B20A998690011B729 /* VehicleTrafficInfoVC.xib in Resources */,
 				CE5C38F41F28606B0055C945 /* lock.png in Resources */,
 				CE25F50821255F8D0067E125 /* IllegalRecordImageCell.xib in Resources */,
@@ -3360,6 +3377,7 @@
 				CE1E400120F4BB44003A5595 /* AccidentUpImageCell.xib in Resources */,
 				CE5C38EB1F28606B0055C945 /* btn_original_circle@2x.png in Resources */,
 				CE88FC5A20A9B7FB0011B729 /* VehicleCarInfoVC.xib in Resources */,
+				CE2AAEA5212BB32E009088C3 /* LoginDeveloperVC.xib in Resources */,
 				CE88FC5520A998CE0011B729 /* VehicleAlarmInfoVC.xib in Resources */,
 				CE8EE8651F66356000CC64B0 /* PoliceCommandVC.xib in Resources */,
 				CE3C0F6F1F30586A00D3B55D /* VideoColectVC.xib in Resources */,
@@ -3697,6 +3715,7 @@
 				CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */,
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
 				CE1E3FF620F460DA003A5595 /* AccidentInfoCell.m in Sources */,
+				CE2AAEA9212BE228009088C3 /* LoginDevelopListVC.m in Sources */,
 				CE5C39011F28606B0055C945 /* ZLNoAuthorityViewController.m in Sources */,
 				CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
@@ -3714,6 +3733,7 @@
 				CE0731CA1F5ECBF400B3831B /* VehicleModel.m in Sources */,
 				CE5C3BBF1F5812AC007A7EDD /* MessageDetailVC.m in Sources */,
 				CE8502291F559C30001DC495 /* AccidentCompleteVC.m in Sources */,
+				CE2AAEA4212BB32E009088C3 /* LoginDeveloperVC.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
 				CE6915741F1DE672008911A6 /* LocationHelper.m in Sources */,
