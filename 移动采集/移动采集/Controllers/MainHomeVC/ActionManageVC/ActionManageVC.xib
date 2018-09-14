@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0iZ-vm-1oG">
-                    <rect key="frame" x="-1" y="108" width="375" height="559"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="dt7-Gk-TZd"/>
@@ -51,11 +51,11 @@
                                 <constraint firstAttribute="height" constant="44" id="GTh-vh-e48"/>
                                 <constraint firstAttribute="width" constant="55" id="q72-fp-308"/>
                             </constraints>
-                            <state key="normal" image="btn_search">
-                                <color key="titleColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="handleBtnSearchClicked:" destination="-1" eventType="touchUpInside" id="KPv-uQ-fdg"/>
+                                <action selector="handleBtnBackClicked:" destination="-1" eventType="touchUpInside" id="5CD-c0-SuJ"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H25-QP-yfu">
@@ -103,8 +103,8 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="0iZ-vm-1oG" secondAttribute="bottom" id="AX3-pW-49f"/>
                 <constraint firstItem="0iZ-vm-1oG" firstAttribute="top" secondItem="5ik-Zh-Xgm" secondAttribute="bottom" constant="44" id="Abc-wB-HIz"/>
-                <constraint firstAttribute="trailing" secondItem="0iZ-vm-1oG" secondAttribute="trailing" constant="1" id="C0N-Kt-wis"/>
-                <constraint firstItem="0iZ-vm-1oG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-1" id="Qcb-xL-hr8"/>
+                <constraint firstAttribute="trailing" secondItem="0iZ-vm-1oG" secondAttribute="trailing" id="C0N-Kt-wis"/>
+                <constraint firstItem="0iZ-vm-1oG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qcb-xL-hr8"/>
                 <constraint firstAttribute="trailing" secondItem="5ik-Zh-Xgm" secondAttribute="trailing" id="W45-1i-sGC"/>
                 <constraint firstItem="5ik-Zh-Xgm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mO8-nc-aiM"/>
                 <constraint firstItem="5ik-Zh-Xgm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o3C-eZ-4Ye"/>
@@ -113,7 +113,6 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_search" width="21" height="21"/>
         <image name="icon_adressBook_search" width="13" height="13"/>
         <image name="nav_back" width="10" height="17"/>
     </resources>

@@ -18,6 +18,7 @@
 
 #import "NetWorkHelper.h"
 #import "IllegalDetailVC.h"
+#import "UINavigationBar+BarItem.h"
 
 
 @interface IllegalListVC ()
@@ -30,6 +31,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
 
+@property (weak, nonatomic) IBOutlet UIView *v_search;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_viewSearch_height;
+@property (nonatomic,copy) NSString *str_search;
+
+
 @end
 
 @implementation IllegalListVC
@@ -37,11 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (_illegalType == IllegalTypePark) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALPARK_SUCCESS object:nil];
-    }else if (_illegalType == IllegalTypeThrough){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALTHROUGH_SUCCESS object:nil];
-    }
+    self.str_search = _tf_search.text;
+    
     
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
@@ -56,10 +59,32 @@
     
     [self initRefresh];
     
-    [_tb_content.mj_header beginRefreshing];
+    if (_type == 1) {
+        
+        
+        [self showRightBarButtonItemWithImage:@"btn_search" target:self action:@selector(handleBtnSearchClicked:)];
+        
+        
+        if (_illegalType == IllegalTypePark) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALPARK_SUCCESS object:nil];
+        }else if (_illegalType == IllegalTypeThrough){
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(illegalSuccess:) name:NOTIFICATION_ILLEGALTHROUGH_SUCCESS object:nil];
+        }
+        [_tb_content.mj_header beginRefreshing];
+        
+        _v_search.hidden = YES;
+        _layout_viewSearch_height.constant = 0;
+        
+        
+    }else if(_type == 2){
+        
+        if (IS_IPHONE_X) {
+            _layout_viewSearch_height.constant = _layout_viewSearch_height.constant + 24;
+        }
+        
+    }
     
     WS(weakSelf);
-    
     //点击重新加载之后的处理
     [_tb_content setReloadBlock:^{
         SW(strongSelf, weakSelf);
@@ -74,6 +99,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+    
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -81,6 +110,16 @@
         strongSelf.index = 0;
         [strongSelf.tb_content.mj_header beginRefreshing];
     };
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = NO;
+    }
+    
+    [super viewWillDisappear:animated];
     
 }
 
@@ -127,14 +166,25 @@
         }
     }
     
+    if (_type == 2) {
+        if (_str_search.length == 0) {
+            [self.tb_content.mj_header endRefreshing];
+            [self.tb_content.mj_footer endRefreshing];
+            [self.tb_content reloadData];
+            return;
+            
+        }
+        
+    }
+    
     if (_illegalType == IllegalTypePark) {
         
         IllegalParkListPagingParam *param = [[IllegalParkListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
         param.type = @(_subType);
-        if (_tf_search.text.length > 0) {
-            param.search = _tf_search.text;
+        if (_str_search.length > 0) {
+            param.search = _str_search;
         }
         
         IllegalParkListPagingManger *manger = [[IllegalParkListPagingManger alloc] init];
@@ -180,8 +230,8 @@
         IllegalThroughListPagingParam *param = [[IllegalThroughListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_tf_search.text.length > 0) {
-            param.search = _tf_search.text;
+        if (_str_search.length > 0) {
+            param.search = _str_search;
         }
     
         IllegalThroughListPagingManger *manger = [[IllegalThroughListPagingManger alloc] init];
@@ -288,7 +338,28 @@
 
 - (IBAction)handleBtnSearchClicked:(id)sender {
     
-    [self.tb_content.mj_header beginRefreshing];
+    IllegalListVC *vc = [[IllegalListVC alloc] init];
+    vc.illegalType = _illegalType;
+    vc.subType = _subType;
+    vc.type = 2;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+
+-(IBAction)handleBtnBackClicked:(id)sender{
+    
+    if (self.navigationController.viewControllers.count == 1) {
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }else{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
 }
 
@@ -297,6 +368,10 @@
 -(BOOL) textFieldShouldReturn:(UITextField*) textField
 {
     [textField resignFirstResponder];
+    _str_search = textField.text;
+    if (_str_search.length == 0) {
+        [LRShowHUD showError:@"请输入搜索内容" duration:1.5f];
+    }
     [self.tb_content.mj_header beginRefreshing];
     return YES;
 }

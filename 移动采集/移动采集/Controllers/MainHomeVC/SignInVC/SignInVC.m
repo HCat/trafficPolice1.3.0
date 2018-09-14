@@ -20,6 +20,7 @@
 
 #import "SRAlertView.h"
 #import "LocationHelper.h"
+#import "WebSocketHelper.h"
 
 
 @interface SignInVC ()
@@ -259,6 +260,7 @@
 
 - (void)locationChange{
 
+    WS(weakSelf);
     if ([UserModel getUserModel].workstate == YES ) {
         SignOutManger *manger = [[SignOutManger alloc] init];
         manger.address = [LocationHelper sharedDefault].address;
@@ -266,16 +268,18 @@
         manger.latitude  = @([LocationHelper sharedDefault].latitude);
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [_hud hide];
+            SW(strongSelf, weakSelf);
+            [strongSelf.hud hide];
             [LRShowHUD showSuccess:@"签退成功" duration:1.5f];
             UserModel *userModel = [UserModel getUserModel];
             userModel.workstate = !userModel.workstate;
             [UserModel setUserModel:userModel];
-            [ShareFun closeWebSocket];
-            [self loadSignListRequest];
+            [[WebSocketHelper sharedDefault] judgeNeedSeedLocation];
+            [strongSelf loadSignListRequest];
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [_hud hide];
+            SW(strongSelf, weakSelf);
+            [strongSelf.hud hide];
             [LRShowHUD showSuccess:@"签退失败" duration:1.5f];
 
         }];
@@ -289,17 +293,19 @@
         manger.latitude  = @([LocationHelper sharedDefault].latitude);
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [_hud hide];
+            SW(strongSelf, weakSelf);
+            [strongSelf.hud hide];
             [LRShowHUD showSuccess:@"签到成功" duration:1.5f];
             
             UserModel *userModel = [UserModel getUserModel];
             userModel.workstate = !userModel.workstate;
             [UserModel setUserModel:userModel];
-            [ShareFun openWebSocket];
-            [self loadSignListRequest];
+            [[WebSocketHelper sharedDefault] judgeNeedSeedLocation];
+            [strongSelf loadSignListRequest];
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [_hud hide];
+            SW(strongSelf, weakSelf);
+            [strongSelf.hud hide];
             [LRShowHUD showSuccess:@"签到失败" duration:1.5f];
         }];
         

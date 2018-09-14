@@ -79,6 +79,7 @@
         if ([UserModel isPermissionForAccidentList]) {
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeAccident;
+            t_vc.type = 1;
             t_vc.title = @"事故列表";
             
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
@@ -102,6 +103,7 @@
         if ([UserModel isPermissionForFastAccidentList]) {
             AccidentListVC *t_vc = [AccidentListVC new];
             t_vc.accidentType = AccidentTypeFastAccident;
+            t_vc.type = 1;
             t_vc.title = @"快处列表";
             
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
@@ -124,6 +126,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForIllegalList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypePark;
             t_vc.title = @"违停列表";
@@ -146,6 +149,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForThroughList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
             t_vc.illegalType = IllegalTypeThrough;
             t_vc.title = @"违反禁令列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
@@ -166,6 +170,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForIllegalReverseList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeReversePark;
             t_vc.title = @"不按朝向列表";
@@ -186,6 +191,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForIllegalLockList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeLockPark;
             t_vc.title = @"违停锁车列表";
@@ -207,6 +213,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForCarInfoList]) {
             IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
             t_vc.illegalType = IllegalTypePark;
             t_vc.subType = ParkTypeCarInfoAdd;
             t_vc.title = @"车辆录入列表";
@@ -230,6 +237,7 @@
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForVideoCollectList]) {
             VideoListVC *t_vc = [[VideoListVC alloc] init];
+            t_vc.type = 1;
             t_vc.title = @"视频列表";
             UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
             [vc_target.navigationController pushViewController:t_vc animated:YES];

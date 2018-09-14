@@ -86,6 +86,14 @@ LRSingletonM(Default)
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ACTION];
 }
 
+- (void)setUptime:(NSDate *)uptime{
+    [[NSUserDefaults standardUserDefaults] setObject:uptime forKey:USERDEFAULT_KEY_UPTIME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSDate *)uptime{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_UPTIME];
+}
 
 
 - (AccidentGetCodesResponse *)accidentCodes{

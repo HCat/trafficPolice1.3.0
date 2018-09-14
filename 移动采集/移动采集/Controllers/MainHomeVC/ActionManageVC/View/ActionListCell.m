@@ -104,7 +104,7 @@
             if (_model.createName) {
                 
                 [_btn_second setTitle:[ShareFun takeStringNoNull:_model.publishName] forState:UIControlStateNormal];
-                _lb_second.text = [NSString stringWithFormat:@"创建时间:%@",[ShareFun timeWithTimeInterval:_model.publishTime]];
+                _lb_second.text = [NSString stringWithFormat:@"发布时间:%@",[ShareFun timeWithTimeInterval:_model.publishTime]];
                 _view_second.hidden = NO;
                
                 

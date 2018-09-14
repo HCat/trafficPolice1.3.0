@@ -19,6 +19,7 @@
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
 #import "ActionManageVC.h"
+#import "SpecialVehicleVC.h"
 #import "NoticeVC.h"
 
 #import "MainCellLayout.h"
@@ -131,6 +132,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             [_arr_policeMatter  addObject:@{@"image":@"menu_keyPointCar",@"title":@"工程车辆"}];
             [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
             [_arr_policeMatter addObject:@{@"image":@"menu_action",@"title":@"行动管理"}];
+            [_arr_policeMatter addObject:@{@"image":@"menu_specialCar",@"title":@"特殊车辆"}];
         }
     }
     
@@ -251,7 +253,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     NSString *t_title = nil;
     if (indexPath.section == 0) {
         if (self.arr_illegal && self.arr_illegal.count > 0) {
-            t_title = @"违章采集";
+            t_title = @"违法采集";
         }else if (self.arr_accident && self.arr_accident.count > 0){
             t_title = @"事故纠纷";
         }else if (self.arr_policeMatter && self.arr_policeMatter.count > 0){
@@ -407,6 +409,17 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             if ([UserModel isPermissionForAcitonManage]) {
                 ActionManageVC *t_vc = [[ActionManageVC alloc] init];
+                t_vc.type = 1;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
+        }else if ([t_title isEqualToString:@"特殊车辆"]){
+            
+            if ([UserModel isPermissionForSpecialCar]) {
+                SpecialVehicleVC *t_vc = [[SpecialVehicleVC alloc] init];
+                t_vc.type = 1;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];

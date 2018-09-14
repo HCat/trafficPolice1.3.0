@@ -10,5 +10,7 @@
 
 @interface VideoListVC : BaseViewController
 
+@property(nonatomic,assign) int type; // 1表示正常列表页面  2表示搜索列表页面
+
 
 @end

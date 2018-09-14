@@ -12,13 +12,11 @@
 #import "NetWorkHelper.h"
 #import "ActionAPI.h"
 #import "ActionDetailCell.h"
+#import "ActionTopCell.h"
 #import "UINavigationBar+BarItem.h"
 
 
 @interface ActionDetailVC ()
-
-@property (weak, nonatomic) IBOutlet UILabel *lb_actionName;
-@property (weak, nonatomic) IBOutlet UILabel *lb_actionContent;
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 
@@ -58,6 +56,7 @@
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
     
+    [_tb_content registerNib:[UINib nibWithNibName:@"ActionTopCell" bundle:nil] forCellReuseIdentifier:@"ActionTopCellID"];
     [_tb_content registerNib:[UINib nibWithNibName:@"ActionDetailCell" bundle:nil] forCellReuseIdentifier:@"ActionDetailCellID"];
     
     WS(weakSelf);
@@ -97,10 +96,7 @@
                 
             }
             
-            strongSelf.lb_actionName.text = [ShareFun takeStringNoNull:strongSelf.actionReponse.action.actionName];
-            strongSelf.lb_actionContent.text = [ShareFun takeStringNoNull:strongSelf.actionReponse.action.actionContent];
-            
-            
+           
             [strongSelf.arr_content addObjectsFromArray:manger.acctionReponse.actionTaskList];
             [strongSelf.tb_content reloadData];
             
@@ -137,38 +133,78 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _arr_content.count;
+
+    return _arr_content.count + 1;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WS(weakSelf);
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionDetailCellID" cacheByIndexPath:indexPath configuration:^(ActionDetailCell *cell) {
-        SW(strongSelf, weakSelf);
-        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
-            ActionTaskListModel *t_model = strongSelf.arr_content[indexPath.row];
-            cell.model = t_model;
-            
-            
-        }
-    }];
     
-    return height;
+    if (indexPath.row == 0) {
+        
+        CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionTopCellID" cacheByIndexPath:indexPath configuration:^(ActionTopCell *cell) {
+            SW(strongSelf, weakSelf);
+            if (strongSelf.actionReponse.action) {
+                
+                ActionInfoModel *t_model = strongSelf.actionReponse.action;
+                cell.action = t_model;
+                
+            }
+        }];
+        
+        return height;
+        
+    }else{
+        
+        CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionDetailCellID" cacheByIndexPath:indexPath configuration:^(ActionDetailCell *cell) {
+            SW(strongSelf, weakSelf);
+            if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
+                ActionTaskListModel *t_model = strongSelf.arr_content[indexPath.row - 1];
+                cell.model = t_model;
+                
+                
+            }
+        }];
+        
+        return height;
+        
+    }
+    
+    
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ActionDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionDetailCellID"];
     
-    if (_arr_content && _arr_content.count > 0) {
-        ActionTaskListModel *t_model = _arr_content[indexPath.row];
-        cell.model = t_model;
+    if (indexPath.row == 0) {
         
-    }
+        ActionTopCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ActionTopCellID"];
+        if (self.actionReponse.action) {
+            
+            ActionInfoModel *t_model = self.actionReponse.action;
+            cell.action = t_model;
+            
+        }
+        
+        
+        return cell;
+        
+    }else{
+        ActionDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionDetailCellID"];
+        
+        if (_arr_content && _arr_content.count > 0) {
+            ActionTaskListModel *t_model = _arr_content[indexPath.row - 1];
+            cell.model = t_model;
+            
+        }
+        
+        return cell;
     
-    return cell;
+    }
+   
 }
 
 

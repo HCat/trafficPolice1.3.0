@@ -11,10 +11,10 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.113:8080/police-admin/"
-#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.113:8080/police-admin/websocket"
+#define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
+#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
 
 
 #define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
@@ -24,8 +24,8 @@
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
 
-#define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
-#define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
+#define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_DACAO_URL
+#define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUGDACAO_URL
 
 #define Base_URL ([ShareValue sharedDefault].server_url == nil) ? (KBase_URL) : [ShareValue sharedDefault].server_url
 #define WEBSOCKETURL ([ShareValue sharedDefault].webSocket_url == nil) ? (KwebSocket_URL) : [ShareValue sharedDefault].webSocket_url
@@ -192,5 +192,15 @@
 #define URL_ACTION_DETAIL @"app/actionManage/getActionDetail.json"                  //获取行动详情
 #define URL_ACTION_CHANGESTATUS @"app/actionManage/changeActionStatus.json"         //更改行动状态
 #define URL_ACTION_TYPELIST @"app/actionManage/getActionTaskList.json"              //根据类型选择行动
+
+#define URL_SPECIAL_GETGROUPLIST @"app/group/getGroupList.json"     //特殊传车辆管理组的获取和组的车牌获取
+#define URL_SPECIAL_GETRECORDLIST @"app/group/getRecordList.json"   //特殊传车辆管理获取识别记录列表
+#define URL_SPECIAL_RECORDDETAIL @"app/group/recordDetail.json"     //特殊传车辆管理获取识别记录详情
+#define URL_SPECIAL_SAVEGROUP @"app/group/saveGroup.json"     //特殊车辆管理保存组合保存车辆
+#define URL_SPECIAL_DELETE @"app/group/delete.json"     //删除车辆
+#define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"     //获取设置通知人员列表
+#define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"     //保存置通知人员
+
+
 
 #endif /* URLMacro_h */

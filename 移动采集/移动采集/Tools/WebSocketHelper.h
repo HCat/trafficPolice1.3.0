@@ -21,4 +21,6 @@ LRSingletonH(Default)
 
 - (void)closeServer;
 
+- (void)judgeNeedSeedLocation;
+
 @end

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <YTKNetwork.h>
 #import "LSStatusBarHUD.h"
+#import "UINavigationBar+Awesome.h"
 
 
 #import "LRBaseRequest.h"
@@ -89,7 +90,8 @@
     
     //设置导航栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] setBarTintColor:DefaultNavColor];
+    [[UINavigationBar appearance] lt_setBackgroundColor:DefaultNavColor];
+
     [[UINavigationBar appearance] setTranslucent:NO];
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     

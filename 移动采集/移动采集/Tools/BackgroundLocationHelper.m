@@ -45,12 +45,15 @@ LRSingletonM(Default)
     [self.locationManager setLocatingWithReGeocode:YES];
     
     [self.locationManager startUpdatingLocation];
+    self.isLocation = YES;
     
     LxPrintf(@"**********************发送定时器生成！*********************");
     
     WS(weakSelf);
     
-    self.time_upLocation = [NSTimer lr_scheduledTimerWithTimeInterval:10 repeats:YES block:^(NSTimer *timer) {
+    double frequency = [[ShareValue sharedDefault].frequency doubleValue];
+    
+    self.time_upLocation = [NSTimer lr_scheduledTimerWithTimeInterval:frequency repeats:YES block:^(NSTimer *timer) {
         
         SW(strongSelf, weakSelf);
         if (strongSelf.latitude && strongSelf.longitude) {
@@ -79,13 +82,22 @@ LRSingletonM(Default)
     }];
     [[NSRunLoop currentRunLoop] addTimer:self.time_upLocation forMode:NSRunLoopCommonModes];
 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        SW(strongSelf, weakSelf);
+        [strongSelf.time_upLocation fire];
+    });
+    
 }
 
 - (void)stopLocation{
 
-    [self.locationManager stopUpdatingLocation];
-    [self.locationManager setDelegate:nil];
-    
+    if (self.locationManager) {
+        
+        [self.locationManager stopUpdatingLocation];
+        [self.locationManager setDelegate:nil];
+        self.isLocation = NO;
+    }
+   
     if (self.time_upLocation) {
         LxPrintf(@"**********************发送定时器注销！*********************");
         [self.time_upLocation invalidate];

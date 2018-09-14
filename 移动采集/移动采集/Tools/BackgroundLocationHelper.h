@@ -22,8 +22,7 @@ LRSingletonH(Default)
 @property (copy, nonatomic) NSString * city;
 @property (copy, nonatomic) NSString * streetName;
 @property (copy, nonatomic) NSString * address;
-
-
+@property (nonatomic,assign) BOOL isLocation; //判断是否已经定位
 
 - (void)startLocation;  //开始定位
 - (void)stopLocation;   //停止定位

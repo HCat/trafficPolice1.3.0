@@ -61,6 +61,8 @@ LRSingletonH(Default)
 @property (nonatomic, copy) NSString *server_url;       //服务器地址
 @property (nonatomic, copy) NSString *webSocket_url;    //webSocket地址
 
+@property (nonatomic, strong) NSNumber *frequency; //websocket上传频率
+@property (nonatomic, strong) NSDate *uptime; //上报截止时间
 
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值

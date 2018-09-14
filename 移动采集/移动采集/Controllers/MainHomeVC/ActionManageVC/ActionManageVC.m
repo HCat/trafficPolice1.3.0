@@ -16,6 +16,7 @@
 #import "ActionAPI.h"
 #import "ActionListCell.h"
 #import "ActionDetailVC.h"
+#import "UINavigationBar+BarItem.h"
 
 
 @interface ActionManageVC ()
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIView *navbar;
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
+@property (nonatomic,copy) NSString *str_search;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 @property (nonatomic,strong) NSMutableArray *arr_content;
 @property (nonatomic,assign) NSInteger index;
@@ -37,11 +41,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (IS_IPHONE_X) {
-        _layout_topHeight.constant = _layout_topHeight.constant + 24;
+    if (_type == 1) {
+        self.title = @"行动管理";
+        
+        [self showRightBarButtonItemWithImage:@"btn_search" target:self action:@selector(handleBtnSearchClicked:)];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpNotification:) name:NOTIFICATION_ACTION_UP object:nil];
+        
+        _navbar.hidden = YES;
+        _layout_topHeight.constant = 0;
+        
+    }else if(_type == 2){
+        
+        if (IS_IPHONE_X) {
+            _layout_topHeight.constant = _layout_topHeight.constant + 24;
+        }
+        
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpNotification:) name:NOTIFICATION_ACTION_UP object:nil];
 
     self.statusType = -1;
     self.arr_content = [NSMutableArray array];
@@ -49,11 +67,18 @@
     [self setUpDropdownMenu];
     [self setUpTableView];
     
+    if (_type == 1) {
+        [_tb_content.mj_header beginRefreshing];
+    }
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = YES;
+    }
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -64,7 +89,9 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = NO;
+    }
     [super viewWillAppear:animated];
     
 }
@@ -79,8 +106,7 @@
     _tb_content.firstReload = NO;
     
     [self initRefresh];
-    [_tb_content.mj_header beginRefreshing];
-    
+   
     [_tb_content registerNib:[UINib nibWithNibName:@"ActionListCell" bundle:nil] forCellReuseIdentifier:@"ActionListCellID"];
     
     WS(weakSelf);
@@ -97,7 +123,13 @@
     WS(weakSelf);
     NSArray *items = @[@"全部", @"待发布",@"已发布", @"已结束"];
     
-    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, IS_IPHONE_X ? 88 : 64, SCREEN_WIDTH, 44)
+    CGFloat height = 0;
+    
+    if (_type == 2) {
+        height = IS_IPHONE_X ? 88 : 64;
+    }
+    
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, height, SCREEN_WIDTH, 44)
                                                           title:items.firstObject
                                                           items:items
                                                   containerView:self.view];
@@ -135,12 +167,16 @@
     [_menuView configureForAutoLayout];
     [_menuView autoSetDimension:ALDimensionHeight toSize:44];
     
-    if (IS_IPHONE_X) {
-        [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
+    if (_type == 2) {
+        if (IS_IPHONE_X) {
+            [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
+        }else{
+            [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+        }
     }else{
-        [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];
+        [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
     }
-    
+
     [_menuView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
     [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
     [self.view layoutIfNeeded];
@@ -195,6 +231,16 @@
         }
     }
     
+    if (_type == 2) {
+        if (_str_search.length == 0) {
+            [self.tb_content.mj_header endRefreshing];
+            [self.tb_content.mj_footer endRefreshing];
+            [self.tb_content reloadData];
+            return;
+        }
+        
+    }
+    
 
     ActionPageListParam *param = [[ActionPageListParam alloc] init];
     param.start = _index;
@@ -202,7 +248,7 @@
     if (self.statusType >= 0) {
         param.status = @(self.statusType);
     }
-    if (_tf_search.text.length > 0) {
+    if (_str_search.length > 0) {
         param.actionName = _tf_search.text;
     }
     
@@ -302,8 +348,9 @@
 
 - (IBAction)handleBtnSearchClicked:(id)sender {
     
-    [self.tb_content.mj_header beginRefreshing];
-    
+    ActionManageVC *vc = [[ActionManageVC alloc] init];
+    vc.type = 2;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)handleBtnBackClicked:(id)sender {
@@ -327,6 +374,10 @@
 -(BOOL) textFieldShouldReturn:(UITextField*) textField
 {
     [textField resignFirstResponder];
+    _str_search = textField.text;
+    if (_str_search.length == 0) {
+        [LRShowHUD showError:@"请输入搜索内容" duration:1.5f];
+    }
     [self.tb_content.mj_header beginRefreshing];
     return YES;
 }
@@ -349,6 +400,8 @@
 }
 
 - (void)dealloc{
+    
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
     NSLog(@"ActionManageVC dealloc");
     
 }

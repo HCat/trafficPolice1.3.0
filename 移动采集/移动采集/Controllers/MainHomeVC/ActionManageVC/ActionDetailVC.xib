@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,8 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionDetailVC">
             <connections>
-                <outlet property="lb_actionContent" destination="MSV-wi-TkW" id="Cyn-js-hMH"/>
-                <outlet property="lb_actionName" destination="h7o-qR-nxF" id="9Ks-di-woJ"/>
                 <outlet property="tb_content" destination="jwa-MS-b5h" id="bSw-lr-8op"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,30 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIS-f2-r69">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7o-qR-nxF">
-                    <rect key="frame" x="37" y="15" width="314" height="0.0"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSV-wi-TkW">
-                    <rect key="frame" x="37" y="32" width="314" height="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_action_tip" translatesAutoresizingMaskIntoConstraints="NO" id="7l3-QO-Gp8">
-                    <rect key="frame" x="15" y="15" width="12" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="18" id="1X3-1F-g6b"/>
-                    </constraints>
-                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-MS-b5h">
-                    <rect key="frame" x="0.0" y="47" width="375" height="556"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="x1y-KD-Ii2"/>
@@ -55,28 +31,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="AIS-f2-r69" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="01B-kX-iz7"/>
-                <constraint firstItem="MSV-wi-TkW" firstAttribute="leading" secondItem="h7o-qR-nxF" secondAttribute="leading" id="3r2-Lf-RVj"/>
-                <constraint firstItem="MSV-wi-TkW" firstAttribute="top" secondItem="h7o-qR-nxF" secondAttribute="bottom" constant="17" id="5hl-LO-tpL"/>
-                <constraint firstItem="h7o-qR-nxF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Ezy-Zn-6LD"/>
-                <constraint firstAttribute="trailing" secondItem="h7o-qR-nxF" secondAttribute="trailing" constant="24" id="MaM-93-VMG"/>
+                <constraint firstItem="jwa-MS-b5h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="P7d-NA-5nf"/>
                 <constraint firstAttribute="trailing" secondItem="jwa-MS-b5h" secondAttribute="trailing" id="bKI-nG-3Lo"/>
-                <constraint firstItem="h7o-qR-nxF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="dw9-0w-q8f"/>
-                <constraint firstItem="MSV-wi-TkW" firstAttribute="trailing" secondItem="h7o-qR-nxF" secondAttribute="trailing" id="gYg-aF-4To"/>
-                <constraint firstAttribute="trailing" secondItem="AIS-f2-r69" secondAttribute="trailing" id="lpC-bz-eMa"/>
                 <constraint firstAttribute="bottom" secondItem="jwa-MS-b5h" secondAttribute="bottom" id="mKB-vw-SWK"/>
-                <constraint firstItem="AIS-f2-r69" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="o23-Vn-NJH"/>
-                <constraint firstItem="h7o-qR-nxF" firstAttribute="leading" secondItem="7l3-QO-Gp8" secondAttribute="trailing" constant="10" id="puY-Af-je2"/>
-                <constraint firstItem="MSV-wi-TkW" firstAttribute="bottom" secondItem="AIS-f2-r69" secondAttribute="bottom" constant="-15" id="s0U-jI-y6w"/>
-                <constraint firstItem="7l3-QO-Gp8" firstAttribute="top" secondItem="h7o-qR-nxF" secondAttribute="top" id="sN3-6q-keZ"/>
-                <constraint firstItem="jwa-MS-b5h" firstAttribute="top" secondItem="AIS-f2-r69" secondAttribute="bottom" id="sii-oW-Lja"/>
                 <constraint firstItem="jwa-MS-b5h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vgb-ys-mC0"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="icon_action_tip" width="12" height="12"/>
-    </resources>
 </document>

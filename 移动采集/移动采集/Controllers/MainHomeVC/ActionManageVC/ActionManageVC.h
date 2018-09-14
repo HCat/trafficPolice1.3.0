@@ -10,4 +10,6 @@
 
 @interface ActionManageVC : HideTabSuperVC
 
+@property(nonatomic,assign) int type;
+
 @end

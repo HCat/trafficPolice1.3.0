@@ -18,7 +18,6 @@
 
 #import "AccidentCell.h"
 #import "AccidentCompleteVC.h"
-
 #import "UINavigationBar+BarItem.h"
 
 @interface AccidentListVC ()
@@ -30,6 +29,9 @@
 @property (nonatomic,assign) NSInteger index; //加载更多数据索引
 
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
+@property (weak, nonatomic) IBOutlet UIView *v_search;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_viewSearch_height;
+@property (nonatomic,copy) NSString *str_search;
 
 @end
 
@@ -38,15 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (_accidentType == AccidentTypeAccident) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
-    }else if (_accidentType == AccidentTypeFastAccident){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
-    }
-    
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    
+    self.str_search = _tf_search.text;
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
     //隐藏多余行的分割线
@@ -60,7 +54,32 @@
     
     [self initRefresh];
     
-    [_tb_content.mj_header beginRefreshing];
+    
+    if (_type == 1) {
+        
+        
+        [self showRightBarButtonItemWithImage:@"btn_search" target:self action:@selector(handleBtnSearchClicked:)];
+        
+        
+        if (_accidentType == AccidentTypeAccident) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
+        }else if (_accidentType == AccidentTypeFastAccident){
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
+        }
+        [_tb_content.mj_header beginRefreshing];
+    
+        _v_search.hidden = YES;
+        _layout_viewSearch_height.constant = 0;
+        
+        
+    }else if(_type == 2){
+        
+        if (IS_IPHONE_X) {
+            _layout_viewSearch_height.constant = _layout_viewSearch_height.constant + 24;
+        }
+        
+    }
+    
 
     WS(weakSelf);
     //点击重新加载之后的处理
@@ -77,7 +96,10 @@
     [super viewWillAppear:animated];
     WS(weakSelf);
     
-
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+    
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
         strongSelf.tb_content.isNetAvailable = NO;
@@ -86,6 +108,17 @@
     };
 
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    if (_type == 2) {
+        self.navigationController.navigationBarHidden = NO;
+    }
+    
+    [super viewWillDisappear:animated];
+    
+}
+
 
 #pragma mark - 创建下拉刷新，以及上拉加载更多
 
@@ -125,19 +158,32 @@
 - (void)loadData{
     
     WS(weakSelf);
+    
     if (_index == 0) {
         if (_arr_content && _arr_content.count > 0) {
             [_arr_content removeAllObjects];
         }
     }
+    
+    if (_type == 2) {
+        if (_str_search.length == 0) {
+            [self.tb_content.mj_header endRefreshing];
+            [self.tb_content.mj_footer endRefreshing];
+            [self.tb_content reloadData];
+            return;
+            
+        }
+        
+    }
+    
 
     if (_accidentType == AccidentTypeAccident) {
         
         AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_tf_search.text.length > 0) {
-            param.search = _tf_search.text;
+        if (_str_search.length > 0) {
+            param.search = _str_search;
         }
        
         AccidentListPagingManger *manger = [[AccidentListPagingManger alloc] init];
@@ -183,8 +229,8 @@
         FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
         param.start = _index;
         param.length = 10;
-        if (_tf_search.text.length > 0) {
-            param.search = _tf_search.text;
+        if (_str_search.length > 0) {
+            param.search = _str_search;
         }
 
         FastAccidentListPagingManger *manger = [[FastAccidentListPagingManger alloc] init];
@@ -294,15 +340,40 @@
 
 - (IBAction)handleBtnSearchClicked:(id)sender {
     
-    [self.tb_content.mj_header beginRefreshing];
+    AccidentListVC *vc = [[AccidentListVC alloc] init];
+    vc.accidentType = _accidentType;
+    vc.type = 2;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
+
+
+-(IBAction)handleBtnBackClicked:(id)sender{
+    
+    if (self.navigationController.viewControllers.count == 1) {
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }else{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    
+}
+
 
 #pragma mark - UItextFieldDelegate
 
 -(BOOL) textFieldShouldReturn:(UITextField*) textField
 {
     [textField resignFirstResponder];
+    _str_search = textField.text;
+    if (_str_search.length == 0) {
+        [LRShowHUD showError:@"请输入搜索内容" duration:1.5f];
+    }
     [self.tb_content.mj_header beginRefreshing];
     return YES;
 }

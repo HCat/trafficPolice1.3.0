@@ -483,11 +483,7 @@
 #pragma mark - 开启webSocket
 + (void)openWebSocket{
 
-    if ([UserModel getUserModel].workstate == YES) {
-        
-        [[WebSocketHelper sharedDefault] startServer];
-        
-    }
+    [[WebSocketHelper sharedDefault] startServer];
 
 }
 
@@ -718,8 +714,7 @@
 
 + (void)showTipLable:(NSString *)tip{
     
-    AppDelegate * app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIWindow *window = app.window;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
     __block UILabel *lb_title = [[UILabel alloc] initWithFrame:CGRectMake(40, ScreenHeight - 100, window.frame.size.width-80, 30)];
     lb_title.font =[UIFont systemFontOfSize:14];

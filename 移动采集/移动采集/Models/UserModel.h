@@ -60,6 +60,7 @@
 	勤务指挥        POLICE_COMMAND
     路面实况        ROAD_INFO
     联合执法        JOINT_LAW_ENFORCEMENT
+    特殊车辆        SPECAIL_CAR_MANAGE
     事故结案权限     accident-list-06
     行动管理        ACTION_MANAGE
     行动管理-发布    ACTIONMANAGE06
@@ -90,6 +91,7 @@
 
 + (BOOL)isPermissionForRoadInfo;                //路面实况权限
 + (BOOL)isPermissionForJointEnforcement;        //联合执法权限
++ (BOOL)isPermissionForSpecialCar;              //特殊车辆权限
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;            //事故权限列表
