@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.3</string>
+	<string>2.0.4</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -34,7 +34,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>baidumap</string>
@@ -57,7 +57,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>获取您的位置用来更好的完成您的出勤任务以及更加方便的联系您</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App会在视频录入时访问您的v权限,是否允许的麦克风？</string>
+	<string>App会在视频录入时访问您的权限,是否允许的麦克风？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App会在违停录入时访问您的相册权限,是否允许？</string>
 	<key>UIBackgroundModes</key>

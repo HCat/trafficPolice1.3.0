@@ -32,7 +32,6 @@
     [super viewDidLoad];
     self.title = @"行动详情";
     self.arr_content = [NSMutableArray array];
-    
     [self setUpTableView];
     
     [self requestDetail];
@@ -98,6 +97,7 @@
             
            
             [strongSelf.arr_content addObjectsFromArray:manger.acctionReponse.actionTaskList];
+        
             [strongSelf.tb_content reloadData];
             
         }else{
@@ -158,13 +158,12 @@
         
     }else{
         
-        CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionDetailCellID" cacheByIndexPath:indexPath configuration:^(ActionDetailCell *cell) {
+        CGFloat height = [tableView fd_heightForCellWithIdentifier:@"ActionDetailCellID" cacheByIndexPath:indexPath  configuration:^(ActionDetailCell *cell) {
             SW(strongSelf, weakSelf);
             if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
                 ActionTaskListModel *t_model = strongSelf.arr_content[indexPath.row - 1];
                 cell.model = t_model;
-                
-                
+    
             }
         }];
         
@@ -193,12 +192,12 @@
         return cell;
         
     }else{
-        ActionDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionDetailCellID"];
         
+        ActionDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActionDetailCellID"];
+        cell.fd_enforceFrameLayout = NO;
         if (_arr_content && _arr_content.count > 0) {
             ActionTaskListModel *t_model = _arr_content[indexPath.row - 1];
             cell.model = t_model;
-            
         }
         
         return cell;

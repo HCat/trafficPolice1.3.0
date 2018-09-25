@@ -41,6 +41,7 @@ PODS:
   - MJRefresh (3.1.15)
   - PureLayout (3.0.2)
   - Reachability (3.2)
+  - ReactiveObjC (3.1.0)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - MJRefresh
   - PureLayout
   - Reachability
+  - ReactiveObjC
   - SDWebImage
   - SocketRocket
   - TOCropViewController
@@ -95,6 +97,7 @@ SPEC REPOS:
     - MJRefresh
     - PureLayout
     - Reachability
+    - ReactiveObjC
     - SDWebImage
     - SocketRocket
     - TOCropViewController
@@ -121,6 +124,7 @@ SPEC CHECKSUMS:
   MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TOCropViewController: f88194a084f6afe1fd6f21a3f0edda7dd097e38b
@@ -128,6 +132,6 @@ SPEC CHECKSUMS:
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 47c46058928eaca62de04fe590841d7929c6cf41
+PODFILE CHECKSUM: dc6c6b876a0b6607397d2f19432878c981d35f00
 
 COCOAPODS: 1.5.3

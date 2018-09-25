@@ -14,13 +14,12 @@
 
 @interface ActionDetailCell()
 
-@property (nonatomic,strong) NSMutableArray *arr_taskList;
 @property (nonatomic,strong) NSMutableArray *arr_view;
 @property (weak, nonatomic) IBOutlet UILabel *lb_taskTitle;
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_status;
 @property (weak, nonatomic) IBOutlet UILabel *lb_statusBg;
-
+@property (nonatomic,strong) NSLayoutConstraint *layout_bottom;
 
 
 @end
@@ -42,8 +41,6 @@
     
     if (_model) {
         _lb_taskTitle.text = [ShareFun takeStringNoNull:_model.taskTitle];
-        
-        _arr_taskList = [NSMutableArray arrayWithArray:_model.taskShowList];
         
         if (_model.actionStatus) {
             _lb_statusBg.hidden = NO;
@@ -76,6 +73,11 @@
             
         }
         
+        if (self.layout_bottom) {
+            [self.contentView removeConstraint:self.layout_bottom];
+            self.layout_bottom = nil;
+        }
+        
         
         if (_arr_view && _arr_view.count > 0) {
             
@@ -87,10 +89,10 @@
         }
         
         
-        if (_arr_taskList && _arr_taskList.count > 0) {
+        if (_model.taskShowList && _model.taskShowList.count > 0) {
            
-            for (int i = 0; i < _arr_taskList.count; i++) {
-                ActionShowListModel *model = _arr_taskList[i];
+            for (int i = 0; i < _model.taskShowList.count; i++) {
+                ActionShowListModel *model = _model.taskShowList[i];
                 
                 if ([model.type isEqualToNumber:@0]) {
                     [self buildTitle:model.name withType:model.type withContent:model.content];
@@ -110,7 +112,8 @@
             
         }else{
             
-            [_lb_taskTitle autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10.f];
+        
+            self.layout_bottom = [_lb_taskTitle autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.contentView withOffset:-10.f];
         }
         
         [self.contentView setNeedsLayout];
@@ -283,7 +286,18 @@
         
     }else if ([arr_v count] == 3 ){
         
-        [arr_v autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeHorizontal withFixedSpacing:3.0 withFixedLeading:0 withFixedTrailing:0 matchedSizes:YES];
+        UIButton *btn_before = arr_v[0];
+        UIButton *btn_after = arr_v[1];
+        UIButton *btn_last = arr_v[2];
+        [btn_before autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 22 - 60 - 2*3)/3];
+        [btn_after autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 22 - 60 - 2*3)/3];
+        [btn_last autoSetDimension:ALDimensionWidth toSize:(ScreenWidth - 22 - 60 - 2*3)/3];
+        
+        [btn_before autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [btn_after autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:btn_before withOffset:3.0];
+        [btn_last autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:btn_after withOffset:3.0];
+        
+        [arr_v autoAlignViewsToAxis:ALAxisHorizontal];
         
     }
     
@@ -313,8 +327,8 @@
     NSInteger row  = tag/1000;
     NSInteger line = tag%1000;
     
-    if (_arr_taskList.count > 0) {
-        ActionShowListModel *model  = _arr_taskList[row];
+    if (_model.taskShowList.count > 0) {
+        ActionShowListModel *model  = _model.taskShowList[row];
         if (model) {
             NSArray * peoplelist = model.peopleArr;
             if (peoplelist.count > 0) {
