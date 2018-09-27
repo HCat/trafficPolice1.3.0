@@ -12,21 +12,6 @@
 
 @implementation IllegalParkManageViewModel
 
-- (instancetype)init{
-    
-    if (self = [super init]) {
-        @weakify(self);
-        [[RACObserve(self, illegalCount) skip:1] subscribeNext:^(id  _Nullable x) {
-            @strongify(self);
-            NSNumber * count = x;
-            
-        
-        }];
-    }
-    
-    return self;
-}
-
 
 - (NSArray *)arr_item{
     

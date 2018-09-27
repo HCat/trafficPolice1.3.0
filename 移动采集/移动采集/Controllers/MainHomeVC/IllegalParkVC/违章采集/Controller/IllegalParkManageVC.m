@@ -99,11 +99,8 @@
 
 - (void)buildTitle{
     
-    UIView * titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 220, 64)];
-    titleView.backgroundColor = [UIColor yellowColor];
-    
-    
-    
+    UIView * titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 220, Height_NavBar-Height_StatusBar)];
+
     UISegmentedControl *segment  = [self setupSegment];
     
     WS(weakSelf);
@@ -126,9 +123,12 @@
     
     segment.center = CGPointMake(titleView.frame.size.width/2, titleView.frame.size.height/2);
     
+    [titleView addSubview:segment];
+    
+    
     self.lb_unUpCount = [[UILabel alloc] initWithFrame:CGRectMake(10,100,15,15)];
     _lb_unUpCount.backgroundColor = UIColorFromRGB(0xFF1E1E);
-    _lb_unUpCount.center = CGPointMake(CGRectGetMaxX(segment.frame), CGRectGetMinY(segment.frame));
+    
     [titleView addSubview:_lb_unUpCount];
    
     @weakify(self);
@@ -142,13 +142,21 @@
                 self.lb_unUpCount.hidden = NO;
                 self.lb_unUpCount.text = [x stringValue];
                 [self.lb_unUpCount sizeToFit];
-                
+                CGRect frame = self.lb_unUpCount.frame;
+                frame.size.width = frame.size.width + 5;
+                self.lb_unUpCount.frame = frame;
+                self.lb_unUpCount.center = CGPointMake(CGRectGetMaxX(segment.frame), CGRectGetMinY(segment.frame));
+                self.lb_unUpCount.layer.cornerRadius = self.lb_unUpCount.frame.size.height/2;
             }
         }
         
     }];
 
     self.navigationItem.titleView = titleView;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.viewModel.illegalCount = @18;
+    });
     
 }
 
