@@ -74,7 +74,7 @@
         
     }else if(_type == 2){
         
-        if (IS_IPHONE_X) {
+        if (IS_IPHONE_X_MORE){
             _layout_viewSearch_height.constant = _layout_viewSearch_height.constant + 24;
         }
         

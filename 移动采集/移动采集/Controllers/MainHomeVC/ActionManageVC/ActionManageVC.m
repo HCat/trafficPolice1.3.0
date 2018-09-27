@@ -54,7 +54,7 @@
         
     }else if(_type == 2){
         
-        if (IS_IPHONE_X) {
+        if (IS_IPHONE_X_MORE){
             _layout_topHeight.constant = _layout_topHeight.constant + 24;
         }
         
@@ -126,7 +126,7 @@
     CGFloat height = 0;
     
     if (_type == 2) {
-        height = IS_IPHONE_X ? 88 : 64;
+        height = IS_IPHONE_X_MORE ? 88 : 64;
     }
     
     _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, height, SCREEN_WIDTH, 44)
@@ -168,7 +168,7 @@
     [_menuView autoSetDimension:ALDimensionHeight toSize:44];
     
     if (_type == 2) {
-        if (IS_IPHONE_X) {
+        if (IS_IPHONE_X_MORE){
             [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
         }else{
             [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];

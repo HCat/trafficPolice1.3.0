@@ -51,7 +51,7 @@
         _v_normalBar.hidden = NO;
         _v_searchBar.hidden = YES;
         _layout_searchHeight.constant = 0;
-        if (IS_IPHONE_X) {
+        if (IS_IPHONE_X_MORE){
             _layout_normalHeight.constant = _layout_normalHeight.constant + 24;
             _layout_tableViewTop.constant = _layout_tableViewTop.constant + 24;
         }
@@ -66,7 +66,7 @@
         
         _layout_tableViewTop.constant = _layout_tableViewTop.constant - 44;
         
-        if (IS_IPHONE_X) {
+        if (IS_IPHONE_X_MORE){
             _layout_searchHeight.constant = _layout_searchHeight.constant + 24;
             _layout_tableViewTop.constant = _layout_tableViewTop.constant + 24;
         }
@@ -129,7 +129,7 @@
     
     CGFloat height = 0;
     
-    height = IS_IPHONE_X ? 88 : 64;
+    height = IS_IPHONE_X_MORE ? 88 : 64;
     
     _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, height, SCREEN_WIDTH, 44)
                                                           title:items_t.firstObject
@@ -160,7 +160,7 @@
     [_menuView configureForAutoLayout];
     [_menuView autoSetDimension:ALDimensionHeight toSize:44];
     
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
     }else{
         [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];

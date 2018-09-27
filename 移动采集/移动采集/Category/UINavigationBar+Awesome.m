@@ -36,6 +36,7 @@ static char emptyImageKey;
 
 - (void)lt_setBackgroundColor:(UIColor *)backgroundColor
 {
+   
     if (!self.overlay) {
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         
@@ -47,6 +48,7 @@ static char emptyImageKey;
         
         [backgroundView insertSubview:self.overlay atIndex:0];
     }
+   
     self.overlay.backgroundColor = backgroundColor;
 }
 
@@ -99,6 +101,8 @@ static char emptyImageKey;
         UIView *_UIBackground;
         NSString *targetName = @"_UIBarBackground";
         Class _UIBarBackgroundClass = NSClassFromString(targetName);
+        
+        
         
         for (UIView *subview in self.subviews) {
             if ([subview isKindOfClass:_UIBarBackgroundClass.class]) {

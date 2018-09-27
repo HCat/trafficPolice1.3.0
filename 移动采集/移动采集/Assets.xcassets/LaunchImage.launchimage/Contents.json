@@ -3,6 +3,24 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "subtype" : "2688h",
+      "filename" : "WechatIMG24.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "1792h",
+      "filename" : "WechatIMG23.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "portrait",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
       "subtype" : "2436h",
       "filename" : "启动页.png",
       "minimum-system-version" : "11.0",

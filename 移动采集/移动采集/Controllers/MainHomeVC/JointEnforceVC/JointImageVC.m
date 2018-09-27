@@ -52,7 +52,7 @@ static NSString *const cellId = @"BaseImageCollectionCellID";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 #ifdef __IPHONE_11_0
-    if (IS_IPHONE_X == NO) {
+    if (IS_IPHONE_X_MORE == NO) {
         if ([_collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }

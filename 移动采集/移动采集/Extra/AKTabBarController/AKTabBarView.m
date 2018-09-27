@@ -44,13 +44,13 @@
     [super layoutSubviews];
     CGRect tabBarRect = _tabBar.frame;
     tabBarRect.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(_tabBar.bounds);
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         tabBarRect.origin.y = CGRectGetHeight(self.bounds) - (CGRectGetHeight(_tabBar.bounds) + 20);
     }
     [_tabBar setFrame:tabBarRect];
     
     CGRect contentViewRect = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - ((!_isTabBarHidding) ? CGRectGetHeight(_tabBar.bounds) : 0));
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         contentViewRect = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - ((!_isTabBarHidding) ? (CGRectGetHeight(_tabBar.bounds) + 20): 20));
     }
     _contentView.frame = contentViewRect;

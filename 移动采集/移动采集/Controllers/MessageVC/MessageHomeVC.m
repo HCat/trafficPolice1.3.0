@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"通知";
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         _layout_topHeight.constant = _layout_topHeight.constant + 24;
     }
     
@@ -104,7 +104,7 @@
     WS(weakSelf);
     NSArray *items = @[@"全部", @"系统消息",@"警务消息", @"事故报警", @"特殊车辆报警", @"非法营运工程车报警"];
     
-    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, IS_IPHONE_X ? 88 : 64, SCREEN_WIDTH, 44)
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, IS_IPHONE_X_MORE ? 88 : 64, SCREEN_WIDTH, 44)
                                                                                    title:items.firstObject
                                                                                    items:items
                                                                            containerView:self.view];
@@ -146,7 +146,7 @@
     [_menuView configureForAutoLayout];
     [_menuView autoSetDimension:ALDimensionHeight toSize:44];
     
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:88];
     }else{
         [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:64];

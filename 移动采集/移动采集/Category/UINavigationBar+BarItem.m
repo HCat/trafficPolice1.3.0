@@ -16,7 +16,7 @@
     UIImage *image = [UIImage imageNamed:imageName];
     CGRect buttonFrame = CGRectMake(0, 0, image.size.width, self.navigationController.navigationBar.frame.size.height);
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) {
-        buttonFrame = CGRectMake(0, 0, 80, self.navigationController.navigationBar.frame.size.height);
+        buttonFrame = CGRectMake(0, 0, 60, self.navigationController.navigationBar.frame.size.height);
     }
     
     UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];

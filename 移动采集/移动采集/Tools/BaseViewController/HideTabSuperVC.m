@@ -8,6 +8,7 @@
 
 #import "HideTabSuperVC.h"
 #import "UINavigationBar+BarItem.h"
+#import "UINavigationBar+Awesome.h"
 #import "AppDelegate.h"
 
 @interface HideTabSuperVC ()
@@ -26,6 +27,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar lt_setBackgroundColor:DefaultNavColor];
     [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
     [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
     

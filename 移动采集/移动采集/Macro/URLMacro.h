@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
@@ -24,8 +24,8 @@
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
 
-#define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_DACAO_URL
-#define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUGDACAO_URL
+#define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
+#define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL
 
 #define Base_URL ([ShareValue sharedDefault].server_url == nil) ? (KBase_URL) : [ShareValue sharedDefault].server_url
 #define WEBSOCKETURL ([ShareValue sharedDefault].webSocket_url == nil) ? (KwebSocket_URL) : [ShareValue sharedDefault].webSocket_url

@@ -78,7 +78,7 @@
     self.v_tip_duty.hidden = YES;
     self.v_tip_action.hidden = YES;
     
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
           _layout_topHeight.constant = _layout_topHeight.constant + 24;
         [self.view setNeedsLayout];
         [self.view layoutIfNeeded];
