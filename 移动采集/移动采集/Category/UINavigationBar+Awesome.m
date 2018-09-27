@@ -36,7 +36,9 @@ static char emptyImageKey;
 
 - (void)lt_setBackgroundColor:(UIColor *)backgroundColor
 {
-   
+    [self.overlay removeFromSuperview];
+    self.overlay = nil;
+    
     if (!self.overlay) {
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         
