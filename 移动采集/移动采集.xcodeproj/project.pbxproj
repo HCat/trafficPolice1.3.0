@@ -1598,7 +1598,6 @@
 			isa = PBXGroup;
 			children = (
 				CE147A902154DD1C00A515CD /* Model */,
-				CE147A8E2154DD0A00A515CD /* ViewModel */,
 				CE147A8F2154DD1400A515CD /* View */,
 				CE147A912154DD2600A515CD /* Controller */,
 				CEFEFCF01F29B22F00C33CBD /* IllegalParkAddHeadView.h */,
@@ -1635,13 +1634,6 @@
 				CE7348F11F6BC8B700EBDA0A /* CarInfoAddVC.xib */,
 			);
 			path = "车辆录入";
-			sourceTree = "<group>";
-		};
-		CE147A8E2154DD0A00A515CD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CE147A8F2154DD1400A515CD /* View */ = {

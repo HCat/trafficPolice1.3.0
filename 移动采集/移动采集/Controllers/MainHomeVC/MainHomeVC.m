@@ -52,7 +52,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X_MORE) {
         _layout_topHeight.constant = _layout_topHeight.constant + 24;
     }
     
