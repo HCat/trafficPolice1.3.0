@@ -49,7 +49,10 @@
     _lb_address.text = [ShareFun takeStringNoNull:_model.address];
     _lb_equipment.text = [ShareFun takeStringNoNull:_model.devno];
     if (_model.originalPic && _model.originalPic.length > 0) {
-         [_imgv_carImage sd_setImageWithURL:[NSURL URLWithString:_model.originalPic] placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+        NSString *url = [_model.originalPic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                                     forHTTPHeaderField:@"Accept"];
+         [_imgv_carImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
     }else{
         _imgv_carImage.hidden = YES;
     }
