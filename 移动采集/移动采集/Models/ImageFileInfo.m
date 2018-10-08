@@ -8,8 +8,26 @@
 
 #import "ImageFileInfo.h"
 #import "UserModel.h"
+#import "LKDBHelper.h"
 
 @implementation ImageFileInfo
+
+//重载、初始化单例、使用的LKDBHelper
++ (LKDBHelper *)getUsingLKDBHelper {
+    
+    static LKDBHelper* db;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *documentArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
+        NSString *document = [documentArray objectAtIndex:0];
+        
+        NSString* DBPath = [document stringByAppendingPathComponent:@"DB/trafficPolice.db"];
+        NSLog(@"%@", DBPath);
+        db = [[LKDBHelper alloc] initWithDBPath:DBPath];
+    });
+    return db;
+}
+
 
 -(id)initWithImage:(UIImage *)image withName:(NSString *)name{
     self = [super init];
@@ -72,7 +90,6 @@
     }
     return self;
 }
-
 
 
 @end

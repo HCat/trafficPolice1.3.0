@@ -10,6 +10,7 @@
 
 @interface ImageFileInfo : NSObject
 
+
 //服务端中需要给bodystream附的key值
 @property(nonatomic,strong) NSString *name;
 
@@ -42,5 +43,7 @@
 //@prame : image 具体的UIImage对象
 
 -(id)initWithImage:(UIImage *)image withName:(NSString *)name;
+
+
 
 @end

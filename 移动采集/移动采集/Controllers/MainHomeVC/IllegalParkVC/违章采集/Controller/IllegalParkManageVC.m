@@ -128,6 +128,11 @@
     
     self.lb_unUpCount = [[UILabel alloc] initWithFrame:CGRectMake(10,100,15,15)];
     _lb_unUpCount.backgroundColor = UIColorFromRGB(0xFF1E1E);
+    _lb_unUpCount.textAlignment = NSTextAlignmentCenter;
+    _lb_unUpCount.font = [UIFont systemFontOfSize:12.f];
+    _lb_unUpCount.textColor = [UIColor whiteColor];
+    _lb_unUpCount.layer.cornerRadius = 7.5f;
+    _lb_unUpCount.layer.masksToBounds = YES;
     
     [titleView addSubview:_lb_unUpCount];
    
@@ -143,10 +148,11 @@
                 self.lb_unUpCount.text = [x stringValue];
                 [self.lb_unUpCount sizeToFit];
                 CGRect frame = self.lb_unUpCount.frame;
-                frame.size.width = frame.size.width + 5;
+                frame.size.width = frame.size.width + 10;
+                frame.size.height = 15.f;
                 self.lb_unUpCount.frame = frame;
                 self.lb_unUpCount.center = CGPointMake(CGRectGetMaxX(segment.frame), CGRectGetMinY(segment.frame));
-                self.lb_unUpCount.layer.cornerRadius = self.lb_unUpCount.frame.size.height/2;
+                
             }
         }
         
@@ -181,7 +187,7 @@
 
 - (void)dealloc{
     
-    NSLog(@"IllegalParkManageVC dealloc");
+    LxPrintf(@"IllegalParkManageVC dealloc");
 }
 
 @end

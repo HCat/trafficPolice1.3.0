@@ -16,9 +16,6 @@
 @interface IllegalParkSaveParam :  NSObject
 
 
-@property (nonatomic,strong) NSNumber * param_id;             //任务ID
-@property (nonatomic,copy)   NSString *own_id;                //属于谁的聊天记录
-
 @property (nonatomic,strong) NSNumber * roadId;               //道路ID 必填，从通用值【道路】获取ID
 @property (nonatomic,copy)   NSString * roadName;             //道路名字 如果roadId为0的时候设置
 @property (nonatomic,copy)   NSString * address;              //事故地点 必填
@@ -35,12 +32,6 @@
 @property (nonatomic,copy)   NSString * taketime;             //裁剪车牌近照时间
 @property (nonatomic,strong) NSNumber * isManualPos;          //0自动定位，1手动定位，默认0
 @property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
-
-- (void)saveInDB;
-- (void)deleteInDB;
-
-+(NSArray *)localArrayFormToDB;
-
 
 @end
 

@@ -28,6 +28,11 @@
 
 #import "IllegalSecSaveVC.h"
 #import "IllegalRecordVC.h"
+#import "IllegalNetErrorView.h"
+#import "IllegalDBModel.h"
+#import <ReactiveObjC.h>
+
+
 
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -741,17 +746,26 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
+    WS(weakSelf);
+    
     [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
         
         //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
         //10为4G网络
+        SW(strongSelf, weakSelf);
         if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
-            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+            [strongSelf showIllegalNetErrorView];
+            return ;
+        }else{
+            //提交违章数据
+            [strongSelf submitIllegalData];
         }
         
-        //[_param saveInDB];
     }];
     
+}
+
+- (void)submitIllegalData{
     
     [self configParamInFilesAndRemarksAndTimes];
     
@@ -770,7 +784,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             SW(strongSelf, weakSelf);
-    
+            
             //异步请求通用路名ID,这里需要请求的原因是当传入的roadID为0的情况下，需要重新去服务器里面拉取路名来匹配
             if ([strongSelf.param.roadId isEqualToNumber:@0]) {
                 [ShareValue sharedDefault].roadModels = nil;
@@ -801,9 +815,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
-                [LRShowHUD showError:@"请重新提交!" duration:1.5f];
-            }
+            SW(strongSelf, weakSelf);
+            [strongSelf showIllegalNetErrorView];
         }];
         
     }else if (_illegalType == IllegalTypeThrough){
@@ -819,8 +832,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
             //异步请求通用路名ID,这里需要请求的原因是当传入的roadID为0的情况下，需要重新去服务器里面拉取路名来匹配
             if ([strongSelf.param.roadId isEqualToNumber:@0]) {
-               [ShareValue sharedDefault].roadModels = nil;
-               [strongSelf getCommonRoad];
+                [ShareValue sharedDefault].roadModels = nil;
+                [strongSelf getCommonRoad];
             }
             
             if (manger.responseModel.code == CODE_SUCCESS) {
@@ -830,7 +843,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALTHROUGH_SUCCESS object:nil];
                 
             }else if (manger.responseModel.code == 110){
-            
+                
                 [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:^(AlertViewActionType actionType) {
                     
                     if (actionType == AlertViewActionTypeRight) {
@@ -844,21 +857,21 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                         [strongSelf.navigationController pushViewController:t_vc animated:YES];
                     }
                 }];
-               
+                
             }else if (manger.responseModel.code == 100){
-            
+                
                 [strongSelf showAlertViewWithcontent:manger.responseModel.msg leftTitle:nil rightTitle:@"确定" block:nil];
-               
+                
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
-                [LRShowHUD showError:@"请重新提交!" duration:1.5f];
-            }
+            SW(strongSelf, weakSelf);
+            [strongSelf showIllegalNetErrorView];
         }];
     }
 
 }
+
 
 #pragma mark - HeadViewDelegate点击识别按钮返回回来的数据
 
@@ -1182,6 +1195,41 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
 
 }
+
+- (void)showIllegalNetErrorView{
+    
+    WS(weakSelf);
+    
+    IllegalNetErrorView * view = [IllegalNetErrorView initCustomView];
+   
+    view.saveBlock = ^{
+        SW(strongSelf, weakSelf);
+        
+        IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] initWithIllegalParkParam:strongSelf.param];
+        [illegalDBModel save];
+        
+        [strongSelf handleBeforeCommit];
+        
+    };
+    
+    view.upBlock = ^{
+        SW(strongSelf, weakSelf);
+        [strongSelf submitIllegalData];
+        
+    };
+    
+//    [[view.btn_up rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+//
+//    }];
+    
+    
+    [view show];
+    
+    
+    
+    
+}
+
 
 #pragma mark - dealloc
 

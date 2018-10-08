@@ -8,7 +8,6 @@
 
 #import "IllegalParkAPI.h"
 #import "ImageFileInfo.h"
-#import "LKDBHelper.h"
 
 #import <AFNetworking.h>
 
@@ -18,37 +17,7 @@
 
 //黑名单，不被转换
 + (NSArray *)modelPropertyBlacklist {
-    return @[@"files",@"param_id"];
-}
-
-
-- (void)saveInDB{
-    self.own_id = [ShareValue sharedDefault].phone;
-    self.param_id = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
-    NSInteger rowcount = [IllegalParkSaveParam rowCountWithWhereFormat:@"param_id=%@",_param_id];
-    if (rowcount>0) {
-        [IllegalParkSaveParam updateToDB:self where:[NSString stringWithFormat:@"param_id=%@",_param_id]];
-    }else{
-        [self saveToDB];
-    }
-    
-}
-
-
-
-- (void)deleteInDB{
-    [IllegalParkSaveParam deleteWithWhere:[NSString stringWithFormat:@"own_id=%@",[ShareValue sharedDefault].phone]];
-    
-}
-
-
-+ (NSArray *)localArrayFormToDB{
-    
-    NSString *sql = @"";
-    
-    [sql stringByAppendingFormat:@"own_id=%@",[ShareValue sharedDefault].phone];
-    return [IllegalParkSaveParam searchWithWhere:sql orderBy:@"param_id desc" offset:0 count:0];
-    
+    return @[@"files"];
 }
 
 @end
