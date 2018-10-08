@@ -36,7 +36,7 @@ static char emptyImageKey;
 
 - (void)lt_setBackgroundColor:(UIColor *)backgroundColor
 {
-   
+
     [self.overlay removeFromSuperview];
     self.overlay = nil;
     

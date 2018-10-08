@@ -171,7 +171,11 @@
     
     
     [t_view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:t_top withOffset:12.f];
-    [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+    if (t_top == _lb_taskTitle) {
+        [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top withOffset:-35.f];
+    }else{
+        [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+    }
     [t_view autoPinEdge:ALEdgeTrailing  toEdge:ALEdgeTrailing ofView:self.contentView withOffset:-22.f];
     [t_view autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:lb_content];
     
@@ -208,7 +212,12 @@
     if (!peopleList || peopleList.count == 0) {
         
         [t_view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:t_top withOffset:12.f];
-        [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+        if (t_top == _lb_taskTitle) {
+            [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top withOffset:-35.f];
+        }else{
+            [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+        }
+        
         [t_view autoPinEdge:ALEdgeTrailing  toEdge:ALEdgeTrailing ofView:self.contentView withOffset:-22.f];
         [t_view autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:lb_title];
         
@@ -312,7 +321,11 @@
     }
     
     [t_view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:t_top withOffset:12.f];
-    [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+    if (t_top == _lb_taskTitle) {
+        [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top withOffset:-35.f];
+    }else{
+        [t_view autoPinEdge:ALEdgeLeading toEdge:ALEdgeLeading ofView:t_top];
+    }
     [t_view autoPinEdge:ALEdgeTrailing  toEdge:ALEdgeTrailing ofView:self.contentView withOffset:-22.f];
     [t_view autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:btn_View];
  

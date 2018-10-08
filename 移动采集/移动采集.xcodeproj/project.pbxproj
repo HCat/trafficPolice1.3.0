@@ -384,6 +384,8 @@
 		CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */; };
 		CE78E2112113326A00E900C3 /* ActionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78E20F2113326A00E900C3 /* ActionDetailVC.m */; };
 		CE78E2122113326A00E900C3 /* ActionDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78E2102113326A00E900C3 /* ActionDetailVC.xib */; };
+		CE78EC34216B29AC00212D17 /* IllegalParkUpListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78EC30216B29AC00212D17 /* IllegalParkUpListViewModel.m */; };
+		CE78EC35216B29AC00212D17 /* IllegalParkManageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78EC32216B29AC00212D17 /* IllegalParkManageViewModel.m */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE7E9F2920BC0FE40018583A /* DriverChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E9F2820BC0FE40018583A /* DriverChooseView.m */; };
 		CE7E9F2B20BC10290018583A /* DriverChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7E9F2A20BC10290018583A /* DriverChooseView.xib */; };
@@ -537,7 +539,6 @@
 		CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */; };
 		CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BB01FAC600400BF472F /* TaskAPI.m */; };
 		CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BB31FAC601C00BF472F /* TaskModel.m */; };
-		CEE5720C215B82F900E6D2D8 /* IllegalParkManageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5720B215B82F900E6D2D8 /* IllegalParkManageViewModel.m */; };
 		CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9CF1F1C6CBB00AC515C /* main.m */; };
 		CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9D21F1C6CBB00AC515C /* AppDelegate.mm */; };
 		CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5E9F21F1C873E00AC515C /* LoginHomeVC.m */; };
@@ -547,7 +548,6 @@
 		CEE7B80D215A7D8D005FF1BA /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE7B808215A7D8C005FF1BA /* UITableView+FDTemplateLayoutCellDebug.m */; };
 		CEE7B80E215A7D8D005FF1BA /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE7B80A215A7D8C005FF1BA /* UITableView+FDKeyedHeightCache.m */; };
 		CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE7B80B215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m */; };
-		CEF408752160B99000BBED04 /* IllegalParkUpListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF408742160B99000BBED04 /* IllegalParkUpListViewModel.m */; };
 		CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */; };
 		CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */; };
 		CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */; };
@@ -1178,6 +1178,10 @@
 		CE78E20E2113326A00E900C3 /* ActionDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionDetailVC.h; sourceTree = "<group>"; };
 		CE78E20F2113326A00E900C3 /* ActionDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionDetailVC.m; sourceTree = "<group>"; };
 		CE78E2102113326A00E900C3 /* ActionDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionDetailVC.xib; sourceTree = "<group>"; };
+		CE78EC30216B29AC00212D17 /* IllegalParkUpListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkUpListViewModel.m; sourceTree = "<group>"; };
+		CE78EC31216B29AC00212D17 /* IllegalParkManageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkManageViewModel.h; sourceTree = "<group>"; };
+		CE78EC32216B29AC00212D17 /* IllegalParkManageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkManageViewModel.m; sourceTree = "<group>"; };
+		CE78EC33216B29AC00212D17 /* IllegalParkUpListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkUpListViewModel.h; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
 		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
 		CE7E9F2720BC0FE40018583A /* DriverChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriverChooseView.h; sourceTree = "<group>"; };
@@ -1452,8 +1456,6 @@
 		CEE45BB01FAC600400BF472F /* TaskAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskAPI.m; sourceTree = "<group>"; };
 		CEE45BB21FAC601C00BF472F /* TaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
 		CEE45BB31FAC601C00BF472F /* TaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
-		CEE5720A215B82F900E6D2D8 /* IllegalParkManageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalParkManageViewModel.h; sourceTree = "<group>"; };
-		CEE5720B215B82F900E6D2D8 /* IllegalParkManageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalParkManageViewModel.m; sourceTree = "<group>"; };
 		CEE5E9CB1F1C6CBB00AC515C /* 移动采集.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动采集.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE5E9CF1F1C6CBB00AC515C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEE5E9D11F1C6CBB00AC515C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1474,8 +1476,6 @@
 		CEE7B809215A7D8C005FF1BA /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
 		CEE7B80A215A7D8C005FF1BA /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
 		CEE7B80B215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
-		CEF408732160B99000BBED04 /* IllegalParkUpListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalParkUpListViewModel.h; sourceTree = "<group>"; };
-		CEF408742160B99000BBED04 /* IllegalParkUpListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalParkUpListViewModel.m; sourceTree = "<group>"; };
 		CEFA0C501F56A592006BE7FB /* ProcessResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessResultCell.h; sourceTree = "<group>"; };
 		CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessResultCell.m; sourceTree = "<group>"; };
 		CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessResultCell.xib; sourceTree = "<group>"; };
@@ -1616,8 +1616,8 @@
 		CE147A862154CB4D00A515CD /* 违章采集 */ = {
 			isa = PBXGroup;
 			children = (
+				CE78EC2F216B29AC00212D17 /* ViewModel */,
 				CE147A902154DD1C00A515CD /* Model */,
-				CE147A8E2154DD0A00A515CD /* ViewModel */,
 				CE147A8F2154DD1400A515CD /* View */,
 				CE147A912154DD2600A515CD /* Controller */,
 				CEFEFCF01F29B22F00C33CBD /* IllegalParkAddHeadView.h */,
@@ -1654,17 +1654,6 @@
 				CE7348F11F6BC8B700EBDA0A /* CarInfoAddVC.xib */,
 			);
 			path = "车辆录入";
-			sourceTree = "<group>";
-		};
-		CE147A8E2154DD0A00A515CD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				CEE5720A215B82F900E6D2D8 /* IllegalParkManageViewModel.h */,
-				CEE5720B215B82F900E6D2D8 /* IllegalParkManageViewModel.m */,
-				CEF408732160B99000BBED04 /* IllegalParkUpListViewModel.h */,
-				CEF408742160B99000BBED04 /* IllegalParkUpListViewModel.m */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CE147A8F2154DD1400A515CD /* View */ = {
@@ -2653,6 +2642,17 @@
 				CE763B1B1FCFF1DB00EB0815 /* JointTextCell.xib */,
 			);
 			path = JointEnforceCell;
+			sourceTree = "<group>";
+		};
+		CE78EC2F216B29AC00212D17 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE78EC33216B29AC00212D17 /* IllegalParkUpListViewModel.h */,
+				CE78EC30216B29AC00212D17 /* IllegalParkUpListViewModel.m */,
+				CE78EC31216B29AC00212D17 /* IllegalParkManageViewModel.h */,
+				CE78EC32216B29AC00212D17 /* IllegalParkManageViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CE85020E1F558BFB001DC495 /* VideoListVC */ = {
@@ -3840,7 +3840,6 @@
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
 				CE5C6F011FB0425F005E53BF /* GCDQueue.m in Sources */,
 				CE87043920CE52B700E206AE /* LTSCalendarScrollView.m in Sources */,
-				CEF408752160B99000BBED04 /* IllegalParkUpListViewModel.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
 				CE2BA6892101BA7300A7BD95 /* AccidentPeopleVC.m in Sources */,
@@ -3887,6 +3886,7 @@
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
 				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
+				CE78EC34216B29AC00212D17 /* IllegalParkUpListViewModel.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE240AD71FDFC3DC002EA369 /* IllOperationAPI.m in Sources */,
 				CE170FEB20FEEAB100B93669 /* AccidentUpFactory.m in Sources */,
@@ -3897,7 +3897,6 @@
 				CED6EE821F6906FC004FED7B /* PoliceLocationVC.m in Sources */,
 				CE188E432015E9ED008418B9 /* JointPenaltiesVC.m in Sources */,
 				CE675F131F381651006FC15F /* LRPageMenu.m in Sources */,
-				CEE5720C215B82F900E6D2D8 /* IllegalParkManageViewModel.m in Sources */,
 				CE5B92EA1F2F0AED000008AE /* SearchLocationVC.m in Sources */,
 				CE5C39091F28606B0055C945 /* ZLShowGifViewController.m in Sources */,
 				CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */,
@@ -3952,6 +3951,7 @@
 				CE538E0320AD230C006B3E44 /* VehicleUpImageCell.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE19ADC621129E8900A3C4C0 /* ActionListCell.m in Sources */,
+				CE78EC35216B29AC00212D17 /* IllegalParkManageViewModel.m in Sources */,
 				CE2AF88A1FD68C42005B643E /* FHHFPSIndicator.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE7348F21F6BC8B700EBDA0A /* CarInfoAddVC.m in Sources */,

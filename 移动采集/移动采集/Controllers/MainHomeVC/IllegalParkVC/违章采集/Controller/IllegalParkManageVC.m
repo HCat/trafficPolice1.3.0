@@ -52,7 +52,6 @@
     [self addChildViewController:_firstVC];
     
     self.illegalParkUpList = [[IllegalParkUpListVC alloc] init];
-    _illegalParkUpList.view.frame = self.view.bounds;
     [self addChildViewController:_illegalParkUpList];
     
     [self.view addSubview:_firstVC.view];
@@ -135,6 +134,7 @@
     _lb_unUpCount.layer.masksToBounds = YES;
     
     [titleView addSubview:_lb_unUpCount];
+    _lb_unUpCount.hidden = YES;
    
     @weakify(self);
     
@@ -172,6 +172,7 @@
 - (void)replaceFromOldViewController:(UIViewController *)oldVc toNewViewController:(UIViewController *)newVc{
     
     [self addChildViewController:newVc];
+    newVc.view.frame = self.view.bounds;
     [self transitionFromViewController:oldVc toViewController:newVc duration:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:nil completion:^(BOOL finished) {
         if (finished) {
             [newVc didMoveToParentViewController:self];

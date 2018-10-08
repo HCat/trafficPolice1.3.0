@@ -494,6 +494,7 @@
     if (_tf_addressRemarks.text.length > 0) {
         _param.addressRemark = _tf_addressRemarks.text;
     }
+
     _param.isManualPos = @(!_btnType);
     
     self.isCanCommit = [self juegeCanCommit];

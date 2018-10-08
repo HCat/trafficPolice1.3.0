@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalParkUpListViewModel : NSObject
 
-
+@property (nonatomic,strong) NSMutableArray * arr_illegal;
+@property (nonatomic,strong) NSNumber * illegalCount;
 
 
 @end

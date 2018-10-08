@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalParkUpListCell : UITableViewCell
 
-@property
-@property (nonatomic,strong) NSMutableArray * arr_illegal;
+
+
 
 
 @end

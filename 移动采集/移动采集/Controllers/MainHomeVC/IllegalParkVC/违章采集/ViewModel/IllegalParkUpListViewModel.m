@@ -7,10 +7,19 @@
 //
 
 #import "IllegalParkUpListViewModel.h"
+#import "IllegalDBModel.h"
 
 @implementation IllegalParkUpListViewModel
 
-
+- (NSMutableArray *)arr_illegal{
+    
+    if (!_arr_illegal) {
+        _arr_illegal = @[].mutableCopy;
+    }
+    
+    return _arr_illegal;
+    
+}
 
 
 @end

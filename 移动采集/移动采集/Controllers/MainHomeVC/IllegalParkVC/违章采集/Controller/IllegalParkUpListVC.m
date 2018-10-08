@@ -19,6 +19,8 @@
     
 }
 
+#pragma mark -dealloc
+
 - (void)dealloc{
     NSLog(@"IllegalParkUpListVC dealloc");
     
