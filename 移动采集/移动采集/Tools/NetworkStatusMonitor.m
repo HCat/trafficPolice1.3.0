@@ -10,8 +10,10 @@
 
 @implementation NetworkStatusMonitor
 
+static  NetworkStatusMonitor *monitor;
+
 +(void)StartWithBlock:(void (^)(NSInteger))block{
-    static  NetworkStatusMonitor *monitor;
+    
     if (!monitor){
         monitor = [[NetworkStatusMonitor alloc]init];
     }
@@ -20,6 +22,21 @@
     AFNetworkReachabilityManager *reachability = [AFNetworkReachabilityManager sharedManager];
     [reachability startMonitoring];
 }
+
++(void)StopMonitor{
+    
+    if (monitor){
+        [[NSNotificationCenter defaultCenter]removeObserver:monitor name:AFNetworkingReachabilityDidChangeNotification object:nil];
+        monitor.callBackBlock = nil;
+        monitor = nil;
+    }
+    
+    AFNetworkReachabilityManager *reachability = [AFNetworkReachabilityManager sharedManager];
+    [reachability stopMonitoring];
+    
+    
+}
+
 -(void)applicationNetworkStatusChanged:(NSNotification*)userinfo{
     NSInteger status = [[[userinfo userInfo]objectForKey:@"AFNetworkingReachabilityNotificationStatusItem"] integerValue];
     switch (status) {

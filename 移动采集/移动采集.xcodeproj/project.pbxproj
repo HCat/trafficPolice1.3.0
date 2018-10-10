@@ -30,12 +30,6 @@
 		CE12DD872109AC43009C2893 /* AccidentAddHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12DD852109AC43009C2893 /* AccidentAddHeadView.xib */; };
 		CE12F8B61F693B7000C1992B /* PoliceLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12F8B41F693B7000C1992B /* PoliceLocationCell.m */; };
 		CE12F8B71F693B7000C1992B /* PoliceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12F8B51F693B7000C1992B /* PoliceLocationCell.xib */; };
-		CE147A8C2154DB2E00A515CD /* IllegalManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE147A8A2154DB2E00A515CD /* IllegalManageVC.m */; };
-		CE147A8D2154DB2E00A515CD /* IllegalManageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE147A8B2154DB2E00A515CD /* IllegalManageVC.xib */; };
-		CE147A952154DDD900A515CD /* IllegalHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE147A932154DDD900A515CD /* IllegalHeadCell.m */; };
-		CE147A962154DDD900A515CD /* IllegalHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE147A942154DDD900A515CD /* IllegalHeadCell.xib */; };
-		CE147A9A2154DE0800A515CD /* IllegalAddImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE147A982154DE0800A515CD /* IllegalAddImageCell.m */; };
-		CE147A9B2154DE0800A515CD /* IllegalAddImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE147A992154DE0800A515CD /* IllegalAddImageCell.xib */; };
 		CE16003E21241A13009440C0 /* IllegalListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE16003D21241A13009440C0 /* IllegalListView.m */; };
 		CE16004021241A1F009440C0 /* IllegalListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE16003F21241A1F009440C0 /* IllegalListView.xib */; };
 		CE170FEB20FEEAB100B93669 /* AccidentUpFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CE170FEA20FEEAB100B93669 /* AccidentUpFactory.m */; };
@@ -111,11 +105,7 @@
 		CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3285D820E60B6D002B3B43 /* NoticeVC.m */; };
 		CE3285DB20E60B6D002B3B43 /* NoticeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3285D920E60B6D002B3B43 /* NoticeVC.xib */; };
 		CE36A03B1FF4D06800BAAD18 /* JointLawAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */; };
-		CE36CEEC2159E057004B16A4 /* IllegalParkManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36CEEA2159E057004B16A4 /* IllegalParkManageVC.m */; };
-		CE36CEED2159E057004B16A4 /* IllegalParkManageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36CEEB2159E057004B16A4 /* IllegalParkManageVC.xib */; };
 		CE36CEEF215A11D2004B16A4 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE36CEEE215A11D2004B16A4 /* libstdc++.6.0.9.tbd */; };
-		CE36CEF3215A1FC3004B16A4 /* IllegalParkUpListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36CEF1215A1FC3004B16A4 /* IllegalParkUpListVC.m */; };
-		CE36CEF4215A1FC3004B16A4 /* IllegalParkUpListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36CEF2215A1FC3004B16A4 /* IllegalParkUpListVC.xib */; };
 		CE3C0F6A1F30586A00D3B55D /* LRPlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F621F30586A00D3B55D /* LRPlayVC.m */; };
 		CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */; };
 		CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C0F651F30586A00D3B55D /* LRVideoVC.m */; };
@@ -607,15 +597,6 @@
 		CE12F8B31F693B7000C1992B /* PoliceLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceLocationCell.h; sourceTree = "<group>"; };
 		CE12F8B41F693B7000C1992B /* PoliceLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceLocationCell.m; sourceTree = "<group>"; };
 		CE12F8B51F693B7000C1992B /* PoliceLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoliceLocationCell.xib; sourceTree = "<group>"; };
-		CE147A892154DB2E00A515CD /* IllegalManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalManageVC.h; sourceTree = "<group>"; };
-		CE147A8A2154DB2E00A515CD /* IllegalManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalManageVC.m; sourceTree = "<group>"; };
-		CE147A8B2154DB2E00A515CD /* IllegalManageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalManageVC.xib; sourceTree = "<group>"; };
-		CE147A922154DDD900A515CD /* IllegalHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalHeadCell.h; sourceTree = "<group>"; };
-		CE147A932154DDD900A515CD /* IllegalHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalHeadCell.m; sourceTree = "<group>"; };
-		CE147A942154DDD900A515CD /* IllegalHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalHeadCell.xib; sourceTree = "<group>"; };
-		CE147A972154DE0800A515CD /* IllegalAddImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddImageCell.h; sourceTree = "<group>"; };
-		CE147A982154DE0800A515CD /* IllegalAddImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddImageCell.m; sourceTree = "<group>"; };
-		CE147A992154DE0800A515CD /* IllegalAddImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddImageCell.xib; sourceTree = "<group>"; };
 		CE16003C21241A13009440C0 /* IllegalListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalListView.h; sourceTree = "<group>"; };
 		CE16003D21241A13009440C0 /* IllegalListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalListView.m; sourceTree = "<group>"; };
 		CE16003F21241A1F009440C0 /* IllegalListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalListView.xib; sourceTree = "<group>"; };
@@ -729,13 +710,7 @@
 		CE3285D920E60B6D002B3B43 /* NoticeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeVC.xib; sourceTree = "<group>"; };
 		CE36A0391FF4D06800BAAD18 /* JointLawAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointLawAPI.h; sourceTree = "<group>"; };
 		CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointLawAPI.m; sourceTree = "<group>"; };
-		CE36CEE92159E057004B16A4 /* IllegalParkManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalParkManageVC.h; sourceTree = "<group>"; };
-		CE36CEEA2159E057004B16A4 /* IllegalParkManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalParkManageVC.m; sourceTree = "<group>"; };
-		CE36CEEB2159E057004B16A4 /* IllegalParkManageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalParkManageVC.xib; sourceTree = "<group>"; };
 		CE36CEEE215A11D2004B16A4 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		CE36CEF0215A1FC3004B16A4 /* IllegalParkUpListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalParkUpListVC.h; sourceTree = "<group>"; };
-		CE36CEF1215A1FC3004B16A4 /* IllegalParkUpListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalParkUpListVC.m; sourceTree = "<group>"; };
-		CE36CEF2215A1FC3004B16A4 /* IllegalParkUpListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalParkUpListVC.xib; sourceTree = "<group>"; };
 		CE3C0F611F30586A00D3B55D /* LRPlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRPlayVC.h; sourceTree = "<group>"; };
 		CE3C0F621F30586A00D3B55D /* LRPlayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRPlayVC.m; sourceTree = "<group>"; };
 		CE3C0F631F30586A00D3B55D /* LRPlayVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LRPlayVC.xib; sourceTree = "<group>"; };
@@ -1597,9 +1572,6 @@
 		CE147A862154CB4D00A515CD /* 违章采集 */ = {
 			isa = PBXGroup;
 			children = (
-				CE147A902154DD1C00A515CD /* Model */,
-				CE147A8F2154DD1400A515CD /* View */,
-				CE147A912154DD2600A515CD /* Controller */,
 				CEFEFCF01F29B22F00C33CBD /* IllegalParkAddHeadView.h */,
 				CEFEFCF11F29B22F00C33CBD /* IllegalParkAddHeadView.m */,
 				CEFEFCF21F29B22F00C33CBD /* IllegalParkAddHeadView.xib */,
@@ -1634,42 +1606,6 @@
 				CE7348F11F6BC8B700EBDA0A /* CarInfoAddVC.xib */,
 			);
 			path = "车辆录入";
-			sourceTree = "<group>";
-		};
-		CE147A8F2154DD1400A515CD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CE147A922154DDD900A515CD /* IllegalHeadCell.h */,
-				CE147A932154DDD900A515CD /* IllegalHeadCell.m */,
-				CE147A942154DDD900A515CD /* IllegalHeadCell.xib */,
-				CE147A972154DE0800A515CD /* IllegalAddImageCell.h */,
-				CE147A982154DE0800A515CD /* IllegalAddImageCell.m */,
-				CE147A992154DE0800A515CD /* IllegalAddImageCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		CE147A902154DD1C00A515CD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE147A912154DD2600A515CD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CE36CEE92159E057004B16A4 /* IllegalParkManageVC.h */,
-				CE36CEEA2159E057004B16A4 /* IllegalParkManageVC.m */,
-				CE36CEEB2159E057004B16A4 /* IllegalParkManageVC.xib */,
-				CE147A892154DB2E00A515CD /* IllegalManageVC.h */,
-				CE147A8A2154DB2E00A515CD /* IllegalManageVC.m */,
-				CE147A8B2154DB2E00A515CD /* IllegalManageVC.xib */,
-				CE36CEF0215A1FC3004B16A4 /* IllegalParkUpListVC.h */,
-				CE36CEF1215A1FC3004B16A4 /* IllegalParkUpListVC.m */,
-				CE36CEF2215A1FC3004B16A4 /* IllegalParkUpListVC.xib */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		CE16003B212419CB009440C0 /* IllegalListView */ = {
@@ -3497,7 +3433,6 @@
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
 				CE675F191F38411B006FC15F /* IllegalListVC.xib in Resources */,
 				CE6DC22220D3A757001FC1EB /* TaskCell.xib in Resources */,
-				CE147A962154DDD900A515CD /* IllegalHeadCell.xib in Resources */,
 				CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */,
 				CE8C6FD21F41ACD80009B09F /* AccidentRemarkListCell.xib in Resources */,
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
@@ -3518,7 +3453,6 @@
 				CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */,
 				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CE5C38E91F28606B0055C945 /* btn_circle@3x.png in Resources */,
-				CE147A9B2154DE0800A515CD /* IllegalAddImageCell.xib in Resources */,
 				CE85A2C72011D69A005A3175 /* JointVideoVC.xib in Resources */,
 				CE93BC4521467879001F2976 /* SpecialNoticeVC.xib in Resources */,
 				CE5C38F51F28606B0055C945 /* navBackBtn@2x.png in Resources */,
@@ -3561,7 +3495,6 @@
 				CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */,
 				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
 				CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */,
-				CE36CEED2159E057004B16A4 /* IllegalParkManageVC.xib in Resources */,
 				CE12F8B71F693B7000C1992B /* PoliceLocationCell.xib in Resources */,
 				CE5C39231F2881BD0055C945 /* btn_selected.png in Resources */,
 				CE69155B1F1DD90E008911A6 /* MainHomeVC.xib in Resources */,
@@ -3636,7 +3569,6 @@
 				CE270E1220BF923D00746AC6 /* VehicleTrafficPlaceCell.xib in Resources */,
 				CE5C39281F2881BD0055C945 /* btn_unselected@3x.png in Resources */,
 				CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */,
-				CE36CEF4215A1FC3004B16A4 /* IllegalParkUpListVC.xib in Resources */,
 				CECF753620C9505300A4DAC4 /* PFNavigationDropdownMenu.bundle in Resources */,
 				CE93BC40214651C3001F2976 /* SpecialVehicleDetailVC.xib in Resources */,
 				CE8C6FCD1F41A7E10009B09F /* AccidentRemarkListVC.xib in Resources */,
@@ -3662,7 +3594,6 @@
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CE71425C20B2EF5F00F9FCC2 /* VehicleRoadAlarmCell.xib in Resources */,
-				CE147A8D2154DB2E00A515CD /* IllegalManageVC.xib in Resources */,
 				CE188E492015EA0C008418B9 /* JointPenaltiesCell.xib in Resources */,
 				CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
@@ -3783,11 +3714,9 @@
 				CE2BA68E2101C2CB00A7BD95 /* AccidentPeopleChangeCell.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
 				CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */,
-				CE147A8C2154DB2E00A515CD /* IllegalManageVC.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
-				CE147A9A2154DE0800A515CD /* IllegalAddImageCell.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
 				CE5C6F011FB0425F005E53BF /* GCDQueue.m in Sources */,
@@ -3834,7 +3763,6 @@
 				CE188E482015EA0C008418B9 /* JointPenaltiesCell.m in Sources */,
 				CE675F181F38411B006FC15F /* IllegalListVC.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
-				CE36CEEC2159E057004B16A4 /* IllegalParkManageVC.m in Sources */,
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
 				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
@@ -4025,7 +3953,6 @@
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,
 				CE93BC532146A472001F2976 /* SpecialGroupCell.m in Sources */,
-				CE36CEF3215A1FC3004B16A4 /* IllegalParkUpListVC.m in Sources */,
 				CE0731D31F5ED5DD00B3831B /* VehicleGPSModel.m in Sources */,
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
 				CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */,
@@ -4047,7 +3974,6 @@
 				CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
-				CE147A952154DDD900A515CD /* IllegalHeadCell.m in Sources */,
 				CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */,
 				CE2C98B31F61C1E9009851F6 /* VehicleDriverCell.m in Sources */,
 				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,

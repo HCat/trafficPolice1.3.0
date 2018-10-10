@@ -34,4 +34,5 @@ typedef NS_ENUM(NSInteger, LRNetworkStatus) {
 @interface NetworkStatusMonitor : NSObject
 @property(strong)void(^callBackBlock)(NSInteger LRNetworkStatus);
 +(void)StartWithBlock:(void(^)(NSInteger LRNetworkStatus))block;
++(void)StopMonitor;
 @end
