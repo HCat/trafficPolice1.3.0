@@ -269,8 +269,10 @@
         
         //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
         //10为4G网络
-        if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
+        [NetworkStatusMonitor StopMonitor];
+        if (NetworkStatus != 10 && NetworkStatus != 1) {
             [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+            return;
         }
         
     }];
@@ -301,6 +303,7 @@
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
         if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
             [LRShowHUD showError:@"请重新提交!" duration:1.5f];
         }

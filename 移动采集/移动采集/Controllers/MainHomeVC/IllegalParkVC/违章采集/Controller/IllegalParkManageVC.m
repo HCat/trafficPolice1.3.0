@@ -37,11 +37,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self buildTitle];
+    
     if ([_viewModel.arr_item[0] isEqualToString:@"车辆录入"]) {
         CarInfoAddVC * vc = [[CarInfoAddVC alloc] init];
         self.firstVC = vc;
     }else{
-    
         IllegalParkVC * vc = [[IllegalParkVC alloc] init];
         vc.illegalType = _viewModel.illegalType;
         vc.subType = _viewModel.subType;
@@ -51,12 +52,12 @@
     _firstVC.view.frame = self.view.bounds;
     [self addChildViewController:_firstVC];
     
-    self.illegalParkUpList = [[IllegalParkUpListVC alloc] init];
+    self.illegalParkUpList = [[IllegalParkUpListVC alloc] initWithViewModel:_viewModel.listViewModel];
     [self addChildViewController:_illegalParkUpList];
     
     [self.view addSubview:_firstVC.view];
     
-    [self buildTitle];
+    
     
 }
 
@@ -159,10 +160,6 @@
     }];
 
     self.navigationItem.titleView = titleView;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.viewModel.illegalCount = @18;
-    });
     
 }
 

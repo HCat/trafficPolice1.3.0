@@ -7,10 +7,33 @@
 //
 
 #import "IllegalParkManageViewModel.h"
-#import <ReactiveObjC.h>
-#import <RACEXTScope.h>
+#import "IllegalDBModel.h"
+
+@interface IllegalParkManageViewModel()
+
+
+@end
+
 
 @implementation IllegalParkManageViewModel
+
+- (instancetype)init{
+    
+    if (self = [super init]) {
+        
+        @weakify(self);
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NOTIFICATION_ILLEGALPARK_CACHE_SUCCESS object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+            @strongify(self);
+            self.listViewModel.arr_illegal = [[NSMutableArray alloc] initWithArray:[IllegalDBModel localArrayFormType:@(self.subType)]];
+            self.illegalCount = @(self.listViewModel.arr_illegal.count);
+            [self.listViewModel.racSubject sendNext:@1];
+        }];
+        
+    }
+    
+    return self;
+}
+
 
 
 - (NSArray *)arr_item{
@@ -52,10 +75,6 @@
         case ParkTypeCarInfoAdd:
             [self.arr_item addObject:@"车辆录入"];
             break;
-        case ParkTypeThrough:
-            [self.arr_item addObject:@"违反禁令采集"];
-            break;
-            
         default:
             break;
     }
@@ -64,6 +83,18 @@
     
 }
 
+- (IllegalParkUpListViewModel *)listViewModel{
+    
+    if (!_listViewModel) {
+        _listViewModel = [[IllegalParkUpListViewModel alloc] init];
+        _listViewModel.arr_illegal = [[NSMutableArray alloc] initWithArray:[IllegalDBModel localArrayFormType:@(self.subType)]];
+        self.illegalCount = @(_listViewModel.arr_illegal.count);
+        RAC(_listViewModel,illegalCount) = RACObserve(self, illegalCount);
+    }
+
+    return _listViewModel;
+    
+}
 
 
 @end

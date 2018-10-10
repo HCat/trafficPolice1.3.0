@@ -752,10 +752,11 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
         //10为4G网络
+        [NetworkStatusMonitor StopMonitor];
+        
         SW(strongSelf, weakSelf);
-        if (NetworkStatus != 0 && NetworkStatus != 10 && NetworkStatus != 1) {
+        if (NetworkStatus != 10 && NetworkStatus != 1) {
             [strongSelf showIllegalNetErrorView];
-            return ;
         }else{
             //提交违章数据
             [strongSelf submitIllegalData];
@@ -763,6 +764,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }];
     
+
 }
 
 - (void)submitIllegalData{
@@ -816,6 +818,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
+            
             [strongSelf showIllegalNetErrorView];
         }];
         
@@ -827,6 +830,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         [manger configLoadingTitle:@"提交"];
         
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
             
             SW(strongSelf, weakSelf);
             
@@ -866,6 +870,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
+            [NetworkStatusMonitor StopMonitor];
             [strongSelf showIllegalNetErrorView];
         }];
     }
@@ -1205,9 +1210,11 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     view.saveBlock = ^{
         SW(strongSelf, weakSelf);
         
+        strongSelf.param.type = @(strongSelf.subType);
         IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] initWithIllegalParkParam:strongSelf.param];
+        illegalDBModel.isAbnormal = NO;
         [illegalDBModel save];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_CACHE_SUCCESS object:nil];
         [strongSelf handleBeforeCommit];
         
     };
@@ -1218,16 +1225,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     };
     
-//    [[view.btn_up rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-//
-//    }];
-    
-    
     [view show];
     
-    
-    
-    
+
 }
 
 

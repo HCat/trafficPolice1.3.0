@@ -10,7 +10,7 @@
 
 @interface IllegalParkUpListCell()
 
-@property (weak, nonatomic) IBOutlet UIButton *lb_abnormal;
+@property (weak, nonatomic) IBOutlet UIButton *btn_abnormal;
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_carNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
@@ -26,6 +26,22 @@
     [super awakeFromNib];
     // Initialization code
 }
+
+- (void)setViewModel:(IllegalUpListCellViewModel *)viewModel{
+    
+    _viewModel = viewModel;
+    
+    if (_viewModel) {
+        self.lb_carNumber.text = [ShareFun takeStringNoNull:_viewModel.carNumber];
+        self.lb_time.text = [ShareFun timeWithTimeInterval:_viewModel.time];
+        self.lb_address.text = [ShareFun takeStringNoNull:_viewModel.address];
+        self.btn_abnormal.hidden = !_viewModel.isAbnormal;
+        
+    }
+    
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

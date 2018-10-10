@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LYSideslipCell.h"
+#import "IllegalParkUpListViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IllegalParkUpListCell : UITableViewCell
+@interface IllegalParkUpListCell : LYSideslipCell
 
-
-
+@property (nonatomic,strong) IllegalUpListCellViewModel * viewModel;
 
 
 @end

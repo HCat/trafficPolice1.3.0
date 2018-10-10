@@ -38,9 +38,7 @@
         self.taketime = param.taketime;
         self.isManualPos = param.isManualPos;
         self.type = param.type;
-        
-        
-        
+    
     }
     
     return self;

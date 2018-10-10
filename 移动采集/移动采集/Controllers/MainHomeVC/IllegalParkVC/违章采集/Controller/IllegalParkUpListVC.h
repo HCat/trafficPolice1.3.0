@@ -7,10 +7,13 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "IllegalParkUpListViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalParkUpListVC : HideTabSuperVC
+
+- (instancetype)initWithViewModel:(IllegalParkUpListViewModel *)viewModel;
 
 @end
 

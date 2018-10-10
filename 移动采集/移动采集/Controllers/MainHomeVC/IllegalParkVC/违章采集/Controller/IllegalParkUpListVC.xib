@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IllegalParkUpListVC">
             <connections>
+                <outlet property="tableView" destination="Xiu-Xy-ygO" id="NKg-rI-q2t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,9 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-Xy-ygO">
-                    <rect key="frame" x="0.0" y="30" width="375" height="573"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-Xy-ygO">
+                    <rect key="frame" x="0.0" y="35" width="375" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Pbd-te-Hgx"/>
+                        <outlet property="delegate" destination="-1" id="acY-AQ-RdZ"/>
+                    </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请注意等待上传列表隔日将会清零，请及时上传！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgl-WV-PUA">
                     <rect key="frame" x="19" y="9" width="337" height="18"/>
@@ -35,7 +40,7 @@
                 <constraint firstAttribute="trailing" secondItem="Bgl-WV-PUA" secondAttribute="trailing" constant="19" id="6f1-my-brW"/>
                 <constraint firstAttribute="trailing" secondItem="Xiu-Xy-ygO" secondAttribute="trailing" id="8RD-Ug-xmR"/>
                 <constraint firstAttribute="bottom" secondItem="Xiu-Xy-ygO" secondAttribute="bottom" id="Llj-Rk-P1b"/>
-                <constraint firstItem="Xiu-Xy-ygO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Nko-ki-srs"/>
+                <constraint firstItem="Xiu-Xy-ygO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="Nko-ki-srs"/>
                 <constraint firstItem="Xiu-Xy-ygO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cOr-J2-MAL"/>
                 <constraint firstItem="Bgl-WV-PUA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="lRw-Sy-ZgH"/>
                 <constraint firstItem="Bgl-WV-PUA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="9" id="zZM-5n-2Ej"/>

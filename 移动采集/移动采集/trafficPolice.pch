@@ -59,6 +59,8 @@
 #import "ShareValue.h"
 #import "LocationHelper.h"
 #import "LocationStorage.h"
+#import <RACEXTScope.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 
 

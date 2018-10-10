@@ -356,6 +356,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             if ([UserModel isPermissionForThrough]) {
                 IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
                 viewModel.illegalType = IllegalTypeThrough;
+                viewModel.subType = ParkTypeThrough;
                 IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{

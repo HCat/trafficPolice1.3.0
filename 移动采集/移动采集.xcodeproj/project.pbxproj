@@ -131,6 +131,7 @@
 		CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */; };
 		CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F741F3070D800D3B55D /* MessageUI.framework */; };
 		CE3C0F771F3070E400D3B55D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F761F3070E400D3B55D /* Security.framework */; };
+		CE407CA0216DA8050035DDED /* LYSideslipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE407C9E216DA8050035DDED /* LYSideslipCell.m */; };
 		CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7A81F5E57120058FE8D /* SocketModel.m */; };
 		CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7AE1F5E58320058FE8D /* LocationModel.m */; };
 		CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41C7B11F5E798A0058FE8D /* BackgroundLocationHelper.m */; };
@@ -765,6 +766,8 @@
 		CE3C0F741F3070D800D3B55D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CE3C0F761F3070E400D3B55D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE3C0F781F30841900D3B55D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		CE407C9E216DA8050035DDED /* LYSideslipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSideslipCell.m; sourceTree = "<group>"; };
+		CE407C9F216DA8050035DDED /* LYSideslipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSideslipCell.h; sourceTree = "<group>"; };
 		CE41C7A71F5E57120058FE8D /* SocketModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketModel.h; sourceTree = "<group>"; };
 		CE41C7A81F5E57120058FE8D /* SocketModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketModel.m; sourceTree = "<group>"; };
 		CE41C7AD1F5E58320058FE8D /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
@@ -1678,6 +1681,8 @@
 		CE147A902154DD1C00A515CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE209710215DCD09007AEF4B /* IllegalDBModel.h */,
+				CE209711215DCD09007AEF4B /* IllegalDBModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1812,15 +1817,6 @@
 				CE2BA68D2101C2CB00A7BD95 /* AccidentPeopleChangeCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		CE20970F215DCCE1007AEF4B /* ModelDB */ = {
-			isa = PBXGroup;
-			children = (
-				CE209710215DCD09007AEF4B /* IllegalDBModel.h */,
-				CE209711215DCD09007AEF4B /* IllegalDBModel.m */,
-			);
-			path = ModelDB;
 			sourceTree = "<group>";
 		};
 		CE27A9F720CA2D2B00AA922D /* ScheduleVC */ = {
@@ -1959,6 +1955,15 @@
 				CE3C0F661F30586A00D3B55D /* LRVideoVC.xib */,
 			);
 			path = VideoColectVC;
+			sourceTree = "<group>";
+		};
+		CE407C9D216DA7E80035DDED /* LYSideslipCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE407C9F216DA8050035DDED /* LYSideslipCell.h */,
+				CE407C9E216DA8050035DDED /* LYSideslipCell.m */,
+			);
+			path = LYSideslipCell;
 			sourceTree = "<group>";
 		};
 		CE41C7B41F5EAA100058FE8D /* importCarVC */ = {
@@ -2984,7 +2989,6 @@
 		CEAA96E81F1CE6EF00741A6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE20970F215DCCE1007AEF4B /* ModelDB */,
 				CEAA96EA1F1CE70800741A6F /* UserModel.h */,
 				CEAA96EB1F1CE70800741A6F /* UserModel.m */,
 				CE6915751F1DED15008911A6 /* ImageFileInfo.h */,
@@ -3271,6 +3275,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE407C9D216DA7E80035DDED /* LYSideslipCell */,
 				CEBCFCE120FE1EA5006FB37A /* LRSliderView */,
 				CE87041C20CE52B700E206AE /* LTSCalendar */,
 				CECF752620C9505300A4DAC4 /* PFDropdownView */,
@@ -4099,6 +4104,7 @@
 				CEE7B80E215A7D8D005FF1BA /* UITableView+FDKeyedHeightCache.m in Sources */,
 				CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
+				CE407CA0216DA8050035DDED /* LYSideslipCell.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
 				CE147A952154DDD900A515CD /* IllegalHeadCell.m in Sources */,
 				CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */,
