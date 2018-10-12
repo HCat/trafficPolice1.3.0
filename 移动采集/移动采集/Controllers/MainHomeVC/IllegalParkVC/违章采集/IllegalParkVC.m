@@ -1214,7 +1214,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] initWithIllegalParkParam:strongSelf.param];
         illegalDBModel.isAbnormal = NO;
         [illegalDBModel save];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_CACHE_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_ADDCACHE_SUCCESS object:nil];
         [strongSelf handleBeforeCommit];
         
     };

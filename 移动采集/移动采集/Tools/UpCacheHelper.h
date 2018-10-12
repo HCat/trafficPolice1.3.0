@@ -25,8 +25,11 @@ typedef NS_ENUM(NSUInteger, UpCacheType) {
 
 LRSingletonH(Default)
 
+@property (nonatomic,strong) RACSubject * rac_upCache_success;
+@property (nonatomic,strong) RACSubject * rac_upCache_error;
 
-- (void)starWithType:(UpCacheType)cacheType WithArr:(NSMutableArray *)arr_data;
+
+- (void)starWithType:(UpCacheType)cacheType WithData:(id)data;
 - (void)stop;
 
 

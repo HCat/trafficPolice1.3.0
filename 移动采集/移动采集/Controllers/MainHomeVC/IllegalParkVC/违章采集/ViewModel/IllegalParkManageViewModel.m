@@ -22,7 +22,7 @@
     if (self = [super init]) {
         
         @weakify(self);
-        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NOTIFICATION_ILLEGALPARK_CACHE_SUCCESS object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NOTIFICATION_ILLEGALPARK_ADDCACHE_SUCCESS object:nil] subscribeNext:^(NSNotification * _Nullable x) {
             @strongify(self);
             self.listViewModel.arr_illegal = [[NSMutableArray alloc] initWithArray:[IllegalDBModel localArrayFormType:@(self.subType)]];
             self.illegalCount = @(self.listViewModel.arr_illegal.count);
