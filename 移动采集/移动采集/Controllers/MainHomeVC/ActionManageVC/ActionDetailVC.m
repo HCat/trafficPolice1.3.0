@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"行动详情";
+    self.title = @"行动内容";
     self.arr_content = [NSMutableArray array];
     [self setUpTableView];
     

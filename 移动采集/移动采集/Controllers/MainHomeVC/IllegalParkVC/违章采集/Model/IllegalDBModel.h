@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) BOOL  isAbnormal;           //是否异常
 
 - (instancetype)initWithIllegalParkParam:(IllegalParkSaveParam *) param;
-
+- (IllegalParkSaveParam *)mapIllegalParkSaveParam;
 
 - (void)save;
 - (void)deleteDB;

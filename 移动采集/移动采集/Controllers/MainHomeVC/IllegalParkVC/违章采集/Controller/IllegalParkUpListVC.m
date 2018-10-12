@@ -13,7 +13,7 @@
 #import "IllegalParkUpListCell.h"
 
 
-@interface IllegalParkUpListVC ()
+@interface IllegalParkUpListVC ()<LYSideslipCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) IllegalParkUpListViewModel * viewModel;

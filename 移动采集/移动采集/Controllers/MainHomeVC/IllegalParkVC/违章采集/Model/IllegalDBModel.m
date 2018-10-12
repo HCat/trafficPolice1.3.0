@@ -46,6 +46,35 @@
 }
 
 
+- (IllegalParkSaveParam *)mapIllegalParkSaveParam{
+    
+    IllegalParkSaveParam * param = [[IllegalParkSaveParam alloc] init];
+    param.roadId =  self.roadId;
+    param.roadName = self.roadName;
+    param.address =  self.address;
+    param.addressRemark = self.addressRemark;
+    param.carNo =  self.carNo;
+    param.carColor = self.carColor;
+    param.longitude = self.longitude;
+    param.latitude = self.latitude;
+    
+    param.files = self.files;
+    param.remarks = self.remarks;
+    param.taketimes = self.taketimes;
+    
+    
+    param.cutImageUrl = self.cutImageUrl;
+    param.taketime = self.taketime;
+    param.isManualPos = self.isManualPos;
+    param.type = self.type;
+
+    return param;
+
+}
+
+
+
+
 //重载、初始化单例、使用的LKDBHelper
 + (LKDBHelper *)getUsingLKDBHelper {
     

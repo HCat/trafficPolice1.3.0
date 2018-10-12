@@ -83,6 +83,7 @@
 		CE269956211AC9F500168CB9 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE269955211AC9F500168CB9 /* libresolv.tbd */; };
 		CE270E1120BF923D00746AC6 /* VehicleTrafficPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE270E0F20BF923D00746AC6 /* VehicleTrafficPlaceCell.m */; };
 		CE270E1220BF923D00746AC6 /* VehicleTrafficPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE270E1020BF923D00746AC6 /* VehicleTrafficPlaceCell.xib */; };
+		CE2736F8216EECEB00CBD8EE /* UpCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2736F7216EECEB00CBD8EE /* UpCacheHelper.m */; };
 		CE27A9FB20CA2D9E00AA922D /* ScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */; };
 		CE27A9FC20CA2D9E00AA922D /* ScheduleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */; };
 		CE27D16C215F17520014FEC8 /* IllegalNetErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27D16B215F17520014FEC8 /* IllegalNetErrorView.m */; };
@@ -693,6 +694,8 @@
 		CE270E0E20BF923D00746AC6 /* VehicleTrafficPlaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleTrafficPlaceCell.h; sourceTree = "<group>"; };
 		CE270E0F20BF923D00746AC6 /* VehicleTrafficPlaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleTrafficPlaceCell.m; sourceTree = "<group>"; };
 		CE270E1020BF923D00746AC6 /* VehicleTrafficPlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleTrafficPlaceCell.xib; sourceTree = "<group>"; };
+		CE2736F6216EECEB00CBD8EE /* UpCacheHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpCacheHelper.h; sourceTree = "<group>"; };
+		CE2736F7216EECEB00CBD8EE /* UpCacheHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpCacheHelper.m; sourceTree = "<group>"; };
 		CE27A9F820CA2D9E00AA922D /* ScheduleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleVC.h; sourceTree = "<group>"; };
 		CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleVC.m; sourceTree = "<group>"; };
 		CE27A9FA20CA2D9E00AA922D /* ScheduleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleVC.xib; sourceTree = "<group>"; };
@@ -3348,6 +3351,8 @@
 				CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */,
 				CE789ECC1F5E3C2C002217D0 /* WebSocketHelper.h */,
 				CE789ECD1F5E3C2C002217D0 /* WebSocketHelper.m */,
+				CE2736F6216EECEB00CBD8EE /* UpCacheHelper.h */,
+				CE2736F7216EECEB00CBD8EE /* UpCacheHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -3851,6 +3856,7 @@
 				CE72DF2121119F3C00F843CD /* ActionAPI.m in Sources */,
 				CE4E3C051F39B63A0057148B /* IllegalDetailVC.m in Sources */,
 				CE5C6F001FB0425F005E53BF /* GCDGroup.m in Sources */,
+				CE2736F8216EECEB00CBD8EE /* UpCacheHelper.m in Sources */,
 				CEE5E9F41F1C873E00AC515C /* LoginHomeVC.m in Sources */,
 				CEFEFD211F29ED8100C33CBD /* KSYYImageManager.m in Sources */,
 				CE16003E21241A13009440C0 /* IllegalListView.m in Sources */,

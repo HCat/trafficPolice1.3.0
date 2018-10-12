@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"行动详情";
+    self.title = @"行动内容";
     self.arr_view  = [NSMutableArray array];;
     [self showRightBarButtonItemWithImage:@"nav_center" target:self action:@selector(makeLocationInCenter)];
 //    _v_detail.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
