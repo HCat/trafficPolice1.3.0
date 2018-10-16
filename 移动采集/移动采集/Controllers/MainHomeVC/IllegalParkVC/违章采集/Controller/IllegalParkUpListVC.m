@@ -11,6 +11,7 @@
 #import "UITableView+Lr_Placeholder.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "IllegalParkUpListCell.h"
+#import "IllegalDetailVC.h"
 
 
 
@@ -37,8 +38,10 @@
         }];
         [self.viewModel.rac_deleteCache subscribeNext:^(NSNumber * x) {
             SW(strongSelf, weakSelf);
+            [strongSelf.tableView beginUpdates];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[x integerValue] inSection:0];
             [strongSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [strongSelf.tableView endUpdates];
         }];
         
     }
@@ -130,7 +133,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
+    IllegalDBModel *t_model = _viewModel.arr_illegal[indexPath.row];
+    IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
+    t_vc.illegalType = _viewModel.illegalType;
+    t_vc.subType = _viewModel.subType;
+    t_vc.cacheModel = t_model;
+    [self.navigationController pushViewController:t_vc animated:YES];
+    
+    
 }
 
 #pragma mark - LYSideslipCellDelegate

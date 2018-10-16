@@ -48,7 +48,12 @@
                 UIView *t_v  = _arr_view[i];
                 UIButton *t_button = [t_v viewWithTag:i + 100];
                 UILabel *t_lb = [t_v viewWithTag:i + 1000];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:picModel.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                if (picModel.imgUrl) {
+                   [t_button sd_setImageWithURL:[NSURL URLWithString:picModel.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                }else if (picModel.picImage){
+                    [t_button setImage:picModel.picImage forState:UIControlStateNormal];
+                }
+                
                 t_lb.text = picModel.picName;
             }
             
@@ -65,7 +70,11 @@
                 [self.contentView addSubview:t_v];
                 
                 UIButton * t_button = [UIButton newAutoLayoutView];
-                [t_button sd_setImageWithURL:[NSURL URLWithString:picModel.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                if (picModel.imgUrl) {
+                    [t_button sd_setImageWithURL:[NSURL URLWithString:picModel.imgUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];
+                }else if (picModel.picImage){
+                    [t_button setImage:picModel.picImage forState:UIControlStateNormal];
+                }
                 [t_button setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
                 t_button.tag = i + 100;
                 t_button.layer.cornerRadius = 5.0f;
@@ -178,8 +187,15 @@
             UIView *t_v = _arr_view[i];
             AccidentPicListModel *picModel  = _arr_images[i];
             UIButton *t_btn = [t_v viewWithTag:i + 100];
-            KSPhotoItem *item = [KSPhotoItem itemWithSourceView:t_btn.imageView imageUrl:[NSURL URLWithString:picModel.imgUrl]];
-            [t_arr addObject:item];
+            if (picModel.imgUrl) {
+                KSPhotoItem *item = [KSPhotoItem itemWithSourceView:t_btn.imageView imageUrl:[NSURL URLWithString:picModel.imgUrl]];
+                [t_arr addObject:item];
+            }else if (picModel.picImage){
+                KSPhotoItem *item = [KSPhotoItem itemWithSourceView:t_btn.imageView image:picModel.picImage];
+                [t_arr addObject:item];
+            }
+            
+            
         }
         
     }

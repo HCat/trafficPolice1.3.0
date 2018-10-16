@@ -17,12 +17,14 @@
 #import "IllegalImageCell.h"
 #import "IllegalMessageCell.h"
 #import "IllegalFootCell.h"
+#import "ImageFileInfo.h"
 
 
 @interface IllegalDetailVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 @property (nonatomic,strong) IllegalParkDetailModel *model;
+
 
 @end
 
@@ -49,7 +51,13 @@
     _tb_content.firstReload = YES;
     _tb_content.allowsSelection = NO;
     
-    [self setNetworking];
+    if (self.cacheModel) {
+        [self setDetailModel];
+    }else{
+        [self setNetworking];
+    }
+    
+    
     
 }
 
@@ -68,9 +76,8 @@
         }
     };
     
-
-
 }
+
 
 #pragma mark - 数据请求
 
@@ -97,6 +104,50 @@
     }
     
 }
+
+#pragma mark - 缓存数据转换
+
+- (void)setDetailModel{
+    
+    IllegalParkDetailModel * model = [[IllegalParkDetailModel alloc] init];
+    IllegalCollectModel * collectModel = [[IllegalCollectModel alloc] init];
+    
+    collectModel.roadId = self.cacheModel.roadId;
+    collectModel.roadName = self.cacheModel.roadName;
+    collectModel.address  = self.cacheModel.address;
+    collectModel.carNo = self.cacheModel.carNo;
+    collectModel.collectTime = self.cacheModel.commitTime;
+    collectModel.state = self.cacheModel.isAbnormal ? @9 : @99;
+    collectModel.stateName = self.cacheModel.isAbnormal ? @"异常" : @"";
+    
+    model.illegalCollect = collectModel;
+    
+    NSMutableArray * t_arr = @[].mutableCopy;
+    NSArray * arr_remarks = [self.cacheModel.remarks componentsSeparatedByString:@","];
+    NSArray * arr_taketimes = [self.cacheModel.taketimes componentsSeparatedByString:@","];
+    
+    for (int i = 0 ; i < [self.cacheModel.files count]; i++) {
+        
+        ImageFileInfo * imageInfo = self.cacheModel.files[i];
+        NSString * uploadTime_t = arr_taketimes[i];
+        NSNumber * uploadTime = [ShareFun getTimeIntervaWithTime:uploadTime_t];
+
+        NSString * picName = arr_remarks[i];
+        
+        AccidentPicListModel * model = [[AccidentPicListModel alloc] init];
+        model.picName = picName;
+        model.uploadTime = uploadTime;
+        model.picImage = imageInfo.image;
+        [t_arr addObject:model];
+        
+    };
+    
+    model.picList = t_arr;
+    
+    self.model = model;
+    [self.tb_content reloadData];
+}
+
 
 - (void)loadIllegalParkDetail{
 

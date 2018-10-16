@@ -49,7 +49,6 @@
                 [model deleteDB];
                 NSInteger index = 0;
                 [strongSelf.arr_illegal removeObject:model];
-                strongSelf.illegalCount = @(self.arr_illegal.count);
                 
                 for (IllegalUpListCellViewModel * model_t in strongSelf.arr_viewModel) {
                     if ([model_t.illegalId isEqualToNumber:model.illegalId]) {
@@ -66,6 +65,8 @@
                 }
                 [strongSelf.rac_deleteCache sendNext:@(index)];
                 
+                strongSelf.illegalCount = @(self.arr_illegal.count);
+                
             }];
             
             
@@ -74,7 +75,7 @@
         
         [[[UpCacheHelper sharedDefault] rac_upCache_error] subscribeNext:^(id  _Nullable x) {
             SW(strongSelf, weakSelf);
-            if (strongSelf.arr_illegal.count > 0) {
+            if (strongSelf.arr_illegal.count > 0 && strongSelf.isUping) {
                 [[RACScheduler currentScheduler] afterDelay:kUpCacheFrequency schedule:^{
                    [strongSelf startUpCache];
                     

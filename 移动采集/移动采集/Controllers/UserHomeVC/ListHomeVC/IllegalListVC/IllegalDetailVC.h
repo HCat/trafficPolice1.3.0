@@ -7,6 +7,7 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "IllegalDBModel.h"
 
 @interface IllegalDetailVC : HideTabSuperVC
 
@@ -14,5 +15,6 @@
 @property (nonatomic,assign) ParkType subType;
 @property (nonatomic,strong) NSNumber *illegalId;
 @property (nonatomic,assign) IllegalType illegalType;
+@property (nonatomic,strong) IllegalDBModel * cacheModel;
 
 @end

@@ -35,6 +35,9 @@
 
 //获取当前时间戳
 + (NSNumber *)getCurrentTimeInterval;
+//时间转换为时间戳
++ (NSNumber *)getTimeIntervaWithTime:(NSString *)timeString;
+
 
 //获取时间挫转换成时间：格式为yyyy-MM-dd HH:mm:ss
 + (NSString *)timeWithTimeInterval:(NSNumber *)timeString;
