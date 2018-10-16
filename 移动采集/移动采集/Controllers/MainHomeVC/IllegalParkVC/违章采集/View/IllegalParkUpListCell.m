@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_carNumber;
 @property (weak, nonatomic) IBOutlet UILabel *lb_time;
 @property (weak, nonatomic) IBOutlet UILabel *lb_address;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_width;
 
 
 @end
@@ -36,6 +37,28 @@
         self.lb_time.text = [ShareFun timeWithTimeInterval:_viewModel.time];
         self.lb_address.text = [ShareFun takeStringNoNull:_viewModel.address];
         self.btn_abnormal.hidden = !_viewModel.isAbnormal;
+        
+        WS(weakSelf);
+        
+        [RACObserve(_viewModel, progress) subscribeNext:^(id  _Nullable x) {
+            SW(strongSelf, weakSelf);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([x floatValue] == 0.0f) {
+                    strongSelf.layout_width.constant = 0;
+                    [strongSelf layoutIfNeeded];
+                }else{
+                    [UIView animateWithDuration:1.0 animations:^{
+                        strongSelf.layout_width.constant = [x floatValue] * SCREEN_WIDTH;
+                        [strongSelf layoutIfNeeded];
+                    }];
+                }
+                
+            });
+            
+           
+        }];
+        
         
     }
     

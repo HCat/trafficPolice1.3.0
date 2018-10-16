@@ -76,6 +76,9 @@
 //关闭webSocket
 + (void)closeWebSocket;
 
+//登录之后需要执行的操作
++ (void)LoginInbeforeDone;
+
 // 定位地址存储在plist上面
 + (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue;
 

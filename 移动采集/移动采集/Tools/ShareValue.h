@@ -41,7 +41,18 @@ typedef NS_ENUM(NSUInteger, MessageType) {
     MessageTypeIllegalCar = 4,  //非法营运车辆通知
     MessageTypeTask   = 101,    //101任务通知
     MessageTypeWatch  = 100,    //100排班通知
-   
+    
+};
+
+typedef NS_ENUM(NSUInteger, UpCacheType) {
+    UpCacheTypePark = 10,            //违停
+    UpCacheTypeReversePark = 11,     //逆向违停
+    UpCacheTypeLockPark = 12,        //违停锁车
+    UpCacheTypeCarInfoAdd = 13,      //车辆录入
+    UpCacheTypeThrough = 14,         //闯禁令
+    UpCacheTypeAccident = 15,        //事故采集
+    UpCacheTypeFastAccident = 16,    //快处采集
+    UpCacheTypeAll = 17              //全部上传
 };
 
 

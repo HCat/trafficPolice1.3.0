@@ -10,8 +10,8 @@
 #import "IllegalParkVC.h"
 #import "CarInfoAddVC.h"
 #import "IllegalParkUpListVC.h"
-#import <ReactiveObjC.h>
-#import <RACEXTScope.h>
+#import "UpCacheSettingVC.h"
+#import "UINavigationBar+BarItem.h"
 
 
 @interface IllegalParkManageVC ()
@@ -38,6 +38,7 @@
     [super viewDidLoad];
     
     [self buildTitle];
+    [self showRightBarButtonItemWithImage:@"nav_upCancel_setting" target:self action:@selector(showAutoUpCacheVC)];
     
     if ([_viewModel.arr_item[0] isEqualToString:@"车辆录入"]) {
         CarInfoAddVC * vc = [[CarInfoAddVC alloc] init];
@@ -56,8 +57,6 @@
     [self addChildViewController:_illegalParkUpList];
     
     [self.view addSubview:_firstVC.view];
-    
-    
     
 }
 
@@ -137,22 +136,20 @@
     [titleView addSubview:_lb_unUpCount];
     _lb_unUpCount.hidden = YES;
    
-    @weakify(self);
-    
     [RACObserve(self.viewModel, illegalCount) subscribeNext:^(NSNumber * x) {
-        @strongify(self);
+        SW(strongSelf, weakSelf);
         if (x) {
             if ([x integerValue] == 0) {
-                self.lb_unUpCount.hidden = YES;
+                strongSelf.lb_unUpCount.hidden = YES;
             }else{
-                self.lb_unUpCount.hidden = NO;
-                self.lb_unUpCount.text = [x stringValue];
-                [self.lb_unUpCount sizeToFit];
-                CGRect frame = self.lb_unUpCount.frame;
+                strongSelf.lb_unUpCount.hidden = NO;
+                strongSelf.lb_unUpCount.text = [x stringValue];
+                [strongSelf.lb_unUpCount sizeToFit];
+                CGRect frame = strongSelf.lb_unUpCount.frame;
                 frame.size.width = frame.size.width + 10;
                 frame.size.height = 15.f;
-                self.lb_unUpCount.frame = frame;
-                self.lb_unUpCount.center = CGPointMake(CGRectGetMaxX(segment.frame), CGRectGetMinY(segment.frame));
+                strongSelf.lb_unUpCount.frame = frame;
+                strongSelf.lb_unUpCount.center = CGPointMake(CGRectGetMaxX(segment.frame), CGRectGetMinY(segment.frame));
                 
             }
         }
@@ -177,9 +174,16 @@
             [oldVc removeFromParentViewController];
         }
     }];
-    
+
+}
+
+- (void)showAutoUpCacheVC{
+    UpCacheSettingVC * vc = [[UpCacheSettingVC alloc] init];
+    vc.automaicUpCacheType = _viewModel.cacheType;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
+
 
 #pragma mark - dealloc
 

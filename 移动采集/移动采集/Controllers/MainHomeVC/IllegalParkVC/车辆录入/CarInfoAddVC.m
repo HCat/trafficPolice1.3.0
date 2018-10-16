@@ -23,6 +23,8 @@
 #import "AlertView.h"
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
+#import "IllegalNetErrorView.h"
+#import "IllegalDBModel.h"
 
 @interface CarInfoAddVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -360,24 +362,32 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
+    WS(weakSelf);
+    
     [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
         
-        //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
-        //10为4G网络
         [NetworkStatusMonitor StopMonitor];
+        
+        SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
-            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
-            return;
+            [strongSelf showIllegalNetErrorView];
+        }else{
+            //提交违章数据
+            [strongSelf submitIllegalData];
         }
+        
     }];
     
+}
 
+- (void)submitIllegalData{
+    
     [self configParamInFilesAndRemarksAndTimes];
     
     LxDBObjectAsJson(_param);
     WS(weakSelf);
     
-    _param.type = @(2001);
+    _param.type = @(ParkTypeCarInfoAdd);
     
     IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
     manger.param = _param;
@@ -404,12 +414,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
-            [LRShowHUD showError:@"请重新提交!" duration:1.5f];
-        }
+        SW(strongSelf, weakSelf);
+        [strongSelf showIllegalNetErrorView];
     }];
     
 }
+
 
 #pragma mark - HeadViewDelegate点击识别按钮返回回来的数据
 
@@ -634,6 +644,39 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
     
 }
+
+#pragma mark - 显示网络问题时候的选项
+
+- (void)showIllegalNetErrorView{
+    
+    WS(weakSelf);
+    
+    IllegalNetErrorView * view = [IllegalNetErrorView initCustomView];
+    
+    view.saveBlock = ^{
+        SW(strongSelf, weakSelf);
+        
+        strongSelf.param.type = @(ParkTypeCarInfoAdd);
+        [strongSelf configParamInFilesAndRemarksAndTimes];
+        IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] initWithIllegalParkParam:strongSelf.param];
+        illegalDBModel.isAbnormal = NO;
+        [illegalDBModel save];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_ADDCACHE_SUCCESS object:nil];
+        [strongSelf handleBeforeCommit];
+        
+    };
+    
+    view.upBlock = ^{
+        SW(strongSelf, weakSelf);
+        [strongSelf submitIllegalData];
+        
+    };
+    
+    [view show];
+    
+}
+
+
 
 #pragma mark - dealloc
 

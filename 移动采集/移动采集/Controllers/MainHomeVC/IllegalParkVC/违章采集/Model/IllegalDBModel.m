@@ -16,7 +16,8 @@
     
     if (self = [super init]) {
         
-        self.illegalId = [ShareFun getCurrentTimeInterval];
+        self.type = param.type;
+        self.illegalId = @([IllegalDBModel localArrayFormType:self.type].count + 1);
         self.ownId = [ShareValue sharedDefault].phone;
         self.commitTime = [ShareFun getCurrentTimeInterval];
         
@@ -37,8 +38,7 @@
         self.cutImageUrl = param.cutImageUrl;
         self.taketime = param.taketime;
         self.isManualPos = param.isManualPos;
-        self.type = param.type;
-    
+        
     }
     
     return self;
@@ -67,6 +67,12 @@
     param.taketime = self.taketime;
     param.isManualPos = self.isManualPos;
     param.type = self.type;
+    
+    if (self.isAbnormal) {
+        param.state = @9;
+    }else{
+        param.state = @99;
+    }
 
     return param;
 

@@ -57,20 +57,27 @@
 
     if (self.param.files.count > 0) {
         self.isNeedLoadHud = NO;
+        WS(weakSelf);
         return ^(NSProgress *progress){
+            SW(strongSelf, weakSelf);
+            if (!strongSelf.isUpCache) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                    DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                    if (hud == nil) {
+                        hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                        hud.mode = DMProgressHUDModeProgress;
+                        hud.style = DMProgressHUDStyleDark;
+                        hud.text = @"正在上传...";
+                    }
+                    NSLog(@"completedUnitCount.......%lld",progress.completedUnitCount);
+                    hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                    
+                });
+            }else{
+                strongSelf.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+            }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
-                if (hud == nil) {
-                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
-                    hud.mode = DMProgressHUDModeProgress;
-                    hud.style = DMProgressHUDStyleDark;
-                    hud.text = @"正在上传...";
-                }
-                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
-                
-            });
             
         };
     }else{
@@ -78,6 +85,46 @@
     }
     
 }
+
+
+- (void)requestCompleteFilter{
+    
+    if (!self.isUpCache) {
+        [super requestCompleteFilter];
+    }else{
+        self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
+        
+        if (self.responseModel.code == CODE_NOLOGIN){
+            
+            [ShareFun loginOut];
+            [LRShowHUD showError:@"登录超时" duration:1.2f];
+            
+        }
+    }
+
+    
+    
+}
+
+- (void)requestFailedFilter {
+    
+    if (!self.isUpCache) {
+        [super requestFailedFilter];
+    }else{
+       
+        if (self.responseStatusCode == CODE_TOKENTIMEOUT){
+            
+            [ShareFun loginOut];
+            
+            [LRShowHUD showError:@"登录超时" duration:1.2f];
+            
+        }
+    }
+ 
+}
+
+
+
 
 
 @end

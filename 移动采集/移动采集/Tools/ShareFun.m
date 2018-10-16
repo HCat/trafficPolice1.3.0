@@ -22,6 +22,7 @@
 #import "WebSocketHelper.h"
 #import "SocketModel.h"
 #import "CommonAPI.h"
+#import "AutomaicUpCacheModel.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 
@@ -511,6 +512,17 @@
     
 }
 
+#pragma mark - 登录之后需要执行的操作
++ (void)LoginInbeforeDone{
+    [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoCarInfoAdd = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoThrough = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoAccident = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoFastAccident = NO;
+}
+
 #pragma mark - 定位地址存储在plist上面
 + (void)locationlog:(NSString*)logKey andValue:(NSString*)logValue{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
@@ -738,7 +750,6 @@
         [lb_title removeFromSuperview];
         lb_title = nil;
     } afterDelay:3.0f*NSEC_PER_SEC];
-    
     
 }
 

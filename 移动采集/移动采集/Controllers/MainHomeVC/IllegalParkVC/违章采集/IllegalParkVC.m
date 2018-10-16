@@ -778,6 +778,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         //违停请求
         _param.type = @(_subType);
+        _param.state = @99;
         IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
         manger.param = _param;
         [manger configLoadingTitle:@"提交"];
@@ -1201,6 +1202,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 
 }
 
+
+#pragma mark - 显示网络问题时候的选项
+
 - (void)showIllegalNetErrorView{
     
     WS(weakSelf);
@@ -1211,6 +1215,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         SW(strongSelf, weakSelf);
         
         strongSelf.param.type = @(strongSelf.subType);
+        [strongSelf configParamInFilesAndRemarksAndTimes];
         IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] initWithIllegalParkParam:strongSelf.param];
         illegalDBModel.isAbnormal = NO;
         [illegalDBModel save];
@@ -1227,7 +1232,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     [view show];
     
-
 }
 
 

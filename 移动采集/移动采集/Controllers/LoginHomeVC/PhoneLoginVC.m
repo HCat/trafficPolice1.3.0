@@ -177,6 +177,7 @@
             /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
             [ShareFun openWebSocket];
+            [ShareFun LoginInbeforeDone];
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 
             } seq:0];

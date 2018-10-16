@@ -124,6 +124,7 @@
             [UserModel setUserModel:manger.userModel];
             [ShareValue sharedDefault].phone = [UserModel getUserModel].phone;
             [ShareFun openWebSocket];
+            [ShareFun LoginInbeforeDone];
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 
             } seq:0];

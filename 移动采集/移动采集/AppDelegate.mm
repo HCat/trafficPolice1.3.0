@@ -58,6 +58,7 @@
     if ([ShareValue sharedDefault].token) {
         
         [ShareFun openWebSocket];
+        [ShareFun LoginInbeforeDone];
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];

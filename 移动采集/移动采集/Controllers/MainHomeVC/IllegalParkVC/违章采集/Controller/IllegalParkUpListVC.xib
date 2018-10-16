@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IllegalParkUpListVC">
             <connections>
+                <outlet property="btn_up" destination="nIo-Rr-LIg" id="JeE-an-Ye0"/>
                 <outlet property="tableView" destination="Xiu-Xy-ygO" id="NKg-rI-q2t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,11 +35,30 @@
                     <color key="textColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-Rr-LIg">
+                    <rect key="frame" x="132" y="543" width="110" height="40"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="Sah-Tp-SfA"/>
+                        <constraint firstAttribute="height" constant="40" id="jHY-4N-baR"/>
+                    </constraints>
+                    <state key="normal" title="上传">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Bgl-WV-PUA" secondAttribute="trailing" constant="19" id="6f1-my-brW"/>
                 <constraint firstAttribute="trailing" secondItem="Xiu-Xy-ygO" secondAttribute="trailing" id="8RD-Ug-xmR"/>
+                <constraint firstItem="nIo-Rr-LIg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AWr-5n-IlS"/>
+                <constraint firstAttribute="bottom" secondItem="nIo-Rr-LIg" secondAttribute="bottom" constant="20" id="CFs-Uv-QvH"/>
                 <constraint firstAttribute="bottom" secondItem="Xiu-Xy-ygO" secondAttribute="bottom" id="Llj-Rk-P1b"/>
                 <constraint firstItem="Xiu-Xy-ygO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="Nko-ki-srs"/>
                 <constraint firstItem="Xiu-Xy-ygO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cOr-J2-MAL"/>
