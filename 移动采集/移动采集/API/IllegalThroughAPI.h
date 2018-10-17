@@ -58,8 +58,6 @@ code:999 无采集记录,不用任何提示
 @end
 
 
-
-
 #pragma mark - 违反禁令二次采集加载数据API
 
 @interface IllegalThroughSecAddManger:LRBaseRequest
@@ -115,6 +113,9 @@ code:999 无采集记录,不用任何提示
 /****** 请求数据 ******/
 //备注：这里的请求参数和违停的请求参数
 @property (nonatomic, strong) IllegalParkSaveParam * param;
+
+@property (nonatomic, assign) BOOL isUpCache;
+@property (nonatomic, assign) CGFloat progress;
 
 /****** 返回数据 ******/
 //无返回参数

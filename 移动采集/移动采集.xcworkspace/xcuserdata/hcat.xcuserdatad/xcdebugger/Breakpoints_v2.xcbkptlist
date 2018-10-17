@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/WebSocketHelper.m"
-            timestampString = "561403968.186788"
+            timestampString = "561410371.626896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/LRCameraVC/LRCameraVC.m"
-            timestampString = "561320757.040531"
+            timestampString = "561457533.605893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "484"
             endingLineNumber = "484"
             landmarkName = "-dealloc"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/IllegalParkVC/&#x8fdd;&#x7ae0;&#x91c7;&#x96c6;/IllegalParkAddHeadView.m"
+            timestampString = "561458690.775092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "-passConTextChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -29,9 +29,12 @@
 }
 
 
+
+
 -(id)initWithImage:(UIImage *)image withName:(NSString *)name{
     self = [super init];
     if (self) {
+        
         if (image) {
             
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -89,6 +92,12 @@
         }
     }
     return self;
+}
+
+- (void)deleteDB{
+    
+    [ImageFileInfo deleteWithWhere:[NSString stringWithFormat:@"rowid =%ld",self.rowid]];
+    
 }
 
 

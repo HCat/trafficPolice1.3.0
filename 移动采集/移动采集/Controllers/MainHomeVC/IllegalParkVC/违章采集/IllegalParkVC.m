@@ -778,7 +778,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         //违停请求
         _param.type = @(_subType);
-        _param.state = @99;
         IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
         manger.param = _param;
         [manger configLoadingTitle:@"提交"];

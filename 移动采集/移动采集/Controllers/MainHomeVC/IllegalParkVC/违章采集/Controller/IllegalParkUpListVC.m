@@ -38,10 +38,8 @@
         }];
         [self.viewModel.rac_deleteCache subscribeNext:^(NSNumber * x) {
             SW(strongSelf, weakSelf);
-            [strongSelf.tableView beginUpdates];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[x integerValue] inSection:0];
             [strongSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [strongSelf.tableView endUpdates];
         }];
         
     }
@@ -85,7 +83,11 @@
     [RACObserve(self.viewModel, illegalCount) subscribeNext:^(NSNumber * x) {
         SW(strongSelf, weakSelf);
         if ([x intValue] == 0) {
-            [strongSelf.tableView reloadData];
+            [[RACScheduler mainThreadScheduler] afterDelay:1 schedule:^{
+                [strongSelf.tableView reloadData];
+                
+            }];
+            
         }
     }];
     

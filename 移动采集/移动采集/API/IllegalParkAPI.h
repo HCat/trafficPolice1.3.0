@@ -33,6 +33,7 @@
 @property (nonatomic,strong) NSNumber * isManualPos;          //0自动定位，1手动定位，默认0
 @property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 @property (nonatomic,strong) NSNumber * state;                //异常状态:9
+@property (nonatomic,strong) NSNumber * offtime;              //缓存时候的时间段
 @end
 
 

@@ -47,11 +47,11 @@
             [[RACScheduler currentScheduler] afterDelay:1 schedule:^{
                 IllegalDBModel * model = (IllegalDBModel *)x;
                 [model deleteDB];
-                NSInteger index = 0;
+                NSInteger index = -1;
                 [strongSelf.arr_illegal removeObject:model];
                 
                 for (IllegalUpListCellViewModel * model_t in strongSelf.arr_viewModel) {
-                    if ([model_t.illegalId isEqualToNumber:model.illegalId]) {
+                    if ([model_t.illegalId isEqualToNumber:@(model.rowid)]) {
                         index = [strongSelf.arr_viewModel indexOfObject:model_t];
                         [strongSelf.arr_viewModel removeObject:model_t];
                         break;
@@ -63,9 +63,10 @@
                 }else{
                     strongSelf.isUping = NO;
                 }
+                
                 [strongSelf.rac_deleteCache sendNext:@(index)];
                 
-                strongSelf.illegalCount = @(self.arr_illegal.count);
+                strongSelf.illegalCount = @(strongSelf.arr_illegal.count);
                 
             }];
             
@@ -97,18 +98,6 @@
     }
     
     return self;
-}
-
-
-
-- (void)setIllegalType:(IllegalType)illegalType{
-    
-    _illegalType = illegalType;
-    
-    if (_illegalType == IllegalTypeThrough) {
-        
-    }
-    
 }
 
 - (void)setSubType:(ParkType)subType{
@@ -147,6 +136,13 @@
                 strongSelf.isAutoUp = [x boolValue];
             }];
         }
+        case ParkTypeThrough:{
+            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoThrough) subscribeNext:^(NSNumber * x) {
+                SW(strongSelf,weakSelf);
+                strongSelf.isUping = [x boolValue];
+                strongSelf.isAutoUp = [x boolValue];
+            }];
+        }
             
             break;
         default:
@@ -178,7 +174,7 @@
     NSArray * t_arr = [[_arr_illegal.rac_sequence map:^id(IllegalDBModel * value) {
         
         IllegalUpListCellViewModel * cellModel = [[IllegalUpListCellViewModel alloc] init];
-        cellModel.illegalId = value.illegalId;
+        cellModel.illegalId = @(value.rowid);
         cellModel.carNumber = value.carNo;
         cellModel.address = value.address;
         cellModel.time = value.commitTime;
@@ -215,28 +211,24 @@
     
     if (_arr_illegal.count > 0) {
         
-        if (_illegalType == IllegalTypeThrough) {
-            
-        }else{
-            
-            switch (_subType) {
-                case ParkTypePark:
-                    [[UpCacheHelper sharedDefault] starWithType:UpCacheTypePark WithData:_arr_illegal[0]];
-                    break;
-                case ParkTypeReversePark:
-                    [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeReversePark WithData:_arr_illegal[0]];
-                    break;
-                case ParkTypeLockPark:
-                    [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeLockPark WithData:_arr_illegal[0]];
-                    break;
-                case ParkTypeCarInfoAdd:
-                    [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeCarInfoAdd WithData:_arr_illegal[0]];
-                    break;
-                default:
-                    break;
-            }
-            
-            
+        switch (_subType) {
+            case ParkTypePark:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypePark WithData:_arr_illegal[0]];
+                break;
+            case ParkTypeReversePark:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeReversePark WithData:_arr_illegal[0]];
+                break;
+            case ParkTypeLockPark:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeLockPark WithData:_arr_illegal[0]];
+                break;
+            case ParkTypeCarInfoAdd:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeCarInfoAdd WithData:_arr_illegal[0]];
+                break;
+            case ParkTypeThrough:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeThrough WithData:_arr_illegal[0]];
+                break;
+            default:
+                break;
         }
         
     }
@@ -248,6 +240,11 @@
 }
 
 - (void)dealloc{
+    
+    [[[UpCacheHelper sharedDefault] rac_progress] sendCompleted];
+    [[[UpCacheHelper sharedDefault] rac_upCache_success] sendCompleted];
+    [[[UpCacheHelper sharedDefault] rac_upCache_error] sendCompleted];
+    
     NSLog(@"IllegalParkUpListViewModel dealloc");
     
 }

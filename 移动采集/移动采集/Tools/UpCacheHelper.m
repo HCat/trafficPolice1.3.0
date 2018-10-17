@@ -8,13 +8,13 @@
 
 #import "UpCacheHelper.h"
 #import "IllegalParkAPI.h"
+#import "IllegalThroughAPI.h"
 #import "IllegalDBModel.h"
 
 @interface UpCacheHelper()
 @property (nonatomic,assign) UpCacheType cacheType;
 @property (nonatomic,strong) RACCommand * racCommand;
 @property (nonatomic,strong) RACSubject * rac_cancel;
-@property (nonatomic,strong) NSMutableArray * arr_data;
 
 @end
 
@@ -88,7 +88,39 @@ LRSingletonM(Default)
                 
             }else if(self.cacheType == UpCacheTypeThrough){
                 
+                IllegalThroughSaveManger *manger = [[IllegalThroughSaveManger alloc] init];
+                manger.param = input_param;
+                manger.param.type = nil;
+    
+                manger.isUpCache = YES;
                 
+                [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
+                    RACTuple *tuple = RACTuplePack(x,index);
+                    [strongSelf.rac_progress sendNext:tuple];
+                }];
+                
+                
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        [subscriber sendNext:@"发送成功"];
+                        [subscriber sendCompleted];
+                        
+                    }else{
+                        
+                        NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                    code:10086
+                                                                userInfo:nil];
+                        [subscriber sendError:error];
+                        
+                    }
+                    
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendError:request.error];
+                }];
+                
+            
             }else if(self.cacheType == UpCacheTypeAccident || self.cacheType == UpCacheTypeFastAccident){
                 
                 
@@ -108,11 +140,10 @@ LRSingletonM(Default)
     
     self.cacheType = cacheType;
     
-    
-    if (self.cacheType == UpCacheTypePark || self.cacheType == UpCacheTypeReversePark || self.cacheType == UpCacheTypeLockPark || self.cacheType == UpCacheTypeCarInfoAdd) {
+    if (self.cacheType == UpCacheTypePark || self.cacheType == UpCacheTypeReversePark || self.cacheType == UpCacheTypeLockPark || self.cacheType == UpCacheTypeCarInfoAdd || self.cacheType == UpCacheTypeThrough) {
         
         IllegalDBModel * model = (IllegalDBModel *)data;
-        RACTuple *tuple = RACTuplePack([model mapIllegalParkSaveParam],model.illegalId);
+        RACTuple *tuple = RACTuplePack([model mapIllegalParkSaveParam],@(model.rowid));
         RACSignal * signal = [self.racCommand execute:tuple];
         
         WS(weakSelf);
@@ -132,9 +163,6 @@ LRSingletonM(Default)
         }];
         
     
-    }else if(self.cacheType == UpCacheTypeThrough){
-        
-        
     }else if(self.cacheType == UpCacheTypeAccident || self.cacheType == UpCacheTypeFastAccident){
         
         

@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalDBModel : NSObject
 
-@property (nonatomic,strong) NSNumber * illegalId;            //违章ID
 @property (nonatomic,copy)   NSString * ownId;                //属于谁未上传的违章记录
 @property (nonatomic,strong) NSNumber * commitTime;           //提交时间
 
@@ -37,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber * isManualPos;          //0自动定位，1手动定位，默认0
 @property (nonatomic,strong)   NSNumber * type;               //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 @property (nonatomic,assign) BOOL  isAbnormal;                //是否异常
+
+
+
+
 
 - (instancetype)initWithIllegalParkParam:(IllegalParkSaveParam *) param;
 - (IllegalParkSaveParam *)mapIllegalParkSaveParam;

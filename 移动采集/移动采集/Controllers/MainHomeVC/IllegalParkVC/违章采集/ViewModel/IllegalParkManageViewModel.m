@@ -46,19 +46,6 @@
     
 }
 
-
-- (void)setIllegalType:(IllegalType)illegalType{
-    
-    _illegalType = illegalType;
-    
-    if (_illegalType == IllegalTypeThrough) {
-        [self.arr_item addObject:@"违反禁令采集"];
-        [self.arr_item addObject:@"等待上传"];
-        self.cacheType = UpCacheTypeThrough;
-    }
-    
-}
-
 - (void)setSubType:(ParkType)subType{
     
     _subType = subType;
@@ -82,6 +69,11 @@
         case ParkTypeCarInfoAdd:{
             [self.arr_item addObject:@"车辆录入"];
             self.cacheType = UpCacheTypeCarInfoAdd;
+        }
+            break;
+        case ParkTypeThrough:{
+            [self.arr_item addObject:@"违反禁令采集"];
+            self.cacheType = UpCacheTypeThrough;
         }
             break;
         default:

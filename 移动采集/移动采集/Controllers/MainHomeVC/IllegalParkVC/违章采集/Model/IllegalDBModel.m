@@ -17,7 +17,6 @@
     if (self = [super init]) {
         
         self.type = param.type;
-        self.illegalId = @([IllegalDBModel localArrayFormType:self.type].count + 1);
         self.ownId = [ShareValue sharedDefault].phone;
         self.commitTime = [ShareFun getCurrentTimeInterval];
         
@@ -68,17 +67,17 @@
     param.isManualPos = self.isManualPos;
     param.type = self.type;
     
+    NSNumber * date_now = [ShareFun getCurrentTimeInterval];
+    NSNumber * offtime = @([date_now doubleValue] - [self.commitTime doubleValue]);
+    param.offtime = @([offtime integerValue]);
+    
     if (self.isAbnormal) {
         param.state = @9;
-    }else{
-        param.state = @99;
     }
 
     return param;
 
 }
-
-
 
 
 //重载、初始化单例、使用的LKDBHelper
@@ -123,9 +122,9 @@
 
 - (void)save{
     
-    NSInteger rowcount = [IllegalDBModel rowCountWithWhereFormat:@"illegalId=%@",_illegalId];
+    NSInteger rowcount = [IllegalDBModel rowCountWithWhereFormat:@"rowid =%ld",self.rowid];
     if (rowcount>0) {
-        [IllegalDBModel updateToDB:self where:[NSString stringWithFormat:@"illegalId=%@",_illegalId]];
+        [IllegalDBModel updateToDB:self where:[NSString stringWithFormat:@"rowid =%ld",self.rowid]];
     }else{
         [self saveToDB];
     }
@@ -134,7 +133,11 @@
 
 - (void)deleteDB{
     
-    [IllegalDBModel deleteWithWhere:[NSString stringWithFormat:@"ownId =%@ and illegalId =%@",[ShareValue sharedDefault].phone,_illegalId]];
+    for (ImageFileInfo * image in _files) {
+        [image deleteDB];
+    }
+    
+    [IllegalDBModel deleteWithWhere:[NSString stringWithFormat:@"rowid =%ld",self.rowid]];
     
 }
 
@@ -188,6 +191,7 @@
 
 + (BOOL)dbWillDelete:(NSObject*)entity {
     LxPrintf(@"将要删除 : %@",NSStringFromClass(self));
+    
     return YES;
 }
 

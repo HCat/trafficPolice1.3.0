@@ -70,14 +70,12 @@
                         hud.style = DMProgressHUDStyleDark;
                         hud.text = @"正在上传...";
                     }
-                    NSLog(@"completedUnitCount.......%lld",progress.completedUnitCount);
                     hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
                     
                 });
             }else{
                 strongSelf.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
             }
-            
             
         };
     }else{
@@ -102,8 +100,6 @@
         }
     }
 
-    
-    
 }
 
 - (void)requestFailedFilter {

@@ -117,7 +117,6 @@
     collectModel.address  = self.cacheModel.address;
     collectModel.carNo = self.cacheModel.carNo;
     collectModel.collectTime = self.cacheModel.commitTime;
-    collectModel.state = self.cacheModel.isAbnormal ? @9 : @99;
     collectModel.stateName = self.cacheModel.isAbnormal ? @"异常" : @"";
     
     model.illegalCollect = collectModel;
