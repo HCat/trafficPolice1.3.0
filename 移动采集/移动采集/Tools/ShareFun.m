@@ -24,6 +24,7 @@
 #import "CommonAPI.h"
 #import "AutomaicUpCacheModel.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import "IllegalDBModel.h"
 
 
 @implementation ShareFun
@@ -276,9 +277,10 @@
     return current;
 }
 
+
 + (NSNumber *)getCurrentTimeInterval{
     NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];//获取当前时间0秒后的时间
-    NSTimeInterval time = [date timeIntervalSince1970];// *1000 是精确到毫秒，不乘就是精确到秒
+    NSTimeInterval time = [date timeIntervalSince1970] *1000;//是精确到毫秒，不乘就是精确到秒
     return @(time);
 }
 
@@ -522,6 +524,7 @@
 
 #pragma mark - 登录之后需要执行的操作
 + (void)LoginInbeforeDone{
+    
     [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;
@@ -529,6 +532,22 @@
     [AutomaicUpCacheModel sharedDefault].isAutoThrough = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoAccident = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoFastAccident = NO;
+    
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *current = [formatter stringFromDate:now];
+    
+
+    NSString * sql = [NSString stringWithFormat:@"commitTimeString not like '%%%@%%'",current];
+    NSArray *array = [IllegalDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
+    
+    for (IllegalDBModel * model in array) {
+        [model deleteDB];
+    }
+    
+
+    
 }
 
 #pragma mark - 定位地址存储在plist上面

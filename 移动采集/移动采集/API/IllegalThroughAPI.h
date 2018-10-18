@@ -80,6 +80,7 @@ code:999 无采集记录,不用任何提示
 @property (nonatomic,copy)   NSArray   * files;             //事故图片 列表，最多可上传30张
 @property (nonatomic,copy)   NSString  * remarks;           //违停图片名称  违章图片名称，字符串列表。和图片一对一，名称统一命名，车牌近照（一张）、违停照片（可多张）
 @property (nonatomic,copy)   NSString  * taketimes;         //拍照时间 拍照时间，字符串列表，格式yyyy-MM-dd HH:mm:ss，和图片一对一
+@property (nonatomic,strong) NSNumber  * offtime;           //缓存时候的时间段
 
 @end
 
@@ -89,6 +90,9 @@ code:999 无采集记录,不用任何提示
 /****** 请求数据 ******/
 /****** 请求数据 ******/
 @property (nonatomic, strong) IllegalThroughSecSaveParam * param;
+
+@property (nonatomic, assign) BOOL isUpCache;
+@property (nonatomic, assign) CGFloat progress;
 
 /****** 返回数据 ******/
 //无返回参数

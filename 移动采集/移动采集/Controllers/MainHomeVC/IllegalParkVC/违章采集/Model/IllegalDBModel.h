@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IllegalParkAPI.h"
+#import "IllegalThroughAPI.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy)   NSString * ownId;                //属于谁未上传的违章记录
 @property (nonatomic,strong) NSNumber * commitTime;           //提交时间
+@property (nonatomic,copy)   NSString * commitTimeString;       //提交时间 YYYY-mm-dd
 
 @property (nonatomic,strong) NSNumber * roadId;               //道路ID 必填，从通用值【道路】获取ID
 @property (nonatomic,copy)   NSString * roadName;             //道路名字 如果roadId为0的时候设置
@@ -37,12 +39,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)   NSNumber * type;               //选填，默认1:违停，1001:朝向错误，1002:锁车，2001:信息录入
 @property (nonatomic,assign) BOOL  isAbnormal;                //是否异常
 
-
+@property (nonatomic,strong) NSNumber  * illegalThroughId;
+@property (nonatomic,strong)   NSArray   * secFiles;
+@property (nonatomic,copy)   NSString  * secRemarks;
+@property (nonatomic,copy)   NSString  * secTaketimes;
 
 
 
 - (instancetype)initWithIllegalParkParam:(IllegalParkSaveParam *) param;
 - (IllegalParkSaveParam *)mapIllegalParkSaveParam;
+
+
+
+- (IllegalThroughSecSaveParam *)mapIllegalThroughSecSaveParam;
 
 - (void)save;
 - (void)deleteDB;

@@ -19,6 +19,7 @@
         self.type = param.type;
         self.ownId = [ShareValue sharedDefault].phone;
         self.commitTime = [ShareFun getCurrentTimeInterval];
+        self.commitTimeString = [ShareFun timeWithTimeInterval:self.commitTime dateFormat:@"yyyy-MM-dd"];
         
         self.roadId =  param.roadId;
         self.roadName = param.roadName;
@@ -67,9 +68,11 @@
     param.isManualPos = self.isManualPos;
     param.type = self.type;
     
-    NSNumber * date_now = [ShareFun getCurrentTimeInterval];
-    NSNumber * offtime = @([date_now doubleValue] - [self.commitTime doubleValue]);
-    param.offtime = @([offtime integerValue]);
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.commitTime doubleValue]/1000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:0];
+   
+    NSTimeInterval seconds = [date2 timeIntervalSinceDate:date];
+    param.offtime = @([@(seconds) integerValue]);
     
     if (self.isAbnormal) {
         param.state = @9;
@@ -78,6 +81,25 @@
     return param;
 
 }
+
+- (IllegalThroughSecSaveParam *)mapIllegalThroughSecSaveParam{
+    
+    IllegalThroughSecSaveParam * param = [[IllegalThroughSecSaveParam alloc] init];
+    param.illegalThroughId = self.illegalThroughId;
+    param.files = self.secFiles;
+    param.remarks = self.secRemarks;
+    param.taketimes = self.secTaketimes;
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.commitTime doubleValue]/1000];
+    NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    NSTimeInterval seconds = [date2 timeIntervalSinceDate:date];
+    param.offtime = @([@(seconds) integerValue]);
+    
+    
+    return param;
+    
+}
+
 
 
 //重载、初始化单例、使用的LKDBHelper
@@ -115,7 +137,9 @@
     return [ImageFileInfo class];
 }
 
-
++(Class)__secFilesClass{
+    return [ImageFileInfo class];
+}
 
 #pragma mark - public
 
@@ -137,6 +161,11 @@
         [image deleteDB];
     }
     
+    for (ImageFileInfo * image in _secFiles) {
+        [image deleteDB];
+    }
+    
+    
     [IllegalDBModel deleteWithWhere:[NSString stringWithFormat:@"rowid =%ld",self.rowid]];
     
 }
@@ -147,7 +176,7 @@
     
     sql = [sql stringByAppendingFormat:@"ownId =%@ and type =%@",[ShareValue sharedDefault].phone,type];
     
-    return [IllegalDBModel searchWithWhere:sql orderBy:@"commitTime desc" offset:0 count:0];
+    return [IllegalDBModel searchWithWhere:sql orderBy:@"commitTime asc" offset:0 count:0];
 }
 
 

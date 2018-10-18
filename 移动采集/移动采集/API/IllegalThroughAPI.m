@@ -76,11 +76,6 @@
 
 @end
 
-
-
-
-
-
 #pragma mark - 违反禁令采集增加API
 
 @implementation IllegalThroughSaveManger
@@ -154,6 +149,13 @@
     }else{
         self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
         
+        LxPrintf(@"======================= 请求成功 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBObjectAsJson(self.responseModel);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
+        
         if (self.responseModel.code == CODE_NOLOGIN){
             
             [ShareFun loginOut];
@@ -169,6 +171,14 @@
     if (!self.isUpCache) {
         [super requestFailedFilter];
     }else{
+        
+        LxPrintf(@"======================= 请求失败 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBAnyVar(self.responseStatusCode);
+        LxDBAnyVar(self.error.localizedDescription);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
         
         if (self.responseStatusCode == CODE_TOKENTIMEOUT){
             
@@ -267,24 +277,78 @@
     
     if (self.param.files.count > 0) {
         self.isNeedLoadHud = NO;
+        WS(weakSelf);
         return ^(NSProgress *progress){
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-                DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
-                if (hud == nil) {
-                    hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
-                    hud.mode = DMProgressHUDModeProgress;
-                    hud.style = DMProgressHUDStyleDark;
-                    hud.text = @"正在上传...";
-                }
-                hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
-                
-            });
+            SW(strongSelf, weakSelf);
+            if (!strongSelf.isUpCache) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+                    DMProgressHUD *hud = [DMProgressHUD progressHUDForView:window];
+                    if (hud == nil) {
+                        hud = [DMProgressHUD showHUDAddedTo:window animation:DMProgressHUDAnimationGradient maskType:DMProgressHUDMaskTypeClear];
+                        hud.mode = DMProgressHUDModeProgress;
+                        hud.style = DMProgressHUDStyleDark;
+                        hud.text = @"正在上传...";
+                    }
+                    hud.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+                    
+                });
+            }else{
+                strongSelf.progress = 1.0 * progress.completedUnitCount / progress.totalUnitCount;
+            }
             
         };
     }else{
         return nil;
+    }
+    
+}
+
+- (void)requestCompleteFilter{
+    
+    if (!self.isUpCache) {
+        [super requestCompleteFilter];
+    }else{
+        self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
+        
+        LxPrintf(@"======================= 请求成功 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBObjectAsJson(self.responseModel);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
+        
+        if (self.responseModel.code == CODE_NOLOGIN){
+            
+            [ShareFun loginOut];
+            [LRShowHUD showError:@"登录超时" duration:1.2f];
+            
+        }
+    }
+    
+}
+
+- (void)requestFailedFilter {
+    
+    if (!self.isUpCache) {
+        [super requestFailedFilter];
+    }else{
+        
+        LxPrintf(@"======================= 请求失败 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBAnyVar(self.responseStatusCode);
+        LxDBAnyVar(self.error.localizedDescription);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
+        
+        if (self.responseStatusCode == CODE_TOKENTIMEOUT){
+            
+            [ShareFun loginOut];
+            
+            [LRShowHUD showError:@"登录超时" duration:1.2f];
+            
+        }
     }
     
 }

@@ -22,6 +22,8 @@
 #import "IllegalThroughAPI.h"
 #import <UIImageView+WebCache.h>
 #import "NetWorkHelper.h"
+#import "IllegalNetErrorView.h"
+#import "IllegalDBModel.h"
 
 
 @interface IllegalSecSaveVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -184,7 +186,9 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     if (indexPath.section == 0) {
         
         AccidentPicListModel *t_model = self.secDetailModel.pictures[indexPath.row];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_model.imgUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:t_model.imgUrl] placeholderImage:[UIImage imageNamed:@"btn_updatePhoto"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            t_model.picImage = image;
+        }];
         cell.lb_title.text = [ShareFun timeWithTimeInterval:t_model.uploadTime dateFormat:@"HH:mm:ss"];
         
     }else{
@@ -464,6 +468,28 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
 
 - (void)handleCommitClicked{
 
+    WS(weakSelf);
+    
+    [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
+        
+        //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
+        //10为4G网络
+        [NetworkStatusMonitor StopMonitor];
+        
+        SW(strongSelf, weakSelf);
+        if (NetworkStatus != 10 && NetworkStatus != 1) {
+            [strongSelf showIllegalNetErrorView];
+        }else{
+            //提交违章数据
+            [strongSelf submitIllegalData];
+        }
+        
+    }];
+
+}
+
+- (void)submitIllegalData{
+    
     [self configParamInFilesAndRemarksAndTimes];
     
     LxDBObjectAsJson(_param);
@@ -472,7 +498,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     IllegalThroughSecSaveManger *manger = [[IllegalThroughSecSaveManger alloc] init];
     manger.param =_param;
     [manger configLoadingTitle:@"提交"];
-
+    
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         SW(strongSelf, weakSelf);
@@ -482,11 +508,14 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
                 strongSelf.saveSuccessBlock();
             }
         }
-    
+        
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        SW(strongSelf, weakSelf);
+        [strongSelf showIllegalNetErrorView];
         
     }];
     
+ 
 }
 
 #pragma mark - 弹出照相机
@@ -580,6 +609,100 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
         }
         
     }
+    
+}
+
+
+#pragma mark - 显示网络问题时候的选项
+
+- (void)showIllegalNetErrorView{
+    
+    WS(weakSelf);
+    
+    IllegalNetErrorView * view = [IllegalNetErrorView initCustomView];
+    
+    view.saveBlock = ^{
+        SW(strongSelf, weakSelf);
+        
+        [strongSelf configParamInFilesAndRemarksAndTimes];
+        IllegalDBModel * illegalDBModel = [[IllegalDBModel alloc] init];
+        illegalDBModel.type = @(ParkTypeThrough);
+        illegalDBModel.ownId = [ShareValue sharedDefault].phone;
+        illegalDBModel.illegalThroughId = strongSelf.param.illegalThroughId;
+        illegalDBModel.secFiles = strongSelf.param.files;
+        illegalDBModel.secRemarks = strongSelf.param.remarks;
+        illegalDBModel.secTaketimes = strongSelf.param.taketimes;
+        illegalDBModel.roadId = strongSelf.secDetailModel.illegalCollect.roadId;
+        illegalDBModel.roadName = strongSelf.secDetailModel.roadName;
+        illegalDBModel.address = strongSelf.secDetailModel.illegalCollect.address;
+        illegalDBModel.carNo = strongSelf.secDetailModel.illegalCollect.carNo;
+        illegalDBModel.commitTime = strongSelf.secDetailModel.illegalCollect.collectTime;
+        illegalDBModel.commitTimeString = [ShareFun timeWithTimeInterval:illegalDBModel.commitTime dateFormat:@"yyyy-MM-dd"];
+        illegalDBModel.isAbnormal = [strongSelf.secDetailModel.illegalCollect.state isEqualToNumber:@9] ? YES : NO;
+        
+        
+        NSMutableArray *t_arr_files = [NSMutableArray array];
+        NSMutableArray *t_arr_remarks = [NSMutableArray array];
+        NSMutableArray *t_arr_taketimes = [NSMutableArray array];
+        
+        if (strongSelf.secDetailModel.pictures && strongSelf.secDetailModel.pictures.count > 0) {
+            
+            for (int i = 0; i < strongSelf.secDetailModel.pictures.count; i++) {
+                
+                AccidentPicListModel * model = strongSelf.secDetailModel.pictures[i];
+                
+                ImageFileInfo *imageInfo = [[ImageFileInfo alloc] init];
+                imageInfo.image = model.picImage;
+                [t_arr_files addObject:imageInfo];
+                [t_arr_remarks addObject:model.picName];
+                [t_arr_taketimes addObject:[ShareFun timeWithTimeInterval:model.uploadTime]];
+                
+            }
+ 
+        }
+        
+        for (ImageFileInfo *imageInfo in strongSelf.param.files) {
+            [t_arr_files addObject:imageInfo];
+        }
+        
+        NSArray *t_arr_1 = [strongSelf.param.remarks componentsSeparatedByString:@","];
+        for (NSString * remark in t_arr_1) {
+            [t_arr_remarks addObject:remark];
+        }
+        
+        NSArray *t_arr_2 = [strongSelf.param.taketimes componentsSeparatedByString:@","];
+        for (NSString * taketimes in t_arr_2) {
+            [t_arr_taketimes addObject:taketimes];
+        }
+        
+        if (t_arr_files.count > 0) {
+            illegalDBModel.files = t_arr_files;
+        }
+        
+        if (t_arr_remarks.count > 0) {
+            illegalDBModel.remarks = [t_arr_remarks componentsJoinedByString:@","];
+        }
+        
+        if (t_arr_taketimes.count > 0) {
+            illegalDBModel.taketimes = [t_arr_taketimes componentsJoinedByString:@","];
+        }
+        
+        [illegalDBModel save];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALPARK_ADDCACHE_SUCCESS object:nil];
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+        if (strongSelf.saveSuccessBlock) {
+            strongSelf.saveSuccessBlock();
+        }
+        
+    };
+    
+    view.upBlock = ^{
+        SW(strongSelf, weakSelf);
+        [strongSelf submitIllegalData];
+        
+    };
+    
+    [view show];
     
 }
 

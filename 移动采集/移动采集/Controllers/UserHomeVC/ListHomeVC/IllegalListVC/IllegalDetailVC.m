@@ -66,15 +66,17 @@
     
     WS(weakSelf);
     
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        if (strongSelf.illegalType == IllegalTypePark) {
-            [strongSelf loadIllegalParkDetail];
-        }else if (strongSelf.illegalType == IllegalTypeThrough){
-            [strongSelf loadIllegalThroughDetail];
-        }
-    };
+    if (!self.cacheModel) {
+        [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
+            SW(strongSelf, weakSelf);
+            strongSelf.tb_content.isNetAvailable = NO;
+            if (strongSelf.illegalType == IllegalTypePark) {
+                [strongSelf loadIllegalParkDetail];
+            }else if (strongSelf.illegalType == IllegalTypeThrough){
+                [strongSelf loadIllegalThroughDetail];
+            }
+        };
+    }
     
 }
 

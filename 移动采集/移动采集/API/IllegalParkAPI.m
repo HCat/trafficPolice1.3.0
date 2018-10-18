@@ -92,6 +92,13 @@
     }else{
         self.responseModel = [LRBaseResponse modelWithDictionary:self.responseJSONObject];
         
+        LxPrintf(@"======================= 请求成功 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBObjectAsJson(self.responseModel);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
+        
         if (self.responseModel.code == CODE_NOLOGIN){
             
             [ShareFun loginOut];
@@ -99,7 +106,7 @@
             
         }
     }
-
+    
 }
 
 - (void)requestFailedFilter {
@@ -107,7 +114,15 @@
     if (!self.isUpCache) {
         [super requestFailedFilter];
     }else{
-       
+        
+        LxPrintf(@"======================= 请求失败 =======================");
+        LxPrintf(@"\n");
+        LxDBAnyVar(self.description);
+        LxDBAnyVar(self.responseStatusCode);
+        LxDBAnyVar(self.error.localizedDescription);
+        LxPrintf(@"\n");
+        LxPrintf(@"======================= end =======================");
+        
         if (self.responseStatusCode == CODE_TOKENTIMEOUT){
             
             [ShareFun loginOut];
@@ -116,12 +131,8 @@
             
         }
     }
- 
+    
 }
-
-
-
-
 
 @end
 

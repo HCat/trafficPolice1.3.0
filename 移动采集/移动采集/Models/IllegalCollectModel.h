@@ -18,4 +18,6 @@
 @property (nonatomic,strong) NSNumber * state;          //状态
 @property (nonatomic,copy)   NSString * stateName;      //状态名称
 
+
+
 @end

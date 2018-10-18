@@ -51,8 +51,10 @@ LRSingletonM(Default)
             
             if (strongSelf.cacheType == UpCacheTypePark || strongSelf.cacheType == UpCacheTypeReversePark || strongSelf.cacheType == UpCacheTypeLockPark || strongSelf.cacheType == UpCacheTypeCarInfoAdd) {
                 
+                IllegalDBModel * model = (IllegalDBModel *)input_param;
+                
                 IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
-                manger.param = input_param;
+                manger.param = [model mapIllegalParkSaveParam];
                 if ([manger.param.type isEqualToNumber:@(ParkTypeCarInfoAdd)]) {
                     manger.param.state = nil;
                 }
@@ -88,39 +90,137 @@ LRSingletonM(Default)
                 
             }else if(self.cacheType == UpCacheTypeThrough){
                 
-                IllegalThroughSaveManger *manger = [[IllegalThroughSaveManger alloc] init];
-                manger.param = input_param;
-                manger.param.type = nil;
-    
-                manger.isUpCache = YES;
+                IllegalDBModel * model = (IllegalDBModel *)input_param;
                 
-                [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
-                    RACTuple *tuple = RACTuplePack(x,index);
-                    [strongSelf.rac_progress sendNext:tuple];
-                }];
-                
-                
-                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                if (model.illegalThroughId) {
                     
-                    if (manger.responseModel.code == CODE_SUCCESS) {
-                        [subscriber sendNext:@"发送成功"];
-                        [subscriber sendCompleted];
+                    IllegalThroughSecSaveManger *manger = [[IllegalThroughSecSaveManger alloc] init];
+                    manger.param = [model mapIllegalThroughSecSaveParam];
+                    manger.isUpCache = YES;
+                    [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
+                        RACTuple *tuple = RACTuplePack(x,index);
+                        [strongSelf.rac_progress sendNext:tuple];
+                    }];
+                    
+                    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                         
-                    }else{
+                        if (manger.responseModel.code == CODE_SUCCESS) {
+                            [subscriber sendNext:@"发送成功"];
+                            [subscriber sendCompleted];
+                            
+                        }else{
+                            
+                            NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                        code:10086
+                                                                    userInfo:nil];
+                            [subscriber sendError:error];
+                            
+                        }
                         
-                        NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
-                                                                    code:10086
-                                                                userInfo:nil];
-                        [subscriber sendError:error];
+                    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
                         
-                    }
+                        [subscriber sendError:request.error];
+                        
+                    }];
                     
                     
-                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    [subscriber sendError:request.error];
-                }];
+                }else{
+                    
+                    IllegalThroughCarNoSecManger * manger = [[IllegalThroughCarNoSecManger alloc] init];
+                    manger.carNo = model.carNo;
+                    manger.roadId = model.roadId;
+                    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                        
+                        if (manger.responseModel.code == 0) {
+                        
+                            NSNumber * illegalThroughId = manger.responseModel.data[@"id"];
+                            
+                            IllegalThroughSecSaveParam * param = [[IllegalThroughSecSaveParam alloc] init];
+                            param.illegalThroughId = illegalThroughId;
+                            param.files = @[model.files[0]];
+                            param.remarks =  @"二次采集照";
+                            param.taketimes = [model.taketimes componentsSeparatedByString:@","][0];
+                            
+                            model.illegalThroughId = param.illegalThroughId;
+                            model.secFiles = param.files;
+                            model.secRemarks = param.remarks;
+                            model.secTaketimes = param.taketimes;
+                            [model save];
+                            
+                            NSDate* date = [NSDate dateWithTimeIntervalSince1970:[model.commitTime doubleValue]/1000];
+                            NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:0];
+                            NSTimeInterval seconds = [date2 timeIntervalSinceDate:date];
+                            param.offtime = @([@(seconds) integerValue]);
+                            
+                            IllegalThroughSecSaveManger *manger_sec = [[IllegalThroughSecSaveManger alloc] init];
+                            manger_sec.param = param;
+                            manger_sec.isUpCache = YES;
+                            [RACObserve(manger_sec,progress) subscribeNext:^(id  _Nullable x) {
+                                RACTuple *tuple = RACTuplePack(x,index);
+                                [strongSelf.rac_progress sendNext:tuple];
+                            }];
+                            
+                            [manger_sec startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                
+                                if (manger_sec.responseModel.code == CODE_SUCCESS) {
+                                    [subscriber sendNext:@"发送成功"];
+                                    [subscriber sendCompleted];
+                                    
+                                }else{
+                                    
+                                    NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                                code:10086
+                                                                            userInfo:nil];
+                                    [subscriber sendError:error];
+                                    
+                                }
+                                
+                            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                
+                                [subscriber sendError:request.error];
+                                
+                            }];
+                            
+                        }else {
+                            
+                            IllegalThroughSaveManger *manger = [[IllegalThroughSaveManger alloc] init];
+                            manger.param = [model mapIllegalParkSaveParam];
+                            manger.param.type = nil;
+                            manger.isUpCache = YES;
+                            
+                            [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
+                                RACTuple *tuple = RACTuplePack(x,index);
+                                [strongSelf.rac_progress sendNext:tuple];
+                            }];
+                            
+                            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                
+                                if (manger.responseModel.code == CODE_SUCCESS) {
+                                    [subscriber sendNext:@"发送成功"];
+                                    [subscriber sendCompleted];
+                                    
+                                }else{
+                                    
+                                    NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                                code:10086
+                                                                            userInfo:nil];
+                                    [subscriber sendError:error];
+                                    
+                                }
+                                
+                                
+                            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                [subscriber sendError:request.error];
+                            }];
+                            
+                        }
+                        
+                    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                        [subscriber sendError:request.error];
+                    }];
+                    
+                }
                 
-            
             }else if(self.cacheType == UpCacheTypeAccident || self.cacheType == UpCacheTypeFastAccident){
                 
                 
@@ -143,7 +243,7 @@ LRSingletonM(Default)
     if (self.cacheType == UpCacheTypePark || self.cacheType == UpCacheTypeReversePark || self.cacheType == UpCacheTypeLockPark || self.cacheType == UpCacheTypeCarInfoAdd || self.cacheType == UpCacheTypeThrough) {
         
         IllegalDBModel * model = (IllegalDBModel *)data;
-        RACTuple *tuple = RACTuplePack([model mapIllegalParkSaveParam],@(model.rowid));
+        RACTuple *tuple = RACTuplePack(model,@(model.rowid));
         RACSignal * signal = [self.racCommand execute:tuple];
         
         WS(weakSelf);
