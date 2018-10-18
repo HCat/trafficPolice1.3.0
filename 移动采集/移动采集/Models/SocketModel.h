@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong) NSNumber *fromUserId;
 @property (nonatomic,strong) NSNumber *msgType;
+@property (nonatomic,strong) NSNumber *totalStep;
 @property (nonatomic,strong) id message;
 
 @end

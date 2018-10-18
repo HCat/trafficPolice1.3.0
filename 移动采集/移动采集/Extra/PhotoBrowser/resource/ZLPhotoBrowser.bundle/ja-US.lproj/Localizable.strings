@@ -1,4 +1,5 @@
 "ZLPhotoBrowserCameraText" = "カメラ";
+"ZLPhotoBrowserCameraRecordText" = "撮影";
 "ZLPhotoBrowserAblumText" = "アルバム";
 "ZLPhotoBrowserCancelText" = "取り消し";
 
@@ -25,11 +26,31 @@
 "ZLPhotoBrowserLoadingText" = "ロード中，お待ち下さい";
 "ZLPhotoBrowserHandleText" = "後ほど...";
 
-"ZLPhotoBrowserSaveImageErrorText" = "アルバムには写真を保存する";
+"ZLPhotoBrowserSaveImageErrorText" = "画像の保存に失敗しました";
 "ZLPhotoBrowserMaxSelectCountText" = "最大選択数: %ld";
+"ZLPhotoBrowserMaxVideoDurationText" = "%ldsより長い動画は選択できません";
 
 "ZLPhotoBrowserNoCameraAuthorityText" = "「設定」->「プライパシー」->「カメラ」から、%@があなたのデバイスのカメラにアクセスする許可をしてください";
 "ZLPhotoBrowserNoAblumAuthorityText" = "%@があなたのアルバムにアクセスするには「設定」->「プライバシー」->「写真」";
+"ZLPhotoBrowserNoMicrophoneAuthorityText" = "「設定」->「プライパシー」->「カメラ」から、%@があなたのデバイスのマイクにアクセスする許可をしてください";
 
 "ZLPhotoBrowseriCloudPhotoText" = "写真のライブラリをダウンロードした後の再試行";
 "ZLPhotoBrowseriCloudVideoText" = "iCloudから同期できません";
+
+"ZLPhotoBrowserLoadNetImageFailed" = "ロード失敗";
+"ZLPhotoBrowserSaveVideoFailed" = "ビデオの保存に失敗しました";
+
+
+"ZLPhotoBrowserCameraRoll" = "カメラロール";
+"ZLPhotoBrowserPanoramas" = "パノラマ";
+"ZLPhotoBrowserVideos" = "ビデオ";
+"ZLPhotoBrowserFavorites" = "お気に入り";
+"ZLPhotoBrowserTimelapses" = "タイムラプス";
+"ZLPhotoBrowserRecentlyAdded" = "最後に追加した項目";
+"ZLPhotoBrowserBursts" = "バースト";
+"ZLPhotoBrowserSlomoVideos" = "スローモーション";
+"ZLPhotoBrowserSelfPortraits" = "セルフイー";
+"ZLPhotoBrowserScreenshots" = "スクリーンショット";
+"ZLPhotoBrowserDepthEffect" = "ポートレート";
+"ZLPhotoBrowserLivePhotos" = "Live Photos";
+"ZLPhotoBrowserAnimated" = "アニメーション";

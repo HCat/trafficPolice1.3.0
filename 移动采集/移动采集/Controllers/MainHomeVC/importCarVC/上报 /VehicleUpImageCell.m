@@ -149,7 +149,7 @@
     
     UIButton * t_btn = (UIButton *)sender;
     NSInteger tag = t_btn.tag;
-     [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:tag-100];
+     [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:tag-100 isOriginal:NO];
     
 }
 
@@ -160,21 +160,22 @@
     
     VehicleUpVC * vc = (VehicleUpVC *)[ShareFun findViewController:self withClass:[VehicleUpVC class]];
     
+    
     ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
-    actionSheet.sortAscending = NO;
-    actionSheet.allowSelectImage = YES;
-    actionSheet.allowSelectGif = NO;
-    actionSheet.allowSelectVideo = NO;
-    actionSheet.allowSelectLivePhoto = NO;
-    actionSheet.allowForceTouch = NO;
-    actionSheet.allowEditImage = NO;
-    actionSheet.allowTakePhotoInLibrary = YES;
-    actionSheet.showCaptureImageOnTakePhotoBtn = YES;
+    actionSheet.configuration.allowSelectImage = YES;
+    actionSheet.configuration.allowSelectGif = NO;
+    actionSheet.configuration.allowSelectVideo = NO;
+    actionSheet.configuration.allowSelectLivePhoto = NO;
+    actionSheet.configuration.allowForceTouch = NO;
+    actionSheet.configuration.allowEditImage = NO;
+    actionSheet.configuration.allowTakePhotoInLibrary = YES;
+    actionSheet.configuration.showCaptureImageOnTakePhotoBtn = YES;
     //设置照片最大预览数
-    actionSheet.maxPreviewCount = 9;
-    actionSheet.maxSelectCount = 9;
-    actionSheet.cellCornerRadio = 0;
-    actionSheet.showSelectBtn = NO;
+    actionSheet.configuration.maxPreviewCount = 9;
+    actionSheet.configuration.maxSelectCount = 9;
+    actionSheet.configuration.cellCornerRadio = 0;
+    actionSheet.configuration.showSelectBtn = NO;
+    
     actionSheet.sender = vc;
     
     NSMutableArray *arr = [NSMutableArray array];
@@ -183,7 +184,7 @@
             [arr addObject:asset];
         }
     }
-    actionSheet.arrSelectedAssets =  actionSheet.maxSelectCount > 1 ? arr : nil;
+    actionSheet.arrSelectedAssets =  actionSheet.configuration.maxSelectCount > 1 ? arr : nil;
     
     WS(weakSelf);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {

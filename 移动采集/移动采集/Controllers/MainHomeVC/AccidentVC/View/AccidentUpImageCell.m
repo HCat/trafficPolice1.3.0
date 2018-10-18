@@ -152,7 +152,7 @@
         
     } else {
         
-        [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:t_btn.tag];
+        [[self getPhotoActionSheet] previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:t_btn.tag isOriginal:NO];
     }
     
     
@@ -166,22 +166,23 @@
 
 - (ZLPhotoActionSheet *)getPhotoActionSheet
 {
-    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
-    actionSheet.sortAscending = NO;
-    actionSheet.allowSelectImage = YES;
-    actionSheet.allowSelectGif = NO;
-    actionSheet.allowSelectVideo = NO;
-    actionSheet.allowSelectLivePhoto = NO;
-    actionSheet.allowForceTouch = NO;
-    actionSheet.allowEditImage = NO;
-    actionSheet.allowTakePhotoInLibrary = YES;
-    actionSheet.showCaptureImageOnTakePhotoBtn = YES;
-    //设置照片最大预览数
-    actionSheet.maxPreviewCount = kmaxPreviewCount;
-    actionSheet.maxSelectCount = kmaxSelectCount;
-    actionSheet.cellCornerRadio = 0;
-    actionSheet.showSelectBtn = NO;
     AccidentManageVC * vc = (AccidentManageVC *)[ShareFun findViewController:self withClass:[AccidentManageVC class]];
+    ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+    actionSheet.configuration.sortAscending = NO;
+    actionSheet.configuration.allowSelectImage = YES;
+    actionSheet.configuration.allowSelectGif = NO;
+    actionSheet.configuration.allowSelectVideo = NO;
+    actionSheet.configuration.allowSelectLivePhoto = NO;
+    actionSheet.configuration.allowForceTouch = NO;
+    actionSheet.configuration.allowEditImage = NO;
+    actionSheet.configuration.allowTakePhotoInLibrary = YES;
+    actionSheet.configuration.showCaptureImageOnTakePhotoBtn = YES;
+    //设置照片最大预览数
+    actionSheet.configuration.maxPreviewCount = kmaxPreviewCount;
+    actionSheet.configuration.maxSelectCount = kmaxSelectCount;
+    actionSheet.configuration.cellCornerRadio = 0;
+    actionSheet.configuration.showSelectBtn = NO;
+
     actionSheet.sender = vc;
     
     NSMutableArray *arr = [NSMutableArray array];
@@ -190,7 +191,7 @@
             [arr addObject:asset];
         }
     }
-    actionSheet.arrSelectedAssets =  actionSheet.maxSelectCount > 1 ? arr : nil;
+    actionSheet.arrSelectedAssets =  actionSheet.configuration.maxSelectCount > 1 ? arr : nil;
     
     WS(weakSelf);
     

@@ -48,6 +48,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSMotionUsageDescription</key>
+	<string>获取您的运动用来更好的完成您的任务,是否允许？</string>
 	<key>NSCameraUsageDescription</key>
 	<string>App会在违停录入时访问您的相机权限,是否允许？</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

@@ -57,7 +57,6 @@
     
     if ([ShareValue sharedDefault].token) {
         
-        [ShareFun openWebSocket];
         [ShareFun LoginInbeforeDone];
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         } seq:0];
@@ -91,7 +90,7 @@
     
     //设置导航栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] lt_setBackgroundColor:DefaultNavColor];
+    //[[UINavigationBar appearance] lt_setBackgroundColor:DefaultNavColor];
 
     [[UINavigationBar appearance] setTranslucent:NO];
     [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];

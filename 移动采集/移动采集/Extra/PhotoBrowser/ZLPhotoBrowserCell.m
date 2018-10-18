@@ -11,6 +11,12 @@
 #import "ZLPhotoManager.h"
 #import "ZLDefine.h"
 
+@interface ZLPhotoBrowserCell ()
+
+@property (nonatomic, copy) NSString *identifier;
+
+@end
+
 @implementation ZLPhotoBrowserCell
 
 - (void)awakeFromNib {
@@ -27,10 +33,15 @@
         self.headImageView.layer.cornerRadius = self.cornerRadio;
     }
     
-    weakify(self);
-    [ZLPhotoManager requestImageForAsset:model.headImageAsset size:CGSizeMake(GetViewWidth(self)*3, GetViewHeight(self)*3) completion:^(UIImage *image, NSDictionary *info) {
-        strongify(weakSelf);
-        strongSelf.headImageView.image = image;
+    zl_weakify(self);
+    
+    self.identifier = model.headImageAsset.localIdentifier;
+    [ZLPhotoManager requestImageForAsset:model.headImageAsset size:CGSizeMake(GetViewHeight(self)*2.5, GetViewHeight(self)*2.5) completion:^(UIImage *image, NSDictionary *info) {
+        zl_strongify(weakSelf);
+        
+        if ([strongSelf.identifier isEqualToString:model.headImageAsset.localIdentifier]) {
+            strongSelf.headImageView.image = image?:GetImageWithName(@"zl_defaultphoto");
+        }
     }];
     
     self.labTitle.text = model.title;

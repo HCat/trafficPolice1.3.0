@@ -11,7 +11,7 @@
 #import "ZLPhotoManager.h"
 #import "ZLDefine.h"
 #import "ToastUtils.h"
-#import "UIButton+Block.h"
+#import "UIButton+EnlargeTouchArea.h"
 
 @interface ZLCollectionCell ()
 
@@ -30,11 +30,11 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    //static int i = 0;
-    //NSLog(@"%d", i++);
     self.imageView.frame = self.bounds;
     self.btnSelect.frame = CGRectMake(GetViewWidth(self.contentView)-26, 5, 23, 23);
-    //    self.topView.frame = self.bounds;
+    if (self.showMask) {
+        self.topView.frame = self.bounds;
+    }
     self.videoBottomView.frame = CGRectMake(0, GetViewHeight(self)-15, GetViewWidth(self), 15);
     self.videoImageView.frame = CGRectMake(5, 1, 16, 12);
     self.liveImageView.frame = CGRectMake(5, -1, 15, 15);
@@ -51,6 +51,7 @@
         _imageView.clipsToBounds = YES;
         [self.contentView addSubview:_imageView];
         
+        [self.contentView bringSubviewToFront:_topView];
         [self.contentView bringSubviewToFront:self.videoBottomView];
         [self.contentView bringSubviewToFront:self.btnSelect];
     }
@@ -61,10 +62,9 @@
 {
     if (!_btnSelect) {
         _btnSelect = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btnSelect setEnlargeEdgeWithTop:10.f right:10.f bottom:10.f left:10.f];
         _btnSelect.frame = CGRectMake(GetViewWidth(self.contentView)-26, 5, 23, 23);
-        [_btnSelect setBackgroundImage:GetImageWithName(@"btn_unselected.png") forState:UIControlStateNormal];
-        [_btnSelect setBackgroundImage:GetImageWithName(@"btn_selected.png") forState:UIControlStateSelected];
+        [_btnSelect setBackgroundImage:GetImageWithName(@"zl_btn_unselected") forState:UIControlStateNormal];
+        [_btnSelect setBackgroundImage:GetImageWithName(@"zl_btn_selected") forState:UIControlStateSelected];
         [_btnSelect addTarget:self action:@selector(btnSelectClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.btnSelect];
     }
@@ -74,7 +74,7 @@
 - (UIImageView *)videoBottomView
 {
     if (!_videoBottomView) {
-        _videoBottomView = [[UIImageView alloc] initWithImage:GetImageWithName(@"videoView")];
+        _videoBottomView = [[UIImageView alloc] initWithImage:GetImageWithName(@"zl_videoView")];
         _videoBottomView.frame = CGRectMake(0, GetViewHeight(self)-15, GetViewWidth(self), 15);
         [self.contentView addSubview:_videoBottomView];
     }
@@ -85,7 +85,7 @@
 {
     if (!_videoImageView) {
         _videoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 1, 16, 12)];
-        _videoImageView.image = GetImageWithName(@"video");
+        _videoImageView.image = GetImageWithName(@"zl_video");
         [self.videoBottomView addSubview:_videoImageView];
     }
     return _videoImageView;
@@ -95,7 +95,7 @@
 {
     if (!_liveImageView) {
         _liveImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, -1, 15, 15)];
-        _liveImageView.image = GetImageWithName(@"livePhoto");
+        _liveImageView.image = GetImageWithName(@"zl_livePhoto");
         [self.videoBottomView addSubview:_liveImageView];
     }
     return _liveImageView;
@@ -113,19 +113,16 @@
     return _timeLabel;
 }
 
-//- (UIView *)topView
-//{
-//    if (!_topView) {
-//        _topView = [[UIView alloc] init];
-//        _topView.backgroundColor = [UIColor whiteColor];
-//        _topView.alpha = 0.5;
-//        _topView.userInteractionEnabled = NO;
-//        _topView.hidden = YES;
-//        [self.contentView addSubview:_topView];
-//        [self.contentView bringSubviewToFront:_topView];
-//    }
-//    return _topView;
-//}
+- (UIView *)topView
+{
+    if (!_topView) {
+        _topView = [[UIView alloc] init];
+        _topView.userInteractionEnabled = NO;
+        _topView.hidden = YES;
+        [self.contentView addSubview:_topView];
+    }
+    return _topView;
+}
 
 - (void)setModel:(ZLPhotoModel *)model
 {
@@ -137,52 +134,50 @@
     }
     
     if (model.type == ZLAssetMediaTypeVideo) {
-        self.btnSelect.hidden = YES;
         self.videoBottomView.hidden = NO;
         self.videoImageView.hidden = NO;
         self.liveImageView.hidden = YES;
         self.timeLabel.text = model.duration;
-//        if (self.isSelectedImage) {
-//            self.topView.hidden = !self.isSelectedImage();
-//        }
     } else if (model.type == ZLAssetMediaTypeGif) {
-        self.btnSelect.hidden = self.allSelectGif?:!self.showSelectBtn;
         self.videoBottomView.hidden = !self.allSelectGif;
         self.videoImageView.hidden = YES;
         self.liveImageView.hidden = YES;
         self.timeLabel.text = @"GIF";
-//        if (self.allSelectGif && self.isSelectedImage) {
-//            self.topView.hidden = self.allSelectGif && !self.isSelectedImage();
-//        }
     } else if (model.type == ZLAssetMediaTypeLivePhoto) {
-        self.btnSelect.hidden = self.allSelectLivePhoto?:!self.showSelectBtn;
         self.videoBottomView.hidden = !self.allSelectLivePhoto;
         self.videoImageView.hidden = YES;
         self.liveImageView.hidden = NO;
         self.timeLabel.text = @"Live";
-//        if (self.allSelectLivePhoto && self.isSelectedImage) {
-//            self.topView.hidden = self.allSelectLivePhoto && !self.isSelectedImage();
-//        }
     } else {
-        self.btnSelect.hidden = !self.showSelectBtn;
         self.videoBottomView.hidden = YES;
-//        self.topView.hidden = YES;
     }
     
+    if (self.showMask) {
+        self.topView.backgroundColor = [self.maskColor colorWithAlphaComponent:.2];
+        self.topView.hidden = !model.isSelected;
+    }
+    
+    self.btnSelect.hidden = !self.showSelectBtn;
+    self.btnSelect.enabled = self.showSelectBtn;
     self.btnSelect.selected = model.isSelected;
-
+    
+    if (self.showSelectBtn) {
+        //扩大点击区域
+        [_btnSelect setEnlargeEdgeWithTop:0 right:0 bottom:20 left:20];
+    }
+    
     CGSize size;
     size.width = GetViewWidth(self) * 1.7;
     size.height = GetViewHeight(self) * 1.7;
     
-    weakify(self);
-    if (model.asset && self.imageRequestID >= 0) {
+    zl_weakify(self);
+    if (model.asset && self.imageRequestID >= PHInvalidImageRequestID) {
         [[PHCachingImageManager defaultManager] cancelImageRequest:self.imageRequestID];
     }
     self.identifier = model.asset.localIdentifier;
     self.imageView.image = nil;
     self.imageRequestID = [ZLPhotoManager requestImageForAsset:model.asset size:size completion:^(UIImage *image, NSDictionary *info) {
-        strongify(weakSelf);
+        zl_strongify(weakSelf);
         
         if ([strongSelf.identifier isEqualToString:model.asset.localIdentifier]) {
             strongSelf.imageView.image = image;
@@ -207,7 +202,12 @@
 
 
 //////////////////////////////////////
+
+#if __has_feature(modules)
 @import AVFoundation;
+#else
+#import <AVFoundation/AVFoundation.h>
+#endif
 
 @interface ZLTakePhotoCell ()
 
@@ -222,15 +222,17 @@
 
 - (void)dealloc
 {
-    [self.session stopRunning];
-    self.session = nil;
+    if ([_session isRunning]) {
+        [_session stopRunning];
+    }
+    _session = nil;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.imageView = [[UIImageView alloc] initWithImage:GetImageWithName(@"takePhoto")];
+        self.imageView = [[UIImageView alloc] initWithImage:GetImageWithName(@"zl_takePhoto")];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         CGFloat width = GetViewHeight(self)/3;
         self.imageView.frame = CGRectMake(0, 0, width, width);
@@ -249,14 +251,28 @@
 
 - (void)startCapture
 {
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
     if (![UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera]) {
+         UIImagePickerControllerSourceTypeCamera] ||
+        status == AVAuthorizationStatusRestricted ||
+        status == AVAuthorizationStatusDenied) {
         return;
     }
+    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        if (!granted) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.session stopRunning];
+                [self.previewLayer removeFromSuperlayer];
+            });
+        }
+    }];
     
     if (self.session && [self.session isRunning]) {
         return;
     }
+    
     [self.session stopRunning];
     [self.session removeInput:self.videoInput];
     [self.session removeOutput:self.stillImageOutPut];
@@ -267,6 +283,7 @@
     self.session = [[AVCaptureSession alloc] init];
     self.videoInput = [AVCaptureDeviceInput deviceInputWithDevice:[self backCamera] error:nil];
     self.stillImageOutPut = [[AVCaptureStillImageOutput alloc] init];
+    
     //这是输出流的设置参数AVVideoCodecJPEG参数表示以JPEG的图片格式输出图片
     NSDictionary *dicOutputSetting = [NSDictionary dictionaryWithObject:AVVideoCodecJPEG forKey:AVVideoCodecKey];
     [self.stillImageOutPut setOutputSettings:dicOutputSetting];
@@ -285,9 +302,7 @@
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     [self.contentView.layer insertSublayer:self.previewLayer atIndex:0];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.session startRunning];
-    });
+    [self.session startRunning];
 }
 
 - (AVCaptureDevice *)backCamera {

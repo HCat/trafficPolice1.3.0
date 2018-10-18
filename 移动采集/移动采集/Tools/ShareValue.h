@@ -74,6 +74,7 @@ LRSingletonH(Default)
 
 @property (nonatomic, strong) NSNumber *frequency; //websocket上传频率
 @property (nonatomic, strong) NSDate *uptime; //上报截止时间
+@property (nonatomic, strong) NSDate *upStepTime; //上报步数时间
 
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值

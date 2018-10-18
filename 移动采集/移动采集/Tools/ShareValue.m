@@ -95,6 +95,15 @@ LRSingletonM(Default)
     return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_UPTIME];
 }
 
+- (void)setUpStepTime:(NSDate *)upStepTime{
+    [[NSUserDefaults standardUserDefaults] setObject:upStepTime forKey:USERDEFAULT_KEY_UPSTEPTIME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSDate *)upStepTime{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULT_KEY_UPSTEPTIME];
+}
+
 
 - (AccidentGetCodesResponse *)accidentCodes{
 

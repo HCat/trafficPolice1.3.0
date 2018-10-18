@@ -16,6 +16,8 @@ typedef NS_ENUM(NSUInteger, ZLAssetMediaType) {
     ZLAssetMediaTypeLivePhoto,
     ZLAssetMediaTypeVideo,
     ZLAssetMediaTypeAudio,
+    ZLAssetMediaTypeNetImage,
+    ZLAssetMediaTypeNetVideo,
 };
 
 @interface ZLPhotoModel : NSObject
@@ -27,7 +29,12 @@ typedef NS_ENUM(NSUInteger, ZLAssetMediaType) {
 //视频时长
 @property (nonatomic, copy) NSString *duration;
 //是否被选择
-@property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, assign, getter=isSelected) BOOL selected;
+
+//网络/本地 图片url
+@property (nonatomic, strong) NSURL *url ;
+//图片
+@property (nonatomic, strong) UIImage *image;
 
 /**初始化model对象*/
 + (instancetype)modelWithAsset:(PHAsset *)asset type:(ZLAssetMediaType)type duration:(NSString *)duration;

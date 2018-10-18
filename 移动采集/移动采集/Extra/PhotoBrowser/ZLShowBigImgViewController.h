@@ -12,17 +12,34 @@
 @class ZLPhotoModel;
 
 @interface ZLShowBigImgViewController : UIViewController
+{
+    @public
+    //自定义导航视图
+    UIView *_navView;
+    NSInteger _currentPage;
+}
 
 @property (nonatomic, strong) NSArray<ZLPhotoModel *> *models;
 
 @property (nonatomic, assign) NSInteger selectIndex; //选中的图片下标
+@property (nonatomic, assign) BOOL canInteractivePop; //默认NO
 
 @property (nonatomic, copy) void (^btnBackBlock)(NSArray<ZLPhotoModel *> *selectedModels, BOOL isOriginal);
 
 
-//点击选择后的图片预览数组
-@property (nonatomic, strong) NSMutableArray<UIImage *> *arrSelPhotos;
+//点击选择后的图片预览数组，预览相册图片时为 UIImage，预览网络图片时候为UIImage/NSUrl
+@property (nonatomic, strong) NSMutableArray *arrSelPhotos;
 
-@property (nonatomic, copy) void (^btnDonePreviewBlock)(NSArray<UIImage *> *, NSArray<PHAsset *> *);
+/**预览 网络/本地 图片时候是否 隐藏底部工具栏和导航右上角按钮*/
+@property (nonatomic, assign) BOOL hideToolBar;
+
+//预览相册图片回调
+@property (nonatomic, copy) void (^previewSelectedImageBlock)(NSArray<UIImage *> *arrP, NSArray<PHAsset *> *arrA);
+
+//预览网络图片回调
+@property (nonatomic, copy) void (^previewNetImageBlock)(NSArray *photos);
+
+//预览 相册/网络 图片时候，点击返回回调
+@property (nonatomic, copy) void (^cancelPreviewBlock)(void);
 
 @end

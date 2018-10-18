@@ -343,13 +343,14 @@
     
     //调用从相册中选择照片
     ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
-    actionSheet.sortAscending = NO;
-    actionSheet.allowSelectImage = YES;
-    actionSheet.allowSelectGif = NO;
-    actionSheet.allowSelectVideo = NO;
-    actionSheet.allowTakePhotoInLibrary = NO;
-    actionSheet.maxPreviewCount = 1;
-    actionSheet.maxSelectCount = 1;
+    actionSheet.configuration.sortAscending = NO;
+    actionSheet.configuration.allowSelectImage = YES;
+    actionSheet.configuration.allowSelectGif = NO;
+    actionSheet.configuration.allowSelectVideo = NO;
+    actionSheet.configuration.allowTakePhotoInLibrary = NO;
+    actionSheet.configuration.maxPreviewCount = 1;
+    actionSheet.configuration.maxSelectCount = 1;
+    
     actionSheet.sender = self;
     
     WS(weakSelf);

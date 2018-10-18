@@ -394,8 +394,8 @@
     
     self.length = length;
     
-    self.param.longitude = @118.1776085069444;
-    self.param.latitude = @24.4915185546875;
+//    self.param.longitude = @118.1776085069444;
+//    self.param.latitude = @24.4915185546875;
    
     self.isCanCommit = [self juegeCanCommit];
     

@@ -86,8 +86,6 @@ LRSingletonM(Default)
                     [subscriber sendError:request.error];
                 }];
                 
-                
-                
             }else if(self.cacheType == UpCacheTypeThrough){
                 
                 IllegalDBModel * model = (IllegalDBModel *)input_param;

@@ -11,12 +11,13 @@
 #import "ZLPhotoManager.h"
 #import "ZLPhotoModel.h"
 #import "ZLThumbnailViewController.h"
-#import "ZLDefine.h"
+#import <SDWebImage/SDWebImageManager.h>
 
 @implementation ZLImageNavigationController
 
 - (void)dealloc
 {
+    [[SDWebImageManager sharedManager] cancelAll];
 //    NSLog(@"---- %s", __FUNCTION__);
 }
 
@@ -24,25 +25,10 @@
 {
     self = [super initWithRootViewController:rootViewController];
     if (self) {
-        [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: kNavBar_tintColor}];
-        [self.navigationBar setBackgroundImage:[self imageWithColor:kNavBar_color] forBarMetrics:UIBarMetricsDefault];
-        [self.navigationBar setTintColor:kNavBar_tintColor];
         self.navigationBar.barStyle = UIBarStyleBlack;
         self.navigationBar.translucent = YES;
     }
     return self;
-}
-
-- (UIImage *)imageWithColor:(UIColor*)color
-{
-    CGRect rect=CGRectMake(0,0, 1, 1);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return theImage;
 }
 
 - (NSMutableArray<ZLPhotoModel *> *)arrSelectedModels
@@ -53,11 +39,35 @@
     return _arrSelectedModels;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)setConfiguration:(ZLPhotoConfiguration *)configuration
 {
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    _configuration = configuration;
+    
+    [UIApplication sharedApplication].statusBarStyle = self.configuration.statusBarStyle;
+    [self.navigationBar setBackgroundImage:[self imageWithColor:DefaultColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTintColor:configuration.navTitleColor];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: configuration.navTitleColor}];
+    [self.navigationBar setBackIndicatorImage:GetImageWithName(@"zl_navBack")];
+    [self.navigationBar setBackIndicatorTransitionMaskImage:GetImageWithName(@"zl_navBack")];
 }
+
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+}
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [UIApplication sharedApplication].statusBarStyle = self.configuration.statusBarStyle;
+//}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -100,7 +110,7 @@
         _placeholderView = [[UIView alloc] initWithFrame:self.view.bounds];
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 80)];
-        imageView.image = GetImageWithName(@"defaultphoto.png");
+        imageView.image = GetImageWithName(@"zl_defaultphoto");
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.center = CGPointMake(kViewWidth/2, kViewHeight/2-90);
         [_placeholderView addSubview:imageView];
@@ -126,8 +136,12 @@
     self.title = GetLocalLanguageTextValue(ZLPhotoBrowserPhotoText);
     
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserBackText) style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserBackText) style:UIBarButtonItemStylePlain target:nil action:nil];
     [self initNavBtn];
+    
+    if (@available(iOS 11.0, *)) {
+        [self.tableView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentAlways];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,10 +149,10 @@
     [super viewWillAppear:animated];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
-        weakify(self);
-        [ZLPhotoManager getPhotoAblumList:nav.allowSelectVideo allowSelectImage:nav.allowSelectImage complete:^(NSArray<ZLAlbumListModel *> *albums) {
-            strongify(weakSelf);
+        ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
+        zl_weakify(self);
+        [ZLPhotoManager getPhotoAblumList:configuration.allowSelectVideo allowSelectImage:configuration.allowSelectImage complete:^(NSArray<ZLAlbumListModel *> *albums) {
+            zl_strongify(weakSelf);
             strongSelf.arrayDataSources = [NSMutableArray arrayWithArray:albums];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf.tableView reloadData];
@@ -149,12 +163,14 @@
 
 - (void)initNavBtn
 {
+    ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat width = GetMatchValue(GetLocalLanguageTextValue(ZLPhotoBrowserCancelText), 16, YES, 44);
     btn.frame = CGRectMake(0, 0, width, 44);
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) forState:UIControlStateNormal];
-    [btn setTitleColor:kNavBar_tintColor forState:UIControlStateNormal];
+    [btn setTitleColor:configuration.navTitleColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(navRightBtn_Click) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
@@ -198,8 +214,9 @@
     
     ZLAlbumListModel *albumModel = self.arrayDataSources[indexPath.row];
     
-    ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
-    cell.cornerRadio = nav.cellCornerRadio;
+    ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
+    
+    cell.cornerRadio = configuration.cellCornerRadio;
     
     cell.model = albumModel;
     
@@ -217,7 +234,7 @@
 {
     ZLAlbumListModel *model = self.arrayDataSources[index];
     
-    ZLThumbnailViewController *tvc = [[ZLThumbnailViewController alloc] initWithNibName:@"ZLThumbnailViewController" bundle:kZLPhotoBrowserBundle];
+    ZLThumbnailViewController *tvc = [[ZLThumbnailViewController alloc] init];
     tvc.albumListModel = model;
     
     [self.navigationController showViewController:tvc sender:self];

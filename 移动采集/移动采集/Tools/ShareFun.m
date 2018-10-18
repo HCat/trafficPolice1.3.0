@@ -25,6 +25,7 @@
 #import "AutomaicUpCacheModel.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import "IllegalDBModel.h"
+#import "StepNumberHelper.h"
 
 
 @implementation ShareFun
@@ -525,6 +526,22 @@
 #pragma mark - 登录之后需要执行的操作
 + (void)LoginInbeforeDone{
     
+    //开启webSocket
+    [ShareFun openWebSocket];
+    
+    if ([UserModel getUserModel].workstate == YES) {
+        
+        BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:[ShareValue sharedDefault].upStepTime];
+        
+        if (!isToday) {
+            [ShareValue sharedDefault].upStepTime = [NSDate dateWithTimeIntervalSinceNow:0];
+        }
+        
+        [[StepNumberHelper sharedDefault] startCountStep:[ShareValue sharedDefault].upStepTime];
+        
+    }
+    
+    //数据库处理
     [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
     [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;

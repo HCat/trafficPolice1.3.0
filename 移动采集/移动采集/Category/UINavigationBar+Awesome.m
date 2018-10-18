@@ -105,8 +105,6 @@ static char emptyImageKey;
         NSString *targetName = @"_UIBarBackground";
         Class _UIBarBackgroundClass = NSClassFromString(targetName);
         
-        
-        
         for (UIView *subview in self.subviews) {
             if ([subview isKindOfClass:_UIBarBackgroundClass.class]) {
                 _UIBackground = subview;

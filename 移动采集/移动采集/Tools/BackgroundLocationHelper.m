@@ -9,6 +9,7 @@
 #import "BackgroundLocationHelper.h"
 #import "NSTimer+UnRetain.h"
 #import "WebSocketHelper.h"
+#import "StepNumberHelper.h"
 
 #import "LocationModel.h"
 #import "SocketModel.h"
@@ -63,10 +64,13 @@ LRSingletonM(Default)
             SocketModel *t_socketModel  = [[SocketModel alloc] init];
             t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
             t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOCATION);
+            
             t_socketModel.message = t_locationModel;
+            if ([StepNumberHelper sharedDefault].isRuning) {
+                t_socketModel.totalStep = [StepNumberHelper sharedDefault].stepNumber;
+            }
             
             NSString *json_string = t_socketModel.modelToJSONString;
-            
             
             [[WebSocketHelper sharedDefault].webSocket send:json_string];
             

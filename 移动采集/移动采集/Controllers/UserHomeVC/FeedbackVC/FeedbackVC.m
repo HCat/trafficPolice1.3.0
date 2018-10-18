@@ -98,25 +98,27 @@ static NSString *const footId = @"FeedbackFootViewID";
 - (ZLPhotoActionSheet *)getPhotoActionSheet
 {
     ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
-    actionSheet.sortAscending = NO;
-    actionSheet.allowSelectImage = YES;
-    actionSheet.allowSelectGif = NO;
-    actionSheet.allowSelectVideo = NO;
-    actionSheet.allowSelectLivePhoto = NO;
-    actionSheet.allowForceTouch = NO;
-    actionSheet.allowEditImage = NO;
-    //设置相册内部显示拍照按钮
-    actionSheet.allowTakePhotoInLibrary = YES;
-    //设置在内部拍照按钮上实时显示相机俘获画面
-    actionSheet.showCaptureImageOnTakePhotoBtn = YES;
-    //设置照片最大预览数
-    actionSheet.maxPreviewCount = kmaxPreviewCount;
-    //设置照片最大选择数
-    actionSheet.maxSelectCount = kmaxSelectCount;
     
-    actionSheet.cellCornerRadio = 0;
+    actionSheet.configuration.sortAscending = NO;
+    actionSheet.configuration.allowSelectImage = YES;
+    actionSheet.configuration.allowSelectGif = NO;
+    actionSheet.configuration.allowSelectVideo = NO;
+    actionSheet.configuration.allowSelectLivePhoto = NO;
+    actionSheet.configuration.allowForceTouch = NO;
+    actionSheet.configuration.allowEditImage = NO;
+    //设置相册内部显示拍照按钮
+    actionSheet.configuration.allowTakePhotoInLibrary = YES;
+    //设置在内部拍照按钮上实时显示相机俘获画面
+    actionSheet.configuration.showCaptureImageOnTakePhotoBtn = YES;
+    //设置照片最大预览数
+    actionSheet.configuration.maxPreviewCount = kmaxPreviewCount;
+    //设置照片最大选择数
+    actionSheet.configuration.maxSelectCount = kmaxSelectCount;
+    
+    actionSheet.configuration.cellCornerRadio = 0;
     //单选模式是否显示选择按钮
-    actionSheet.showSelectBtn = NO;
+    actionSheet.configuration.showSelectBtn = NO;
+    
     
     //如果调用的方法没有传sender，则该属性必须提前赋值
     actionSheet.sender = self;
@@ -128,7 +130,7 @@ static NSString *const footId = @"FeedbackFootViewID";
             [arr addObject:asset];
         }
     }
-    actionSheet.arrSelectedAssets = actionSheet.maxSelectCount > 1 ? arr : nil;
+    actionSheet.arrSelectedAssets = actionSheet.configuration.maxSelectCount > 1 ? arr : nil;
     
     WS(weakSelf);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
@@ -217,7 +219,7 @@ static NSString *const footId = @"FeedbackFootViewID";
         [sheet showPhotoLibrary];
     
     }else{
-        [sheet previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:indexPath.row];
+        [sheet previewSelectedPhotos:self.lastSelectPhotos assets:self.lastSelectAssets index:indexPath.row isOriginal:NO];
         
     }
 }
