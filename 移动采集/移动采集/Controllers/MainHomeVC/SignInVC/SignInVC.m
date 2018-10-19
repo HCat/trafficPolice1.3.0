@@ -302,7 +302,13 @@
             UserModel *userModel = [UserModel getUserModel];
             userModel.workstate = !userModel.workstate;
             [UserModel setUserModel:userModel];
-            [ShareValue sharedDefault].upStepTime = [ShareValue sharedDefault].upStepTime = [NSDate dateWithTimeIntervalSinceNow:0];
+            
+            BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:[ShareValue sharedDefault].upStepTime];
+            
+            if (!isToday) {
+                [ShareValue sharedDefault].upStepTime = [NSDate dateWithTimeIntervalSinceNow:0];
+            }
+            
             [[StepNumberHelper sharedDefault] startCountStep:[ShareValue sharedDefault].upStepTime];
             [[WebSocketHelper sharedDefault] judgeNeedSeedLocation];
             [strongSelf loadSignListRequest];
