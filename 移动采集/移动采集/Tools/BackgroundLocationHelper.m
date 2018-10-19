@@ -65,10 +65,12 @@ LRSingletonM(Default)
             t_socketModel.fromUserId = @([[UserModel getUserModel].userId integerValue]);
             t_socketModel.msgType = @(WEBSOCKTETYPE_POLICELOCATION);
             
-            t_socketModel.message = t_locationModel;
             if ([StepNumberHelper sharedDefault].isRuning) {
-                t_socketModel.totalStep = [StepNumberHelper sharedDefault].stepNumber;
+                t_locationModel.totalStep = [StepNumberHelper sharedDefault].stepNumber;
             }
+            
+            t_socketModel.message = t_locationModel;
+            
             
             NSString *json_string = t_socketModel.modelToJSONString;
             
