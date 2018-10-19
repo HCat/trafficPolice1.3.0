@@ -131,7 +131,7 @@
         
         ImageFileInfo * imageInfo = self.cacheModel.files[i];
         NSString * uploadTime_t = arr_taketimes[i];
-        NSNumber * uploadTime = [ShareFun getTimeIntervaWithTime:uploadTime_t];
+        NSNumber * uploadTime = [ShareFun timeSwitchTimestamp:uploadTime_t];
 
         NSString * picName = arr_remarks[i];
         

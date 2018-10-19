@@ -161,6 +161,7 @@
 @property (nonatomic,copy)    NSArray  * files;             //事故图片 列表，最多可上传30张
 @property (nonatomic,copy)    NSArray  * certFiles;         //证件图片 识别的图片，文件格式列表。识别后图片不需要显示出来
 @property (nonatomic,copy)    NSArray  * certRemarks;       //证件图片名称 识别的图片名称，字符串列表。和证件图片一对一，名称统一命名，命名规则如下
+@property (nonatomic,strong)  NSNumber * offtime;           //缓存时间
 /*
  证件图片名称：
  1方身份证 1方驾驶证 1方行驶证
@@ -174,6 +175,8 @@
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) AccidentUpParam *param;
+@property (nonatomic, assign) BOOL isUpCache;
+@property (nonatomic, assign) CGFloat progress;
 
 /****** 返回数据 ******/
 //无返回参数

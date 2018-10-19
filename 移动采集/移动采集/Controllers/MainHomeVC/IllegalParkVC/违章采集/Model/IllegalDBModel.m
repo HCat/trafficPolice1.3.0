@@ -165,7 +165,6 @@
         [image deleteDB];
     }
     
-    
     [IllegalDBModel deleteWithWhere:[NSString stringWithFormat:@"rowid =%ld",self.rowid]];
     
 }
@@ -227,9 +226,6 @@
 + (void)dbDidDeleted:(NSObject*)entity result:(BOOL)result {
     LxPrintf(@"已经删除 : %@",NSStringFromClass(self));
 }
-
-
-
 
 @end
 

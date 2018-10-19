@@ -16,6 +16,8 @@
 #import "FastAccidentAPI.h"
 #import "NetWorkHelper.h"
 #import "AccidentUpFactory.h"
+#import "IllegalNetErrorView.h"
+#import "AccidentDBModel.h"
 
 @interface AccidentManageVC ()
 
@@ -205,17 +207,23 @@
     
     LxDBObjectAsJson(_partyFactory.param);
     
-    
+    WS(weakSelf);
     [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
         
-        //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
-        //10为4G网络
         [NetworkStatusMonitor StopMonitor];
+        
+        SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
-            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
-            return;
+            [strongSelf showIllegalNetErrorView];
+        }else{
+            //提交违章数据
+            [strongSelf submitAccidentData];
         }
     }];
+    
+}
+
+- (void)submitAccidentData{
     
     WS(weakSelf);
     
@@ -252,6 +260,7 @@
             
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
+            [strongSelf showIllegalNetErrorView];
             
         }];
         
@@ -278,17 +287,61 @@
                     
                 }
                 
-               [strongSelf.navigationController popViewControllerAnimated:YES];
-            
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+                
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
+            [strongSelf showIllegalNetErrorView];
         }];
     }
     
+    
 }
+
+#pragma mark - 显示网络问题时候的选项
+
+- (void)showIllegalNetErrorView{
+    
+    WS(weakSelf);
+    
+    IllegalNetErrorView * view = [IllegalNetErrorView initCustomView];
+    
+    view.saveBlock = ^{
+        SW(strongSelf, weakSelf);
+        
+        AccidentDBModel * accidentDBModel = [[AccidentDBModel alloc] initWithAccidentUpParam:strongSelf.partyFactory.param];
+        accidentDBModel.type = @(self.accidentType);
+        [accidentDBModel save];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ACCIDENT_ADDCACHE_SUCCESS object:nil];
+        [strongSelf handleBeforeCommit];
+        
+    };
+    
+    view.upBlock = ^{
+        SW(strongSelf, weakSelf);
+        [strongSelf submitAccidentData];
+        
+    };
+    
+    [view show];
+    
+}
+
+- (void)handleBeforeCommit{
+    
+    self.arr_photo = [NSMutableArray array];
+    self.lastSelectAssets = [NSMutableArray array];
+    self.partyFactory = [[AccidentUpFactory alloc] init];
+    [_infoCell handleBeforeCommit];
+    
+    [self.tableView reloadData];
+    
+}
+
+
 
 #pragma mark - dealloc
 

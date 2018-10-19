@@ -35,7 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!self.cacheModel) {
     self.view.backgroundColor = [UIColor clearColor];
+    }
     
     if (_accidentType == AccidentTypeAccident) {
         self.title = @"事故详情";
@@ -53,42 +56,54 @@
     
     [_tb_content registerNib:[UINib nibWithNibName:@"AccidentRemarkCell" bundle:nil] forCellReuseIdentifier:@"AccidentRemarkCellID"];
     
-    if (_accidentType == AccidentTypeAccident) {
-        [self loadAccidentDetail];
-    }else if (_accidentType == AccidentTypeFastAccident){
-        [self loadAccidentFastDetail];
-    }
-
-    WS(weakSelf);
-    //点击重新加载之后的处理
-    [_tb_content setReloadBlock:^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        if (strongSelf.accidentType == AccidentTypeAccident) {
-            [strongSelf loadAccidentDetail];
-        }else if (strongSelf.accidentType == AccidentTypeFastAccident){
-            [strongSelf loadAccidentFastDetail];
+    
+    if (self.cacheModel) {
+        self.model = self.cacheModel;
+        [_tb_content reloadData];
+    }else{
+        if (_accidentType == AccidentTypeAccident) {
+            [self loadAccidentDetail];
+        }else if (_accidentType == AccidentTypeFastAccident){
+            [self loadAccidentFastDetail];
         }
         
-    }];
+        WS(weakSelf);
+        //点击重新加载之后的处理
+        [_tb_content setReloadBlock:^{
+            SW(strongSelf, weakSelf);
+            strongSelf.tb_content.isNetAvailable = NO;
+            if (strongSelf.accidentType == AccidentTypeAccident) {
+                [strongSelf loadAccidentDetail];
+            }else if (strongSelf.accidentType == AccidentTypeFastAccident){
+                [strongSelf loadAccidentFastDetail];
+            }
+            
+        }];
+        
+    }
+    
+    
+    
     
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    WS(weakSelf);
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        if (strongSelf.accidentType == AccidentTypeAccident) {
-            [strongSelf loadAccidentDetail];
-        }else if (strongSelf.accidentType == AccidentTypeFastAccident){
-            [strongSelf loadAccidentFastDetail];
-        }
-        
-    };
+    if (!self.cacheModel) {
+        WS(weakSelf);
+        [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
+            
+            SW(strongSelf, weakSelf);
+            strongSelf.tb_content.isNetAvailable = NO;
+            if (strongSelf.accidentType == AccidentTypeAccident) {
+                [strongSelf loadAccidentDetail];
+            }else if (strongSelf.accidentType == AccidentTypeFastAccident){
+                [strongSelf loadAccidentFastDetail];
+            }
+            
+        };
+    }
     
 }
 

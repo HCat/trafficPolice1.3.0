@@ -1,25 +1,35 @@
 //
-//  IllegalParkUpListViewModel.m
+//  AccidentUpListViewModel.m
 //  移动采集
 //
-//  Created by hcat on 2018/9/30.
+//  Created by hcat on 2018/10/19.
 //  Copyright © 2018年 Hcat. All rights reserved.
 //
 
-#import "IllegalParkUpListViewModel.h"
+#import "AccidentUpListViewModel.h"
 #import "UpCacheHelper.h"
+#import "AccidentDBModel.h"
 #import "AutomaicUpCacheModel.h"
 
-@implementation IllegalUpListCellViewModel
+
+@implementation AccidentUpListCellViewModel
 
 - (void)dealloc{
-    NSLog(@"IllegalUpListCellViewModel dealloc");
+    NSLog(@"AccidentUpListCellViewModel dealloc");
     
 }
 
 @end
 
-@implementation IllegalParkUpListViewModel
+@interface AccidentUpListViewModel ()
+
+@property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
+
+@end
+
+
+@implementation AccidentUpListViewModel
+
 
 - (instancetype)init{
     
@@ -31,8 +41,8 @@
         [[[UpCacheHelper sharedDefault] rac_progress] subscribeNext:^(id  _Nullable x) {
             SW(strongSelf, weakSelf);
             RACTupleUnpack(NSNumber * x_progress,NSNumber *index) = x;
-            for (IllegalUpListCellViewModel * model in strongSelf.arr_viewModel) {
-                if ([model.illegalId isEqualToNumber:index]) {
+            for (AccidentUpListCellViewModel * model in strongSelf.arr_viewModel) {
+                if ([model.accidentId isEqualToNumber:index]) {
                     model.progress = [x_progress floatValue];
                     break;
                 }
@@ -43,20 +53,20 @@
             SW(strongSelf, weakSelf);
             
             [[RACScheduler currentScheduler] afterDelay:1 schedule:^{
-                IllegalDBModel * model = (IllegalDBModel *)x;
+                AccidentDBModel * model = (AccidentDBModel *)x;
                 [model deleteDB];
                 NSInteger index = -1;
-                [strongSelf.arr_illegal removeObject:model];
+                [strongSelf.arr_accident removeObject:model];
                 
-                for (IllegalUpListCellViewModel * model_t in strongSelf.arr_viewModel) {
-                    if ([model_t.illegalId isEqualToNumber:@(model.rowid)]) {
+                for (AccidentUpListCellViewModel * model_t in strongSelf.arr_viewModel) {
+                    if ([model_t.accidentId isEqualToNumber:@(model.rowid)]) {
                         index = [strongSelf.arr_viewModel indexOfObject:model_t];
                         [strongSelf.arr_viewModel removeObject:model_t];
                         break;
                     }
                 }
                 
-                if (strongSelf.arr_illegal.count > 0) {
+                if (strongSelf.arr_accident.count > 0) {
                     [strongSelf startUpCache];
                 }else{
                     strongSelf.isUping = NO;
@@ -64,7 +74,7 @@
                 
                 [strongSelf.rac_deleteCache sendNext:@(index)];
                 
-                strongSelf.illegalCount = @(strongSelf.arr_illegal.count);
+                strongSelf.illegalCount = @(strongSelf.arr_accident.count);
                 
             }];
             
@@ -74,9 +84,9 @@
         
         [[[UpCacheHelper sharedDefault] rac_upCache_error] subscribeNext:^(id  _Nullable x) {
             SW(strongSelf, weakSelf);
-            if (strongSelf.arr_illegal.count > 0 && strongSelf.isUping) {
+            if (strongSelf.arr_accident.count > 0 && strongSelf.isUping) {
                 [[RACScheduler currentScheduler] afterDelay:kUpCacheFrequency schedule:^{
-                   [strongSelf startUpCache];
+                    [strongSelf startUpCache];
                     
                 }];
             }else{
@@ -86,7 +96,7 @@
         }];
         
         [self.rac_addCache subscribeNext:^(id  _Nullable x) {
-             SW(strongSelf, weakSelf);
+            SW(strongSelf, weakSelf);
             if (strongSelf.isAutoUp) {
                 strongSelf.isUping = YES;
             }
@@ -98,50 +108,35 @@
     return self;
 }
 
-- (void)setSubType:(ParkType)subType{
+- (AccidentGetCodesResponse *)accidentCodes{
     
-    _subType = subType;
+    _accidentCodes = [ShareValue sharedDefault].accidentCodes;
+    
+    return _accidentCodes;
+    
+}
+
+
+- (void)setAccidentType:(AccidentType)accidentType{
+    
+    _accidentType = accidentType;
     WS(weakSelf);
-    switch (_subType) {
-        case ParkTypePark:{
-            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoPark) subscribeNext:^(NSNumber * x) {
+    switch (_accidentType) {
+        case AccidentTypeAccident:{
+            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoAccident) subscribeNext:^(NSNumber * x) {
                 SW(strongSelf,weakSelf);
                 strongSelf.isUping = [x boolValue];
                 strongSelf.isAutoUp = [x boolValue];
             }];
         }
             break;
-        case ParkTypeReversePark:{
-            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoReversePark) subscribeNext:^(NSNumber * x) {
+        case AccidentTypeFastAccident:{
+            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoFastAccident) subscribeNext:^(NSNumber * x) {
                 SW(strongSelf,weakSelf);
                 strongSelf.isUping = [x boolValue];
                 strongSelf.isAutoUp = [x boolValue];
             }];
         }
-            break;
-        case ParkTypeLockPark:{
-            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoLockPark) subscribeNext:^(NSNumber * x) {
-                SW(strongSelf,weakSelf);
-                strongSelf.isUping = [x boolValue];
-                strongSelf.isAutoUp = [x boolValue];
-            }];
-        }
-            break;
-        case ParkTypeCarInfoAdd:{
-            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoCarInfoAdd) subscribeNext:^(NSNumber * x) {
-                SW(strongSelf,weakSelf);
-                strongSelf.isUping = [x boolValue];
-                strongSelf.isAutoUp = [x boolValue];
-            }];
-        }
-        case ParkTypeThrough:{
-            [RACObserve([AutomaicUpCacheModel sharedDefault], isAutoThrough) subscribeNext:^(NSNumber * x) {
-                SW(strongSelf,weakSelf);
-                strongSelf.isUping = [x boolValue];
-                strongSelf.isAutoUp = [x boolValue];
-            }];
-        }
-            
             break;
         default:
             break;
@@ -165,21 +160,24 @@
 
 #pragma mark - 获取cell的ViewModel数组
 
-- (void)setArr_illegal:(NSMutableArray *)arr_illegal{
+- (void)setArr_accident:(NSMutableArray *)arr_accident{
     
-    _arr_illegal = arr_illegal;
+    _arr_accident = arr_accident;
     
-    NSArray * t_arr = [[_arr_illegal.rac_sequence map:^id(IllegalDBModel * value) {
+    WS(weakSelf);
+    NSArray * t_arr = [[_arr_accident.rac_sequence map:^id(AccidentDBModel * value) {
+        SW(strongSelf, weakSelf);
+        AccidentUpListCellViewModel * cellModel = [[AccidentUpListCellViewModel alloc] init];
         
-        IllegalUpListCellViewModel * cellModel = [[IllegalUpListCellViewModel alloc] init];
-        cellModel.illegalId = @(value.rowid);
-        cellModel.carNumber = value.carNo;
+        NSString * cause = [strongSelf.accidentCodes searchNameWithModelId:[value.causesType integerValue] WithArray:strongSelf.accidentCodes.cause];
+        
+        cellModel.accidentId = @(value.rowid);
+        cellModel.carNumber = cause;
         cellModel.address = value.address;
         cellModel.time = value.commitTime;
-        cellModel.isAbnormal = value.isAbnormal;
         
         return cellModel;
-    
+        
         
     }] array];
     
@@ -190,7 +188,6 @@
     [self.arr_viewModel addObjectsFromArray:t_arr];
     
 }
-
 
 
 - (void)setIsUping:(BOOL)isUping{
@@ -205,25 +202,17 @@
     
 }
 
+
 - (void)startUpCache{
     
-    if (_arr_illegal.count > 0) {
+    if (_arr_accident.count > 0) {
         
-        switch (_subType) {
-            case ParkTypePark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypePark WithData:_arr_illegal[0]];
+        switch (_accidentType) {
+            case AccidentTypeAccident:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeAccident WithData:_arr_accident[0]];
                 break;
-            case ParkTypeReversePark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeReversePark WithData:_arr_illegal[0]];
-                break;
-            case ParkTypeLockPark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeLockPark WithData:_arr_illegal[0]];
-                break;
-            case ParkTypeCarInfoAdd:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeCarInfoAdd WithData:_arr_illegal[0]];
-                break;
-            case ParkTypeThrough:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeThrough WithData:_arr_illegal[0]];
+            case AccidentTypeFastAccident:
+                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeFastAccident WithData:_arr_accident[0]];
                 break;
             default:
                 break;
@@ -232,6 +221,7 @@
     }
     
 }
+
 
 - (void)stopUpCache{
     [[UpCacheHelper sharedDefault] stop];

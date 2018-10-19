@@ -9,7 +9,10 @@
 #import "UpCacheHelper.h"
 #import "IllegalParkAPI.h"
 #import "IllegalThroughAPI.h"
+#import "AccidentAPI.h"
+#import "FastAccidentAPI.h"
 #import "IllegalDBModel.h"
+#import "AccidentDBModel.h"
 
 @interface UpCacheHelper()
 @property (nonatomic,assign) UpCacheType cacheType;
@@ -219,8 +222,93 @@ LRSingletonM(Default)
                     
                 }
                 
-            }else if(self.cacheType == UpCacheTypeAccident || self.cacheType == UpCacheTypeFastAccident){
+            }else if(self.cacheType == UpCacheTypeAccident){
                 
+                AccidentDBModel * model = (AccidentDBModel *)input_param;
+                
+                AccidentUpManger *manger = [[AccidentUpManger alloc] init];
+                manger.param = [model mapAccidentUpParam];
+                manger.isUpCache = YES;
+                
+                [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
+                    RACTuple *tuple = RACTuplePack(x,index);
+                    [strongSelf.rac_progress sendNext:tuple];
+                }];
+            
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        if ([manger.param.roadId isEqualToNumber:@0]) {
+                            
+                            [ShareValue sharedDefault].accidentCodes = nil;
+                            [[ShareValue sharedDefault] accidentCodes];
+                            [ShareValue sharedDefault].roadModels    = nil;
+                            [[ShareValue sharedDefault] roadModels];
+                            
+                        }
+                        
+                        [subscriber sendNext:@"发送成功"];
+                        [subscriber sendCompleted];
+                        
+                    }else{
+                        
+                        NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                    code:10086
+                                                                userInfo:nil];
+                        [subscriber sendError:error];
+                        
+                    }
+                    
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendError:request.error];
+                }];
+                
+                
+                
+            }else if(self.cacheType == UpCacheTypeFastAccident){
+                
+                AccidentDBModel * model = (AccidentDBModel *)input_param;
+                
+                FastAccidentUpManger *manger = [[FastAccidentUpManger alloc] init];
+                manger.param = [model mapAccidentUpParam];
+                manger.isUpCache = YES;
+                
+                [RACObserve(manger,progress) subscribeNext:^(id  _Nullable x) {
+                    RACTuple *tuple = RACTuplePack(x,index);
+                    [strongSelf.rac_progress sendNext:tuple];
+                }];
+                
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        if ([manger.param.roadId isEqualToNumber:@0]) {
+                            
+                            [ShareValue sharedDefault].accidentCodes = nil;
+                            [[ShareValue sharedDefault] accidentCodes];
+                            [ShareValue sharedDefault].roadModels    = nil;
+                            [[ShareValue sharedDefault] roadModels];
+                            
+                        }
+                        
+                        [subscriber sendNext:@"发送成功"];
+                        [subscriber sendCompleted];
+                        
+                    }else{
+                        
+                        NSError *error = [[NSError alloc] initWithDomain:@"upCacheDomain"
+                                                                    code:10086
+                                                                userInfo:nil];
+                        [subscriber sendError:error];
+                        
+                    }
+                    
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendError:request.error];
+                }];
                 
             }
             
@@ -263,11 +351,29 @@ LRSingletonM(Default)
     
     }else if(self.cacheType == UpCacheTypeAccident || self.cacheType == UpCacheTypeFastAccident){
         
+        AccidentDBModel * model = (AccidentDBModel *)data;
+        RACTuple *tuple = RACTuplePack(model,@(model.rowid));
+        RACSignal * signal = [self.racCommand execute:tuple];
+        
+        WS(weakSelf);
+        [signal subscribeNext:^(NSString * _Nullable x) {
+            SW(strongSelf, weakSelf);
+            if ([x isEqualToString:@"发送成功"]) {
+                [strongSelf.rac_upCache_success sendNext:model];
+            }
+            
+        }error:^(NSError * _Nullable error) {
+            SW(strongSelf, weakSelf);
+            if (error.code == 10086) {
+                [strongSelf.rac_upCache_success sendNext:model];
+            }else{
+                [strongSelf.rac_upCache_error sendNext:model];
+            }
+        }];
         
     }
     
 }
-
 
 - (void)stop{
     

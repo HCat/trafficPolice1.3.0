@@ -16,5 +16,6 @@
 @property (nonatomic,strong) AccidentUpFactory *partyFactory;    //当事人信息的管理类
 
 - (CGFloat)heightOfCell;
+- (void)handleBeforeCommit;
 
 @end

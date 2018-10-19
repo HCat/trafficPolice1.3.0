@@ -26,7 +26,7 @@ AccidentGetCodesResponse来当返回参数，具体详情请查看AccidentGetCod
 
 @end
 
-#pragma mark - 快处事故增加API
+#pragma mark - 快处事故增加API(旧)
 
 @interface FastAccidentSaveManger:LRBaseRequest
 
@@ -49,7 +49,8 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) AccidentUpParam *param;
-
+@property (nonatomic, assign) BOOL isUpCache;
+@property (nonatomic, assign) CGFloat progress;
 /****** 返回数据 ******/
 //无返回参数
 

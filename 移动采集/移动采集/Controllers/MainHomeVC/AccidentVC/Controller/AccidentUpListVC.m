@@ -1,32 +1,31 @@
 //
-//  IllegalParkUpListVC.m
+//  AccidentUpListVC.m
 //  移动采集
 //
-//  Created by hcat on 2018/9/25.
+//  Created by hcat on 2018/10/19.
 //  Copyright © 2018年 Hcat. All rights reserved.
 //
 
-#import "IllegalParkUpListVC.h"
+#import "AccidentUpListVC.h"
 #import "LRPlaceholderView.h"
 #import "UITableView+Lr_Placeholder.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "IllegalParkUpListCell.h"
-#import "IllegalDetailVC.h"
+#import "AccidentDBModel.h"
+#import "AccidentDetailVC.h"
 
-
-
-@interface IllegalParkUpListVC ()<LYSideslipCellDelegate>
+@interface AccidentUpListVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) IllegalParkUpListViewModel * viewModel;
+@property (nonatomic,strong) AccidentUpListViewModel * viewModel;
 @property (weak, nonatomic) IBOutlet UIButton *btn_up;
-@property (nonatomic,assign) BOOL isUping;          //是否在上传
+@property (nonatomic,assign) BOOL isUping; 
 
 @end
 
-@implementation IllegalParkUpListVC
+@implementation AccidentUpListVC
 
-- (instancetype)initWithViewModel:(IllegalParkUpListViewModel *)viewModel{
+- (instancetype)initWithViewModel:(AccidentUpListViewModel *)viewModel{
     
     if (self = [super init]) {
         self.viewModel = viewModel;
@@ -47,7 +46,6 @@
     return self;
     
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,14 +89,12 @@
         }
     }];
     
-
+    
     [[self.btn_up rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         SW(strongSelf, weakSelf);
         strongSelf.viewModel.isUping = !strongSelf.viewModel.isUping;
         
     }];
-    
-    
 }
 
 #pragma mark - UITableViewDelegate
@@ -116,8 +112,8 @@
     WS(weakSelf);
     return [tableView fd_heightForCellWithIdentifier:@"IllegalParkUpListCellID" cacheByIndexPath:indexPath configuration:^(IllegalParkUpListCell *cell) {
         SW(strongSelf, weakSelf);
-        IllegalUpListCellViewModel * model = strongSelf.viewModel.arr_viewModel[indexPath.row];
-        cell.viewModel = model;
+        AccidentUpListCellViewModel * model = strongSelf.viewModel.arr_viewModel[indexPath.row];
+        cell.accidentViewModel = model;
         
     }];
     
@@ -126,9 +122,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     IllegalParkUpListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalParkUpListCellID"];
-    IllegalUpListCellViewModel * model = _viewModel.arr_viewModel[indexPath.row];
-    cell.delegate = self;
-    cell.viewModel = model;
+    AccidentUpListCellViewModel * model = _viewModel.arr_viewModel[indexPath.row];
+    cell.accidentViewModel = model;
     return cell;
 }
 
@@ -136,56 +131,18 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    IllegalDBModel *t_model = _viewModel.arr_illegal[indexPath.row];
-    IllegalDetailVC *t_vc = [[IllegalDetailVC alloc] init];
-    t_vc.illegalType = _viewModel.illegalType;
-    t_vc.subType = _viewModel.subType;
-    t_vc.cacheModel = t_model;
-    [self.navigationController pushViewController:t_vc animated:YES];
-
-}
-
-#pragma mark - LYSideslipCellDelegate
-- (NSArray<LYSideslipCellAction *> *)sideslipCell:(LYSideslipCell *)sideslipCell editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WS(weakSelf);
-    LYSideslipCellAction *action = [LYSideslipCellAction rowActionWithStyle:LYSideslipCellActionStyleNormal title:@"标为异常" handler:^(LYSideslipCellAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        SW(strongSelf, weakSelf);
-        IllegalDBModel * dbModel = strongSelf.viewModel.arr_illegal[indexPath.row];
-        dbModel.isAbnormal = !dbModel.isAbnormal;
-        [dbModel save];
-        IllegalUpListCellViewModel * cellViewModel = strongSelf.viewModel.arr_viewModel[indexPath.row];
-        cellViewModel.isAbnormal = !cellViewModel.isAbnormal;
-        [strongSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-        
-        [sideslipCell hiddenAllSideslip];
-        
-        
-    }];
-    action.backgroundColor = DefaultColor;
-    action.fontSize = 14.f;
-    return @[action];
+    AccidentDBModel *t_model = _viewModel.arr_accident[indexPath.row];
+    AccidentDetailVC *accidentDetailVC = [[AccidentDetailVC alloc] init];
+    accidentDetailVC.cacheModel = [t_model mapAccidentDetailModel];
+    accidentDetailVC.accidentType = [t_model.type integerValue];
+    [self.navigationController pushViewController:accidentDetailVC animated:YES];
     
 }
-
-- (BOOL)sideslipCell:(LYSideslipCell *)sideslipCell canSideslipRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    IllegalDBModel * dbModel = _viewModel.arr_illegal[indexPath.row];
-    
-    if (dbModel.isAbnormal || [dbModel.type isEqualToNumber:@(ParkTypeCarInfoAdd)]) {
-        return NO;
-    }else{
-        return YES;
-    }
-
-}
-
-
-
 
 #pragma mark -dealloc
 
 - (void)dealloc{
-    NSLog(@"IllegalParkUpListVC dealloc");
+    NSLog(@"AccidentUpListVC dealloc");
     
 }
 

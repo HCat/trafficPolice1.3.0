@@ -30,9 +30,6 @@
 #import "IllegalRecordVC.h"
 #import "IllegalNetErrorView.h"
 #import "IllegalDBModel.h"
-#import <ReactiveObjC.h>
-
-
 
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -870,7 +867,6 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
-            [NetworkStatusMonitor StopMonitor];
             [strongSelf showIllegalNetErrorView];
         }];
     }

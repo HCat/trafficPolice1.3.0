@@ -12,9 +12,9 @@
 
 #import "IllegalParkManageVC.h"
 #import "IllegalParkManageViewModel.h"
+#import "AccidentVC.h"
+#import "AccidentViewModel.h"
 
-
-#import "AccidentManageVC.h"
 #import "VideoColectVC.h"
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
@@ -366,8 +366,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"事故录入"]){
 
             if ([UserModel isPermissionForAccident]) {
-                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-                t_vc.accidentType = AccidentTypeAccident;
+                
+                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
+                viewModel.accidentType = AccidentTypeAccident;
+                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
+                
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -376,8 +379,9 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"快处录入"]){
 
             if ([UserModel isPermissionForFastAccident]) {
-                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-                t_vc.accidentType = AccidentTypeFastAccident;
+                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
+                viewModel.accidentType = AccidentTypeFastAccident;
+                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
                 [self.navigationController pushViewController:t_vc animated:YES];
                 
             }else{

@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_address;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_width;
 
-
 @end
 
 
@@ -64,7 +63,42 @@
     
 }
 
-
+- (void)setAccidentViewModel:(AccidentUpListCellViewModel *)accidentViewModel{
+    
+    _accidentViewModel = accidentViewModel;
+    
+    if (_accidentViewModel) {
+        
+        self.lb_carNumber.text = [ShareFun takeStringNoNull:_accidentViewModel.carNumber];
+        self.lb_time.text = [ShareFun timeWithTimeInterval:_accidentViewModel.time];
+        self.lb_address.text = [ShareFun takeStringNoNull:_accidentViewModel.address];
+        self.btn_abnormal.hidden = YES;
+        
+        WS(weakSelf);
+        
+        [RACObserve(_accidentViewModel, progress) subscribeNext:^(id  _Nullable x) {
+            SW(strongSelf, weakSelf);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([x floatValue] == 0.0f) {
+                    strongSelf.layout_width.constant = 0;
+                    [strongSelf layoutIfNeeded];
+                }else{
+                    [UIView animateWithDuration:1.0 animations:^{
+                        strongSelf.layout_width.constant = [x floatValue] * SCREEN_WIDTH;
+                        [strongSelf layoutIfNeeded];
+                    }];
+                }
+                
+            });
+            
+            
+        }];
+        
+        
+    }
+    
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

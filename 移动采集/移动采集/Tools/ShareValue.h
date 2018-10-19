@@ -13,11 +13,12 @@
 
 #define kmaxPreviewCount 30
 #define kmaxSelectCount 30
+#define kUpCacheFrequency 10
 
 
 typedef NS_ENUM(NSInteger, AccidentType) {
-    AccidentTypeAccident,       //事故
-    AccidentTypeFastAccident,   //快处
+    AccidentTypeAccident = 3001,       //事故
+    AccidentTypeFastAccident = 3002,   //快处
 };
 
 typedef NS_ENUM(NSInteger, IllegalType) {

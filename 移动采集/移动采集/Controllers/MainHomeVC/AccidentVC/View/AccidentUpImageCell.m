@@ -158,10 +158,6 @@
     
 }
 
-
-
-
-
 #pragma mark - 初始化照片选择器
 
 - (ZLPhotoActionSheet *)getPhotoActionSheet

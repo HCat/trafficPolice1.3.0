@@ -25,6 +25,7 @@
 #import "AutomaicUpCacheModel.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import "IllegalDBModel.h"
+#import "AccidentDBModel.h"
 #import "StepNumberHelper.h"
 
 
@@ -285,14 +286,6 @@
     return @(time);
 }
 
-+ (NSNumber *)getTimeIntervaWithTime:(NSString *)timeString{
-    NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate * uploadTime_date = [format dateFromString:timeString];
-    NSTimeInterval time = [uploadTime_date timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
-    return @(time);
-}
-
 #pragma mark - 获取时间挫转换成时间：格式为yyyy-MM-dd HH:mm:ss
 
 + (NSString *)timeWithTimeInterval:(NSNumber *)timeString
@@ -329,6 +322,44 @@
     return dateString;
 
 }
+
+#pragma mark - 时间转换为时间戳
+
++(NSNumber *)timeSwitchTimestamp:(NSString *)formatTime{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setTimeZone:timeZone];
+    NSDate* date = [formatter dateFromString:formatTime];
+    
+    NSTimeInterval timeSp = [date timeIntervalSince1970]*1000;
+    
+    
+    return @(timeSp);
+    
+}
+
+
++(NSNumber *)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:format];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setTimeZone:timeZone];
+    NSDate* date = [formatter dateFromString:formatTime];
+
+    NSTimeInterval timeSp = [date timeIntervalSince1970]*1000;
+    
+
+    return @(timeSp);
+    
+}
+
 
 #pragma mark - 画虚线
 
@@ -563,7 +594,10 @@
         [model deleteDB];
     }
     
-
+    NSArray *array_accident = [AccidentDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
+    for (AccidentDBModel * model in array_accident) {
+        [model deleteDB];
+    }
     
 }
 

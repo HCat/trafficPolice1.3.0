@@ -17,4 +17,6 @@
 @property (nonatomic,assign) NSInteger      remarkCount;        //备注数量
 @property (nonatomic,strong,readonly) AccidentDetailsModel * model;
 
+@property (nonatomic,strong) AccidentDetailsModel *cacheModel;
+
 @end

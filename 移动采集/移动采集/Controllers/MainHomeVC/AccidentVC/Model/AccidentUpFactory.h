@@ -12,12 +12,12 @@
 
 @interface AccidentPeopleMapModel : AccidentPeopleModel
 
-@property(nonatomic,copy)    NSString * vehicle;    //车辆类型
-@property(nonatomic,copy)    NSString * direct;     //行驶状态
-@property(nonatomic,copy)    NSString * behaviour;  //违法行为
-@property(nonatomic,copy)    NSString * insuranceCompany;   //保险公司
-@property(nonatomic,copy)    NSString * responsibility;     //责任
-@property(nonatomic,strong)  NSMutableArray *certMarray; //证件照片数据
+@property(nonatomic,copy)    NSString * vehicle;                //车辆类型
+@property(nonatomic,copy)    NSString * direct;                 //行驶状态
+@property(nonatomic,copy)    NSString * behaviour;              //违法行为
+@property(nonatomic,copy)    NSString * insuranceCompany;       //保险公司
+@property(nonatomic,copy)    NSString * responsibility;         //责任
+@property(nonatomic,strong)  NSMutableArray *certMarray;        //证件照片数据
 
 @property (nonatomic,strong) AccidentGetCodesResponse * codes;
 

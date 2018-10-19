@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "LYSideslipCell.h"
 #import "IllegalParkUpListViewModel.h"
+#import "AccidentUpListViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalParkUpListCell : LYSideslipCell
 
 @property (nonatomic,strong) IllegalUpListCellViewModel * viewModel;
-
+@property (nonatomic,strong) AccidentUpListCellViewModel * accidentViewModel;
 
 @end
 

@@ -467,6 +467,19 @@
     
 }
 
+- (void)handleBeforeCommit{
+    
+    _isFirstLoading = YES;
+    _tf_accidentCauses.text = nil;    //事故成因(必填)
+    _tf_accidentTime.text = nil;      //事故时间(必填)
+    _tf_location.text = nil;          //所在位置(必填)
+    _tf_accidentAddress.text = nil;   //事故地址(必填)
+    _tf_weather.text = nil;           //天气情况
+    _tf_injuriesNumber.text = nil;    //受伤人数
+    _tf_roadType.text = nil;          //道路类型
+    
+}
+
 
 #pragma mark - dealloc
 
