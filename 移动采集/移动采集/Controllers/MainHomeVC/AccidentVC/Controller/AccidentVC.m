@@ -10,6 +10,7 @@
 #import "UpCacheSettingVC.h"
 #import "AccidentManageVC.h"
 #import "AccidentUpListVC.h"
+#import "UpCacheHelper.h"
 #import "UINavigationBar+BarItem.h"
 
 @interface AccidentVC ()
@@ -27,6 +28,7 @@
     self = [super init];
     if (self ) {
         _viewModel = viewModel;
+        [[UpCacheHelper sharedDefault] stopAll];
     }
     return self;
 }
@@ -179,8 +181,8 @@
 
 
 - (void)dealloc{
+    [[UpCacheHelper sharedDefault] startWithAll];
     LxPrintf(@"AccidentManageVC dealloc");
-    
 }
 
 @end

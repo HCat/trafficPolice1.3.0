@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) AccidentUpListViewModel * viewModel;
 @property (weak, nonatomic) IBOutlet UIButton *btn_up;
-@property (nonatomic,assign) BOOL isUping; 
 
 @end
 

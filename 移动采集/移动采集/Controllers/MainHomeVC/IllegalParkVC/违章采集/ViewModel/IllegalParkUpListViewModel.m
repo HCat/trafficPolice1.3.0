@@ -211,19 +211,19 @@
         
         switch (_subType) {
             case ParkTypePark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypePark WithData:_arr_illegal[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypePark WithData:_arr_illegal[0]];
                 break;
             case ParkTypeReversePark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeReversePark WithData:_arr_illegal[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeReversePark WithData:_arr_illegal[0]];
                 break;
             case ParkTypeLockPark:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeLockPark WithData:_arr_illegal[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeLockPark WithData:_arr_illegal[0]];
                 break;
             case ParkTypeCarInfoAdd:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeCarInfoAdd WithData:_arr_illegal[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeCarInfoAdd WithData:_arr_illegal[0]];
                 break;
             case ParkTypeThrough:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeThrough WithData:_arr_illegal[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeThrough WithData:_arr_illegal[0]];
                 break;
             default:
                 break;

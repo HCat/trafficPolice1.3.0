@@ -21,10 +21,11 @@ LRSingletonH(Default)
 @property (nonatomic,strong) NSNumber * progress;
 
 
-- (void)starWithType:(UpCacheType)cacheType WithData:(id)data;
+- (void)startWithType:(UpCacheType)cacheType WithData:(id)data;
 - (void)stop;
 
-
+- (void)startWithAll;
+- (void)stopAll;
 
 @end
 

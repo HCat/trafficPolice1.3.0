@@ -27,6 +27,7 @@
 #import "IllegalDBModel.h"
 #import "AccidentDBModel.h"
 #import "StepNumberHelper.h"
+#import "UpCacheHelper.h"
 
 
 @implementation ShareFun
@@ -416,10 +417,58 @@
     return folderSize/(1024.0*1024.0);
 }
 
+#pragma mark - 登录之后需要执行的操作
++ (void)LoginInbeforeDone{
+    
+    //开启webSocket
+    [ShareFun openWebSocket];
+    
+    if ([UserModel getUserModel].workstate == YES) {
+        
+        BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:[ShareValue sharedDefault].upStepTime];
+        
+        if (!isToday) {
+            [ShareValue sharedDefault].upStepTime = [NSDate dateWithTimeIntervalSinceNow:0];
+        }
+        
+        [[StepNumberHelper sharedDefault] startCountStep:[ShareValue sharedDefault].upStepTime];
+        
+    }
+    
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *current = [formatter stringFromDate:now];
+    
+    
+    NSString * sql = [NSString stringWithFormat:@"commitTimeString not like '%%%@%%'",current];
+    NSArray *array = [IllegalDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
+    
+    for (IllegalDBModel * model in array) {
+        [model deleteDB];
+    }
+    
+    NSArray *array_accident = [AccidentDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
+    for (AccidentDBModel * model in array_accident) {
+        [model deleteDB];
+    }
+    
+    [[UpCacheHelper sharedDefault] startWithAll];
+    
+}
 
 #pragma mark - 注销需要执行的操作
 
 + (void)loginOut{
+    
+    [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoCarInfoAdd = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoThrough = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoAccident = NO;
+    [AutomaicUpCacheModel sharedDefault].isAutoFastAccident = NO;
+    [[UpCacheHelper sharedDefault] stopAll];
     
     [ShareFun closeWebSocket];
     [LRBaseRequest clearRequestFilters];
@@ -551,53 +600,6 @@
         [[WebSocketHelper sharedDefault] closeServer];
     });
     
-    
-}
-
-#pragma mark - 登录之后需要执行的操作
-+ (void)LoginInbeforeDone{
-    
-    //开启webSocket
-    [ShareFun openWebSocket];
-    
-    if ([UserModel getUserModel].workstate == YES) {
-        
-        BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:[ShareValue sharedDefault].upStepTime];
-        
-        if (!isToday) {
-            [ShareValue sharedDefault].upStepTime = [NSDate dateWithTimeIntervalSinceNow:0];
-        }
-        
-        [[StepNumberHelper sharedDefault] startCountStep:[ShareValue sharedDefault].upStepTime];
-        
-    }
-    
-    //数据库处理
-    [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoCarInfoAdd = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoThrough = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoAccident = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoFastAccident = NO;
-    
-    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *current = [formatter stringFromDate:now];
-    
-
-    NSString * sql = [NSString stringWithFormat:@"commitTimeString not like '%%%@%%'",current];
-    NSArray *array = [IllegalDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
-    
-    for (IllegalDBModel * model in array) {
-        [model deleteDB];
-    }
-    
-    NSArray *array_accident = [AccidentDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
-    for (AccidentDBModel * model in array_accident) {
-        [model deleteDB];
-    }
     
 }
 

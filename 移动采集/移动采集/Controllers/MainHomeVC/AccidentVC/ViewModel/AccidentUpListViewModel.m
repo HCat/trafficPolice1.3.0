@@ -209,10 +209,10 @@
         
         switch (_accidentType) {
             case AccidentTypeAccident:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeAccident WithData:_arr_accident[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeAccident WithData:_arr_accident[0]];
                 break;
             case AccidentTypeFastAccident:
-                [[UpCacheHelper sharedDefault] starWithType:UpCacheTypeFastAccident WithData:_arr_accident[0]];
+                [[UpCacheHelper sharedDefault] startWithType:UpCacheTypeFastAccident WithData:_arr_accident[0]];
                 break;
             default:
                 break;

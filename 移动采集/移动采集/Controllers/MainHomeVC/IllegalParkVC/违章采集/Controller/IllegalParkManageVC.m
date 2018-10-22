@@ -11,6 +11,7 @@
 #import "CarInfoAddVC.h"
 #import "IllegalParkUpListVC.h"
 #import "UpCacheSettingVC.h"
+#import "UpCacheHelper.h"
 #import "UINavigationBar+BarItem.h"
 
 
@@ -29,6 +30,7 @@
     self = [super init];
     if (self ) {
         _viewModel = viewModel;
+        [[UpCacheHelper sharedDefault] stopAll];
     }
     return self;
 }
@@ -188,7 +190,7 @@
 #pragma mark - dealloc
 
 - (void)dealloc{
-    
+    [[UpCacheHelper sharedDefault] startWithAll];
     LxPrintf(@"IllegalParkManageVC dealloc");
 }
 
