@@ -12,15 +12,13 @@
 #import "NetWorkHelper.h"
 #import "UITableView+Lr_Placeholder.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-
 #import "VehicleTrafficTopCell.h"
-#import "VehicleTrafficPlaceCell.h"
 
 @interface VehicleTrafficInfoVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) VehicleRouteDetailModel * model;
+@property (nonatomic, strong) NSMutableArray <VehicleRouteDetailModel *> * arr_model;
 
 @end
 
@@ -29,12 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.arr_model = @[].mutableCopy;
+    
     _tableView.isNeedPlaceholderView = YES;
     _tableView.firstReload = YES;
     
     
     [_tableView registerNib:[UINib nibWithNibName:@"VehicleTrafficTopCell" bundle:nil] forCellReuseIdentifier:@"VehicleTrafficTopCellID"];
-     [_tableView registerNib:[UINib nibWithNibName:@"VehicleTrafficPlaceCell" bundle:nil] forCellReuseIdentifier:@"VehicleTrafficPlaceCellID"];
     
     [self requestTrafficInfo];
     
@@ -70,7 +69,7 @@
         SW(strongSelf, weakSelf);
         
         if (manger.responseModel.code == CODE_SUCCESS) {
-            strongSelf.model = manger.detailReponse;
+            [strongSelf.arr_model addObjectsFromArray:manger.list];
             [strongSelf.tableView reloadData];
         }
         
@@ -81,7 +80,9 @@
         Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
         NetworkStatus status = [reach currentReachabilityStatus];
         if (status == NotReachable) {
-            strongSelf.model = nil;
+            if (strongSelf.arr_model.count > 0) {
+                [strongSelf.arr_model removeAllObjects];
+            }
             strongSelf.tableView.isNetAvailable = YES;
             [strongSelf.tableView reloadData];
         }
@@ -97,36 +98,23 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger row = 0;
-    if (_model) {
-        row += 1;
-        if (_model.routeDetentionList.count > 0 && _model.routeDetentionList) {
-            row += 1;
-        }
-    }
-    
-    return row;
+
+    return _arr_model.count;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     WS(weakSelf);
     
-    if (_model) {
-        
-        if (indexPath.row == 0) {
-            return [tableView fd_heightForCellWithIdentifier:@"VehicleTrafficTopCellID" cacheByIndexPath:indexPath configuration:^(VehicleTrafficTopCell *cell) {
-                SW(strongSelf, weakSelf);
-                cell.model = strongSelf.model;
-            }];
+    if (_arr_model.count > 0) {
+        return [tableView fd_heightForCellWithIdentifier:@"VehicleTrafficTopCellID" cacheByIndexPath:indexPath configuration:^(VehicleTrafficTopCell *cell) {
+            SW(strongSelf, weakSelf);
+            if (strongSelf.arr_model.count > 0) {
+                cell.model = strongSelf.arr_model[indexPath.row];
+            }
             
-        }else if (indexPath.row == 1){
-            
-            return [tableView fd_heightForCellWithIdentifier:@"VehicleTrafficPlaceCellID" cacheByIndexPath:indexPath configuration:^(VehicleTrafficPlaceCell *cell) {
-                SW(strongSelf, weakSelf);
-                cell.model = strongSelf.model;
-            }];
-        }
+        }];
+       
  
     }
     
@@ -136,24 +124,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (_model) {
-        if (indexPath.row == 0) {
-            
-            VehicleTrafficTopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleTrafficTopCellID"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.fd_enforceFrameLayout = NO;
-            cell.model = _model;
-            return cell;
-            
-        }else if (indexPath.row == 1){
-            
-            VehicleTrafficTopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleTrafficPlaceCellID"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.fd_enforceFrameLayout = NO;
-            cell.model = _model;
-            return cell;
-            
-        }
+    if (_arr_model.count > 0) {
+        VehicleTrafficTopCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleTrafficTopCellID"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.fd_enforceFrameLayout = NO;
+        cell.model = _arr_model[indexPath.row];;
+        return cell;
         
     }
     

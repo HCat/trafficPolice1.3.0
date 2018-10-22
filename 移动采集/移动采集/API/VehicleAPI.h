@@ -408,7 +408,7 @@
 @property (nonatomic, copy) NSString *vehicleId;
 
 /****** 返回数据 ******/
-@property (nonatomic, strong) VehicleRouteDetailModel * detailReponse;
+@property (nonatomic, strong) NSArray <VehicleRouteDetailModel *> * list;
 
 @end
 

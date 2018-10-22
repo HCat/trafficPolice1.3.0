@@ -704,14 +704,17 @@
 }
 
 //返回参数
-- (VehicleRouteDetailModel *)detailReponse{
+- (NSArray <VehicleRouteDetailModel *> *) list{
     
-    if (self.responseModel.data) {
-        return [VehicleRouteDetailModel modelWithDictionary:self.responseModel.data];
+    if (self.responseModel) {
+        
+        _list = [NSArray modelArrayWithClass:[VehicleRouteDetailModel class] json:self.responseJSONObject[@"data"]];
+        return _list;
     }
     
     return nil;
 }
+
 
 @end
 
