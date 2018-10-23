@@ -27,6 +27,7 @@
             strongSelf.listViewModel.arr_illegal = [[NSMutableArray alloc] initWithArray:[IllegalDBModel localArrayFormType:@(strongSelf.subType)]];
             strongSelf.listViewModel.illegalCount = @(strongSelf.listViewModel.arr_illegal.count);
             [strongSelf.listViewModel.rac_addCache sendNext:@1];
+            
         }];
         
     }

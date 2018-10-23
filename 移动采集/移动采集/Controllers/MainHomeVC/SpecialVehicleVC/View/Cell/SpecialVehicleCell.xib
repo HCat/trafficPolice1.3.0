@@ -121,6 +121,7 @@
             <connections>
                 <outlet property="btn_type" destination="Es5-fg-Yfn" id="dK9-Qt-BeX"/>
                 <outlet property="imgv_havePic" destination="sTB-wt-PJd" id="h08-6e-EZg"/>
+                <outlet property="layout_right" destination="HDl-yu-GwX" id="rmG-OI-Zrv"/>
                 <outlet property="lb_address" destination="HJN-X5-t9e" id="Gdt-fm-yCT"/>
                 <outlet property="lb_carNumber" destination="1Ts-6U-IWF" id="nU9-oN-GsS"/>
                 <outlet property="lb_time" destination="Fz0-cP-akK" id="cfm-Pr-oIA"/>

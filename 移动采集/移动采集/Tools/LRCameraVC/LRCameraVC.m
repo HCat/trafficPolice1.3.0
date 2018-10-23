@@ -114,7 +114,7 @@
     self.camera.direction = TgDirectionPortrait;
     [self.camera start];
     
-    self.deviceMotion = [[DeviceOrientation alloc]initWithDelegate:self];
+    self.deviceMotion = [[DeviceOrientation alloc] initWithDelegate:self];
     [_deviceMotion startMonitor];
 
 }
@@ -195,15 +195,8 @@
                 //[LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
             }else if(strongSelf.type == 1){
                 [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
-                //[LRShowHUD showError:@"识别失败" duration:1.5f];
+               
             }
-            
-            
-//            if (strongSelf.type == 5 && strongSelf.isIllegal) {
-//                [LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
-//            }else if(strongSelf.type == 1){
-//                [LRShowHUD showError:@"识别失败" duration:1.5f];
-//            }
             
             strongSelf.fininshCaptureBlock(strongSelf);
         }
@@ -235,36 +228,37 @@
     self.camera.useDeviceOrientation = YES;
     
     
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf);
     [self.camera setOnDeviceChange:^(LLSimpleCamera *camera, AVCaptureDevice * device) {
+        SW(strongSelf, weakSelf);
         
         // 检查闪关灯状态
         if([camera isFlashAvailable]) {
-            weakSelf.btn_flash.hidden = NO;
+            strongSelf.btn_flash.hidden = NO;
             
             if(camera.flash == LLCameraFlashOff) {
-                weakSelf.lb_flash.text = @"关闭";
-                [weakSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_close"] forState:UIControlStateNormal];
+                strongSelf.lb_flash.text = @"关闭";
+                [strongSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_close"] forState:UIControlStateNormal];
                 
             }else if(camera.flash == LLCameraFlashOn){
-                weakSelf.lb_flash.text = @"开启";
-                [weakSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_open"] forState:UIControlStateNormal];
+                strongSelf.lb_flash.text = @"开启";
+                [strongSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_open"] forState:UIControlStateNormal];
             }else{
                  weakSelf.lb_flash.text = @"自动";
-                 [weakSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_open"] forState:UIControlStateNormal];
+                 [strongSelf.btn_flash setImage:[UIImage imageNamed:@"camera_flash_open"] forState:UIControlStateNormal];
             }
         }
         else {
-            weakSelf.btn_flash.hidden = YES;
+            strongSelf.btn_flash.hidden = YES;
         }
     }];
     
     [self.camera setOnError:^(LLSimpleCamera *camera, NSError *error) {
-        
+        SW(strongSelf, weakSelf);
         LxPrintf(@"Camera error: %@", error);
         if([error.domain isEqualToString:LLSimpleCameraErrorDomain]) {
             if(error.code == LLSimpleCameraErrorCodeCameraPermission) {
-                [LRShowHUD showError:@"未获取相机权限" duration:1.5f inView:weakSelf.view config:nil];
+                [LRShowHUD showError:@"未获取相机权限" duration:1.5f inView:strongSelf.view config:nil];
             }
         }
     }];
@@ -283,19 +277,20 @@
     [self.camera capture:^(LLSimpleCamera *camera, UIImage *image, NSDictionary *metadata, NSError *error) {
         if(!error) {
             
+            SW(strongSelf, weakSelf);
             //拍照成功之后，如果成功调用TOCropViewController 对照片进行裁剪
             
             LxDBAnyVar(image.size.width);
             LxDBAnyVar(image.size.height);
             
             TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
-            cropController.delegate = weakSelf;
+            cropController.delegate = strongSelf;
             cropController.cropView.gridOverlayView.hidden = YES;
             cropController.toolbar.clampButtonHidden = YES;
             cropController.toolbar.rotateCounterclockwiseButtonHidden = YES;
             cropController.toolbar.rotateClockwiseButtonHidden = YES;
             
-            [weakSelf presentViewController:cropController animated:YES completion:nil];
+            [strongSelf presentViewController:cropController animated:YES completion:nil];
             
         }else {
             

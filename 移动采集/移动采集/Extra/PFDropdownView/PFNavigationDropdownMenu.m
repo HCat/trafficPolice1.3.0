@@ -54,6 +54,12 @@
         self.menuArrow = [[UIImageView alloc] initWithImage:self.configuration.arrowImage];
         [self.menuButton addSubview:self.menuArrow];
         
+        UIView * t_view = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.bounds), CGRectGetWidth(self.bounds), 1.f)];
+        t_view.backgroundColor = DefaultBGColor;
+        [self.menuButton addSubview:t_view];
+        
+        
+        
         self.tableView = [[PFTableView alloc] initWithFrame:CGRectMake(self.mainScreenBounds.origin.x,
                                                                        self.mainScreenBounds.origin.y,
                                                                        self.mainScreenBounds.size.width,

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_address;
 @property (weak, nonatomic) IBOutlet UIButton *btn_type;
 @property (weak, nonatomic) IBOutlet UIImageView *imgv_havePic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_right;
 
 
 @end
@@ -36,11 +37,16 @@
     _lb_address.text = [ShareFun takeStringNoNull:_model.address];
     if (_model.originalPic && _model.originalPic.length > 0) {
          _imgv_havePic.hidden = NO;
+        _layout_right.constant = 50;
+        
     }else{
         _imgv_havePic.hidden = YES;
+        _layout_right.constant = 15;
+        
     }
     
-    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
     
 }
 

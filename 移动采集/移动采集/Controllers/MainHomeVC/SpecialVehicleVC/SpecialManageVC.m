@@ -226,8 +226,8 @@
     
     
     SpecialGroupListParam * param = [[SpecialGroupListParam alloc] init];
-    param.start = 0;
-    param.length = 10;
+    param.start = self.index_car;
+    param.length = 30;
     param.parentId = _groupId;
     
     LxDBObjectAsJson(param);

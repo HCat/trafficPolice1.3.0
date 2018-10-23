@@ -239,6 +239,9 @@
 
 - (void)dealloc{
     
+    [self.rac_deleteCache sendCompleted];
+    [self.rac_addCache sendCompleted];
+    
     [[UpCacheHelper sharedDefault] stop];
     [[[UpCacheHelper sharedDefault] rac_progress] sendCompleted];
     [[[UpCacheHelper sharedDefault] rac_upCache_success] sendCompleted];

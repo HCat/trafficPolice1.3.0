@@ -74,6 +74,7 @@
                 
                 [strongSelf.rac_deleteCache sendNext:@(index)];
                 
+                
                 strongSelf.illegalCount = @(strongSelf.arr_accident.count);
                 
             }];
@@ -228,6 +229,9 @@
 }
 
 - (void)dealloc{
+    
+    [self.rac_deleteCache sendCompleted];
+    [self.rac_addCache sendCompleted];
     
     [[UpCacheHelper sharedDefault] stop];
     [[[UpCacheHelper sharedDefault] rac_progress] sendCompleted];
