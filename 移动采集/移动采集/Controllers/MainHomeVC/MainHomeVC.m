@@ -18,6 +18,10 @@
 #import "VideoColectVC.h"
 #import "SignInVC.h"
 #import "ImportCarHomeVC.h"
+
+#import "PoliceDistributeViewModel.h"
+#import "PoliceDistributeVC.h"
+
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
 #import "ActionManageVC.h"
@@ -409,7 +413,10 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"警力分布"]){
             
             if ([UserModel isPermissionForPoliceCommand]) {
-                PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
+                
+                PoliceDistributeViewModel * viewModel = [[PoliceDistributeViewModel alloc] init];
+                PoliceDistributeVC * t_vc = [[PoliceDistributeVC alloc] initWithViewModel:viewModel];
+                //PoliceCommandVC * t_vc = [[PoliceCommandVC alloc] init];
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
