@@ -104,7 +104,6 @@
     [_mapView configureForAutoLayout];
     [_mapView autoPinEdgesToSuperviewEdges];
     
-    
     _mapView.distanceFilter = 200;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;

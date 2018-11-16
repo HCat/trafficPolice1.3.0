@@ -24,6 +24,9 @@
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
+		CE121D5C219C17F80043A07C /* PoliceDistributeAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D5B219C17F80043A07C /* PoliceDistributeAnnotation.m */; };
+		CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D5E219C26290043A07C /* PoliceLocationModel.m */; };
+		CE121D62219C29AD0043A07C /* PoliceDisAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D61219C29AD0043A07C /* PoliceDisAnnotationView.m */; };
 		CE12794B20E109A500ED9948 /* IllegalCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12794A20E109A500ED9948 /* IllegalCarView.m */; };
 		CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12794C20E109B100ED9948 /* IllegalCarView.xib */; };
 		CE12DD862109AC43009C2893 /* AccidentAddHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DD832109AC42009C2893 /* AccidentAddHeadView.m */; };
@@ -607,6 +610,12 @@
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
 		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
+		CE121D5A219C17F80043A07C /* PoliceDistributeAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceDistributeAnnotation.h; sourceTree = "<group>"; };
+		CE121D5B219C17F80043A07C /* PoliceDistributeAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceDistributeAnnotation.m; sourceTree = "<group>"; };
+		CE121D5D219C26290043A07C /* PoliceLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceLocationModel.h; sourceTree = "<group>"; };
+		CE121D5E219C26290043A07C /* PoliceLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceLocationModel.m; sourceTree = "<group>"; };
+		CE121D60219C29AD0043A07C /* PoliceDisAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceDisAnnotationView.h; sourceTree = "<group>"; };
+		CE121D61219C29AD0043A07C /* PoliceDisAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceDisAnnotationView.m; sourceTree = "<group>"; };
 		CE12794920E109A500ED9948 /* IllegalCarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalCarView.h; sourceTree = "<group>"; };
 		CE12794A20E109A500ED9948 /* IllegalCarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalCarView.m; sourceTree = "<group>"; };
 		CE12794C20E109B100ED9948 /* IllegalCarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalCarView.xib; sourceTree = "<group>"; };
@@ -2127,6 +2136,8 @@
 		CE43DDF9218FE06A00AEBC9A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE121D60219C29AD0043A07C /* PoliceDisAnnotationView.h */,
+				CE121D61219C29AD0043A07C /* PoliceDisAnnotationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2143,6 +2154,10 @@
 		CE43DDFB218FE09400AEBC9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE121D5D219C26290043A07C /* PoliceLocationModel.h */,
+				CE121D5E219C26290043A07C /* PoliceLocationModel.m */,
+				CE121D5A219C17F80043A07C /* PoliceDistributeAnnotation.h */,
+				CE121D5B219C17F80043A07C /* PoliceDistributeAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3978,6 +3993,7 @@
 				CE4139E92178CF26006AA441 /* NSBundle+ZLPhotoBrowser.m in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
 				CE17A01E210814510045167B /* AccidentDetailsModel.m in Sources */,
+				CE121D5C219C17F80043A07C /* PoliceDistributeAnnotation.m in Sources */,
 				CE6A2E7420BD3C0C00EA58DA /* VehicleUpInfoDetailCell.m in Sources */,
 				CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */,
 				CE93BC6221479CB1001F2976 /* SpecialEditGroupView.m in Sources */,
@@ -4079,6 +4095,7 @@
 				CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */,
 				CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */,
 				CE763B1C1FCFF1DB00EB0815 /* JointTextCell.m in Sources */,
+				CE121D62219C29AD0043A07C /* PoliceDisAnnotationView.m in Sources */,
 				CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */,
 				CE538E0320AD230C006B3E44 /* VehicleUpImageCell.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
@@ -4146,6 +4163,7 @@
 				CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
 				CE175B8120E48650009E2282 /* MakePhoneView.m in Sources */,
+				CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */,
 				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
 				CECF753520C9505300A4DAC4 /* PFTableView.m in Sources */,

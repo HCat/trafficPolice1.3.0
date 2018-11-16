@@ -10,21 +10,25 @@
 #import "PoliceDistributeViewModel.h"
 #import <PureLayout.h>
 #import <MAMapKit/MAMapKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
+#import "PoliceDistributeAnnotation.h"
+#import "PoliceDisAnnotationView.h"
+
 
 @interface PoliceDistributeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
-@property (nonatomic,strong) PoliceDistributeViewModel *viewModel;
+@property (nonatomic,strong) PoliceDistributeViewModel * viewModel;
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_search;
-@property (weak, nonatomic) IBOutlet UIButton *btn_usrLocation;
-@property (weak, nonatomic) IBOutlet UIButton *btn_radio;
+@property (weak, nonatomic) IBOutlet UIButton * btn_search;
+@property (weak, nonatomic) IBOutlet UIButton * btn_usrLocation;
+@property (weak, nonatomic) IBOutlet UIButton * btn_radio;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topView_height;
 
-@property (nonatomic, strong) MAMapView *mapView;
-@property (nonatomic, strong) AMapLocationManager *locationManager;
-@property (nonatomic, strong) MAPointAnnotation *positionAnnotation; //定位的坐标点
+@property (nonatomic, strong) MAMapView * mapView;
+@property (nonatomic, strong) MAPointAnnotation * positionAnnotation; //定位的坐标点
+@property (nonatomic, strong) NSNumber * range;                       //半径
+@property (nonatomic, strong) MACircle * positionCircle;              //定位画的圆
 
+@property (nonatomic, strong) NSMutableArray *arr_point;    //用来存储点数据
 
 @end
 
@@ -34,6 +38,7 @@
     
     if (self = [super init]) {
         self.viewModel = viewModel;
+        self.arr_point = @[].mutableCopy;
     }
     
     return self;
@@ -42,13 +47,55 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    @weakify(self);
     
     if (IS_IPHONE_X_MORE) {
         _layout_topView_height.constant = _layout_topView_height.constant + 24;
     }
     
     [self initMapView];
-    [self configLocation];
+    
+    //发起定位请求
+    [self.viewModel.locationCommand execute:@1];
+    //定位之后所要做的UI操作
+    [self.viewModel.locationSubject subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        RACTupleUnpack(NSNumber * latitude, NSNumber * longitude) = x;
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+        [self.mapView setCenterCoordinate:coordinate animated:YES];
+    }];
+    
+    //数据请求
+    [self.viewModel.policeLocationCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+        @strongify(self);
+        
+        if (self.arr_point && self.arr_point.count > 0) {
+            [self.mapView removeAnnotations:self.arr_point];
+            [self.arr_point removeAllObjects];
+        }
+        
+        for (int i = 0; i < 1 ; i++) {
+            PoliceLocationModel * model = [[PoliceLocationModel alloc] init];
+            model.latitude = @118.176059;
+            model.longitude = @24.49281;
+            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+            annotation.coordinate = coordinate;
+            annotation.title    = @"警员";
+            annotation.subtitle = @"警员";
+            annotation.policeModel = model;
+            annotation.policeType = @1;
+            
+            [self.arr_point addObject:annotation];
+        }
+        if (self.arr_point && self.arr_point.count > 0) {
+            [self.mapView addAnnotations:self.arr_point];
+        }
+        
+        
+    }];
+    
     
     [[_btn_radio rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
@@ -60,6 +107,9 @@
     }];
     
     [[_btn_usrLocation rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        //发起定位请求
+        [self.viewModel.locationCommand execute:@1];
         
     }];
     
@@ -100,32 +150,131 @@
     _mapView.userTrackingMode = MAUserTrackingModeNone;
     _mapView.maxZoomLevel = 20;
     _mapView.minZoomLevel = 10;
-    [_mapView setZoomLevel:12 animated:YES];
+    [_mapView setZoomLevel:13.2f animated:YES];
     
 }
 
-- (void)configLocation{
+
+#pragma mark - 画定位的圆形还有坐标
+
+- (void) drawCircleRange{
     
-    self.locationManager = [[AMapLocationManager alloc] init];
+    _range = @3;
     
-    [self.locationManager setDelegate:self];
+    if (_positionAnnotation) {
+        [_mapView removeAnnotation:_positionAnnotation];
+        self.positionAnnotation = nil;
+    }
     
-    self.locationManager.distanceFilter = 20.0f;
+    self.positionAnnotation = [[MAPointAnnotation alloc] init];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.viewModel.latitude doubleValue], [self.viewModel.longitude doubleValue]);
+    _positionAnnotation.coordinate = coordinate;
+    _positionAnnotation.title    = @"百度地图中心点";
+    _positionAnnotation.subtitle = @"百度地图中心点";
     
-    //设置期望定位精度
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_mapView addAnnotation:_positionAnnotation];
     
-    //设置不允许系统暂停定位
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+    if (_positionCircle) {
+        [_mapView removeOverlay:_positionCircle];
+        self.positionCircle = nil;
+    }
     
-    //设置允许在后台定位
-    [self.locationManager setAllowsBackgroundLocationUpdates:NO];
+    self.positionCircle = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake([self.viewModel.latitude doubleValue], [self.viewModel.longitude doubleValue]) radius:[_range intValue] * 1000];
+    [_mapView addOverlay:_positionCircle];
     
-    //设置定位超时时间
-    [self.locationManager setLocationTimeout:7];
+}
+
+- (void)celearPositionRange{
     
-    [self.locationManager setLocatingWithReGeocode:NO];
-    [self.locationManager startUpdatingLocation];
+    if (_positionAnnotation) {
+        [_mapView removeAnnotation:_positionAnnotation];
+        self.positionAnnotation = nil;
+    }
+    
+    if (_positionCircle) {
+        [_mapView removeOverlay:_positionCircle];
+        self.positionCircle = nil;
+    }
+    
+}
+
+
+#pragma mark - MAMapViewDelegate
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
+    
+    if ([annotation isKindOfClass:[PoliceDistributeAnnotation class]]){
+        
+        PoliceDistributeAnnotation *vehicle = (PoliceDistributeAnnotation *)annotation;
+        
+        static NSString *customReuseIndetifier = @"PoliceViewID";
+        PoliceDisAnnotationView *policeView = (PoliceDisAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        if (policeView == nil){
+            policeView = [[PoliceDisAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            
+        }
+
+        //很重要的，配置关联的模型数据
+        policeView.annotation = vehicle;
+        
+        return policeView;
+        
+    }else if ([annotation isKindOfClass:[MAPointAnnotation class]]){
+        static NSString *customReuseIndetifier = @"positionAnnotationID";
+        MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (positionView == nil){
+            positionView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            
+        }
+        
+        positionView.image = [UIImage imageNamed:@"icon_policeDis_userLocation"];
+        
+        
+        return positionView;
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
+    /* Adjust the map center in order to show the callout view completely. */
+//    if ([view isKindOfClass:[VehicleCarAnnotationView class]]) {
+//
+//        if ([view.annotation isKindOfClass:[VehicleCarAnnotation class]]){
+//
+//
+//
+//        }
+//
+//    }
+}
+
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MACircle class]]){
+        
+        MACircleRenderer *circleRenderer = [[MACircleRenderer alloc] initWithCircle:overlay];
+        
+        circleRenderer.lineWidth   = 1.f;
+        circleRenderer.strokeColor = [UIColor clearColor];
+        circleRenderer.fillColor   = [UIColorFromRGB(0x3396FC) colorWithAlphaComponent:0.2];
+        
+        return circleRenderer;
+        
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
+    
+    self.viewModel.latitude = @(_mapView.centerCoordinate.latitude);
+    self.viewModel.longitude = @(_mapView.centerCoordinate.longitude);
+    [self celearPositionRange];
+    [self drawCircleRange];
+    //请求数据
+    [self.viewModel.loadingSubject sendNext:@1];
     
 }
 

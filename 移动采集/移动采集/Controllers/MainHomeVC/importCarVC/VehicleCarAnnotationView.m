@@ -17,8 +17,6 @@
 @property(nonatomic,strong) UILabel *lb_title;
 @property(nonatomic,strong) UIButton *btn_action;
 
-
-
 @end
 
 @implementation VehicleCarAnnotationView
