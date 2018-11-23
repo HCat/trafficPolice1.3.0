@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber * latitude;
 @property (nonatomic, strong) NSNumber * longitude;
+@property (nonatomic, assign) BOOL isSelected;          //是否被选中
 
 @end
 

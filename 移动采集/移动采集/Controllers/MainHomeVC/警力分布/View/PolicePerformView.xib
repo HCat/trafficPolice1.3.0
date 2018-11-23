@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PolicePerformView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uG-mS-noT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="wda-8i-Bm3" appends="YES" id="vz9-2Q-wiH"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2T-l5-mEF">
+                    <rect key="frame" x="57.5" y="210" width="260" height="247"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szN-Rq-LM5">
+                            <rect key="frame" x="0.0" y="0.0" width="260" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="区域广播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaa-35-KZ2">
+                                    <rect key="frame" x="99" y="16" width="62" height="18"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-dP-9kz">
+                                    <rect key="frame" x="212" y="0.0" width="48" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="7gU-37-AyW"/>
+                                        <constraint firstAttribute="height" constant="50" id="gTF-hl-AbP"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="10" minY="-13" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="btn_vehicleDriverClose"/>
+                                    <connections>
+                                        <action selector="handleBtnHideClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="dWb-rF-G6a"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstItem="gaa-35-KZ2" firstAttribute="centerX" secondItem="szN-Rq-LM5" secondAttribute="centerX" id="BMi-ty-1gU"/>
+                                <constraint firstItem="AGy-dP-9kz" firstAttribute="top" secondItem="szN-Rq-LM5" secondAttribute="top" id="COa-aP-ODB"/>
+                                <constraint firstAttribute="trailing" secondItem="AGy-dP-9kz" secondAttribute="trailing" id="Fay-IM-t23"/>
+                                <constraint firstItem="gaa-35-KZ2" firstAttribute="centerY" secondItem="szN-Rq-LM5" secondAttribute="centerY" id="q9V-aF-kHW"/>
+                                <constraint firstAttribute="height" constant="50" id="tEx-TT-0ep"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="执行人：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raV-zf-pd3">
+                            <rect key="frame" x="17" y="62" width="54" height="16"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="留口水荆防颗粒家乐福康师傅" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AHD-69-MCT">
+                            <rect key="frame" x="17" y="86" width="226" height="114"/>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="114" id="Crr-Dj-lGs"/>
+                            </constraints>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44i-NZ-hOV">
+                            <rect key="frame" x="80" y="211" width="100" height="30"/>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="6Ry-tF-cBd"/>
+                                <constraint firstAttribute="height" constant="30" id="OvS-ag-ADz"/>
+                            </constraints>
+                            <state key="normal" title="编辑内容">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="handleBtnEditClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="NkB-ft-cFQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="247" id="2uU-1N-jKI"/>
+                        <constraint firstItem="szN-Rq-LM5" firstAttribute="top" secondItem="z2T-l5-mEF" secondAttribute="top" id="Au9-Zl-9yd"/>
+                        <constraint firstAttribute="trailing" secondItem="AHD-69-MCT" secondAttribute="trailing" constant="17" id="DhP-xx-5qa"/>
+                        <constraint firstItem="44i-NZ-hOV" firstAttribute="top" secondItem="AHD-69-MCT" secondAttribute="bottom" constant="11" id="FWe-I7-sRv"/>
+                        <constraint firstItem="raV-zf-pd3" firstAttribute="leading" secondItem="z2T-l5-mEF" secondAttribute="leading" constant="17" id="IvY-ZV-wCe"/>
+                        <constraint firstItem="44i-NZ-hOV" firstAttribute="centerX" secondItem="z2T-l5-mEF" secondAttribute="centerX" id="Jlf-ty-1Mc"/>
+                        <constraint firstItem="szN-Rq-LM5" firstAttribute="leading" secondItem="z2T-l5-mEF" secondAttribute="leading" id="Lio-0n-4Fh"/>
+                        <constraint firstItem="AHD-69-MCT" firstAttribute="top" secondItem="raV-zf-pd3" secondAttribute="bottom" constant="8" id="bjD-g3-f8K"/>
+                        <constraint firstAttribute="width" constant="260" id="fe9-Bm-sMN"/>
+                        <constraint firstItem="raV-zf-pd3" firstAttribute="top" secondItem="szN-Rq-LM5" secondAttribute="bottom" constant="12" id="mWV-dS-yDw"/>
+                        <constraint firstAttribute="trailing" secondItem="szN-Rq-LM5" secondAttribute="trailing" id="vYU-QQ-F9q"/>
+                        <constraint firstItem="AHD-69-MCT" firstAttribute="leading" secondItem="z2T-l5-mEF" secondAttribute="leading" constant="17" id="xaG-EK-ZgV"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="4uG-mS-noT" secondAttribute="trailing" id="6pN-cg-5Jh"/>
+                <constraint firstItem="4uG-mS-noT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6xS-s2-nwD"/>
+                <constraint firstItem="z2T-l5-mEF" firstAttribute="centerX" secondItem="4uG-mS-noT" secondAttribute="centerX" id="MKx-ni-q4V"/>
+                <constraint firstItem="4uG-mS-noT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gHR-Vn-lDX"/>
+                <constraint firstAttribute="bottom" secondItem="4uG-mS-noT" secondAttribute="bottom" id="u4b-WW-Sba"/>
+                <constraint firstItem="z2T-l5-mEF" firstAttribute="centerY" secondItem="4uG-mS-noT" secondAttribute="centerY" id="zqS-ck-76M"/>
+            </constraints>
+            <connections>
+                <outlet property="tv_userList" destination="AHD-69-MCT" id="PKD-ZO-1Ii"/>
+            </connections>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
+        </view>
+        <tapGestureRecognizer id="wda-8i-Bm3">
+            <connections>
+                <action selector="handleBtnHideClicked:" destination="iN0-l3-epB" id="SBX-2Y-NlE"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="btn_vehicleDriverClose" width="14" height="14"/>
+    </resources>
+</document>

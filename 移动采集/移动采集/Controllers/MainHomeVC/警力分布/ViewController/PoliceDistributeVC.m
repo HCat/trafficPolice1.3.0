@@ -12,6 +12,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import "PoliceDistributeAnnotation.h"
 #import "PoliceDisAnnotationView.h"
+#import "PolicePerformView.h"
+#import "PoliceReleaseRadioVC.h"
 
 
 @interface PoliceDistributeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
@@ -28,7 +30,9 @@
 @property (nonatomic, strong) NSNumber * range;                       //半径
 @property (nonatomic, strong) MACircle * positionCircle;              //定位画的圆
 
+@property (nonatomic, strong) NSMutableArray *arr_data;     //用来存请求数据
 @property (nonatomic, strong) NSMutableArray *arr_point;    //用来存储点数据
+
 
 @end
 
@@ -39,6 +43,7 @@
     if (self = [super init]) {
         self.viewModel = viewModel;
         self.arr_point = @[].mutableCopy;
+        self.arr_data = @[].mutableCopy;
     }
     
     return self;
@@ -65,6 +70,46 @@
         [self.mapView setCenterCoordinate:coordinate animated:YES];
     }];
     
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NOTIFICATION_POLICE_SHOWDETAIL object:nil] subscribeNext:^(id x) {
+        NSLog(@"详情弹出");
+        NSNotification * notification = x;
+        PoliceLocationModel * notific_model = notification.object;
+        
+        @strongify(self);
+        if (self.arr_point && self.arr_point.count > 0) {
+            [self.mapView removeAnnotations:self.arr_point];
+            [self.arr_point removeAllObjects];
+        }
+        
+        for (PoliceLocationModel * model in self.arr_data) {
+            
+            if (model != notific_model) {
+                model.isSelected = NO;
+            }
+            
+            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+            annotation.coordinate = coordinate;
+            annotation.title    = @"警员";
+            annotation.subtitle = @"警员";
+            annotation.policeModel = model;
+            annotation.policeType = @1;
+            
+            [self.arr_point addObject:annotation];
+        }
+        if (self.arr_point && self.arr_point.count > 0) {
+            [self.mapView addAnnotations:self.arr_point];
+        }
+        
+    }];
+    
+    for (int i = 0; i < 10 ; i++) {
+        PoliceLocationModel * model = [[PoliceLocationModel alloc] init];
+        model.latitude = @(24.49281 + 0.00001 * i * 100);
+        model.longitude = @(118.176059+ 0.000001 * i * 100);
+        [self.arr_data addObject:model];
+    }
+    
     //数据请求
     [self.viewModel.policeLocationCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"%@",x);
@@ -75,10 +120,11 @@
             [self.arr_point removeAllObjects];
         }
         
-        for (int i = 0; i < 1 ; i++) {
-            PoliceLocationModel * model = [[PoliceLocationModel alloc] init];
-            model.latitude = @118.176059;
-            model.longitude = @24.49281;
+        
+        
+        
+        for (PoliceLocationModel * model in self.arr_data) {
+            
             PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
             annotation.coordinate = coordinate;
@@ -99,6 +145,17 @@
     
     [[_btn_radio rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
+        
+        PolicePerformView * view = [PolicePerformView initCustomView];
+        
+        view.editBlock = ^{
+            @strongify(self);
+            PoliceReleaseRadioVC * radiovc = [[PoliceReleaseRadioVC alloc] init];
+            [self.navigationController pushViewController:radiovc animated:YES];
+            
+        };
+        
+        [view show];
         
     }];
     

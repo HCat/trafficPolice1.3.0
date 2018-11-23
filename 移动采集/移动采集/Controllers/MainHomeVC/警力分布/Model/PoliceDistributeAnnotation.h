@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) PoliceLocationModel * policeModel;
 @property (nonatomic,strong) NSNumber * policeType; //车辆类型, 1为警员,2为警车
 
+
 @end
 
 NS_ASSUME_NONNULL_END
