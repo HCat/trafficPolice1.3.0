@@ -52,7 +52,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"车辆录入";
+    if (self.type == ParkTypeMotorbikeAdd) {
+        self.title = @"摩托车违章";
+    }else{
+        self.title = @"车辆录入";
+    }
+    
     self.isObserver = NO;
     
     //初始化请求参数
@@ -184,7 +189,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     [cell setCommonConfig];
     
-    cell.lb_title.text = @"车牌近照";
+    if (self.type == ParkTypeMotorbikeAdd) {
+        cell.lb_title.text = @"摩托车照";
+    }else{
+        cell.lb_title.text = @"车牌近照";
+    }
+    
     //判断是否拥有图片，如果拥有则显示图片，如果没有则显示@“updataPhoto.png”的图片
     //主要用于分辨车牌近照，和违停照片有没有图片
     if ([_arr_upImages[indexPath.row] isKindOfClass:[NSNull class]]) {
@@ -215,7 +225,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headId forIndexPath:indexPath];
             [_headView setDelegate:(id<IllegalParkAddHeadViewDelegate>)self];
             _headView.param = _param;
-            _headView.subType = ParkTypeCarInfoAdd;
+            _headView.subType = self.type;
             
             //监听headView中的isCanCommit来判断是否可以上传
             if (!_isObserver) {
@@ -251,28 +261,46 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         if ([_arr_upImages[0] isKindOfClass:[NSNull class]]) {
             
-            [self showCameraWithType:1 withFinishBlock:^(LRCameraVC *camera) {
-                if (camera) {
-                    
-                    SW(strongSelf, weakSelf);
-                    
-                    if (camera.type == 1) {
+            if (self.type == ParkTypeMotorbikeAdd) {
+                [self showCameraWithType:ParkTypeMotorbikeAdd withFinishBlock:^(LRCameraVC *camera) {
+                    if (camera) {
                         
-                        //替换车牌近照的图片
-                        if (camera.commonIdentifyResponse && camera.commonIdentifyResponse.cutImageUrl && [camera.commonIdentifyResponse.cutImageUrl length] > 0) {
-                    
-                            //识别之后所做的操作
-                            [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
-    
+                        SW(strongSelf, weakSelf);
+                        
+                        if (camera.type == ParkTypeMotorbikeAdd) {
+                            
+                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"摩托车照" replaceIndex:0];
+                            
+                            [strongSelf.collectionView reloadData];
+                            
                         }
-                        
-                        [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:0];
-                        
-                        [strongSelf.collectionView reloadData];
-                        
                     }
-                }
-            } isNeedRecognition:NO];
+                } isNeedRecognition:NO];
+            }else{
+                [self showCameraWithType:1 withFinishBlock:^(LRCameraVC *camera) {
+                    if (camera) {
+                        
+                        SW(strongSelf, weakSelf);
+                        
+                        if (camera.type == 1) {
+                            
+                            //替换车牌近照的图片
+                            if (camera.commonIdentifyResponse && camera.commonIdentifyResponse.cutImageUrl && [camera.commonIdentifyResponse.cutImageUrl length] > 0) {
+                                
+                                //识别之后所做的操作
+                                [strongSelf.headView takePhotoToDiscernmentWithCarNumber:camera.commonIdentifyResponse.carNo withCarcolor:camera.carColor];
+                                
+                            }
+                            
+                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:0];
+                            
+                            [strongSelf.collectionView reloadData];
+                            
+                        }
+                    }
+                } isNeedRecognition:NO];
+            }
+            
             
         }else{
             
@@ -355,11 +383,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
 - (void)handleCommitClicked{
     
     if (_param.carNo) {
-        if([ShareFun validateCarNumber:_param.carNo] == NO){
-            [LRShowHUD showError:@"车牌号格式错误" duration:1.f];
-            return;
+        if(self.type != ParkTypeMotorbikeAdd){
+            if([ShareFun validateCarNumber:_param.carNo] == NO){
+                [LRShowHUD showError:@"车牌号格式错误" duration:1.f];
+                return;
+            }
         }
-        
     }
     
     WS(weakSelf);
@@ -368,7 +397,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         [NetworkStatusMonitor StopMonitor];
         
-        SW(strongSelf, weakSelf);
+        //SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
             [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
 
@@ -391,7 +420,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     LxDBObjectAsJson(_param);
     WS(weakSelf);
     
-    _param.type = @(ParkTypeCarInfoAdd);
+    _param.type = @(self.type);
     
     IllegalParkSaveManger *manger = [[IllegalParkSaveManger alloc] init];
     manger.param = _param;

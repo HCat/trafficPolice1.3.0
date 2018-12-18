@@ -113,6 +113,15 @@
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
         }
         
+    }else if (_subType == ParkTypeMotorbikeAdd){
+        
+        self.btnType = [LocationStorage sharedDefault].isMotorBike;
+        [[LocationHelper sharedDefault] startLocation];
+        
+        if ([LocationStorage sharedDefault].isMotorBike == NO) {
+            [self stopLocationAction:[LocationStorage sharedDefault].motorBike];
+        }
+        
     }else if (_subType == ParkTypeThrough){
         
          self.btnType = [LocationStorage sharedDefault].isThrough;
@@ -149,6 +158,12 @@
 - (IBAction)handleBtnCarNumberClicked:(id)sender {
     
     WS(weakSelf);
+    
+    if (_subType == ParkTypeMotorbikeAdd) {
+        [ShareFun showTipLable:@"摩托车车牌无法识别"];
+        return;
+    }
+    
     
     UIViewController *t_vc = nil;
     
@@ -202,6 +217,8 @@
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
         }else if (_subType == ParkTypeCarInfoAdd){
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
+        }else if (_subType == ParkTypeMotorbikeAdd){
+            [self stopLocationAction:[LocationStorage sharedDefault].motorBike];
         }else if (_subType == ParkTypeThrough){
             [self stopLocationAction:[LocationStorage sharedDefault].through];
         }
@@ -239,7 +256,7 @@
 - (IBAction)handlebtnPersonLocationClicked:(id)sender {
     
     PersonLocationVC *t_personLocationVc = [PersonLocationVC new];
-    if (_subType == ParkTypeCarInfoAdd) {
+    if (_subType == ParkTypeCarInfoAdd || _subType == ParkTypeMotorbikeAdd) {
         CarInfoAddVC* t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
         [t_vc.navigationController pushViewController:t_personLocationVc animated:YES];
     }else{
@@ -283,7 +300,7 @@
         
     };
     
-    if (_subType == ParkTypeCarInfoAdd) {
+    if (_subType == ParkTypeCarInfoAdd || _subType == ParkTypeMotorbikeAdd) {
         CarInfoAddVC* t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
         [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
     }else{
@@ -448,6 +465,9 @@
     }else if (_subType == ParkTypeCarInfoAdd){
         [[LocationStorage sharedDefault] setInforInput:[self configurationLocationStorageModel]];
        
+    }else if (_subType == ParkTypeMotorbikeAdd){
+        [[LocationStorage sharedDefault] setMotorBike:[self configurationLocationStorageModel]];
+        
     }else if (_subType == ParkTypeThrough){
         [[LocationStorage sharedDefault] setThrough:[self configurationLocationStorageModel]];
        
@@ -485,6 +505,11 @@
         
         if (_btnType != 1 ) {
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
+        }
+    }else if (_subType == ParkTypeMotorbikeAdd){
+        
+        if (_btnType != 1 ) {
+            [self stopLocationAction:[LocationStorage sharedDefault].motorBike];
         }
     }else if (_subType == ParkTypeThrough){
         

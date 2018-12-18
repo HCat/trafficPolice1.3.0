@@ -10,4 +10,7 @@
 
 @interface CarInfoAddVC : HideTabSuperVC
 
+@property (nonatomic, assign) ParkType type;
+
+
 @end

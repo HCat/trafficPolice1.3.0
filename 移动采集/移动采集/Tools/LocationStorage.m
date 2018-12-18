@@ -43,6 +43,7 @@ LRSingletonM(Default)
     [self setIsThrough:YES];
     [self setIsTowardError:YES];
     [self setIsLockCar:YES];
+    [self setIsMotorBike:YES];
     [self setIsInforInput:YES];
     [self setIsVehicle:YES];
 }
@@ -55,6 +56,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsTowardError:NO];
     }else if (type == ParkTypeLockPark){
         [[LocationStorage sharedDefault] setIsLockCar:NO];
+    }else if (type == ParkTypeMotorbikeAdd){
+        [[LocationStorage sharedDefault] setIsMotorBike:NO];
     }else if (type == ParkTypeCarInfoAdd){
         [[LocationStorage sharedDefault] setIsInforInput:NO];
     }else if (type == ParkTypeThrough){
@@ -71,6 +74,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsTowardError:YES];
     }else if (type == ParkTypeLockPark){
         [[LocationStorage sharedDefault] setIsLockCar:YES];
+    }else if (type == ParkTypeMotorbikeAdd){
+        [[LocationStorage sharedDefault] setIsMotorBike:YES];
     }else if (type == ParkTypeCarInfoAdd){
         [[LocationStorage sharedDefault] setIsInforInput:YES];
     }else if (type == ParkTypeThrough){
@@ -131,6 +136,17 @@ LRSingletonM(Default)
 - (BOOL)isLockCar{
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISLOCKCAR];
     
+}
+
+#pragma mark -
+- (void)setIsMotorBike:(BOOL)isMotorBike{
+    [[NSUserDefaults standardUserDefaults] setBool:isMotorBike forKey:USERDEFAULT_KEY_ISMOTORBIKE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isMotorBike{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISMOTORBIKE];
 }
 
 
@@ -246,6 +262,27 @@ LRSingletonM(Default)
     }
     
     return lockCar;
+    
+}
+
+#pragma mark -
+- (void)setMotorBike:(LocationStorageModel *)motorBike{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:motorBike];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_MOTORBIKE];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)motorBike{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_MOTORBIKE];
+    LocationStorageModel *motorBike = nil;
+    if (data) {
+        motorBike = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return motorBike;
     
 }
 

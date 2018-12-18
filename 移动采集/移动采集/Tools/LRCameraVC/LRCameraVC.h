@@ -22,6 +22,7 @@ typedef void (^errorIdentifyCaptureBlock)(LRCameraVC
 //文件类型1：车牌号 2：身份证 3：驾驶证 4：行驶证
 
 //说明，如果是type是5，则表示正常拍照模式，而不是识别模式
+//说明，如果是type是2001，则表示正常拍照模式，而可以编辑相片
 
 @property (nonatomic,assign) NSInteger type;
 

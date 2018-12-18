@@ -63,7 +63,7 @@
         _v_masking.type = 1;
         _lb_tip.text = @"请扫描车牌号";
     
-    }else if(_type == 5) {
+    }else if(_type == 5 || _type == 2001) {
         
         _v_masking.hidden = YES;
         [_v_masking removeFromSuperview];
@@ -285,10 +285,13 @@
             
             TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
             cropController.delegate = strongSelf;
-            cropController.cropView.gridOverlayView.hidden = YES;
-            cropController.toolbar.clampButtonHidden = YES;
-            cropController.toolbar.rotateCounterclockwiseButtonHidden = YES;
-            cropController.toolbar.rotateClockwiseButtonHidden = YES;
+            if (strongSelf.type != 2001 ) {
+                cropController.cropView.gridOverlayView.hidden = YES;
+                cropController.toolbar.clampButtonHidden = YES;
+                cropController.toolbar.rotateCounterclockwiseButtonHidden = YES;
+                cropController.toolbar.rotateClockwiseButtonHidden = YES;
+            }
+
             
             [strongSelf presentViewController:cropController animated:YES completion:nil];
             
@@ -417,7 +420,7 @@
 
     [cropViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
-    if (_type != 5 || _isIllegal) {
+    if ((_type != 5 && _type != 2001) || _isIllegal) {
         
         WS(weakSelf);
         //获取的照片转换成ImageFileInfo对象来得到图片信息，并且赋值name用于服务端需要的key中

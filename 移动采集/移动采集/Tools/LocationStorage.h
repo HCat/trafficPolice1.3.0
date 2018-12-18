@@ -26,6 +26,7 @@ LRSingletonH(Default)
 @property (nonatomic, assign) BOOL isThrough;
 @property (nonatomic, assign) BOOL isTowardError;
 @property (nonatomic, assign) BOOL isLockCar;
+@property (nonatomic, assign) BOOL isMotorBike;
 @property (nonatomic, assign) BOOL isInforInput;
 @property (nonatomic, assign) BOOL isVehicle;
 
@@ -34,6 +35,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *through;
 @property (nonatomic, strong) LocationStorageModel *towardError;
 @property (nonatomic, strong) LocationStorageModel *lockCar;
+@property (nonatomic, strong) LocationStorageModel *motorBike;
 @property (nonatomic, strong) LocationStorageModel *inforInput;
 @property (nonatomic, strong) LocationStorageModel *vehicle;
 

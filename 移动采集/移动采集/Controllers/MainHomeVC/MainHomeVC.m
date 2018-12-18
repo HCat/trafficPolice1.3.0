@@ -105,6 +105,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             [_arr_illegal  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
             [_arr_illegal  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
             [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"摩托车违章"}];
             [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
             [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
             [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
@@ -342,6 +343,21 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }
  
+        }else if ([t_title isEqualToString:@"违停锁车"]) {
+            
+            if ([UserModel isPermissionForLockParking]) {
+                //                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+                //                viewModel.illegalType = IllegalTypePark;
+                //                viewModel.subType = ParkTypeLockPark;
+                //                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeLockPark;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
         }else if ([t_title isEqualToString:@"车辆录入"]) {
             
             if ([UserModel isPermissionForCarInfoAdd]) {
@@ -350,26 +366,26 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 //                viewModel.subType = ParkTypeCarInfoAdd;
 //                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
                 CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
+                t_vc.type = ParkTypeCarInfoAdd;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }
  
-        }else if ([t_title isEqualToString:@"违停锁车"]) {
+        }else if ([t_title isEqualToString:@"摩托车违章"]) {
             
-            if ([UserModel isPermissionForLockParking]) {
-//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-//                viewModel.illegalType = IllegalTypePark;
-//                viewModel.subType = ParkTypeLockPark;
-//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
-                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
-                t_vc.illegalType = IllegalTypePark;
-                t_vc.subType = ParkTypeLockPark;
+            if ([UserModel isPermissionForCarInfoAdd]) {
+                //                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+                //                viewModel.illegalType = IllegalTypePark;
+                //                viewModel.subType = ParkTypeCarInfoAdd;
+                //                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
+                t_vc.type = ParkTypeMotorbikeAdd;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }
-
+            
         }else if ([t_title isEqualToString:@"违反禁令"]){
             
             if ([UserModel isPermissionForThrough]) {
