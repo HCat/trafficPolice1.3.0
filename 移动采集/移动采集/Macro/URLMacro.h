@@ -86,6 +86,7 @@
 #pragma mark - 违停相关API
 
 #define URL_ILLEGALPARK_SAVE @"app/illegalPark/save.json"                       //违停采集增加
+#define URL_CARINFOADD @"app/illegalPark/saveCarNo.json"                        //车辆录入增加
 #define URL_ILLEGALPARK_LISTPAGING @"app/illegalPark/listPaging.json"           //违停采集列表
 #define URL_ILLEGALPARK_DETAIL @"app/illegalPark/detail.json"                   //违停采集详情
 #define URL_ILLEGALPARK_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"   //违停、违法禁令上报异常

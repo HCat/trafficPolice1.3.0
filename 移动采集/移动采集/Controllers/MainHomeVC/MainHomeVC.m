@@ -10,10 +10,15 @@
 #import "BaseImageCollectionCell.h"
 #import "UserModel.h"
 
-#import "IllegalParkManageVC.h"
-#import "IllegalParkManageViewModel.h"
-#import "AccidentVC.h"
-#import "AccidentViewModel.h"
+//#import "IllegalParkManageVC.h"
+//#import "IllegalParkManageViewModel.h"
+//#import "AccidentVC.h"
+//#import "AccidentViewModel.h"
+
+
+#import "IllegalParkVC.h"
+#import "CarInfoAddVC.h"
+#import "AccidentManageVC.h"
 
 #import "VideoColectVC.h"
 #import "SignInVC.h"
@@ -306,12 +311,16 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             if ([UserModel isPermissionForIllegal]) {
                 
-                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-                viewModel.illegalType = IllegalTypePark;
-                viewModel.subType = ParkTypePark;
-                viewModel.illegalCount = @5;
-                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+//                viewModel.illegalType = IllegalTypePark;
+//                viewModel.subType = ParkTypePark;
+//                viewModel.illegalCount = @5;
+//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
                 
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypePark;
+
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -321,11 +330,13 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             if ([UserModel isPermissionForIllegalReverseParking]) {
                 
-                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-                viewModel.illegalType = IllegalTypePark;
-                viewModel.subType = ParkTypeReversePark;
-                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
-            
+//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+//                viewModel.illegalType = IllegalTypePark;
+//                viewModel.subType = ParkTypeReversePark;
+//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeReversePark;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -334,10 +345,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"车辆录入"]) {
             
             if ([UserModel isPermissionForCarInfoAdd]) {
-                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-                viewModel.illegalType = IllegalTypePark;
-                viewModel.subType = ParkTypeCarInfoAdd;
-                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+//                viewModel.illegalType = IllegalTypePark;
+//                viewModel.subType = ParkTypeCarInfoAdd;
+//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                CarInfoAddVC *t_vc = [[CarInfoAddVC alloc] init];
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -346,10 +358,13 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"违停锁车"]) {
             
             if ([UserModel isPermissionForLockParking]) {
-                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-                viewModel.illegalType = IllegalTypePark;
-                viewModel.subType = ParkTypeLockPark;
-                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+//                viewModel.illegalType = IllegalTypePark;
+//                viewModel.subType = ParkTypeLockPark;
+//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeLockPark;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -358,10 +373,12 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"违反禁令"]){
             
             if ([UserModel isPermissionForThrough]) {
-                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
-                viewModel.illegalType = IllegalTypeThrough;
-                viewModel.subType = ParkTypeThrough;
-                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+//                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+//                viewModel.illegalType = IllegalTypeThrough;
+//                viewModel.subType = ParkTypeThrough;
+//                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypeThrough;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -371,10 +388,12 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 
             if ([UserModel isPermissionForAccident]) {
                 
-                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
-                viewModel.accidentType = AccidentTypeAccident;
-                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
-                
+//                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
+//                viewModel.accidentType = AccidentTypeAccident;
+//                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
+                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
+                t_vc.accidentType = AccidentTypeAccident;
+
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
@@ -383,9 +402,11 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"快处录入"]){
 
             if ([UserModel isPermissionForFastAccident]) {
-                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
-                viewModel.accidentType = AccidentTypeFastAccident;
-                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
+//                AccidentViewModel *viewModel = [[AccidentViewModel alloc] init];
+//                viewModel.accidentType = AccidentTypeFastAccident;
+//                AccidentVC * t_vc = [[AccidentVC alloc] initWithViewModel:viewModel];
+                AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
+                t_vc.accidentType = AccidentTypeFastAccident;
                 [self.navigationController pushViewController:t_vc animated:YES];
                 
             }else{

@@ -753,13 +753,17 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
         SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
-            [strongSelf showIllegalNetErrorView];
+            //[strongSelf showIllegalNetErrorView];
+            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+            
         }else{
             //提交违章数据
-            [strongSelf submitIllegalData];
+            
         }
         
     }];
+    
+    [self submitIllegalData];
     
 
 }
@@ -814,9 +818,13 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf, weakSelf);
             
-            [strongSelf showIllegalNetErrorView];
+            if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
+                [LRShowHUD showError:@"请重新提交!" duration:1.5f];
+            }
+            
+//            SW(strongSelf, weakSelf);
+//            [strongSelf showIllegalNetErrorView];
         }];
         
     }else if (_illegalType == IllegalTypeThrough){
@@ -866,8 +874,12 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             }
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf, weakSelf);
-            [strongSelf showIllegalNetErrorView];
+            if ([request.error.localizedDescription isEqualToString:@"请求超时。"]) {
+                [LRShowHUD showError:@"请重新提交!" duration:1.5f];
+            }
+
+//            SW(strongSelf, weakSelf);
+//            [strongSelf showIllegalNetErrorView];
         }];
     }
 

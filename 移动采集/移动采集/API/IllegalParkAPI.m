@@ -27,6 +27,9 @@
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
+    if ([self.param.type isEqualToNumber:@2002]) {
+        return URL_CARINFOADD;
+    }
     return URL_ILLEGALPARK_SAVE;
 }
 

@@ -476,15 +476,18 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
         //10为4G网络
         [NetworkStatusMonitor StopMonitor];
         
-        SW(strongSelf, weakSelf);
+        //SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
-            [strongSelf showIllegalNetErrorView];
+            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+            //[strongSelf showIllegalNetErrorView];
         }else{
             //提交违章数据
-            [strongSelf submitIllegalData];
+            //[strongSelf submitIllegalData];
         }
         
     }];
+    
+    [self submitIllegalData];
 
 }
 
@@ -510,8 +513,8 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
         }
         
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        SW(strongSelf, weakSelf);
-        [strongSelf showIllegalNetErrorView];
+//        SW(strongSelf, weakSelf);
+//        [strongSelf showIllegalNetErrorView];
         
     }];
     

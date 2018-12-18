@@ -30,7 +30,8 @@ typedef NS_ENUM(NSUInteger, ParkType) {
     ParkTypePark = 1,               //违停
     ParkTypeReversePark = 1001,     //逆向违停
     ParkTypeLockPark = 1002,        //违停锁车
-    ParkTypeCarInfoAdd = 2001,      //车辆录入
+    ParkTypeMotorbikeAdd = 2001,    //摩托车录入
+    ParkTypeCarInfoAdd = 2002,      //车辆录入
     ParkTypeThrough = 2333          //闯禁令
 };
 

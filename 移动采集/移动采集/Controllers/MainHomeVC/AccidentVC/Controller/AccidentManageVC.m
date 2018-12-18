@@ -212,14 +212,19 @@
         
         [NetworkStatusMonitor StopMonitor];
         
-        SW(strongSelf, weakSelf);
+        //SW(strongSelf, weakSelf);
         if (NetworkStatus != 10 && NetworkStatus != 1) {
-            [strongSelf showIllegalNetErrorView];
+            [ShareFun showTipLable:@"当前非4G网络,传输速度受影响"];
+            return;
+
+            //[strongSelf showIllegalNetErrorView];
         }else{
             //提交违章数据
-            [strongSelf submitAccidentData];
+            //[strongSelf submitAccidentData];
         }
     }];
+    
+    [self submitAccidentData];
     
 }
 
@@ -260,7 +265,7 @@
             
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
-            [strongSelf showIllegalNetErrorView];
+            //[strongSelf showIllegalNetErrorView];
             
         }];
         
@@ -294,7 +299,7 @@
             
             SW(strongSelf, weakSelf);
             strongSelf.isUpLoading = NO;
-            [strongSelf showIllegalNetErrorView];
+           // [strongSelf showIllegalNetErrorView];
         }];
     }
     
