@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PoliceLocationModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PoliceDetailDisAnnotationView : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *lb_policeGroup;
-@property (weak, nonatomic) IBOutlet UILabel *lb_policeInstitution;
-@property (weak, nonatomic) IBOutlet UILabel *lb_name;
-
+@property (nonatomic, strong) PoliceLocationModel * policeModel;
 
 + (PoliceDetailDisAnnotationView *)initCustomView;
 
+- (void)show;
+- (void)hide;
 
 @end
 

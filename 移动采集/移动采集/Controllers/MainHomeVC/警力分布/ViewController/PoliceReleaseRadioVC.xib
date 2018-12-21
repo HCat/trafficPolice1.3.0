@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PoliceReleaseRadioVC">
             <connections>
+                <outlet property="btn_commit" destination="q3V-qv-DRp" id="ASj-Gz-A6w"/>
                 <outlet property="tv_radio" destination="UlF-2w-71u" id="A9c-tu-jud"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UlF-2w-71u" customClass="FSTextView">
-                    <rect key="frame" x="15" y="0.0" width="345" height="543"/>
+                    <rect key="frame" x="15" y="0.0" width="345" height="290"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -33,14 +34,18 @@
                     </userDefinedRuntimeAttributes>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-qv-DRp">
-                    <rect key="frame" x="15" y="562" width="345" height="33"/>
+                    <rect key="frame" x="15" y="557" width="345" height="38"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="Xvv-rN-F0m"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="发布"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="handleBtnReleaceClicked:" destination="-1" eventType="touchUpInside" id="t6x-sa-O2T"/>
@@ -52,7 +57,7 @@
                 <constraint firstItem="UlF-2w-71u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Aeh-6o-GI4"/>
                 <constraint firstItem="UlF-2w-71u" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SoL-HQ-QQ4"/>
                 <constraint firstItem="q3V-qv-DRp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="buL-ZQ-zHq"/>
-                <constraint firstAttribute="bottom" secondItem="UlF-2w-71u" secondAttribute="bottom" constant="60" id="eKM-2d-vda"/>
+                <constraint firstAttribute="bottom" secondItem="UlF-2w-71u" secondAttribute="bottom" constant="313" id="eKM-2d-vda"/>
                 <constraint firstAttribute="trailing" secondItem="UlF-2w-71u" secondAttribute="trailing" constant="15" id="jLF-Tf-nq1"/>
                 <constraint firstAttribute="bottom" secondItem="q3V-qv-DRp" secondAttribute="bottom" constant="8" id="oXT-jY-ENc"/>
                 <constraint firstAttribute="trailing" secondItem="q3V-qv-DRp" secondAttribute="trailing" constant="15" id="yqR-2G-Wx4"/>

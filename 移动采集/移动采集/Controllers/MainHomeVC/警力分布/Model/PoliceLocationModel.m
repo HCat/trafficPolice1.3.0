@@ -10,4 +10,10 @@
 
 @implementation PoliceLocationModel
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"groupIds" : [NSNumber class],
+             @"groupNames" : [NSString class]
+             };
+}
+
 @end

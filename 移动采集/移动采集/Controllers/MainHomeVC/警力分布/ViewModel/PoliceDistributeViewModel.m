@@ -7,7 +7,11 @@
 //
 
 #import "PoliceDistributeViewModel.h"
+#import "PoliceLocationModel.h"
+#import "PoliceDistributeAnnotation.h"
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <MAMapKit/MAMapKit.h>
+#import "PoliceDistributeAPI.h"
 
 @interface PoliceDistributeViewModel ()<AMapLocationManagerDelegate>
 
@@ -23,6 +27,10 @@
     
     if (self = [super init]) {
         
+        self.arr_point = @[].mutableCopy;
+        self.arr_data = @[].mutableCopy;
+        self.range = @5;
+
         self.locationManager = [[AMapLocationManager alloc] init];
         [_locationManager setDelegate:self];
         _locationManager.distanceFilter = 20.0f;
@@ -38,6 +46,7 @@
         
         @weakify(self);
         
+        //定位请求
         self.locationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             @strongify(self);
             
@@ -58,7 +67,7 @@
         
         [[self.loadingSubject throttle:1] subscribeNext:^(id x) {
             @strongify(self);
-            [self.policeLocationCommand execute:nil];
+            [self.policeLocationCommand execute:x];
             
         }];
         
@@ -66,14 +75,65 @@
         self.policeLocationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             
             RACSignal * signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-                [subscriber sendNext:@"发送成功"];
-                [subscriber sendCompleted];
+               @strongify(self);
+                PoliceDistributeGetListParam * param = [[PoliceDistributeGetListParam alloc] init];
+                param.lat = self.latitude;
+                param.lng = self.longitude;
+                param.range = self.range;
+                
+                PoliceDistributeGetListManger * manger = [[PoliceDistributeGetListManger alloc] init];
+                manger.param = param;
+                manger.isNeedShowHud = NO;
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    @strongify(self);
+                    MAMapView * mapView = (MAMapView *)input;
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        if (self.arr_point && self.arr_point.count > 0) {
+                            [mapView removeAnnotations:self.arr_point];
+                            [self.arr_point removeAllObjects];
+                            [self.arr_data removeAllObjects];
+                        }
+                        
+                        [self.arr_data addObjectsFromArray:manger.userGpsList];
+                        
+                        for (PoliceLocationModel * model in self.arr_data) {
+                            
+                            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+                            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+                            annotation.coordinate = coordinate;
+                            annotation.title    = @"警员";
+                            annotation.subtitle = @"警员";
+                            annotation.policeModel = model;
+                            annotation.policeType = @1;
+                            [self.arr_point addObject:annotation];
+                        }
+                    
+                    };
+                    
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendError:request.error];
+                    [subscriber sendCompleted];
+                }];
+                
+                
+                
+                
+                
+                
                 return nil;
             }];
             
             return signal;
             
         }];
+        
+        
+        
         
     }
     
@@ -121,7 +181,8 @@
 
 - (void)dealloc{
     
-    [_locationSubject sendCompleted];
+    [self.locationSubject sendCompleted];
+    [self.loadingSubject sendCompleted];
     NSLog(@"PoliceDistributeViewModel dealloc");
     
 }

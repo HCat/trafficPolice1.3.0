@@ -15,9 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *tv_userList;
 
 
-
-
-
 @end
 
 @implementation PolicePerformView
@@ -29,8 +26,29 @@
     return [nibView objectAtIndex:0];
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.tv_userList.layer.cornerRadius = 5.f;
+    self.tv_userList.layer.masksToBounds = YES;
+    
+    @weakify(self);
+    [RACObserve(self, name_string) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        self.tv_userList.text = self.name_string;
+    }];
+    
+}
+
+
 
 - (IBAction)handleBtnEditClicked:(id)sender {
+    
+    if(self.name_string == nil || self.name_string.length == 0){
+        [ShareFun showTipLable:@"当前范围无人员无法编辑广播"];
+        return;
+    }
+    
     
     if (self.editBlock) {
         self.editBlock();
@@ -43,8 +61,6 @@
     
     [self hide];
 }
-
-
 
 
 - (void)show{

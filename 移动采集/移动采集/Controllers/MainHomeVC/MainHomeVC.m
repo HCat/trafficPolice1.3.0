@@ -105,7 +105,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             [_arr_illegal  addObject:@{@"image":@"menu_reversePark",@"title":@"不按朝向"}];
             [_arr_illegal  addObject:@{@"image":@"menu_lockCar",@"title":@"违停锁车"}];
             [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"车辆录入"}];
-            [_arr_illegal  addObject:@{@"image":@"menu_carInfoAdd",@"title":@"摩托车违章"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_motorbike",@"title":@"摩托车违章"}];
             [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
             [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
             [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];

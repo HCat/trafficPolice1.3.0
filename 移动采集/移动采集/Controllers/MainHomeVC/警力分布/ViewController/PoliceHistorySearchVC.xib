@@ -11,6 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PoliceHistorySearchVC">
             <connections>
+                <outlet property="btn_cancel" destination="sA6-Cu-NkQ" id="tx2-Hv-du5"/>
+                <outlet property="btn_delHistory" destination="dg7-CA-h42" id="OEI-jI-xuu"/>
+                <outlet property="btn_search" destination="eab-OI-mIr" id="Ufd-hE-hO8"/>
+                <outlet property="layout_historyHeight" destination="hbN-XN-bir" id="6eb-hU-N8D"/>
+                <outlet property="layout_topHeight" destination="6fT-zG-Z6a" id="ZlS-zc-7Xl"/>
+                <outlet property="lb_historyTip" destination="ZZs-AZ-3Ix" id="REd-G8-jjq"/>
+                <outlet property="v_history" destination="N1O-yg-bPb" id="xTB-UN-N14"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +29,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-Oc-qPt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eab-OI-mIr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eab-OI-mIr">
                             <rect key="frame" x="15" y="28" width="311" height="28"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -57,7 +64,7 @@
                         <constraint firstItem="eab-OI-mIr" firstAttribute="leading" secondItem="fJG-Oc-qPt" secondAttribute="leading" constant="15" id="8EW-gd-pBD"/>
                         <constraint firstItem="eab-OI-mIr" firstAttribute="centerY" secondItem="sA6-Cu-NkQ" secondAttribute="centerY" id="BXE-Tr-f6Y"/>
                         <constraint firstAttribute="trailing" secondItem="sA6-Cu-NkQ" secondAttribute="trailing" id="VLy-uB-OOE"/>
-                        <constraint firstAttribute="trailing" secondItem="eab-OI-mIr" secondAttribute="trailing" constant="43" id="xnz-Ke-Uu2"/>
+                        <constraint firstAttribute="trailing" secondItem="eab-OI-mIr" secondAttribute="trailing" constant="49" id="xnz-Ke-Uu2"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1O-yg-bPb">
@@ -105,7 +112,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstItem="fJG-Oc-qPt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2Tb-f0-HUP"/>
                 <constraint firstItem="fJG-Oc-qPt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L32-CV-1mJ"/>

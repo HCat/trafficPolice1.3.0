@@ -157,6 +157,9 @@
 
 #define URL_LOCATION_GETLIST @"app/location/getList.json"            //获取警员位置信息
 
+#define URL_POLICE_GETLIST  @"app/location/getList.json"            //获取警员位置信息
+#define URL_POLICE_SENDNOTICE @"app/location/sendNotice.json"       //区域广播
+
 #pragma mark - 通讯录相关API
 
 #define URL_ADDRESSBOOK_GETLIST @"app/addressBook/getList.json"      //获取通讯录

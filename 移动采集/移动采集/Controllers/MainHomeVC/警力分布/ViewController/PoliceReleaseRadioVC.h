@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PoliceReleaseRadioVC : HideTabSuperVC
 
+@property (nonatomic, copy) NSString * userIds;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

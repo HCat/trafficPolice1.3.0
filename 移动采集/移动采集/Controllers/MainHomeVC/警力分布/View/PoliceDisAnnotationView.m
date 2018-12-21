@@ -29,7 +29,6 @@
 @property(nonatomic,strong) UILabel * lb_title;
 @property(nonatomic,strong) UIButton * btn_action;
 @property(nonatomic,strong) UIImageView * imgv_icon;
-@property(nonatomic,strong) PoliceDetailDisAnnotationView * v_detail;
 @end
 
 
@@ -65,76 +64,43 @@
 
 - (void)setupAnnotation:(PoliceDistributeAnnotation *)annotation {
     
-    if (annotation.policeModel.isSelected) {
-        if (self.v_detail == nil) {
-            self.v_detail = [PoliceDetailDisAnnotationView initCustomView];
-            [self addSubview:_v_detail];
-        }
-        
-        _v_detail.frame = CGRectMake(0, kPoliceVertMargin, 195, 105);
-        
-        
-        if (self.imgv_icon == nil) {
-            self.imgv_icon = [[UIImageView alloc] init];
-            [self addSubview:self.imgv_icon];
-        }
-       
-        if ([annotation.policeType isEqualToNumber:@1]) {
-            self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeLocation"];
-        }else{
-            self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeCar"];
-        }
-        
-        self.bounds = CGRectMake(0.f, 0.f, _v_detail.frame.size.width + kPoliceHoriMargin * 2, _v_detail.frame.size.height + kPoliceIconSize + kPoliceVertMargin * 2 + kPoliceArrorHeight);
+    NSString *t_str = annotation.policeModel.userName;
     
-        _v_detail.center = CGPointMake(CGRectGetMidX(self.bounds), (CGRectGetHeight(self.bounds) - kPoliceIconSize - kPoliceArrorHeight)/2);
-        
-        self.imgv_icon.frame = CGRectMake((_v_detail.frame.size.width + kPoliceHoriMargin * 2 - kPoliceIconSize)/2,  CGRectGetMaxY(self.bounds)-kPoliceIconSize, kPoliceIconSize, kPoliceIconSize);
-        self.btn_action.frame = CGRectMake(0, 0, 195, CGRectGetHeight(_v_detail.frame)-30);
-        self.
-        self.centerOffset = CGPointMake(0, - (CGRectGetHeight(self.bounds) -kPoliceIconSize)/ 2.0);
-        
-    }else{
-        
-        NSString *t_str = @"陈意涵";
-        
-        self.backgroundColor = [UIColor clearColor];
-        self.bounds = CGRectMake(0.f, 0.f, kPoliceMinWidth, kPoliceHeight);
-        self.centerOffset = CGPointMake(0, -(kPoliceHeight-kPoliceIconSize)/ 2.0);
-        
-        
-        self.lb_title = [[UILabel alloc] init];
-        self.lb_title.backgroundColor  = [UIColor clearColor];
-        self.lb_title.textAlignment    = NSTextAlignmentCenter;
-        self.lb_title.textColor        = UIColorFromRGB(0x333333);
-        self.lb_title.font             = [UIFont systemFontOfSize:kPoliceFontSize];
-        [self addSubview:self.lb_title];
-        
-        self.imgv_icon = [[UIImageView alloc] init];
-        [self addSubview:self.imgv_icon];
-        
-        self.lb_title.text = t_str;
-        [self.lb_title sizeToFit];
-        
-        if (self.lb_title.frame.size.width > kPoliceMaxWidth)
-        {
-            self.lb_title.frame = CGRectMake(0, 0, kPoliceMaxWidth, kPoliceHeight - kPoliceVertMargin * 2 - kPoliceArrorHeight);
-        }
-        
-        if ([annotation.policeType isEqualToNumber:@1]) {
-            self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeLocation"];
-        }else{
-            self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeCar"];
-        }
-        
-        self.bounds = CGRectMake(0.f, 0.f, self.lb_title.frame.size.width + kPoliceHoriMargin * 2, kPoliceHeight);
-        
-        self.lb_title.center = CGPointMake(CGRectGetMidX(self.bounds), (kPoliceHeight - kPoliceIconSize - kPoliceArrorHeight)/2);
-        
-        self.imgv_icon.frame = CGRectMake((self.lb_title.frame.size.width + kPoliceHoriMargin * 2 - kPoliceIconSize)/2,  CGRectGetMaxY(self.bounds)-kPoliceIconSize, kPoliceIconSize, kPoliceIconSize);
-        self.btn_action.frame = self.bounds;
-        
+    self.backgroundColor = [UIColor clearColor];
+    self.bounds = CGRectMake(0.f, 0.f, kPoliceMinWidth, kPoliceHeight);
+    self.centerOffset = CGPointMake(0, -(kPoliceHeight-kPoliceIconSize)/ 2.0);
+    
+    
+    self.lb_title = [[UILabel alloc] init];
+    self.lb_title.backgroundColor  = [UIColor clearColor];
+    self.lb_title.textAlignment    = NSTextAlignmentCenter;
+    self.lb_title.textColor        = UIColorFromRGB(0x333333);
+    self.lb_title.font             = [UIFont systemFontOfSize:kPoliceFontSize];
+    [self addSubview:self.lb_title];
+    
+    self.imgv_icon = [[UIImageView alloc] init];
+    [self addSubview:self.imgv_icon];
+    
+    self.lb_title.text = t_str;
+    [self.lb_title sizeToFit];
+    
+    if (self.lb_title.frame.size.width > kPoliceMaxWidth)
+    {
+        self.lb_title.frame = CGRectMake(0, 0, kPoliceMaxWidth, kPoliceHeight - kPoliceVertMargin * 2 - kPoliceArrorHeight);
     }
+    
+    if ([annotation.policeType isEqualToNumber:@1]) {
+        self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeLocation"];
+    }else{
+        self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeCar"];
+    }
+    
+    self.bounds = CGRectMake(0.f, 0.f, self.lb_title.frame.size.width + kPoliceHoriMargin * 2, kPoliceHeight);
+    
+    self.lb_title.center = CGPointMake(CGRectGetMidX(self.bounds), (kPoliceHeight - kPoliceIconSize - kPoliceArrorHeight)/2);
+    
+    self.imgv_icon.frame = CGRectMake((self.lb_title.frame.size.width + kPoliceHoriMargin * 2 - kPoliceIconSize)/2,  CGRectGetMaxY(self.bounds)-kPoliceIconSize, kPoliceIconSize, kPoliceIconSize);
+    self.btn_action.frame = self.bounds;
     
 }
 
@@ -156,7 +122,6 @@
 - (void)handleBtnCarClicked:(id)sender{
     
     PoliceDistributeAnnotation * t_annotation = (PoliceDistributeAnnotation *)self.annotation;
-    t_annotation.policeModel.isSelected = !t_annotation.policeModel.isSelected;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_POLICE_SHOWDETAIL object:t_annotation.policeModel];
     
 }
@@ -214,8 +179,6 @@
     UIColor *customColor = [UIColor colorWithWhite:1 alpha:1];
     CGContextSetFillColorWithColor(ctx, customColor.CGColor);
     CGContextFillPath(ctx);
-    
-    
     
 
 }

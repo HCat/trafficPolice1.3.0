@@ -15,9 +15,11 @@ typedef void(^EditBlock)(void);
 
 @interface PolicePerformView : UIView
 
-@property (nonatomic,copy) EditBlock editBlock;
+@property (nonatomic, copy) NSString * name_string;
+@property (nonatomic, copy) EditBlock editBlock;
 
 + (PolicePerformView *)initCustomView;
+
 
 - (void)show;
 
