@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "PoliceLocationModel.h"
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "VehicleGPSModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, strong) NSNumber * type;
 @property (nonatomic, strong) PoliceLocationModel * policeModel;
+@property (nonatomic, strong) AMapPOI * poi;
+@property (nonatomic, strong) VehicleGPSModel * carModel;
 
 @end
 

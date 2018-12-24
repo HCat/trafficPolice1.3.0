@@ -16,5 +16,5 @@
 @property (nonatomic,copy)   NSString * plateNo;        //车牌号
 @property (nonatomic,strong) NSString * memFormNo;      //运输主体编号
 @property (nonatomic,strong) NSString * selfNo;         //自编号
-
+@property (nonatomic,strong) NSNumber * type;           //车辆类型
 @end

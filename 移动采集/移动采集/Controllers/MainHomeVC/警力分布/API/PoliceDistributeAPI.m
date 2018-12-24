@@ -37,6 +37,8 @@
 
 @end
 
+#pragma mark - 
+
 @implementation PoliceDistributeSendNoticeParam
 
 
@@ -51,6 +53,48 @@
 //请求参数
 - (nullable id)requestArgument{
     return self.param.modelToJSONObject;
+}
+
+
+@end
+
+#pragma mark -
+
+@implementation PoliceDistributeSearchParam  : NSObject
+
+@end
+
+@implementation PoliceDistributeSearchManger
+
+- (NSString *)requestUrl{
+    return URL_POLICE_SEARCH;
+}
+
+//请求参数
+- (nullable id)requestArgument{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (NSArray <PoliceLocationModel * > *)resultList{
+    
+    if (self.responseModel) {
+        _resultList = [NSArray modelArrayWithClass:[PoliceLocationModel class] json:self.responseJSONObject[@"data"][@"resultList"]];
+        return _resultList;
+    }
+    
+    return nil;
+}
+
+//返回参数
+- (NSArray <VehicleGPSModel * > *)carList{
+    
+    if (self.responseModel) {
+        _carList = [NSArray modelArrayWithClass:[VehicleGPSModel class] json:self.responseJSONObject[@"data"][@"resultList"]];
+        return _carList;
+    }
+    
+    return nil;
 }
 
 

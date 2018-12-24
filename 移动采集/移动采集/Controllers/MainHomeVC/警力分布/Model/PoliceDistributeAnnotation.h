@@ -8,12 +8,14 @@
 
 #import <MAMapKit/MAMapKit.h>
 #import "PoliceLocationModel.h"
+#import "VehicleGPSModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PoliceDistributeAnnotation : MAPointAnnotation
 
 @property (nonatomic,strong) PoliceLocationModel * policeModel;
+@property (nonatomic,strong) VehicleGPSModel *vehicleCar;
 @property (nonatomic,strong) NSNumber * policeType; //车辆类型, 1为警员,2为警车
 
 

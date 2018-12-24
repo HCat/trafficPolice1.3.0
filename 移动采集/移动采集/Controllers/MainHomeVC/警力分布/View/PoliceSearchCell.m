@@ -25,7 +25,9 @@
         self.lb_title.text = self.viewModel.title;
         if ([self.viewModel.type isEqualToNumber:@1]) {
             [self.image_type setImage:[UIImage imageNamed:@"icon_policeList_police"]];
-        }else{
+        }else if ([self.viewModel.type isEqualToNumber:@2]){
+            [self.image_type setImage:[UIImage imageNamed:@"icon_policeList_policeCar"]];
+        }else if ([self.viewModel.type isEqualToNumber:@3]){
             [self.image_type setImage:[UIImage imageNamed:@"icon_policeLocation_blue"]];
         }
     

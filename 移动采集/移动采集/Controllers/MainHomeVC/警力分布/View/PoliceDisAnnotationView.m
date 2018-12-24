@@ -65,12 +65,29 @@
 - (void)setupAnnotation:(PoliceDistributeAnnotation *)annotation {
     
     NSString *t_str = annotation.policeModel.userName;
+    if ([annotation.policeType isEqualToNumber:@2]) {
+        t_str = annotation.vehicleCar.plateNo;
+    }
     
     self.backgroundColor = [UIColor clearColor];
     self.bounds = CGRectMake(0.f, 0.f, kPoliceMinWidth, kPoliceHeight);
     self.centerOffset = CGPointMake(0, -(kPoliceHeight-kPoliceIconSize)/ 2.0);
     
+    if (self.lb_title) {
+        [self.lb_title removeFromSuperview];
+        self.lb_title = nil;
+    }
     
+    if (self.imgv_icon) {
+        [self.imgv_icon removeFromSuperview];
+        self.imgv_icon = nil;
+    }
+    
+    if (self.btn_action) {
+        [self.btn_action removeFromSuperview];
+        self.btn_action = nil;
+    }
+
     self.lb_title = [[UILabel alloc] init];
     self.lb_title.backgroundColor  = [UIColor clearColor];
     self.lb_title.textAlignment    = NSTextAlignmentCenter;
@@ -122,7 +139,7 @@
 - (void)handleBtnCarClicked:(id)sender{
     
     PoliceDistributeAnnotation * t_annotation = (PoliceDistributeAnnotation *)self.annotation;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_POLICE_SHOWDETAIL object:t_annotation.policeModel];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_POLICE_SHOWDETAIL object:t_annotation];
     
 }
 

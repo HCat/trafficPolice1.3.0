@@ -12,6 +12,7 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import "PoliceDistributeAPI.h"
+#import "VehicleAPI.h"
 
 @interface PoliceDistributeViewModel ()<AMapLocationManagerDelegate>
 
@@ -71,6 +72,97 @@
             
         }];
         
+        self.allPoliceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            
+            RACSignal * signalA = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                @strongify(self);
+                PoliceDistributeGetListParam * param = [[PoliceDistributeGetListParam alloc] init];
+    
+                PoliceDistributeGetListManger * manger = [[PoliceDistributeGetListManger alloc] init];
+                manger.param = param;
+                manger.isNeedShowHud = NO;
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    @strongify(self);
+                    
+                    MAMapView * mapView = (MAMapView *)input;
+                    if (self.arr_point && self.arr_point.count > 0) {
+                        [mapView removeAnnotations:self.arr_point];
+                        [self.arr_point removeAllObjects];
+                        
+                    }
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        for (PoliceLocationModel * model in manger.userGpsList) {
+                            
+                            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+                            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+                            annotation.coordinate = coordinate;
+                            annotation.title    = @"警员";
+                            annotation.subtitle = @"警员";
+                            annotation.policeModel = model;
+                            annotation.policeType = @1;
+                            [self.arr_point addObject:annotation];
+                        }
+                        
+                    };
+                    
+                    [subscriber sendCompleted];
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendNext:nil];
+                    [subscriber sendError:request.error];
+                }];
+                
+            
+                return nil;
+            }];
+            
+            
+            RACSignal * signalB = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                @strongify(self);
+                
+                VehicleRangeLocationManger *manger = [[VehicleRangeLocationManger alloc] init];
+                manger.isNeedShowHud = NO;
+                manger.carType = @1;
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        for (VehicleGPSModel *model in manger.vehicleGpsList) {
+                            
+                            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+                            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+                            annotation.coordinate = coordinate;
+                            annotation.title    = @"警车";
+                            annotation.subtitle = @"警车";
+                            annotation.vehicleCar = model;
+                            annotation.policeType = @2;
+                            [self.arr_point addObject:annotation];
+                        }
+                        
+                    }
+                    
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                    
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendNext:nil];
+                    [subscriber sendError:request.error];
+                
+                }];
+                
+                return nil;
+            }];
+            
+            RACSignal *signal = [signalA concat:signalB];
+            
+            return signal;
+            
+        }];
+        
+        
         
         self.policeLocationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             
@@ -86,30 +178,14 @@
                 manger.isNeedShowHud = NO;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    MAMapView * mapView = (MAMapView *)input;
+                    
+                    if (self.arr_data && self.arr_data.count > 0) {
+                        [self.arr_data removeAllObjects];
+                    }
                     
                     if (manger.responseModel.code == CODE_SUCCESS) {
-                        
-                        if (self.arr_point && self.arr_point.count > 0) {
-                            [mapView removeAnnotations:self.arr_point];
-                            [self.arr_point removeAllObjects];
-                            [self.arr_data removeAllObjects];
-                        }
-                        
                         [self.arr_data addObjectsFromArray:manger.userGpsList];
                         
-                        for (PoliceLocationModel * model in self.arr_data) {
-                            
-                            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
-                            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-                            annotation.coordinate = coordinate;
-                            annotation.title    = @"警员";
-                            annotation.subtitle = @"警员";
-                            annotation.policeModel = model;
-                            annotation.policeType = @1;
-                            [self.arr_point addObject:annotation];
-                        }
-                    
                     };
                     
                     [subscriber sendNext:nil];
@@ -119,11 +195,6 @@
                     [subscriber sendError:request.error];
                     [subscriber sendCompleted];
                 }];
-                
-                
-                
-                
-                
                 
                 return nil;
             }];

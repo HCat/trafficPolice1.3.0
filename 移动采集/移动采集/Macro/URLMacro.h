@@ -159,6 +159,7 @@
 
 #define URL_POLICE_GETLIST  @"app/location/getList.json"            //获取警员位置信息
 #define URL_POLICE_SENDNOTICE @"app/location/sendNotice.json"       //区域广播
+#define URL_POLICE_SEARCH @"app/location/search.json"               //搜索
 
 #pragma mark - 通讯录相关API
 

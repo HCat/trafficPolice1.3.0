@@ -102,10 +102,16 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"lng":_lng,
-             @"lat":_lat,
-             @"range":_range,
-             @"carType":_carType};
+    if (_lng || _lat || _range) {
+        return @{@"lng":_lng,
+                 @"lat":_lat,
+                 @"range":_range,
+                 @"carType":_carType};
+    }else{
+        return @{@"carType":_carType
+                 };
+    }
+    
 }
 
 //返回参数

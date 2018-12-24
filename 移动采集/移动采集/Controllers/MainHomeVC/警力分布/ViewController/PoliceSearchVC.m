@@ -9,6 +9,7 @@
 #import "PoliceSearchVC.h"
 #import "PoliceSearchCell.h"
 #import "SearchTagHelper.h"
+#import "PoliceDistributeVC.h"
 
 @interface PoliceSearchVC ()
 
@@ -19,7 +20,18 @@
 
 @property (weak, nonatomic) IBOutlet UIView *v_type;
 @property (weak, nonatomic) IBOutlet UIButton *btn_police;
+@property (weak, nonatomic) IBOutlet UILabel *lb_police;
+@property (weak, nonatomic) IBOutlet UIImageView *img_police;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *btn_location;
+@property (weak, nonatomic) IBOutlet UILabel *lb_location;
+@property (weak, nonatomic) IBOutlet UIImageView *img_location;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_car;
+@property (weak, nonatomic) IBOutlet UILabel *lb_car;
+@property (weak, nonatomic) IBOutlet UIImageView *img_car;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -42,12 +54,12 @@
 }
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configUI];
     
     @weakify(self);
+    
     [[self.btn_cancel rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         [self.navigationController popViewControllerAnimated:YES];
@@ -67,8 +79,24 @@
     
     [[self.btn_location rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
+        self.viewModel.type = @3;
+        self.v_type.hidden = YES;
+    }];
+    
+    [[self.btn_car rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
         self.viewModel.type = @2;
         self.v_type.hidden = YES;
+    }];
+    
+    [self.viewModel.searchCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
+    
+    [self.viewModel.searchSubject subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
     }];
     
     [RACObserve(self.viewModel, type) subscribeNext:^(NSNumber *  _Nullable x) {
@@ -76,14 +104,31 @@
         if ([x integerValue] == 1) {
             //警员
             [self.btn_type setTitle:@"警员" forState:UIControlStateNormal];
-            self.btn_police.selected = YES;
-            self.btn_location.selected = NO;
+            self.lb_police.textColor = DefaultColor;
+            self.lb_location.textColor = UIColorFromRGB(0x666666);
+            self.lb_car.textColor = UIColorFromRGB(0x666666);
+            self.img_police.hidden = NO;
+            self.img_location.hidden = YES;
+            self.img_car.hidden = YES;
     
-        }else if ([x integerValue] == 2){
+        }else if ([x integerValue] == 3){
             //位置
             [self.btn_type setTitle:@"位置" forState:UIControlStateNormal];
-            self.btn_police.selected = NO;
-            self.btn_location.selected = YES;
+            self.lb_police.textColor = UIColorFromRGB(0x666666);
+            self.lb_location.textColor = DefaultColor;
+            self.lb_car.textColor = UIColorFromRGB(0x666666);
+            self.img_police.hidden = NO;
+            self.img_location.hidden = YES;
+            self.img_car.hidden = YES;
+            
+        }else if ([x integerValue] == 2){
+            [self.btn_type setTitle:@"警车" forState:UIControlStateNormal];
+            self.lb_police.textColor = UIColorFromRGB(0x666666);
+            self.lb_location.textColor = UIColorFromRGB(0x666666);
+            self.lb_car.textColor = DefaultColor;
+            self.img_police.hidden = YES;
+            self.img_location.hidden = YES;
+            self.img_car.hidden = NO;
             
         }
         
@@ -93,13 +138,16 @@
     
     }];
     
-    
-    [self.viewModel.searchCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+    [RACObserve(self.viewModel, keywords) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        [self.tableView reloadData];
-    
+        self.tf_search.text = x;
     }];
     
+    
+    [self.tf_search.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        self.viewModel.keywords = x;
+    }];
     
 }
 
@@ -158,7 +206,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    RACTuple *tuple = nil;
     
+    PoliceSearchCellViewModel *cellViewModel = self.viewModel.arr_data[indexPath.row];
+    if ([cellViewModel.type isEqualToNumber:@1]) {
+        
+        tuple = RACTuplePack(cellViewModel.policeModel.latitude,cellViewModel.policeModel.longitude);
+    }else if ([cellViewModel.type isEqualToNumber:@2]){
+        tuple = RACTuplePack(cellViewModel.carModel.latitude,cellViewModel.carModel.longitude);
+    }else if ([cellViewModel.type isEqualToNumber:@3]){
+        tuple = RACTuplePack(@(cellViewModel.poi.location.latitude),@(cellViewModel.poi.location.longitude));
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_POLICE_SEARCH object:tuple];
+    
+    for(UIViewController *controller in self.navigationController.viewControllers) {
+        
+        if([controller isKindOfClass:[PoliceDistributeVC class]]) {
+            
+            [self.navigationController popToViewController:controller animated:YES];
+            
+        }
+        
+    }
+    
+   
 }
 
 #pragma mark - textFeildDelegate
