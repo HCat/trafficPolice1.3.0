@@ -40,8 +40,10 @@
             self.title = @"不按朝向详情";
         }else if (_subType == ParkTypeLockPark){
             self.title = @"违停锁车详情";
-        }else{
+        }else if (_subType == ParkTypeCarInfoAdd){
             self.title = @"车辆录入详情";
+        }else{
+            self.title = @"摩托车违章详情";
         }
     }else if(_illegalType == IllegalTypeThrough){
         self.title = @"违反禁令详情";
@@ -220,7 +222,7 @@
     
     if (_model) {
         
-        if (_subType == ParkTypeCarInfoAdd) {
+        if (_subType == ParkTypeCarInfoAdd || _subType == ParkTypeMotorbikeAdd) {
             return 2;
         }
         

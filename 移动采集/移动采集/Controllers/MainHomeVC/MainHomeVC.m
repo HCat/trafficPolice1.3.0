@@ -374,7 +374,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
  
         }else if ([t_title isEqualToString:@"摩托车违章"]) {
             
-            if ([UserModel isPermissionForCarInfoAdd]) {
+            if ([UserModel isPermissionForMotorBikeAdd]) {
                 //                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
                 //                viewModel.illegalType = IllegalTypePark;
                 //                viewModel.subType = ParkTypeCarInfoAdd;

@@ -226,13 +226,35 @@
     };
     
     [self.mArr_items addObject:item7];
-   
     
     LRSettingItemModel *item8 = [[LRSettingItemModel alloc]init];
     item8.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-    item8.funcName = @"视频列表";
-    item8.img = [UIImage imageNamed:@"list_video"];
+    item8.funcName = @"摩托车违章列表";
+    item8.img = [UIImage imageNamed:@"list_motorbikeAdd"];
     item8.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForMotorBikeList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeMotorbikeAdd;
+            t_vc.title = @"摩托车违章列表";
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+        
+    };
+    
+    [self.mArr_items addObject:item8];
+   
+    
+    LRSettingItemModel *item9 = [[LRSettingItemModel alloc]init];
+    item9.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item9.funcName = @"视频列表";
+    item9.img = [UIImage imageNamed:@"list_video"];
+    item9.executeCode = ^{
         
         SW(strongSelf, weakSelf);
         if ([UserModel isPermissionForVideoCollectList]) {
@@ -246,7 +268,7 @@
         }
 
     };
-    [self.mArr_items addObject:item8];
+    [self.mArr_items addObject:item9];
    
     if (IS_IPHONE_5) {
         self.tb_content.scrollEnabled = YES;

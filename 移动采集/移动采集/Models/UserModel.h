@@ -65,7 +65,8 @@
     行动管理        ACTION_MANAGE
     行动管理-发布    ACTIONMANAGE06
     行动管理-结束    ACTIONMANAGE08
-
+    摩托车采集       MOTOR_INFO_ADD
+    摩托车采集列表    MOTOR_INFO_LIST
 */
 
 
@@ -85,6 +86,7 @@
 + (BOOL)isPermissionForIllegalReverseParking;   //获取不按朝向采集权限
 + (BOOL)isPermissionForLockParking;             //获取违停锁车采集权限
 + (BOOL)isPermissionForCarInfoAdd;              //获取车辆录入权限
++ (BOOL)isPermissionForMotorBikeAdd;            //获取摩托车违章录入权限
 
 + (BOOL)isPermissionForImportantCar;            //获取重点车辆权限
 + (BOOL)isPermissionForPoliceCommand;           //获取勤务指挥权限
@@ -103,6 +105,7 @@
 + (BOOL)isPermissionForIllegalReverseList;      //不按朝向列表权限
 + (BOOL)isPermissionForIllegalLockList;         //违停锁车列表权限
 + (BOOL)isPermissionForCarInfoList;             //车辆列表
++ (BOOL)isPermissionForMotorBikeList;           //摩托车采集列表
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限

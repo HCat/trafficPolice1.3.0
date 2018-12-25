@@ -164,6 +164,25 @@
     
 }
 
+#pragma mark - 获取摩托车违章权限
+
++ (BOOL)isPermissionForMotorBikeAdd{
+    
+    NSString *match = @"MOTOR_INFO_ADD";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
+
+
 #pragma mark - 获取重点车辆权限
 
 + (BOOL)isPermissionForImportantCar{
@@ -339,6 +358,24 @@
     return NO;
     
 }
+
+#pragma mark - 摩托车采集列表
+
++ (BOOL)isPermissionForMotorBikeList{
+    
+    NSString *match = @"MOTOR_INFO_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
 
 #pragma mark - 获取联合执法权限
 

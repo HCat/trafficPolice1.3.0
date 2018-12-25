@@ -78,7 +78,7 @@
             [self buildLableWithTitle:@"所在位置:" AndText:_illegalCollect.address];
         }
         
-        if (_illegalCollect.stateName && _illegalCollect.stateName.length > 0 && _subType != ParkTypeCarInfoAdd) {
+        if (_illegalCollect.stateName && _illegalCollect.stateName.length > 0 && _subType != ParkTypeCarInfoAdd && _subType != ParkTypeMotorbikeAdd) {
             [self buildLableWithTitle:@"状态:" AndText:_illegalCollect.stateName];
         }
         
