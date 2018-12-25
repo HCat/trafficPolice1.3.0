@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PoliceSearchViewModel : NSObject
 
-@property (nonatomic, strong) NSNumber * type;  //1警员 2警车 3位置
-@property (nonatomic, strong) NSString * keywords;  //搜索内容
-@property (nonatomic, strong) NSMutableArray <PoliceSearchCellViewModel *> * arr_data;    //
-@property (nonatomic, strong) RACCommand * searchCommand;//搜索请求
+@property (nonatomic, strong) NSNumber * type;                                              //1警员 2警车 3位置
+@property (nonatomic, strong) NSString * keywords;                                          //搜索内容
+@property (nonatomic, strong) NSMutableArray <PoliceSearchCellViewModel *> * arr_data;      //列表中显示单元Cell信息的ViewModel
+@property (nonatomic, strong) RACCommand * searchCommand;                                   //搜索请求
 @property (strong, nonatomic) RACSubject * searchSubject;
 
 @end

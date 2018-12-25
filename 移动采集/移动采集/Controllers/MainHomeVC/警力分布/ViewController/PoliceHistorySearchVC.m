@@ -68,7 +68,6 @@
         PoliceSearchVC * t_vc = [[PoliceSearchVC alloc] initWithViewModel:viewModel];
         [self.navigationController pushViewController:t_vc animated:YES];
         
-        
     }];
     
 }

@@ -30,7 +30,7 @@
         
         self.arr_point = @[].mutableCopy;
         self.arr_data = @[].mutableCopy;
-        self.range = @5;
+        self.range = @3;
 
         self.locationManager = [[AMapLocationManager alloc] init];
         [_locationManager setDelegate:self];
@@ -64,13 +64,6 @@
         self.locationSubject = [RACSubject subject];
         self.loadingSubject = [RACSubject subject];
         
-        // 节流，在一定时间（1秒）内，不接收任何信号内容，过了这个时间（1秒）获取最后发送的信号内容发出。
-        
-        [[self.loadingSubject throttle:1] subscribeNext:^(id x) {
-            @strongify(self);
-            [self.policeLocationCommand execute:x];
-            
-        }];
         
         self.allPoliceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             
@@ -163,6 +156,14 @@
         }];
         
         
+        // 节流，在一定时间（1秒）内，不接收任何信号内容，过了这个时间（1秒）获取最后发送的信号内容发出。
+        
+        [[self.loadingSubject throttle:1] subscribeNext:^(id x) {
+            @strongify(self);
+            [self.policeLocationCommand execute:x];
+            
+        }];
+        
         
         self.policeLocationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             
@@ -203,9 +204,7 @@
             
         }];
         
-        
-        
-        
+
     }
     
     return self;

@@ -6,6 +6,9 @@
 //  Copyright © 2018 Hcat. All rights reserved.
 //
 
+//  警员信息Model
+
+
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN

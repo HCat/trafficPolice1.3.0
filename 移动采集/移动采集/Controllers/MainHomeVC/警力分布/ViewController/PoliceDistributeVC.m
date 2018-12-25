@@ -212,7 +212,7 @@
     _mapView.userTrackingMode = MAUserTrackingModeNone;
     _mapView.maxZoomLevel = 20;
     _mapView.minZoomLevel = 10;
-    [_mapView setZoomLevel:13.2f animated:YES];
+    [_mapView setZoomLevel:12.5f animated:YES];
     
 }
 

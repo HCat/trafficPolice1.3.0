@@ -59,45 +59,52 @@
     [self configUI];
     
     @weakify(self);
-    
+    //点击取消按钮
     [[self.btn_cancel rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
+    //点击类型选项按钮
     [[self.btn_type rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         self.v_type.hidden = NO;
         
     }];
     
+    //点击警员选项按钮
     [[self.btn_police rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         self.viewModel.type = @1;
         self.v_type.hidden = YES;
     }];
     
+    //点击位置选项按钮
     [[self.btn_location rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         self.viewModel.type = @3;
         self.v_type.hidden = YES;
     }];
     
+    //点击警车选项按钮
     [[self.btn_car rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         self.viewModel.type = @2;
         self.v_type.hidden = YES;
     }];
-    
+
+    //用于搜索警员或警车之后的响应
     [self.viewModel.searchCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         [self.tableView reloadData];
     }];
     
+    //用于搜索位置之后的响应
     [self.viewModel.searchSubject subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         [self.tableView reloadData];
     }];
+    
     
     [RACObserve(self.viewModel, type) subscribeNext:^(NSNumber *  _Nullable x) {
         @strongify(self);
@@ -138,11 +145,12 @@
     
     }];
     
+    //textViewh与keywords双向绑定
+    
     [RACObserve(self.viewModel, keywords) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         self.tf_search.text = x;
     }];
-    
     
     [self.tf_search.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
         @strongify(self);

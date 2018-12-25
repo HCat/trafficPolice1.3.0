@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Degal. All rights reserved.
 //
 
+//  用于存储搜索历史记录
+
 #import <Foundation/Foundation.h>
 
 @interface SearchTagHelper : NSObject
