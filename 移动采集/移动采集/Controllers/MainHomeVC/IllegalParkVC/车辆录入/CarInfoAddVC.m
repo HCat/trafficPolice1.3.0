@@ -25,6 +25,7 @@
 #import "KSSDImageManager.h"
 #import "IllegalNetErrorView.h"
 #import "IllegalDBModel.h"
+#import "IllegalRecordVC.h"
 
 @interface CarInfoAddVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -144,6 +145,107 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
 }
+
+
+// 查询是否有违停记录
+
+#pragma mark - IllegalParkAddHeadViewDelegate
+
+- (void)listentCarNumber{
+    if(_type == ParkTypeMotorbikeAdd){
+        [self judgeNeedJudgeIllegalRecord:self.param.carNo];
+    }
+    
+}
+
+- (void)judgeNeedJudgeIllegalRecord:(NSString *)carNumber{
+    
+    if (carNumber && carNumber.length > 0) {
+        
+        WS(weakSelf);
+        
+        [_headView getRoadId];
+        IllegalParkCarNoRecordManger *manger = [[IllegalParkCarNoRecordManger alloc] init];
+        manger.carNo = carNumber;
+        manger.roadId = _param.roadId;
+        manger.type = @(ParkTypeMotorbikeAdd);
+        
+        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            SW(strongSelf, weakSelf);
+            LxPrintf(@"%ld",(long)manger.responseModel.code);
+            
+            if (manger.responseModel.code == 110) {
+                [strongSelf.headView takeCarNumberDown];
+                
+                IllegalListView *view = [IllegalListView initCustomView];
+                view.block = ^(ParkAlertActionType actionType) {
+                    if (actionType == AlertViewActionTypeLeft){
+                        [strongSelf.navigationController popViewControllerAnimated:YES];
+                    }else if (actionType == AlertViewActionTypeRight){
+                        [strongSelf handleBeforeCommit];
+                    }
+                    
+                };
+                view.btnTitleString = @"重新采集";
+                view.illegalList = manger.illegalList;
+                view.deckCarNo = manger.deckCarNo;
+                view.selectedBlock = ^(NSNumber *illegalId) {
+                    IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                    vc.illegalId = illegalId;
+                    [strongSelf.navigationController pushViewController:vc animated:YES];
+                };
+                [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
+                
+            }else if (manger.responseModel.code == 1){
+                
+                if (manger.illegalList && manger.illegalList.count > 0) {
+                    
+                    [strongSelf.headView takeCarNumberDown];
+                    
+                    IllegalListView *view = [IllegalListView initCustomView];
+                    view.block = ^(ParkAlertActionType actionType) {
+                        if (actionType == AlertViewActionTypeLeft){
+                            [strongSelf.navigationController popViewControllerAnimated:YES];
+                        }
+                    };
+                    view.btnTitleString = @"继续采集";
+                    view.illegalList = manger.illegalList;
+                    view.deckCarNo = manger.deckCarNo;
+                    view.selectedBlock = ^(NSNumber *illegalId) {
+                        IllegalRecordVC *vc =[[IllegalRecordVC alloc] init];
+                        vc.illegalId = illegalId;
+                        [strongSelf.navigationController pushViewController:vc animated:YES];
+                    };
+                    [AlertView showWindowWithIllegalListViewWith:view inView:strongSelf.view];
+                    
+                    
+                }else{
+                    
+                    [strongSelf showAlertViewWithcontent:manger.deckCarNo leftTitle:@"退出" rightTitle:@"继续采集" block:^(AlertViewActionType actionType) {
+                        
+                        if (actionType == AlertViewActionTypeLeft){
+                            
+                            [strongSelf.navigationController popViewControllerAnimated:YES];
+                            
+                        }
+                        
+                    }];
+                    
+                }
+                
+            }
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+            
+            
+        }];
+        
+    }
+    
+    
+}
+
 
 #pragma mark - 网络请求
 
