@@ -40,6 +40,8 @@
             self.title = @"不按朝向详情";
         }else if (_subType == ParkTypeLockPark){
             self.title = @"违停锁车详情";
+        }else if (_subType == ParkTypeViolationLine){
+            self.title = @"违反禁止线详情";
         }else if (_subType == ParkTypeCarInfoAdd){
             self.title = @"车辆录入详情";
         }else{

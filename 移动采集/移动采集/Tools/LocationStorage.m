@@ -46,6 +46,7 @@ LRSingletonM(Default)
     [self setIsMotorBike:YES];
     [self setIsInforInput:YES];
     [self setIsVehicle:YES];
+    [self setIsInhibitLine:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -56,6 +57,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsTowardError:NO];
     }else if (type == ParkTypeLockPark){
         [[LocationStorage sharedDefault] setIsLockCar:NO];
+    }else if (type == ParkTypeViolationLine){
+        [[LocationStorage sharedDefault] setIsInhibitLine:NO];
     }else if (type == ParkTypeMotorbikeAdd){
         [[LocationStorage sharedDefault] setIsMotorBike:NO];
     }else if (type == ParkTypeCarInfoAdd){
@@ -74,6 +77,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsTowardError:YES];
     }else if (type == ParkTypeLockPark){
         [[LocationStorage sharedDefault] setIsLockCar:YES];
+    }else if (type == ParkTypeViolationLine){
+        [[LocationStorage sharedDefault] setIsInhibitLine:YES];
     }else if (type == ParkTypeMotorbikeAdd){
         [[LocationStorage sharedDefault] setIsMotorBike:YES];
     }else if (type == ParkTypeCarInfoAdd){
@@ -175,6 +180,18 @@ LRSingletonM(Default)
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISVEHICLE];
     
 }
+
+- (void)setIsInhibitLine:(BOOL)isInhibitLine{
+    [[NSUserDefaults standardUserDefaults] setBool:isInhibitLine forKey:USERDEFAULT_KEY_ISINHIBITLINE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isInhibitLine{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISINHIBITLINE];
+    
+}
+
 
 
 
@@ -327,6 +344,27 @@ LRSingletonM(Default)
     }
     
     return vehicle;
+    
+}
+
+#pragma mark -
+- (void)setInhibitLine:(LocationStorageModel *)inhibitLine{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:inhibitLine];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_INHIBITLINE];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)inhibitLine{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_INHIBITLINE];
+    LocationStorageModel *inhibitLine = nil;
+    if (data) {
+        inhibitLine = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return inhibitLine;
     
 }
 

@@ -109,6 +109,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             [_arr_illegal  addObject:@{@"image":@"menu_through",@"title":@"违反禁令"}];
             [_arr_illegal  addObject:@{@"image":@"menu_videoCollect",@"title":@"视频录入"}];
             [_arr_illegal  addObject:@{@"image":@"menu_jointEnforcement",@"title":@"联合执法"}];
+            [_arr_illegal  addObject:@{@"image":@"menu_violationLine",@"title":@"违反禁止线"}];
              
         }
     }
@@ -353,6 +354,21 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
                 t_vc.illegalType = IllegalTypePark;
                 t_vc.subType = ParkTypeLockPark;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
+        }else if ([t_title isEqualToString:@"违反禁止线"]) {
+            
+            if ([UserModel isPermissionForInhibitLine]) {
+                //                IllegalParkManageViewModel *viewModel = [[IllegalParkManageViewModel alloc] init];
+                //                viewModel.illegalType = IllegalTypePark;
+                //                viewModel.subType = ParkTypeCarInfoAdd;
+                //                IllegalParkManageVC * t_vc = [[IllegalParkManageVC alloc] initWithViewModel:viewModel];
+                IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+                t_vc.illegalType = IllegalTypePark;
+                t_vc.subType = ParkTypeViolationLine;
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];

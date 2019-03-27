@@ -66,6 +66,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             self.title = @"不按朝向";
         }else if (_subType == ParkTypeLockPark){
             self.title = @"违停锁车";
+        }else if (_subType == ParkTypeViolationLine){
+            self.title = @"违反禁止线";
         }
         
     }else if(_illegalType == IllegalTypeThrough){
@@ -431,6 +433,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                     cell.lb_title.text = @"不按朝向照片";
                 }else if (_subType == ParkTypeLockPark){
                     cell.lb_title.text = @"违停锁车照片";
+                }else if (_subType == ParkTypeViolationLine){
+                    cell.lb_title.text = @"违反禁止线照";
                 }
                 
                 //cell.lb_title.text = @"违停照片";
@@ -451,6 +455,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                     cell.lb_title.text = [NSString stringWithFormat:@"不按朝向照片%ld",indexPath.row];
                 }else if (_subType == ParkTypeLockPark){
                     cell.lb_title.text = [NSString stringWithFormat:@"违停锁车照片%ld",indexPath.row];
+                }else if (_subType == ParkTypeViolationLine){
+                    cell.lb_title.text = [NSString stringWithFormat:@"违反禁止线照%ld",indexPath.row];
                 }
                 
             }else if(_illegalType == IllegalTypeThrough){
@@ -562,7 +568,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                         //替换违停照片的图片
                         
                         if (strongSelf.illegalType == IllegalTypePark) {
-                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违停照片" replaceIndex:0];
+                            [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违法照片" replaceIndex:0];
                             [strongSelf.collectionView reloadData];
                         }else if(strongSelf.illegalType == IllegalTypeThrough){
                             [strongSelf replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违反禁令照片" replaceIndex:0];
@@ -1017,6 +1023,8 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
                                 t_title = [NSString stringWithFormat:@"不按朝向照片%ld",j];
                             }else if (_subType == ParkTypeLockPark){
                                 t_title = [NSString stringWithFormat:@"违停锁车照片%ld",j];
+                            }else if (_subType == ParkTypeViolationLine){
+                                t_title = [NSString stringWithFormat:@"违反禁止线照%ld",j];
                             }
                             
                             

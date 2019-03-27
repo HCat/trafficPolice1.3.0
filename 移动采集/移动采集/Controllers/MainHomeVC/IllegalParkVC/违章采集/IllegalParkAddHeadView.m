@@ -104,6 +104,15 @@
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
         }
         
+    }else if (_subType == ParkTypeViolationLine){
+        
+        self.btnType = [LocationStorage sharedDefault].isInhibitLine;
+        [[LocationHelper sharedDefault] startLocation];
+        
+        if ([LocationStorage sharedDefault].isInhibitLine == NO) {
+            [self stopLocationAction:[LocationStorage sharedDefault].inhibitLine];
+        }
+        
     }else if (_subType == ParkTypeCarInfoAdd){
         
          self.btnType = [LocationStorage sharedDefault].isInforInput;
@@ -215,6 +224,8 @@
             [self stopLocationAction:[LocationStorage sharedDefault].towardError];
         }else if (_subType == ParkTypeLockPark){
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
+        }else if (_subType == ParkTypeViolationLine){
+            [self stopLocationAction:[LocationStorage sharedDefault].inhibitLine];
         }else if (_subType == ParkTypeCarInfoAdd){
             [self stopLocationAction:[LocationStorage sharedDefault].inforInput];
         }else if (_subType == ParkTypeMotorbikeAdd){
@@ -462,6 +473,9 @@
     }else if (_subType == ParkTypeLockPark){
         [[LocationStorage sharedDefault] setLockCar:[self configurationLocationStorageModel]];
        
+    }else if (_subType == ParkTypeViolationLine){
+        [[LocationStorage sharedDefault] setInhibitLine:[self configurationLocationStorageModel]];
+        
     }else if (_subType == ParkTypeCarInfoAdd){
         [[LocationStorage sharedDefault] setInforInput:[self configurationLocationStorageModel]];
        
@@ -499,6 +513,12 @@
         
         if (_btnType != 1) {
             [self stopLocationAction:[LocationStorage sharedDefault].lockCar];
+        }
+        
+    }else if (_subType == ParkTypeViolationLine){
+        
+        if (_btnType != 1) {
+            [self stopLocationAction:[LocationStorage sharedDefault].inhibitLine];
         }
         
     }else if (_subType == ParkTypeCarInfoAdd){

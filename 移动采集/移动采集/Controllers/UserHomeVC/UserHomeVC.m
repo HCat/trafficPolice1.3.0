@@ -204,6 +204,8 @@
     };
     [self.mArr_items addObject:item6];
     
+    
+    
    
     LRSettingItemModel *item7 = [[LRSettingItemModel alloc]init];
     item7.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
@@ -269,13 +271,35 @@
 
     };
     [self.mArr_items addObject:item9];
-   
-    if (IS_IPHONE_5) {
-        self.tb_content.scrollEnabled = YES;
-    }else{
-        self.tb_content.scrollEnabled = NO;
+    
+    LRSettingItemModel *item10 = [[LRSettingItemModel alloc]init];
+    item10.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item10.funcName = @"违反禁止线列表";
+    item10.img = [UIImage imageNamed:@"list_violationLine"];
+    item10.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForInhibitLineList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeViolationLine;
+            t_vc.title = @"违反禁止线列表";
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
         
-    }
+    };
+    [self.mArr_items addObject:item10];
+    
+   
+//    if (IS_IPHONE_5) {
+//        self.tb_content.scrollEnabled = YES;
+//    }else{
+//        self.tb_content.scrollEnabled = NO;
+//        
+//    }
     
     
     LRSettingSectionModel *section1 = [[LRSettingSectionModel alloc]init];

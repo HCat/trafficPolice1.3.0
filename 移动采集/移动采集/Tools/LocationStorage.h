@@ -29,6 +29,7 @@ LRSingletonH(Default)
 @property (nonatomic, assign) BOOL isMotorBike;
 @property (nonatomic, assign) BOOL isInforInput;
 @property (nonatomic, assign) BOOL isVehicle;
+@property (nonatomic, assign) BOOL isInhibitLine;
 
 
 @property (nonatomic, strong) LocationStorageModel *park;
@@ -38,6 +39,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *motorBike;
 @property (nonatomic, strong) LocationStorageModel *inforInput;
 @property (nonatomic, strong) LocationStorageModel *vehicle;
+@property (nonatomic, strong) LocationStorageModel *inhibitLine;
 
 - (void)initializationSwitchLocation; //默认开启定位开关
 - (void)closeLocation:(ParkType)type;

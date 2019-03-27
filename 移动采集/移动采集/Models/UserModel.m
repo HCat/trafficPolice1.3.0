@@ -148,6 +148,20 @@
     
 }
 
+#pragma mark - 获取违反禁止线权限
++ (BOOL)isPermissionForInhibitLine{
+    NSString *match = @"ILLEGAL_INHIBIT_LINE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 #pragma mark - 获取车辆录入权限
 
 + (BOOL)isPermissionForCarInfoAdd{
@@ -332,6 +346,22 @@
 + (BOOL)isPermissionForIllegalLockList{
     
     NSString *match = @"ILLEGAL_LOCK_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark - 违反禁止线列表权限
+
++ (BOOL)isPermissionForInhibitLineList{
+    
+    NSString *match = @"ILLEGAL_INHIBIT_LINE_LIST";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
     NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
     
