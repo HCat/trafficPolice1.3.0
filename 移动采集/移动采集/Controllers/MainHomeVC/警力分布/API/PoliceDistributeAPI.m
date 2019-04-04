@@ -100,3 +100,70 @@
 
 @end
 
+
+#pragma mark - 勤务管理列表
+
+@implementation PoliceAnalyzeModel
+
+@end
+
+
+@implementation PoliceAnalyzeListParam
+
+@end
+
+@implementation PoliceAnalyzeListManger
+
+- (NSString *)requestUrl{
+    return URL_POLICE_ANALYZELIST;
+}
+
+//请求参数
+- (nullable id)requestArgument{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (NSArray <PoliceAnalyzeModel * > *)analyzeList{
+    
+    if (self.responseModel) {
+        _analyzeList = [NSArray modelArrayWithClass:[PoliceAnalyzeModel class] json:self.responseJSONObject[@"data"][@"list"]];
+        return _analyzeList;
+    }
+    
+    return nil;
+}
+
+
+@end
+
+#pragma mark - 获取签到列表
+
+
+@implementation PoliceSignListParam
+
+@end
+
+@implementation PoliceSignListManger
+
+- (NSString *)requestUrl{
+    return URL_POLICE_USERSIGNLIST;
+}
+
+//请求参数
+- (nullable id)requestArgument{
+    return self.param.modelToJSONObject;
+}
+
+//返回参数
+- (NSArray <SignModel * > *)signList{
+    
+    if (self.responseModel) {
+        _signList = [NSArray modelArrayWithClass:[SignModel class] json:self.responseJSONObject[@"data"]];
+        return _signList;
+    }
+    
+    return nil;
+}
+
+@end

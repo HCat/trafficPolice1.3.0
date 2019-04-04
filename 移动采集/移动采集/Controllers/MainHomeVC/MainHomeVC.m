@@ -32,6 +32,7 @@
 #import "ActionManageVC.h"
 #import "SpecialVehicleVC.h"
 #import "NoticeVC.h"
+#import "AttendanceManageVC.h"
 
 #import "MainCellLayout.h"
 #import "CommonAPI.h"
@@ -146,6 +147,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             [_arr_policeMatter  addObject:@{@"image":@"menu_serviceCommand",@"title":@"警力分布"}];
             [_arr_policeMatter addObject:@{@"image":@"menu_action",@"title":@"行动管理"}];
             [_arr_policeMatter addObject:@{@"image":@"menu_specialCar",@"title":@"特殊车辆"}];
+            [_arr_policeMatter addObject:@{@"image":@"menu_attendance",@"title":@"勤务管理"}];
         }
     }
     
@@ -499,6 +501,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             if ([UserModel isPermissionForSpecialCar]) {
                 SpecialVehicleVC *t_vc = [[SpecialVehicleVC alloc] init];
                 t_vc.type = 1;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
+        }else if ([t_title isEqualToString:@"勤务管理"]){
+            
+            if ([UserModel isPermissionForAttendance]) {
+                AttendanceManageVC *t_vc = [[AttendanceManageVC alloc] init];
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];

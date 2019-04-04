@@ -22,6 +22,8 @@
 @property (nonatomic,copy) NSString * realName;         //真实姓名
 @property (nonatomic,assign) BOOL isInsurance;          //是否保险人员 0否 1是
 @property (nonatomic,copy) NSString * departmentName;   //所属中队
+@property (nonatomic,strong) NSNumber * departmentId;   //所属中队ID
+@property (nonatomic,copy) NSString * dutyCode;         //职位编码         只有为BIG_LEADER才可以选择中队
 @property (nonatomic,copy) NSString * systemCode;       //所属系统
 @property (nonatomic,assign) BOOL workstate;            //签到状态 1签到0签退
 @property (nonatomic,copy) NSArray *userPrivileges;     //权限列表
@@ -69,6 +71,7 @@
     摩托车采集列表    MOTOR_INFO_LIST
     违反禁止线       ILLEGAL_INHIBIT_LINE
     违反禁止线列表    ILLEGAL_INHIBIT_LINE_LIST
+    勤务管理         POLICE_MANAGE
 */
 
 
@@ -98,6 +101,7 @@
 + (BOOL)isPermissionForRoadInfo;                //路面实况权限
 + (BOOL)isPermissionForJointEnforcement;        //联合执法权限
 + (BOOL)isPermissionForSpecialCar;              //特殊车辆权限
++ (BOOL)isPermissionForAttendance;              //勤务管理
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;            //事故权限列表
@@ -114,12 +118,14 @@
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限
-
 //获取一些功能性权限
 + (BOOL)isPermissionForAcitonManage;            //行动管理权限
 //获取一些功能性权限
 + (BOOL)isPermissionForAcitonPublish;           //行动管理发布
 //获取一些功能性权限
 + (BOOL)isPermissionForAcitonEnd;               //行动管理结束
+
+
+
  
 @end

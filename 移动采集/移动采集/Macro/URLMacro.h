@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
@@ -57,7 +57,9 @@
 #define URL_COMMON_ADVICE @"app/common/advice.json"                             //投诉建议
 #define URL_COMMON_VALIDVISITOR @"app/common/validVisitor.json"                 //查询是否需要游客登录
 #define URL_COMMON_POLICEANOUNCE @"app2/policeAnounce/getAnounce.json"          //警务详情
-#define URL_COMMON_POLICEORG @"app/common/getPoliceOrg.json"
+#define URL_COMMON_POLICEORG @"app/common/getPoliceOrg.json"                    //获取机构列表
+#define URL_COMMON_GETDEPARTMENT @"app/common/getDepartment.json"               //获取部门列表
+#define URL_COMMON_GETGROUPBYDEPARTMENTID @"app/common/getGroupByDepartmentId.json"     //根据部门获取勤务组
 
 
 #pragma mark - 事故相关API
@@ -87,7 +89,7 @@
 
 #define URL_ILLEGALPARK_SAVE @"app/illegalPark/save.json"                       //违停采集增加
 #define URL_CARINFOADD @"app/illegalPark/saveCarNo.json"                        //车辆录入增加
-#define URL_ILLEGALPARK_LISTPAGING @"app/illegalPark/list.json"           //违停采集列表
+#define URL_ILLEGALPARK_LISTPAGING @"app/illegalPark/list.json"                 //违停采集列表
 #define URL_ILLEGALPARK_DETAIL @"app/illegalPark/detail.json"                   //违停采集详情
 #define URL_ILLEGALPARK_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"   //违停、违法禁令上报异常
 #define URL_ILLEGALPARK_QUERYRECORD @"app/illegalPark/queryRecord.json"         //查询是否已有违停记录(旧)
@@ -98,7 +100,7 @@
 #pragma mark - 违反禁令相关API
 
 #define URL_ILLEGALTHROUGH_QUERYSEC @"app/illegalThrough/querySec.json"         //违反禁令查询是否需要二次采集(旧)
-#define URL_ILLEGALTHROUGH_CARNOSEC @"app/illegalThrough/queryCarNoSec.json"         //违反禁令查询是否需要二次采集(新)
+#define URL_ILLEGALTHROUGH_CARNOSEC @"app/illegalThrough/queryCarNoSec.json"    //违反禁令查询是否需要二次采集(新)
 
 #define URL_ILLEGALTHROUGH_SAVE @"app/illegalThrough/save.json"                 //违反禁令采集增加
 #define URL_ILLEGALTHROUGH_SECADD @"app/illegalThrough/secAdd.json"             //违反禁令采集增加违反禁令二次采集加载数据
@@ -118,7 +120,7 @@
 #pragma mark - 消息相关API
 
 #define URL_IDENTIFY_LIST @"identify/identifyMsgList.json"                  //消息列表
-#define URL_IDENTIFYWITHTYPE_LIST @"identify/identifyMsgList.json"         //根据TYPE请求相应的消息
+#define URL_IDENTIFYWITHTYPE_LIST @"identify/identifyMsgList.json"          //根据TYPE请求相应的消息
 #define URL_IDENTIFY_MSGREAD @"identify/setMsgRead.json"                    //确认接收消息
 #define URL_IDENTIFY_NOTICE @"identify/notice.json"                         //消息通知
 #define URL_IDENTIFY_MSGDETAIL @"identify/msgDetail.json"                   //消息详情
@@ -148,18 +150,21 @@
 #define URL_VEHICLE_VEHICLETIREDIMAGELIST @"app/vehicle/getFatigueAlarmImageList.json"      //获取疲劳驾驶报警图片列表
 #define URL_VEHICLE_CARUP @"app/illegalController/saveIllegalEntry.json"                    //违法录入增加
 #define URL_VEHICLE_VEHICLEGETCODETYPE @"app/illegalController/getCodeType.json"            //违法类型获取
-#define URL_VEHICLE_VEHICLEUPCARLIST @"app/illegalController/getIllegalEntry.json"         //违法录入列表
-#define URL_VEHICLE_VEHICLEUPCARDETAILE @"app/illegalController/getDetail.json"
-#define URL_VEHICLE_VEHICLEGETROUTEAPPROVAL @"app/vehicle/getRouteApproval.json"
+#define URL_VEHICLE_VEHICLEUPCARLIST @"app/illegalController/getIllegalEntry.json"          //违法录入列表
+#define URL_VEHICLE_VEHICLEUPCARDETAILE @"app/illegalController/getDetail.json"             //违法录入详细信息
+#define URL_VEHICLE_VEHICLEGETROUTEAPPROVAL @"app/vehicle/getRouteApproval.json"            //获取有效路线接口
 
 
 #pragma mark - 警员勤务
 
-#define URL_LOCATION_GETLIST @"app/location/getList.json"            //获取警员位置信息
+#define URL_LOCATION_GETLIST @"app/location/getList.json"               //获取警员位置信息
 
-#define URL_POLICE_GETLIST  @"app/location/getList.json"            //获取警员位置信息
-#define URL_POLICE_SENDNOTICE @"app/location/sendNotice.json"       //区域广播
-#define URL_POLICE_SEARCH @"app/location/search.json"               //搜索
+#define URL_POLICE_GETLIST  @"app/location/getList.json"                //获取警员位置信息
+#define URL_POLICE_SENDNOTICE @"app/location/sendNotice.json"           //区域广播
+#define URL_POLICE_SEARCH @"app/location/search.json"                   //搜索
+#define URL_POLICE_ANALYZELIST @"app/location/policeAnalyzeList.json"   //勤务管理列表
+#define URL_POLICE_USERSIGNLIST @"app/common/getUserSignList.json"      //获取签到列表
+
 
 #pragma mark - 通讯录相关API
 
@@ -198,13 +203,13 @@
 #define URL_ACTION_CHANGESTATUS @"app/actionManage/changeActionStatus.json"         //更改行动状态
 #define URL_ACTION_TYPELIST @"app/actionManage/getActionTaskList.json"              //根据类型选择行动
 
-#define URL_SPECIAL_GETGROUPLIST @"app/group/getGroupList.json"     //特殊传车辆管理组的获取和组的车牌获取
-#define URL_SPECIAL_GETRECORDLIST @"app/group/getRecordList.json"   //特殊传车辆管理获取识别记录列表
-#define URL_SPECIAL_RECORDDETAIL @"app/group/recordDetail.json"     //特殊传车辆管理获取识别记录详情
-#define URL_SPECIAL_SAVEGROUP @"app/group/saveGroup.json"     //特殊车辆管理保存组合保存车辆
-#define URL_SPECIAL_DELETE @"app/group/delete.json"     //删除车辆
-#define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"     //获取设置通知人员列表
-#define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"     //保存置通知人员
+#define URL_SPECIAL_GETGROUPLIST @"app/group/getGroupList.json"                     //特殊传车辆管理组的获取和组的车牌获取
+#define URL_SPECIAL_GETRECORDLIST @"app/group/getRecordList.json"                   //特殊传车辆管理获取识别记录列表
+#define URL_SPECIAL_RECORDDETAIL @"app/group/recordDetail.json"                     //特殊传车辆管理获取识别记录详情
+#define URL_SPECIAL_SAVEGROUP @"app/group/saveGroup.json"                           //特殊车辆管理保存组合保存车辆
+#define URL_SPECIAL_DELETE @"app/group/delete.json"                                 //删除车辆
+#define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"                 //获取设置通知人员列表
+#define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"               //保存置通知人员
 
 
 

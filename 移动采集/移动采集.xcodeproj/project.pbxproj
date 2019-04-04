@@ -221,8 +221,18 @@
 		CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE450BBE1F272F810025A20C /* FeedbackFootView.xib */; };
 		CE450BC41F2730160025A20C /* FSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC31F2730160025A20C /* FSTextView.m */; };
 		CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */; };
+		CE48A8F72254D37600D423C6 /* AttendancePoliceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48A8F52254D37600D423C6 /* AttendancePoliceCell.m */; };
+		CE48A8F82254D37600D423C6 /* AttendancePoliceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48A8F62254D37600D423C6 /* AttendancePoliceCell.xib */; };
+		CE48A8FC22559EF300D423C6 /* AttendanceSignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48A8FA22559EF300D423C6 /* AttendanceSignInVC.m */; };
+		CE48A8FD22559EF300D423C6 /* AttendanceSignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48A8FB22559EF300D423C6 /* AttendanceSignInVC.xib */; };
+		CE48A90022559F7F00D423C6 /* AttendanceSignInViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48A8FF22559F7F00D423C6 /* AttendanceSignInViewModel.m */; };
+		CE48A9042255A32800D423C6 /* AttendanceSignInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48A9022255A32800D423C6 /* AttendanceSignInCell.m */; };
+		CE48A9052255A32800D423C6 /* AttendanceSignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48A9032255A32800D423C6 /* AttendanceSignInCell.xib */; };
 		CE48DE57200C7F6F00AF6958 /* JointImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE48DE55200C7F6F00AF6958 /* JointImageVC.m */; };
 		CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */; };
+		CE4959A62254A29E003922FA /* AttendanceManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4959A42254A29E003922FA /* AttendanceManageVC.m */; };
+		CE4959A72254A29E003922FA /* AttendanceManageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4959A52254A29E003922FA /* AttendanceManageVC.xib */; };
+		CE4959AA2254A2DF003922FA /* AttendanceManageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4959A92254A2DF003922FA /* AttendanceManageViewModel.m */; };
 		CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */; };
 		CE496F031F6A1ACB004E69C6 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496F011F6A1ACB004E69C6 /* TTGTextTagCollectionView.m */; };
 		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
@@ -956,9 +966,25 @@
 		CE450BC31F2730160025A20C /* FSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTextView.m; sourceTree = "<group>"; };
 		CE450BC61F2741050025A20C /* BaseImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageCollectionCell.h; sourceTree = "<group>"; };
 		CE450BC71F2741050025A20C /* BaseImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageCollectionCell.m; sourceTree = "<group>"; };
+		CE48A8F42254D37600D423C6 /* AttendancePoliceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendancePoliceCell.h; sourceTree = "<group>"; };
+		CE48A8F52254D37600D423C6 /* AttendancePoliceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendancePoliceCell.m; sourceTree = "<group>"; };
+		CE48A8F62254D37600D423C6 /* AttendancePoliceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendancePoliceCell.xib; sourceTree = "<group>"; };
+		CE48A8F922559EF300D423C6 /* AttendanceSignInVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceSignInVC.h; sourceTree = "<group>"; };
+		CE48A8FA22559EF300D423C6 /* AttendanceSignInVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceSignInVC.m; sourceTree = "<group>"; };
+		CE48A8FB22559EF300D423C6 /* AttendanceSignInVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceSignInVC.xib; sourceTree = "<group>"; };
+		CE48A8FE22559F7F00D423C6 /* AttendanceSignInViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceSignInViewModel.h; sourceTree = "<group>"; };
+		CE48A8FF22559F7F00D423C6 /* AttendanceSignInViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceSignInViewModel.m; sourceTree = "<group>"; };
+		CE48A9012255A32800D423C6 /* AttendanceSignInCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceSignInCell.h; sourceTree = "<group>"; };
+		CE48A9022255A32800D423C6 /* AttendanceSignInCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceSignInCell.m; sourceTree = "<group>"; };
+		CE48A9032255A32800D423C6 /* AttendanceSignInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceSignInCell.xib; sourceTree = "<group>"; };
 		CE48DE54200C7F6F00AF6958 /* JointImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointImageVC.h; sourceTree = "<group>"; };
 		CE48DE55200C7F6F00AF6958 /* JointImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointImageVC.m; sourceTree = "<group>"; };
 		CE48DE56200C7F6F00AF6958 /* JointImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JointImageVC.xib; sourceTree = "<group>"; };
+		CE4959A32254A29E003922FA /* AttendanceManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceManageVC.h; sourceTree = "<group>"; };
+		CE4959A42254A29E003922FA /* AttendanceManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceManageVC.m; sourceTree = "<group>"; };
+		CE4959A52254A29E003922FA /* AttendanceManageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceManageVC.xib; sourceTree = "<group>"; };
+		CE4959A82254A2DF003922FA /* AttendanceManageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttendanceManageViewModel.h; sourceTree = "<group>"; };
+		CE4959A92254A2DF003922FA /* AttendanceManageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttendanceManageViewModel.m; sourceTree = "<group>"; };
 		CE496EFE1F6A1ACB004E69C6 /* TTGTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTagCollectionView.h; sourceTree = "<group>"; };
 		CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
 		CE496F001F6A1ACB004E69C6 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
@@ -2319,6 +2345,53 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		CE4959A0225493A0003922FA /* 勤务管理 */ = {
+			isa = PBXGroup;
+			children = (
+				CE4959AB2254A2E6003922FA /* Views */,
+				CE4959A2225493F0003922FA /* ViewModels */,
+				CE4959A1225493E9003922FA /* Controllers */,
+			);
+			path = "勤务管理";
+			sourceTree = "<group>";
+		};
+		CE4959A1225493E9003922FA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE4959A32254A29E003922FA /* AttendanceManageVC.h */,
+				CE4959A42254A29E003922FA /* AttendanceManageVC.m */,
+				CE4959A52254A29E003922FA /* AttendanceManageVC.xib */,
+				CE48A8F922559EF300D423C6 /* AttendanceSignInVC.h */,
+				CE48A8FA22559EF300D423C6 /* AttendanceSignInVC.m */,
+				CE48A8FB22559EF300D423C6 /* AttendanceSignInVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE4959A2225493F0003922FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CE4959A82254A2DF003922FA /* AttendanceManageViewModel.h */,
+				CE4959A92254A2DF003922FA /* AttendanceManageViewModel.m */,
+				CE48A8FE22559F7F00D423C6 /* AttendanceSignInViewModel.h */,
+				CE48A8FF22559F7F00D423C6 /* AttendanceSignInViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE4959AB2254A2E6003922FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE48A8F42254D37600D423C6 /* AttendancePoliceCell.h */,
+				CE48A8F52254D37600D423C6 /* AttendancePoliceCell.m */,
+				CE48A8F62254D37600D423C6 /* AttendancePoliceCell.xib */,
+				CE48A9012255A32800D423C6 /* AttendanceSignInCell.h */,
+				CE48A9022255A32800D423C6 /* AttendanceSignInCell.m */,
+				CE48A9032255A32800D423C6 /* AttendanceSignInCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE496EFD1F6A1ACB004E69C6 /* TTGTagCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2647,6 +2720,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE4959A0225493A0003922FA /* 勤务管理 */,
 				CE43DDF8218FE05600AEBC9A /* 警力分布 */,
 				CEAD745E2142118F001ED5E0 /* SpecialVehicleVC */,
 				CE72DF19211158F800F843CD /* ActionManageVC */,
@@ -3720,6 +3794,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -3739,6 +3814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE65B90B20AB039400AA97BB /* VehicleUpBasicInfoCell.xib in Resources */,
+				CE48A9052255A32800D423C6 /* AttendanceSignInCell.xib in Resources */,
 				CED797F91F7A41FC003FC68C /* SuperLogger.bundle in Resources */,
 				CE17C6EB2179E2C700B7391C /* AccidentUpListVC.xib in Resources */,
 				CE85021D1F558CB2001DC495 /* VideoListCell.xib in Resources */,
@@ -3839,6 +3915,7 @@
 				CE27D173215FA32B0014FEC8 /* IllegalParkUpListCell.xib in Resources */,
 				CEE5E9F51F1C873E00AC515C /* LoginHomeVC.xib in Resources */,
 				CE6AE97220B68D35005781DA /* VehicleTiredAlarmVC.xib in Resources */,
+				CE48A8FD22559EF300D423C6 /* AttendanceSignInVC.xib in Resources */,
 				CE424F441F3AE694005741CA /* AccidentPartyCell.xib in Resources */,
 				CE4139F82178CF27006AA441 /* ZLPhotoBrowser.bundle in Resources */,
 				CE25F50321255A140067E125 /* IllegalRecordVC.xib in Resources */,
@@ -3850,10 +3927,12 @@
 				CE1B7EFE20BE8594002243AF /* VehicleTrafficTopCell.xib in Resources */,
 				CE5BA2A420F73C6C00B93523 /* AccidentPeopleCell.xib in Resources */,
 				CE5A01051F611CC6000F13CC /* VehicleCarCell.xib in Resources */,
+				CE4959A72254A29E003922FA /* AttendanceManageVC.xib in Resources */,
 				CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
 				CEAD7469214224FF001ED5E0 /* SpecialVehicleCell.xib in Resources */,
 				CE6C682020747E2E009A0E14 /* VehicleSearchListVC.xib in Resources */,
+				CE48A8F82254D37600D423C6 /* AttendancePoliceCell.xib in Resources */,
 				CE1E400120F4BB44003A5595 /* AccidentUpImageCell.xib in Resources */,
 				CE88FC5A20A9B7FB0011B729 /* VehicleCarInfoVC.xib in Resources */,
 				CE2AAEA5212BB32E009088C3 /* LoginDeveloperVC.xib in Resources */,
@@ -4048,6 +4127,7 @@
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE4139FB2178CF27006AA441 /* UIButton+EnlargeTouchArea.m in Sources */,
+				CE48A8FC22559EF300D423C6 /* AttendanceSignInVC.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
 				CE8C6FCC1F41A7E10009B09F /* AccidentRemarkListVC.m in Sources */,
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
@@ -4080,6 +4160,7 @@
 				CE93BC4E2146A0FB001F2976 /* SpecialManageVC.m in Sources */,
 				CED9B0F31F5D356E0010E68A /* SignListCell.m in Sources */,
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
+				CE48A90022559F7F00D423C6 /* AttendanceSignInViewModel.m in Sources */,
 				CE93BC4921468AA4001F2976 /* SpecialNoticeCell.m in Sources */,
 				CE2C98B81F61C204009851F6 /* VehicleDriverNoShowCell.m in Sources */,
 				CE8C6FD11F41ACD80009B09F /* AccidentRemarkListCell.m in Sources */,
@@ -4152,6 +4233,7 @@
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
 				CE6154BA1F6789CE0018DF71 /* BoradPoliceView.m in Sources */,
 				CE3740A221758EC100FEF14F /* AutomaicUpCacheModel.m in Sources */,
+				CE4959AA2254A2DF003922FA /* AttendanceManageViewModel.m in Sources */,
 				CE675F351F386F07006FC15F /* AccidentCell.m in Sources */,
 				CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */,
 				CE5E20411F32C2E1009D98A6 /* CountAccidentHelper.m in Sources */,
@@ -4200,11 +4282,13 @@
 				CE1E400020F4BB44003A5595 /* AccidentUpImageCell.m in Sources */,
 				CECF753320C9505300A4DAC4 /* PFConfiguration.m in Sources */,
 				CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */,
+				CE4959A62254A29E003922FA /* AttendanceManageVC.m in Sources */,
 				CE87043B20CE52B700E206AE /* LTSCalendarWeekDayView.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
 				CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */,
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
 				CEFEFD1F1F29ED8100C33CBD /* KSPhotoView.m in Sources */,
+				CE48A9042255A32800D423C6 /* AttendanceSignInCell.m in Sources */,
 				CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */,
 				CE915DC821A4EF230095D2DE /* PoliceReleaseRadioVC.m in Sources */,
 				CEAD74632142118F001ED5E0 /* SpecialVehicleVC.m in Sources */,
@@ -4308,6 +4392,7 @@
 				CE4139E12178CF26006AA441 /* ZLEditViewController.m in Sources */,
 				CE37409E2175803600FEF14F /* UpCacheSettingVC.m in Sources */,
 				CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */,
+				CE48A8F72254D37600D423C6 /* AttendancePoliceCell.m in Sources */,
 				CEAAC2D220C8267D009DCC5E /* MainCellLayout.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,

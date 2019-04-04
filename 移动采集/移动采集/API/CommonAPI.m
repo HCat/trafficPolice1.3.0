@@ -394,10 +394,76 @@
     
 }
 
+@end
 
+#pragma mark - 获取部门列表
+
+@implementation DepartmentModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"departmentId" : @"id",
+             };
+}
 
 @end
 
+@implementation CommonGetDepartmentManger
+
+- (NSString *)requestUrl
+{
+    return URL_COMMON_GETDEPARTMENT;
+}
+
+- (NSArray <DepartmentModel *> *)commonReponse{
+    
+    if (self.responseModel) {
+        _commonReponse = [NSArray modelArrayWithClass:[DepartmentModel class] json:self.responseJSONObject[@"data"]];
+        
+        return _commonReponse;
+    }
+    
+    return nil;
+    
+}
+
+@end
+
+#pragma mark - 根据部门获取勤务组
+
+
+@implementation PoliceGroupModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"groupId" : @"id"};
+}
+
+@end
+
+
+@implementation CommonGroupByDepartmentIdManger
+
+- (NSString *)requestUrl{
+    return URL_COMMON_GETGROUPBYDEPARTMENTID;
+}
+
+//请求参数
+- (nullable id)requestArgument{
+    return @{@"departmentId":_departmentId
+             };
+}
+
+//返回参数
+- (NSArray <PoliceGroupModel * > *)groupList{
+    
+    if (self.responseModel) {
+        _groupList = [NSArray modelArrayWithClass:[PoliceGroupModel class] json:self.responseJSONObject[@"data"]];
+        return _groupList;
+    }
+    
+    return nil;
+}
+
+@end
 
 
 

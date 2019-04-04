@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="71" id="KGk-i7-Jjw" customClass="AttendanceSignInCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiI-bU-mfl">
+                        <rect key="frame" x="15" y="0.0" width="290" height="72"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-pq-ZE6">
+                        <rect key="frame" x="30" y="15" width="46" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="NdT-K3-cQK"/>
+                            <constraint firstAttribute="height" constant="25" id="cb8-CY-0Ic"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="签到时间:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfY-F5-gKG">
+                        <rect key="frame" x="111" y="15" width="179" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="签到地点:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ont-qi-0dN">
+                        <rect key="frame" x="111" y="41" width="179" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_attendance_time" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-bd-OJ0">
+                        <rect key="frame" x="91" y="17" width="12" height="12.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="Th8-sB-Cfx"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon_attendance_location" translatesAutoresizingMaskIntoConstraints="NO" id="Cof-5L-1Ri">
+                        <rect key="frame" x="91" y="43" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12" id="Js3-6v-w4B"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9K-zR-twY">
+                        <rect key="frame" x="30" y="70.5" width="260" height="1"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="CHo-jd-sH4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="OfY-F5-gKG" firstAttribute="leading" secondItem="Wp8-bd-OJ0" secondAttribute="trailing" constant="8" id="2KD-6S-kXz"/>
+                    <constraint firstAttribute="bottom" secondItem="ont-qi-0dN" secondAttribute="bottom" constant="14.5" id="9CF-Ir-T7X"/>
+                    <constraint firstItem="WiI-bU-mfl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LkL-9D-ub1"/>
+                    <constraint firstItem="ont-qi-0dN" firstAttribute="trailing" secondItem="OfY-F5-gKG" secondAttribute="trailing" id="N7b-p0-wJD"/>
+                    <constraint firstItem="LG3-pq-ZE6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="PHP-hs-Vxm"/>
+                    <constraint firstAttribute="trailing" secondItem="OfY-F5-gKG" secondAttribute="trailing" constant="30" id="PJT-8d-EoZ"/>
+                    <constraint firstItem="b9K-zR-twY" firstAttribute="leading" secondItem="LG3-pq-ZE6" secondAttribute="leading" id="Pg3-eY-ZUn"/>
+                    <constraint firstItem="Wp8-bd-OJ0" firstAttribute="top" secondItem="OfY-F5-gKG" secondAttribute="top" constant="2" id="Sim-Cf-Sl7"/>
+                    <constraint firstAttribute="bottom" secondItem="WiI-bU-mfl" secondAttribute="bottom" constant="-0.5" id="TMG-DI-DE5"/>
+                    <constraint firstItem="Wp8-bd-OJ0" firstAttribute="leading" secondItem="LG3-pq-ZE6" secondAttribute="trailing" constant="15" id="Xam-Eo-iX5"/>
+                    <constraint firstItem="Cof-5L-1Ri" firstAttribute="leading" secondItem="Wp8-bd-OJ0" secondAttribute="leading" id="ZbD-8m-XIh"/>
+                    <constraint firstAttribute="trailing" secondItem="WiI-bU-mfl" secondAttribute="trailing" constant="15" id="bmP-dV-Uj2"/>
+                    <constraint firstItem="OfY-F5-gKG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="bxB-MV-fqR"/>
+                    <constraint firstItem="Cof-5L-1Ri" firstAttribute="top" secondItem="ont-qi-0dN" secondAttribute="top" constant="2" id="h3L-hy-fIz"/>
+                    <constraint firstItem="LG3-pq-ZE6" firstAttribute="top" secondItem="OfY-F5-gKG" secondAttribute="top" id="m0O-ca-pm1"/>
+                    <constraint firstItem="WiI-bU-mfl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qbm-5n-lEa"/>
+                    <constraint firstItem="ont-qi-0dN" firstAttribute="leading" secondItem="OfY-F5-gKG" secondAttribute="leading" id="qnf-bu-ZUf"/>
+                    <constraint firstItem="ont-qi-0dN" firstAttribute="top" secondItem="OfY-F5-gKG" secondAttribute="bottom" constant="10" id="qtX-oU-C8d"/>
+                    <constraint firstAttribute="bottom" secondItem="b9K-zR-twY" secondAttribute="bottom" id="vJU-YK-UAU"/>
+                    <constraint firstItem="b9K-zR-twY" firstAttribute="trailing" secondItem="OfY-F5-gKG" secondAttribute="trailing" id="vpr-J0-aXK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="lb_address" destination="ont-qi-0dN" id="Bzn-Fo-dyd"/>
+                <outlet property="lb_smallTip" destination="LG3-pq-ZE6" id="tU4-79-xMI"/>
+                <outlet property="lb_time" destination="OfY-F5-gKG" id="JaL-Sd-2hL"/>
+            </connections>
+            <point key="canvasLocation" x="-352.17391304347831" y="-5.0223214285714279"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_attendance_location" width="10" height="12"/>
+        <image name="icon_attendance_time" width="12" height="12.5"/>
+    </resources>
+</document>

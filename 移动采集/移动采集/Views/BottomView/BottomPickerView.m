@@ -8,6 +8,7 @@
 
 #import "BottomPickerView.h"
 #import "UIButton+Block.h"
+#import "CommonAPI.h"
 
 
 @interface BottomPickerView()<UIPickerViewDataSource,UIPickerViewDelegate>
@@ -94,6 +95,16 @@
                 }else if ([obj isMemberOfClass:[CommonGetGroupListModel class]]) {
                     CommonGetGroupListModel *t_model =( CommonGetGroupListModel *)obj;
                     genderLabel.text = t_model.getGroupName;
+                    
+                    
+                }else if ([obj isMemberOfClass:[DepartmentModel class]]) {
+                    DepartmentModel *t_model =( DepartmentModel *)obj;
+                    genderLabel.text = t_model.name;
+                    
+                }else if ([obj isMemberOfClass:[PoliceGroupModel class]]) {
+                    PoliceGroupModel *t_model =( PoliceGroupModel *)obj;
+                    genderLabel.text = t_model.name;
+                    
                 }else {
                     genderLabel.text = self.items[row];
                     

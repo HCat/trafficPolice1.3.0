@@ -209,6 +209,49 @@
 @end
 
 
+#pragma mark - 获取部门列表
+
+@interface DepartmentModel : NSObject
+
+@property (nonatomic,strong) NSNumber * departmentId;     //部门id
+@property (nonatomic,copy) NSString * name;             //部门名称
+
+@end
+
+
+@interface CommonGetDepartmentManger : LRBaseRequest
+
+/****** 请求数据 ******/
+
+
+/****** 返回数据 ******/
+@property (nonatomic,copy) NSArray < DepartmentModel * > * commonReponse;
+
+
+@end
+
+
+#pragma mark - 根据部门获取勤务组
+
+
+@interface PoliceGroupModel : NSObject
+
+@property (nonatomic, strong) NSNumber * groupId;        //分组id
+@property (nonatomic, copy)   NSString * name;           //分组组名
+
+@end
+
+
+
+@interface CommonGroupByDepartmentIdManger : LRBaseRequest
+
+@property (nonatomic, strong) NSNumber * departmentId;     //
+
+@property (nonatomic, strong) NSArray <PoliceGroupModel *> * groupList;    //警员信息列表
+
+@end
+
+
 
 
 

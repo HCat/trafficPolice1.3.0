@@ -11,6 +11,7 @@
 #import "LRBaseRequest.h"
 #import "PoliceLocationModel.h"
 #import "VehicleGPSModel.h"
+#import "SignModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -67,6 +68,60 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <PoliceLocationModel *> * resultList;    //警员信息列表
 
 @property (nonatomic, strong) NSArray <VehicleGPSModel *> * carList;    //车辆信息列表
+
+@end
+
+
+
+
+
+#pragma mark - 勤务管理列表
+
+@interface PoliceAnalyzeModel : NSObject
+
+@property (nonatomic, strong) NSNumber * userId;        //用户Id
+@property (nonatomic, copy) NSString * realName;        //用户名称
+@property (nonatomic, copy) NSString * shiftName;       //早班",
+@property (nonatomic, strong) NSNumber * workTime;      //工作时长
+@property (nonatomic, copy) NSString * workDateStr;     //日期
+@property (nonatomic, copy) NSString * workTimeStr;     //工作时长
+
+
+@end
+
+
+@interface PoliceAnalyzeListParam  : NSObject
+
+@property (nonatomic, copy) NSString * workDateStr;         //时间
+@property (nonatomic, strong) NSNumber * parentId;          //ID
+@property (nonatomic, strong) NSNumber * start;             //以0开始
+@property (nonatomic, strong) NSNumber * length;            //大于0
+
+@end
+
+@interface PoliceAnalyzeListManger : LRBaseRequest
+
+@property (nonatomic, strong) PoliceAnalyzeListParam * param;     //
+
+@property (nonatomic, strong) NSArray <PoliceAnalyzeModel *> * analyzeList;    //警员信息列表
+
+@end
+
+#pragma mark - 获取签到列表
+
+
+@interface PoliceSignListParam  : NSObject
+
+@property (nonatomic, copy) NSString * workDateStr;         //时间
+@property (nonatomic, strong) NSNumber * userId;            //用户ID
+
+@end
+
+@interface PoliceSignListManger : LRBaseRequest
+
+@property (nonatomic, strong) PoliceSignListParam * param;     //
+
+@property (nonatomic, strong) NSArray <SignModel *> * signList;    //警员信息列表
 
 @end
 

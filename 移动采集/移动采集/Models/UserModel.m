@@ -423,6 +423,8 @@
     
 }
 
+#pragma mark - 特殊车辆权限
+
 + (BOOL)isPermissionForSpecialCar{
     
     NSString *match = @"SPECAIL_CAR_MANAGE";
@@ -436,6 +438,21 @@
     return NO;
     
 }
+
+#pragma mark - 勤务管理
++ (BOOL)isPermissionForAttendance{
+    NSString *match = @"POLICE_MANAGE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 
 
 #pragma mark - 获取事故结案权限
