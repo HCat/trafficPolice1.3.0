@@ -16,6 +16,4 @@
 
 @interface PhoneLoginVC : HideTabSuperVC
 
-@property (nonatomic,copy) NSString *phone;
-
 @end

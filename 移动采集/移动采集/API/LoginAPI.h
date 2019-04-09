@@ -69,5 +69,41 @@
 @end
 
 
+#pragma mark - 手机登录API(19.03.28)
 
+@interface LoginMobileManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * mobile;          //手机号码
+@property (nonatomic, copy) NSString * orgId;           //机构编码
+
+/****** 返回数据 ******/
+@property (nonatomic, copy) NSString * userId;            //用户ID
+@property (nonatomic, copy) NSString * interfaceUrl;     //返回的服务器地址
+@property (nonatomic,copy) NSString * acId;          //短信ID
+
+@end
+
+
+#pragma mark - 验证码登录API(19.03.28)
+
+@interface LoginCheck2Param : NSObject
+
+@property (nonatomic,copy) NSString * acId;          //短信ID
+@property (nonatomic,copy) NSString * authCode;      //验证码
+@property (nonatomic,copy) NSString * equipmentId;   //设备ID
+@property (nonatomic,copy) NSString * platform;      //设备平台
+@property (nonatomic, copy) NSString * userId;       //用户ID
+@property (nonatomic, copy) NSString * mobile;       //手机号
+@end
+
+@interface LoginCheck2Manger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) LoginCheck2Param * param;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) UserModel * userModel;  //用户
+
+@end
 

@@ -44,6 +44,7 @@
 #define URL_LOGIN_LOGINTAKECODE @"app/loginTakeCode.json"                       //登录发送验证码
 #define URL_LOGIN_LOGINCHECK @"app/loginCheck.json"                             //验证码登录
 #define URL_LOGIN_VISITOR @"app/loginVisitor.json"                              //游客登录
+#define URL_LOGIN_LOGINMOBILE @"app/mobileLogin.json"                           //手机登录
 
 
 #pragma mark - 通用相关API

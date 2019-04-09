@@ -26,7 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_commit;
 
-@property (nonatomic,copy) NSString *acId; //获取验证码得到的短信ID
+@property (nonatomic,copy) NSString *acId;    //获取验证码得到的短信ID
+@property (nonatomic,copy) NSString *userId;  //获取验证码得到的短信ID
 
 @property (nonatomic,assign) BOOL isCanCommit;
 
@@ -38,13 +39,14 @@
     
     [super viewDidLoad];
     self.title = @"短信验证";
+    [self.navigationController.navigationBar setBarTintColor:DefaultNavColor];
+    
     self.isCanCommit = NO;
     
     self.textArr = [NSMutableArray array];
     self.count = 6;
     self.saveTextStr = @"";
     
-    _tf_phone.text = _phone;
     [self.tf_code setDelegate:(id<UITextFieldDelegate> _Nullable)self];
     [self.tf_code addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
@@ -74,17 +76,30 @@
             return ;
         }
         
-        LoginTakeCodeManger *manger = [LoginTakeCodeManger new];
-        manger.openId = [ShareValue sharedDefault].unionid;
+        LoginMobileManger *manger = [LoginMobileManger new];
+        manger.mobile = strongSelf.tf_phone.text;
+        manger.orgId = [ShareValue sharedDefault].orgId;
        
         [strongSelf.btn_countDown startCountDown];
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.acId = manger.acId;
+                strongSelf.userId = manger.userId;
+                NSString *server_url = [NSString stringWithFormat:@"http://%@",manger.interfaceUrl];
+                NSString *webSocket_url = [NSString stringWithFormat:@"ws://%@/websocket",manger.interfaceUrl];
+                
+                [ShareValue sharedDefault].server_url = server_url;
+                [ShareValue sharedDefault].webSocket_url = webSocket_url;
+                
+                //配置统一的网络基地址
+                YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+                NSLog(@"%@",Base_URL);
+                config.baseUrl = Base_URL;
+                
             }else{
                 
-                [LRShowHUD showError:@"获取验证码失败" duration:1.5f];
+                //[LRShowHUD showError:@"获取验证码失败" duration:1.5f];
                 [strongSelf.btn_countDown endCountDown];
             
             }
@@ -111,6 +126,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundColor:DefaultNavColor];
     self.navigationController.navigationBarHidden = NO;
     
 }
@@ -155,20 +171,16 @@
         return ;
     }
     
-    if (self.acId.length == 0 || self.acId == nil) {
-        [LRShowHUD showError:@"没有获取验证码!" duration:1.0f inView:self.view config:nil];
-        return ;
-    }
-    
 
-    LoginCheckParam *param = [[LoginCheckParam alloc] init];
-    param.openId = [ShareValue sharedDefault].unionid;
+    LoginCheck2Param *param = [[LoginCheck2Param alloc] init];
     param.acId = self.acId;
     param.authCode = _tf_code.text;
     param.equipmentId = [ShareFun getUniqueDeviceIdentifierAsString];
     param.platform = @"ios";
+    param.userId = self.userId;
+    param.mobile = _tf_phone.text;
     
-    LoginCheckManger *manger = [LoginCheckManger new];
+    LoginCheck2Manger *manger = [LoginCheck2Manger new];
     manger.param = param;
     [manger configLoadingTitle:@"登录"];
     
