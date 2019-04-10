@@ -71,6 +71,15 @@
 
 #pragma mark - 手机登录API(19.03.28)
 
+@interface LoginMobileReponse : NSObject
+
+@property (nonatomic, copy) NSString * userId;            //用户ID
+@property (nonatomic, copy) NSString * interfaceUrl;     //返回的服务器地址
+@property (nonatomic,copy) NSString * acId;          //短信ID
+
+@end
+
+
 @interface LoginMobileManger:LRBaseRequest
 
 /****** 请求数据 ******/
@@ -78,9 +87,8 @@
 @property (nonatomic, copy) NSString * orgId;           //机构编码
 
 /****** 返回数据 ******/
-@property (nonatomic, copy) NSString * userId;            //用户ID
-@property (nonatomic, copy) NSString * interfaceUrl;     //返回的服务器地址
-@property (nonatomic,copy) NSString * acId;          //短信ID
+
+@property(nonatomic, strong) LoginMobileReponse * mobileModel;
 
 @end
 

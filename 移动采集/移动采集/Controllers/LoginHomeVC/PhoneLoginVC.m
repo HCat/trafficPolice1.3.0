@@ -84,10 +84,10 @@
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             if (manger.responseModel.code == CODE_SUCCESS) {
-                strongSelf.acId = manger.acId;
-                strongSelf.userId = manger.userId;
-                NSString *server_url = [NSString stringWithFormat:@"http://%@",manger.interfaceUrl];
-                NSString *webSocket_url = [NSString stringWithFormat:@"ws://%@/websocket",manger.interfaceUrl];
+                strongSelf.acId = manger.mobileModel.acId;
+                strongSelf.userId = manger.mobileModel.userId;
+                NSString *server_url = [NSString stringWithFormat:@"http://%@",manger.mobileModel.interfaceUrl];
+                NSString *webSocket_url = [NSString stringWithFormat:@"ws://%@/websocket",manger.mobileModel.interfaceUrl];
                 
                 [ShareValue sharedDefault].server_url = server_url;
                 [ShareValue sharedDefault].webSocket_url = webSocket_url;

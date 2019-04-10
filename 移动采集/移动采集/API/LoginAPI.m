@@ -143,6 +143,10 @@
 
 #pragma mark - 手机登录API(19.03.28)
 
+@implementation LoginMobileReponse
+
+@end
+
 @implementation LoginMobileManger
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
@@ -167,29 +171,15 @@
 }
 
 //返回参数
-- (NSString *)userId{
-    
-    if (self.responseModel.data) {
-        _userId = [self.responseModel.data[@"userId"] stringValue];
-        return _userId;
-    }
-    return nil;
-}
 
-- (NSString *)interfaceUrl{
+//返回参数
+- (LoginMobileReponse *)mobileModel{
     
     if (self.responseModel.data) {
-        _interfaceUrl =  self.responseModel.data[@"interfaceUrl"];
-        return _interfaceUrl;
+        _mobileModel = [LoginMobileReponse modelWithDictionary:self.responseModel.data];
+        return _mobileModel;
     }
-    return _interfaceUrl;
-}
-
-- (NSString *)acId{
     
-    if (self.responseModel.data) {
-        return self.responseModel.data[@"acId"];
-    }
     return nil;
 }
 
