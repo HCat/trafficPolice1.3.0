@@ -252,6 +252,34 @@
 @end
 
 
+#pragma mark - APP菜单折叠接口
+
+
+@interface CommonMenuModel : NSObject
+
+@property (nonatomic, copy)   NSString * code;          //菜单编码
+@property (nonatomic, strong) NSNumber * isOrg;         //机构是否有权限
+@property (nonatomic, strong) NSNumber * isUser;        //用户是否有权限
+@property (nonatomic, strong) NSString * funTitle;      //功能名字
+@property (nonatomic, strong) NSString * funImage;      //功能图片
+
+@end
+
+@interface CommonMenuReponse : NSObject
+
+@property (nonatomic, strong) NSArray <CommonMenuModel *> * illList;    //警员信息列表
+@property (nonatomic, strong) NSArray <CommonMenuModel *> * accidentList;    //警员信息列表
+@property (nonatomic, strong) NSArray <CommonMenuModel *> * policeList;    //警员信息列表
+
+@end
+
+
+@interface CommonGetMenuManger : LRBaseRequest
+
+@property (nonatomic, strong) CommonMenuReponse * commonReponse;    //警员信息列表
+
+@end
+
 
 
 

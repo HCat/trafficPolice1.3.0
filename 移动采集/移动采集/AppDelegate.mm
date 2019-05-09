@@ -145,6 +145,8 @@
                           channel:JPUSH_APP_CHANNEL
                  apsForProduction:JPUSH_PRODUCTION
             advertisingIdentifier:nil];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidLoginMessage:) name:kJPFNetworkDidLoginNotification object:nil];
     
     
     JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
@@ -553,6 +555,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 }
+
+//通知方法
+- (void)networkDidLoginMessage:(NSNotification *)notification {
+    
+    //调用接口
+    NSLog(@"\n\n极光推送注册成功\n\n");
+    
+    //注销通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kJPFNetworkDidLoginNotification object:nil];
+    
+}
+
 
 #pragma mark -
 

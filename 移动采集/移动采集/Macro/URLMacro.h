@@ -61,6 +61,7 @@
 #define URL_COMMON_POLICEORG @"app/common/getPoliceOrg.json"                    //获取机构列表
 #define URL_COMMON_GETDEPARTMENT @"app/common/getDepartment.json"               //获取部门列表
 #define URL_COMMON_GETGROUPBYDEPARTMENTID @"app/common/getGroupByDepartmentId.json"     //根据部门获取勤务组
+#define URL_COMMON_GETMENU @"app/common/getMenu.json"                           //APP菜单折叠接口
 
 
 #pragma mark - 事故相关API
@@ -212,6 +213,8 @@
 #define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"                 //获取设置通知人员列表
 #define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"               //保存置通知人员
 
-
+#define URL_TAKEOUT_GETCOURIERLIST @"app/deliveryInfo/getCourierList.json"        //根据条件查询快递员列表
+#define URL_TAKEOUT_GETCOURIERINFO @"app/deliveryInfo/getCourierInfo.json"          //查询快递员信息
+#define URL_TAKEOUT_GETVEHICLEINFO @"app/deliveryInfo/getVehicleInfo.json"
 
 #endif /* URLMacro_h */

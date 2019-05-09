@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "不按朝向@2x.png",
+      "filename" : "main_direction@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "不按朝向@3x.png",
+      "filename" : "main_direction@3x.png",
       "scale" : "3x"
     }
   ],

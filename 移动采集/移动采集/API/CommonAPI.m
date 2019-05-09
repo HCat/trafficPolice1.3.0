@@ -465,5 +465,43 @@
 
 @end
 
+#pragma mark - APP菜单折叠接口
 
+
+@implementation CommonMenuModel
+
+@end
+
+@implementation CommonMenuReponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"illList" : [CommonMenuModel class],
+             @"accidentList" : [CommonMenuModel class],
+             @"policeList" : [CommonMenuModel class]
+             };
+}
+
+@end
+
+
+@implementation CommonGetMenuManger
+
+- (NSString *)requestUrl{
+    return URL_COMMON_GETMENU;
+}
+
+//返回参数
+- (CommonMenuReponse * )commonReponse{
+    if (self.responseModel) {
+        _commonReponse = [CommonMenuReponse modelWithDictionary:self.responseModel.data];
+        return _commonReponse;
+    }
+    
+    return nil;
+    
+    
+}
+
+
+@end
 
