@@ -10,6 +10,8 @@
 #import "DeliveryCourierModel.h"
 #import "DeliveryInfoModel.h"
 #import "DeliveryVehicleModel.h"
+#import "DeliveryIllegalModel.h"
+#import "DeliveryIllegalDetailModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -68,6 +70,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) DeliveryVehicleModel * takeOutReponse;
+
+@end
+
+
+#pragma mark - 违章记录列表
+
+
+@interface TakeOutReportPageManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * deliveryId;
+
+/****** 返回数据 ******/
+@property (nonatomic,copy) NSArray < DeliveryIllegalModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+
+#pragma mark - 快递小哥违章记录详情
+
+
+@interface TakeOutReportDetailManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, copy) NSString * reportId;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) DeliveryIllegalDetailModel * takeOutReponse;
 
 @end
 

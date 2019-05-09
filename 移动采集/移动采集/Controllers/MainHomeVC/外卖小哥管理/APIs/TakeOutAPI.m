@@ -112,3 +112,67 @@
 }
 
 @end
+
+
+#pragma mark - 违章记录列表
+
+@implementation TakeOutReportPageManger
+
+- (NSString *)requestUrl
+{
+    return URL_TAKEOUT_REPORTPAGE;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"driver":_deliveryId};
+}
+
+
+- (NSArray < DeliveryIllegalModel *> *)list{
+    
+    if (self.responseModel) {
+        _list = [NSArray modelArrayWithClass:[DeliveryIllegalModel class] json:self.responseJSONObject[@"data"]];
+        
+        return _list;
+    }
+    
+    return nil;
+    
+}
+
+@end
+
+
+
+#pragma mark - 快递小哥违章记录详情
+
+
+@implementation TakeOutReportDetailManger
+
+- (NSString *)requestUrl
+{
+    return URL_TAKEOUT_REPORTDETAIL;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_reportId};
+}
+
+//返回参数
+- (DeliveryIllegalDetailModel *)takeOutReponse{
+    
+    if (self.responseModel.data) {
+        _takeOutReponse =  [DeliveryIllegalDetailModel modelWithDictionary:self.responseModel.data];
+        return _takeOutReponse;
+        
+    }
+    
+    return nil;
+}
+
+@end
+

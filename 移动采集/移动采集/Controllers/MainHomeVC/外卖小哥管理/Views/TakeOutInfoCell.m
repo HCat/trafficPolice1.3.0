@@ -11,6 +11,7 @@
 #import "TakeOutInfoView.h"
 #import "TakeOutInfoVC.h"
 #import "TakeOutCarInfoVC.h"
+#import "TakeOutIllegalListVC.h"
 
 @interface TakeOutInfoCell ()
 
@@ -30,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_car;
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_illegal;
 
 
 @end
@@ -39,8 +41,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    @weakify(self);
     [RACObserve(self, model) subscribeNext:^(DeliveryInfoModel *  _Nullable x) {
-        
+        @strongify(self);
         if (x) {
             
             self.lb_name.text = x.name; //快递员姓名
@@ -145,6 +148,24 @@
         }
     
     }];
+    
+    [[self.btn_illegal rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+       @strongify(self);
+        
+        if (self.model) {
+        
+            TakeOutIllegalListViewModel * viewModel = [[TakeOutIllegalListViewModel alloc] init];
+            viewModel.deliveryId = self.model.deliveryId;
+            TakeOutIllegalListVC * t_vc = [[TakeOutIllegalListVC alloc] initWithViewModel:viewModel];
+            TakeOutInfoVC * vc = (TakeOutInfoVC *)[ShareFun findViewController:self withClass:[TakeOutInfoVC class]];
+            [vc.navigationController pushViewController:t_vc animated:YES];
+            
+        }
+        
+        
+    }];
+    
+    
     
 }
 

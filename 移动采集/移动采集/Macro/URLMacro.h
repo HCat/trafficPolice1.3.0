@@ -213,8 +213,10 @@
 #define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"                 //获取设置通知人员列表
 #define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"               //保存置通知人员
 
-#define URL_TAKEOUT_GETCOURIERLIST @"app/deliveryInfo/getCourierList.json"        //根据条件查询快递员列表
+#define URL_TAKEOUT_GETCOURIERLIST @"app/deliveryInfo/getCourierList.json"          //根据条件查询快递员列表
 #define URL_TAKEOUT_GETCOURIERINFO @"app/deliveryInfo/getCourierInfo.json"          //查询快递员信息
-#define URL_TAKEOUT_GETVEHICLEINFO @"app/deliveryInfo/getVehicleInfo.json"
+#define URL_TAKEOUT_GETVEHICLEINFO @"app/deliveryInfo/getVehicleInfo.json"          //获取快递小哥车辆信息
+#define URL_TAKEOUT_REPORTPAGE @"app/deliveryReport/reportPage.json"                //违章记录列表
+#define URL_TAKEOUT_REPORTDETAIL @"app/deliveryReport/reportDetail.json"            //违章记录详情
 
 #endif /* URLMacro_h */

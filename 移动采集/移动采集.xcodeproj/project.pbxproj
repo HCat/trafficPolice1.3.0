@@ -363,6 +363,16 @@
 		CE6810CC228477A8003055DF /* TakeOutCarInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810CA228477A8003055DF /* TakeOutCarInfoVC.m */; };
 		CE6810CD228477A8003055DF /* TakeOutCarInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6810CB228477A8003055DF /* TakeOutCarInfoVC.xib */; };
 		CE6810D022847DD1003055DF /* TakeOutCarInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810CF22847DD1003055DF /* TakeOutCarInfoViewModel.m */; };
+		CE6810D42284ADC4003055DF /* TakeOutIllegalListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810D22284ADC4003055DF /* TakeOutIllegalListVC.m */; };
+		CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6810D32284ADC4003055DF /* TakeOutIllegalListVC.xib */; };
+		CE6810D82284AE3D003055DF /* TakeOutIllegalListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810D72284AE3D003055DF /* TakeOutIllegalListViewModel.m */; };
+		CE6810DC2284B001003055DF /* TakeOutIllegalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810DA2284B001003055DF /* TakeOutIllegalCell.m */; };
+		CE6810DD2284B001003055DF /* TakeOutIllegalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6810DB2284B001003055DF /* TakeOutIllegalCell.xib */; };
+		CE6810E02284B110003055DF /* DeliveryIllegalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810DF2284B110003055DF /* DeliveryIllegalModel.m */; };
+		CE6810E52284B7F0003055DF /* TakeOutIllegalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810E32284B7F0003055DF /* TakeOutIllegalDetailVC.m */; };
+		CE6810E62284B7F0003055DF /* TakeOutIllegalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6810E42284B7F0003055DF /* TakeOutIllegalDetailVC.xib */; };
+		CE6810E92284B805003055DF /* TakeOutIllegalDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810E82284B805003055DF /* TakeOutIllegalDetailViewModel.m */; };
+		CE6810EC2284B8CD003055DF /* DeliveryIllegalDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6810EB2284B8CD003055DF /* DeliveryIllegalDetailModel.m */; };
 		CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69154F1F1DD590008911A6 /* CommonAPI.m */; };
 		CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915521F1DD70A008911A6 /* HideTabSuperVC.m */; };
 		CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915541F1DD70A008911A6 /* ShowTabSuperVC.m */; };
@@ -1221,6 +1231,23 @@
 		CE6810CB228477A8003055DF /* TakeOutCarInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeOutCarInfoVC.xib; sourceTree = "<group>"; };
 		CE6810CE22847DD1003055DF /* TakeOutCarInfoViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutCarInfoViewModel.h; sourceTree = "<group>"; };
 		CE6810CF22847DD1003055DF /* TakeOutCarInfoViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutCarInfoViewModel.m; sourceTree = "<group>"; };
+		CE6810D12284ADC4003055DF /* TakeOutIllegalListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutIllegalListVC.h; sourceTree = "<group>"; };
+		CE6810D22284ADC4003055DF /* TakeOutIllegalListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutIllegalListVC.m; sourceTree = "<group>"; };
+		CE6810D32284ADC4003055DF /* TakeOutIllegalListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeOutIllegalListVC.xib; sourceTree = "<group>"; };
+		CE6810D62284AE3D003055DF /* TakeOutIllegalListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutIllegalListViewModel.h; sourceTree = "<group>"; };
+		CE6810D72284AE3D003055DF /* TakeOutIllegalListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutIllegalListViewModel.m; sourceTree = "<group>"; };
+		CE6810D92284B001003055DF /* TakeOutIllegalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutIllegalCell.h; sourceTree = "<group>"; };
+		CE6810DA2284B001003055DF /* TakeOutIllegalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutIllegalCell.m; sourceTree = "<group>"; };
+		CE6810DB2284B001003055DF /* TakeOutIllegalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeOutIllegalCell.xib; sourceTree = "<group>"; };
+		CE6810DE2284B110003055DF /* DeliveryIllegalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryIllegalModel.h; sourceTree = "<group>"; };
+		CE6810DF2284B110003055DF /* DeliveryIllegalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryIllegalModel.m; sourceTree = "<group>"; };
+		CE6810E22284B7F0003055DF /* TakeOutIllegalDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutIllegalDetailVC.h; sourceTree = "<group>"; };
+		CE6810E32284B7F0003055DF /* TakeOutIllegalDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutIllegalDetailVC.m; sourceTree = "<group>"; };
+		CE6810E42284B7F0003055DF /* TakeOutIllegalDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeOutIllegalDetailVC.xib; sourceTree = "<group>"; };
+		CE6810E72284B805003055DF /* TakeOutIllegalDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutIllegalDetailViewModel.h; sourceTree = "<group>"; };
+		CE6810E82284B805003055DF /* TakeOutIllegalDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutIllegalDetailViewModel.m; sourceTree = "<group>"; };
+		CE6810EA2284B8CD003055DF /* DeliveryIllegalDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryIllegalDetailModel.h; sourceTree = "<group>"; };
+		CE6810EB2284B8CD003055DF /* DeliveryIllegalDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryIllegalDetailModel.m; sourceTree = "<group>"; };
 		CE69154E1F1DD590008911A6 /* CommonAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAPI.h; sourceTree = "<group>"; };
 		CE69154F1F1DD590008911A6 /* CommonAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAPI.m; sourceTree = "<group>"; };
 		CE6915511F1DD70A008911A6 /* HideTabSuperVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideTabSuperVC.h; sourceTree = "<group>"; };
@@ -1821,6 +1848,10 @@
 				CE12595322845DB500B7BF48 /* TakeOutInfoViewModel.m */,
 				CE6810CE22847DD1003055DF /* TakeOutCarInfoViewModel.h */,
 				CE6810CF22847DD1003055DF /* TakeOutCarInfoViewModel.m */,
+				CE6810D62284AE3D003055DF /* TakeOutIllegalListViewModel.h */,
+				CE6810D72284AE3D003055DF /* TakeOutIllegalListViewModel.m */,
+				CE6810E72284B805003055DF /* TakeOutIllegalDetailViewModel.h */,
+				CE6810E82284B805003055DF /* TakeOutIllegalDetailViewModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1834,6 +1865,10 @@
 				CE12592C2283BD2300B7BF48 /* DeliveryInfoModel.m */,
 				CE12592E2283C1D900B7BF48 /* DeliveryVehicleModel.h */,
 				CE12592F2283C1D900B7BF48 /* DeliveryVehicleModel.m */,
+				CE6810DE2284B110003055DF /* DeliveryIllegalModel.h */,
+				CE6810DF2284B110003055DF /* DeliveryIllegalModel.m */,
+				CE6810EA2284B8CD003055DF /* DeliveryIllegalDetailModel.h */,
+				CE6810EB2284B8CD003055DF /* DeliveryIllegalDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1847,6 +1882,9 @@
 				CE12594A228430CA00B7BF48 /* TakeOutInfoView.h */,
 				CE12594B228430CA00B7BF48 /* TakeOutInfoView.m */,
 				CE12594D228430EA00B7BF48 /* TakeOutInfoView.xib */,
+				CE6810D92284B001003055DF /* TakeOutIllegalCell.h */,
+				CE6810DA2284B001003055DF /* TakeOutIllegalCell.m */,
+				CE6810DB2284B001003055DF /* TakeOutIllegalCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1870,6 +1908,12 @@
 				CE6810C9228477A8003055DF /* TakeOutCarInfoVC.h */,
 				CE6810CA228477A8003055DF /* TakeOutCarInfoVC.m */,
 				CE6810CB228477A8003055DF /* TakeOutCarInfoVC.xib */,
+				CE6810D12284ADC4003055DF /* TakeOutIllegalListVC.h */,
+				CE6810D22284ADC4003055DF /* TakeOutIllegalListVC.m */,
+				CE6810D32284ADC4003055DF /* TakeOutIllegalListVC.xib */,
+				CE6810E22284B7F0003055DF /* TakeOutIllegalDetailVC.h */,
+				CE6810E32284B7F0003055DF /* TakeOutIllegalDetailVC.m */,
+				CE6810E42284B7F0003055DF /* TakeOutIllegalDetailVC.xib */,
 			);
 			path = "人员详情";
 			sourceTree = "<group>";
@@ -4061,6 +4105,7 @@
 				CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */,
 				CE6A2E7A20BD3C2600EA58DA /* VehicleUpImageDetailCell.xib in Resources */,
 				CE6AE97720B6901E005781DA /* VehicleTiredListCell.xib in Resources */,
+				CE6810DD2284B001003055DF /* TakeOutIllegalCell.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
 				CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */,
@@ -4124,6 +4169,7 @@
 				CE6AE96D20B65E2C005781DA /* VehicleExpireAlarmVC.xib in Resources */,
 				CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */,
 				CE17C6F02179E30C00B7391C /* AccidentVC.xib in Resources */,
+				CE6810E62284B7F0003055DF /* TakeOutIllegalDetailVC.xib in Resources */,
 				CE7348F31F6BC8B700EBDA0A /* CarInfoAddVC.xib in Resources */,
 				CE6154BC1F67FB5A0018DF71 /* BoradPoliceView.xib in Resources */,
 				CE6810CD228477A8003055DF /* TakeOutCarInfoVC.xib in Resources */,
@@ -4198,6 +4244,7 @@
 				CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */,
 				CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
+				CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */,
 				CE93BC4F2146A0FB001F2976 /* SpecialManageVC.xib in Resources */,
 				CE12DD872109AC43009C2893 /* AccidentAddHeadView.xib in Resources */,
 				CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */,
@@ -4318,11 +4365,13 @@
 				CE71425B20B2EF5F00F9FCC2 /* VehicleRoadAlarmCell.m in Sources */,
 				CEA389BB20B3BED7009B0A32 /* VehicleAlarmModel.m in Sources */,
 				CE6810D022847DD1003055DF /* TakeOutCarInfoViewModel.m in Sources */,
+				CE6810E92284B805003055DF /* TakeOutIllegalDetailViewModel.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */,
 				CE2C98A71F61AAA3009851F6 /* VehicleMemberCell.m in Sources */,
 				CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
+				CE6810D42284ADC4003055DF /* TakeOutIllegalListVC.m in Sources */,
 				CE71425620B2EDBC00F9FCC2 /* VehicleAreaAlarmCell.m in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */,
@@ -4425,6 +4474,7 @@
 				CE4139DD2178CF26006AA441 /* ZLPhotoManager.m in Sources */,
 				CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */,
 				CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */,
+				CE6810E02284B110003055DF /* DeliveryIllegalModel.m in Sources */,
 				CE188E482015EA0C008418B9 /* JointPenaltiesCell.m in Sources */,
 				CE675F181F38411B006FC15F /* IllegalListVC.m in Sources */,
 				CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */,
@@ -4468,10 +4518,12 @@
 				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
 				CE4139E42178CF26006AA441 /* ZLBrushBoardImageView.m in Sources */,
 				CE17C6F92179F63400B7391C /* AccidentDBModel.m in Sources */,
+				CE6810EC2284B8CD003055DF /* DeliveryIllegalDetailModel.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
+				CE6810DC2284B001003055DF /* TakeOutIllegalCell.m in Sources */,
 				CE6DC22120D3A757001FC1EB /* TaskCell.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
 				CE87043A20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m in Sources */,
@@ -4587,6 +4639,7 @@
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
 				CECF753520C9505300A4DAC4 /* PFTableView.m in Sources */,
 				CE61406B1F31CBBA0015B8CE /* YUSegmentedControlItem.m in Sources */,
+				CE6810E52284B7F0003055DF /* TakeOutIllegalDetailVC.m in Sources */,
 				CE87043320CE52B700E206AE /* LTSCalendarManager.m in Sources */,
 				CE672D151FA6D8D400CB3081 /* LocationStorage.m in Sources */,
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
@@ -4668,6 +4721,7 @@
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
 				CE42B93F1F1F4BCF005CC5BD /* IdentifyAPI.m in Sources */,
 				CE57F7861F1DF65C00CA9FCF /* MessageHomeVC.m in Sources */,
+				CE6810D82284AE3D003055DF /* TakeOutIllegalListViewModel.m in Sources */,
 				CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */,
 				CEAD7468214224FF001ED5E0 /* SpecialVehicleCell.m in Sources */,
 				CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */,
