@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DeliveryIllegalCollectModel : NSObject
 
-@property(nonatomic,strong)  NSString * collectTime;       //上报时间
+@property(nonatomic,copy)    NSString * collectTime;       //上报时间
 @property(nonatomic,copy)    NSString * address;           //所在位置
 @property(nonatomic,copy)    NSString * illegalType;       //违法类型
 @property(nonatomic,copy)    NSString * roadName;          //道路名称

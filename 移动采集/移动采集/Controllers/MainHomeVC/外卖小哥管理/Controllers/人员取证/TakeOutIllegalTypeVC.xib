@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TakeOutInfoVC">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TakeOutIllegalTypeVC">
             <connections>
-                <outlet property="btn_add" destination="zec-Dd-foN" id="t4e-le-qaA"/>
-                <outlet property="tableView" destination="JDx-WB-wkI" id="Eio-Bt-r1L"/>
+                <outlet property="btn_commit" destination="et5-sG-AKT" id="Ohg-hL-YGt"/>
+                <outlet property="tableView" destination="VL3-Yt-eMI" id="kh1-Sf-Oxa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,36 +22,36 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDx-WB-wkI">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VL3-Yt-eMI">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="mfp-5k-zGA"/>
-                        <outlet property="delegate" destination="-1" id="FUl-aH-Fh8"/>
+                        <outlet property="dataSource" destination="-1" id="iFb-ze-TiX"/>
+                        <outlet property="delegate" destination="-1" id="AFy-zg-NHk"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zec-Dd-foN">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et5-sG-AKT">
                     <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="4gQ-oz-iPu"/>
+                        <constraint firstAttribute="height" constant="44" id="7Ft-FD-tvr"/>
                     </constraints>
-                    <state key="normal" title="违法采集"/>
+                    <state key="normal" title="提交"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="JDx-WB-wkI" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="1og-7f-emJ"/>
-                <constraint firstItem="JDx-WB-wkI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="3Tt-3g-Kls"/>
-                <constraint firstItem="zec-Dd-foN" firstAttribute="top" secondItem="JDx-WB-wkI" secondAttribute="bottom" id="8f2-Ze-UhI"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="zec-Dd-foN" secondAttribute="bottom" id="IoL-bB-m1d"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="JDx-WB-wkI" secondAttribute="trailing" id="NCq-MM-mkj"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="zec-Dd-foN" secondAttribute="trailing" id="hNy-Ju-q5o"/>
-                <constraint firstItem="zec-Dd-foN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ifO-0B-Oo6"/>
+                <constraint firstItem="VL3-Yt-eMI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="0mn-S1-TT6"/>
+                <constraint firstItem="et5-sG-AKT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="2g8-Gp-wKk"/>
+                <constraint firstItem="et5-sG-AKT" firstAttribute="top" secondItem="VL3-Yt-eMI" secondAttribute="bottom" id="3zg-ni-BeM"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="et5-sG-AKT" secondAttribute="bottom" id="YX9-xS-m10"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="et5-sG-AKT" secondAttribute="trailing" id="hUV-1l-drF"/>
+                <constraint firstItem="VL3-Yt-eMI" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="mbC-ha-FrJ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="VL3-Yt-eMI" secondAttribute="trailing" id="oaH-yb-h6P"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="125.59999999999999" y="52.623688155922046"/>
+            <point key="canvasLocation" x="132" y="128.18590704647679"/>
         </view>
     </objects>
 </document>

@@ -235,6 +235,12 @@
         stringValue = metadataObject.stringValue;
         NSLog(@"扫描结果：%@",stringValue);
         
+        if (self.block) {
+            self.block(stringValue);
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        
         NSArray *arry = metadataObject.corners;
         for (id temp in arry) {
             NSLog(@"%@",temp);

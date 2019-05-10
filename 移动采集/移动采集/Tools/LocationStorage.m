@@ -47,6 +47,7 @@ LRSingletonM(Default)
     [self setIsInforInput:YES];
     [self setIsVehicle:YES];
     [self setIsInhibitLine:YES];
+    [self setIsTakeOut:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -192,6 +193,16 @@ LRSingletonM(Default)
     
 }
 
+- (void)setIsTakeOut:(BOOL)isTakeOut{
+    [[NSUserDefaults standardUserDefaults] setBool:isTakeOut forKey:USERDEFAULT_KEY_ISTAKEOUT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isTakeOut{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISTAKEOUT];
+    
+}
 
 
 
@@ -365,6 +376,27 @@ LRSingletonM(Default)
     }
     
     return inhibitLine;
+    
+}
+
+#pragma mark -
+- (void)setTakeOut:(LocationStorageModel *)takeOut{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:takeOut];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_TAKEOUT];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)takeOut{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_TAKEOUT];
+    LocationStorageModel *takeOut = nil;
+    if (data) {
+        takeOut = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return takeOut;
     
 }
 

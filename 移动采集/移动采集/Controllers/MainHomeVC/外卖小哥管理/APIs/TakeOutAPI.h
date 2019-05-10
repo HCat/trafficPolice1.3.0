@@ -12,6 +12,7 @@
 #import "DeliveryVehicleModel.h"
 #import "DeliveryIllegalModel.h"
 #import "DeliveryIllegalDetailModel.h"
+#import "DeliveryIllegalTypeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -76,7 +77,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 违章记录列表
 
-
 @interface TakeOutReportPageManger:LRBaseRequest
 
 /****** 请求数据 ******/
@@ -101,5 +101,39 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark - 违章类型列表
+
+
+@interface TakeOutIllegalTypeManger:LRBaseRequest
+
+/****** 返回数据 ******/
+@property (nonatomic,copy) NSArray < DeliveryIllegalTypeModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+#pragma mark - 上报快递小哥违章
+
+@interface TakeOutSaveParam :  NSObject
+
+@property (nonatomic,strong,nullable) NSNumber * roadId;               //道路ID 必填，从通用值【道路】获取ID
+@property (nonatomic,copy,nullable)   NSString * roadName;             //道路名字 如果roadId为0的时候设置
+@property (nonatomic,copy,nullable)   NSString * address;              //事故地点 必填
+@property (nonatomic,copy,nullable)   NSString * remark;               //地址备注 非必填
+@property (nonatomic,strong,nullable) NSNumber * lng;                  //经度 必填
+@property (nonatomic,strong,nullable) NSNumber * lat;                  //纬度 必填
+@property (nonatomic,copy,nullable)   NSArray  * files;                //事故图片 列表，最多可上传30张
+@property (nonatomic,strong,nullable) NSNumber * reportType;           //采集类型 默认 3014
+@property (nonatomic,copy,nullable)   NSString * driver;               //快递小弟编号
+@property (nonatomic,copy,nullable)   NSString * illegalType;          //违法类型
+
+@end
+
+@interface TakeOutSaveManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) TakeOutSaveParam * param;
+@property (nonatomic, assign) CGFloat progress;
+
+@end
 
 NS_ASSUME_NONNULL_END

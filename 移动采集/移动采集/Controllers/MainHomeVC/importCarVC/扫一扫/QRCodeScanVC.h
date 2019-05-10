@@ -8,6 +8,10 @@
 
 #import "HideTabSuperVC.h"
 
+typedef void(^QRCodeScanSuccessBlock)(NSString * str_code);
+
 @interface QRCodeScanVC : HideTabSuperVC
+
+@property(nonatomic,copy) QRCodeScanSuccessBlock block;
 
 @end

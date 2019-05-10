@@ -13,6 +13,7 @@
 #import "NetWorkHelper.h"
 #import "LRSettingCell.h"
 #import "TakeOutInfoVC.h"
+#import "QRCodeScanVC.h"
 
 @interface TakeOutSearchVC ()
 
@@ -26,6 +27,10 @@
 
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arr_button;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_ercode;
+
+
 
 @end
 
@@ -105,6 +110,25 @@
     
     RAC(self.viewModel, key) = _tf_search.rac_textSignal;
     
+
+    [[self.btn_ercode rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+       @strongify(self);
+        QRCodeScanVC *t_vc = [[QRCodeScanVC alloc] init];
+        t_vc.block = ^(NSString *str_code) {
+            @strongify(self);
+            if (str_code) {
+                NSArray * arr = [str_code componentsSeparatedByString:@"/"];
+                NSString * t_str = arr.lastObject;
+                self.tf_search.text = t_str;
+                self.viewModel.key = t_str;
+                self.viewModel.type = @5;
+                
+            }
+            
+        };
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }];
     
 }
 
