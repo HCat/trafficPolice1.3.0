@@ -37,6 +37,7 @@
 
 #import "MainCellLayout.h"
 #import "MainHomeViewModel.h"
+#import "MainAllFunctionVC.h"
 
 @interface MainHomeVC ()
 
@@ -299,19 +300,26 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             UIButton * button  = [UIButton new];
             
-            [button setTitle:@"添加应用" forState:UIControlStateNormal];
+            [button setTitle:@"+查看全部功能" forState:UIControlStateNormal];
             [button setTitleColor:UIColorFromRGB(0x3399FF) forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:14.f];
             button.layer.borderWidth = 1.f;
             button.layer.cornerRadius = 5.f;
             button.layer.borderColor = UIColorFromRGB(0x3399FF).CGColor;
             [button setBackgroundColor:UIColorFromRGB(0xEBF5FF)];
+            @weakify(self);
             [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
+                MainAllFunctionVC * vc = [[MainAllFunctionVC alloc] init];
+                vc.arr_illegal = self.viewModel.arr_illegal;
+                vc.arr_accident = self.viewModel.arr_accident;
+                vc.arr_policeMatter = self.viewModel.arr_policeMatter;
+                [self.navigationController pushViewController:vc animated:YES];
                 
             }];
             [footView addSubview:button];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.equalTo(@100.);
+                make.width.equalTo(@120.);
                 make.height.equalTo(@38.);
                 make.centerX.mas_equalTo(footView.mas_centerX);
                 make.centerY.mas_equalTo(footView.mas_centerY);

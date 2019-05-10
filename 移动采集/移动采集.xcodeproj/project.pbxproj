@@ -386,6 +386,12 @@
 		CE68110B228565BF003055DF /* TakeOutAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE681109228565BF003055DF /* TakeOutAddVC.m */; };
 		CE68110C228565BF003055DF /* TakeOutAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE68110A228565BF003055DF /* TakeOutAddVC.xib */; };
 		CE68110F228565F9003055DF /* TakeOutAddViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68110E228565F9003055DF /* TakeOutAddViewModel.m */; };
+		CE6811142285BBA5003055DF /* MainAllFunctionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6811122285BBA5003055DF /* MainAllFunctionVC.m */; };
+		CE6811152285BBA5003055DF /* MainAllFunctionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6811132285BBA5003055DF /* MainAllFunctionVC.xib */; };
+		CE6811192285BBED003055DF /* MainFunctionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6811172285BBED003055DF /* MainFunctionListVC.m */; };
+		CE68111A2285BBED003055DF /* MainFunctionListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6811182285BBED003055DF /* MainFunctionListVC.xib */; };
+		CE68111E2285BF4C003055DF /* MainFuncitonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68111C2285BF4C003055DF /* MainFuncitonCell.m */; };
+		CE68111F2285BF4C003055DF /* MainFuncitonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE68111D2285BF4C003055DF /* MainFuncitonCell.xib */; };
 		CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE69154F1F1DD590008911A6 /* CommonAPI.m */; };
 		CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915521F1DD70A008911A6 /* HideTabSuperVC.m */; };
 		CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6915541F1DD70A008911A6 /* ShowTabSuperVC.m */; };
@@ -1282,6 +1288,15 @@
 		CE68110A228565BF003055DF /* TakeOutAddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeOutAddVC.xib; sourceTree = "<group>"; };
 		CE68110D228565F9003055DF /* TakeOutAddViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeOutAddViewModel.h; sourceTree = "<group>"; };
 		CE68110E228565F9003055DF /* TakeOutAddViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeOutAddViewModel.m; sourceTree = "<group>"; };
+		CE6811112285BBA5003055DF /* MainAllFunctionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainAllFunctionVC.h; sourceTree = "<group>"; };
+		CE6811122285BBA5003055DF /* MainAllFunctionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainAllFunctionVC.m; sourceTree = "<group>"; };
+		CE6811132285BBA5003055DF /* MainAllFunctionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainAllFunctionVC.xib; sourceTree = "<group>"; };
+		CE6811162285BBED003055DF /* MainFunctionListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFunctionListVC.h; sourceTree = "<group>"; };
+		CE6811172285BBED003055DF /* MainFunctionListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFunctionListVC.m; sourceTree = "<group>"; };
+		CE6811182285BBED003055DF /* MainFunctionListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFunctionListVC.xib; sourceTree = "<group>"; };
+		CE68111B2285BF4C003055DF /* MainFuncitonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFuncitonCell.h; sourceTree = "<group>"; };
+		CE68111C2285BF4C003055DF /* MainFuncitonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFuncitonCell.m; sourceTree = "<group>"; };
+		CE68111D2285BF4C003055DF /* MainFuncitonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFuncitonCell.xib; sourceTree = "<group>"; };
 		CE69154E1F1DD590008911A6 /* CommonAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAPI.h; sourceTree = "<group>"; };
 		CE69154F1F1DD590008911A6 /* CommonAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAPI.m; sourceTree = "<group>"; };
 		CE6915511F1DD70A008911A6 /* HideTabSuperVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideTabSuperVC.h; sourceTree = "<group>"; };
@@ -3013,6 +3028,19 @@
 			path = "快递取证采集";
 			sourceTree = "<group>";
 		};
+		CE6811102285BADD003055DF /* 全部功能 */ = {
+			isa = PBXGroup;
+			children = (
+				CE6811112285BBA5003055DF /* MainAllFunctionVC.h */,
+				CE6811122285BBA5003055DF /* MainAllFunctionVC.m */,
+				CE6811132285BBA5003055DF /* MainAllFunctionVC.xib */,
+				CE6811162285BBED003055DF /* MainFunctionListVC.h */,
+				CE6811172285BBED003055DF /* MainFunctionListVC.m */,
+				CE6811182285BBED003055DF /* MainFunctionListVC.xib */,
+			);
+			path = "全部功能";
+			sourceTree = "<group>";
+		};
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -3414,6 +3442,7 @@
 		CE898C5422817B62002ADC4D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE6811102285BADD003055DF /* 全部功能 */,
 				CE6915571F1DD90E008911A6 /* MainHomeVC.h */,
 				CE6915581F1DD90E008911A6 /* MainHomeVC.m */,
 				CE6915591F1DD90E008911A6 /* MainHomeVC.xib */,
@@ -3436,6 +3465,9 @@
 				CEAAC2D020C8267D009DCC5E /* MainCellLayout.h */,
 				CEAAC2D120C8267D009DCC5E /* MainCellLayout.m */,
 				CEAAC2D520C82AFE009DCC5E /* MainCellBgView.xib */,
+				CE68111B2285BF4C003055DF /* MainFuncitonCell.h */,
+				CE68111C2285BF4C003055DF /* MainFuncitonCell.m */,
+				CE68111D2285BF4C003055DF /* MainFuncitonCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4209,6 +4241,7 @@
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE170FF020FF347400B93669 /* AccidentPeopleView.xib in Resources */,
 				CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */,
+				CE68111F2285BF4C003055DF /* MainFuncitonCell.xib in Resources */,
 				CE6810F422851248003055DF /* TakeOutIllegalTypeVC.xib in Resources */,
 				CE93BC692147A762001F2976 /* SpecialDeleteCar.xib in Resources */,
 				CE65B90220AAFEF300AA97BB /* VehicleUpVC.xib in Resources */,
@@ -4231,6 +4264,7 @@
 				CE4E3C0B1F39B9F20057148B /* IllegalFootCell.xib in Resources */,
 				CE12594922842A2400B7BF48 /* TakeOutInfoCell.xib in Resources */,
 				CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */,
+				CE6811152285BBA5003055DF /* MainAllFunctionVC.xib in Resources */,
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE6AE96D20B65E2C005781DA /* VehicleExpireAlarmVC.xib in Resources */,
 				CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */,
@@ -4296,6 +4330,7 @@
 				CE16004021241A1F009440C0 /* IllegalListView.xib in Resources */,
 				CEAAC2D720C82AFE009DCC5E /* MainCellBgView.xib in Resources */,
 				CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */,
+				CE68111A2285BBED003055DF /* MainFunctionListVC.xib in Resources */,
 				CE2C98B41F61C1E9009851F6 /* VehicleDriverCell.xib in Resources */,
 				CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */,
 				CE4139F92178CF27006AA441 /* ZLPhotoActionSheet.xib in Resources */,
@@ -4441,6 +4476,7 @@
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CE6810D42284ADC4003055DF /* TakeOutIllegalListVC.m in Sources */,
 				CE71425620B2EDBC00F9FCC2 /* VehicleAreaAlarmCell.m in Sources */,
+				CE6811192285BBED003055DF /* MainFunctionListVC.m in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
@@ -4704,6 +4740,7 @@
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
 				CE1E3FF620F460DA003A5595 /* AccidentInfoCell.m in Sources */,
 				CE1259302283C1D900B7BF48 /* DeliveryVehicleModel.m in Sources */,
+				CE6811142285BBA5003055DF /* MainAllFunctionVC.m in Sources */,
 				CE2AAEA9212BE228009088C3 /* LoginDevelopListVC.m in Sources */,
 				CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
@@ -4809,6 +4846,7 @@
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
 				CE407CA0216DA8050035DDED /* LYSideslipCell.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
+				CE68111E2285BF4C003055DF /* MainFuncitonCell.m in Sources */,
 				CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */,
 				CE2C98B31F61C1E9009851F6 /* VehicleDriverCell.m in Sources */,
 				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,
