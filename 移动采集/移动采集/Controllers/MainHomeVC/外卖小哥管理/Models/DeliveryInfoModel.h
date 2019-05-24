@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString * companyId;   //企业id
 @property (nonatomic,copy) NSString * companyName; //企业名称
+@property (nonatomic,copy) NSString * teamName;    //所属加盟商
 @property (nonatomic,copy) NSString * companyNo;   //快递员绑定的企业编码
 
 @end

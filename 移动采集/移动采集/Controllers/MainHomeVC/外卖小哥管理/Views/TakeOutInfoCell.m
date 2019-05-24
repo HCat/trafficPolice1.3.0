@@ -60,7 +60,7 @@
                     
                     DeliveryCompanyModel * companyModel = x.dcList[i];
                     TakeOutInfoView * view = [TakeOutInfoView initCustomView];
-                    view.str_title = companyModel.companyName;
+                    view.str_title = [NSString stringWithFormat:@"%@(%@)",companyModel.companyName,companyModel.teamName];
                     view.str_content = companyModel.companyNo;
                     view.isMore = NO;
                     view.index = i;

@@ -120,10 +120,6 @@ NSString * const LRPageMenuOptionScrollAnimationDurationOnMenuItemTap      = @"s
     _arr_controllers = viewControllers;
     self.view.frame  = frame;
     
-    
-   
-    
-    
     [self setUpUserInterface];
     [self configureUserInterface];
 
@@ -142,8 +138,6 @@ NSString * const LRPageMenuOptionScrollAnimationDurationOnMenuItemTap      = @"s
     
     [self addChildViewController:vc_current];
     
-    
-
     vc_current.view.frame = CGRectMake(CGRectGetWidth(self.view.frame) * index, _menuHeight, CGRectGetWidth(self.view.frame), CGRectGetHeight(_scro_controller.frame) - _menuHeight);
     [_scro_controller addSubview:vc_current.view];
 
