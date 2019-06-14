@@ -14,4 +14,5 @@
 
 @property (nonatomic,strong) IllegalCollectModel *illegalCollect; //事故对象
 @property (nonatomic,copy) NSArray<AccidentPicListModel *> *picList;
+@property (nonatomic,copy) NSArray<AccidentPicListModel *> *abnormalPic;
 @end

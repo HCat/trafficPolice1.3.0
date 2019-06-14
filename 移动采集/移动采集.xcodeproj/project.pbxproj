@@ -304,6 +304,9 @@
 		CE57F78E1F1E0EE000CA9FCF /* PhoneLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F78C1F1E0EE000CA9FCF /* PhoneLoginVC.m */; };
 		CE57F78F1F1E0EE000CA9FCF /* PhoneLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE57F78D1F1E0EE000CA9FCF /* PhoneLoginVC.xib */; };
 		CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7921F1E0F6D00CA9FCF /* LRCountDownButton.m */; };
+		CE5882DC22B33EBF00614219 /* IllegalReportAbnormalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5882DA22B33EBF00614219 /* IllegalReportAbnormalVC.m */; };
+		CE5882DD22B33EBF00614219 /* IllegalReportAbnormalVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5882DB22B33EBF00614219 /* IllegalReportAbnormalVC.xib */; };
+		CE5882E022B3799500614219 /* IllegalReportAbnormalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5882DF22B3799500614219 /* IllegalReportAbnormalViewModel.m */; };
 		CE59BB3F1F95A65800E24D3A /* AddressBookHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59BB3D1F95A65800E24D3A /* AddressBookHomeVC.m */; };
 		CE59BB401F95A65800E24D3A /* AddressBookHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE59BB3E1F95A65800E24D3A /* AddressBookHomeVC.xib */; };
 		CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59BB421F95DB8400E24D3A /* LGUIView.m */; };
@@ -1153,6 +1156,11 @@
 		CE57F78D1F1E0EE000CA9FCF /* PhoneLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneLoginVC.xib; sourceTree = "<group>"; };
 		CE57F7911F1E0F6D00CA9FCF /* LRCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRCountDownButton.h; sourceTree = "<group>"; };
 		CE57F7921F1E0F6D00CA9FCF /* LRCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRCountDownButton.m; sourceTree = "<group>"; };
+		CE5882D922B33EBF00614219 /* IllegalReportAbnormalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalReportAbnormalVC.h; sourceTree = "<group>"; };
+		CE5882DA22B33EBF00614219 /* IllegalReportAbnormalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalReportAbnormalVC.m; sourceTree = "<group>"; };
+		CE5882DB22B33EBF00614219 /* IllegalReportAbnormalVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalReportAbnormalVC.xib; sourceTree = "<group>"; };
+		CE5882DE22B3799500614219 /* IllegalReportAbnormalViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalReportAbnormalViewModel.h; sourceTree = "<group>"; };
+		CE5882DF22B3799500614219 /* IllegalReportAbnormalViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalReportAbnormalViewModel.m; sourceTree = "<group>"; };
 		CE59BB3C1F95A65800E24D3A /* AddressBookHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookHomeVC.h; sourceTree = "<group>"; };
 		CE59BB3D1F95A65800E24D3A /* AddressBookHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookHomeVC.m; sourceTree = "<group>"; };
 		CE59BB3E1F95A65800E24D3A /* AddressBookHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookHomeVC.xib; sourceTree = "<group>"; };
@@ -2716,6 +2724,11 @@
 				CE4E3C071F39B9F20057148B /* IllegalFootCell.h */,
 				CE4E3C081F39B9F20057148B /* IllegalFootCell.m */,
 				CE4E3C091F39B9F20057148B /* IllegalFootCell.xib */,
+				CE5882D922B33EBF00614219 /* IllegalReportAbnormalVC.h */,
+				CE5882DA22B33EBF00614219 /* IllegalReportAbnormalVC.m */,
+				CE5882DB22B33EBF00614219 /* IllegalReportAbnormalVC.xib */,
+				CE5882DE22B3799500614219 /* IllegalReportAbnormalViewModel.h */,
+				CE5882DF22B3799500614219 /* IllegalReportAbnormalViewModel.m */,
 			);
 			name = IllegalDetailVC;
 			sourceTree = "<group>";
@@ -4259,6 +4272,7 @@
 				CE57D936214BA98D0028A1C5 /* ActionTopCell.xib in Resources */,
 				CE25F4FE21250B300067E125 /* IllegalListCell.xib in Resources */,
 				CED6EE831F6906FC004FED7B /* PoliceLocationVC.xib in Resources */,
+				CE5882DD22B33EBF00614219 /* IllegalReportAbnormalVC.xib in Resources */,
 				CE41C7B91F5EAC800058FE8D /* ImportCarHomeVC.xib in Resources */,
 				CE4DACAD1FA87EDD00665536 /* PersonLocationVC.xib in Resources */,
 				CE4E3C0B1F39B9F20057148B /* IllegalFootCell.xib in Resources */,
@@ -4578,6 +4592,7 @@
 				CE17C6EA2179E2C700B7391C /* AccidentUpListVC.m in Sources */,
 				CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */,
 				CE88FC5420A998CE0011B729 /* VehicleAlarmInfoVC.m in Sources */,
+				CE5882E022B3799500614219 /* IllegalReportAbnormalViewModel.m in Sources */,
 				CE57620A20AEB91B00C81289 /* VehicleUpMoreCell.m in Sources */,
 				CE4139DD2178CF26006AA441 /* ZLPhotoManager.m in Sources */,
 				CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */,
@@ -4708,6 +4723,7 @@
 				CEAD74632142118F001ED5E0 /* SpecialVehicleVC.m in Sources */,
 				CED6EE8E1F691358004FED7B /* MenuTableViewCell.m in Sources */,
 				CE71426520B2F01D00F9FCC2 /* VehicleExpireAlarmCell.m in Sources */,
+				CE5882DC22B33EBF00614219 /* IllegalReportAbnormalVC.m in Sources */,
 				CE17A024210820410045167B /* AccidentPeopleModel.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
 				CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */,

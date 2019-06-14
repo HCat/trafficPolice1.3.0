@@ -11,7 +11,8 @@
 @implementation IllegalParkDetailModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"picList" : [AccidentPicListModel class]
+    return @{@"picList" : [AccidentPicListModel class],
+             @"abnormalPic" : [AccidentPicListModel class]
              };
 }
 

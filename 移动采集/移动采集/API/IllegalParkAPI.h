@@ -178,12 +178,29 @@
 /****** 请求数据 ******/
 @property (nonatomic,strong) NSNumber * illegalId;
 
-
 /****** 返回数据 ******/
 
 @property (nonatomic,strong) IllegalParkIllegalDetailResponse *illegalResponse;
 
+@end
+
+#pragma mark - 违停、违法禁令上报异常
+
+@interface IllegalReportAbnormalParam : NSObject
+
+@property (nonatomic,strong) NSNumber * illegalId;
+@property (nonatomic,copy)   NSArray  * files;                //事故图片 列表，最多可上传30张
+@end
+
+
+@interface IllegalReportAbnormalManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, strong) IllegalReportAbnormalParam * param;
+@property (nonatomic, assign) CGFloat progress;
+
+/****** 返回数据 ******/
 
 
 @end
-

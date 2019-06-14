@@ -188,6 +188,7 @@
         if (manger.responseModel.code == CODE_SUCCESS) {
             /*********** 归档用户 ************/
             [UserModel setUserModel:manger.userModel];
+            [ShareValue sharedDefault].phone = [UserModel getUserModel].phone;
             [ShareFun LoginInbeforeDone];
             [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 

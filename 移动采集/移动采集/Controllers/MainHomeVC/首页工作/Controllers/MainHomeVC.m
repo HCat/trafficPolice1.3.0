@@ -75,6 +75,8 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.lb_departmentName.text = [ShareFun takeStringNoNull:[UserModel getUserModel].departmentName];
+    
     if (IS_IPHONE_X_MORE) {
         _layout_topHeight.constant = _layout_topHeight.constant + 24;
     }
@@ -100,13 +102,14 @@ static NSString *const cellId = @"BaseImageCollectionCell";
 - (void)bindViewModel{
     @weakify(self);
     
-    [RACObserve([UserModel getUserModel], departmentName) subscribeNext:^(NSString * _Nullable x) {
-        @strongify(self);
-        if (x && x.length > 0) {
-            self.lb_departmentName.text = [UserModel getUserModel].departmentName;
-        }
-        
-    }];
+//    [RACObserve([UserModel getUserModel], departmentName) subscribeNext:^(NSString * _Nullable x) {
+//        @strongify(self);
+//        if (x && x.length > 0) {
+//            NSLog(@"%@",[UserModel getUserModel].departmentName);
+//            self.lb_departmentName.text = x;
+//        }
+//        
+//    }];
     
     [self.viewModel.command_requestNotice.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);

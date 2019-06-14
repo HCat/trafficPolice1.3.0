@@ -18,6 +18,7 @@
 #import "IllegalMessageCell.h"
 #import "IllegalFootCell.h"
 #import "ImageFileInfo.h"
+#import "IllegalReportAbnormalVC.h"
 
 
 @interface IllegalDetailVC ()
@@ -267,7 +268,11 @@
         if (_model) {
 
             if (_model.picList && _model.picList.count > 0) {
-                cell.arr_images = [_model.picList mutableCopy];
+                NSMutableArray * m_array = @[].mutableCopy;
+                [m_array addObjectsFromArray:_model.picList];
+                [m_array addObjectsFromArray:_model.abnormalPic];
+                
+                cell.arr_images = m_array;
             }
         }
         
@@ -303,24 +308,41 @@
         
         WS(weakSelf);
         cell.illegalUpAbnormalBlock = ^{
-            
             SW(strongSelf, weakSelf);
-            IllegalParkReportAbnormalManger *manger = [[IllegalParkReportAbnormalManger alloc] init];
-            manger.illegalParkId = strongSelf.illegalId;
-            [manger configLoadingTitle:@"上报"];
-            manger.v_showHud = strongSelf.view;
             
-            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-                
-                if (manger.responseModel.code == CODE_SUCCESS) {
-                    strongSelf.model.illegalCollect.state = @8;
-                    strongSelf.model.illegalCollect.stateName  = @"异常处理中";
-                    [strongSelf.tb_content reloadData];
+            IllegalReportAbnormalViewModel * viewModel = [[IllegalReportAbnormalViewModel alloc] init];
+            viewModel.illegalCollect = strongSelf.model.illegalCollect;
+            viewModel.param.illegalId = strongSelf.illegalId;
+            
+            [viewModel.subject subscribeNext:^(id  _Nullable x) {
+                SW(strongSelf, weakSelf);
+                if (strongSelf.illegalType == IllegalTypePark) {
+                    [strongSelf loadIllegalParkDetail];
+                }else if (strongSelf.illegalType == IllegalTypeThrough){
+                    [strongSelf loadIllegalThroughDetail];
                 }
-            
-            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
                 
             }];
+            
+            IllegalReportAbnormalVC * vc = [[IllegalReportAbnormalVC alloc] initWithViewModel:viewModel];
+            [strongSelf.navigationController pushViewController:vc animated:YES];
+            
+//            IllegalParkReportAbnormalManger *manger = [[IllegalParkReportAbnormalManger alloc] init];
+//            manger.illegalParkId = strongSelf.illegalId;
+//            [manger configLoadingTitle:@"上报"];
+//            manger.v_showHud = strongSelf.view;
+//
+//            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+//
+//                if (manger.responseModel.code == CODE_SUCCESS) {
+//                    strongSelf.model.illegalCollect.state = @8;
+//                    strongSelf.model.illegalCollect.stateName  = @"异常处理中";
+//                    [strongSelf.tb_content reloadData];
+//                }
+//
+//            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//
+//            }];
             
        };
         

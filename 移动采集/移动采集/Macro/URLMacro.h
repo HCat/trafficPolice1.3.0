@@ -11,13 +11,13 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
 
 
-#define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 @"http://h16552j072.51mypc.cn//police-admin"
+#define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
@@ -97,7 +97,7 @@
 #define URL_ILLEGALPARK_QUERYRECORD @"app/illegalPark/queryRecord.json"         //查询是否已有违停记录(旧)
 #define URL_ILLEGALPARK_CARNORECORD @"app/illegalPark/queryCarNoRecord.json"    //查询是否已有违章记录(新)
 #define URL_ILLEGALPARK_ILLEGALDETAIL @"app/illegalPark/illegalDetail.json"     //查看违章详细信息
-
+#define URL_ILLEGAL_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"       //违停、违法禁令上报异常(新)
 
 #pragma mark - 违反禁令相关API
 
