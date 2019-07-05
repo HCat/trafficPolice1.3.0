@@ -73,9 +73,11 @@
 
 @interface LoginMobileReponse : NSObject
 
-@property (nonatomic, copy) NSString * userId;            //用户ID
-@property (nonatomic, copy) NSString * interfaceUrl;     //返回的服务器地址
-@property (nonatomic,copy) NSString * acId;          //短信ID
+@property (nonatomic, copy) NSString * userId;                  //用户ID
+@property (nonatomic, copy) NSString * interfaceUrl;            //返回的服务器地址
+@property (nonatomic, copy) NSString * acId;                    //短信ID
+@property (nonatomic, strong) NSNumber * codeLength;            //验证码长度
+@property (nonatomic, strong) NSNumber * codeType;              //验证码类型
 
 @end
 

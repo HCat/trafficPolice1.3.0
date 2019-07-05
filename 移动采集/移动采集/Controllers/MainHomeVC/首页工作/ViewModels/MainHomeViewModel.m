@@ -223,7 +223,7 @@
                 menuModel.funTitle = @"车场管理";
                 menuModel.funImage = @"menu_carYardCollect";
             }else if ([menuModel.code isEqualToString:@"DELVIERY_MANAGE"]) {
-                menuModel.funTitle = @"快递员监管";
+                menuModel.funTitle = @"外卖监管";
                 menuModel.funImage = @"menu_delivery";
             }
             

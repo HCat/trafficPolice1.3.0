@@ -11,18 +11,16 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE NO
+#define ISONLINE YES
 
 #define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
 
-
-#define DEBUG_URL @"http://192.168.10.201:8280/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
+#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
-
 
 #define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
 #define KwebSocket_URL ISONLINE ? WEBSOCKET_RELEASE_URL : WEBSOCKET_DEBUG_URL

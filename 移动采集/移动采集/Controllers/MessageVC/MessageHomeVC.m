@@ -83,7 +83,7 @@
 - (void)setUpTableView{
     
     _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = YES;
+    _tb_content.firstReload = NO;
     
     [self initRefresh];
     [_tb_content.mj_header beginRefreshing];

@@ -436,13 +436,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             }
             
             NSString *path = [[NSBundle mainBundle] pathForResource:@"police" ofType:@"m4a"];
+            NSError *err=nil;
             self.player = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:path] error:nil];
             self.player.numberOfLoops = 1000;
             self.player.volume = 1.0;
-            if([self.player prepareToPlay]){
-                NSLog(@"");
-            }else{
-                 [self.player play];
+            [self.player prepareToPlay];
+            if (err!=nil) {
+                NSLog(@"move player init error:%@",err);
+            }else {
+                [self.player play];
             }
            
         }

@@ -635,6 +635,7 @@
 		CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE7B80B215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m */; };
 		CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */; };
 		CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */; };
+		CEFACDA322C5BB6700C14DEC /* XTVerCodeInput.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFACDA222C5BB6600C14DEC /* XTVerCodeInput.m */; };
 		CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */; };
 		CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFEFCED1F29B16300C33CBD /* IllegalParkVC.xib */; };
 		CEFEFCF61F29B22F00C33CBD /* IllegalParkAddHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFEFCF11F29B22F00C33CBD /* IllegalParkAddHeadView.m */; };
@@ -1725,6 +1726,8 @@
 		CEFA0C501F56A592006BE7FB /* ProcessResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessResultCell.h; sourceTree = "<group>"; };
 		CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessResultCell.m; sourceTree = "<group>"; };
 		CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessResultCell.xib; sourceTree = "<group>"; };
+		CEFACDA122C5BB6600C14DEC /* XTVerCodeInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTVerCodeInput.h; sourceTree = "<group>"; };
+		CEFACDA222C5BB6600C14DEC /* XTVerCodeInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTVerCodeInput.m; sourceTree = "<group>"; };
 		CEFEFCEB1F29B16300C33CBD /* IllegalParkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegalParkVC.h; sourceTree = "<group>"; };
 		CEFEFCEC1F29B16300C33CBD /* IllegalParkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegalParkVC.m; sourceTree = "<group>"; };
 		CEFEFCED1F29B16300C33CBD /* IllegalParkVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegalParkVC.xib; sourceTree = "<group>"; };
@@ -3936,6 +3939,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CEFACDA022C5BB5300C14DEC /* XTVerCodeInput */,
 				CE12593B2284245C00B7BF48 /* NSLayoutConstraintOnePixelLine */,
 				CE407C9D216DA7E80035DDED /* LYSideslipCell */,
 				CEBCFCE120FE1EA5006FB37A /* LRSliderView */,
@@ -4061,6 +4065,15 @@
 				CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */,
 			);
 			name = AccidentProcessResultVC;
+			sourceTree = "<group>";
+		};
+		CEFACDA022C5BB5300C14DEC /* XTVerCodeInput */ = {
+			isa = PBXGroup;
+			children = (
+				CEFACDA122C5BB6600C14DEC /* XTVerCodeInput.h */,
+				CEFACDA222C5BB6600C14DEC /* XTVerCodeInput.m */,
+			);
+			path = XTVerCodeInput;
 			sourceTree = "<group>";
 		};
 		CEFEFCE51F2990B000C33CBD /* IllegalParkVC */ = {
@@ -4761,6 +4774,7 @@
 				CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
 				CE175B8120E48650009E2282 /* MakePhoneView.m in Sources */,
+				CEFACDA322C5BB6700C14DEC /* XTVerCodeInput.m in Sources */,
 				CE1259242282C94300B7BF48 /* TakeOutAPI.m in Sources */,
 				CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */,
 				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,

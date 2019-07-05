@@ -57,7 +57,7 @@
 
 - (void)configUI{
     
-    self.title = @"快递员监管";
+    self.title = @"外卖监管";
     self.btn_search.layer.cornerRadius = 5.f;
     self.view_search.layer.cornerRadius = 5.f;
     

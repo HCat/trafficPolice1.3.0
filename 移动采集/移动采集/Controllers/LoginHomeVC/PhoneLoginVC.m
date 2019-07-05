@@ -10,26 +10,20 @@
 #import "LRCountDownButton.h"
 #import "LoginAPI.h"
 #import "JPUSHService.h"
+#import "XTVerCodeInput.h"
 
 @interface PhoneLoginVC ()
 
 @property (weak, nonatomic) IBOutlet LRCountDownButton *btn_countDown;
 @property (weak, nonatomic) IBOutlet UITextField *tf_phone;
-@property (weak, nonatomic) IBOutlet UITextField *tf_code;
+@property (weak, nonatomic) IBOutlet UILabel *lb_tip;
+@property (weak, nonatomic) IBOutlet XTVerCodeInput *tf_codeInput;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
-@property (nonatomic , assign) NSInteger count;
-@property (strong , nonatomic) NSMutableArray *textArr;
-@property (nonatomic , assign) NSString *saveTextStr;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *btn_commit;
-
-@property (nonatomic,copy) NSString *acId;    //获取验证码得到的短信ID
-@property (nonatomic,copy) NSString *userId;  //获取验证码得到的短信ID
-
-@property (nonatomic,assign) BOOL isCanCommit;
+@property (nonatomic,copy) NSString * str_code;     //短信验证码
+@property (nonatomic,copy) NSString * acId;         //获取验证码得到的短信ID
+@property (nonatomic,copy) NSString * userId;       //获取验证码得到的短信ID
+@property (nonatomic, strong) NSNumber * codeLength;            //验证码长度
+@property (nonatomic, strong) NSNumber * codeType;              //验证码类型
 
 @end
 
@@ -38,28 +32,33 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.title = @"短信验证";
+    self.title = @"登录";
     [self.navigationController.navigationBar setBarTintColor:DefaultNavColor];
-    
-    self.isCanCommit = NO;
-    
-    self.textArr = [NSMutableArray array];
-    self.count = 6;
-    self.saveTextStr = @"";
-    
-    [self.tf_code setDelegate:(id<UITextFieldDelegate> _Nullable)self];
-    [self.tf_code addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     _btn_countDown.durationOfCountDown = 60;
     _btn_countDown.originalBGColor = UIColorFromRGB(0x1DBE7E);
     _btn_countDown.processBGColor = DefaultBtnNuableColor;
     _btn_countDown.processFont = [UIFont systemFontOfSize:12.f];
     _btn_countDown.originalFont = [UIFont systemFontOfSize:15.f];
+    
     WS(weakSelf);
+    
+    self.tf_codeInput.inputType = 4;
+    [self.tf_codeInput initSubviews];
+    self.tf_codeInput.verCodeBlock = ^(NSString *text){
+        NSLog(@"您输入的验证码是%@",text);
+        SW(strongSelf, weakSelf);
+        strongSelf.str_code = text;
+        
+        if (strongSelf.str_code.length == 4) {
+            [strongSelf handleBtnLoginClicked:nil];
+        }
+    };
 
     _btn_countDown.beginBlock = ^{
         
         SW(strongSelf, weakSelf);
+    
         if (strongSelf.tf_phone.text.length == 0) {
             
             [LRShowHUD showError:@"请输入手机号" duration:1.0f inView:strongSelf.view config:nil];
@@ -76,6 +75,9 @@
             return ;
         }
         
+        [strongSelf.tf_phone resignFirstResponder];
+        
+        
         LoginMobileManger *manger = [LoginMobileManger new];
         manger.mobile = strongSelf.tf_phone.text;
         manger.orgId = [ShareValue sharedDefault].orgId;
@@ -86,6 +88,20 @@
             if (manger.responseModel.code == CODE_SUCCESS) {
                 strongSelf.acId = manger.mobileModel.acId;
                 strongSelf.userId = manger.mobileModel.userId;
+                strongSelf.codeLength = manger.mobileModel.codeLength;
+                strongSelf.codeType = manger.mobileModel.codeType;
+                
+//                strongSelf.tf_codeInput.inputType = [strongSelf.codeLength integerValue];
+//                [strongSelf.tf_codeInput initSubviews];
+
+                if ([strongSelf.codeType isEqualToNumber:@0]) {
+                    self.lb_tip.text = @"请输入短信验证码";
+                    [ShareFun showTipLable:@"短信验证码已发送到您的手机，请注意查收"];
+                }else{
+                    self.lb_tip.text = @"请输入微信验证码";
+                    [ShareFun showTipLable:@"微信验证码已发送到您的微信，请注意查收"];
+                }
+                
                 NSString *server_url = [NSString stringWithFormat:@"http://%@",manger.mobileModel.interfaceUrl];
                 NSString *webSocket_url = [NSString stringWithFormat:@"ws://%@/websocket",manger.mobileModel.interfaceUrl];
                 
@@ -113,16 +129,6 @@
     
     };
     
-    //事故信息里面添加对UITextField的监听
-    [self addChangeForEventEditingChanged:self.tf_phone];
-    //事故信息里面添加对UITextField的监听
-    [self addChangeForEventEditingChanged:self.tf_code];
-    
-    [self.collectionView registerClass:[CodeCell class] forCellWithReuseIdentifier:@"CodeCellID"];
-    
-    UITapGestureRecognizer *keyboardUpTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(KeyboardUp)];
-    [self.collectionView addGestureRecognizer:keyboardUpTap];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -130,29 +136,6 @@
     self.navigationController.navigationBarHidden = NO;
     
 }
-
-
-#pragma mark - set && get
-
--(void)setIsCanCommit:(BOOL)isCanCommit{
-    _isCanCommit = isCanCommit;
-    if (_isCanCommit == NO) {
-        _btn_commit.enabled = NO;
-        [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
-    }else{
-        _btn_commit.enabled = YES;
-        [_btn_commit setBackgroundColor:UIColorFromRGB(0x1DBE7E)];
-    }
-}
-
-
-#pragma mark - ButtonAction
-
--(void)KeyboardUp
-{
-    [self.tf_code becomeFirstResponder];
-}
-
 
 - (IBAction)handleBtnLoginClicked:(id)sender {
     
@@ -166,15 +149,9 @@
         return ;
     }
     
-    if (self.tf_code.text.length == 0) {
-        [LRShowHUD showError:@"请输入验证码!" duration:1.0f inView:self.view config:nil];
-        return ;
-    }
-    
-
     LoginCheck2Param *param = [[LoginCheck2Param alloc] init];
     param.acId = self.acId;
-    param.authCode = _tf_code.text;
+    param.authCode = self.str_code;
     param.equipmentId = [ShareFun getUniqueDeviceIdentifierAsString];
     param.platform = @"ios";
     param.userId = self.userId;
@@ -205,132 +182,16 @@
                 /*********** 切换到首页界面 ************/
                 [ApplicationDelegate initAKTabBarController];
                 ApplicationDelegate.window.rootViewController = ApplicationDelegate.vc_tabBar;
-         });
+                
+            });
         
-     }
+        }
     
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
     }];
     
 }
-
-#pragma mark - 添加监听Textfield的变化，用于给参数实时赋值
-
-- (void)addChangeForEventEditingChanged:(UITextField *)textField{
-    [textField addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
-}
-
-#pragma mark - 实时监听UITextField内容的变化
-
--(void)passConTextChange:(id)sender{
-    if (_tf_phone.text.length > 0 && _tf_code.text.length > 0) {
-        self.isCanCommit = YES;
-    }else{
-        self.isCanCommit = NO;
-    }
-    
-}
-
-- (void)textFieldDidChange:(UITextField *)textField {
-    
-    if (textField == _tf_code) {
-        
-        [self.textArr removeAllObjects];
-        NSLog(@"textField:%@",textField.text);
-        self.saveTextStr = textField.text;
-        
-        for (int i = 0; i < textField.text.length; i ++) {
-            NSRange range;
-            range.location = i;
-            range.length = 1;
-            NSString *tempString = [textField.text substringWithRange:range];
-            [self.textArr addObject:tempString];
-        }
-        
-        if (self.textArr.count == 6) {
-            [self handleBtnLoginClicked:nil];
-        }
-        
-        [self.collectionView reloadData];
-    }
-  
-}
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    
-    if (textField == _tf_code) {
-        if ([string isEqualToString:@""]) {
-            NSLog(@"删除");
-            return YES;
-        }
-        if (self.tf_code.text.length >= self.count)
-        {
-            NSLog(@"超了");
-            NSLog(@"此时的self.textArr:%@",self.textArr);
-    
-            return NO;
-        }
-        
-        return YES;
-    }else{
-        return YES;
-    }
-   
-}
-
-
-#pragma mark - UICollectionView
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    
-    return self.count;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    CodeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CodeCellID" forIndexPath:indexPath];
-    
-    if (self.textArr.count == 0) {
-        cell.lb_number.text = @"";
-    }else{
-        if (indexPath.row <= self.textArr.count - 1) {
-            cell.lb_number.text = self.textArr[indexPath.row];
-        }else{
-            cell.lb_number.text = @"";
-        }
-    }
-    return cell;
-    
-    
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return CGSizeMake((collectionView.frame.size.width - 5 * ((collectionView.frame.size.width - 6 * 40)/5))/self.count, collectionView.frame.size.height);
-    
-}
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-// 两行之间的最小间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-    
-}
-
-// 两个cell之间的最小间距，是由API自动计算的，只有当间距小于该值时，cell会进行换行
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return (collectionView.frame.size.width - 6 * 40)/5;
-    
-}
-
 
 #pragma mark -
 
@@ -348,28 +209,3 @@
 @end
 
 
-@implementation CodeCell
-
-- (id)initWithFrame:(CGRect)frame{
-    
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        
-        self.lb_number = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
-        self.lb_number.center = CGPointMake(self.contentView.frame.size.width/2, self.contentView.frame.size.height/2);
-        self.lb_number.textAlignment = NSTextAlignmentCenter;
-        self.lb_number.font = [UIFont systemFontOfSize:20];
-        self.lb_number.textColor = DefaultTextColor;
-        self.lb_number.layer.borderWidth  = 1.f;
-        self.lb_number.layer.borderColor = [DefaultColor CGColor];
-        [self.contentView addSubview:self.lb_number];
-        
-    }
-    
-    return self;
-    
-}
-
-
-@end

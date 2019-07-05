@@ -12,8 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhoneLoginVC">
             <connections>
                 <outlet property="btn_countDown" destination="TEC-yN-AnE" id="NPE-0k-Slr"/>
-                <outlet property="collectionView" destination="WWH-fh-bkw" id="4dO-hE-p6t"/>
-                <outlet property="tf_code" destination="iC0-zM-Ljd" id="cxh-RO-n3R"/>
+                <outlet property="lb_tip" destination="btg-ZS-4GD" id="UFw-98-3C3"/>
+                <outlet property="tf_codeInput" destination="hAh-fw-s6n" id="9Gz-NI-xHQ"/>
                 <outlet property="tf_phone" destination="d07-J3-gOr" id="pJW-08-JZk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,7 +26,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I30-Py-kjB">
                     <rect key="frame" x="0.0" y="45" width="375" height="54"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d07-J3-gOr">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d07-J3-gOr">
                             <rect key="frame" x="55" y="17" width="131" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="131" id="C6B-tz-rLu"/>
@@ -75,44 +75,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhY-9e-rxo">
                     <rect key="frame" x="0.0" y="144" width="375" height="80"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC0-zM-Ljd">
-                            <rect key="frame" x="30" y="20" width="315" height="40"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="zgx-9X-Qwb"/>
-                            </connections>
-                        </textField>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WWH-fh-bkw">
-                            <rect key="frame" x="30" y="20" width="315" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAh-fw-s6n" customClass="XTVerCodeInput">
+                            <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="BcV-Sb-OLQ"/>
+                                <constraint firstAttribute="height" constant="40" id="pzq-yR-PbS"/>
                             </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ze3-B9-1DO">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="Pgd-wG-nd8"/>
-                                <outlet property="delegate" destination="-1" id="05g-Qe-LTR"/>
-                            </connections>
-                        </collectionView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="WWH-fh-bkw" firstAttribute="centerY" secondItem="fhY-9e-rxo" secondAttribute="centerY" id="9Ja-7I-m52"/>
-                        <constraint firstItem="WWH-fh-bkw" firstAttribute="leading" secondItem="fhY-9e-rxo" secondAttribute="leading" constant="30" id="QIg-g5-U8H"/>
-                        <constraint firstItem="iC0-zM-Ljd" firstAttribute="bottom" secondItem="WWH-fh-bkw" secondAttribute="bottom" id="Uv3-m6-70Q"/>
-                        <constraint firstItem="iC0-zM-Ljd" firstAttribute="top" secondItem="WWH-fh-bkw" secondAttribute="top" id="VSX-Wp-eoB"/>
                         <constraint firstAttribute="height" constant="80" id="XZP-rk-7JS"/>
-                        <constraint firstAttribute="trailing" secondItem="WWH-fh-bkw" secondAttribute="trailing" constant="30" id="dZH-Bi-EY8"/>
-                        <constraint firstItem="iC0-zM-Ljd" firstAttribute="trailing" secondItem="WWH-fh-bkw" secondAttribute="trailing" id="xRb-hC-nNV"/>
-                        <constraint firstItem="iC0-zM-Ljd" firstAttribute="leading" secondItem="WWH-fh-bkw" secondAttribute="leading" id="zTX-P9-uTp"/>
+                        <constraint firstItem="hAh-fw-s6n" firstAttribute="leading" secondItem="fhY-9e-rxo" secondAttribute="leading" id="Zpu-4v-H5J"/>
+                        <constraint firstAttribute="trailing" secondItem="hAh-fw-s6n" secondAttribute="trailing" id="bHn-MK-lbk"/>
+                        <constraint firstItem="hAh-fw-s6n" firstAttribute="centerY" secondItem="fhY-9e-rxo" secondAttribute="centerY" id="gaQ-en-WEv"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -126,8 +102,8 @@
                     <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入短信验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btg-ZS-4GD">
-                    <rect key="frame" x="20" y="117" width="106.5" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btg-ZS-4GD">
+                    <rect key="frame" x="20" y="117" width="80" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -147,7 +123,7 @@
                 <constraint firstItem="I30-Py-kjB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="xfQ-p8-Bk7"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-            <point key="canvasLocation" x="23.5" y="51.5"/>
+            <point key="canvasLocation" x="23.199999999999999" y="50.824587706146929"/>
         </view>
     </objects>
     <resources>

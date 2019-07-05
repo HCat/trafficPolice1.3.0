@@ -8,12 +8,6 @@
 
 #import "HideTabSuperVC.h"
 
-@interface CodeCell : UICollectionViewCell
-
-@property (nonatomic,strong) UILabel *lb_number;
-
-@end
-
 @interface PhoneLoginVC : HideTabSuperVC
 
 @end

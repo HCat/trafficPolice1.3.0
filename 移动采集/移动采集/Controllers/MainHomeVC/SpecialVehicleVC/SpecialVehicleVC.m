@@ -180,7 +180,7 @@
 - (void)setUpTableView{
     
     _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = NO;
+    _tb_content.firstReload = YES;
     
     [self initRefresh];
     

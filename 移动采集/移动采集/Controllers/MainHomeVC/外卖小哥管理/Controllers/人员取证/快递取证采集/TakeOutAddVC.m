@@ -71,7 +71,7 @@
 #pragma mark - configUI
 
 - (void)configUI{
-    self.title = @"快递员违法录入";
+    self.title = @"外卖违法录入";
     
     //注册collection格式
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:@"BaseImageCollectionCellID"];

@@ -26,6 +26,7 @@
 
 #import "PoliceDistributeViewModel.h"
 #import "PoliceDistributeVC.h"
+#import "NetWorkHelper.h"
 
 #import "PoliceCommandVC.h"
 #import "JointEnforceVC.h"
@@ -96,6 +97,18 @@ static NSString *const cellId = @"BaseImageCollectionCell";
     
     [self.viewModel.command_requestNotice execute:nil];
     [self.viewModel.command_requestMenu execute:nil];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    @weakify(self);
+    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
+        @strongify(self);
+        [self.viewModel.command_requestNotice execute:nil];
+        [self.viewModel.command_requestMenu execute:nil];
+    };
     
 }
 
@@ -571,7 +584,7 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }
             
-        }else if ([t_title isEqualToString:@"快递员监管"]){
+        }else if ([t_title isEqualToString:@"外卖监管"]){
             
             if ([menuModel.isUser isEqualToNumber:@1]) {
                 TakeOutSearchVC *t_vc = [[TakeOutSearchVC alloc] init];
