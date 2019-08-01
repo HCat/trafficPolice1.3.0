@@ -13,7 +13,7 @@
 #import "DeliveryIllegalModel.h"
 #import "DeliveryIllegalDetailModel.h"
 #import "DeliveryIllegalTypeModel.h"
-
+#
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 根据条件查询快递员列表API
@@ -115,16 +115,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TakeOutSaveParam :  NSObject
 
-@property (nonatomic,strong,nullable) NSNumber * roadId;               //道路ID 必填，从通用值【道路】获取ID
-@property (nonatomic,copy,nullable)   NSString * roadName;             //道路名字 如果roadId为0的时候设置
 @property (nonatomic,copy,nullable)   NSString * address;              //事故地点 必填
-@property (nonatomic,copy,nullable)   NSString * remark;               //地址备注 非必填
 @property (nonatomic,strong,nullable) NSNumber * lng;                  //经度 必填
 @property (nonatomic,strong,nullable) NSNumber * lat;                  //纬度 必填
 @property (nonatomic,copy,nullable)   NSArray  * files;                //事故图片 列表，最多可上传30张
 @property (nonatomic,strong,nullable) NSNumber * reportType;           //采集类型 默认 3014
 @property (nonatomic,copy,nullable)   NSString * driver;               //快递小弟编号
 @property (nonatomic,copy,nullable)   NSString * illegalType;          //违法类型
+@property (nonatomic,copy,nullable)   NSString * companyNo;            //众包编号
+
 
 @end
 
@@ -135,5 +134,52 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat progress;
 
 @end
+
+#pragma mark - 违章类型列表
+
+@interface TakeOutTypeListManger:LRBaseRequest
+
+/****** 返回数据 ******/
+@property (nonatomic,copy) NSArray < DeliveryIllegalTypeModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+
+#pragma mark - 临时工违章采集
+
+@interface TakeOutSubmitTempReportParam :  NSObject
+
+@property (nonatomic,copy,nullable)   NSString * address;              //事故地点 必填
+@property (nonatomic,strong,nullable) NSNumber * lng;                  //经度 必填
+@property (nonatomic,strong,nullable) NSNumber * lat;                  //纬度 必填
+@property (nonatomic,copy,nullable)   NSArray  * files;                //事故图片 列表，最多可上传30张
+@property (nonatomic,strong,nullable) NSNumber * reportType;           //采集类型 默认 3014
+@property (nonatomic,copy,nullable)   NSString * identNo;              //身份证
+@property (nonatomic,copy,nullable)   NSString * userName;             //真实姓名
+@property (nonatomic,copy,nullable)   NSString * illegalType;          //违法类型
+@property (nonatomic,copy,nullable)   NSString * companyNo;            //众包编号
+@property(nonatomic, strong) ImageFileInfo *certFileInfo;              //身份证
+@end
+
+@interface TakeOutSubmitTempReportManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) TakeOutSubmitTempReportParam * param;
+@property (nonatomic, assign) CGFloat progress;
+
+@end
+
+#pragma mark - 众包列表接口
+
+@interface TakeOutCompanyListManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic,copy) NSArray < DeliveryCompanyModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+
+
+
 
 NS_ASSUME_NONNULL_END

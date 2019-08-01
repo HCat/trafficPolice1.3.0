@@ -14,6 +14,7 @@
 #import "LRSettingCell.h"
 #import "TakeOutInfoVC.h"
 #import "QRCodeScanVC.h"
+#import "TakeOutTempVC.h"
 
 @interface TakeOutSearchVC ()
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arr_button;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_ercode;
+@property (weak, nonatomic) IBOutlet UIButton *btn_add;
 
 
 
@@ -126,6 +128,13 @@
             }
             
         };
+        [self.navigationController pushViewController:t_vc animated:YES];
+        
+    }];
+    
+    [[self.btn_add rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        TakeOutTempVC *t_vc = [[TakeOutTempVC alloc] init];
         [self.navigationController pushViewController:t_vc animated:YES];
         
     }];

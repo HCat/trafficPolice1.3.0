@@ -10,6 +10,7 @@
 
 typedef void(^SelectedBtnBlock)(NSArray *items,NSInteger index);
 typedef void(^SelectedAccidentBtnBlock)(NSString *title,NSInteger itemId,NSInteger itemType);
+typedef void(^SelectedCompanyBtnBlock)(NSString *title,NSString * itemId);
 
 @interface BottomPickerView : UIView
 
@@ -18,6 +19,8 @@ typedef void(^SelectedAccidentBtnBlock)(NSString *title,NSInteger itemId,NSInteg
 @property (nonatomic,assign) NSInteger index;
 @property (nonatomic,copy)   SelectedBtnBlock selectedBtnBlock; //通用方法
 @property (nonatomic,copy)   SelectedAccidentBtnBlock selectedAccidentBtnBlock; //特定block
+@property (nonatomic,copy)   SelectedCompanyBtnBlock  selectedCompanyBtnBlock;
+
 
 + (BottomPickerView *)initCustomView;
 

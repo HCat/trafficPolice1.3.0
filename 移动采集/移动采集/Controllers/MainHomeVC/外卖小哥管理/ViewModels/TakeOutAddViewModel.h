@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TakeOutAddViewModel : NSObject
 
 @property (nonatomic,strong) NSMutableArray *arr_upImages; //用于存储即将上传的图片
+@property (nonatomic, strong) NSArray < DeliveryIllegalTypeModel *> * deliveryIllegalList; //道路通用值
 
 @property (nonatomic, copy) NSString * deliveryId;
 
@@ -22,10 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) BOOL isCanCommit;
 
 @property(nonatomic, strong) RACCommand * command_commit;
-
-@property(nonatomic, strong) RACCommand * command_commonRoad;
-
-- (void)replaceUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo remark:(NSString *)remark replaceIndex:(NSInteger)index;
+@property(nonatomic, strong) RACCommand * command_illegalList;
+@property(nonatomic, strong) RACCommand * command_companyList;
 
 - (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo;
 - (void)configParamInFilesAndRemarksAndTimes;

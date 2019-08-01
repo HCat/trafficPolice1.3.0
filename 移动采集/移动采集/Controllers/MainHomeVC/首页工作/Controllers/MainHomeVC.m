@@ -35,6 +35,7 @@
 #import "NoticeVC.h"
 #import "AttendanceManageVC.h"
 #import "TakeOutSearchVC.h"
+#import "ParkingForensicsListVC.h"
 
 #import "MainCellLayout.h"
 #import "MainHomeViewModel.h"
@@ -588,6 +589,16 @@ static NSString *const cellId = @"BaseImageCollectionCell";
             
             if ([menuModel.isUser isEqualToNumber:@1]) {
                 TakeOutSearchVC *t_vc = [[TakeOutSearchVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
+        }else if ([t_title isEqualToString:@"停车取证"]){
+            
+            if ([menuModel.isUser isEqualToNumber:@1]) {
+                ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
+                ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
                 [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];

@@ -14,13 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TakeOutAddHeadView : UICollectionReusableView
 
 @property (nonatomic,strong) TakeOutSaveParam * param;
-@property (nonatomic, copy) NSString * deliveryId;
-@property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
+@property (nonatomic, strong) NSArray < DeliveryIllegalTypeModel *> * deliveryIllegalList; //道路通用值
 
-#pragma mark - 通过所在路段的名字获取得到roadId
-
-- (void)getRoadId;
-- (void)strogeLocationBeforeCommit;
 
 @end
 

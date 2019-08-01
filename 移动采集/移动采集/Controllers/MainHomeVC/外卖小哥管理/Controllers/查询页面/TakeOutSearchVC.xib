@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TakeOutSearchVC">
             <connections>
+                <outlet property="btn_add" destination="eSt-fP-OBg" id="E8B-3p-xMj"/>
                 <outlet property="btn_ercode" destination="gw3-6i-Mp7" id="sIv-Eo-Rgh"/>
                 <outlet property="btn_search" destination="Ghf-Cw-9vf" id="kne-Ks-8m7"/>
                 <outlet property="tableView" destination="qoz-5z-6OT" id="GWq-59-T9m"/>
@@ -153,16 +154,22 @@
                     <rect key="frame" x="283" y="494" width="60" height="60"/>
                     <state key="normal" image="btn_takeout_ercode"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSt-fP-OBg">
+                    <rect key="frame" x="283" y="434" width="60" height="60"/>
+                    <state key="normal" image="btn_takeOut_add"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="qoz-5z-6OT" secondAttribute="bottom" id="4i5-q3-by1"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="gw3-6i-Mp7" secondAttribute="trailing" constant="32" id="7jM-S3-FKE"/>
+                <constraint firstItem="gw3-6i-Mp7" firstAttribute="firstBaseline" secondItem="eSt-fP-OBg" secondAttribute="baseline" id="AHW-E3-4R3"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qoz-5z-6OT" secondAttribute="trailing" id="E49-vA-LZc"/>
                 <constraint firstItem="Eb1-tn-jGA" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Gtl-wi-XLL"/>
                 <constraint firstItem="qoz-5z-6OT" firstAttribute="top" secondItem="Eb1-tn-jGA" secondAttribute="bottom" constant="5" id="RWo-NJ-Peo"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="gw3-6i-Mp7" secondAttribute="bottom" constant="49" id="SC9-jb-JEG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Eb1-tn-jGA" secondAttribute="trailing" id="UuY-LI-DfP"/>
+                <constraint firstItem="eSt-fP-OBg" firstAttribute="centerX" secondItem="gw3-6i-Mp7" secondAttribute="centerX" id="W93-hx-eoB"/>
                 <constraint firstItem="qoz-5z-6OT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Wd7-NZ-4bU"/>
                 <constraint firstItem="Eb1-tn-jGA" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="sAb-HK-sK2"/>
             </constraints>
@@ -172,6 +179,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btn_takeOut_add" width="60" height="60"/>
         <image name="btn_takeout_ercode" width="60" height="60"/>
         <image name="btn_takeout_h" width="17" height="17"/>
         <image name="btn_takeout_n" width="17" height="17"/>

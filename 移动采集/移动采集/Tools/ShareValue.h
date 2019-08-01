@@ -10,6 +10,8 @@
 #import "LRSingleton.h"
 #import "AccidentAPI.h"
 #import "CommonAPI.h"
+#import "TakeOutAPI.h"
+
 
 #define kmaxPreviewCount 30
 #define kmaxSelectCount 30
@@ -81,6 +83,8 @@ LRSingletonH(Default)
 
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值
+@property (nonatomic, copy) NSArray <DeliveryCompanyModel *> * deliveryCompanyList; //众包
+
 
 
 @end

@@ -46,7 +46,8 @@
     [self configUI];
     [self bindViewModel];
     
-    [self.viewModel.command_commonRoad execute:nil];
+    [[ShareValue sharedDefault] deliveryCompanyList];
+    [self.viewModel.command_illegalList execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -55,7 +56,8 @@
     @weakify(self);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         @strongify(self);
-        [self.viewModel.command_commonRoad execute:nil];
+        [[ShareValue sharedDefault] deliveryCompanyList];
+        [self.viewModel.command_illegalList execute:nil];
     };
     
 #ifdef __IPHONE_11_0
@@ -87,14 +89,7 @@
 - (void)bindViewModel{
     
     @weakify(self);
-    [self.viewModel.command_commonRoad.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        if (self.headView) {
-            [self.headView getRoadId];
-        }
-        
-    }];
-    
+   
     [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
@@ -115,13 +110,27 @@
     
     [self.viewModel.command_commit.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        [self.headView strogeLocationBeforeCommit];
         if (self.block) {
             self.block();
         }
         
         [self.navigationController popViewControllerAnimated:YES];
         
+    }];
+    
+    [self.viewModel.command_illegalList.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        
+        if ([x isEqualToString:@"加载成功"]) {
+            if (self.headView) {
+                self.headView.deliveryIllegalList = self.viewModel.deliveryIllegalList;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                });
+                
+            }
+        }
+    
     }];
     
     
@@ -149,29 +158,16 @@
     
     if (indexPath.row == self.viewModel.arr_upImages.count) {
         
-        cell.lb_title.text = @"更多照片";
+        cell.lb_title.text = @"违法照片";
         cell.imageView.image = [UIImage imageNamed:@"btn_updatePhoto"];
     }else{
         
-        if(indexPath.row == 0){
-            cell.lb_title.text = @"违法照片";
-        }else if(indexPath.row == 1){
-            cell.lb_title.text = @"车牌近照";
-        }else {
-            cell.lb_title.text = [NSString stringWithFormat:@"违法照片%ld",indexPath.row];
-        }
+        cell.lb_title.text = [NSString stringWithFormat:@"违法照片%ld",indexPath.row+1];
         
-        //判断是否拥有图片，如果拥有则显示图片，如果没有则显示@“updataPhoto.png”的图片
-        //主要用于分辨车牌近照，和违停照片有没有图片
-        if ([self.viewModel.arr_upImages[indexPath.row] isKindOfClass:[NSNull class]]) {
-            cell.imageView.image = [UIImage imageNamed:@"btn_updatePhoto"];
-        }else{
-            NSMutableDictionary *t_dic = self.viewModel.arr_upImages[indexPath.row];
-            ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
-            if (imageInfo) {
-                cell.imageView.image = imageInfo.image;
-            }
-            
+        NSMutableDictionary *t_dic = self.viewModel.arr_upImages[indexPath.row];
+        ImageFileInfo *imageInfo = [t_dic objectForKey:@"files"];
+        if (imageInfo) {
+            cell.imageView.image = imageInfo.image;
         }
         
     }
@@ -185,12 +181,8 @@
     
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
-        if (!self.headView) {
-            self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TakeOutAddHeadViewID" forIndexPath:indexPath];
-            _headView.deliveryId = self.viewModel.deliveryId;
-            _headView.param = self.viewModel.param;
-            _headView.btnType = [LocationStorage sharedDefault].isTakeOut;
-        }
+        self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TakeOutAddHeadViewID" forIndexPath:indexPath];
+        _headView.param = self.viewModel.param;
         
         return _headView;
         
@@ -225,63 +217,8 @@
             }
         } isNeedRecognition:NO];
         
-    }else if(indexPath.row == 0){
-        
-        if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]]) {
-            
-            [self showCameraWithType:5 withFinishBlock:^(LRCameraVC *camera) {
-                if (camera) {
-                    @strongify(self);
-                    if (camera.type == 5) {
-                        [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"违法照片" replaceIndex:0];
-                        [self.collectionView reloadData];
-                    }
-                }
-            } isNeedRecognition:NO];
-            
-        }else{
-            //当存在车牌近照的时候,弹出图片浏览器
-            [self showPhotoBrowserWithIndex:0];
-        }
-        
-    }else if(indexPath.row == 1){
-        
-        if ([self.viewModel.arr_upImages[1] isKindOfClass:[NSNull class]]) {
-            
-            [self showCameraWithType:5 withFinishBlock:^(LRCameraVC *camera) {
-                if (camera) {
-                    @strongify(self);
-                    if (camera.type == 5) {
-                        [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:1];
-                        [self.collectionView reloadData];
-                    }
-                }
-            } isNeedRecognition:NO];
-            
-        }else{
-            
-            //当违停照片存在的情况下,弹出图片浏览器,如果车牌近照有的情况下图片索引为1,如果没有则图片索引变成0
-            //
-            if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]]) {
-                [self showPhotoBrowserWithIndex:0];
-            }else {
-                [self showPhotoBrowserWithIndex:1];
-            }
-            
-        }
-        
     }else {
-        //当更多照片存在的情况下,弹出图片浏览器,下面判断图片索引
-        if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]] && [self.viewModel.arr_upImages[1] isKindOfClass:[NSNull class]]) {
-            [self showPhotoBrowserWithIndex:indexPath.row-2];
-        }else {
-            if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]] || [self.viewModel.arr_upImages[1] isKindOfClass:[NSNull class]]) {
-                [self showPhotoBrowserWithIndex:indexPath.row-1];
-            }else{
-                [self showPhotoBrowserWithIndex:indexPath.row];
-            }
-            
-        }
+        [self showPhotoBrowserWithIndex:indexPath.row];
     }
     
 }
@@ -315,7 +252,13 @@
 
 //header头部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return (CGSize){ScreenWidth,230};
+    if (self.viewModel.deliveryIllegalList && self.viewModel.deliveryIllegalList.count > 0) {
+       NSInteger index =  self.viewModel.deliveryIllegalList.count/4 + (self.viewModel.deliveryIllegalList.count%4 != 0 ? 1 : 0);
+        CGFloat height = 30 * index + 15 * (index + 1);
+        return (CGSize){ScreenWidth,200 + height};
+    }else{
+        return (CGSize){ScreenWidth,230};
+    }
 }
 
 
@@ -325,6 +268,8 @@
     return (CGSize){ScreenWidth,75};
     
 }
+
+
 
 #pragma mark - scrollViewDelegate
 
@@ -409,15 +354,7 @@
             
             if ([t_str isEqualToString:[itemDic objectForKey:@"remarks"]]) {
                 
-                if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违法照片"]) {
-                    
-                    [self.viewModel.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
-                    
-                }else{
-                    
-                    [self.viewModel.arr_upImages removeObject:t_dic];
-                    
-                }
+                [self.viewModel.arr_upImages removeObject:t_dic];
                 
                 [self.collectionView reloadData];
             
@@ -457,7 +394,12 @@
 
 - (void)submitIllegalData{
     
+    
+    
     [self.viewModel configParamInFilesAndRemarksAndTimes];
+    
+    
+    
     
     LxDBObjectAsJson(self.viewModel.param);
     

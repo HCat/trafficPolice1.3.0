@@ -225,6 +225,9 @@
             }else if ([menuModel.code isEqualToString:@"DELVIERY_MANAGE"]) {
                 menuModel.funTitle = @"外卖监管";
                 menuModel.funImage = @"menu_delivery";
+            }else if ([menuModel.code isEqualToString:@"PARKING_COLLECT"]) {
+                menuModel.funTitle = @"停车取证";
+                menuModel.funImage = @"menu_carEvidence";
             }
             
         }

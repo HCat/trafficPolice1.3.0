@@ -10,9 +10,6 @@
 
 @interface TakeOutAddViewModel ()
 
-@property(nonatomic, strong) id first;
-@property(nonatomic, strong) id secend;
-
 @end
 
 
@@ -25,20 +22,27 @@
         self.param = [[TakeOutSaveParam alloc] init];
         
         self.arr_upImages =  [NSMutableArray array];
-        [self.arr_upImages addObject:[NSNull null]];
-        [self.arr_upImages addObject:[NSNull null]];
-        self.first = self.arr_upImages[0];
-        self.secend = self.arr_upImages[1];
-        
+      
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, illegalType), RACObserve(self, first), RACObserve(self, secend)] reduce:^id (NSString * illegalType,id first,id secend){
-            return @(illegalType.length > 0 && ![first isKindOfClass:[NSNull class]] && ![secend isKindOfClass:[NSNull class]]);
+        [[RACSignal combineLatest:@[RACObserve(self.param, illegalType), RACObserve(self.param, companyNo)] reduce:^id (NSString * illegalType,NSString * companyNo){
+            return @(illegalType.length > 0 && companyNo.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);
             self.isCanCommit = [x boolValue];
         }];
+    
+    }
+    
+    return self;
+    
+}
+
+
+- (RACCommand *)command_commit{
+    
+    if (_command_commit == nil) {
         
-        
+        @weakify(self);
         self.command_commit = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
@@ -67,21 +71,39 @@
             return t_signal;
         }];
         
+    }
+    
+    return _command_commit;
+    
+}
+
+
+- (RACCommand *)command_illegalList{
+    
+    if (_command_illegalList == nil) {
         
-        self.command_commonRoad = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        @weakify(self);
+        self.command_illegalList = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-                @strongify(self);
-                CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
-                manger.isLog = NO;
+                
+                TakeOutTypeListManger * manger = [[TakeOutTypeListManger alloc] init];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
                     if (manger.responseModel.code == CODE_SUCCESS) {
-                        [ShareValue sharedDefault].roadModels = manger.commonGetRoadResponse;
-                        [subscriber sendNext:nil];
+                        self.deliveryIllegalList = manger.list;
+                        [subscriber sendNext:@"加载成功"];
+                        
+                        
+                    }else{
+                        [subscriber sendNext:@"加载失败"];
                     }
                     
-                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendCompleted];
                     
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendNext:@"加载失败"];
+                    [subscriber sendCompleted];
                 }];
                 
                 return nil;
@@ -92,31 +114,12 @@
         
     }
     
-    return self;
+    return _command_illegalList;
     
 }
+
 
 #pragma mark - 管理上传图片
-
-//替换图片到arr_upImages数组中
-- (void)replaceUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo remark:(NSString *)remark replaceIndex:(NSInteger)index{
-    
-    imageFileInfo.name = key_files;
-    
-    NSMutableDictionary *t_dic = [NSMutableDictionary dictionary];
-    [t_dic setObject:imageFileInfo forKey:@"files"];
-    [t_dic setObject:remark forKey:@"remarks"];
-    [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
-    [t_dic setObject:@0 forKey:@"isMore"];
-    [self.arr_upImages  replaceObjectAtIndex:index withObject:t_dic];
-    
-    if (index == 0) {
-        self.first = t_dic;
-    }else{
-        self.secend = t_dic;
-    }
-    
-}
 
 //添加图片到arr_upImages数组中
 - (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo{

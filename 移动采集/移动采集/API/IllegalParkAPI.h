@@ -204,3 +204,26 @@
 
 
 @end
+
+
+#pragma mark - 采集根据道路ID是否可以采集（设备重复采集问题）
+
+@interface IllegalCheckRoadCollectResponse:NSObject
+
+@property (nonatomic,strong) NSNumber * isCollect;    //判断是否采集    isCollect    0否 1是
+
+
+
+@end
+
+@interface IllegalCheckRoadCollectManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic,strong) NSNumber * roadId;
+
+/****** 返回数据 ******/
+
+@property (nonatomic,strong) IllegalCheckRoadCollectResponse *illegalResponse;
+
+@end

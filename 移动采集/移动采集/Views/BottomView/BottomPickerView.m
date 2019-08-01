@@ -9,6 +9,7 @@
 #import "BottomPickerView.h"
 #import "UIButton+Block.h"
 #import "CommonAPI.h"
+#import "TakeOutAPI.h"
 
 
 @interface BottomPickerView()<UIPickerViewDataSource,UIPickerViewDelegate>
@@ -105,6 +106,10 @@
                     PoliceGroupModel *t_model =( PoliceGroupModel *)obj;
                     genderLabel.text = t_model.name;
                     
+                }else if ([obj isMemberOfClass:[DeliveryCompanyModel class]]) {
+                    DeliveryCompanyModel *t_model =( DeliveryCompanyModel *)obj;
+                    genderLabel.text = t_model.companyName;
+                    
                 }else {
                     genderLabel.text = self.items[row];
                     
@@ -144,6 +149,12 @@
             AccidentGetCodesModel *t_model =( AccidentGetCodesModel *)obj;
             if(self.selectedAccidentBtnBlock){
                 self.selectedAccidentBtnBlock(t_model.modelName, t_model.modelId,t_model.modelType);
+                
+            }
+        }else if([obj isMemberOfClass:[DeliveryCompanyModel class]]){
+            DeliveryCompanyModel *t_model =( DeliveryCompanyModel *)obj;
+            if(self.selectedCompanyBtnBlock){
+                self.selectedCompanyBtnBlock(t_model.companyName, t_model.companyNo);
                 
             }
         }

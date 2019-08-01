@@ -105,6 +105,9 @@ LRSingletonM(Default)
 }
 
 
+
+
+
 - (AccidentGetCodesResponse *)accidentCodes{
 
     if (!_accidentCodes) {
@@ -150,6 +153,28 @@ LRSingletonM(Default)
     
     return _roadModels;
 
+}
+
+- (NSArray <DeliveryCompanyModel *> *)deliveryCompanyList{
+    
+    if (!_deliveryCompanyList) {
+        
+        WS(weakSelf);
+        TakeOutCompanyListManger *manger = [[TakeOutCompanyListManger alloc] init];
+        manger.isLog = NO;
+        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            SW(strongSelf, weakSelf);
+            if (manger.responseModel.code == CODE_SUCCESS) {
+                strongSelf.deliveryCompanyList = manger.list;
+            }
+            
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            
+        }];
+    }
+    
+    return _deliveryCompanyList;
+    
 }
 
 - (NSInteger)makeNumber{

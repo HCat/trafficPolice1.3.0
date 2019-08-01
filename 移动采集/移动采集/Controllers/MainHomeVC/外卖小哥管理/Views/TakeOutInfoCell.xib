@@ -198,6 +198,9 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zh-nW-Ri3">
+                        <rect key="frame" x="15" y="297.5" width="110" height="110"/>
+                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EoM-IW-DOM">
                         <rect key="frame" x="15" y="297.5" width="110" height="110"/>
                         <constraints>
@@ -208,6 +211,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="by8-OZ-Fci" firstAttribute="top" secondItem="B0u-ld-kFO" secondAttribute="bottom" constant="1" id="0OL-aa-wA6"/>
+                    <constraint firstItem="9Zh-nW-Ri3" firstAttribute="top" secondItem="EoM-IW-DOM" secondAttribute="top" id="0eg-Rd-kgD"/>
                     <constraint firstItem="B0u-ld-kFO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="11Q-5Q-stb"/>
                     <constraint firstItem="PAM-nL-WWR" firstAttribute="leading" secondItem="by8-OZ-Fci" secondAttribute="leading" id="1R7-Rn-AXf"/>
                     <constraint firstAttribute="trailing" secondItem="B0u-ld-kFO" secondAttribute="trailing" id="7lU-Es-qLX"/>
@@ -219,10 +223,13 @@
                     <constraint firstItem="XqA-B2-jzq" firstAttribute="leading" secondItem="PAM-nL-WWR" secondAttribute="leading" id="GcJ-WW-x7h"/>
                     <constraint firstItem="PAM-nL-WWR" firstAttribute="trailing" secondItem="by8-OZ-Fci" secondAttribute="trailing" id="NNI-qm-Hpw"/>
                     <constraint firstItem="XqA-B2-jzq" firstAttribute="trailing" secondItem="PAM-nL-WWR" secondAttribute="trailing" id="Qa0-Ni-Qqq"/>
+                    <constraint firstItem="9Zh-nW-Ri3" firstAttribute="trailing" secondItem="EoM-IW-DOM" secondAttribute="trailing" id="RR1-Ci-mD4"/>
                     <constraint firstItem="by8-OZ-Fci" firstAttribute="trailing" secondItem="B0u-ld-kFO" secondAttribute="trailing" id="RWt-iW-UYu"/>
                     <constraint firstItem="qFf-sU-TRD" firstAttribute="leading" secondItem="zVs-tE-Byn" secondAttribute="leading" id="Vdy-bM-44j"/>
                     <constraint firstItem="zVs-tE-Byn" firstAttribute="leading" secondItem="j7C-GL-dFg" secondAttribute="leading" id="W8k-dd-V5o"/>
+                    <constraint firstItem="9Zh-nW-Ri3" firstAttribute="bottom" secondItem="EoM-IW-DOM" secondAttribute="bottom" id="YGc-D8-AB6"/>
                     <constraint firstItem="zVs-tE-Byn" firstAttribute="top" secondItem="j7C-GL-dFg" secondAttribute="bottom" constant="20" id="a78-iq-3Tw"/>
+                    <constraint firstItem="9Zh-nW-Ri3" firstAttribute="leading" secondItem="EoM-IW-DOM" secondAttribute="leading" id="lXY-gZ-Yjh"/>
                     <constraint firstAttribute="bottom" secondItem="EoM-IW-DOM" secondAttribute="bottom" constant="15" id="rWQ-hV-hFn"/>
                     <constraint firstItem="j7C-GL-dFg" firstAttribute="top" secondItem="XqA-B2-jzq" secondAttribute="bottom" constant="15" id="uu5-FP-KEL"/>
                     <constraint firstItem="EoM-IW-DOM" firstAttribute="leading" secondItem="qFf-sU-TRD" secondAttribute="leading" id="ve6-Wm-xPf"/>
@@ -233,6 +240,7 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="btn_illegal" destination="dF9-3x-pgp" id="w0M-6O-rNR"/>
+                <outlet property="btn_showImage" destination="9Zh-nW-Ri3" id="7zg-ZW-3lx"/>
                 <outlet property="imageV_picUrl" destination="EoM-IW-DOM" id="yCl-sH-uR7"/>
                 <outlet property="imageV_user" destination="EoM-IW-DOM" id="UWw-1j-fwx"/>
                 <outlet property="layout_car" destination="Bbz-Ka-Scr" id="prq-PV-z8j"/>

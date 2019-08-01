@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
@@ -96,6 +96,8 @@
 #define URL_ILLEGALPARK_CARNORECORD @"app/illegalPark/queryCarNoRecord.json"    //查询是否已有违章记录(新)
 #define URL_ILLEGALPARK_ILLEGALDETAIL @"app/illegalPark/illegalDetail.json"     //查看违章详细信息
 #define URL_ILLEGAL_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"       //违停、违法禁令上报异常(新)
+#define URL_ILLEGALPARK_CHECKROADCOLLECT @"app/illegalPark/checkRoadCollect.json"   //采集根据道路ID是否可以采集（设备重复采集问题）
+
 
 #pragma mark - 违反禁令相关API
 
@@ -216,7 +218,19 @@
 #define URL_TAKEOUT_GETVEHICLEINFO @"app/deliveryInfo/getVehicleInfo.json"          //获取快递小哥车辆信息
 #define URL_TAKEOUT_REPORTPAGE @"app/deliveryReport/reportPage.json"                //违章记录列表
 #define URL_TAKEOUT_REPORTDETAIL @"app/deliveryReport/reportDetail.json"            //违章记录详情
-#define URL_TAKEOUT_ILLEGALTYPE @"app/deliveryReport/illegalType.json"              //违章类型列表
+#define URL_TAKEOUT_ILLEGALTYPE @"app/deliveryReport/illegalType.json"              //违章类型列表(二级)
+#define URL_TAKEOUT_TYPELIST @"app/deliveryReport/typeList.json"                    //违章类型列表(一级)
 #define URL_TAKEOUT_SAVE @"app/deliveryReport/submitReport.json"                    //上报快递小哥违章
+#define URL_TAKEOUT_SUBMITTEMPREPORT @"app/deliveryReport/submitTempReport.json"         //临时工违章采集
+#define URL_TAKEOUT_COMPANYLIST @"app/deliveryReport/companyList.json"              //众包列表接口
+
+
+
+#define URL_PARKINGFORENSICS_LIST @"app/parkingOrder/parkingOrderPage.json"         //工单列表分页
+#define URL_PARKINGOCCPERCENT_LIST @"app/parkingOrder/parkingPlaceList.json"        //车位列表信息
+#define URL_PARKING_AREA @"app/parkingOrder/areaList.json"                          //全部片区列表
+#define URL_PARKINGAREA_DETAIL @"app/parkingOrder/parkingOrderDetail.json"          //车位详情
+#define URL_PARKING_REMARKCARSTATUS @"app/parkingOrder/remarkCarStatus.json"        //标记无车
+#define URL_PARKING_FORENSICS @"app/parkingOrder/saveParkingOrder.json"             //采集停车取证信息
 
 #endif /* URLMacro_h */

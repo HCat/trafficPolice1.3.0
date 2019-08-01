@@ -42,7 +42,7 @@
  有权限的菜单编码值，参考下面的编码值，数组类型
  菜单编码：
  
- 事故添加           NORMAL_ACCIDENT_ADD
+    事故添加        NORMAL_ACCIDENT_ADD
 	事故列表        ACCIDENT_LIST
 	快处事故添加     FAST_ACCIDENT_ADD
 	快处列表        FASTACC_LIST
@@ -61,6 +61,7 @@
 	重点车辆        IMPORTANT_CAR
 	勤务指挥        POLICE_COMMAND
     路面实况        ROAD_INFO
+    资料共享        DATA_SHARE
     联合执法        JOINT_LAW_ENFORCEMENT
     特殊车辆        SPECAIL_CAR_MANAGE
     事故结案权限     accident-list-06
@@ -72,6 +73,10 @@
     违反禁止线       ILLEGAL_INHIBIT_LINE
     违反禁止线列表    ILLEGAL_INHIBIT_LINE_LIST
     勤务管理         POLICE_MANAGE
+ 
+    车场出入库管理    CAR_YARD_COLLECT
+    快递员监管       DELVIERY_MANAGE
+    停车取证         PARKING_COLLECT
 */
 
 

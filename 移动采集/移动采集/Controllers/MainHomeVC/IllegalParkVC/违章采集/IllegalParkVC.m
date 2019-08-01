@@ -93,6 +93,40 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     [self getCommonRoad];
     
+    [RACObserve(self.param, roadId) subscribeNext:^(NSNumber * _Nullable x) {
+        
+        if (x && ![x isEqualToNumber:@0]) {
+            
+            IllegalCheckRoadCollectManger * manger = [[IllegalCheckRoadCollectManger alloc] init];
+            manger.roadId = x;
+            
+            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+                if (manger.responseModel.code == CODE_SUCCESS) {
+                    if ([manger.illegalResponse.isCollect isEqualToNumber:@1]) {
+                        SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
+                                                                            message:@"该路段为违法行为电子抓拍路段"
+                                                                    leftActionTitle:nil
+                                                                   rightActionTitle:@"确定"
+                                                                     animationStyle:AlertViewAnimationNone
+                                                                       selectAction:^(AlertViewActionType actionType) {
+                                                                           
+                                                                       }];
+                        alertView.blurCurrentBackgroundView = NO;
+                        [alertView show];
+                    }
+                }
+                
+                
+            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+            }];
+            
+        }
+        
+        
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

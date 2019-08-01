@@ -7,30 +7,23 @@
 //
 
 #import "TakeOutAddHeadView.h"
-#import "FSTextView.h"
-#import "SearchLocationVC.h"
+#import "NSArray+MASConstraint.h"
+#import "UIImage+Category.h"
 #import "PersonLocationVC.h"
 #import "TakeOutAddVC.h"
-#import "TakeOutIllegalTypeVC.h"
-
+#import "BottomPickerView.h"
+#import "BottomView.h"
 
 @interface TakeOutAddHeadView()
 
-@property (weak, nonatomic) IBOutlet FSTextView  * tf_illegalType;          //车牌号
-@property (weak, nonatomic) IBOutlet UITextField * tf_roadSection;          //选择路段
+@property (weak, nonatomic) IBOutlet UITextField * tf_order;              //配送单
 @property (weak, nonatomic) IBOutlet UITextField * tf_address;              //所在位置
-@property (weak, nonatomic) IBOutlet FSTextView  * tf_addressRemarks;       //地址备注
+@property (weak, nonatomic) IBOutlet UIView *view_type;
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
 
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_illegalType_height;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_addressMark_height;
-
-
-
-@property(nonatomic,strong) NSArray *codes;
+@property (assign, nonatomic) NSUInteger count;
+@property (nonatomic, strong) NSMutableArray <UIButton *> * arr_button; //用于存储类型Button
 
 @end
 
@@ -50,106 +43,90 @@
 
 - (void)awakeFromNib {
     
-    [super awakeFromNib];
     @weakify(self);
-    _tf_illegalType.placeholder   = [[ShareFun highlightInString:@"请选择违法类型(必选)" withSubString:@"(必选)"] string];
+    [super awakeFromNib];
     
-    _tf_roadSection.attributedPlaceholder = [ShareFun highlightInString:@"请选择路段(必选)" withSubString:@"(必选)"];
+    self.arr_button = @[].mutableCopy;
     
+    _tf_order.attributedPlaceholder   = [ShareFun highlightInString:@"请选择配送单(必选)" withSubString:@"(必选)"];
     _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
     
     //配置点击UITextField
-    [self setUpClickUITextField:self.tf_roadSection];
+    [self setUpClickUITextField:self.tf_order];
     [self setUpCommonUITextField:self.tf_address];
-    
 
-    [self.tf_addressRemarks.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
-        @strongify(self);
-        self.param.remark = x;
-    }];
+    [[LocationHelper sharedDefault] startLocation];
     
-    self.btnType = [LocationStorage sharedDefault].isTakeOut;
+    _btn_personLocation.enabled = YES;
+    [_btn_personLocation setBackgroundColor:DefaultBtnColor];
     
-   
-    [RACObserve(self, btnType) subscribeNext:^(NSNumber * _Nullable x) {
+    //监听建筑垃圾类型数量
+    [RACObserve(self,count) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        if ([x boolValue]) {
-            [[LocationStorage sharedDefault] setIsTakeOut:YES];
-            
-            self.tf_roadSection.text  = nil;
-            self.tf_address.text      = nil;
-            
-            self.param.roadName       = nil;
-            self.param.address        = nil;
-            
-            self.param.lng            = nil;
-            self.param.lat            = nil;
-            self.param.roadId         = nil;
         
-        }else{
-            [[LocationStorage sharedDefault] setIsTakeOut:NO];
-            [self stopLocationAction:[LocationStorage sharedDefault].takeOut];
+        for (int i = 0; i < self.count; i++) {
+            DeliveryIllegalTypeModel * t_dic  = self.deliveryIllegalList[i];
             
+            UIButton * t_button = [[UIButton alloc] init];
+            t_button.layer.cornerRadius = 5.0f;
+            t_button.layer.masksToBounds = YES;
+            [t_button.titleLabel setFont:[UIFont systemFontOfSize:14]];
+            [t_button setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+            [t_button setBackgroundImage:[UIImage imageWithColor:DefaultColor] forState:UIControlStateSelected];
+            t_button.tag = 1000 + i;
+            [t_button setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+            [t_button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            [t_button setTitle:t_dic.illegalName forState:UIControlStateNormal];
+            [[t_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
+                UIButton * btn = (UIButton *)x;
+                NSInteger tag = btn.tag - 1000;
+                btn.selected = !btn.selected;
+                
+                DeliveryIllegalTypeModel * t_dic  = self.deliveryIllegalList[tag];
+                t_dic.isSelected = btn.selected;
+                
+                NSMutableArray * arr = [NSMutableArray array];
+                for (DeliveryIllegalTypeModel * model in self.deliveryIllegalList) {
+                    if (model.isSelected) {
+                        [arr addObject:model.illegalId];
+                    }
+                }
+                
+                if (arr.count > 0) {
+                    self.param.illegalType = [arr componentsJoinedByString:@","];
+                }
+                
+            }];
+            [self.view_type addSubview:t_button];
+            [self.arr_button addObject:t_button];
+        }
+        if (self.view_type.subviews.count > 0) {
+            [self.view_type.subviews mas_distributeSudokuViewsWithFixedItemWidth:0 fixedItemHeight:30.f
+                                                                fixedLineSpacing:15 fixedInteritemSpacing:15
+                                                                       warpCount:4
+                                                                      topSpacing:15
+                                                                   bottomSpacing:15 leadSpacing:15 tailSpacing:15];
         }
         
-        [[LocationHelper sharedDefault] startLocation];
-    
+        
     }];
     
-}
-
-
-#pragma mark - set && get
-
-- (NSArray *)codes{
     
-    _codes = [ShareValue sharedDefault].roadModels;
-    
-    return _codes;
-    
-}
-
-- (void)setBtnType:(BOOL)btnType{
-    _btnType = btnType;
-    if (_btnType) {
-        [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_on"] forState:UIControlStateNormal];
-        _btn_personLocation.enabled = NO;
-        [_btn_personLocation setBackgroundColor:DefaultBtnNuableColor];
-    }else{
-        [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_off"] forState:UIControlStateNormal];
-        _btn_personLocation.enabled = YES;
-        [_btn_personLocation setBackgroundColor:DefaultBtnColor];
-    }
-    
-}
-
-
-#pragma mark - buttonMethods
-
-#pragma mark - 添加违章类型事件
-
-- (IBAction)handleBtnCarNumberClicked:(id)sender {
-    
-    @weakify(self);
-    TakeOutIllegalTypeViewModel * viewModel = [[TakeOutIllegalTypeViewModel alloc] init];
-    viewModel.deliveryId = self.deliveryId;
-    
-    TakeOutIllegalTypeVC * vc = [[TakeOutIllegalTypeVC alloc] initWithViewModel:viewModel];
-    vc.block = ^(NSString * _Nonnull type, NSString * _Nonnull type_code) {
+    //监听获取照片之后的操作
+    [RACObserve(self,deliveryIllegalList) subscribeNext:^(NSArray <DeliveryIllegalTypeModel  *> * _Nullable x) {
         @strongify(self);
-        self.tf_illegalType.text = type;
-        self.param.illegalType = type_code;
-    };
-    TakeOutAddVC * t_vc = (TakeOutAddVC *)[ShareFun findViewController:self withClass:[TakeOutAddVC class]];
-    [t_vc.navigationController pushViewController:vc animated:YES];
-}
-
-#pragma mark - 切换定位开关
-
-- (IBAction)handleBtnSwitchLocationClicked:(id)sender {
-
-    self.btnType = !_btnType;
-   
+        
+        if (x) {
+            if (self.count != x.count) {
+                self.count = x.count;
+            }
+        }
+        
+    }];
+    
+    RAC(self.param, address) = self.tf_address.rac_textSignal;
+    
 }
 
 #pragma mark - 手动定位按钮事件
@@ -162,110 +139,39 @@
     WS(weakSelf);
     t_personLocationVc.block = ^(LocationStorageModel *model) {
         SW(strongSelf, weakSelf);
-        [strongSelf stopLocationAction:model];
+        strongSelf.tf_address.text     = model.address;
+        strongSelf.param.address = model.address;
         
     };
     
 }
 
 
-#pragma mark - 选择路段按钮事件
-- (IBAction)handlebtnChoiceLocationClicked:(id)sender {
+- (IBAction)handlebtnCompanyListClicked:(id)sender {
     
-    WS(weakSelf);
-    
-    SearchLocationVC *t_searchLocationvc = [SearchLocationVC new];
-    t_searchLocationvc.searchType = SearchLocationTypeIllegal;
-    t_searchLocationvc.arr_content = self.codes;
-    t_searchLocationvc.arr_temp = self.codes;
-    
-    t_searchLocationvc.getRoadBlock = ^(CommonGetRoadModel *model) {
-        SW(strongSelf, weakSelf);
-        strongSelf.tf_roadSection.text = model.getRoadName;
-        strongSelf.param.roadName = model.getRoadName;
-        strongSelf.param.roadId = model.getRoadId;
+    @weakify(self);
+    [self showBottomPickViewWithTitle:@"当前配送单" items:[ShareValue sharedDefault].deliveryCompanyList block:^(NSString *title,NSString * itemId) {
+        @strongify(self);
         
-    };
-    
-    TakeOutAddVC * t_vc = (TakeOutAddVC *)[ShareFun findViewController:self withClass:[TakeOutAddVC class]];
-    [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];
+        self.tf_order.text = title;
+        self.param.companyNo  = itemId;
+        [BottomView dismissWindow];
+        
+    }];
     
 }
+
 
 #pragma mark - 重新定位之后的通知
 
 -(void)locationChange{
     
-    if (self.btnType == 1) {
-        
-        _tf_roadSection.text = [LocationHelper sharedDefault].streetName;
-        _tf_address.text     = [LocationHelper sharedDefault].address;
-        
-        _param.roadName = [LocationHelper sharedDefault].streetName;
-        _param.address = [LocationHelper sharedDefault].address;
-        
-        [self getRoadId];
-        
-    }
-    
+    _tf_address.text     = [LocationHelper sharedDefault].address;
+    _param.address = [LocationHelper sharedDefault].address;
     _param.lng     = @([LocationHelper sharedDefault].longitude);
     _param.lat      = @([LocationHelper sharedDefault].latitude);
     
 }
-
-#pragma mark - 关闭定位之后所做的赋值操作
-
-- (void)stopLocationAction:(LocationStorageModel *)model{
-    
-    _tf_roadSection.text = model.streetName;
-    _tf_address.text     = model.address;
-    
-    _param.roadName = model.streetName;
-    _param.address = model.address;
-    
-    [self getRoadId];
-    
-}
-
-#pragma mark  - 存储停止定位位置
-
-- (LocationStorageModel *)configurationLocationStorageModel{
-    
-    LocationStorageModel * model = [[LocationStorageModel alloc] init];
-    model.streetName    = _param.roadName;
-    model.address       = _param.address;
-    
-    return model;
-
-}
-
-#pragma mark - 提交之后headView存储地址的处理
-
-- (void)strogeLocationBeforeCommit{
-    
-    [[LocationStorage sharedDefault] setTakeOut:[self configurationLocationStorageModel]];
-    
-}
-
-#pragma mark - 通过所在路段的名字获取得到roadId
-
-- (void)getRoadId{
-    
-    if (self.codes && self.codes.count > 0) {
-        for(CommonGetRoadModel *model in self.codes){
-            if ([model.getRoadName isEqualToString:_tf_roadSection.text]) {
-                _param.roadId = model.getRoadId;
-                break;
-            }
-        }
-    }
-    
-    if (!_param.roadId) {
-        _param.roadId = @0;
-    }
-    
-}
-
 
 #pragma mark - 配置UITextField
 
@@ -292,66 +198,31 @@
     
 }
 
+#pragma mark - 通用显示模态PickView视图
+
+- (void)showBottomPickViewWithTitle:(NSString *)title items:(NSArray *)items block:(void(^)(NSString *title,NSString * itemId))block{
+    
+    BottomPickerView *t_view = [BottomPickerView initCustomView];
+    [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 207)];
+    t_view.pickerTitle = title;
+    t_view.items = items;
+    t_view.selectedCompanyBtnBlock = block;
+    
+    [BottomView showWindowWithBottomView:t_view];
+    
+}
+
 
 #pragma mark - 实时监听UITextField内容的变化
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    if (textField == _tf_roadSection) {
-        [self handlebtnChoiceLocationClicked:nil];
+    if (textField == _tf_order) {
+        [self handlebtnCompanyListClicked:nil];
         return NO;
     }
     
     return YES;
-}
-
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    float height;
-    if ([text isEqual:@""]) {
-        
-        if (![textView.text isEqualToString:@""]) {
-            
-            height = [ self heightForTextView:textView WithText:[textView.text substringToIndex:[textView.text length] - 1]];
-            
-        }else{
-            
-            height = [ self heightForTextView:textView WithText:textView.text];
-        }
-    }else{
-        
-        height = [self heightForTextView:textView WithText:[NSString stringWithFormat:@"%@%@",textView.text,text]];
-    }
-    
-    @weakify(self);
-    [UIView animateWithDuration:0.5 animations:^{
-        @strongify(self);
-        if (textView == self.tf_illegalType) {
-            self.layout_illegalType_height.constant = height;
-            [self layoutIfNeeded];
-        }else{
-            self.layout_addressMark_height.constant = height;
-            [self layoutIfNeeded];
-        }
-        
-    } completion:nil];
-    
-    
-    
-    return YES;
-}
-
-//计算评论框文字的高度
-- (float) heightForTextView: (UITextView *)textView WithText: (NSString *) strText{
-    //    float padding = 10.0;
-    CGSize constraint = CGSizeMake(textView.contentSize.width, CGFLOAT_MAX);
-    CGRect size = [strText boundingRectWithSize:constraint
-                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                     attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}
-                                        context:nil];
-    float textHeight = size.size.height + 22.0;
-    return textHeight;
 }
 
 

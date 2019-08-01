@@ -433,3 +433,40 @@
 
 
 @end
+
+#pragma mark - 采集根据道路ID是否可以采集（设备重复采集问题）
+
+@implementation IllegalCheckRoadCollectResponse
+
+
+@end
+
+@implementation IllegalCheckRoadCollectManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ILLEGALPARK_CHECKROADCOLLECT;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"roadId":_roadId};
+}
+
+- (IllegalCheckRoadCollectResponse *)illegalResponse{
+    
+    if (self.responseModel.data) {
+        _illegalResponse = [IllegalCheckRoadCollectResponse modelWithDictionary:self.responseModel.data];
+        
+        return _illegalResponse;
+    }
+    
+    return nil;
+    
+}
+
+
+
+@end
