@@ -64,14 +64,16 @@
         t_colorType = UIColorFromRGB(0xfef85a);
     }
 
-    UILabel *label = [[UILabel alloc] initWithFrame:(CGRectMake(0, 0, 150, 40))];
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@(%@)",_carNumber,t_lineType]];
-    [string addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xffffff) range:NSMakeRange(0, _carNumber.length)];
-    [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.f] range:NSMakeRange(0, _carNumber.length)];
-    [string addAttribute:NSForegroundColorAttributeName value:t_colorType range:NSMakeRange(_carNumber.length, t_lineType.length+2)];
-    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.f] range:NSMakeRange(_carNumber.length, t_lineType.length+2)];
-    label.attributedText = string;
-    self.navigationItem.titleView = label;
+//    UILabel *label = [[UILabel alloc] initWithFrame:(CGRectMake(0, 0, 150, 40))];
+//    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",_carNumber]];
+////    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@(%@)",_carNumber,t_lineType]];
+////    [string addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xffffff) range:NSMakeRange(0, _carNumber.length)];
+////    [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.f] range:NSMakeRange(0, _carNumber.length)];
+////    [string addAttribute:NSForegroundColorAttributeName value:t_colorType range:NSMakeRange(_carNumber.length, t_lineType.length+2)];
+////    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.f] range:NSMakeRange(_carNumber.length, t_lineType.length+2)];
+//    label.attributedText = string;
+//    self.navigationItem.titleView = label;
+    self.title = _carNumber;
     
     [self showRightBarButtonItemWithImage:@"btn_nav_carCenter" target:self action:@selector(showCarCenter)];
 
@@ -175,10 +177,7 @@
        
     }
     
-    
-    
-   
-    
+
 }
 
 #pragma mark - initPageMenu

@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *arr_content;
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_carStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lb_onLine;
+@property (weak, nonatomic) IBOutlet UILabel *lb_money;
 
 
 @end
@@ -34,6 +37,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.lb_carStatus.layer.cornerRadius = 5.f;
+    self.lb_carStatus.layer.masksToBounds = YES;
+    self.lb_onLine.layer.cornerRadius = 5.f;
+    self.lb_onLine.layer.masksToBounds = YES;
+    self.lb_money.layer.cornerRadius = 5.f;
+    self.lb_money.layer.masksToBounds = YES;
+    
+    
     _tableView.isNeedPlaceholderView = YES;
     _tableView.firstReload = YES;
     
@@ -55,6 +67,34 @@
     }else{
         [self loadVehicleRequest:self.type];
     }
+    
+    @weakify(self);
+    
+    [RACObserve(self, reponse) subscribeNext:^(VehicleDetailReponse * _Nullable x) {
+        @strongify(self);
+        if (x) {
+            
+            if ([x.isBindGps isEqualToNumber:@0]) {
+                self.lb_onLine.text = @"未绑定";
+            }else{
+                if ([x.isOnline isEqualToNumber:@1]) {
+                    self.lb_onLine.text = @"在线";
+                }else{
+                    self.lb_onLine.text = @"离线";
+                }
+            }
+            
+            self.lb_carStatus.text = x.vehicle.status;
+            
+            if ([x.vehicle.isPay isEqualToNumber:@0]) {
+                self.lb_money.text = @"欠费";
+            }else{
+                self.lb_money.text = @"已缴费";
+            }
+            
+        };
+        
+    }];
     
     
 }
@@ -115,8 +155,6 @@
     }
     
 }
-
-
 
 #pragma mark - 请求代码
 

@@ -32,4 +32,7 @@
 @property (nonatomic,copy)   NSString * carHopperW;                 //车斗信息（宽）
 @property (nonatomic,copy)   NSString * carHopperH;                 //车斗信息（高）
 
+@property (nonatomic,strong)  NSNumber * isPay;                 //缴费信息  0 欠费 1 已缴费
+
+
 @end

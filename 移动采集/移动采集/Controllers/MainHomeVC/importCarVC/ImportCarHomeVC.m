@@ -175,7 +175,13 @@
                 [strongSelf.arr_point addObject:annotation];
             }
             if (strongSelf.arr_point && strongSelf.arr_point.count > 0) {
-                [strongSelf.mapView addAnnotations:strongSelf.arr_point];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [strongSelf.mapView addAnnotations:strongSelf.arr_point];
+                
+                });
+                
+                
             }
             
         }
