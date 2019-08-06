@@ -276,9 +276,9 @@
     if (self.viewModel.deliveryIllegalList && self.viewModel.deliveryIllegalList.count > 0) {
         NSInteger index =  self.viewModel.deliveryIllegalList.count/4 + (self.viewModel.deliveryIllegalList.count%4 != 0 ? 1 : 0);
         CGFloat height = 30 * index + 15 * (index + 1);
-        return (CGSize){ScreenWidth,240 + height};
+        return (CGSize){ScreenWidth,282 + height};
     }else{
-        return (CGSize){ScreenWidth,260};
+        return (CGSize){ScreenWidth,302};
     }
 }
 

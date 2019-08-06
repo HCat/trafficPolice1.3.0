@@ -25,6 +25,7 @@
       
         @weakify(self);
         [[RACSignal combineLatest:@[RACObserve(self.param, illegalType), RACObserve(self.param, companyNo)] reduce:^id (NSString * illegalType,NSString * companyNo){
+            
             return @(illegalType.length > 0 && companyNo.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);

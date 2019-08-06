@@ -93,7 +93,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     [self getCommonRoad];
     
-    [RACObserve(self.param, roadId) subscribeNext:^(NSNumber * _Nullable x) {
+    [[RACObserve(self.param, roadId) distinctUntilChanged] subscribeNext:^(NSNumber * _Nullable x) {
         
         if (x && ![x isEqualToNumber:@0]) {
             
@@ -103,14 +103,18 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 
                 if (manger.responseModel.code == CODE_SUCCESS) {
-                    if ([manger.illegalResponse.isCollect isEqualToNumber:@1]) {
+                    if ([manger.illegalResponse.isCollect isEqualToNumber:@0]) {
+                        WS(weakSelf);
                         SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"温馨提示"
                                                                             message:@"该路段为违法行为电子抓拍路段"
-                                                                    leftActionTitle:nil
-                                                                   rightActionTitle:@"确定"
+                                                                    leftActionTitle:@"确定"
+                                                                   rightActionTitle:@"退出"
                                                                      animationStyle:AlertViewAnimationNone
                                                                        selectAction:^(AlertViewActionType actionType) {
-                                                                           
+                                                                           if (actionType == AlertViewActionTypeRight) {
+                                                                               [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                                           }
+                                                                        
                                                                        }];
                         alertView.blurCurrentBackgroundView = NO;
                         [alertView show];

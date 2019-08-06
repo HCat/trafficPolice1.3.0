@@ -16,7 +16,6 @@
                 <outlet property="lb_illegalType" destination="MgQ-A7-5wF" id="34d-ve-TGL"/>
                 <outlet property="lb_remark" destination="zQ2-Vs-w7x" id="IAo-Hh-y4u"/>
                 <outlet property="lb_reportTime" destination="muV-iN-iI9" id="GQt-7z-BjT"/>
-                <outlet property="lb_roadName" destination="fi1-LJ-3zH" id="Byc-1C-j17"/>
                 <outlet property="v_content" destination="oGt-uw-8Ki" id="Iyu-Nu-cub"/>
                 <outlet property="v_photos" destination="vZr-wz-j5x" id="0M0-AU-XZi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -67,18 +66,6 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="路      段：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPi-Z1-VAI">
-                            <rect key="frame" x="15" y="217.5" width="70" height="20"/>
-                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fi1-LJ-3zH">
-                            <rect key="frame" x="95" y="217.5" width="265" height="20"/>
-                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="所在位置：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72d-Pz-L7t">
                             <rect key="frame" x="15" y="252.5" width="70" height="20"/>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
@@ -106,18 +93,15 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="fi1-LJ-3zH" firstAttribute="trailing" secondItem="MgQ-A7-5wF" secondAttribute="trailing" id="0xl-Ts-ght"/>
-                        <constraint firstItem="fi1-LJ-3zH" firstAttribute="top" secondItem="muV-iN-iI9" secondAttribute="bottom" constant="15" id="18H-Cs-dm5"/>
                         <constraint firstItem="zQ2-Vs-w7x" firstAttribute="trailing" secondItem="Mxu-R7-gks" secondAttribute="trailing" id="2NL-sD-wjj"/>
                         <constraint firstAttribute="trailing" secondItem="vZr-wz-j5x" secondAttribute="trailing" id="2e2-ym-Kz8"/>
                         <constraint firstItem="vpU-BD-CT0" firstAttribute="top" secondItem="muV-iN-iI9" secondAttribute="top" id="4XC-fW-u7k"/>
                         <constraint firstItem="muV-iN-iI9" firstAttribute="top" secondItem="MgQ-A7-5wF" secondAttribute="bottom" constant="15" id="5q6-1S-Vah"/>
-                        <constraint firstItem="MPi-Z1-VAI" firstAttribute="leading" secondItem="YB6-jK-QwG" secondAttribute="leading" id="7VF-gO-6GE"/>
                         <constraint firstItem="muV-iN-iI9" firstAttribute="trailing" secondItem="MgQ-A7-5wF" secondAttribute="trailing" id="9B6-CM-Lhv"/>
-                        <constraint firstItem="fi1-LJ-3zH" firstAttribute="leading" secondItem="MgQ-A7-5wF" secondAttribute="leading" id="C5d-Mq-ah7"/>
                         <constraint firstItem="72d-Pz-L7t" firstAttribute="leading" secondItem="YB6-jK-QwG" secondAttribute="leading" id="E83-0j-xp3"/>
                         <constraint firstItem="72d-Pz-L7t" firstAttribute="top" secondItem="Mxu-R7-gks" secondAttribute="top" id="Eqe-qf-pIc"/>
                         <constraint firstItem="auv-JK-CPe" firstAttribute="leading" secondItem="YB6-jK-QwG" secondAttribute="leading" id="MzO-hk-6mc"/>
+                        <constraint firstItem="Mxu-R7-gks" firstAttribute="top" secondItem="muV-iN-iI9" secondAttribute="bottom" constant="15" id="NgT-Xt-ULp"/>
                         <constraint firstItem="vZr-wz-j5x" firstAttribute="top" secondItem="YB6-jK-QwG" secondAttribute="bottom" constant="7.5" id="QHg-Fn-WUk"/>
                         <constraint firstAttribute="trailing" secondItem="MgQ-A7-5wF" secondAttribute="trailing" constant="15" id="Rap-67-en6"/>
                         <constraint firstItem="zQ2-Vs-w7x" firstAttribute="top" secondItem="Mxu-R7-gks" secondAttribute="bottom" constant="15" id="UGf-Q3-4uo"/>
@@ -131,10 +115,8 @@
                         <constraint firstItem="YB6-jK-QwG" firstAttribute="top" secondItem="oGt-uw-8Ki" secondAttribute="top" constant="15" id="iXM-0U-Rn3"/>
                         <constraint firstItem="mwd-w6-QxU" firstAttribute="top" secondItem="MgQ-A7-5wF" secondAttribute="top" id="jS9-yW-Hke"/>
                         <constraint firstItem="muV-iN-iI9" firstAttribute="leading" secondItem="MgQ-A7-5wF" secondAttribute="leading" id="keM-6U-D9r"/>
-                        <constraint firstItem="MPi-Z1-VAI" firstAttribute="top" secondItem="fi1-LJ-3zH" secondAttribute="top" id="mjE-Bc-ndz"/>
                         <constraint firstItem="Mxu-R7-gks" firstAttribute="trailing" secondItem="MgQ-A7-5wF" secondAttribute="trailing" id="msx-UQ-scT"/>
                         <constraint firstItem="zQ2-Vs-w7x" firstAttribute="leading" secondItem="Mxu-R7-gks" secondAttribute="leading" id="p4u-Np-MUx"/>
-                        <constraint firstItem="Mxu-R7-gks" firstAttribute="top" secondItem="fi1-LJ-3zH" secondAttribute="bottom" constant="15" id="pwL-Fh-lG5"/>
                         <constraint firstItem="vpU-BD-CT0" firstAttribute="leading" secondItem="YB6-jK-QwG" secondAttribute="leading" id="w5X-Lh-0qf"/>
                         <constraint firstItem="MgQ-A7-5wF" firstAttribute="top" secondItem="vZr-wz-j5x" secondAttribute="bottom" constant="15" id="zHx-rz-K5v"/>
                     </constraints>

@@ -169,12 +169,13 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else if([x isEqualToString:@"加载失败"]){
             
+            if (self.viewModel.arr_content.count > 0) {
+                [self.viewModel.arr_content removeAllObjects];
+            }
+            
             Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
             NetworkStatus status = [reach currentReachabilityStatus];
             if (status == NotReachable) {
-                if (self.viewModel.arr_content.count > 0) {
-                    [self.viewModel.arr_content removeAllObjects];
-                }
                 self.tableView.isNetAvailable = YES;
                 [self.tableView reloadData];
             }

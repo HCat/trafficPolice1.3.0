@@ -49,7 +49,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXn-JA-qFa">
                             <rect key="frame" x="15" y="15" width="247" height="39"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72g-2D-DAX">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72g-2D-DAX">
                                     <rect key="frame" x="8" y="4" width="231" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -151,23 +151,23 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gw3-6i-Mp7">
-                    <rect key="frame" x="283" y="494" width="60" height="60"/>
+                    <rect key="frame" x="295" y="321.5" width="60" height="60"/>
                     <state key="normal" image="btn_takeout_ercode"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSt-fP-OBg">
-                    <rect key="frame" x="283" y="434" width="60" height="60"/>
+                    <rect key="frame" x="295" y="261.5" width="60" height="60"/>
                     <state key="normal" image="btn_takeOut_add"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="qoz-5z-6OT" secondAttribute="bottom" id="4i5-q3-by1"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="gw3-6i-Mp7" secondAttribute="trailing" constant="32" id="7jM-S3-FKE"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="gw3-6i-Mp7" secondAttribute="trailing" constant="20" id="7jM-S3-FKE"/>
                 <constraint firstItem="gw3-6i-Mp7" firstAttribute="firstBaseline" secondItem="eSt-fP-OBg" secondAttribute="baseline" id="AHW-E3-4R3"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qoz-5z-6OT" secondAttribute="trailing" id="E49-vA-LZc"/>
                 <constraint firstItem="Eb1-tn-jGA" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Gtl-wi-XLL"/>
+                <constraint firstItem="gw3-6i-Mp7" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" constant="50" id="HCX-th-a2z"/>
                 <constraint firstItem="qoz-5z-6OT" firstAttribute="top" secondItem="Eb1-tn-jGA" secondAttribute="bottom" constant="5" id="RWo-NJ-Peo"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="gw3-6i-Mp7" secondAttribute="bottom" constant="49" id="SC9-jb-JEG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Eb1-tn-jGA" secondAttribute="trailing" id="UuY-LI-DfP"/>
                 <constraint firstItem="eSt-fP-OBg" firstAttribute="centerX" secondItem="gw3-6i-Mp7" secondAttribute="centerX" id="W93-hx-eoB"/>
                 <constraint firstItem="qoz-5z-6OT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Wd7-NZ-4bU"/>

@@ -10,60 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x5916;&#x5356;&#x5c0f;&#x54e5;&#x7ba1;&#x7406;/Controllers/&#x4eba;&#x5458;&#x53d6;&#x8bc1;/&#x5feb;&#x9012;&#x53d6;&#x8bc1;&#x91c7;&#x96c6;/TakeOutAddVC.m"
-            timestampString = "586263664.549125"
+            timestampString = "586756045.166379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
             endingLineNumber = "124"
             landmarkName = "-bindViewModel"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x5916;&#x5356;&#x5c0f;&#x54e5;&#x7ba1;&#x7406;/Controllers/&#x4eba;&#x5458;&#x53d6;&#x8bc1;/&#x5feb;&#x9012;&#x53d6;&#x8bc1;&#x91c7;&#x96c6;/TakeOutAddHeadView.m"
-            timestampString = "586263664.5495369"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x5916;&#x5356;&#x5c0f;&#x54e5;&#x7ba1;&#x7406;/Controllers/&#x4eba;&#x5458;&#x53d6;&#x8bc1;/&#x5feb;&#x9012;&#x53d6;&#x8bc1;&#x91c7;&#x96c6;/TakeOutAddHeadView.m"
-            timestampString = "586263664.549793"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x5916;&#x5356;&#x5c0f;&#x54e5;&#x7ba1;&#x7406;/Controllers/&#x4eba;&#x5458;&#x53d6;&#x8bc1;/&#x5feb;&#x9012;&#x53d6;&#x8bc1;&#x91c7;&#x96c6;/TakeOutAddVC.m"
-            timestampString = "586263664.5498689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
-            landmarkName = "-submitIllegalData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

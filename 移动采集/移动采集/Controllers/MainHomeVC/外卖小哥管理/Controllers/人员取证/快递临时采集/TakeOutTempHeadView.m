@@ -12,6 +12,7 @@
 #import "PersonLocationVC.h"
 #import "TakeOutTempVC.h"
 #import "LRCameraVC.h"
+#import "UIButton+NoRepeatClick.h"
 
 @interface TakeOutTempHeadView()
 
@@ -19,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextField * tf_identNo;              //身份证
 @property (weak, nonatomic) IBOutlet UIButton *btn_identify;                //识别
 @property (weak, nonatomic) IBOutlet UITextField * tf_address;              //所在位置
+
+@property (weak, nonatomic) IBOutlet UITextField * tf_remark;              //所在位置
+
 @property (weak, nonatomic) IBOutlet UIView *view_type;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
@@ -71,6 +75,7 @@
             UIButton * t_button = [[UIButton alloc] init];
             t_button.layer.cornerRadius = 5.0f;
             t_button.layer.masksToBounds = YES;
+            t_button.isIgnore = YES;
             [t_button.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [t_button setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
             [t_button setBackgroundImage:[UIImage imageWithColor:DefaultColor] forState:UIControlStateSelected];
@@ -96,6 +101,8 @@
                 
                 if (arr.count > 0) {
                     self.param.illegalType = [arr componentsJoinedByString:@","];
+                }else{
+                    self.param.illegalType = nil;
                 }
                 
             }];
@@ -141,6 +148,15 @@
     [RACObserve(self.tf_identNo, text) subscribeNext:^(NSString *  _Nullable x) {
         @strongify(self);
         self.param.identNo = x;
+        
+    }];
+    
+    [RACObserve(self.tf_remark, text) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if (x) {
+            self.param.remark = x;
+        }
+        
         
     }];
     

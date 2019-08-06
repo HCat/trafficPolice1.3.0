@@ -13,11 +13,16 @@
 #import "TakeOutAddVC.h"
 #import "BottomPickerView.h"
 #import "BottomView.h"
+#import "UIButton+NoRepeatClick.h"
 
 @interface TakeOutAddHeadView()
 
 @property (weak, nonatomic) IBOutlet UITextField * tf_order;              //配送单
 @property (weak, nonatomic) IBOutlet UITextField * tf_address;              //所在位置
+@property (weak, nonatomic) IBOutlet UITextField *tf_remark;
+
+
+
 @property (weak, nonatomic) IBOutlet UIView *view_type;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
@@ -50,7 +55,7 @@
     
     _tf_order.attributedPlaceholder   = [ShareFun highlightInString:@"请选择配送单(必选)" withSubString:@"(必选)"];
     _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
-    
+
     //配置点击UITextField
     [self setUpClickUITextField:self.tf_order];
     [self setUpCommonUITextField:self.tf_address];
@@ -70,6 +75,7 @@
             UIButton * t_button = [[UIButton alloc] init];
             t_button.layer.cornerRadius = 5.0f;
             t_button.layer.masksToBounds = YES;
+            t_button.isIgnore = YES;
             [t_button.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [t_button setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
             [t_button setBackgroundImage:[UIImage imageWithColor:DefaultColor] forState:UIControlStateSelected];
@@ -95,6 +101,8 @@
                 
                 if (arr.count > 0) {
                     self.param.illegalType = [arr componentsJoinedByString:@","];
+                }else{
+                    self.param.illegalType = nil;
                 }
                 
             }];
@@ -125,7 +133,24 @@
         
     }];
     
-    RAC(self.param, address) = self.tf_address.rac_textSignal;
+    
+    [RACObserve(self.tf_address, text) subscribeNext:^(id  _Nullable x) {
+       @strongify(self);
+        if (x) {
+            self.param.address = x;
+        }
+        
+        
+    }];
+    
+    [RACObserve(self.tf_remark, text) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if (x) {
+            self.param.remark = x;
+        }
+        
+        
+    }];
     
 }
 
@@ -158,6 +183,15 @@
         [BottomView dismissWindow];
         
     }];
+    
+}
+
+
+- (void)setParam:(TakeOutSaveParam *)param{
+    
+    _param = param;
+    
+    
     
 }
 

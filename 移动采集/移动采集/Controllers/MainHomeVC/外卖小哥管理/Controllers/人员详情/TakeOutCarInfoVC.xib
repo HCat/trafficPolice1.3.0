@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TakeOutCarInfoVC">
             <connections>
+                <outlet property="btn_show" destination="xwW-Ht-VsZ" id="c9w-IE-Z5b"/>
                 <outlet property="imageV_picUrl" destination="Jrn-jy-53i" id="WVv-1k-abr"/>
                 <outlet property="lb_brandModel" destination="ND2-og-Afl" id="lZC-QF-ejd"/>
                 <outlet property="lb_color" destination="72s-qp-QHI" id="jb1-dH-wtq"/>
@@ -220,6 +221,9 @@
                                 <constraint firstAttribute="height" constant="110" id="Zt3-99-mIA"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-Ht-VsZ">
+                            <rect key="frame" x="15" y="268" width="110" height="110"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -228,19 +232,23 @@
                         <constraint firstItem="Jrn-jy-53i" firstAttribute="top" secondItem="KHf-fB-Ayj" secondAttribute="bottom" constant="15" id="5cA-ti-o8o"/>
                         <constraint firstItem="7le-FW-f96" firstAttribute="leading" secondItem="lpw-jh-c0l" secondAttribute="leading" id="7Ct-Lg-xpL"/>
                         <constraint firstItem="lpw-jh-c0l" firstAttribute="leading" secondItem="lX6-uM-SGJ" secondAttribute="leading" id="8Lf-nO-8Q8"/>
+                        <constraint firstItem="xwW-Ht-VsZ" firstAttribute="bottom" secondItem="Jrn-jy-53i" secondAttribute="bottom" id="8m1-iE-0Hm"/>
                         <constraint firstItem="oYg-Wm-thr" firstAttribute="leading" secondItem="aYc-tB-VPb" secondAttribute="leading" id="Aez-eR-2HB"/>
                         <constraint firstItem="Jrn-jy-53i" firstAttribute="leading" secondItem="KHf-fB-Ayj" secondAttribute="leading" id="GXM-CC-zG9"/>
                         <constraint firstItem="KHf-fB-Ayj" firstAttribute="leading" secondItem="7le-FW-f96" secondAttribute="leading" constant="15" id="HSF-Yc-8Qx"/>
                         <constraint firstItem="lX6-uM-SGJ" firstAttribute="leading" secondItem="oYg-Wm-thr" secondAttribute="leading" id="MBP-Qz-MHP"/>
+                        <constraint firstItem="xwW-Ht-VsZ" firstAttribute="leading" secondItem="Jrn-jy-53i" secondAttribute="leading" id="QTC-bf-MdJ"/>
                         <constraint firstItem="lpw-jh-c0l" firstAttribute="top" secondItem="lX6-uM-SGJ" secondAttribute="bottom" id="TyJ-S2-sOC"/>
                         <constraint firstItem="Yzx-8n-Y7g" firstAttribute="leading" secondItem="7le-FW-f96" secondAttribute="leading" id="ZDj-zU-xaE"/>
                         <constraint firstItem="7le-FW-f96" firstAttribute="top" secondItem="lpw-jh-c0l" secondAttribute="bottom" id="eZ0-80-SHC"/>
                         <constraint firstItem="lX6-uM-SGJ" firstAttribute="top" secondItem="oYg-Wm-thr" secondAttribute="bottom" id="emH-0S-TjO"/>
                         <constraint firstItem="lpw-jh-c0l" firstAttribute="trailing" secondItem="lX6-uM-SGJ" secondAttribute="trailing" id="gcj-TD-3UY"/>
                         <constraint firstItem="KHf-fB-Ayj" firstAttribute="top" secondItem="Yzx-8n-Y7g" secondAttribute="bottom" constant="15" id="ivz-uw-rTS"/>
+                        <constraint firstItem="xwW-Ht-VsZ" firstAttribute="trailing" secondItem="Jrn-jy-53i" secondAttribute="trailing" id="jbk-xV-9Qb"/>
                         <constraint firstItem="oYg-Wm-thr" firstAttribute="top" secondItem="aYc-tB-VPb" secondAttribute="top" constant="5" id="klt-mB-fhg"/>
                         <constraint firstItem="7le-FW-f96" firstAttribute="trailing" secondItem="lpw-jh-c0l" secondAttribute="trailing" id="or7-C0-3oo"/>
                         <constraint firstItem="lX6-uM-SGJ" firstAttribute="trailing" secondItem="oYg-Wm-thr" secondAttribute="trailing" id="rJT-rU-79p"/>
+                        <constraint firstItem="xwW-Ht-VsZ" firstAttribute="top" secondItem="Jrn-jy-53i" secondAttribute="top" id="scW-C6-ofQ"/>
                         <constraint firstAttribute="bottom" secondItem="Jrn-jy-53i" secondAttribute="bottom" constant="20" id="x32-eL-2ED"/>
                         <constraint firstItem="Yzx-8n-Y7g" firstAttribute="trailing" secondItem="7le-FW-f96" secondAttribute="trailing" id="x3n-1T-eSl"/>
                     </constraints>

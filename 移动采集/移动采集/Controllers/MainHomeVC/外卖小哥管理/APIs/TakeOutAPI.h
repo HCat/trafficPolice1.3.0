@@ -123,6 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy,nullable)   NSString * driver;               //快递小弟编号
 @property (nonatomic,copy,nullable)   NSString * illegalType;          //违法类型
 @property (nonatomic,copy,nullable)   NSString * companyNo;            //众包编号
+@property (nonatomic,copy,nullable)   NSString * remark;               //备注
 
 
 @end
@@ -158,6 +159,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy,nullable)   NSString * userName;             //真实姓名
 @property (nonatomic,copy,nullable)   NSString * illegalType;          //违法类型
 @property (nonatomic,copy,nullable)   NSString * companyNo;            //众包编号
+@property (nonatomic,copy,nullable)   NSString * remark;               //备注
 @property(nonatomic, strong) ImageFileInfo *certFileInfo;              //身份证
 @end
 

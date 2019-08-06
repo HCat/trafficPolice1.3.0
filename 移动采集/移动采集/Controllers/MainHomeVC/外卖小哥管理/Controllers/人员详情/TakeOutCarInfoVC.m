@@ -8,6 +8,8 @@
 
 #import "TakeOutCarInfoVC.h"
 #import <UIImageView+WebCache.h>
+#import "KSPhotoBrowser.h"
+#import "KSSDImageManager.h"
 
 @interface TakeOutCarInfoVC ()
 
@@ -20,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_frameNo;     //车架号
 @property (weak, nonatomic) IBOutlet UILabel *lb_vehicleType; //车辆类型
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_picUrl;      //车身照片
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_show;
+
 
 @end
 
@@ -52,6 +57,31 @@
             [self.imageV_picUrl sd_setImageWithURL:[NSURL URLWithString:x.picUrl] placeholderImage:[UIImage imageNamed:@"icon_imageLoading.png"]];;      //车身照片
 
         }
+        
+    }];
+    
+    
+    [[self.btn_show rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        
+        //将arr_upImages中有图片的赋值到t_arr中用于LLPhotoBrowser中
+        
+        NSMutableArray *t_arr = [NSMutableArray array];
+        
+        KSPhotoItem *item = [KSPhotoItem itemWithSourceView:self.imageV_picUrl imageUrl:[NSURL URLWithString:self.viewModel.model.picUrl]];
+        [t_arr addObject:item];
+        
+        KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:0];
+        [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+        [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+        browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+        browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+        browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+        browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+        browser.bounces             = NO;
+        browser.isShowDeleteBtn     = NO;
+        [browser showFromViewController:self];
+        
         
     }];
     

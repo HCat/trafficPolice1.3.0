@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U6b-Vx-4bR" customClass="TakeOutTempHeadView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="269"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="396"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahR-H4-GNS">
@@ -50,7 +50,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传照片(选填):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osZ-Gz-OwY">
-                    <rect key="frame" x="15" y="237" width="100.5" height="17"/>
+                    <rect key="frame" x="15" y="364" width="100.5" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="ivr-WN-ime"/>
                     </constraints>
@@ -71,15 +71,18 @@
                             <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handlebtnPersonLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="zN1-OL-ax5"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="违法行为:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iw9-9Q-HUt">
-                    <rect key="frame" x="15" y="146" width="62" height="30"/>
+                    <rect key="frame" x="15" y="188" width="62" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti1-eQ-mc6">
-                    <rect key="frame" x="0.0" y="176" width="320" height="45"/>
+                    <rect key="frame" x="0.0" y="218" width="320" height="130"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="deviceRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所在位置:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPo-zf-uRH">
@@ -134,6 +137,29 @@
                         <action selector="handlebtnIdentifyClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Eod-S5-HSf"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AA9-Pf-fL0">
+                    <rect key="frame" x="44" y="146" width="33" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iri-sl-ynO">
+                    <rect key="frame" x="92" y="146" width="148" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="LH7-A1-735"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                            <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="JTx-DP-Ipg" firstAttribute="trailing" secondItem="xcw-x6-zRb" secondAttribute="trailing" id="29b-Yo-69Z"/>
@@ -141,27 +167,33 @@
                 <constraint firstItem="JTx-DP-Ipg" firstAttribute="top" secondItem="IiD-ge-T4a" secondAttribute="top" id="4cX-3Q-xEe"/>
                 <constraint firstItem="ahR-H4-GNS" firstAttribute="leading" secondItem="xcw-x6-zRb" secondAttribute="leading" id="6d9-UX-6fG"/>
                 <constraint firstItem="IiD-ge-T4a" firstAttribute="height" secondItem="JTx-DP-Ipg" secondAttribute="height" id="7uc-bm-did"/>
+                <constraint firstItem="Iw9-9Q-HUt" firstAttribute="top" secondItem="Iri-sl-ynO" secondAttribute="bottom" constant="12" id="8z3-Wh-Zam"/>
                 <constraint firstItem="ahR-H4-GNS" firstAttribute="leading" secondItem="hPo-zf-uRH" secondAttribute="trailing" constant="15" id="BYz-Jy-Jlt"/>
                 <constraint firstItem="osZ-Gz-OwY" firstAttribute="leading" secondItem="Iw9-9Q-HUt" secondAttribute="leading" id="EWt-gp-CYK"/>
                 <constraint firstItem="JTx-DP-Ipg" firstAttribute="top" secondItem="xcw-x6-zRb" secondAttribute="bottom" constant="12" id="FUy-qP-rBY"/>
                 <constraint firstItem="hPo-zf-uRH" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="FVf-GF-AaO"/>
                 <constraint firstItem="PDZ-rV-ite" firstAttribute="leading" secondItem="OEQ-8l-NQ6" secondAttribute="leading" id="IBa-rL-go1"/>
-                <constraint firstItem="Iw9-9Q-HUt" firstAttribute="top" secondItem="ahR-H4-GNS" secondAttribute="bottom" constant="12" id="JOD-G9-OgM"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="leading" secondItem="AA9-Pf-fL0" secondAttribute="trailing" constant="15" id="IX7-GJ-aUj"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="top" secondItem="AA9-Pf-fL0" secondAttribute="top" id="KZ8-s6-u4N"/>
                 <constraint firstItem="JTx-DP-Ipg" firstAttribute="leading" secondItem="xcw-x6-zRb" secondAttribute="leading" id="NWS-EU-wB0"/>
                 <constraint firstItem="OEQ-8l-NQ6" firstAttribute="leading" secondItem="ahR-H4-GNS" secondAttribute="trailing" constant="10" id="Q8J-IR-iQE"/>
                 <constraint firstItem="osZ-Gz-OwY" firstAttribute="top" secondItem="ti1-eQ-mc6" secondAttribute="bottom" constant="16" id="QxF-gg-gTG"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="top" secondItem="ahR-H4-GNS" secondAttribute="bottom" constant="12" id="RVz-sc-6e2"/>
                 <constraint firstItem="OEQ-8l-NQ6" firstAttribute="centerY" secondItem="ahR-H4-GNS" secondAttribute="centerY" id="SeL-g4-BHf"/>
                 <constraint firstAttribute="trailing" secondItem="OEQ-8l-NQ6" secondAttribute="trailing" constant="10" id="TSt-ZN-uSl"/>
                 <constraint firstItem="xcw-x6-zRb" firstAttribute="top" secondItem="SB4-ZA-hF5" secondAttribute="top" id="U6H-VZ-7wU"/>
                 <constraint firstAttribute="trailing" secondItem="ti1-eQ-mc6" secondAttribute="trailing" id="ddb-p5-Wxk"/>
                 <constraint firstAttribute="bottom" secondItem="osZ-Gz-OwY" secondAttribute="bottom" constant="15" id="deP-H6-8VG"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="trailing" secondItem="ahR-H4-GNS" secondAttribute="trailing" id="dwG-vh-du7"/>
                 <constraint firstItem="Iw9-9Q-HUt" firstAttribute="leading" secondItem="hPo-zf-uRH" secondAttribute="leading" id="eAy-7s-ehd"/>
                 <constraint firstItem="hPo-zf-uRH" firstAttribute="height" secondItem="SB4-ZA-hF5" secondAttribute="height" id="gdO-gT-V8m"/>
                 <constraint firstItem="ahR-H4-GNS" firstAttribute="top" secondItem="hPo-zf-uRH" secondAttribute="top" id="guw-MV-peL"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="leading" secondItem="ahR-H4-GNS" secondAttribute="leading" id="iYs-XG-pNX"/>
                 <constraint firstItem="xcw-x6-zRb" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="20" id="lGc-1o-rIi"/>
                 <constraint firstItem="ti1-eQ-mc6" firstAttribute="top" secondItem="Iw9-9Q-HUt" secondAttribute="bottom" id="mKC-ck-XgX"/>
                 <constraint firstItem="ahR-H4-GNS" firstAttribute="trailing" secondItem="xcw-x6-zRb" secondAttribute="trailing" id="mpO-y5-G0B"/>
                 <constraint firstItem="hPo-zf-uRH" firstAttribute="leading" secondItem="SB4-ZA-hF5" secondAttribute="leading" id="n2J-qC-gih"/>
+                <constraint firstItem="Iri-sl-ynO" firstAttribute="height" secondItem="AA9-Pf-fL0" secondAttribute="height" id="oVp-rN-XEu"/>
                 <constraint firstItem="IiD-ge-T4a" firstAttribute="leading" secondItem="SB4-ZA-hF5" secondAttribute="leading" id="pcT-mg-Ndl"/>
                 <constraint firstItem="Iw9-9Q-HUt" firstAttribute="height" secondItem="SB4-ZA-hF5" secondAttribute="height" id="rbj-WC-6n6"/>
                 <constraint firstItem="ahR-H4-GNS" firstAttribute="top" secondItem="JTx-DP-Ipg" secondAttribute="bottom" constant="12" id="sH4-2z-NuB"/>
@@ -173,10 +205,11 @@
                 <outlet property="btn_personLocation" destination="OEQ-8l-NQ6" id="mWI-3v-i2K"/>
                 <outlet property="tf_address" destination="ahR-H4-GNS" id="i1x-aS-iOe"/>
                 <outlet property="tf_identNo" destination="JTx-DP-Ipg" id="WQ3-hT-MwF"/>
+                <outlet property="tf_remark" destination="Iri-sl-ynO" id="WRl-7P-vix"/>
                 <outlet property="tf_userName" destination="xcw-x6-zRb" id="f8u-4f-a97"/>
                 <outlet property="view_type" destination="ti1-eQ-mc6" id="cy6-QI-Mkm"/>
             </connections>
-            <point key="canvasLocation" x="131.19999999999999" y="142.57871064467767"/>
+            <point key="canvasLocation" x="131.19999999999999" y="199.70014992503749"/>
         </collectionReusableView>
     </objects>
 </document>
