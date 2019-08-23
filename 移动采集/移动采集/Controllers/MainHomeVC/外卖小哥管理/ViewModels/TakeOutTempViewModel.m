@@ -17,10 +17,11 @@
         self.param = [[TakeOutSubmitTempReportParam alloc] init];
         
         self.arr_upImages =  [NSMutableArray array];
+        self.count = self.arr_upImages.count;
         
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, illegalType), RACObserve(self.param, userName), RACObserve(self.param, identNo)] reduce:^id (NSString * illegalType,NSString * userName,NSString * identNo){
-            return @(illegalType.length > 0 && userName.length > 0 && identNo.length > 0);
+        [[RACSignal combineLatest:@[RACObserve(self.param, illegalType), RACObserve(self.param, userName), RACObserve(self.param, identNo),RACObserve(self.param, companyNo),RACObserve(self, count)] reduce:^id (NSString * illegalType,NSString * userName,NSString * identNo,NSString * companyNo,NSNumber * count){
+            return @(illegalType.length > 0 && userName.length > 0 && identNo.length > 0&& companyNo.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);
             self.isCanCommit = [x boolValue];
@@ -81,7 +82,7 @@
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
-                TakeOutTypeListManger * manger = [[TakeOutTypeListManger alloc] init];
+                TakeOutTypeTwoListManger * manger = [[TakeOutTypeTwoListManger alloc] init];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
                     if (manger.responseModel.code == CODE_SUCCESS) {
@@ -116,17 +117,23 @@
 #pragma mark - 管理上传图片
 
 //添加图片到arr_upImages数组中
-- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo{
+- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo IsPhotoAlbum:(BOOL)isPhotoAlbum withPHAsset:(PHAsset *)asset{
     
     imageFileInfo.name = key_files;
     
     NSMutableDictionary *t_dic = [NSMutableDictionary dictionary];
     [t_dic setObject:imageFileInfo forKey:@"files"];
-    [t_dic setObject:imageFileInfo.fileName forKey:@"remarks"];
+    [t_dic setObject:[NSString stringWithFormat:@"%lu",self.arr_upImages.count + 1] forKey:@"remarks"];
+    [t_dic setObject:@(isPhotoAlbum) forKey:@"isPhotoAlbum"];
+    if (asset) {
+        [t_dic setObject:asset forKey:@"asset"];
+    }
+    
     [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
     [t_dic setObject:@1 forKey:@"isMore"];
-    [self.arr_upImages addObject:t_dic];
     
+    [self.arr_upImages addObject:t_dic];
+    self.count = self.arr_upImages.count;
 }
 
 - (void)configParamInFilesAndRemarksAndTimes{

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^IdentityCardBlock)();
-typedef void(^DrivingLicenceBlock)();
+typedef void(^IdentityCardBlock)(void);
+typedef void(^DrivingLicenceBlock)(void);
 
 @interface CertificateView : UIView
 

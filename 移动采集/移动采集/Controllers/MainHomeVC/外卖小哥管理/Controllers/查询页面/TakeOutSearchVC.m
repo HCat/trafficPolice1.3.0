@@ -185,6 +185,12 @@
         
         [self.tableView reloadData];
         
+        if ([self.viewModel.type isEqualToNumber:@5] && self.viewModel.arr_content.count > 0) {
+            @strongify(self);
+            NSIndexPath * index = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self tableView:self.tableView didSelectRowAtIndexPath:index];
+        }
+        
     }];
     
     
@@ -239,7 +245,6 @@
 }
 
 #pragma - mark UITableViewDelegate
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

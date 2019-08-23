@@ -604,6 +604,8 @@
 		CEAD74632142118F001ED5E0 /* SpecialVehicleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAD74612142118F001ED5E0 /* SpecialVehicleVC.m */; };
 		CEAD7468214224FF001ED5E0 /* SpecialVehicleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAD7466214224FF001ED5E0 /* SpecialVehicleCell.m */; };
 		CEAD7469214224FF001ED5E0 /* SpecialVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAD7467214224FF001ED5E0 /* SpecialVehicleCell.xib */; };
+		CEAE95EA230CE51A008B9B3D /* FunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE95E9230CE51A008B9B3D /* FunctionView.m */; };
+		CEAE95EC230CE52D008B9B3D /* FunctionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAE95EB230CE52D008B9B3D /* FunctionView.xib */; };
 		CEB46568215CD8BA00B0D2C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB46567215CD8BA00B0D2C0 /* Assets.xcassets */; };
 		CEB4656E215CDE4E00B0D2C0 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4656D215CDE4E00B0D2C0 /* UINavigationBar+Awesome.m */; };
 		CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBCFCE420FE1EA5006FB37A /* SliderTitleCell.m */; };
@@ -1704,6 +1706,9 @@
 		CEAD7465214224FF001ED5E0 /* SpecialVehicleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialVehicleCell.h; sourceTree = "<group>"; };
 		CEAD7466214224FF001ED5E0 /* SpecialVehicleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialVehicleCell.m; sourceTree = "<group>"; };
 		CEAD7467214224FF001ED5E0 /* SpecialVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialVehicleCell.xib; sourceTree = "<group>"; };
+		CEAE95E8230CE51A008B9B3D /* FunctionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionView.h; sourceTree = "<group>"; };
+		CEAE95E9230CE51A008B9B3D /* FunctionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunctionView.m; sourceTree = "<group>"; };
+		CEAE95EB230CE52D008B9B3D /* FunctionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionView.xib; sourceTree = "<group>"; };
 		CEB46567215CD8BA00B0D2C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB4656C215CDE4E00B0D2C0 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		CEB4656D215CDE4E00B0D2C0 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
@@ -3077,6 +3082,9 @@
 				CE12794920E109A500ED9948 /* IllegalCarView.h */,
 				CE12794A20E109A500ED9948 /* IllegalCarView.m */,
 				CE12794C20E109B100ED9948 /* IllegalCarView.xib */,
+				CEAE95E8230CE51A008B9B3D /* FunctionView.h */,
+				CEAE95E9230CE51A008B9B3D /* FunctionView.m */,
+				CEAE95EB230CE52D008B9B3D /* FunctionView.xib */,
 			);
 			path = BottomView;
 			sourceTree = "<group>";
@@ -4563,6 +4571,7 @@
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CEB46568215CD8BA00B0D2C0 /* Assets.xcassets in Resources */,
 				CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */,
+				CEAE95EC230CE52D008B9B3D /* FunctionView.xib in Resources */,
 				CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
 				CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */,
@@ -4715,6 +4724,7 @@
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
 				CE54C22920D2A28200BE2693 /* DutyHeaderCell.m in Sources */,
 				CED37B9822EAD19C003BCD45 /* ParkingAreaVC.m in Sources */,
+				CEAE95EA230CE51A008B9B3D /* FunctionView.m in Sources */,
 				CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */,
 				CE8CDE6C1F9455F80018044C /* UIViewController+AKTabBarController.m in Sources */,
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,

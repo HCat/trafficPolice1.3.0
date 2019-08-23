@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TakeOutAPI.h"
+#import <Photos/Photos.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,12 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property(nonatomic, assign) BOOL isCanCommit;
+@property(nonatomic, assign) NSUInteger count;
 
 @property(nonatomic, strong) RACCommand * command_commit;
 @property(nonatomic, strong) RACCommand * command_illegalList;
 
 
-- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo;
+- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo IsPhotoAlbum:(BOOL)isPhotoAlbum withPHAsset:(PHAsset *)asset;
 - (void)configParamInFilesAndRemarksAndTimes;
 
 @end

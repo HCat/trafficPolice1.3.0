@@ -218,6 +218,8 @@
 #define URL_TAKEOUT_GETVEHICLEINFO @"app/deliveryInfo/getVehicleInfo.json"          //获取快递小哥车辆信息
 #define URL_TAKEOUT_REPORTPAGE @"app/deliveryReport/reportPage.json"                //违章记录列表
 #define URL_TAKEOUT_REPORTDETAIL @"app/deliveryReport/reportDetail.json"            //违章记录详情
+
+#define URL_TAKEOUT_TWOILLEGALTYPE @"app/deliveryReport/illegalTypeList.json"       //违章类型列表(二级)
 #define URL_TAKEOUT_ILLEGALTYPE @"app/deliveryReport/illegalType.json"              //违章类型列表(二级)
 #define URL_TAKEOUT_TYPELIST @"app/deliveryReport/typeList.json"                    //违章类型列表(一级)
 #define URL_TAKEOUT_SAVE @"app/deliveryReport/submitReport.json"                    //上报快递小哥违章

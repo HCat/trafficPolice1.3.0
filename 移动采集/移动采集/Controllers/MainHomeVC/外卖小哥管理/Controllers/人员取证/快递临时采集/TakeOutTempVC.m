@@ -17,6 +17,9 @@
 #import "LRCameraVC.h"
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
+#import "FunctionView.h"
+#import "BottomView.h"
+#import "ZLPhotoActionSheet.h"
 
 @interface TakeOutTempVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -48,7 +51,8 @@
     [super viewDidLoad];
     [self configUI];
     [self bindViewModel];
-
+    
+    [[ShareValue sharedDefault] deliveryCompanyList];
     [self.viewModel.command_illegalList execute:nil];
 }
 
@@ -228,20 +232,102 @@
     
     if (indexPath.row == self.viewModel.arr_upImages.count) {
         
-        [self showCameraWithType:5 withFinishBlock:^(LRCameraVC *camera) {
-            if (camera) {
-                @strongify(self);
-                if (camera.type == 5) {
-                    [self.viewModel addUpImageItemToUpImagesWithImageInfo:camera.imageInfo];
-                    [self.collectionView reloadData];
+        //调用身份证和驾驶证模态视图
+        FunctionView *t_view = [FunctionView initCustomView];
+        [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 103)];
+        t_view.takingPicturesBlock = ^(){
+            LxPrintf(@"拍照点击");
+            @strongify(self);
+            
+            [self showCameraWithType:5 withFinishBlock:^(LRCameraVC *camera) {
+                if (camera) {
+                    @strongify(self);
+                    if (camera.type == 5) {
+                        [self.viewModel addUpImageItemToUpImagesWithImageInfo:camera.imageInfo IsPhotoAlbum:NO withPHAsset:nil];
+                        [self.collectionView reloadData];
+                    }
+                }
+            } isNeedRecognition:NO];
+            
+            
+            [BottomView dismissWindow];
+            
+        };
+        t_view.photoAlbumBlock = ^(){
+            
+            LxPrintf(@"相册点击");
+            @strongify(self);
+            
+            ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+            actionSheet.configuration.sortAscending = NO;
+            actionSheet.configuration.allowSelectImage = YES;
+            actionSheet.configuration.allowSelectGif = NO;
+            actionSheet.configuration.allowSelectVideo = NO;
+            actionSheet.configuration.allowSelectLivePhoto = NO;
+            actionSheet.configuration.allowForceTouch = NO;
+            actionSheet.configuration.allowEditImage = NO;
+            actionSheet.configuration.allowTakePhotoInLibrary = NO;
+            actionSheet.configuration.showCaptureImageOnTakePhotoBtn = YES;
+            //设置照片最大预览数
+            actionSheet.configuration.maxPreviewCount = kmaxPreviewCount;
+            actionSheet.configuration.maxSelectCount = kmaxSelectCount;
+            actionSheet.configuration.cellCornerRadio = 0;
+            actionSheet.configuration.showSelectBtn = NO;
+            
+            actionSheet.sender = self;
+            
+            NSMutableArray *arr = [NSMutableArray array];
+            
+            for (NSMutableDictionary *t_dic in self.viewModel.arr_upImages) {
+                PHAsset *asset = [t_dic objectForKey:@"asset"];
+                if (asset && asset.mediaType == PHAssetMediaTypeImage) {
+                    [arr addObject:asset];
                 }
             }
-        } isNeedRecognition:NO];
+            
+            actionSheet.arrSelectedAssets =  actionSheet.configuration.maxSelectCount > 1 ? arr : nil;
+            
+            [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                @strongify(self);
+                
+                if (self.viewModel.arr_upImages && self.viewModel.arr_upImages.count > 0 ) {
+                    
+                    for (int i = 0; i < [self.viewModel.arr_upImages count]; i++) {
+                        
+                        if ([self.viewModel.arr_upImages[i] isKindOfClass:[NSMutableDictionary class]]) {
+                            
+                            NSMutableDictionary *t_dic = self.viewModel.arr_upImages[i];
+                            
+                            NSNumber * isPhotoAlbum = [t_dic objectForKey:@"isPhotoAlbum"];
+                            
+                            if ([isPhotoAlbum isEqualToNumber:@1]) {
+                                [self.viewModel.arr_upImages removeObject:t_dic];
+                            }
+                        }
+                    }
+                }
+                
+                for (int i = 0; i < images.count; i++) {
+                    UIImage * image = images[i];
+                    ImageFileInfo * imageInfo = [[ImageFileInfo alloc] initWithImage:image withName:key_files];
+                    [self.viewModel addUpImageItemToUpImagesWithImageInfo:imageInfo IsPhotoAlbum:YES withPHAsset:assets[i]];
+                }
+                
+                
+                [self.collectionView reloadData];
+                LxPrintf(@"image:%@", images);
+            }];
+            
+            [actionSheet showPhotoLibrary];
+            
+            [BottomView dismissWindow];
+            
+        };
+        [BottomView showWindowWithBottomView:t_view];
         
     }else {
         [self showPhotoBrowserWithIndex:indexPath.row];
     }
-    
 }
 
 #pragma mark - UICollectionView Delegate FlowLayout
@@ -274,11 +360,11 @@
 //header头部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (self.viewModel.deliveryIllegalList && self.viewModel.deliveryIllegalList.count > 0) {
-        NSInteger index =  self.viewModel.deliveryIllegalList.count/4 + (self.viewModel.deliveryIllegalList.count%4 != 0 ? 1 : 0);
-        CGFloat height = 30 * index + 15 * (index + 1);
-        return (CGSize){ScreenWidth,282 + height};
+        NSInteger index =  self.viewModel.deliveryIllegalList.count;
+        CGFloat height = 30 * index + 15 * (index + 2);
+        return (CGSize){ScreenWidth,302 + height};
     }else{
-        return (CGSize){ScreenWidth,302};
+        return (CGSize){ScreenWidth,332};
     }
 }
 
@@ -376,9 +462,9 @@
             if ([t_str isEqualToString:[itemDic objectForKey:@"remarks"]]) {
                 
                 [self.viewModel.arr_upImages removeObject:t_dic];
-                
+                self.viewModel.count = self.viewModel.arr_upImages.count;
                 [self.collectionView reloadData];
-                
+                break;
             }
             
         }
@@ -415,11 +501,15 @@
 
 - (void)submitIllegalData{
     
-    if([ShareFun validateIDCardNumber:self.viewModel.param.identNo] == NO){
-        [LRShowHUD showError:@"身份证格式错误" duration:1.f];
+//    if([ShareFun validateIDCardNumber:self.viewModel.param.identNo] == NO){
+//        [LRShowHUD showError:@"身份证格式错误" duration:1.f];
+//        return;
+//    }
+    
+    if (self.viewModel.arr_upImages.count == 0) {
+        [ShareFun showTipLable:@"请添加违法照片"];
         return;
     }
-    
     
     [self.viewModel configParamInFilesAndRemarksAndTimes];
     

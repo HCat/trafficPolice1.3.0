@@ -217,7 +217,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     // 创建一个相机
     self.camera = [[LLSimpleCamera alloc] initWithQuality:AVCaptureSessionPresetHigh  position:LLCameraPositionRear
-                                             videoEnabled:YES];
+                                             videoEnabled:NO];
     
     
     // 关联到具体的VC中

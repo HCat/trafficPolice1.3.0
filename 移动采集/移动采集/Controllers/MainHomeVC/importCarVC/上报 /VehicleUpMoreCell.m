@@ -23,8 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_commit;
 
-
-
 @end
 
 

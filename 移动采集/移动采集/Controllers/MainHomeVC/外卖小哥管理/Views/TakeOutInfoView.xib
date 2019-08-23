@@ -24,7 +24,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AA-Dk-Dw2">
-                    <rect key="frame" x="15" y="13" width="29" height="17"/>
+                    <rect key="frame" x="15" y="13" width="206" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
@@ -46,7 +46,6 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-sI-95V">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                    <state key="normal" title="Button"/>
                     <connections>
                         <action selector="handleBtnMoreClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="wYu-gA-Ghh"/>
                     </connections>
@@ -54,6 +53,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3AA-Dk-Dw2" secondAttribute="trailing" constant="99" id="07z-qG-tMN"/>
                 <constraint firstItem="bXv-sI-95V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6GK-I2-8fe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bXv-sI-95V" secondAttribute="trailing" id="8W7-ww-vzc"/>
                 <constraint firstItem="3AA-Dk-Dw2" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Ahg-HZ-7FR"/>

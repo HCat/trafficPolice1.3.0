@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)  NSNumber * floor;          //层级 0 父级 1 子级
 @property(nonatomic,assign)  BOOL isSelected;           //是否被选中
 
+@property(nonatomic,strong)  NSArray <DeliveryIllegalTypeModel *> * illegalList;
 
 @end
 

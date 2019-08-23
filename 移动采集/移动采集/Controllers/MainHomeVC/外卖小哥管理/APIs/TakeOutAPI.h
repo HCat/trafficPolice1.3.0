@@ -136,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-#pragma mark - 违章类型列表
+#pragma mark - 违章类型列表(一级列表)
 
 @interface TakeOutTypeListManger:LRBaseRequest
 
@@ -144,6 +144,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSArray < DeliveryIllegalTypeModel *> * list;    //包含IllegalParkListModel对象
 
 @end
+
+#pragma mark - 违章类型列表(二级列表)
+@interface TakeOutTypeTwoListManger : LRBaseRequest
+
+
+@property (nonatomic,copy) NSArray < DeliveryIllegalTypeModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+
 
 
 #pragma mark - 临时工违章采集

@@ -15,4 +15,9 @@
              };
 }
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"illegalList" : [DeliveryIllegalTypeModel class]
+             };
+}
+
 @end

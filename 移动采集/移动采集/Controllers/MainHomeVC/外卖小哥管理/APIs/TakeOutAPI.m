@@ -179,12 +179,35 @@
 
 #pragma mark - 违章类型列表
 
-
 @implementation TakeOutIllegalTypeManger
 
 - (NSString *)requestUrl
 {
     return URL_TAKEOUT_ILLEGALTYPE;
+}
+
+- (NSArray < DeliveryIllegalTypeModel *> *)list{
+    
+    if (self.responseModel) {
+        _list = [NSArray modelArrayWithClass:[DeliveryIllegalTypeModel class] json:self.responseJSONObject[@"data"]];
+        
+        return _list;
+    }
+    
+    return nil;
+    
+}
+
+@end
+
+
+#pragma mark - 违章类型列表(二级列表)
+
+@implementation TakeOutTypeTwoListManger
+
+- (NSString *)requestUrl
+{
+    return URL_TAKEOUT_TWOILLEGALTYPE;
 }
 
 - (NSArray < DeliveryIllegalTypeModel *> *)list{

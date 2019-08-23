@@ -14,9 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_content;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageV_arrow;
-
 @property (weak, nonatomic) IBOutlet UILabel *lb_more;
-
 
 
 @end
