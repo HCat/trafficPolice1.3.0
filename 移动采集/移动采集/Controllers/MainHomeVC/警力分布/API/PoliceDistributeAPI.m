@@ -60,7 +60,7 @@
 
 #pragma mark -
 
-@implementation PoliceDistributeSearchParam  : NSObject
+@implementation PoliceDistributeSearchParam
 
 @end
 

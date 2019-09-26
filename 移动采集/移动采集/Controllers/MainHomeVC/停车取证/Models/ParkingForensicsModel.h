@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString * parklotname;              //片区名
 @property (nonatomic,copy) NSString * parkingForenId;           //工单ID
+@property (nonatomic,copy) NSString * pkParkplaceId;            //泊位ID
 @property (nonatomic,copy) NSString * parklotId;                //片区编号
 @property (nonatomic,copy) NSString * placenum;                 //车位编号
-@property (nonatomic,copy) NSString * dispatchTimeStr;          //派单时间
+@property (nonatomic,copy) NSNumber * updatetime;               //派单时间
 @property (nonatomic,strong) NSNumber * pageNo;                 //页数
 @property (nonatomic,strong) NSNumber * pageSize;               //条数
-@property (nonatomic,copy) NSString * stateName;                //订单状态
-
+@property (nonatomic,strong) NSNumber * status;                //订单状态
+@property (nonatomic,strong) NSNumber * distance;               //距离
 
 @end
 

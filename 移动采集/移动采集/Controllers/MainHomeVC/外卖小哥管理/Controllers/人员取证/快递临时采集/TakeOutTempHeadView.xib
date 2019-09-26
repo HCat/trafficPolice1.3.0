@@ -49,7 +49,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传照片(选填):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osZ-Gz-OwY">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传照片(必填):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osZ-Gz-OwY">
                     <rect key="frame" x="15" y="442" width="100.5" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="ivr-WN-ime"/>
@@ -219,7 +219,6 @@
                 <constraint firstItem="IiD-ge-T4a" firstAttribute="height" secondItem="JTx-DP-Ipg" secondAttribute="height" id="7uc-bm-did"/>
                 <constraint firstItem="Iw9-9Q-HUt" firstAttribute="top" secondItem="Iri-sl-ynO" secondAttribute="bottom" constant="12" id="8z3-Wh-Zam"/>
                 <constraint firstItem="BVH-5P-I3X" firstAttribute="trailing" secondItem="xcw-x6-zRb" secondAttribute="trailing" id="9Ta-fz-2QW"/>
-                <constraint firstItem="ahR-H4-GNS" firstAttribute="leading" secondItem="hPo-zf-uRH" secondAttribute="trailing" constant="15" id="BYz-Jy-Jlt"/>
                 <constraint firstItem="osZ-Gz-OwY" firstAttribute="leading" secondItem="Iw9-9Q-HUt" secondAttribute="leading" id="EWt-gp-CYK"/>
                 <constraint firstItem="xcw-x6-zRb" firstAttribute="top" secondItem="BVH-5P-I3X" secondAttribute="bottom" constant="12" id="F2b-hC-ojr"/>
                 <constraint firstItem="JTx-DP-Ipg" firstAttribute="top" secondItem="xcw-x6-zRb" secondAttribute="bottom" constant="12" id="FUy-qP-rBY"/>
@@ -236,6 +235,7 @@
                 <constraint firstAttribute="trailing" secondItem="OEQ-8l-NQ6" secondAttribute="trailing" constant="10" id="TSt-ZN-uSl"/>
                 <constraint firstItem="xcw-x6-zRb" firstAttribute="top" secondItem="SB4-ZA-hF5" secondAttribute="top" id="U6H-VZ-7wU"/>
                 <constraint firstItem="BVH-5P-I3X" firstAttribute="top" secondItem="vTV-rQ-us9" secondAttribute="top" id="Z22-Ys-DyR"/>
+                <constraint firstItem="BVH-5P-I3X" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="92" id="aoQ-2i-WE3"/>
                 <constraint firstAttribute="trailing" secondItem="ti1-eQ-mc6" secondAttribute="trailing" id="ddb-p5-Wxk"/>
                 <constraint firstAttribute="bottom" secondItem="osZ-Gz-OwY" secondAttribute="bottom" constant="15" id="deP-H6-8VG"/>
                 <constraint firstItem="Iri-sl-ynO" firstAttribute="trailing" secondItem="ahR-H4-GNS" secondAttribute="trailing" id="dwG-vh-du7"/>

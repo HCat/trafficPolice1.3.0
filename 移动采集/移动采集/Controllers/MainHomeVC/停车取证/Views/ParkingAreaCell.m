@@ -35,39 +35,24 @@
         self.lb_number.text = [ShareFun takeStringNoNull:x.placenum];
         self.lb_address.text = [ShareFun takeStringNoNull:x.parklotname];
         
-        switch ([x.parkingstatus intValue]) {
-            case 0:
-                
-                self.lb_status.text = @"空闲";
-                self.lb_status.textColor = UIColorFromRGB(0x333333);
-                self.lb_status.layer.borderColor = UIColorFromRGB(0x333333).CGColor;
-                
-                break;
-                
-            case 1:
-                self.lb_status.text = @"正常";
-                self.lb_status.textColor = UIColorFromRGB(0x44C93D);
-                self.lb_status.layer.borderColor = UIColorFromRGB(0x44C93D).CGColor;
-                break;
-                
-            case 2:
-                self.lb_status.text = @"未登记";
-                self.lb_status.textColor = UIColorFromRGB(0xFAAD34);
-                self.lb_status.layer.borderColor = UIColorFromRGB(0xFAAD34).CGColor;
-                break;
-                
-            case 3:
-                self.lb_status.text = @"欠费";
-                self.lb_status.textColor = UIColorFromRGB(0xFD3240);
-                self.lb_status.layer.borderColor = UIColorFromRGB(0xFD3240).CGColor;
-                break;
-                
-            default:
-                break;
+        if ([x.status isEqualToNumber:@0]) {
+            self.lb_status.text = @"空闲";
+            self.lb_status.textColor = UIColorFromRGB(0xBFBFBF);
+            self.lb_status.layer.borderColor = UIColorFromRGB(0xBFBFBF).CGColor;
+        }else if ([x.status isEqualToNumber:@1]) {
+            self.lb_status.text = @"未登记";
+            self.lb_status.textColor = UIColorFromRGB(0xff1e1e);
+            self.lb_status.layer.borderColor = UIColorFromRGB(0xff1e1e).CGColor;
+        }else if ([x.status isEqualToNumber:@2]) {
+            self.lb_status.text = @"已登记";
+            self.lb_status.textColor = UIColorFromRGB(0x5DCB58);
+            self.lb_status.layer.borderColor = UIColorFromRGB(0x5DCB58).CGColor;
+        }else{
+            self.lb_status.text = @"已取证";
+            self.lb_status.textColor = UIColorFromRGB(0x3396FC);
+            self.lb_status.layer.borderColor = UIColorFromRGB(0x3396FC).CGColor;
         }
-        
-        
-        
+
         
     }];
     

@@ -31,6 +31,9 @@
     
     if (self = [super init]) {
         self.viewModel = viewModel;
+        //添加对定位的监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parkingForensicsSuccess) name:NOTIFICATION_PARKINGFORENSICS_SUCCESS object:nil];
     }
     
     return self;
@@ -44,7 +47,8 @@
     [self configUI];
     [self bindViewModel];
     
-    [self.tableView.mj_header beginRefreshing];
+    [[LocationHelper sharedDefault] startLocation];
+    
 }
 
 #pragma mark - 配置UI界面
@@ -113,7 +117,7 @@
 #pragma mark - 加载新数据
 
 - (void)reloadData{
-    self.viewModel.index = @0;
+    self.viewModel.index = @1;
     [self.viewModel.requestCommand execute:nil];
     
 }
@@ -184,7 +188,8 @@
    ParkingForensicsModel *itemModel = self.viewModel.arr_content[indexPath.row];
     
     ParkingAreaDetailViewModel * viewModel = [[ParkingAreaDetailViewModel alloc] init];
-    viewModel.parkplaceId = itemModel.placenum;
+    viewModel.placenum = itemModel.placenum;
+    viewModel.parkplaceId = itemModel.pkParkplaceId;
     
     ParkingAreaDetailVC * vc = [[ParkingAreaDetailVC alloc] initWithViewModel:viewModel];
     [self.navigationController pushViewController:vc animated:YES];
@@ -192,13 +197,30 @@
 
 }
 
+#pragma mark - 重新定位之后的通知
 
+-(void)locationChange{
+    
+    self.viewModel.latitude =  @([LocationHelper sharedDefault].latitude);
+    self.viewModel.longitude = @([LocationHelper sharedDefault].longitude);
+    
+    [self.tableView.mj_header beginRefreshing];
+
+}
+
+#pragma mark - notification
+
+- (void)parkingForensicsSuccess{
+    [self.tableView.mj_header beginRefreshing];
+    
+}
 
 
 #pragma mark - dealloc
 
 - (void)dealloc{
     NSLog(@"ParkingForensicsListVC dealloc");
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_PARKINGFORENSICS_SUCCESS object:nil];
 }
 
 @end

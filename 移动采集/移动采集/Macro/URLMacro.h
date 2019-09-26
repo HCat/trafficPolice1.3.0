@@ -19,6 +19,12 @@
 #define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
+//http://192.168.10.88/api
+
+#define PARK_DEBUG_URL @"http://preman.degal.cn/api" //停车取证测试环境
+#define PARK_RELEASE_URL @"http://topark.host/api"   //停车取证正式环境
+
+
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
@@ -27,6 +33,7 @@
 
 #define Base_URL ([ShareValue sharedDefault].server_url == nil) ? (KBase_URL) : [ShareValue sharedDefault].server_url
 #define WEBSOCKETURL ([ShareValue sharedDefault].webSocket_url == nil) ? (KwebSocket_URL) : [ShareValue sharedDefault].webSocket_url
+#define PARK_Base_URL ISONLINE ? PARK_RELEASE_URL : PARK_DEBUG_URL
 
 #define JPUSH_PRODUCTION ISONLINE ? YES : NO
 
@@ -83,6 +90,9 @@
 #define URL_FASTACCIDENT_UP @"app/fastAccident/saveApp.json"                    //快处事故增加
 #define URL_FASTACCIDENT_LISTPAGING @"app/fastAccident/listPaging.json"         //快处事故列表
 #define URL_FASTACCIDENT_DETAILS @"app/fastAccident/detailApp.json"             //快处事故详情
+#define URL_FASTACCIDENT_PEOPLE @"app/fastAccident/accidentDetail.json"         //用户提交的快处信息
+#define URL_FASTACCIDENT_DEALACCIDENT @"app/fastAccident/dealAccident.json"     //处理用户提交的快处信息
+#define URL_FASTACCIDENT_CHECKPERMISS @"app/fastAccident/checkPermiss.json"     //是否有权限处理用户提交的快处信息
 
 
 #pragma mark - 违停相关API
@@ -109,7 +119,6 @@
 #define URL_ILLEGALTHROUGH_SECSAVE @"app/illegalThrough/secSave.json"           //违反禁令二次采集保存
 #define URL_ILLEGALTHROUGH_LISTPAGING @"app/illegalThrough/listPaging.json"     //违反禁令采集列表
 #define URL_ILLEGALTHROUGH_DETAIL @"app/illegalThrough/detail.json"             //违反禁令采集详情
-
 
 
 #pragma mark - 警情反馈相关API
@@ -205,6 +214,8 @@
 #define URL_ACTION_CHANGESTATUS @"app/actionManage/changeActionStatus.json"         //更改行动状态
 #define URL_ACTION_TYPELIST @"app/actionManage/getActionTaskList.json"              //根据类型选择行动
 
+#pragma mark - 特殊车辆管理
+
 #define URL_SPECIAL_GETGROUPLIST @"app/group/getGroupList.json"                     //特殊传车辆管理组的获取和组的车牌获取
 #define URL_SPECIAL_GETRECORDLIST @"app/group/getRecordList.json"                   //特殊传车辆管理获取识别记录列表
 #define URL_SPECIAL_RECORDDETAIL @"app/group/recordDetail.json"                     //特殊传车辆管理获取识别记录详情
@@ -212,6 +223,9 @@
 #define URL_SPECIAL_DELETE @"app/group/delete.json"                                 //删除车辆
 #define URL_SPECIAL_SETNOTICEGROUP @"app/group/setNoticeGroup.json"                 //获取设置通知人员列表
 #define URL_SPECIAL_SAVENOTICEGROUP @"app/group/saveNoticeGroup.json"               //保存置通知人员
+
+
+#pragma mark - 外卖小哥
 
 #define URL_TAKEOUT_GETCOURIERLIST @"app/deliveryInfo/getCourierList.json"          //根据条件查询快递员列表
 #define URL_TAKEOUT_GETCOURIERINFO @"app/deliveryInfo/getCourierInfo.json"          //查询快递员信息
@@ -223,16 +237,25 @@
 #define URL_TAKEOUT_ILLEGALTYPE @"app/deliveryReport/illegalType.json"              //违章类型列表(二级)
 #define URL_TAKEOUT_TYPELIST @"app/deliveryReport/typeList.json"                    //违章类型列表(一级)
 #define URL_TAKEOUT_SAVE @"app/deliveryReport/submitReport.json"                    //上报快递小哥违章
-#define URL_TAKEOUT_SUBMITTEMPREPORT @"app/deliveryReport/submitTempReport.json"         //临时工违章采集
+#define URL_TAKEOUT_SUBMITTEMPREPORT @"app/deliveryReport/submitTempReport.json"    //临时工违章采集
 #define URL_TAKEOUT_COMPANYLIST @"app/deliveryReport/companyList.json"              //众包列表接口
 
+#pragma mark - 停车取证
 
-
-#define URL_PARKINGFORENSICS_LIST @"app/parkingOrder/parkingOrderPage.json"         //工单列表分页
-#define URL_PARKINGOCCPERCENT_LIST @"app/parkingOrder/parkingPlaceList.json"        //车位列表信息
-#define URL_PARKING_AREA @"app/parkingOrder/areaList.json"                          //全部片区列表
-#define URL_PARKINGAREA_DETAIL @"app/parkingOrder/parkingOrderDetail.json"          //车位详情
+#define URL_PARKINGFORENSICS_LIST @"jwt/appParkingLot/processPark"                  //工单列表分页
+#define URL_PARKINGOCCPERCENT_LIST @"jwt/appParkingLot/parkplaceList"               //车位列表信息
+#define URL_PARKING_AREA @"jwt/appParkingLot/parkingLotList"                        //全部片区列表
+#define URL_PARKINGAREA_DETAIL @"jwt/parkPlace/record"                              //车位详情
 #define URL_PARKING_REMARKCARSTATUS @"app/parkingOrder/remarkCarStatus.json"        //标记无车
-#define URL_PARKING_FORENSICS @"app/parkingOrder/saveParkingOrder.json"             //采集停车取证信息
+#define URL_PARKING_FORENSICS @"jwt/appParkProcess/saveProcess"                     //采集停车取证信息
+#define URL_PARKING_IDENTIFY @"appCommon/identify"                                  //停车取证采集照片识别
+#define URL_PARKINGAREA_ISFRIST @"appCommon/isFirstPark"                            //验证是否为第一次违停
+
+
+#pragma mark - 停车场管理
+
+#define URL_PARKINGMANAGE_SEARCHLIST @"app/carYardCollect/carYardCollectList.json"  //在库车辆列表
+
+
 
 #endif /* URLMacro_h */

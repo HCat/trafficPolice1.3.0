@@ -34,16 +34,21 @@
                 
                 
                 ParkingForensicsListParam *param = [[ParkingForensicsListParam alloc] init];
-                param.start = self.index;
-                param.length = @10;
+                param.pageNum = self.index;
+                //param.pageSize = @10;
+                if (self.longitude || self.latitude) {
+                    param.longitude = self.longitude;
+                    param.latitude = self.latitude;
+                    
+                }
                 
                 ParkingForensicsListManger * manger = [[ParkingForensicsListManger alloc] init];
                 manger.param = param;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == CODE_SUCCESS) {
+                    if (manger.responseModel.code == 1) {
                         
-                        if ([self.index isEqualToNumber:@0]) {
+                        if ([self.index isEqualToNumber:@1]) {
                             [self.arr_content removeAllObjects];
                         }
                         
@@ -53,7 +58,7 @@
                             [subscriber sendNext:@"请求最后一条成功"];
                         }else{
                             [subscriber sendNext:@"加载成功"];
-                            self.index = @([self.index integerValue] + [param.length integerValue]);
+                            self.index = @([self.index integerValue] + 1);
                         }
                         
                     }else{
@@ -63,7 +68,7 @@
                     [subscriber sendCompleted];
                     
                 } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    
+                    [subscriber sendNext:@"加载失败"];
                     [subscriber sendCompleted];
                 }];
                 

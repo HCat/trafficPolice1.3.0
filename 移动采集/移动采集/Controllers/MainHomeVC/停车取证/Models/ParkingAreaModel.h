@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ParkingAreaModel : NSObject
 
 @property (nonatomic,copy) NSString * parklotname;      //片区名
-@property (nonatomic,copy) NSString * parklotId;        //片区编号
+@property (nonatomic,copy) NSString * pkParklotId;        //片区编号
 
 
 @end

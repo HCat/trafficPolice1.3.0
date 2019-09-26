@@ -31,8 +31,8 @@
         self.secend = self.arr_upImages[1];
         
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, carNo),RACObserve(self.param, address), RACObserve(self, first), RACObserve(self, secend)] reduce:^id (NSString * carNo,NSString * address,id first,id secend){
-            return @(carNo.length > 0 && address.length > 0 && ![first isKindOfClass:[NSNull class]] && ![secend isKindOfClass:[NSNull class]]);
+        [[RACSignal combineLatest:@[RACObserve(self.param, carNo), RACObserve(self, first), RACObserve(self, secend)] reduce:^id (NSString * carNo,id first,id secend){
+            return @(carNo.length > 0 && ![first isKindOfClass:[NSNull class]] && ![secend isKindOfClass:[NSNull class]]);
         }] subscribeNext:^(id x) {
             @strongify(self);
             self.isCanCommit = [x boolValue];
@@ -44,15 +44,16 @@
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
                 ParkingForensicsManger * manger = [[ParkingForensicsManger alloc] init];
-                self.param.type = @6001;
                 manger.param = self.param;
+                manger.param.fkParkplaceId = self.fkParkplaceId;
+                if (self.param.absoluteUrl) {
+                    manger.param.cutImageUrl = self.param.absoluteUrl;
+                }
+                LxDBObjectAsJson(manger.param);
                 [manger configLoadingTitle:@"提交"];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
-                    if (manger.responseModel.code == CODE_SUCCESS) {
-                        [subscriber sendNext:nil];
-                    }
-                    
+                    [subscriber sendNext:nil];
                     [subscriber sendCompleted];
                     
                 } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -67,20 +68,24 @@
         }];
         
         
-        self.command_commonRoad = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        self.command_isFirst = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            
             @strongify(self);
+            
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-                @strongify(self);
-                CommonGetRoadManger *manger = [[CommonGetRoadManger alloc] init];
-                manger.isLog = NO;
+                
+                ParkingIsFirstParkManger * manger = [[ParkingIsFirstParkManger alloc] init];
+                
+                manger.carNo = input;
+
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    if (manger.responseModel.code == CODE_SUCCESS) {
-                        [ShareValue sharedDefault].roadModels = manger.commonGetRoadResponse;
-                        [subscriber sendNext:nil];
-                    }
+                    
+                    [subscriber sendNext:manger.isFristPark];
+                    [subscriber sendCompleted];
                     
                 } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    
+                    [subscriber sendNext:@"加载失败"];
+                    [subscriber sendCompleted];
                 }];
                 
                 return nil;
@@ -89,6 +94,7 @@
             return t_signal;
         }];
         
+    
     }
     
     return self;
@@ -106,13 +112,12 @@
     if (imageFileInfo) {
         imageFileInfo.name = key_files;
         [t_dic setObject:imageFileInfo             forKey:@"files"];
-        [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
     }
     
     if (index == 1) {
+        
         if (self.param.cutImageUrl) {
             [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
-            [t_dic setObject:self.param.taketime    forKey:@"taketime"];
         }
         
     }
@@ -126,14 +131,13 @@
 }
 
 //添加图片到arr_upImages数组中
-- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo{
+- (void)addUpImageItemToUpImagesWithImageInfo:(ImageFileInfo *)imageFileInfo remark:(NSString *)remark{
     
     imageFileInfo.name = key_files;
     
     NSMutableDictionary *t_dic = [NSMutableDictionary dictionary];
     [t_dic setObject:imageFileInfo forKey:@"files"];
-    [t_dic setObject:imageFileInfo.fileName forKey:@"remarks"];
-    [t_dic setObject:[ShareFun getCurrentTime] forKey:@"taketimes"];
+    [t_dic setObject:remark forKey:@"remarks"];
     [t_dic setObject:@1 forKey:@"isMore"];
     [self.arr_upImages addObject:t_dic];
     
@@ -146,6 +150,7 @@
         LxDBObjectAsJson(self.arr_upImages);
         
         NSMutableArray *t_arr_files     = [NSMutableArray array];
+        NSMutableArray *t_arr_remarks   = [NSMutableArray array];
         
         for (int i = 0; i < _arr_upImages.count; i++) {
             
@@ -153,10 +158,15 @@
                 
                 NSMutableDictionary *t_dic  = _arr_upImages[i];
                 ImageFileInfo *imageInfo    = [t_dic objectForKey:@"files"];
+//                NSString * t_remark = [t_dic objectForKey:@"remarks"];
+//                [t_arr_remarks addObject:t_remark];
                 
                 if (imageInfo) {
                     [t_arr_files     addObject:imageInfo];
+                    [t_arr_remarks addObject:@"0"];
                 }
+                
+                
                 
             }
             
@@ -164,6 +174,10 @@
         
         if (t_arr_files.count > 0) {
             _param.files = t_arr_files;
+        }
+        
+        if (t_arr_remarks.count > 0) {
+            _param.remarks = [t_arr_remarks componentsJoinedByString:@","];;
         }
         
     }

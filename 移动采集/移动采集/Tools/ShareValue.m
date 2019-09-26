@@ -161,7 +161,7 @@ LRSingletonM(Default)
         
         WS(weakSelf);
         TakeOutCompanyListManger *manger = [[TakeOutCompanyListManger alloc] init];
-        manger.isLog = NO;
+        //manger.isLog = NO;
         [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             SW(strongSelf, weakSelf);
             if (manger.responseModel.code == CODE_SUCCESS) {

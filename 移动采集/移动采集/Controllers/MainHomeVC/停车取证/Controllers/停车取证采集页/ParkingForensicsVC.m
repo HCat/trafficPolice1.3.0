@@ -25,6 +25,11 @@
 @property (nonatomic,strong) ParkingForensicsHeadView *headView;
 @property (nonatomic,strong) IllegalParkAddFootView *footView;
 
+@property (weak, nonatomic) IBOutlet UIView *v_tip;
+@property (weak, nonatomic) IBOutlet UIView *v_tip_info;
+@property (weak, nonatomic) IBOutlet UIButton *btn_tip;
+
+
 @property(nonatomic, strong) ParkingForensicsViewModel * viewModel;
 
 @end
@@ -46,17 +51,13 @@
     [self configUI];
     [self bindViewModel];
     
-    [self.viewModel.command_commonRoad execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     @weakify(self);
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        @strongify(self);
-        [self.viewModel.command_commonRoad execute:nil];
-    };
+   
     
 #ifdef __IPHONE_11_0
     if (IS_IPHONE_X_MORE == NO) {
@@ -73,13 +74,21 @@
 - (void)configUI{
     self.title = @"停车取证";
     
+    self.v_tip_info.layer.cornerRadius = 4.f;
+    self.btn_tip.layer.cornerRadius = 4.f;
+    
     //注册collection格式
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:@"BaseImageCollectionCellID"];
     [_collectionView registerNib:[UINib nibWithNibName:@"IllegalParkAddFootView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"ParkingForensicsFootViewID"];
     [_collectionView registerNib:[UINib nibWithNibName:@"ParkingForensicsHeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ParkingForensicsHeadViewID"];
     
-    
-    
+    @weakify(self);
+    [[self.btn_tip rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        
+        self.v_tip.hidden = YES;
+        
+    }];
     
 }
 
@@ -87,13 +96,6 @@
 - (void)bindViewModel{
     
     @weakify(self);
-    [self.viewModel.command_commonRoad.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        if (self.headView) {
-            [self.headView getRoadId];
-        }
-        
-    }];
     
     [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
@@ -115,20 +117,52 @@
     
     [self.viewModel.command_commit.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        [self.headView strogeLocationBeforeCommit];
+    
         if (self.block) {
             self.block();
         }
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PARKINGFORENSICS_SUCCESS object:nil];
+        
         [self.navigationController popViewControllerAnimated:YES];
         
     }];
+    
+    [self.viewModel.command_isFirst.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+    
+        if ([x isKindOfClass:[NSNumber class]]) {
+            
+            if ([x intValue] == 1) {
+                self.v_tip.hidden = NO;
+            }else{
+                self.v_tip.hidden = YES;
+            }
+            
+        }
+    
+    }];
+    
     
     [RACObserve(self.viewModel.param, cutImageUrl) subscribeNext:^(NSString * _Nullable x) {
         if (x.length > 0 && x) {
             [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:1];
             [self.collectionView reloadData];
         }
+    }];
+    
+    
+    [RACObserve(self.viewModel.param, carNo) subscribeNext:^(NSString * _Nullable x) {
+        
+        @strongify(self);
+        
+        if (x && x.length > 0 && [ShareFun validateCarNumber:x]) {
+            
+            [self.viewModel.command_isFirst execute:x];
+            
+            
+        }
+        
     }];
     
     
@@ -160,11 +194,11 @@
     }else{
         
         if(indexPath.row == 0){
-            cell.lb_title.text = @"违法照片";
+            cell.lb_title.text = @"取证照片";
         }else if(indexPath.row == 1){
             cell.lb_title.text = @"车牌近照";
         }else {
-            cell.lb_title.text = [NSString stringWithFormat:@"违法照片%ld",indexPath.row];
+            cell.lb_title.text = [NSString stringWithFormat:@"取证照片%ld",indexPath.row];
         }
         
         //判断是否拥有图片，如果拥有则显示图片，如果没有则显示@“updataPhoto.png”的图片
@@ -201,8 +235,8 @@
     {
         if (!self.headView) {
             self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ParkingForensicsHeadViewID" forIndexPath:indexPath];
+            [_headView setDelegate:(id<ParkingForensicsHeadViewDelegate>)self];
             _headView.param = self.viewModel.param;
-            _headView.btnType = [LocationStorage sharedDefault].isTakeOut;
         }
         
         return _headView;
@@ -232,7 +266,7 @@
             if (camera) {
                 @strongify(self);
                 if (camera.type == 5) {
-                    [self.viewModel addUpImageItemToUpImagesWithImageInfo:camera.imageInfo];
+                    [self.viewModel addUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"0"];
                     [self.collectionView reloadData];
                 }
             }
@@ -243,7 +277,7 @@
         if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]]) {
             
             BOOL isNeedRecognition = YES;
-            if ((self.viewModel.param.cutImageUrl && [self.viewModel.param.cutImageUrl length] > 0 && self.viewModel.param.taketime && [self.viewModel.param.taketime length] > 0 )|| [self.viewModel.arr_upImages[1] isKindOfClass:[NSMutableDictionary class]]) {
+            if ((self.viewModel.param.cutImageUrl && [self.viewModel.param.cutImageUrl length] > 0 )|| [self.viewModel.arr_upImages[1] isKindOfClass:[NSMutableDictionary class]]) {
                 isNeedRecognition = NO;
             }
             
@@ -256,14 +290,11 @@
                         
                         if (camera.isIllegal) {
                             //识别之后所做的操作
-                            if (camera.commonIdentifyResponse) {
+                            if (camera.parkingIdentifyResponse) {
                                 
-                                
-                                self.viewModel.param.taketime = [ShareFun getCurrentTime];
-                                self.viewModel.param.carNo = camera.commonIdentifyResponse.carNo;
-                                self.viewModel.param.carColor = camera.carColor;
-                                self.viewModel.param.cutImageUrl = camera.commonIdentifyResponse.cutImageUrl;
-                            
+                                self.viewModel.param.carNo = camera.parkingIdentifyResponse.carNo;
+                                self.viewModel.param.cutImageUrl = camera.parkingIdentifyResponse.absoluteUrl;
+                                self.viewModel.param.absoluteUrl  = camera.parkingIdentifyResponse.cutImageUrl;
                             }
                         }
                     
@@ -286,13 +317,11 @@
                     @strongify(self);
                     if (camera.type == 1) {
                         //替换车牌近照的图片
-                        if (camera.commonIdentifyResponse) {
+                        if (camera.parkingIdentifyResponse) {
                             
-                            
-                            self.viewModel.param.taketime = [ShareFun getCurrentTime];
-                            self.viewModel.param.carNo = camera.commonIdentifyResponse.carNo;
-                            self.viewModel.param.carColor = camera.carColor;
-                            self.viewModel.param.cutImageUrl = camera.commonIdentifyResponse.cutImageUrl;
+                            self.viewModel.param.carNo = camera.parkingIdentifyResponse.carNo;
+                            self.viewModel.param.cutImageUrl = camera.parkingIdentifyResponse.absoluteUrl;
+                            self.viewModel.param.absoluteUrl  = camera.parkingIdentifyResponse.cutImageUrl;
                             
                         }else{
                             [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"车牌近照" replaceIndex:1];
@@ -361,7 +390,7 @@
 
 //header头部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return (CGSize){ScreenWidth,230};
+    return (CGSize){ScreenWidth,130};
 }
 
 
@@ -392,6 +421,7 @@
     
     LRCameraVC *home = [[LRCameraVC alloc] init];
     home.type = type;
+    home.isParking = YES;
     home.isIllegal = isNeedRecognition;
     home.fininshCaptureBlock = finishBlock;
     [self presentViewController:home
@@ -466,7 +496,7 @@
                     
                     if ([t_str isEqualToString:@"车牌近照"]) {
                         self.viewModel.param.cutImageUrl = nil;
-                        self.viewModel.param.taketime = nil;
+                        self.viewModel.param.absoluteUrl = nil;
                     }
                     
                     [self.viewModel.arr_upImages replaceObjectAtIndex:i withObject:[NSNull null]];
@@ -516,10 +546,23 @@
 - (void)submitIllegalData{
     
     [self.viewModel configParamInFilesAndRemarksAndTimes];
-    
-    LxDBObjectAsJson(self.viewModel.param);
-    
+
     [self.viewModel.command_commit execute:nil];
+}
+
+#pragma mark - HeadViewDelegate点击识别按钮返回回来的数据
+
+- (void)recognitionCarNumber:(LRCameraVC *)cameraVC{
+
+    if (cameraVC.commonIdentifyResponse.cutImageUrl) {
+        
+        [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:nil remark:@"车牌近照" replaceIndex:1];
+
+    }
+   
+    [_collectionView reloadData];
+    
+
 }
 
 

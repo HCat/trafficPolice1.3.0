@@ -36,6 +36,7 @@
 #import "AttendanceManageVC.h"
 #import "TakeOutSearchVC.h"
 #import "ParkingForensicsListVC.h"
+#import "ParkingManagementVC.h"
 
 #import "MainCellLayout.h"
 #import "MainHomeViewModel.h"
@@ -580,6 +581,10 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"车场管理"]){
             
             if ([menuModel.isUser isEqualToNumber:@1]) {
+                
+//                ParkingManagementVC * t_vc = [[ParkingManagementVC alloc] init];
+//                [self.navigationController pushViewController:t_vc animated:YES];
+                
                 [ShareFun showTipLable:@"当前功能正在研发中，请耐心等待"];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];

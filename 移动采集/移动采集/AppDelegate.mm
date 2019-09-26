@@ -154,7 +154,6 @@
     config.channel = JPUSH_APP_CHANNEL;
     [JANALYTICSService setupWithConfig:config];
     
-    
 }
 
 #pragma mark - 初始化Tabbar

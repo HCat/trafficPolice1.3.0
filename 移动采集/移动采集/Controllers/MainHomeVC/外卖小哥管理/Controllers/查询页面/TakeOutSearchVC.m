@@ -121,7 +121,7 @@
             if (str_code) {
                 NSArray * arr = [str_code componentsSeparatedByString:@"/"];
                 NSString * t_str = arr.lastObject;
-                self.tf_search.text = t_str;
+                //self.tf_search.text = t_str;
                 self.viewModel.key = t_str;
                 self.viewModel.type = @5;
                 

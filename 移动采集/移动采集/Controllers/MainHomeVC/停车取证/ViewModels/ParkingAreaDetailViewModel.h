@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingAreaDetailViewModel : NSObject
 
+@property(copy, nonatomic, nullable)  NSString * placenum;
 @property(copy, nonatomic, nullable)  NSString * parkplaceId;
 
 @property(nonatomic,strong)   RACCommand * requestCommand;
-@property(nonatomic,strong)   RACCommand * noCarCommand;
 
 
 @property(nonatomic,strong) ParkingAreaDetailModel * areaDetailModel;

@@ -17,8 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingForensicsListParam : NSObject
 
-@property (nonatomic,strong) NSNumber * start;   //开始的索引号 从0开始
-@property (nonatomic,strong) NSNumber * length;  //显示的记录数 默认为10
+@property (nonatomic,strong) NSNumber * longitude;          //巡检员经度
+@property (nonatomic,strong) NSNumber * latitude;           //巡检员纬度
+@property (nonatomic,strong) NSNumber * pageNum;            //页码数
+@property (nonatomic,strong) NSNumber * pageSize;           //每页记录数
+@property (nonatomic,strong) NSString * onlyShowWaitToQz;  //只显示待取证:true
 
 @end
 
@@ -40,18 +43,17 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-
-
 @interface ParkingOccPercentListParam : NSObject
-@property (nonatomic,copy) NSString * parklotid;
-@property (nonatomic,strong) NSNumber * start;   //开始的索引号 从0开始
-@property (nonatomic,strong) NSNumber * length;  //显示的记录数 默认为10
+
+@property (nonatomic,copy)   NSString * fkParklotId;
+@property (nonatomic,strong) NSNumber * pageNum;//开始的索引号 从1开始
+@property (nonatomic,strong) NSNumber * pageSize;;  //显示的记录数 默认为10
 
 @end
 
 @interface ParkingOccPercentListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<ParkingOccPercentModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ParkingOccPercentModel * > * rows;    //包含AccidentListModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 @end
@@ -82,19 +84,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ParkingAreaDetailManger:LRBaseRequest
 
 /****** 请求数据 ******/
-@property (nonatomic, copy) NSString * parkplaceId;
+@property (nonatomic, copy) NSString * parkPlaceId;
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) ParkingAreaDetailModel * parkingReponse;
-
-@end
-
-#pragma mark - 标记无车
-
-@interface ParkingRemarkCarStatusManger:LRBaseRequest
-
-/****** 请求数据 ******/
-@property (nonatomic, copy) NSString * parkplaceId;
 
 @end
 
@@ -102,22 +95,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingForensicsParam :  NSObject
 
-@property (nonatomic,strong,nullable) NSNumber * roadId;      //道路ID 必填，从通用值【道路】获取ID
-@property (nonatomic,copy,nullable)   NSString * roadName;             //道路名字 如果roadId为0的时候设置
-@property (nonatomic,copy,nullable)   NSString * address;              //事故地点 必填
-@property (nonatomic,copy,nullable)   NSString * addressRemark;        //地址备注 非必填
+@property (nonatomic,copy) NSString * fkParkplaceId;                   //车位id
+
 @property (nonatomic,copy,nullable)   NSString * carNo;                //车牌号 必填
-@property (nonatomic,copy,nullable)   NSString * carColor;             //车牌颜色 必填
-@property (nonatomic,strong,nullable) NSNumber * longitude;            //经度 必填
-@property (nonatomic,strong,nullable) NSNumber * latitude;             //纬度 必填
+
 @property (nonatomic,copy,nullable)   NSArray  * files;                //事故图片 列表，最多可上传30张
 @property (nonatomic,copy,nullable)   NSString * remarks;              //违停图片名称  违章图片名称，字符串列表。和图片一对一，名称统一命名，车牌近照（一张）、违停照片（可多张）
-@property (nonatomic,copy,nullable)   NSString * taketimes;            //拍照时间 拍照时间，字符串列表，格式yyyy-MM-dd HH:mm:ss，和图片一对一
-//两个参数同时不为空才有效，没有则不填
+
 @property (nonatomic,copy,nullable)   NSString * cutImageUrl;          //裁剪车牌近照url
-@property (nonatomic,copy,nullable)   NSString * taketime;             //裁剪车牌近照时间
-@property (nonatomic,strong,nullable) NSNumber * isManualPos;          //0自动定位，1手动定位，默认0
-@property (nonatomic,strong,nullable) NSNumber * type;                   //停车取证：6001
+@property (nonatomic,copy,nullable)   NSString * absoluteUrl;          //绝对路径
 
 
 @end
@@ -131,6 +117,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @end
+
+#pragma mark - 证件识别API
+
+@interface ParkingIdentifyResponse : NSObject
+
+@property (nonatomic, copy) NSString * carNo;        //车牌号
+@property (nonatomic, copy) NSString * vehicleType;  //车辆类型
+@property (nonatomic, copy) NSString * color;        //车牌颜色
+@property (nonatomic, copy) NSString * name;         //姓名，或者车辆所有人
+@property (nonatomic, copy) NSString * idNo;         //证件号码
+@property (nonatomic, strong) NSNumber * isFristPark;  //是否为第一次违停记录
+@property (nonatomic, copy) NSString * cutImageUrl;  //车牌号近照路径
+@property (nonatomic, copy) NSString * absoluteUrl;  //显示用的
+
+@end
+
+@interface ParkingIdentifyManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, strong) ImageFileInfo * imageInfo;    //图片文件
+@property (nonatomic, assign) NSInteger type;               //文件类型1：车牌号 2：身份证 3：驾驶证 4：行驶证
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) ParkingIdentifyResponse * parkingIdentifyResponse; //证件信息
+
+@end
+
+#pragma mark - 验证是否为第一次违停
+
+
+
+@interface ParkingIsFirstParkManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, copy) NSString * carNo;        //车牌号
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSNumber * isFristPark;  //是否为第一次违停记录
+
+@end
+
 
 
 

@@ -36,6 +36,15 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNewRemark:) name:NOTIFICATION_ADDREMARK_SUCCESS object:nil];
     
+//    @weakify(self);
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处处理成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        @strongify(self);
+//        
+//        [self.tableView.mj_header beginRefreshing];
+//        
+//        
+//    }];
+    
     self.arr_remarks = [NSArray new];
     _tableView.isNeedPlaceholderView = YES;
     _tableView.firstReload = YES;

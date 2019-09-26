@@ -93,6 +93,7 @@
     
     if (IS_IPHONE_X_MORE){
         _layout_historyHeight.constant = _layout_historyHeight.constant + 24;
+        _layout_topHeight.constant = _layout_topHeight.constant + 24;
     }
     
     _tagView = [TTGTextTagCollectionView new];

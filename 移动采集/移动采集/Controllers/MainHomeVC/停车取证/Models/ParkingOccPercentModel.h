@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber * evidenceFlag;       //待处理取证工单状态       0=无；1=有；
 @property (nonatomic,copy) NSString * parklotid;            //片区id        片区唯一标识
 @property (nonatomic,copy) NSString * parklotname;          //片区名
-@property (nonatomic,copy) NSString * parkplaceid;          //车位ID
+@property (nonatomic,copy) NSString * pkParkplaceId;        //车位ID
 @property (nonatomic,copy) NSString * placenum;             //泊位号
 @property (nonatomic,copy) NSString * area;                 //所属区域
 @property (nonatomic,strong) NSNumber * parktype;           //车位类型

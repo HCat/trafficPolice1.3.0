@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingForensicsListViewModel : NSObject
 
+@property(strong, nonatomic)  NSNumber * longitude;
+@property(strong, nonatomic)  NSNumber * latitude;
 @property(strong, nonatomic)  NSNumber * index;          //分页第几页
 @property (nonatomic, strong) NSMutableArray * arr_content;
 @property(nonatomic,strong)   RACCommand * requestCommand;

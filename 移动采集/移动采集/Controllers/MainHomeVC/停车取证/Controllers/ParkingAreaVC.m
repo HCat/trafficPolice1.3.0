@@ -33,6 +33,7 @@
     
     if (self = [super init]) {
         self.viewModel = [[ParkingAreaViewModel alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parkingForensicsSuccess) name:NOTIFICATION_PARKINGFORENSICS_SUCCESS object:nil];
     }
     
     return self;
@@ -118,12 +119,8 @@
     
     for (int i = 0; i < items.count; i++) {
         
-        if (i ==0) {
-            [items_t addObject:items[i]];
-        }else{
-            ParkingAreaModel * model = items[i];
-            [items_t addObject:model.parklotname];
-        }
+        ParkingAreaModel * model = items[i];
+        [items_t addObject:model.parklotname];
         
     }
     
@@ -153,13 +150,10 @@
     _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
         NSLog(@"Did select item at index: %ld", indexPath);
         @strongify(self);
-        if (indexPath == 0) {
-            self.viewModel.parklotid = nil;
-        }else{
-            ParkingAreaModel * model = self.viewModel.arr_group[indexPath];
-            self.viewModel.parklotid = model.parklotId;
-        }
+        ParkingAreaModel * model = self.viewModel.arr_group[indexPath];
+        self.viewModel.parklotid = model.pkParklotId;
         [self.tableView.mj_header beginRefreshing];
+        
     };
     
     [self.view addSubview:_menuView];
@@ -177,7 +171,7 @@
 #pragma mark - 加载新数据
 
 - (void)reloadData{
-    self.viewModel.index = @0;
+    self.viewModel.index = @1;
     [self.viewModel.requestCommand execute:nil];
     
 }
@@ -224,6 +218,8 @@
         if([x isEqualToString:@"加载成功"]){
             
             [self setUpDropdownMenu:self.viewModel.arr_group];
+            ParkingAreaModel * model = self.viewModel.arr_group[0];
+            self.viewModel.parklotid = model.pkParklotId;
             [self.tableView.mj_header beginRefreshing];
             
         }
@@ -261,7 +257,8 @@
     ParkingOccPercentModel *itemModel = self.viewModel.arr_content[indexPath.row];
     
     ParkingAreaDetailViewModel * viewModel = [[ParkingAreaDetailViewModel alloc] init];
-    viewModel.parkplaceId = itemModel.parkplaceid;
+    viewModel.placenum = itemModel.placenum;
+    viewModel.parkplaceId = itemModel.pkParkplaceId;
     
     ParkingAreaDetailVC * vc = [[ParkingAreaDetailVC alloc] initWithViewModel:viewModel];
     [self.navigationController pushViewController:vc animated:YES];
@@ -275,8 +272,17 @@
 }
 
 
+#pragma mark - notification
+
+- (void)parkingForensicsSuccess{
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+
 - (void)dealloc{
     LxPrintf(@"ParkingAreaVC dealloc");
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_PARKINGFORENSICS_SUCCESS object:nil];
 }
 
 @end

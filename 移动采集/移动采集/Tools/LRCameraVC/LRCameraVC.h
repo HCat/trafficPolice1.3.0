@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CommonAPI.h"
+#import "ParkingForensicsAPI.h"
 #import "BaseViewController.h"
 
 @class LRCameraVC;
@@ -36,9 +37,16 @@ typedef void (^errorIdentifyCaptureBlock)(LRCameraVC
 
 @property (nonatomic,assign) BOOL isAccident;
 
+//说明，如果isParking为YES 表示是停车取证识别   默认是NO
+
+@property (nonatomic,assign) BOOL isParking;
+
 
 //请求服务端口得到的数据
 @property (nonatomic,strong) CommonIdentifyResponse *commonIdentifyResponse;
+
+//请求服务端口得到的数据
+@property (nonatomic,strong) ParkingIdentifyResponse *parkingIdentifyResponse;
 
 //拍照完之后调用的block
 @property (nonatomic,copy) fininshCaptureBlock fininshCaptureBlock;

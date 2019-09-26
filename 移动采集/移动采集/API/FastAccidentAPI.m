@@ -310,5 +310,110 @@
 @end
 
 
+#pragma mark - 用户提交的快处信息
 
+@implementation AccidentDisposePeopelModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"peopleId" : @"id",
+             };
+}
+
+@end
+
+
+@implementation FastAccidentDetailManger
+
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_FASTACCIDENT_PEOPLE;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"id":_accidentId};
+}
+
+
+//返回参数
+- (NSArray <AccidentDisposePeopelModel *> *)accidentFastPeopleModel{
+    
+    if (self.responseModel) {
+        
+        return [NSArray modelArrayWithClass:[AccidentDisposePeopelModel class] json:self.responseJSONObject[@"data"]];
+    }
+    
+    return nil;
+}
+
+
+@end
+
+
+#pragma mark - 处理用户提交的快处信息
+
+@implementation FastAccidentDealAccidentParam
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"accidentId" : @"id",
+             };
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"accidentInfoList" : [AccidentDisposePeopelModel class]
+             };
+}
+
+@end
+
+
+
+@implementation FastAccidentDealAccidentManger
+
+////请求方式
+//- (YTKRequestMethod)requestMethod
+//{
+//    return YTKRequestMethodPOST;
+//}
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_FASTACCIDENT_DEALACCIDENT;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+
+    return @{@"accidentJson":_accidentJson};;
+}
+
+
+@end
+
+#pragma mark - 是否有权限处理用户提交的快处信息
+
+
+@implementation FastAccidentCheckPermissManger
+
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_FASTACCIDENT_CHECKPERMISS;
+}
+
+
+//返回参数
+- (NSNumber *)hasPermiss{
+    
+    return self.responseModel.data[@"hasPermiss"];
+    
+}
+
+@end
 

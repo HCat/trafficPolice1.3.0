@@ -40,6 +40,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    @weakify(self);
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处处理成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        
+        [self.tb_content reloadData];
+        
+        
+    }];
+    
     self.str_search = _tf_search.text;
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
@@ -330,7 +339,9 @@
         AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
         t_vc.accidentType = _accidentType;
         t_vc.accidentId = t_model.accidentId;
+        t_vc.state = t_model;
         [self.navigationController pushViewController:t_vc animated:YES];
+        
         
         
     }

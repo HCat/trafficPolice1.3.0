@@ -1194,7 +1194,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
                 if (self.illegalType == IllegalTypePark) {
                             
-                    if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违停照片"]) {
+                    if ([t_str isEqualToString:@"车牌近照"] || [t_str isEqualToString:@"违法照片"]) {
     
                         if ([t_str isEqualToString:@"车牌近照"]) {
                             self.param.cutImageUrl = nil;

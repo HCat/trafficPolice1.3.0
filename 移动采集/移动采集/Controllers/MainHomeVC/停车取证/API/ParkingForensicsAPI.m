@@ -24,6 +24,10 @@
 
 @implementation ParkingForensicsListManger:LRBaseRequest
 
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
@@ -49,6 +53,8 @@
 
 @end
 
+#pragma mark -
+
 @implementation ParkingOccPercentListParam
 
 
@@ -57,7 +63,7 @@
 @implementation ParkingOccPercentListReponse
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"list" : [ParkingOccPercentModel class]
+    return @{@"rows" : [ParkingOccPercentModel class]
              };
 }
 
@@ -65,6 +71,10 @@
 
 @implementation ParkingOccPercentListManger
 
+
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
@@ -98,6 +108,10 @@
 
 @implementation ParkingAreaManger
 
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
@@ -108,7 +122,7 @@
 
     if (self.responseModel) {
     
-        return [NSArray modelArrayWithClass:[ParkingAreaModel class] json:self.responseJSONObject[@"data"]];
+        return _list = [NSArray modelArrayWithClass:[ParkingAreaModel class] json:self.responseJSONObject[@"data"]];
     }
     
     return nil;
@@ -125,6 +139,10 @@
 @implementation ParkingAreaDetailManger
 
 
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl
 {
@@ -134,7 +152,7 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return @{@"parkplaceId":_parkplaceId};
+    return @{@"parkPlaceId":_parkPlaceId};
 }
 
 
@@ -154,38 +172,22 @@
 @end
 
 
-#pragma mark - 标记无车
-
-@implementation ParkingRemarkCarStatusManger
-
-
-//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
-- (NSString *)requestUrl
-{
-    return URL_PARKING_REMARKCARSTATUS;
-}
-
-//请求参数
-- (nullable id)requestArgument
-{
-    return @{@"parkplaceId":_parkplaceId};
-}
-
-@end
-
-
 #pragma mark - 停车取证
 
 @implementation ParkingForensicsParam
 
 //黑名单，不被转换
 + (NSArray *)modelPropertyBlacklist {
-    return @[@"files"];
+    return @[@"files",@"absoluteUrl"];
 }
 
 @end
 
 @implementation ParkingForensicsManger
+
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
 - (NSString *)requestUrl{
@@ -196,7 +198,8 @@
 //请求参数
 - (nullable id)requestArgument
 {
-    return self.param.modelToJSONObject;
+    id obj = self.param.modelToJSONObject;
+    return obj;
 }
 
 //请求方式
@@ -240,6 +243,103 @@
         return nil;
     }
     
+}
+
+
+@end
+
+
+#pragma mark - 证件识别API
+
+@implementation ParkingIdentifyResponse
+
+@end
+
+@implementation ParkingIdentifyManger
+
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_PARKING_IDENTIFY;
+}
+
+- (YTKRequestMethod)requestMethod
+{
+    return YTKRequestMethodPOST;
+}
+
+- (NSTimeInterval)requestTimeoutInterval
+{
+    if (_type == 1) {
+        return 5.f;
+    }else{
+        return 30.f;
+    }
+    
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"type":@(_type)};
+}
+
+- (AFConstructingBlock)constructingBodyBlock {
+    return ^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:self.imageInfo.fileData name:self.imageInfo.name fileName:self.imageInfo.fileName mimeType:self.imageInfo.mimeType];
+    };
+}
+
+
+//返回参数
+- (ParkingIdentifyResponse *)parkingIdentifyResponse{
+    
+    if (self.responseModel.data) {
+        _parkingIdentifyResponse = [ParkingIdentifyResponse modelWithDictionary:self.responseModel.data];
+        return _parkingIdentifyResponse;
+    }
+    
+    return nil;
+}
+
+@end
+
+
+@implementation ParkingIsFirstParkManger
+
+
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_PARKINGAREA_ISFRIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"carNo":_carNo};
+}
+
+
+//返回参数
+- (NSNumber *)isFristPark{
+    
+    if (self.responseModel.data) {
+        
+        _isFristPark = self.responseModel.data;
+        
+        return _isFristPark;
+    }
+    
+    return nil;
 }
 
 

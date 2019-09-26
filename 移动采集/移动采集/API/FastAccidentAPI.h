@@ -103,4 +103,56 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 
 @end
 
+#pragma mark - 用户提交的快处信息
 
+@interface AccidentDisposePeopelModel : NSObject
+
+@property (nonatomic,strong) NSNumber * peopleId;
+@property (nonatomic,copy) NSString * name;
+@property (nonatomic,strong) NSNumber * responsibilityId;
+
+@end
+
+
+@interface FastAccidentDetailManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * accidentId; //事故ID
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSArray <AccidentDisposePeopelModel *> * accidentFastPeopleModel;
+
+@end
+
+#pragma mark - 处理用户提交的快处信息
+
+@interface FastAccidentDealAccidentParam : NSObject
+
+
+
+@property (nonatomic, strong) NSNumber * accidentId; //事故ID
+@property (nonatomic, strong) NSArray <AccidentDisposePeopelModel *> * accidentInfoList;
+
+@end
+
+
+
+@interface FastAccidentDealAccidentManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, copy) NSString * accidentJson;
+
+
+@end
+
+#pragma mark - 是否有权限处理用户提交的快处信息
+
+
+@interface FastAccidentCheckPermissManger:LRBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, strong) NSNumber * hasPermiss;
+
+@end

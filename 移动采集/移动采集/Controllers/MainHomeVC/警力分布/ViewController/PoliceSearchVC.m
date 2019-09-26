@@ -124,8 +124,8 @@
             self.lb_police.textColor = UIColorFromRGB(0x666666);
             self.lb_location.textColor = DefaultColor;
             self.lb_car.textColor = UIColorFromRGB(0x666666);
-            self.img_police.hidden = NO;
-            self.img_location.hidden = YES;
+            self.img_police.hidden = YES;
+            self.img_location.hidden = NO;
             self.img_car.hidden = YES;
             
         }else if ([x integerValue] == 2){

@@ -42,6 +42,21 @@
     
     [_tb_content registerNib:[UINib nibWithNibName:@"ProcessResultCell" bundle:nil] forCellReuseIdentifier:@"ProcessResultCellID"];
     
+    
+//    @weakify(self);
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处处理成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        @strongify(self);
+//        
+//        if (self.accidentType == AccidentTypeAccident) {
+//            [self loadAccidentDetail];
+//        }else if (self.accidentType == AccidentTypeFastAccident){
+//            [self loadAccidentFastDetail];
+//        }
+//        
+//        
+//    }];
+    
+    
     if (_accidentType == AccidentTypeAccident) {
         [self loadAccidentDetail];
     }else if (_accidentType == AccidentTypeFastAccident){

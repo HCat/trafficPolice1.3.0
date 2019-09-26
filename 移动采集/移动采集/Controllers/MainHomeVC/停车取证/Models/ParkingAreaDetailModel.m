@@ -8,6 +8,10 @@
 
 #import "ParkingAreaDetailModel.h"
 
+@implementation ParkingAreaTimeModel
+
+@end
+
 @implementation ParkingAreaDetailModel
 
 @end

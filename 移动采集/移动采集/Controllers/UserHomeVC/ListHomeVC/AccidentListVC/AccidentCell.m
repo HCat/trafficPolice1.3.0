@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_collect;
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_handleTitle;
+
 @property (weak, nonatomic) IBOutlet UILabel *lb_handle;
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_state;
@@ -58,20 +60,29 @@
             }else{
                 [_img_state setImage:[UIImage imageNamed:@"icon_accident_undone"]];
             }
+            
+            _lb_handleTitle.text = @"事故处理:";
+            _lb_handle.text     =  _model.operatorName;
+            
         }else{
+            //快处 ("未认定",0),("已认定",9),("未审核",11),("有疑义",12),
             if ([_model.state isEqualToNumber:@9]) {
-                [_img_state setImage:[UIImage imageNamed:@"icon_accident_done"]];
-            }else{
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_recognized"]];
+            }else if([_model.state isEqualToNumber:@11]){
                 [_img_state setImage:[UIImage imageNamed:@"icon_accident_undone"]];
+            }else{
+                [_img_state setImage:[UIImage imageNamed:@"icon_accident_unRecognized"]];
             }
+            _lb_handleTitle.text = @"事故认定:";
+            _lb_handle.text     =  _model.identPoliceName;
             
         }
         
         
         _lb_time.text       = [ShareFun timeWithTimeInterval:_model.happenTime];
-        _lb_roadName.text   = [NSString stringWithFormat:@"%@%@",_model.roadName,_model.address];
+        _lb_roadName.text   = _model.roadName ? [NSString stringWithFormat:@"%@%@",_model.roadName,_model.address] : _model.address;
         _lb_collect.text     = _model.entryManName;
-        _lb_handle.text     =  _model.operatorName;
+        
 
     }
 

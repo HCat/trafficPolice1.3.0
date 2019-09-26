@@ -8,18 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "ParkingForensicsAPI.h"
+#import "LRCameraVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol ParkingForensicsHeadViewDelegate <NSObject>
+
+- (void)recognitionCarNumber:(LRCameraVC *)cameraVC;
+
+@end
 
 @interface ParkingForensicsHeadView : UICollectionReusableView
 
 @property (nonatomic,strong) ParkingForensicsParam * param;
-@property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
-
-#pragma mark - 通过所在路段的名字获取得到roadId
-
-- (void)getRoadId;
-- (void)strogeLocationBeforeCommit;
+@property (nonatomic,weak) id<ParkingForensicsHeadViewDelegate>delegate;
 
 @end
 

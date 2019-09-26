@@ -16,7 +16,6 @@
         
         self.arr_content = @[].mutableCopy;
         self.arr_group = [NSMutableArray array];
-        [self.arr_group addObject:@"全部"];
     }
     
     return self;
@@ -33,29 +32,28 @@
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
-                
                 ParkingOccPercentListParam *param = [[ParkingOccPercentListParam alloc] init];
-                param.start = self.index;
-                param.length = @10;
-                param.parklotid = self.parklotid;
+                param.pageNum = self.index;
+                param.pageSize = @20;
+                param.fkParklotId = self.parklotid;
                 
                 ParkingOccPercentListManger * manger = [[ParkingOccPercentListManger alloc] init];
                 manger.param = param;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == CODE_SUCCESS) {
+                    if (manger.responseModel.code == 1) {
                         
-                        if ([self.index isEqualToNumber:@0]) {
+                        if ([self.index isEqualToNumber:@1]) {
                             [self.arr_content removeAllObjects];
                         }
                         
-                        [self.arr_content addObjectsFromArray:manger.parkingReponse.list];
+                        [self.arr_content addObjectsFromArray:manger.parkingReponse.rows];
                         
                         if (self.arr_content.count == manger.parkingReponse.total) {
                             [subscriber sendNext:@"请求最后一条成功"];
                         }else{
                             [subscriber sendNext:@"加载成功"];
-                            self.index = @([self.index integerValue] + [param.length integerValue]);
+                            self.index = @([self.index integerValue] + 1);
                         }
                         
                     }else{
@@ -95,7 +93,7 @@
                 
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == CODE_SUCCESS) {
+                    if (manger.responseModel.code == 1) {
                         
                          [self.arr_group addObjectsFromArray:manger.list];
                          [subscriber sendNext:@"加载成功"];

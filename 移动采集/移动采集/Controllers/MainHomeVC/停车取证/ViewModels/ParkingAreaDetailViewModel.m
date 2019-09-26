@@ -22,10 +22,10 @@
                 
         
                 ParkingAreaDetailManger * manger = [[ParkingAreaDetailManger alloc] init];
-                manger.parkplaceId = self.parkplaceId;
+                manger.parkPlaceId = self.parkplaceId;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == CODE_SUCCESS) {
+                    if (manger.responseModel.code == 1) {
                         
                         self.areaDetailModel = manger.parkingReponse;
                         [subscriber sendNext:nil];
@@ -50,42 +50,5 @@
     
 }
 
-
-- (RACCommand *)noCarCommand{
-    
-    if (_noCarCommand == nil) {
-        
-        @weakify(self);
-        _noCarCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            @strongify(self);
-            RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-                
-                
-                ParkingRemarkCarStatusManger * manger = [[ParkingRemarkCarStatusManger alloc] init];
-                manger.parkplaceId = self.parkplaceId;
-                [manger configLoadingTitle:@"标定"];
-                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    
-                    if (manger.responseModel.code == CODE_SUCCESS) {
-                        [subscriber sendNext:nil];
-                    }
-                    [subscriber sendCompleted];
-                    
-                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    [subscriber sendCompleted];
-                }];
-                
-                return nil;
-            }];
-            
-            return t_signal;
-        }];
-        
-        
-    }
-    
-    return _noCarCommand;
-    
-}
 
 @end

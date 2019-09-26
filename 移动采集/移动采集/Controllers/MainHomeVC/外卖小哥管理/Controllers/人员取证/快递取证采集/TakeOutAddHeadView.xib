@@ -61,7 +61,7 @@
                         <action selector="handlebtnPersonLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="ORe-WM-vi0"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传照片(选填):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-BN-exc">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传照片(必填):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-BN-exc">
                     <rect key="frame" x="15" y="357" width="100.5" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="4ZQ-Yf-Gn4"/>
@@ -173,7 +173,6 @@
                 <constraint firstItem="Y4w-MW-NKN" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="mUn-6o-wJn"/>
                 <constraint firstAttribute="trailing" secondItem="ohk-xD-iGJ" secondAttribute="trailing" constant="10" id="nZM-Wi-eWt"/>
                 <constraint firstItem="u6Y-RY-GKc" firstAttribute="leading" secondItem="t3C-H2-anL" secondAttribute="leading" id="u9L-CJ-bgW"/>
-                <constraint firstItem="u6Y-RY-GKc" firstAttribute="leading" secondItem="hkM-9P-yBj" secondAttribute="trailing" constant="15" id="uWz-AR-xQt"/>
                 <constraint firstItem="Bd0-Es-eHd" firstAttribute="top" secondItem="x7L-wn-KJr" secondAttribute="bottom" id="uYm-uW-1AE"/>
                 <constraint firstItem="ohk-xD-iGJ" firstAttribute="leading" secondItem="u6Y-RY-GKc" secondAttribute="trailing" constant="10" id="vfn-xR-YVE"/>
                 <constraint firstItem="Y4w-MW-NKN" firstAttribute="height" secondItem="t3C-H2-anL" secondAttribute="height" id="ymu-mE-VGl"/>

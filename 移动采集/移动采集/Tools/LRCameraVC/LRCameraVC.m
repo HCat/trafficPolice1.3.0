@@ -210,6 +210,90 @@
 
 }
 
+//拍照完之后停车取证请求服务端获取证件信息
+- (void)getParkingIdentifyRequest{
+
+    WS(weakSelf);
+    
+    ParkingIdentifyManger *manger = [[ParkingIdentifyManger alloc] init];
+    [manger configLoadingTitle:@"识别"];
+    manger.isNeedShowHud = NO;
+    manger.isNoShowFail = YES;
+    
+    manger.imageInfo = self.imageInfo;
+    manger.type = self.type;
+    
+    if (_isIllegal && _type == 5) {
+        manger.type = 1;
+    }
+    
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        SW(strongSelf, weakSelf);
+        
+        if (manger.responseModel.code == 1) {
+            
+            [LRShowHUD showSuccess:@"识别成功" duration:1.2f];
+            
+            if (manger.parkingIdentifyResponse) {
+                
+                strongSelf.parkingIdentifyResponse = manger.parkingIdentifyResponse;
+                
+                if (manger.parkingIdentifyResponse.color) {
+                    strongSelf.carColor = manger.parkingIdentifyResponse.color;
+                }
+                
+                if (strongSelf.parkingIdentifyResponse.cutImageUrl.length == 0 || !strongSelf.parkingIdentifyResponse.cutImageUrl) {
+                    if (strongSelf.type == 5 && strongSelf.isIllegal) {
+                       [LRShowHUD showCarError:@"请上传车牌近照" duration:1.5];
+                        
+                       //[LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+                    }else if(strongSelf.type == 1){
+                       [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+                       //[LRShowHUD showError:@"识别失败" duration:1.5f];
+                    }
+                    
+                }
+                
+                if (strongSelf.fininshCaptureBlock) {
+                    strongSelf.fininshCaptureBlock(strongSelf);
+                }
+                [strongSelf dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+                
+            }
+        }else{
+            [LRShowHUD showError:@"识别失败" duration:1.2f];
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        SW(strongSelf, weakSelf);
+        if (strongSelf.fininshCaptureBlock) {
+            
+            if (strongSelf.type == 5 && strongSelf.isIllegal) {
+                [LRShowHUD showCarError:@"请上传车牌近照" duration:1.5];
+                
+                //[LRShowHUD showWarning:@"请上传车牌近照" duration:1.5f];
+            }else if(strongSelf.type == 1){
+                [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+               
+            }
+            
+            strongSelf.fininshCaptureBlock(strongSelf);
+        }
+        
+        [strongSelf dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+
+    }];
+    
+
+}
+
+
 #pragma mark - 初始化相机对象
 
 -(void)initializeCamera{
@@ -360,7 +444,12 @@
         strongSelf.imageInfo = [[ImageFileInfo alloc] initWithImage:images[0] withName:key_file];
         strongSelf.image = strongSelf.imageInfo.image;
         //请求数据获取证件信息
-        [strongSelf getIdentifyRequest];
+        if (strongSelf.isParking) {
+            [strongSelf getParkingIdentifyRequest];
+        }else{
+            [strongSelf getIdentifyRequest];
+        }
+        
         
     }];
     [actionSheet showPhotoLibrary];
@@ -435,7 +524,12 @@
                 strongSelf.image = strongSelf.imageInfo.image;
                 //请求数据获取证件信息
                 [hud hide];
-                [strongSelf getIdentifyRequest];
+                if (strongSelf.isParking) {
+                    [strongSelf getParkingIdentifyRequest];
+                }else{
+                    [strongSelf getIdentifyRequest];
+                }
+                
             
             });
             

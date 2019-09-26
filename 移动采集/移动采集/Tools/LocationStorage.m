@@ -48,7 +48,6 @@ LRSingletonM(Default)
     [self setIsVehicle:YES];
     [self setIsInhibitLine:YES];
     [self setIsTakeOut:YES];
-    [self setIsForensics:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -204,18 +203,6 @@ LRSingletonM(Default)
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISTAKEOUT];
     
 }
-
-- (void)setIsForensics:(BOOL)isForensics{
-    [[NSUserDefaults standardUserDefaults] setBool:isForensics forKey:USERDEFAULT_KEY_ISFORENSICS];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-}
-
-- (BOOL)isForensics{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISFORENSICS];
-    
-}
-
 
 
 #pragma mark -
@@ -412,26 +399,5 @@ LRSingletonM(Default)
     
 }
 
-
-#pragma mark -
-- (void)setForensics:(LocationStorageModel *)forensics{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:forensics];
-    [userDefaults setObject:data forKey:USERDEFAULT_KEY_FORENSICS];
-    [userDefaults synchronize];
-    
-}
-
-- (LocationStorageModel *)forensics{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_FORENSICS];
-    LocationStorageModel *forensics = nil;
-    if (data) {
-        forensics = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    }
-    
-    return forensics;
-    
-}
 
 @end
