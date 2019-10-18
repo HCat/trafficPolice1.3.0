@@ -47,6 +47,13 @@
     
     [self.viewModel.groupCommand execute:nil];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    if (self.viewModel.parklotid) {
+        [self.tableView.mj_header beginRefreshing];
+    }
     
 }
 

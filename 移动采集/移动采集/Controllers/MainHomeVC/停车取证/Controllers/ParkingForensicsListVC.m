@@ -50,11 +50,16 @@
     [self configUI];
     [self bindViewModel];
     
-    [[LocationHelper sharedDefault] startLocation];
     
     [self.viewModel.groupCommand execute:nil];
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [[LocationHelper sharedDefault] startLocation];
 }
 
 #pragma mark - 配置UI界面
