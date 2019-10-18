@@ -21,6 +21,8 @@
 #import "MessageCell.h"
 #import "MessageDetailVC.h"
 #import "IllegalOperatCarVC.h"
+#import "MainHomeVC.h"
+#import "ParkingForensicsListVC.h"
 
 #import "PFNavigationDropdownMenu.h"
 
@@ -102,7 +104,7 @@
 
 - (void)setUpDropdownMenu{
     WS(weakSelf);
-    NSArray *items = @[@"全部", @"系统消息",@"警务消息", @"事故报警", @"特殊车辆报警", @"非法营运工程车报警"];
+    NSArray *items = @[@"全部", @"系统消息",@"警务消息", @"事故报警", @"特殊车辆报警", @"非法营运工程车报警",@"停车取证消息"];
     
     _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, IS_IPHONE_X_MORE ? 88 : 64, SCREEN_WIDTH, 44)
                                                                                    title:items.firstObject
@@ -137,6 +139,8 @@
             strongSelf.messageType = MessageTypeCar;
         }else if (indexPath == 5){
             strongSelf.messageType = MessageTypeIllegalCar;
+        }else if (indexPath == 6){
+            strongSelf.messageType = MessageTypePark;
         }
         
         [strongSelf reloadDataUseMJRefresh];
@@ -297,7 +301,69 @@
         IllegalOperatCarVC *t_vc = [[IllegalOperatCarVC alloc] init];
         t_vc.model = t_model;
         [self.navigationController pushViewController:t_vc animated:YES];
+    }else if([t_model.type isEqualToNumber:@103]){
+        
+        if ([t_model.flag isEqualToNumber:@0]) {
+            
+            IdentifySetMsgReadManger *manger = [[IdentifySetMsgReadManger alloc] init];
+            manger.msgId = t_model.msgId;
+            
+            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+                if (manger.responseModel.code == CODE_SUCCESS) {
+                    t_model.flag = @1;
+                
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:t_model.source];
+                }
+                
+            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                
+            
+            }];
+            
+        }
+        
+        AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+        UINavigationController *nav = (UINavigationController *)app.vc_tabBar.viewControllers[2];
+        MainHomeVC * mainhomeVC = (MainHomeVC *)nav.viewControllers[0];
+        if (mainhomeVC.viewModel.arr_illegal && [mainhomeVC.viewModel.arr_illegal count] > 0) {
+            for (CommonMenuModel * menuModel in mainhomeVC.viewModel.arr_illegal) {
+                if ([menuModel.funTitle isEqualToString:@"停车取证"]){
+                
+                    if ([menuModel.isUser isEqualToNumber:@1]) {
+                    
+                        @weakify(self);
+                        ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
+                    
+                        [viewModel.command_isRegister.executionSignals.switchToLatest subscribeNext:^(id _Nullable x) {
+                            @strongify(self);
+                        
+                            if ([x isKindOfClass:[NSNumber class]]) {
+                            
+                                if ([x intValue] == 0 || [x intValue] == 2) {
+                                    [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                                }else {
+                                    ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
+                                    [self.navigationController pushViewController:t_vc animated:YES];
+                                }
+                            
+                            }else{
+                                [ShareFun showTipLable:@"未知错误,技术人员正在修复,请稍后再试."];
+                            }
+                        
+                        }];
+                    
+                        [viewModel.command_isRegister execute:nil];
+                    
+                    }else{
+                        [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                    }
+                }
+            }
+        }
+    
     }else{
+        
         t_model.source = @0;
         MessageDetailVC *t_vc = [[MessageDetailVC alloc] init];
         t_vc.model = t_model;

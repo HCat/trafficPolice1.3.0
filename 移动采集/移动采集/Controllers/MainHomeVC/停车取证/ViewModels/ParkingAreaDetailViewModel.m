@@ -25,7 +25,7 @@
                 manger.parkPlaceId = self.parkplaceId;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == 1) {
+                    if (manger.responseModel.code == CODE_LAJI_SUCCESS) {
                         
                         self.areaDetailModel = manger.parkingReponse;
                         [subscriber sendNext:nil];

@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, MessageType) {
     MessageTypeIllegalCar = 4,  //非法营运车辆通知
     MessageTypeTask   = 101,    //101任务通知
     MessageTypeWatch  = 100,    //100排班通知
-    
+    MessageTypePark   = 103,    //103停车取证
 };
 
 typedef NS_ENUM(NSUInteger, UpCacheType) {

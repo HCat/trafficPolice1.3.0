@@ -15,6 +15,7 @@
                 <outlet property="lb_noPayMoney" destination="gMi-yh-4Jb" id="bXg-gT-2A5"/>
                 <outlet property="lb_payMoney" destination="811-Kt-v7H" id="1oC-9g-YfQ"/>
                 <outlet property="lb_status" destination="HnY-8O-jZg" id="o2i-cC-Sw6"/>
+                <outlet property="lb_statusTime" destination="Qg9-vn-Jnx" id="8f8-KX-sSy"/>
                 <outlet property="lb_time" destination="dt3-BB-Uet" id="dlI-fr-Pqk"/>
                 <outlet property="stopTime" destination="onq-Zp-kn9" id="6Vw-yV-irR"/>
                 <outlet property="v_noCar" destination="2ni-vr-igs" id="R93-Ua-INZ"/>
@@ -180,11 +181,19 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg9-vn-Jnx">
+                            <rect key="frame" x="326" y="13.5" width="4" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstItem="Qg9-vn-Jnx" firstAttribute="centerY" secondItem="HnY-8O-jZg" secondAttribute="centerY" id="6yv-Ns-GSp"/>
                         <constraint firstItem="HnY-8O-jZg" firstAttribute="centerY" secondItem="tja-1B-nxW" secondAttribute="centerY" id="O51-8o-cQ8"/>
                         <constraint firstAttribute="height" constant="45" id="PbH-3R-5fW"/>
+                        <constraint firstAttribute="trailing" secondItem="Qg9-vn-Jnx" secondAttribute="trailing" constant="15" id="bh7-8w-udb"/>
                     </constraints>
                 </view>
             </subviews>

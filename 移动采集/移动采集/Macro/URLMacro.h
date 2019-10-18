@@ -19,9 +19,8 @@
 #define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
-//http://192.168.10.88/api
 
-#define PARK_DEBUG_URL @"http://preman.degal.cn/api" //停车取证测试环境
+#define PARK_DEBUG_URL @"http://preman.degal.cn/api" //停车取证测试环境 //http://192.168.10.88/api
 #define PARK_RELEASE_URL @"http://topark.host/api"   //停车取证正式环境
 
 
@@ -250,6 +249,7 @@
 #define URL_PARKING_FORENSICS @"jwt/appParkProcess/saveProcess"                     //采集停车取证信息
 #define URL_PARKING_IDENTIFY @"appCommon/identify"                                  //停车取证采集照片识别
 #define URL_PARKINGAREA_ISFRIST @"appCommon/isFirstPark"                            //验证是否为第一次违停
+#define URL_PARKINGAREA_ISREGIST @"app/sys/isRegister"                              //验证用户是否在系统有效注册
 
 
 #pragma mark - 停车场管理

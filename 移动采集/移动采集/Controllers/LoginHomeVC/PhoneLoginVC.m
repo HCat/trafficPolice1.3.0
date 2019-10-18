@@ -8,6 +8,7 @@
 
 #import "PhoneLoginVC.h"
 #import "LRCountDownButton.h"
+#import "LAJIBaseRequest.h"
 #import "LoginAPI.h"
 #import "JPUSHService.h"
 #import "XTVerCodeInput.h"
@@ -176,7 +177,7 @@
             [ShareValue sharedDefault].token = manger.userModel.token;
             /*********** 全局为统一的Url添加token ************/
             [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
-            
+            //[LAJIBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
             dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.5f *NSEC_PER_SEC);
             dispatch_after(time, dispatch_get_main_queue(), ^{
                 /*********** 切换到首页界面 ************/

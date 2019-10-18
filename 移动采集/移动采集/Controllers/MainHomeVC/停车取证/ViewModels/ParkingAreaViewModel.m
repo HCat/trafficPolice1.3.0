@@ -41,7 +41,7 @@
                 manger.param = param;
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == 1) {
+                    if (manger.responseModel.code == CODE_LAJI_SUCCESS) {
                         
                         if ([self.index isEqualToNumber:@1]) {
                             [self.arr_content removeAllObjects];
@@ -93,7 +93,7 @@
                 
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
-                    if (manger.responseModel.code == 1) {
+                    if (manger.responseModel.code == CODE_LAJI_SUCCESS) {
                         
                          [self.arr_group addObjectsFromArray:manger.list];
                          [subscriber sendNext:@"加载成功"];

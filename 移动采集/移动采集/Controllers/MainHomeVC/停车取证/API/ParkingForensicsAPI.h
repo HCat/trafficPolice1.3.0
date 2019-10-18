@@ -6,7 +6,7 @@
 //  Copyright © 2019 Hcat. All rights reserved.
 //
 
-#import "LRBaseRequest.h"
+#import "LAJIBaseRequest.h"
 #import "ParkingForensicsModel.h"
 #import "ParkingOccPercentModel.h"
 #import "ParkingAreaModel.h"
@@ -15,8 +15,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+#pragma mark - 片区工单
+
 @interface ParkingForensicsListParam : NSObject
 
+@property (nonatomic,copy)   NSString * fkParklotId;        //片区iD
 @property (nonatomic,strong) NSNumber * longitude;          //巡检员经度
 @property (nonatomic,strong) NSNumber * latitude;           //巡检员纬度
 @property (nonatomic,strong) NSNumber * pageNum;            //页码数
@@ -32,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ParkingForensicsListManger:LRBaseRequest
+@interface ParkingForensicsListManger:LAJIBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) ParkingForensicsListParam * param;
@@ -42,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark - 片区车位
 
 @interface ParkingOccPercentListParam : NSObject
 
@@ -58,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ParkingOccPercentListManger:LRBaseRequest
+@interface ParkingOccPercentListManger:LAJIBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, strong) ParkingOccPercentListParam * param;
@@ -70,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 全部片区列表
 
-@interface ParkingAreaManger:LRBaseRequest
+@interface ParkingAreaManger:LAJIBaseRequest
 
 /****** 返回数据 ******/
 @property (nonatomic,copy)   NSArray<ParkingAreaModel * > * list;    //包含AccidentListModel对象
@@ -81,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 车位详情
 
-@interface ParkingAreaDetailManger:LRBaseRequest
+@interface ParkingAreaDetailManger:LAJIBaseRequest
 
 /****** 请求数据 ******/
 @property (nonatomic, copy) NSString * parkPlaceId;
@@ -110,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface ParkingForensicsManger:LRBaseRequest
+@interface ParkingForensicsManger:LAJIBaseRequest
 
 @property (nonatomic, strong) ParkingForensicsParam * param;
 @property (nonatomic, assign) CGFloat progress;
@@ -133,7 +137,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ParkingIdentifyManger:LRBaseRequest
+@interface ParkingIdentifyManger:LAJIBaseRequest
 
 /****** 请求数据 ******/
 
@@ -149,7 +153,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface ParkingIsFirstParkManger:LRBaseRequest
+@interface ParkingIsFirstParkManger:LAJIBaseRequest
 
 /****** 请求数据 ******/
 
@@ -157,6 +161,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /****** 返回数据 ******/
 @property (nonatomic, strong) NSNumber * isFristPark;  //是否为第一次违停记录
+
+@end
+
+
+#pragma mark - 验证用户是否在系统有效注册
+
+
+@interface ParkingIsRegisteManger:LAJIBaseRequest
+
+/****** 请求数据 ******/
+
+@property (nonatomic, copy) NSString * phone;        //车牌号
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) NSNumber * isRegiste;  //是否为第一次违停记录
 
 @end
 

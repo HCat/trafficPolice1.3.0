@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ParkingForensicsHeadViewDelegate <NSObject>
 
-- (void)recognitionCarNumber:(LRCameraVC *)cameraVC;
+- (void)recognitionCarNumber:(ImageFileInfo * )imageInfo;
 
 @end
 
 @interface ParkingForensicsHeadView : UICollectionReusableView
 
 @property (nonatomic,strong) ParkingForensicsParam * param;
+@property(copy, nonatomic, nullable)  NSString * placenum;
 @property (nonatomic,weak) id<ParkingForensicsHeadViewDelegate>delegate;
 
 @end

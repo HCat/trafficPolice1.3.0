@@ -17,6 +17,7 @@
 #import "UserModel.h"
 #import "LoginHomeVC.h"
 #import "LRBaseRequest.h"
+#import "LAJIBaseRequest.h"
 
 #import "UserModel.h"
 #import "WebSocketHelper.h"
@@ -489,6 +490,7 @@
     
     [ShareFun closeWebSocket];
     [LRBaseRequest clearRequestFilters];
+    //[LAJIBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;
     [ShareValue sharedDefault].phone = nil;
     [ShareValue sharedDefault].orgId = nil;

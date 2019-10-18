@@ -7,7 +7,10 @@
 //
 
 #import "ShowTabSuperVC.h"
+#import "MainHomeViewModel.h"
 
 @interface MainHomeVC : ShowTabSuperVC
+
+@property (nonatomic,strong) MainHomeViewModel * viewModel;
 
 @end

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber * start;     //分页起始
 @property (nonatomic, strong) NSNumber * length;     //分页长度
 @property (nonatomic, copy) NSString * searchWord;     //关键词    关键词
-@property (nonatomic, strong) NSNumber * type;     //类型    0车牌号1强制单号 2 车架号
+@property (nonatomic, strong) NSNumber * type;     //类型   0车牌号 1强制单号 2 车架号
 
 @end
 

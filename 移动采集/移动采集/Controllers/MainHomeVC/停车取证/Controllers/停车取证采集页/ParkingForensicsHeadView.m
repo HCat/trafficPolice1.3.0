@@ -11,7 +11,8 @@
 #import "SearchLocationVC.h"
 #import "PersonLocationVC.h"
 #import "ParkingForensicsVC.h"
-#import "LRCameraVC.h"
+//#import "LRCameraVC.h"
+#import "ParkCameraVC.h"
 
 
 @interface ParkingForensicsHeadView()
@@ -60,29 +61,15 @@
     
     ParkingForensicsVC * t_vc = (ParkingForensicsVC *)[ShareFun findViewController:self withClass:[ParkingForensicsVC class]];
     
-    LRCameraVC *home = [[LRCameraVC alloc] init];
+    ParkCameraVC *home = [[ParkCameraVC alloc] init];
     home.type = 1;
-    home.isParking = YES;
-    home.fininshCaptureBlock = ^(LRCameraVC *camera) {
+    home.park_string = self.placenum;
+    home.fininshCaptureBlock = ^(ImageFileInfo * imageInfo) {
         
-        if (camera) {
-            
-            @strongify(self);
-            
-            if (camera.type == 1) {
-                
-                if (camera.parkingIdentifyResponse) {
-                
-                    self.param.carNo        = camera.parkingIdentifyResponse.carNo;
-                    self.param.cutImageUrl  = camera.parkingIdentifyResponse.absoluteUrl;
-                    self.param.absoluteUrl  = camera.parkingIdentifyResponse.cutImageUrl;
-                }
-                
-                if (self.delegate && [self.delegate respondsToSelector:@selector(recognitionCarNumber:)]) {
-                    [self.delegate recognitionCarNumber:camera];
-                }
-                
-            }
+        @strongify(self);
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(recognitionCarNumber:)]) {
+            [self.delegate recognitionCarNumber:imageInfo];
         }
     };
     

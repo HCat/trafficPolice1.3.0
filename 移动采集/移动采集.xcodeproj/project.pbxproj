@@ -88,6 +88,8 @@
 		CE1E3FFC20F48EB2003A5595 /* AccidentUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1E3FFA20F48EB2003A5595 /* AccidentUpCell.xib */; };
 		CE1E400020F4BB44003A5595 /* AccidentUpImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1E3FFE20F4BB44003A5595 /* AccidentUpImageCell.m */; };
 		CE1E400120F4BB44003A5595 /* AccidentUpImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1E3FFF20F4BB44003A5595 /* AccidentUpImageCell.xib */; };
+		CE1F10332356F79900E5CA48 /* ParkCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1F10312356F79900E5CA48 /* ParkCameraVC.m */; };
+		CE1F10342356F79900E5CA48 /* ParkCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1F10322356F79900E5CA48 /* ParkCameraVC.xib */; };
 		CE209712215DCD09007AEF4B /* IllegalDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE209711215DCD09007AEF4B /* IllegalDBModel.m */; };
 		CE21D1042330CAE9004F4B18 /* ParkingManageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21D1032330CAE9004F4B18 /* ParkingManageViewModel.m */; };
 		CE21D1082330CB0D004F4B18 /* ParkingManageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21D1062330CB0D004F4B18 /* ParkingManageListCell.m */; };
@@ -585,6 +587,7 @@
 		CEA389BB20B3BED7009B0A32 /* VehicleAlarmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA389BA20B3BED7009B0A32 /* VehicleAlarmModel.m */; };
 		CEA50C01202C47F2006E5A55 /* VehicleReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */; };
 		CEA50C02202C47F2006E5A55 /* VehicleReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */; };
+		CEA5FC9A233DBE8000D9E10B /* LAJIBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA5FC99233DBE8000D9E10B /* LAJIBaseRequest.m */; };
 		CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DA1F1CDFE300741A6F /* ShareFun.m */; };
 		CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DE1F1CE13200741A6F /* SAMKeychain.m */; };
 		CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96E01F1CE13200741A6F /* SAMKeychainQuery.m */; };
@@ -849,6 +852,9 @@
 		CE1E3FFD20F4BB44003A5595 /* AccidentUpImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentUpImageCell.h; sourceTree = "<group>"; };
 		CE1E3FFE20F4BB44003A5595 /* AccidentUpImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentUpImageCell.m; sourceTree = "<group>"; };
 		CE1E3FFF20F4BB44003A5595 /* AccidentUpImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentUpImageCell.xib; sourceTree = "<group>"; };
+		CE1F10302356F79900E5CA48 /* ParkCameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkCameraVC.h; sourceTree = "<group>"; };
+		CE1F10312356F79900E5CA48 /* ParkCameraVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkCameraVC.m; sourceTree = "<group>"; };
+		CE1F10322356F79900E5CA48 /* ParkCameraVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkCameraVC.xib; sourceTree = "<group>"; };
 		CE209710215DCD09007AEF4B /* IllegalDBModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalDBModel.h; sourceTree = "<group>"; };
 		CE209711215DCD09007AEF4B /* IllegalDBModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalDBModel.m; sourceTree = "<group>"; };
 		CE21D1022330CAE9004F4B18 /* ParkingManageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingManageViewModel.h; sourceTree = "<group>"; };
@@ -1687,6 +1693,8 @@
 		CEA50BFE202C47F2006E5A55 /* VehicleReportVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleReportVC.h; sourceTree = "<group>"; };
 		CEA50BFF202C47F2006E5A55 /* VehicleReportVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleReportVC.m; sourceTree = "<group>"; };
 		CEA50C00202C47F2006E5A55 /* VehicleReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleReportVC.xib; sourceTree = "<group>"; };
+		CEA5FC98233DBE8000D9E10B /* LAJIBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAJIBaseRequest.h; sourceTree = "<group>"; };
+		CEA5FC99233DBE8000D9E10B /* LAJIBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAJIBaseRequest.m; sourceTree = "<group>"; };
 		CEAA96D91F1CDFE300741A6F /* ShareFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFun.h; sourceTree = "<group>"; };
 		CEAA96DA1F1CDFE300741A6F /* ShareFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFun.m; sourceTree = "<group>"; };
 		CEAA96DD1F1CE13200741A6F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
@@ -4082,6 +4090,8 @@
 				CEAA96F41F1CE97B00741A6F /* LRBaseResponse.m */,
 				CEAA96F51F1CE97B00741A6F /* YTKUrlArgumentsFilter.h */,
 				CEAA96F61F1CE97B00741A6F /* YTKUrlArgumentsFilter.m */,
+				CEA5FC98233DBE8000D9E10B /* LAJIBaseRequest.h */,
+				CEA5FC99233DBE8000D9E10B /* LAJIBaseRequest.m */,
 			);
 			path = BaseNetwork;
 			sourceTree = "<group>";
@@ -4464,6 +4474,9 @@
 				CEFEFCFB1F29C22500C33CBD /* LRCameraVC.h */,
 				CEFEFCFC1F29C22500C33CBD /* LRCameraVC.m */,
 				CEFEFCFD1F29C22500C33CBD /* LRCameraVC.xib */,
+				CE1F10302356F79900E5CA48 /* ParkCameraVC.h */,
+				CE1F10312356F79900E5CA48 /* ParkCameraVC.m */,
+				CE1F10322356F79900E5CA48 /* ParkCameraVC.xib */,
 				CEFEFCFE1F29C22500C33CBD /* maskingView.h */,
 				CEFEFCFF1F29C22500C33CBD /* maskingView.m */,
 			);
@@ -4722,6 +4735,7 @@
 				CE93BC6421479CBB001F2976 /* SpecialEditGroupView.xib in Resources */,
 				CE25F50821255F8D0067E125 /* IllegalRecordImageCell.xib in Resources */,
 				CE1B7EFE20BE8594002243AF /* VehicleTrafficTopCell.xib in Resources */,
+				CE1F10342356F79900E5CA48 /* ParkCameraVC.xib in Resources */,
 				CE5BA2A420F73C6C00B93523 /* AccidentPeopleCell.xib in Resources */,
 				CE26B25222EE938300A1D1A1 /* ParkingForensicsHeadView.xib in Resources */,
 				CE5A01051F611CC6000F13CC /* VehicleCarCell.xib in Resources */,
@@ -4946,6 +4960,7 @@
 				CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */,
 				CED37BA222EAE83D003BCD45 /* ParkingAreaModel.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
+				CE1F10332356F79900E5CA48 /* ParkCameraVC.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE4139FB2178CF27006AA441 /* UIButton+EnlargeTouchArea.m in Sources */,
 				CE48A8FC22559EF300D423C6 /* AttendanceSignInVC.m in Sources */,
@@ -5049,6 +5064,7 @@
 				CE93BC672147A756001F2976 /* SpecialDeleteCar.m in Sources */,
 				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
 				CE7E9F2920BC0FE40018583A /* DriverChooseView.m in Sources */,
+				CEA5FC9A233DBE8000D9E10B /* LAJIBaseRequest.m in Sources */,
 				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
 				CE4139E42178CF26006AA441 /* ZLBrushBoardImageView.m in Sources */,
 				CE27586E22ED7073006CDD6F /* ParkingAreaDetailModel.m in Sources */,
@@ -5451,7 +5467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5461,6 +5477,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5474,7 +5491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5484,6 +5501,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

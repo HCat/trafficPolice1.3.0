@@ -11,15 +11,18 @@
 #import "ParkingForensicsListCell.h"
 #import <MJRefresh.h>
 #import "UITableView+Lr_Placeholder.h"
+#import "PFNavigationDropdownMenu.h"
 #import "NetWorkHelper.h"
 #import "ParkingAreaVC.h"
 #import "ParkingAreaDetailVC.h"
+#import <PureLayout.h>
+#import "SRAlertView.h"
 
 @interface ParkingForensicsListVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *btn_checkArea;
-
+@property (strong,nonatomic) PFNavigationDropdownMenu *menuView;
 
 @property(nonatomic,strong) ParkingForensicsListViewModel * viewModel;
 
@@ -49,9 +52,75 @@
     
     [[LocationHelper sharedDefault] startLocation];
     
+    [self.viewModel.groupCommand execute:nil];
+    
+    
 }
 
 #pragma mark - 配置UI界面
+
+
+#pragma mark - set
+
+- (void)setUpDropdownMenu:(NSArray *)items{
+    
+    @weakify(self);
+    
+    NSMutableArray *items_t = [NSMutableArray array];
+    
+    for (int i = 0; i < items.count; i++) {
+        
+        ParkingAreaModel * model = items[i];
+        [items_t addObject:model.parklotname];
+        
+    }
+    
+    if (_menuView) {
+        [_menuView removeFromSuperview];
+        _menuView = nil;
+    }
+
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)
+                                                          title:items_t.firstObject
+                                                          items:items_t
+                                                  containerView:self.view];
+    _menuView.backgroundColor = [UIColor whiteColor];
+    
+    _menuView.cellHeight = 50;
+    _menuView.cellBackgroundColor = [UIColor whiteColor];
+    _menuView.cellSelectionColor = [UIColor whiteColor];
+    _menuView.cellTextLabelColor = DefaultTextColor;
+    _menuView.cellTextLabelFont = [UIFont systemFontOfSize:14.f];
+    _menuView.arrowImage = [UIImage imageNamed:@"icon_dropdown_down"];
+    _menuView.checkMarkImage = [UIImage imageNamed:@"icon_dropdown_selected"];
+    _menuView.arrowPadding = 15;
+    _menuView.animationDuration = 0.5f;
+    _menuView.maskBackgroundColor = [UIColor blackColor];
+    _menuView.maskBackgroundOpacity = 0.3f;
+    
+    _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
+        NSLog(@"Did select item at index: %ld", indexPath);
+        @strongify(self);
+        ParkingAreaModel * model = self.viewModel.arr_group[indexPath];
+        self.viewModel.parklotid = model.pkParklotId;
+        
+        [self.tableView.mj_header beginRefreshing];
+        
+    };
+    
+    [self.view addSubview:_menuView];
+    [_menuView configureForAutoLayout];
+    [_menuView autoSetDimension:ALDimensionHeight toSize:44];
+    
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    [self.view layoutIfNeeded];
+    
+}
+
+
 
 - (void)configUI{
     
@@ -155,6 +224,26 @@
         }
         
         [self.tableView reloadData];
+        
+    }];
+    
+    [self.viewModel.groupCommand.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        
+        if([x isEqualToString:@"加载成功"]){
+            
+            if (self.viewModel.arr_group.count > 0) {
+                [self setUpDropdownMenu:self.viewModel.arr_group];
+                ParkingAreaModel * model = self.viewModel.arr_group[0];
+                self.viewModel.parklotid = model.pkParklotId;
+                
+            }else{
+                
+                [LRShowHUD showError:@"未绑定任何片区，请联系管理员" duration:1.5f];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        }
         
     }];
     

@@ -24,7 +24,6 @@
 @property(nonatomic,strong) ParkingAreaViewModel * viewModel;
 
 
-
 @end
 
 @implementation ParkingAreaVC
@@ -217,10 +216,17 @@
         
         if([x isEqualToString:@"加载成功"]){
             
-            [self setUpDropdownMenu:self.viewModel.arr_group];
-            ParkingAreaModel * model = self.viewModel.arr_group[0];
-            self.viewModel.parklotid = model.pkParklotId;
-            [self.tableView.mj_header beginRefreshing];
+            if (self.viewModel.arr_group.count > 0) {
+                [self setUpDropdownMenu:self.viewModel.arr_group];
+                ParkingAreaModel * model = self.viewModel.arr_group[0];
+                self.viewModel.parklotid = model.pkParklotId;
+                [self.tableView.mj_header beginRefreshing];
+                
+            }else{
+                
+                [LRShowHUD showError:@"未绑定任何片区，请联系管理员" duration:1.5f];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
             
         }
         

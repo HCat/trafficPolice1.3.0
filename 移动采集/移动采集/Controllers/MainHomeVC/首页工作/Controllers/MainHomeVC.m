@@ -39,7 +39,7 @@
 #import "ParkingManagementVC.h"
 
 #import "MainCellLayout.h"
-#import "MainHomeViewModel.h"
+
 #import "MainAllFunctionVC.h"
 
 @interface MainHomeVC ()
@@ -56,8 +56,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_top_colectionVIew;
 
 @property (assign, nonatomic) long section;
-
-@property (nonatomic,strong) MainHomeViewModel * viewModel;
 
 
 @end
@@ -602,9 +600,33 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }else if ([t_title isEqualToString:@"停车取证"]){
             
             if ([menuModel.isUser isEqualToNumber:@1]) {
+                
+                
+                @weakify(self);
                 ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
-                ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
-                [self.navigationController pushViewController:t_vc animated:YES];
+                
+                [viewModel.command_isRegister.executionSignals.switchToLatest subscribeNext:^(id _Nullable x) {
+                    @strongify(self);
+                    
+                    if ([x isKindOfClass:[NSNumber class]]) {
+                        
+                        if ([x intValue] == 0 || [x intValue] == 2) {
+                           [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                        }else {
+                            ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
+                            [self.navigationController pushViewController:t_vc animated:YES];
+                        }
+                        
+                    }else{
+                        [ShareFun showTipLable:@"未知错误,技术人员正在修复,请稍后再试."];
+                    }
+                    
+                }];
+                
+                [viewModel.command_isRegister execute:nil];
+                
+                
+                
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }

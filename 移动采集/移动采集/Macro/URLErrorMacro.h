@@ -15,4 +15,14 @@
 #define CODE_TOKENTIMEOUT   999 //http状态code
 #define CODE_NOLOGIN        111 //未登录或登录超时
 
+
+#define CODE_LAJI_FAILED    0 //请求链接成功，但是服务器返回失败CODE
+#define CODE_LAJI_SUCCESS   1   //请求成功CODE
+
+#define CODE_LAJI_TOKENTIMEOUT   21 //http状态code
+#define CODE_LAJI_TOKENAGAIN     20 //http状态code
+#define CODE_LAJI_TOKENERROR     22 //http状态code
+#define CODE_LAJI_NOLOGIN        100 //未登录或登录超时
+
+
 #endif /* URLErrorMacro_h */

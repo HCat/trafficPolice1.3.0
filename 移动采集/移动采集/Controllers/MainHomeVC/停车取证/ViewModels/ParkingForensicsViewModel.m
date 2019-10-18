@@ -11,8 +11,7 @@
 
 @interface ParkingForensicsViewModel ()
 
-@property(nonatomic, strong) id first;
-@property(nonatomic, strong) id secend;
+
 
 @end
 
@@ -53,7 +52,13 @@
                 [manger configLoadingTitle:@"提交"];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
-                    [subscriber sendNext:nil];
+                    if (manger.responseModel.code == CODE_LAJI_SUCCESS) {
+                        [subscriber sendNext:@"加载成功"];
+                    }else if (manger.responseModel.code == 99){
+                        [LRShowHUD showError:@"工单不存在或已取证" duration:1.5f];
+                        [subscriber sendNext:@"加载成功"];
+                    }
+                
                     [subscriber sendCompleted];
                     
                 } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -101,6 +106,49 @@
     
 }
 
+//拍照完之后停车取证请求服务端获取证件信息
+- (void)getParkingIdentifyRequest:(ImageFileInfo * )imageInfo{
+
+    @weakify(self);
+    imageInfo.name = key_file;
+    ParkingIdentifyManger *manger = [[ParkingIdentifyManger alloc] init];
+    [manger configLoadingTitle:@"识别"];
+    manger.isNeedShowHud = NO;
+   
+    manger.imageInfo = imageInfo;
+    manger.type = 1;
+    
+    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        @strongify(self);
+        
+        if (manger.responseModel.code == CODE_LAJI_SUCCESS) {
+            
+            if (manger.parkingIdentifyResponse) {
+                
+                if (manger.parkingIdentifyResponse.carNo && manger.parkingIdentifyResponse.carNo.length > 0) {
+                    self.param.carNo = manger.parkingIdentifyResponse.carNo;
+                }
+                
+                if (manger.parkingIdentifyResponse.cutImageUrl.length == 0 || !manger.parkingIdentifyResponse.cutImageUrl) {
+                    [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+                }
+                
+            }
+        }else{
+            [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [LRShowHUD showCarError:@"车牌辅助识别不成功" duration:1.5];
+
+    }];
+    
+
+}
+
+
 #pragma mark - 管理上传图片
 
 //替换图片到arr_upImages数组中
@@ -114,14 +162,6 @@
         [t_dic setObject:imageFileInfo             forKey:@"files"];
     }
     
-    if (index == 1) {
-        
-        if (self.param.cutImageUrl) {
-            [t_dic setObject:self.param.cutImageUrl forKey:@"cutImageUrl"];
-        }
-        
-    }
-   
     [t_dic setObject:@0 forKey:@"isMore"];
     [self.arr_upImages  replaceObjectAtIndex:index withObject:t_dic];
     
@@ -158,15 +198,11 @@
                 
                 NSMutableDictionary *t_dic  = _arr_upImages[i];
                 ImageFileInfo *imageInfo    = [t_dic objectForKey:@"files"];
-//                NSString * t_remark = [t_dic objectForKey:@"remarks"];
-//                [t_arr_remarks addObject:t_remark];
-                
+
                 if (imageInfo) {
                     [t_arr_files     addObject:imageInfo];
                     [t_arr_remarks addObject:@"0"];
                 }
-                
-                
                 
             }
             

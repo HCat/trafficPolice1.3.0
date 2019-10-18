@@ -22,7 +22,7 @@
 
 @end
 
-@implementation ParkingForensicsListManger:LRBaseRequest
+@implementation ParkingForensicsListManger
 
 - (NSString *)baseUrl {
     return PARK_Base_URL;
@@ -344,3 +344,45 @@
 
 
 @end
+
+
+#pragma mark - 验证用户是否在系统有效注册
+
+
+@implementation ParkingIsRegisteManger
+
+
+- (NSString *)baseUrl {
+    return PARK_Base_URL;
+}
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_PARKINGAREA_ISREGIST;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"phone":_phone};
+}
+
+
+//返回参数
+- (NSNumber *)isRegiste{
+    
+    if (self.responseModel.data) {
+        
+        _isRegiste = self.responseModel.data;
+        
+        return _isRegiste;
+    }
+    
+    return nil;
+}
+
+
+@end
+
+

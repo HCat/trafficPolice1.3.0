@@ -26,12 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)   NSString * parkRecordId;                   //停车记录ID
 @property (nonatomic,copy)   NSString * parkPlaceId;                    //车位ID
 @property (nonatomic,strong) NSNumber * startTime;                      //入场时间
+@property (nonatomic,strong) NSNumber * evidenceDate;                   //取证时间
 @property (nonatomic,strong) ParkingAreaTimeModel * dateDiff;           //停留时间
 @property (nonatomic,strong) NSNumber * payAmount;                      //应付金额
 @property (nonatomic,strong) NSNumber * payedAmount;                    //已支付金额
 @property (nonatomic,strong) NSNumber * waitPayAmount;                  //欠费金额
 @property (nonatomic,strong) NSNumber * status;                         //泊位状态:0 空闲；1 有车未登记；2 有车已登记；3 有车已取证；"
 
+@property (nonatomic,strong) NSNumber * hasQzAuthority;                 //是否有点击取证权限:0没有权限;1有权限;2未生成工单
+@property (nonatomic,strong) NSNumber * delaySecond;                    //倒计时(单位为秒)，当为负数的时候，表示工单生成异常
 
 @end
 

@@ -14,6 +14,7 @@
 
 
 #import "LRBaseRequest.h"
+#import "LAJIBaseRequest.h"
 #import "NetWorkHelper.h"
 
 
@@ -31,6 +32,8 @@
 #import "MessageDetailVC.h"
 #import "IllegalOperatCarVC.h"
 #import "ScheduleVC.h"
+
+#import "ParkingForensicsListVC.h"
 
 #if defined(DEBUG) || defined(_DEBUG)
 #import "FHHFPSIndicator.h"
@@ -61,7 +64,7 @@
         [JPUSHService setAlias:[UserModel getUserModel].userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
-        
+        //[LAJIBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
         [self initAKTabBarController];
         self.window.rootViewController = self.vc_tabBar;
         
@@ -501,6 +504,68 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             }
             
     
+        }else if([type isEqualToString:@"103"]){
+            
+            if (msgId) {
+                
+                IdentifySetMsgReadManger *manger = [[IdentifySetMsgReadManger alloc] init];
+                manger.msgId = msgId;
+                           
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                               
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
+                    }
+                               
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                               
+                           
+                }];
+                
+            }
+            
+            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[2];
+            MainHomeVC * mainhomeVC = (MainHomeVC *)nav.viewControllers[0];
+            if (mainhomeVC.viewModel.arr_illegal && [mainhomeVC.viewModel.arr_illegal count] > 0) {
+                for (CommonMenuModel * menuModel in mainhomeVC.viewModel.arr_illegal) {
+                    if ([menuModel.funTitle isEqualToString:@"停车取证"]){
+                    
+                        if ([menuModel.isUser isEqualToNumber:@1]) {
+                        
+                            @weakify(self);
+                            ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
+                        
+                            [viewModel.command_isRegister.executionSignals.switchToLatest subscribeNext:^(id _Nullable x) {
+                                @strongify(self);
+                            
+                                if ([x isKindOfClass:[NSNumber class]]) {
+                                
+                                    if ([x intValue] == 0 || [x intValue] == 2) {
+                                        [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                                    }else {
+                                        ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
+                                        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
+                                        [self.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                                        }];
+                                    }
+                                
+                                }else{
+                                    [ShareFun showTipLable:@"未知错误,技术人员正在修复,请稍后再试."];
+                                }
+                            
+                            }];
+                        
+                            [viewModel.command_isRegister execute:nil];
+                        
+                        }else{
+                            [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                        }
+                    }
+                }
+            }
+            
+            
+            
         }else{
             
             if (msgId) {

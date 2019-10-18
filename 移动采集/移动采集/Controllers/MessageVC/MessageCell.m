@@ -114,6 +114,14 @@
             _lb_stateBg.hidden = YES;
             [self setFlagState];
         
+        }else if ([_model.type isEqualToNumber:@103]){
+            
+            _lb_type.text = @"停车取证消息";
+            [_imgv_type setImage:[UIImage imageNamed:@"img_message_park"]];
+            _lb_state.hidden = YES;
+            _lb_stateBg.hidden = YES;
+            [self setFlagState];
+        
         }
         
     }
