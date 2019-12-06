@@ -51,38 +51,6 @@
             endingLineNumber = "180"
             landmarkName = "-webSocket:didFailWithError:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - 5395f53ad2da45c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WebSocketHelper webSocket:didFailWithError:]"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice1.3.0/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "212">
-               </Location>
-               <Location
-                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - a82d8ac3f969a857"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[WebSocketHelper webSocket:didFailWithError:]_block_invoke"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice1.3.0/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

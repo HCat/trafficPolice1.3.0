@@ -67,6 +67,9 @@
                             <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handlebtnPersonLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="T25-B4-54K"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="违法行为:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHD-KE-aKp">
                     <rect key="frame" x="15" y="230" width="62" height="30"/>
@@ -154,6 +157,9 @@
                             <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnCarNumberClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="q40-9o-eiJ"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备      注:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-0W-ev7">
                     <rect key="frame" x="15" y="194.5" width="62" height="17"/>
@@ -196,6 +202,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnSwitchLocationClicked:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="lLw-8c-crT"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jN-8M-agn">
                     <rect key="frame" x="210" y="63.5" width="45" height="27"/>
