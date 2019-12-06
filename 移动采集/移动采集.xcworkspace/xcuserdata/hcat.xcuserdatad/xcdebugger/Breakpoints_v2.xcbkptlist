@@ -21,5 +21,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C71286E-10E1-4541-BF16-C3F4CC037669"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/LRCameraVC/LRCameraVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-getIdentifyRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/WebSocketHelper.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-webSocket:didFailWithError:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - 5395f53ad2da45c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WebSocketHelper webSocket:didFailWithError:]"
+                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hcat/Desktop/trafficPolice1.3.0/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - a82d8ac3f969a857"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[WebSocketHelper webSocket:didFailWithError:]_block_invoke"
+                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hcat/Desktop/trafficPolice1.3.0/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E1EE541-738C-494F-91DB-162745CFB00A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/BackgroundLocationHelper.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-startLocation"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

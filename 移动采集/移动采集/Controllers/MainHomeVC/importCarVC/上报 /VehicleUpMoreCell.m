@@ -129,6 +129,7 @@
 #pragma mark - TTGTextTagCollectionViewDelegate
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected{
+    
     if (selected) {
          [_tagIndexs addObject:@(index)];
     }else{

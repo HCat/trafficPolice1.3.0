@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IllegalParkListModel.h"
+#import "ExposureCollectAPI.h"
 
 @interface IllegalCell : UITableViewCell
 
 @property (nonatomic,strong) IllegalParkListModel *model;
-
+@property (nonatomic,strong) ExposureCollectListModel * model_exposure;
 @end

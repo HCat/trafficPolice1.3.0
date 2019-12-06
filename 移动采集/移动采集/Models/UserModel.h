@@ -77,6 +77,9 @@
     车场出入库管理    CAR_YARD_COLLECT
     快递员监管       DELVIERY_MANAGE
     停车取证         PARKING_COLLECT
+    违法曝光         ILLEGAL_EXPOSURE
+    违法曝光列表      EXPOSURE_LIST
+ 
 */
 
 
@@ -120,6 +123,7 @@
 + (BOOL)isPermissionForInhibitLineList;         //获取违反禁止线列表权限
 + (BOOL)isPermissionForCarInfoList;             //车辆列表
 + (BOOL)isPermissionForMotorBikeList;           //摩托车采集列表
++ (BOOL)isPermissionForExposureList;            //违法曝光列表
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限

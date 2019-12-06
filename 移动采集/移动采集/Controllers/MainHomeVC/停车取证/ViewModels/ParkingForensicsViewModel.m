@@ -128,6 +128,7 @@
                 
                 if (manger.parkingIdentifyResponse.carNo && manger.parkingIdentifyResponse.carNo.length > 0) {
                     self.param.carNo = manger.parkingIdentifyResponse.carNo;
+                    self.param.carColor = manger.parkingIdentifyResponse.color;
                 }
                 
                 if (manger.parkingIdentifyResponse.cutImageUrl.length == 0 || !manger.parkingIdentifyResponse.cutImageUrl) {

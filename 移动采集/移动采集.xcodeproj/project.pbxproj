@@ -279,6 +279,12 @@
 		CE4959AA2254A2DF003922FA /* AttendanceManageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4959A92254A2DF003922FA /* AttendanceManageViewModel.m */; };
 		CE496F021F6A1ACB004E69C6 /* TTGTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */; };
 		CE496F031F6A1ACB004E69C6 /* TTGTextTagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE496F011F6A1ACB004E69C6 /* TTGTextTagCollectionView.m */; };
+		CE4A0D6E2398A3A6004F99B1 /* IllegalExposureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D6C2398A3A6004F99B1 /* IllegalExposureVC.m */; };
+		CE4A0D6F2398A3A6004F99B1 /* IllegalExposureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4A0D6D2398A3A6004F99B1 /* IllegalExposureVC.xib */; };
+		CE4A0D732398A43E004F99B1 /* IllegalExposureHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D712398A43E004F99B1 /* IllegalExposureHeadView.m */; };
+		CE4A0D742398A43E004F99B1 /* IllegalExposureHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4A0D722398A43E004F99B1 /* IllegalExposureHeadView.xib */; };
+		CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D772398DFAB004F99B1 /* ExposureCollectAPI.m */; };
+		CE4A0D7B2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D7A2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m */; };
 		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
 		CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */; };
 		CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */; };
@@ -666,6 +672,7 @@
 		CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F21F5D356E0010E68A /* SignListCell.xib */; };
 		CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0F61F5D358C0010E68A /* SignInCell.m */; };
 		CED9B0F91F5D358C0010E68A /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F71F5D358C0010E68A /* SignInCell.xib */; };
+		CEE1156D2399377F00D9D782 /* IllegalExposureViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE1156C2399377F00D9D782 /* IllegalExposureViewModel.m */; };
 		CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */; };
 		CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */; };
 		CEE45BB11FAC600400BF472F /* TaskAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BB01FAC600400BF472F /* TaskAPI.m */; };
@@ -688,6 +695,10 @@
 		CEEF36312338BC8A0086D6AC /* ParkingCarOperationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF362F2338BC8A0086D6AC /* ParkingCarOperationVC.m */; };
 		CEEF36322338BC8A0086D6AC /* ParkingCarOperationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEEF36302338BC8A0086D6AC /* ParkingCarOperationVC.xib */; };
 		CEEF3635233A02930086D6AC /* ParkingCarDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF3634233A02930086D6AC /* ParkingCarDetailViewModel.m */; };
+		CEF67E02239A47C400A9DAD0 /* IllegalExposureListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF67E00239A47C400A9DAD0 /* IllegalExposureListVC.m */; };
+		CEF67E03239A47C400A9DAD0 /* IllegalExposureListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF67E01239A47C400A9DAD0 /* IllegalExposureListVC.xib */; };
+		CEF67E08239A562B00A9DAD0 /* IllegalExposureDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF67E06239A562B00A9DAD0 /* IllegalExposureDetailVC.m */; };
+		CEF67E09239A562B00A9DAD0 /* IllegalExposureDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF67E07239A562B00A9DAD0 /* IllegalExposureDetailVC.xib */; };
 		CEFA0C531F56A592006BE7FB /* ProcessResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */; };
 		CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */; };
 		CEFACDA322C5BB6700C14DEC /* XTVerCodeInput.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFACDA222C5BB6600C14DEC /* XTVerCodeInput.m */; };
@@ -1173,6 +1184,16 @@
 		CE496EFF1F6A1ACB004E69C6 /* TTGTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTagCollectionView.m; sourceTree = "<group>"; };
 		CE496F001F6A1ACB004E69C6 /* TTGTextTagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGTextTagCollectionView.h; sourceTree = "<group>"; };
 		CE496F011F6A1ACB004E69C6 /* TTGTextTagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGTextTagCollectionView.m; sourceTree = "<group>"; };
+		CE4A0D6B2398A3A6004F99B1 /* IllegalExposureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureVC.h; sourceTree = "<group>"; };
+		CE4A0D6C2398A3A6004F99B1 /* IllegalExposureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureVC.m; sourceTree = "<group>"; };
+		CE4A0D6D2398A3A6004F99B1 /* IllegalExposureVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureVC.xib; sourceTree = "<group>"; };
+		CE4A0D702398A43E004F99B1 /* IllegalExposureHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureHeadView.h; sourceTree = "<group>"; };
+		CE4A0D712398A43E004F99B1 /* IllegalExposureHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureHeadView.m; sourceTree = "<group>"; };
+		CE4A0D722398A43E004F99B1 /* IllegalExposureHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureHeadView.xib; sourceTree = "<group>"; };
+		CE4A0D762398DFAB004F99B1 /* ExposureCollectAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExposureCollectAPI.h; sourceTree = "<group>"; };
+		CE4A0D772398DFAB004F99B1 /* ExposureCollectAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExposureCollectAPI.m; sourceTree = "<group>"; };
+		CE4A0D792398EA65004F99B1 /* IllegalExposureIllegalTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureIllegalTypeModel.h; sourceTree = "<group>"; };
+		CE4A0D7A2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureIllegalTypeModel.m; sourceTree = "<group>"; };
 		CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentProcessResultVC.h; sourceTree = "<group>"; };
 		CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentProcessResultVC.m; sourceTree = "<group>"; };
 		CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessResultVC.xib; sourceTree = "<group>"; };
@@ -1828,6 +1849,8 @@
 		CED9B0F51F5D358C0010E68A /* SignInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInCell.h; sourceTree = "<group>"; };
 		CED9B0F61F5D358C0010E68A /* SignInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInCell.m; sourceTree = "<group>"; };
 		CED9B0F71F5D358C0010E68A /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
+		CEE1156B2399377F00D9D782 /* IllegalExposureViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureViewModel.h; sourceTree = "<group>"; };
+		CEE1156C2399377F00D9D782 /* IllegalExposureViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureViewModel.m; sourceTree = "<group>"; };
 		CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTaskDetailVC.h; sourceTree = "<group>"; };
 		CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTaskDetailVC.m; sourceTree = "<group>"; };
 		CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTaskDetailVC.xib; sourceTree = "<group>"; };
@@ -1869,6 +1892,12 @@
 		CEEF36302338BC8A0086D6AC /* ParkingCarOperationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkingCarOperationVC.xib; sourceTree = "<group>"; };
 		CEEF3633233A02930086D6AC /* ParkingCarDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingCarDetailViewModel.h; sourceTree = "<group>"; };
 		CEEF3634233A02930086D6AC /* ParkingCarDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkingCarDetailViewModel.m; sourceTree = "<group>"; };
+		CEF67DFF239A47C400A9DAD0 /* IllegalExposureListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureListVC.h; sourceTree = "<group>"; };
+		CEF67E00239A47C400A9DAD0 /* IllegalExposureListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureListVC.m; sourceTree = "<group>"; };
+		CEF67E01239A47C400A9DAD0 /* IllegalExposureListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureListVC.xib; sourceTree = "<group>"; };
+		CEF67E05239A562B00A9DAD0 /* IllegalExposureDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureDetailVC.h; sourceTree = "<group>"; };
+		CEF67E06239A562B00A9DAD0 /* IllegalExposureDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureDetailVC.m; sourceTree = "<group>"; };
+		CEF67E07239A562B00A9DAD0 /* IllegalExposureDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureDetailVC.xib; sourceTree = "<group>"; };
 		CEFA0C501F56A592006BE7FB /* ProcessResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessResultCell.h; sourceTree = "<group>"; };
 		CEFA0C511F56A592006BE7FB /* ProcessResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessResultCell.m; sourceTree = "<group>"; };
 		CEFA0C521F56A592006BE7FB /* ProcessResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessResultCell.xib; sourceTree = "<group>"; };
@@ -3021,6 +3050,65 @@
 			path = TTGTagCollectionView;
 			sourceTree = "<group>";
 		};
+		CE4A0D6623989C08004F99B1 /* 人员曝光 */ = {
+			isa = PBXGroup;
+			children = (
+				CE4A0D752398DF9B004F99B1 /* APIs */,
+				CE4A0D6A23989E4C004F99B1 /* Views */,
+				CE4A0D6923989E45004F99B1 /* Models */,
+				CE4A0D6823989E3C004F99B1 /* ViewModels */,
+				CE4A0D6723989E32004F99B1 /* Controllers */,
+			);
+			path = "人员曝光";
+			sourceTree = "<group>";
+		};
+		CE4A0D6723989E32004F99B1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE4A0D6B2398A3A6004F99B1 /* IllegalExposureVC.h */,
+				CE4A0D6C2398A3A6004F99B1 /* IllegalExposureVC.m */,
+				CE4A0D6D2398A3A6004F99B1 /* IllegalExposureVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE4A0D6823989E3C004F99B1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEE1156B2399377F00D9D782 /* IllegalExposureViewModel.h */,
+				CEE1156C2399377F00D9D782 /* IllegalExposureViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE4A0D6923989E45004F99B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE4A0D792398EA65004F99B1 /* IllegalExposureIllegalTypeModel.h */,
+				CE4A0D7A2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE4A0D6A23989E4C004F99B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE4A0D702398A43E004F99B1 /* IllegalExposureHeadView.h */,
+				CE4A0D712398A43E004F99B1 /* IllegalExposureHeadView.m */,
+				CE4A0D722398A43E004F99B1 /* IllegalExposureHeadView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE4A0D752398DF9B004F99B1 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				CE4A0D762398DFAB004F99B1 /* ExposureCollectAPI.h */,
+				CE4A0D772398DFAB004F99B1 /* ExposureCollectAPI.m */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
 		CE4E3C0C1F39BA050057148B /* IllegalDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -3373,6 +3461,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE4A0D6623989C08004F99B1 /* 人员曝光 */,
 				CE12329B2328D2BC00E61AC4 /* 停车场管理 */,
 				CE3BAE1F22E82F3A009E54A9 /* 停车取证 */,
 				CE1259132282C75A00B7BF48 /* 外卖小哥管理 */,
@@ -3398,6 +3487,7 @@
 		CE69154B1F1DD48C008911A6 /* ListHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CEF67DFE239A476800A9DAD0 /* 违法曝光列表 */,
 				CE85020E1F558BFB001DC495 /* VideoListVC */,
 				CE675F2C1F386DA7006FC15F /* AccidentListVC */,
 				CE675F141F383C40006FC15F /* IllegalListVC */,
@@ -4432,6 +4522,27 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		CEF67DFE239A476800A9DAD0 /* 违法曝光列表 */ = {
+			isa = PBXGroup;
+			children = (
+				CEF67E04239A55FC00A9DAD0 /* 违法曝光详情 */,
+				CEF67DFF239A47C400A9DAD0 /* IllegalExposureListVC.h */,
+				CEF67E00239A47C400A9DAD0 /* IllegalExposureListVC.m */,
+				CEF67E01239A47C400A9DAD0 /* IllegalExposureListVC.xib */,
+			);
+			path = "违法曝光列表";
+			sourceTree = "<group>";
+		};
+		CEF67E04239A55FC00A9DAD0 /* 违法曝光详情 */ = {
+			isa = PBXGroup;
+			children = (
+				CEF67E05239A562B00A9DAD0 /* IllegalExposureDetailVC.h */,
+				CEF67E06239A562B00A9DAD0 /* IllegalExposureDetailVC.m */,
+				CEF67E07239A562B00A9DAD0 /* IllegalExposureDetailVC.xib */,
+			);
+			path = "违法曝光详情";
+			sourceTree = "<group>";
+		};
 		CEFA0C4F1F56A539006BE7FB /* AccidentProcessResultVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -4609,6 +4720,7 @@
 				CE6AE97720B6901E005781DA /* VehicleTiredListCell.xib in Resources */,
 				CED37B9922EAD19C003BCD45 /* ParkingAreaVC.xib in Resources */,
 				CE6810DD2284B001003055DF /* TakeOutIllegalCell.xib in Resources */,
+				CEF67E03239A47C400A9DAD0 /* IllegalExposureListVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
 				CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */,
@@ -4684,6 +4796,7 @@
 				CE6811152285BBA5003055DF /* MainAllFunctionVC.xib in Resources */,
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE6AE96D20B65E2C005781DA /* VehicleExpireAlarmVC.xib in Resources */,
+				CEF67E09239A562B00A9DAD0 /* IllegalExposureDetailVC.xib in Resources */,
 				CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */,
 				CE26B26B22F1904800A1D1A1 /* TakeOutTempHeadView.xib in Resources */,
 				CE17C6F02179E30C00B7391C /* AccidentVC.xib in Resources */,
@@ -4743,6 +4856,7 @@
 				CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */,
 				CE4E3C061F39B63A0057148B /* IllegalDetailVC.xib in Resources */,
 				CEAD7469214224FF001ED5E0 /* SpecialVehicleCell.xib in Resources */,
+				CE4A0D6F2398A3A6004F99B1 /* IllegalExposureVC.xib in Resources */,
 				CE6C682020747E2E009A0E14 /* VehicleSearchListVC.xib in Resources */,
 				CE48A8F82254D37600D423C6 /* AttendancePoliceCell.xib in Resources */,
 				CE1E400120F4BB44003A5595 /* AccidentUpImageCell.xib in Resources */,
@@ -4770,6 +4884,7 @@
 				CEB46568215CD8BA00B0D2C0 /* Assets.xcassets in Resources */,
 				CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */,
 				CEAE95EC230CE52D008B9B3D /* FunctionView.xib in Resources */,
+				CE4A0D742398A43E004F99B1 /* IllegalExposureHeadView.xib in Resources */,
 				CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
 				CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */,
@@ -4899,9 +5014,11 @@
 				CE6810E92284B805003055DF /* TakeOutIllegalDetailViewModel.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */,
+				CEE1156D2399377F00D9D782 /* IllegalExposureViewModel.m in Sources */,
 				CEEF36312338BC8A0086D6AC /* ParkingCarOperationVC.m in Sources */,
 				CE2C98A71F61AAA3009851F6 /* VehicleMemberCell.m in Sources */,
 				CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */,
+				CE4A0D732398A43E004F99B1 /* IllegalExposureHeadView.m in Sources */,
 				CED37B9C22EAD658003BCD45 /* ParkingAreaViewModel.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
 				CE6810D42284ADC4003055DF /* TakeOutIllegalListVC.m in Sources */,
@@ -4948,6 +5065,7 @@
 				CEFEFCF81F29B22F00C33CBD /* IllegalParkAddFootView.m in Sources */,
 				CE8502171F558C02001DC495 /* VideoDetailVC.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
+				CEF67E02239A47C400A9DAD0 /* IllegalExposureListVC.m in Sources */,
 				CE6D0A9620B6DD7E00B45EAD /* VehicleCarAnnotationView.m in Sources */,
 				CE68110522854D88003055DF /* TakeOutAddHeadView.m in Sources */,
 				CE8BB24E21CA144E006305D8 /* PoliceDistributeAPI.m in Sources */,
@@ -4973,6 +5091,7 @@
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
 				CE2BA6892101BA7300A7BD95 /* AccidentPeopleVC.m in Sources */,
 				CE72DF2121119F3C00F843CD /* ActionAPI.m in Sources */,
+				CEF67E08239A562B00A9DAD0 /* IllegalExposureDetailVC.m in Sources */,
 				CE9E709821904B66001E9766 /* PoliceDistributeViewModel.m in Sources */,
 				CE4E3C051F39B63A0057148B /* IllegalDetailVC.m in Sources */,
 				CE4139DC2178CF26006AA441 /* ZLCollectionCell.m in Sources */,
@@ -5118,6 +5237,7 @@
 				CE789ECE1F5E3C2C002217D0 /* WebSocketHelper.m in Sources */,
 				CE763B1C1FCFF1DB00EB0815 /* JointTextCell.m in Sources */,
 				CE121D62219C29AD0043A07C /* PoliceDisAnnotationView.m in Sources */,
+				CE4A0D7B2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m in Sources */,
 				CE5696611F62341C0073ADB7 /* VehicleCameraVC.m in Sources */,
 				CE12594C228430CA00B7BF48 /* TakeOutInfoView.m in Sources */,
 				CE538E0320AD230C006B3E44 /* VehicleUpImageCell.m in Sources */,
@@ -5316,9 +5436,11 @@
 				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,
 				CEFEFD061F29C60B00C33CBD /* DeviceOrientation.m in Sources */,
 				CE65B8FB20AAC5EA00AA97BB /* VehicleCarInfoMoreVC.m in Sources */,
+				CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,
 				CE90F3D221CB852F0057E218 /* PoliceSearchVC.m in Sources */,
+				CE4A0D6E2398A3A6004F99B1 /* IllegalExposureVC.m in Sources */,
 				CE864F3D20089CE5007B20FE /* PGDatePickManagerHeaderView.m in Sources */,
 				CE4139F22178CF27006AA441 /* ZLForceTouchPreviewController.m in Sources */,
 				CE4139F12178CF27006AA441 /* ZLPhotoBrowserCell.m in Sources */,
@@ -5477,7 +5599,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5501,7 +5623,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

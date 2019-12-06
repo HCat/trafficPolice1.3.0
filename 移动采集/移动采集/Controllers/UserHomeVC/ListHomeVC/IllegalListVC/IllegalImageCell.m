@@ -16,6 +16,7 @@
 #import "AccidentPicListModel.h"
 
 #import "IllegalDetailVC.h"
+#import "IllegalExposureDetailVC.h"
 
 @interface IllegalImageCell()
 
@@ -200,21 +201,39 @@
         
     }
     
-    IllegalDetailVC *vc_target = (IllegalDetailVC *)[ShareFun findViewController:self withClass:[IllegalDetailVC class]];
-    
-    KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:tag - 100];
-    [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
-    [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
-    browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
-    browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
-    browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
-    browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
-    browser.bounces             = NO;
-    browser.isShowDeleteBtn     = NO;
-    [browser showFromViewController:vc_target];
-    
-  
-    
+    if (self.type && [self.type intValue] == 1) {
+        
+        IllegalExposureDetailVC *vc_target = (IllegalExposureDetailVC *)[ShareFun findViewController:self withClass:[IllegalExposureDetailVC class]];
+        
+        KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:tag - 100];
+        [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+        [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+        browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+        browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+        browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+        browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+        browser.bounces             = NO;
+        browser.isShowDeleteBtn     = NO;
+        [browser showFromViewController:vc_target];
+        
+       
+    }else{
+        
+        IllegalDetailVC *vc_target = (IllegalDetailVC *)[ShareFun findViewController:self withClass:[IllegalDetailVC class]];
+        KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:tag - 100];
+        [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+        [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+        browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+        browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+        browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+        browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+        browser.bounces             = NO;
+        browser.isShowDeleteBtn     = NO;
+        [browser showFromViewController:vc_target];
+               
+        
+    }
+
 }
 
 - (float)heightWithimages{
@@ -234,7 +253,7 @@
         
     }else{
         
-        return 0;
+        return 80;
     }
     
 }

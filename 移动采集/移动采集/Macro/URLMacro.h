@@ -13,10 +13,10 @@
 
 #define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.151:8080/police-admin/"
-#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.151:8080/police-admin/websocket"
+#define DEBUG_DACAO_URL @"http://192.168.10.123:8080/police-admin/"
+#define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
 
-#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://jj.police.degal.cn @"http://h16552j072.51mypc.cn//police-admin"
+#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://192.168.10.123:8080 @"http://h16552j072.51mypc.cn//police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 
@@ -24,7 +24,9 @@
 #define PARK_RELEASE_URL @"http://topark.host/api"   //停车取证正式环境
 
 
-#define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket" //外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
+#define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket"
+//ws://192.168.10.201:8280//police-admin/websocket
+//外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
 #define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
@@ -256,6 +258,13 @@
 
 #define URL_PARKINGMANAGE_SEARCHLIST @"app/carYardCollect/carYardCollectList.json"  //在库车辆列表
 
+
+#pragma mark - 违法曝光
+
+#define URL_EXPOSURECOLLECT_REPORT @"app/exposureCollect/save.json"                 //保存曝光违章信息
+#define URL_EXPOSURECOLLECT_TYPELIST @"app/exposureCollect/expTypeList.json"        //违章类型列表
+#define URL_EXPOSURECOLLECT_LISTPAGING @"app/exposureCollect/exposurePage.json"//曝光列表分页
+#define URL_EXPOSURECOLLECT_DETAIL @"app/exposureCollect/expDetail.json" //曝光详情
 
 
 #endif /* URLMacro_h */

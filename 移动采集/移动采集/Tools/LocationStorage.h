@@ -31,6 +31,7 @@ LRSingletonH(Default)
 @property (nonatomic, assign) BOOL isVehicle;
 @property (nonatomic, assign) BOOL isInhibitLine;
 @property (nonatomic, assign) BOOL isTakeOut;
+@property (nonatomic, assign) BOOL isIllegalExposure;
 
 
 @property (nonatomic, strong) LocationStorageModel *park;
@@ -42,7 +43,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *vehicle;
 @property (nonatomic, strong) LocationStorageModel *inhibitLine;
 @property (nonatomic, strong) LocationStorageModel *takeOut;
-
+@property (nonatomic, strong) LocationStorageModel *illegalExposure;
 
 - (void)initializationSwitchLocation; //默认开启定位开关
 - (void)closeLocation:(ParkType)type;

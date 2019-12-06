@@ -19,6 +19,7 @@
 #import "AccidentListVC.h"
 #import "IllegalListVC.h"
 #import "VideoListVC.h"
+#import "IllegalExposureListVC.h"
 
 @interface UserHomeVC ()
 
@@ -291,7 +292,28 @@
         }
         
     };
+    
     [self.mArr_items addObject:item10];
+    
+    LRSettingItemModel *item11 = [[LRSettingItemModel alloc]init];
+    item11.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item11.funcName = @"违法曝光列表";
+    item11.img = [UIImage imageNamed:@"list_illegalExposure"];
+    item11.executeCode = ^{
+        SW(strongSelf, weakSelf);
+        if ([UserModel isPermissionForExposureList]) {
+            IllegalExposureListVC *t_vc = [[IllegalExposureListVC alloc] init];
+            t_vc.title = @"违法曝光列表";
+            UIViewController * vc_target = (UserHomeVC *)[ShareFun findViewController:strongSelf.view withClass:[UserHomeVC class]];
+            [vc_target.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+        
+    };
+    
+    
+    [self.mArr_items addObject:item11];
     
    
 //    if (IS_IPHONE_5) {

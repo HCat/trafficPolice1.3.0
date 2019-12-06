@@ -10,6 +10,7 @@
 
 @interface IllegalImageCell : UITableViewCell
 
+@property (nonatomic,strong) NSNumber * type;
 @property (nonatomic,strong) NSMutableArray *arr_images;
 
 - (float)heightWithimages;

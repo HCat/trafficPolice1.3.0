@@ -96,19 +96,15 @@
     
     [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
-            @strongify(self);
-            if ([x boolValue]) {
-                self.footView.btn_commit.enabled = YES;
-                [self.footView.btn_commit setBackgroundColor:DefaultBtnColor];
-                
-            }else{
-                self.footView.btn_commit.enabled = NO;
-                [self.footView.btn_commit setBackgroundColor:DefaultBtnNuableColor];
-                
-            }
+        if ([x boolValue]) {
+            self.footView.btn_commit.enabled = YES;
+            [self.footView.btn_commit setBackgroundColor:DefaultBtnColor];
             
-        }];
+        }else{
+            self.footView.btn_commit.enabled = NO;
+            [self.footView.btn_commit setBackgroundColor:DefaultBtnNuableColor];
+            
+        }
         
     }];
     

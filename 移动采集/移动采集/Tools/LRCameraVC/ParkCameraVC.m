@@ -78,7 +78,10 @@
     [super viewDidAppear:animated];
     
     _lb_tip.hidden = NO;
-    _lb_park.text = [NSString stringWithFormat:@"泊位号：%@",self.park_string];
+    if (self.park_string) {
+        _lb_park.text = [NSString stringWithFormat:@"泊位号：%@",self.park_string];
+    }
+    
     WS(weakSelf);
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
     

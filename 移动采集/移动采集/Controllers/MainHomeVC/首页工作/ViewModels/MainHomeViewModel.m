@@ -228,8 +228,12 @@
             }else if ([menuModel.code isEqualToString:@"PARKING_COLLECT"]) {
                 menuModel.funTitle = @"停车取证";
                 menuModel.funImage = @"menu_carEvidence";
+            }else if ([menuModel.code isEqualToString:@"ILLEGAL_EXPOSURE"]) {
+                menuModel.funTitle = @"违法曝光";
+                menuModel.funImage = @"menu_illegalExposure";
             }
             
+
         }
         
         

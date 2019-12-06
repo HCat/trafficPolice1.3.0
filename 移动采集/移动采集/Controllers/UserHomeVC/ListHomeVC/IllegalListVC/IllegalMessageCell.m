@@ -108,6 +108,77 @@
 
 }
 
+- (void)setExposureCollectModel:(ExposureCollectModel *)exposureCollectModel{
+    
+    _exposureCollectModel = exposureCollectModel;
+    if (_exposureCollectModel) {
+        
+        if (_arr_lables && _arr_lables.count > 0) {
+            return;
+        }
+        
+        if ([_exposureCollectModel.remarkNoCar intValue] == 0) {
+            [self buildLableWithTitle:@"车牌号码:" AndText:@"无车"];
+        }else{
+            if (_exposureCollectModel.carNo && _exposureCollectModel.carNo.length > 0) {
+                [self buildLableWithTitle:@"车牌号码:" AndText:_exposureCollectModel.carNo];
+            }
+        }
+        
+        if (_exposureCollectModel.userName && _exposureCollectModel.userName.length > 0) {
+                   [self buildLableWithTitle:@"姓名:" AndText:_exposureCollectModel.userName];
+               }
+    
+        if (_exposureCollectModel.collectTime) {
+            NSString *t_str = [ShareFun timeWithTimeInterval:_exposureCollectModel.collectTime];
+            [self buildLableWithTitle:@"采集时间:" AndText:t_str];
+        }
+        
+        if (_exposureCollectModel.roadName && _exposureCollectModel.roadName.length > 0) {
+            [self buildLableWithTitle:@"路段:" AndText:_exposureCollectModel.roadName];
+        }
+        
+        if (_exposureCollectModel.address && _exposureCollectModel.address.length > 0) {
+            [self buildLableWithTitle:@"所在位置:" AndText:_exposureCollectModel.address];
+        }
+        
+        if (_exposureCollectModel.addressRemark && _exposureCollectModel.addressRemark.length > 0) {
+            [self buildLableWithTitle:@"备注:" AndText:_exposureCollectModel.addressRemark];
+        }
+        
+        if (_exposureCollectModel.illegalName && _exposureCollectModel.illegalName.length > 0) {
+            [self buildLableWithTitle:@"违法类型:" AndText:_exposureCollectModel.illegalName];
+        }
+        
+        [[_arr_lables firstObject] autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:13.f];
+        [[_arr_lables firstObject] autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:15.f];
+        UILabel *previousView = nil;
+        for (UILabel *view in _arr_lables) {
+            if (previousView) {
+                if ([view.text isEqualToString:@"状态:"]) {
+                    [view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:previousView withOffset:25.f];
+                }else{
+                    [view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:previousView withOffset:18.f];
+                }
+                
+                [view autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:previousView];
+            }
+            previousView = view;
+        }
+        
+        [self setNeedsUpdateConstraints];
+        [self updateConstraintsIfNeeded];
+        
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
+        
+    }
+    
+    
+    
+}
+
+
 - (void)buildLableWithTitle:(NSString *)title AndText:(NSString *)text{
     
     UILabel * t_title = [UILabel newAutoLayoutView];

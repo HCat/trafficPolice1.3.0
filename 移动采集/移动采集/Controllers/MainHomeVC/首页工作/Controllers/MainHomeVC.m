@@ -37,6 +37,7 @@
 #import "TakeOutSearchVC.h"
 #import "ParkingForensicsListVC.h"
 #import "ParkingManagementVC.h"
+#import "IllegalExposureVC.h"
 
 #import "MainCellLayout.h"
 
@@ -627,6 +628,15 @@ static NSString *const cellId = @"BaseImageCollectionCell";
                 
                 
                 
+            }else{
+                [ShareFun showTipLable:@"您暂无权限使用本功能"];
+            }
+            
+        }else if ([t_title isEqualToString:@"违法曝光"]){
+            
+            if ([menuModel.isUser isEqualToNumber:@1]) {
+                IllegalExposureVC *t_vc = [[IllegalExposureVC alloc] init];
+                [self.navigationController pushViewController:t_vc animated:YES];
             }else{
                 [ShareFun showTipLable:@"您暂无权限使用本功能"];
             }

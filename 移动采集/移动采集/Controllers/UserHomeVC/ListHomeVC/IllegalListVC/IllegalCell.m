@@ -38,7 +38,7 @@
     if (_model) {
         
         _lb_roadName.text = _model.roadName;
-        _lb_carNumber.text = _model.carNo;
+        _lb_carNumber.text = [ShareFun takeStringNoNull:_model.carNo];
         _lb_time.text = [ShareFun timeWithTimeInterval:_model.collectTime];
         
         if (_model.sendStatus == 1) {
@@ -49,6 +49,26 @@
         }
         
         
+    }
+    
+}
+
+- (void)setModel_exposure:(ExposureCollectListModel *)model_exposure{
+    
+    _model_exposure = model_exposure;
+    
+    if (_model_exposure) {
+        
+        _lb_roadName.text = _model_exposure.roadName;
+        if ([_model_exposure.remarkNoCar intValue] == 0) {
+            _lb_carNumber.text = @"无牌";
+        }else{
+            _lb_carNumber.text = [ShareFun takeStringNoNull:_model_exposure.carNo];
+        }
+        
+        _lb_time.text = [ShareFun timeWithTimeInterval:_model_exposure.collectTime];
+        _img_statues.hidden = YES;
+
     }
     
 }

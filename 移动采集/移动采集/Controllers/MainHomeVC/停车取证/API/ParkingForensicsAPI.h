@@ -102,6 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * fkParkplaceId;                   //车位id
 
 @property (nonatomic,copy,nullable)   NSString * carNo;                //车牌号 必填
+@property (nonatomic,copy,nullable)   NSString * carColor;             //车牌颜色
 
 @property (nonatomic,copy,nullable)   NSArray  * files;                //事故图片 列表，最多可上传30张
 @property (nonatomic,copy,nullable)   NSString * remarks;              //违停图片名称  违章图片名称，字符串列表。和图片一对一，名称统一命名，车牌近照（一张）、违停照片（可多张）
