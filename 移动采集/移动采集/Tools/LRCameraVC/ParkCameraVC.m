@@ -276,6 +276,8 @@
                 
             }];
             
+            self.lb_tip.transform = CGAffineTransformMakeRotation(0);
+            
             LxPrintf(@"TgDirectionPortrait");
         }
             break;
@@ -292,6 +294,8 @@
                 
             }];
             
+            self.lb_tip.transform = CGAffineTransformMakeRotation(0);
+                       
             LxPrintf(@"TgDirectionDown");
         }
             break;
@@ -307,6 +311,9 @@
                 make.leading.equalTo(self.view.mas_leading).with.offset(-35);
                 
             }];
+            self.lb_tip.transform = CGAffineTransformMakeRotation(-M_PI / 2);
+            
+           
             LxPrintf(@"TgDirectionRight");
          }
             break;
@@ -322,6 +329,8 @@
                 make.right.equalTo(self.view.mas_right).with.offset(35);
                 
             }];
+            self.lb_tip.transform = CGAffineTransformMakeRotation(M_PI / 2);
+            
             LxPrintf(@"TgDirectionleft");
         }
             break;

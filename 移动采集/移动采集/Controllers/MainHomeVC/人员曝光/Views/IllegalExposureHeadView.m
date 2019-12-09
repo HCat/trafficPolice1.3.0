@@ -105,7 +105,7 @@
     _v_tag.defaultConfig = config;
     
     
-    [[LocationHelper sharedDefault] startLocation];
+    //[[LocationHelper sharedDefault] startLocation];
     
     _btn_personLocation.enabled = YES;
     [_btn_personLocation setBackgroundColor:DefaultBtnColor];
@@ -194,13 +194,7 @@
         
     }];
     
-
-    [self.tf_userName.rac_textSignal subscribeNext:^(NSString *  _Nullable x) {
-           @strongify(self);
-           self.param.userName = x;
-       }];
-    
-    
+        
     [self.tf_address.rac_textSignal subscribeNext:^(NSString *  _Nullable x) {
         @strongify(self);
         self.param.address = x;
@@ -209,13 +203,13 @@
     [self.tf_userName.rac_textSignal subscribeNext:^(NSString *  _Nullable x) {
         @strongify(self);
         self.param.userName = x;
-        
+
     }];
-    
+
     [self.tf_carNo.rac_textSignal subscribeNext:^(NSString *  _Nullable x) {
         @strongify(self);
         self.param.carNo = x;
-        
+
     }];
     
     [self.tf_remark.rac_textSignal subscribeNext:^(id  _Nullable x) {
@@ -223,17 +217,18 @@
         if (x) {
             self.param.addressRemark = x;
         }
-    
+
     }];
-    
+
     //默认是手动定位还是自动定位操作
     self.btnType = [LocationStorage sharedDefault].isIllegalExposure;
     //不管是手动定位还是自动定位都需要经纬度
-    [[LocationHelper sharedDefault] startLocation];
     if ([LocationStorage sharedDefault].isIllegalExposure == NO) {
         
         LocationStorageModel * model = [LocationStorage sharedDefault].illegalExposure;
         _param.roadName      = model.streetName;
+        _tf_roadSection.text = model.streetName;
+        _tf_address.text     = model.address;
         _param.address       = model.address;
         [self getRoadId];
 
@@ -280,26 +275,38 @@
     
     [_v_tag removeAllTags];
     
+    for (IllegalExposureIllegalTypeModel * model in self.illegalList) {
+        
+        for (int i = 0; i < model.exposureTypeList.count; i++) {
+            IllegalExposureIllegalTypeModel * t_model = model.exposureTypeList[i];
+            if (t_model.isSelected) {
+                t_model.isSelected = NO;
+            }
+        }
+    }
+    self.param.illegalType = nil;
+    
+    
     if (_t_illegalList && _t_illegalList.count > 0) {
         
         NSMutableArray <NSString * > * t_tag = @[].mutableCopy;
-        NSMutableArray <NSNumber * > * t_tagIndexs = @[].mutableCopy;
+        //NSMutableArray <NSNumber * > * t_tagIndexs = @[].mutableCopy;
         for (int i = 0; i < _t_illegalList.count; i++) {
             
             IllegalExposureIllegalTypeModel * model = _t_illegalList[i];
             [t_tag addObject:model.illegalName];
-            if (model.isSelected) {
-                [t_tagIndexs addObject:@(i)];
-            }
+//            if (model.isSelected) {
+//                [t_tagIndexs addObject:@(i)];
+//            }
         
         }
         
         [_v_tag addTags:t_tag];
-        if (t_tagIndexs) {
-            for (NSNumber *number in t_tagIndexs) {
-                [_v_tag setTagAtIndex:number.integerValue selected:YES];
-            }
-        }
+//        if (t_tagIndexs) {
+//            for (NSNumber *number in t_tagIndexs) {
+//                [_v_tag setTagAtIndex:number.integerValue selected:YES];
+//            }
+//        }
         
     }
  
@@ -343,6 +350,7 @@
         
         LocationStorageModel * model = [LocationStorage sharedDefault].illegalExposure;
         _param.roadName      = model.streetName;
+        _tf_address.text     = model.address;
         _param.address       = model.address;
         [self getRoadId];
         
@@ -355,6 +363,8 @@
         _param.roadId         = nil;
         _param.roadName       = nil;
         _param.address        = nil;
+        _tf_address.text      = nil;
+        
     }
     
     self.btnType = !_btnType;
@@ -377,6 +387,7 @@
         SW(strongSelf, weakSelf);
         strongSelf.param.roadName      = model.streetName;
         strongSelf.param.address       = model.address;
+        strongSelf.tf_address.text     = model.address;
         [self getRoadId];
     };
     
@@ -391,7 +402,7 @@
         
         _param.roadName      = [LocationHelper sharedDefault].streetName;
         _param.address       = [LocationHelper sharedDefault].address;
-        
+        _tf_address.text     = [LocationHelper sharedDefault].address;
         [self getRoadId];
 
     }
@@ -472,19 +483,9 @@
         IllegalExposureIllegalTypeModel * t_model = self.t_illegalList[i];
         if (t_model.isSelected) {
             [_v_tag setTagAtIndex:i selected:NO];
+            t_model.isSelected = NO;
         }
     }
-    
-    for (IllegalExposureIllegalTypeModel * model in self.illegalList) {
-        
-        for (int i = 0; i < model.exposureTypeList.count; i++) {
-            IllegalExposureIllegalTypeModel * t_model = model.exposureTypeList[i];
-            if (t_model.isSelected) {
-                t_model.isSelected = NO;
-            }
-        }
-    }
-    
     
     [_v_tag setTagAtIndex:index selected:selected];
     
@@ -516,11 +517,13 @@
     
     @weakify(self);
     
+    [[LocationHelper sharedDefault] startLocation];
+    
     [RACObserve(self.param, carNo) subscribeNext:^(NSString * _Nullable x) {
         @strongify(self);
         if (x && x.length > 0) {
             self.tf_carNo.text = x;
-        
+
         }
     }];
     
@@ -530,33 +533,18 @@
         
         if ([x boolValue] == 1) {
             [self.btn_IsHaveCar setBackgroundColor:DefaultBtnNuableColor];
+            [self.btn_identify setBackgroundColor:DefaultBtnColor];
+            self.btn_identify.enabled = YES;
+            self.tf_carNo.enabled = YES;
         }else{
             [self.btn_IsHaveCar setBackgroundColor:DefaultBtnColor];
+            [self.btn_identify setBackgroundColor:DefaultBtnNuableColor];
+            self.btn_identify.enabled = NO;
+            self.tf_carNo.enabled = NO;
         }
     
     }];
-    
-    [RACObserve(self.param, userName) subscribeNext:^(NSString * _Nullable x) {
-         @strongify(self);
-         if (x && x.length > 0) {
-             self.tf_userName.text = x;
-         }
-    }];
-    
-    [RACObserve(self.param, address) subscribeNext:^(NSString * _Nullable x) {
-         @strongify(self);
-         if (x && x.length > 0) {
-             self.tf_address.text = x;
-         }
-    }];
-    
-    [RACObserve(self.param, addressRemark) subscribeNext:^(NSString * _Nullable x) {
-         @strongify(self);
-         if (x && x.length > 0) {
-             self.tf_remark.text = x;
-         }
-    }];
-    
+
     [RACObserve(self.param, roadName) subscribeNext:^(NSString * _Nullable x) {
          @strongify(self);
          if (x && x.length > 0) {
