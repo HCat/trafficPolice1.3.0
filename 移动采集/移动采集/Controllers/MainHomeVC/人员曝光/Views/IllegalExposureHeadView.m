@@ -59,6 +59,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         //添加对定位的监听
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(carNoChange) name:@"识别车牌成功" object:nil];
         
     }
     return self;
@@ -261,10 +262,12 @@
         [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_on"] forState:UIControlStateNormal];
         _btn_personLocation.enabled = NO;
         [_btn_personLocation setBackgroundColor:DefaultBtnNuableColor];
+        
     }else{
         [_btn_switchLocation setImage:[UIImage imageNamed:@"btn_location_off"] forState:UIControlStateNormal];
         _btn_personLocation.enabled = YES;
         [_btn_personLocation setBackgroundColor:DefaultBtnColor];
+        
     }
     
 }
@@ -411,6 +414,10 @@
     
 }
 
+- (void)carNoChange{
+    _tf_carNo.text = self.param.carNo;
+}
+
 #pragma mark - 配置UITextField
 
 - (void)setUpCommonUITextField:(UITextField *)textField{
@@ -519,14 +526,6 @@
     
     [[LocationHelper sharedDefault] startLocation];
     
-    [RACObserve(self.param, carNo) subscribeNext:^(NSString * _Nullable x) {
-        @strongify(self);
-        if (x && x.length > 0) {
-            self.tf_carNo.text = x;
-
-        }
-    }];
-    
     [RACObserve(self.param, remarkNoCar) subscribeNext:^(NSNumber * _Nullable x) {
         @strongify(self);
         
@@ -536,11 +535,13 @@
             [self.btn_identify setBackgroundColor:DefaultBtnColor];
             self.btn_identify.enabled = YES;
             self.tf_carNo.enabled = YES;
+            self.tf_carNo.attributedPlaceholder = [ShareFun highlightInString:@"请填入车牌(必填)" withSubString:@"(必填)"];
         }else{
             [self.btn_IsHaveCar setBackgroundColor:DefaultBtnColor];
             [self.btn_identify setBackgroundColor:DefaultBtnNuableColor];
             self.btn_identify.enabled = NO;
             self.tf_carNo.enabled = NO;
+            self.tf_carNo.attributedPlaceholder = [ShareFun highlightInString:@"不用填入" withSubString:@""];
         }
     
     }];

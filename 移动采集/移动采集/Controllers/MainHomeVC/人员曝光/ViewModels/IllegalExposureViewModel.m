@@ -26,11 +26,16 @@
         self.secend = self.arr_upImages[1];
         
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, illegalType)] reduce:^id (NSNumber * roadId,id first,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * illegalType){
+        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, illegalType),RACObserve(self.param, carNo),RACObserve(self.param, remarkNoCar)] reduce:^id (NSNumber * roadId,id first,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * illegalType,NSString * carNo,NSNumber * remarkNoCar){
             return @(roadId && ![first isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && illegalType.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);
-            self.isCanCommit = [x boolValue];
+            if ([self.param.remarkNoCar intValue] == 1) {
+                self.isCanCommit = [x boolValue] && self.param.carNo.length > 0;
+            }else{
+                self.isCanCommit = [x boolValue];
+            }
+
         }];
         
         
@@ -137,6 +142,7 @@
                     if (manger.commonIdentifyResponse.carNo && manger.commonIdentifyResponse.carNo.length > 0) {
                         self.param.carNo = manger.commonIdentifyResponse.carNo;
                         self.param.carColor = manger.commonIdentifyResponse.color;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"识别车牌成功" object:nil];
                     }
                    
                 }
