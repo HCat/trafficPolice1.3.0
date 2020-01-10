@@ -81,6 +81,8 @@ LRSingletonH(Default)
 @property (nonatomic, strong) NSDate *uptime; //上报截止时间
 @property (nonatomic, strong) NSDate *upStepTime; //上报步数时间
 
+@property (nonatomic, assign) BOOL dailyPratrol_on; //巡逻上报位置
+
 @property (nonatomic, strong) AccidentGetCodesResponse * accidentCodes;  //事故通用值
 @property (nonatomic, copy) NSArray <CommonGetRoadModel *> * roadModels; //道路通用值
 @property (nonatomic, copy) NSArray <DeliveryCompanyModel *> * deliveryCompanyList; //众包

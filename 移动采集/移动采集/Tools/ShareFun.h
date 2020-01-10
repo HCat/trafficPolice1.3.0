@@ -114,4 +114,9 @@
 //通过UITableViewCell 获取UITableView
 + (UITableView *)getTableView:(UITableViewCell *)cell;
 
+/**
+ *  将阿拉伯数字转换为中文数字
+ */
++ (NSString *)translationArabicNum:(NSInteger)arabicNum;
+
 @end

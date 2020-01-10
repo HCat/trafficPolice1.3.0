@@ -177,6 +177,16 @@ LRSingletonM(Default)
     
 }
 
+- (void)setDailyPratrol_on:(BOOL)dailyPratrol_on{
+    [[NSUserDefaults standardUserDefaults] setBool:dailyPratrol_on forKey:USERDEFAULT_KEY_DAILYPRATROL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)dailyPratrol_on{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_DAILYPRATROL];
+}
+
+
 - (NSInteger)makeNumber{
     //LxPrintf(@"推送消息数目：%ld",(long)[UIApplication sharedApplication].applicationIconBadgeNumber);
     return [UIApplication sharedApplication].applicationIconBadgeNumber;

@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE YES
+#define ISONLINE NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.123:8080/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
@@ -265,6 +265,15 @@
 #define URL_EXPOSURECOLLECT_TYPELIST @"app/exposureCollect/expTypeList.json"        //违章类型列表
 #define URL_EXPOSURECOLLECT_LISTPAGING @"app/exposureCollect/exposurePage.json"//曝光列表分页
 #define URL_EXPOSURECOLLECT_DETAIL @"app/exposureCollect/expDetail.json" //曝光详情
+
+
+#pragma mark - 排班信息列表
+
+#define URL_DAILYPATROL_LIST @"app/patrolInfo/PatrolShiftList.json"     //排班信息列表
+#define URL_DAILYPATRO_DETAIL @"app/patrolInfo/patrolLocationDetail.json"   //巡逻路线详情
+#define URL_DAILYPATRO_SENDSIGN @"app/patrolInfo/sendPatrolSign.json"   //巡逻打卡
+#define URL_DAILYPATRO_LOCATIONREPORT @"app/patrolInfo/locationReport.json"   //实时上报位置
+#define URL_DAILYPATRO_POINTLIST @"app/patrolInfo/pointReportList.json"   //实时上报位置列表
 
 
 #endif /* URLMacro_h */

@@ -231,6 +231,9 @@
             }else if ([menuModel.code isEqualToString:@"ILLEGAL_EXPOSURE"]) {
                 menuModel.funTitle = @"违法曝光";
                 menuModel.funImage = @"menu_illegalExposure";
+            }else if ([menuModel.code isEqualToString:@"PATROL_MANAGE"]) {
+                menuModel.funTitle = @"日常巡逻";
+                menuModel.funImage = @"menu_patrolManage";
             }
             
 

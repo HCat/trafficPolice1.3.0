@@ -79,7 +79,8 @@
     停车取证         PARKING_COLLECT
     违法曝光         ILLEGAL_EXPOSURE
     违法曝光列表      EXPOSURE_LIST
- 
+    日常巡逻         PATROL_MANAGE
+
 */
 
 
