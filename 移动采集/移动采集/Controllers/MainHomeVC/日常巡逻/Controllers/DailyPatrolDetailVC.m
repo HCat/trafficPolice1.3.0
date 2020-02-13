@@ -37,6 +37,8 @@
 
 @property (strong, nonatomic) UIButton *rightButton;
 
+@property (nonatomic,strong) NSTimer *time_upLocation;
+
 @end
 
 @implementation DailyPatrolDetailVC
@@ -57,6 +59,7 @@
     [self lr_bindViewModel];
     
     [self.viewModel.command_detail execute:nil];
+    [self.viewModel.command_pointList execute:nil];
 }
 
 - (void)lr_configUI{
@@ -100,17 +103,26 @@
     _mapView.distanceFilter = 200;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
-    _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
     
     [[self.btn_signIn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
+        
+        if (![ShareValue sharedDefault].dailyPratrol_on) {
+            [ShareFun showTipLable:@"未开启巡逻"];
+            return ;
+        }
+        
         if (self.viewModel.reponseModel.patrolLocationList && self.viewModel.reponseModel.patrolLocationList.count > 0) {
          
             for (int i = 0; i < self.viewModel.reponseModel.patrolLocationList.count; i++) {
             
                 DailyPatrolLocationModel * model = self.viewModel.reponseModel.patrolLocationList[i];
-        
+                if ([model.type isEqualToNumber:@0]) {
+                    continue;
+                }
+                
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
                 if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 20)) {
                     if ([model.status isEqualToNumber:@1]) {
@@ -148,6 +160,10 @@
     [[self.btn_takePicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
+        if (![ShareValue sharedDefault].dailyPratrol_on) {
+            [ShareFun showTipLable:@"未开启巡逻"];
+            return ;
+        }
         
         IllegalExposureVC * vc = [[IllegalExposureVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
@@ -156,6 +172,10 @@
     [[self.btn_illegal rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
+        if (![ShareValue sharedDefault].dailyPratrol_on) {
+            [ShareFun showTipLable:@"未开启巡逻"];
+            return ;
+        }
         IllegalExposureVC * vc = [[IllegalExposureVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
          
@@ -176,9 +196,11 @@
             
             [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_on"] forState:UIControlStateNormal];
             
+            
         }else{
             
             [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_off"] forState:UIControlStateNormal];
+            
             
         }
     
@@ -198,15 +220,23 @@
                     [self.viewModel.arr_point removeAllObjects];
                 }
                 
-                if (self.patrolPolyline) {
-                    [self.mapView removeOverlay:self.patrolPolyline];
+                
+                
+                NSMutableArray * t_arr = @[].mutableCopy;
+                for (int i = 0; i < x.patrolLocationList.count; i++) {
+                    DailyPatrolLocationModel * model = x.patrolLocationList[i];
+                    if ([model.type isEqualToNumber:@1]) {
+                        [t_arr addObject:model];
+                    }
                 }
                 
-                for (int i = 0; i < x.patrolLocationList.count; i++) {
+                for (int i = 0; i < t_arr.count; i++) {
                     
-                    DailyPatrolLocationModel * model = x.patrolLocationList[i];
+                    DailyPatrolLocationModel * model = t_arr[i];
                     
                     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+                    
+                    
                     
                     if (i == 0) {
                         
@@ -222,7 +252,7 @@
                         annotation.model = model;
                         [self.viewModel.arr_point addObject:annotation];
                         
-                    }else if(i == x.patrolLocationList.count - 1){
+                    }else if(i == t_arr.count - 1){
                         
                         PeoplePointAnnotation *annotation = [[PeoplePointAnnotation alloc] init];
                         annotation.coordinate = coordinate;
@@ -264,10 +294,21 @@
             //画巡逻折线
             if (x.patrolLocationList && x.patrolLocationList.count > 0) {
             
-                CLLocationCoordinate2D commonPolylineCoords[x.patrolLocationList.count];
             
+                NSMutableArray * t_arr = @[].mutableCopy;
                 for (int i = 0; i < x.patrolLocationList.count; i++) {
                     DailyPatrolLocationModel * model = x.patrolLocationList[i];
+                    if ([model.type isEqualToNumber:@0]) {
+                        [t_arr addObject:model];
+                    }
+                }
+                
+                
+                CLLocationCoordinate2D commonPolylineCoords[t_arr.count];
+            
+                for (int i = 0; i < t_arr.count; i++) {
+                    DailyPatrolLocationModel * model = t_arr[i];
+                
                     commonPolylineCoords[i].latitude = [model.latitude doubleValue];
                     commonPolylineCoords[i].longitude = [model.longitude doubleValue];
                 }
@@ -277,7 +318,7 @@
                     [self.mapView removeOverlay:self.patrolPolyline];
                 }
                 
-                self.patrolPolyline = [PatrolPolyline polylineWithCoordinates:commonPolylineCoords count:x.patrolLocationList.count];
+                self.patrolPolyline = [PatrolPolyline polylineWithCoordinates:commonPolylineCoords count:t_arr.count];
                 
                 [self.mapView addOverlay:self.patrolPolyline];
                 
@@ -286,8 +327,8 @@
             
             if (x.patrolInfo) {
                 
-                NSString * t_distance = [NSString stringWithFormat:@"路线长度%@km",[x.patrolInfo.distance stringValue]];  //距离
-                self.lb_distance.attributedText = [ShareFun highlightInString:t_distance withSubString:[x.patrolInfo.distance stringValue]];
+                NSString * t_distance = [NSString stringWithFormat:@"路线长度%@m",x.patrolInfo.distance];  //距离
+                self.lb_distance.attributedText = [ShareFun highlightInString:t_distance withSubString:x.patrolInfo.distance];
             
                 NSString * t_points = [NSString stringWithFormat:@"打卡点%@个",[x.patrolInfo.points stringValue]];  //打卡点
                 self.lb_points.attributedText = [ShareFun highlightInString:t_points withSubString:[x.patrolInfo.points stringValue]];
@@ -335,6 +376,34 @@
            
         }
         
+    }];
+    
+    [RACObserve(self.viewModel, arr_people) subscribeNext:^(NSArray<DailyPatrolPointModel *>  * _Nullable x) {
+        @strongify(self);
+        
+        if (x && x.count > 0) {
+            
+            CLLocationCoordinate2D commonPolylineCoords[x.count];
+            
+            for (int i = 0; i < x.count; i++) {
+                
+                DailyPatrolPointModel * model = x[i];
+                
+                commonPolylineCoords[i].latitude = [model.latitude doubleValue];
+                commonPolylineCoords[i].longitude = [model.longitude doubleValue];
+                
+            }
+            
+            if (self.peoplePatrolPolyline) {
+                [self.mapView removeOverlay:self.peoplePatrolPolyline];
+            }
+            
+            self.peoplePatrolPolyline = [PeoplePatrolPolyline polylineWithCoordinates:commonPolylineCoords count:x.count];
+            
+            [self.mapView addOverlay:self.peoplePatrolPolyline];
+            
+        }
+    
     }];
     
 

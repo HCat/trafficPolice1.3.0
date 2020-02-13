@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DailyPatroInfoModel : NSObject
 
 @property(copy, nonatomic) NSString * wayName;  //线路名称
-@property(strong, nonatomic) NSNumber * distance;  //距离
+@property(copy, nonatomic) NSString * distance;  //距离
 @property(strong, nonatomic) NSNumber * points;  //途径点数
 @property(strong, nonatomic) NSNumber * expTime;  //花费时间
 

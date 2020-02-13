@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * placeName;      //地点名称
 @property (nonatomic, strong) NSNumber * status;       //是否签到 0是未签到 1是已签到
 @property (nonatomic, strong) NSNumber * sort;         //第几个途经点
+@property (nonatomic, strong) NSNumber * type;         // 0为路线 1为途经点
 @end
 
 NS_ASSUME_NONNULL_END

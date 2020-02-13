@@ -29,6 +29,7 @@
 #import "AccidentDBModel.h"
 #import "StepNumberHelper.h"
 #import "UpCacheHelper.h"
+#import "DailyPatrolLocationHelper.h"
 
 
 @implementation ShareFun
@@ -440,7 +441,7 @@
     
     //开启webSocket
     [ShareFun openWebSocket];
-    
+    [[DailyPatrolLocationHelper sharedDefault] startUpLocation];
     if ([UserModel getUserModel].workstate == YES) {
         
         BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:[ShareValue sharedDefault].upStepTime];
@@ -489,6 +490,8 @@
     [[UpCacheHelper sharedDefault] stopAll];
     
     [ShareFun closeWebSocket];
+    [[DailyPatrolLocationHelper sharedDefault] stopLocation];
+    
     [LRBaseRequest clearRequestFilters];
     //[LAJIBaseRequest clearRequestFilters];
     [ShareValue sharedDefault].token = nil;

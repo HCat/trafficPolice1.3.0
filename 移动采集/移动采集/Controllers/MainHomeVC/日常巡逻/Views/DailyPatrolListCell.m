@@ -28,7 +28,8 @@
         @strongify(self);
         
         self.lb_shiftNum.text = [NSString stringWithFormat:@"班次%@",[ShareFun translationArabicNum:[x.shiftNum integerValue]]];
-        self.lb_time.text = [NSString stringWithFormat:@"%@:%@-%@:%@",x.startHour,x.startMinute,x.endHour,x.endMinute];
+        
+        self.lb_time.text = [NSString stringWithFormat:@"%02d:%02d-%02d:%02d",[x.startHour intValue],[x.startMinute intValue],[x.endHour intValue],[x.endMinute intValue]];
         self.lb_partrolName.text = [ShareFun takeStringNoNull:x.partrolName];
         
     }];

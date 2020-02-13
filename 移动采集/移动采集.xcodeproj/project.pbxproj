@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8232904423F53736009A54AC /* IllegalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8232904323F53736009A54AC /* IllegalAPI.m */; };
+		82DBF2A923CC18F4002FF792 /* DailyPatrolLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DBF2A823CC18F4002FF792 /* DailyPatrolLocationHelper.m */; };
 		82EFA88923C5800600327172 /* DailyPatrolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA88723C5800600327172 /* DailyPatrolDetailVC.m */; };
 		82EFA88A23C5800600327172 /* DailyPatrolDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82EFA88823C5800600327172 /* DailyPatrolDetailVC.xib */; };
 		82EFA88E23C5801D00327172 /* DailyPatrolListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA88C23C5801D00327172 /* DailyPatrolListVC.m */; };
@@ -740,6 +742,10 @@
 
 /* Begin PBXFileReference section */
 		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
+		8232904223F53735009A54AC /* IllegalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAPI.h; sourceTree = "<group>"; };
+		8232904323F53736009A54AC /* IllegalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAPI.m; sourceTree = "<group>"; };
+		82DBF2A723CC18F4002FF792 /* DailyPatrolLocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolLocationHelper.h; sourceTree = "<group>"; };
+		82DBF2A823CC18F4002FF792 /* DailyPatrolLocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolLocationHelper.m; sourceTree = "<group>"; };
 		82EFA88623C5800600327172 /* DailyPatrolDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolDetailVC.h; sourceTree = "<group>"; };
 		82EFA88723C5800600327172 /* DailyPatrolDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolDetailVC.m; sourceTree = "<group>"; };
 		82EFA88823C5800600327172 /* DailyPatrolDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyPatrolDetailVC.xib; sourceTree = "<group>"; };
@@ -2048,6 +2054,8 @@
 				82EFA89123C5AB9300327172 /* DailyPatrolListViewModel.m */,
 				82EFA89F23C5E04B00327172 /* DailyPatrolDetailViewModel.h */,
 				82EFA8A023C5E04B00327172 /* DailyPatrolDetailViewModel.m */,
+				82DBF2A723CC18F4002FF792 /* DailyPatrolLocationHelper.h */,
+				82DBF2A823CC18F4002FF792 /* DailyPatrolLocationHelper.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2209,21 +2217,6 @@
 				CE68A7FA233363F40037811F /* ParkingManageListModel.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		CE1259112282C35500B7BF48 /* 全部应用 */ = {
-			isa = PBXGroup;
-			children = (
-				CE1259122282C39400B7BF48 /* Controllers */,
-			);
-			path = "全部应用";
-			sourceTree = "<group>";
-		};
-		CE1259122282C39400B7BF48 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		CE1259132282C75A00B7BF48 /* 外卖小哥管理 */ = {
@@ -3587,7 +3580,6 @@
 				CE12329B2328D2BC00E61AC4 /* 停车场管理 */,
 				CE3BAE1F22E82F3A009E54A9 /* 停车取证 */,
 				CE1259132282C75A00B7BF48 /* 外卖小哥管理 */,
-				CE1259112282C35500B7BF48 /* 全部应用 */,
 				CE898C5322817B47002ADC4D /* 首页工作 */,
 				CE4959A0225493A0003922FA /* 勤务管理 */,
 				CE43DDF8218FE05600AEBC9A /* 警力分布 */,
@@ -4287,6 +4279,8 @@
 				CE72DF2021119F3C00F843CD /* ActionAPI.m */,
 				CE93BC6A2147C0B5001F2976 /* SpecialCarAPI.h */,
 				CE93BC6B2147C0B5001F2976 /* SpecialCarAPI.m */,
+				8232904223F53735009A54AC /* IllegalAPI.h */,
+				8232904323F53736009A54AC /* IllegalAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -5456,6 +5450,7 @@
 				CEFACDA322C5BB6700C14DEC /* XTVerCodeInput.m in Sources */,
 				CE1259242282C94300B7BF48 /* TakeOutAPI.m in Sources */,
 				CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */,
+				8232904423F53736009A54AC /* IllegalAPI.m in Sources */,
 				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,
 				82EFA89623C5ABC200327172 /* DailyPatrolListCell.m in Sources */,
 				CE6915641F1DDA01008911A6 /* UserHomeVC.m in Sources */,
@@ -5591,6 +5586,7 @@
 				CE915DC221A3F8450095D2DE /* PolicePerformView.m in Sources */,
 				CEE7B80D215A7D8D005FF1BA /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				CE4F3C151F5FE8C900C6EF64 /* VehicleCarAnnotation.m in Sources */,
+				82DBF2A923CC18F4002FF792 /* DailyPatrolLocationHelper.m in Sources */,
 				CE41C7B81F5EAC800058FE8D /* ImportCarHomeVC.m in Sources */,
 				CE6A2E7920BD3C2600EA58DA /* VehicleUpImageDetailCell.m in Sources */,
 				CE27D16C215F17520014FEC8 /* IllegalNetErrorView.m in Sources */,
@@ -5727,7 +5723,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5737,7 +5733,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.5;
+				MARKETING_VERSION = 2.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5751,7 +5747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5761,7 +5757,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.5;
+				MARKETING_VERSION = 2.1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

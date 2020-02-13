@@ -104,4 +104,44 @@
 }
 
 
+- (RACCommand *)command_pointList{
+
+    if (_command_pointList == nil) {
+        
+        @weakify(self);
+        self.command_pointList = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            @strongify(self);
+            RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                
+                DailyPatrolPointListManger * manger = [[DailyPatrolPointListManger alloc] init];
+                manger.partrolId = self.partrolId;
+                manger.shiftId = self.shiftId;
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        self.arr_people = manger.list;
+                        [subscriber sendNext:@"加载成功"];
+                    }else{
+                        [subscriber sendNext:@"加载失败"];
+                    }
+                    
+                    [subscriber sendCompleted];
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendNext:@"加载失败"];
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            }];
+            
+            return t_signal;
+        }];
+        
+    }
+    
+    return _command_pointList;
+    
+}
+
 @end

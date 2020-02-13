@@ -3,4 +3,97 @@
    uuid = "08B4CD70-2B0E-4287-A028-D6C1C8550D94"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.RuntimeIssueBreakpoint">
+         <BreakpointContent
+            uuid = "A1532224-2A37-4EB0-8429-883C22D5E922"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            type = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64212111-31D2-4AAF-865C-C6C0D986CCAC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x65e5;&#x5e38;&#x5de1;&#x903b;/ViewModels/DailyPatrolDetailViewModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-command_detail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC96A9F0-CC53-42C1-93D2-CECE9AEA7BEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x65e5;&#x5e38;&#x5de1;&#x903b;/ViewModels/DailyPatrolDetailViewModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-command_pointList"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BC96A9F0-CC53-42C1-93D2-CECE9AEA7BEC - fff4c75bebd4c487"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[DailyPatrolDetailViewModel command_pointList]_block_invoke_2"
+                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hcat-89/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Controllers/MainHomeVC/%E6%97%A5%E5%B8%B8%E5%B7%A1%E9%80%BB/ViewModels/DailyPatrolDetailViewModel.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "BC96A9F0-CC53-42C1-93D2-CECE9AEA7BEC - fff4c75bebd4c48a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[DailyPatrolDetailViewModel command_pointList]_block_invoke_3"
+                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hcat-89/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Controllers/MainHomeVC/%E6%97%A5%E5%B8%B8%E5%B7%A1%E9%80%BB/ViewModels/DailyPatrolDetailViewModel.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7740431D-8070-4D91-BF43-C2481BC894CB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x65e5;&#x5e38;&#x5de1;&#x903b;/ViewModels/DailyPatrolDetailViewModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-command_pointList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

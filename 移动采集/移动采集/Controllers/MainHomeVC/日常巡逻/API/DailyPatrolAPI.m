@@ -132,7 +132,9 @@
 
 - (nullable id)requestArgument
 {
-    return @{@"partrolId":_partrolId};
+    return @{@"partrolId":_partrolId,
+             @"shiftId":_shiftId
+    };
 }
 
 - (NSArray < DailyPatrolPointModel *> *)list{

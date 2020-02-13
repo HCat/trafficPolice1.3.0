@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSNumber * longitude;  //经度
 
 @property(nonatomic, strong) NSMutableArray * arr_point;    //存储巡逻点
-
+@property(nonatomic, strong) NSArray * arr_people;   //存储路径点
 //巡逻详情
 @property(nonatomic, strong) DailyPatrolDetailReponse * reponseModel;
 

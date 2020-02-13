@@ -68,8 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber * longitude;     //经度
 @property (nonatomic, strong) NSNumber * latitude;      //纬度
-@property (nonatomic, strong) NSNumber * partrolId;      //巡逻编号
-@property (nonatomic, strong) NSNumber * shiftId;       //班次编号
+//@property (nonatomic, strong) NSNumber * partrolId;      //巡逻编号
+//@property (nonatomic, strong) NSNumber * shiftId;       //班次编号
 
 @end
 
