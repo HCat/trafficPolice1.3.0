@@ -185,6 +185,27 @@
     
 }
 
++ (void)showWindowWithIllegalSearchViewWith:(IllegalSearchView *)view inView:(UIView *)contentView{
+    
+    
+    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+
+    [contentView addSubview:window];
+    
+    
+    window.contentView = view;
+    window.contentView.center = window.center;
+    window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                           CGAffineTransformMakeScale(1.1f, 1.1f));
+    [UIView animateWithDuration:.2 animations:^{
+        window.contentView.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
+                                                               CGAffineTransformMakeScale(1.0f, 1.0f));
+    }];
+    
+    
+}
+
+
 #pragma mark -
 
 - (instancetype)initWithFrame:(CGRect)frame {

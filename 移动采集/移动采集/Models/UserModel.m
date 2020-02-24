@@ -533,5 +533,20 @@
     
 }
 
++ (BOOL)isPermissionForIllegalAddList{
+    
+    NSString *match = @"ILLEGAL_PARK_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].userPrivileges filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
 
 @end

@@ -27,6 +27,10 @@
 #import "IllegalDBModel.h"
 #import "IllegalRecordVC.h"
 
+#import "UserModel.h"
+#import "UINavigationBar+BarItem.h"
+#import "IllegalListVC.h"
+
 @interface CarInfoAddVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
@@ -61,6 +65,7 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     
     self.isObserver = NO;
     
+    [self showRightBarButtonItemWithImage:@"btn_illegalAdd_list" target:self action:@selector(handleBtnShowListClicked:)];
     //初始化请求参数
     self.param = [[IllegalParkSaveParam alloc] init];
     
@@ -94,6 +99,39 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
 #endif
     
+}
+
+#pragma mark - buttonAction
+
+- (void)handleBtnShowListClicked:(id)sender{
+    
+    if (self.type == ParkTypeMotorbikeAdd) {
+        // self.title = @"摩托车违章";
+        if ([UserModel isPermissionForMotorBikeList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeMotorbikeAdd;
+            t_vc.title = @"摩托车违章列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else{
+        //self.title = @"车辆录入";
+        if ([UserModel isPermissionForCarInfoList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeCarInfoAdd;
+            t_vc.title = @"车辆录入列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }
+   
+
 }
 
 #pragma mark - 返回按钮事件

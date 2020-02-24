@@ -31,6 +31,10 @@
 #import "IllegalNetErrorView.h"
 #import "IllegalDBModel.h"
 
+#import "UserModel.h"
+#import "UINavigationBar+BarItem.h"
+#import "IllegalListVC.h"
+
 @interface IllegalParkVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
@@ -76,7 +80,9 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     }
     
     self.isObserver = NO;
-
+    
+    [self showRightBarButtonItemWithImage:@"btn_illegalAdd_list" target:self action:@selector(handleBtnShowListClicked:)];
+    
     //初始化请求参数
     self.param = [[IllegalParkSaveParam alloc] init];
     
@@ -171,6 +177,73 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
         
     }
     
+}
+
+#pragma mark - buttonAction
+
+- (void)handleBtnShowListClicked:(id)sender{
+    if (_subType == ParkTypePark) {
+        //self.title = @"违停采集";
+        if ([UserModel isPermissionForIllegalList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypePark;
+            t_vc.title = @"违停列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else if (_subType == ParkTypeReversePark){
+        //self.title = @"不按朝向";
+        if ([UserModel isPermissionForIllegalReverseList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeReversePark;
+            t_vc.title = @"不按朝向列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else if (_subType == ParkTypeLockPark){
+        //self.title = @"违停锁车";
+        if ([UserModel isPermissionForIllegalLockList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeLockPark;
+            t_vc.title = @"违停锁车列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else if (_subType == ParkTypeViolationLine){
+        //self.title = @"违反禁止线";
+        if ([UserModel isPermissionForInhibitLineList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypePark;
+            t_vc.subType = ParkTypeViolationLine;
+            t_vc.title = @"违反禁止线列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else if (_subType == ParkTypeThrough){
+        //self.title = @"违反禁令采集";
+        if ([UserModel isPermissionForThroughList]) {
+            IllegalListVC *t_vc = [[IllegalListVC alloc] init];
+            t_vc.type = 1;
+            t_vc.illegalType = IllegalTypeThrough;
+            t_vc.title = @"违反禁令列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }
+
 }
 
 

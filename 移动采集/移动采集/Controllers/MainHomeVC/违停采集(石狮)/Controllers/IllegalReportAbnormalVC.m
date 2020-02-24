@@ -62,9 +62,15 @@
     [self.viewModel.command_up.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         if ([x isEqualToString:@"提交成功"]) {
-            
-            self.viewModel.illegalCollect.state = @8;
-            self.viewModel.illegalCollect.stateName  = @"异常处理中";
+            if (self.viewModel.illegalCollect) {
+                self.viewModel.illegalCollect.state = @8;
+                self.viewModel.illegalCollect.stateName  = @"异常处理中";
+            }
+            if (self.viewModel.illegalPark) {
+                self.viewModel.illegalPark.state = @8;
+                self.viewModel.illegalPark.stateName  = @"异常处理中";
+            }
+           
             [self.viewModel.subject sendNext:nil];
             
             [[RACScheduler currentScheduler] afterDelay:1 schedule:^{

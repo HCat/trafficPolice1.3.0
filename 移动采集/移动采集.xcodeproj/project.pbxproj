@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		8232904423F53736009A54AC /* IllegalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8232904323F53736009A54AC /* IllegalAPI.m */; };
+		829897CF23FDC6BB0060F17B /* IllegalAddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */; };
+		829897D023FDC6BB0060F17B /* IllegalAddDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */; };
+		829897D323FDC7530060F17B /* IllegalAddDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */; };
+		82B7550923F7D3DB0061F884 /* IllegalAddHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7550723F7D3DB0061F884 /* IllegalAddHeadView.m */; };
+		82B7550A23F7D3DB0061F884 /* IllegalAddHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7550823F7D3DB0061F884 /* IllegalAddHeadView.xib */; };
+		82B7550E23F7D4530061F884 /* IllegalAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7550C23F7D4530061F884 /* IllegalAddVC.m */; };
+		82B7550F23F7D4530061F884 /* IllegalAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7550D23F7D4530061F884 /* IllegalAddVC.xib */; };
+		82B7551223F7D46E0061F884 /* IllegalAddViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7551123F7D46E0061F884 /* IllegalAddViewModel.m */; };
+		82B7551B23FCD95A0061F884 /* IllegalSecAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7551923FCD95A0061F884 /* IllegalSecAddVC.m */; };
+		82B7551C23FCD95A0061F884 /* IllegalSecAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7551A23FCD95A0061F884 /* IllegalSecAddVC.xib */; };
+		82B7551F23FD19C20061F884 /* IllegalSecAddViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7551E23FD19C20061F884 /* IllegalSecAddViewModel.m */; };
+		82B7552323FD82090061F884 /* IllegalAddListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7552123FD82090061F884 /* IllegalAddListVC.m */; };
+		82B7552423FD82090061F884 /* IllegalAddListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7552223FD82090061F884 /* IllegalAddListVC.xib */; };
+		82B7552723FD822E0061F884 /* IllegalAddListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7552623FD822E0061F884 /* IllegalAddListViewModel.m */; };
+		82B7552B23FD83BA0061F884 /* IllegalAddListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7552923FD83BA0061F884 /* IllegalAddListCell.m */; };
+		82B7552C23FD83BA0061F884 /* IllegalAddListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7552A23FD83BA0061F884 /* IllegalAddListCell.xib */; };
+		82B7552F23FDA9170061F884 /* IllegalSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7552E23FDA9170061F884 /* IllegalSearchView.m */; };
+		82B7553123FDA9450061F884 /* IllegalSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7553023FDA9450061F884 /* IllegalSearchView.xib */; };
 		82DBF2A923CC18F4002FF792 /* DailyPatrolLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DBF2A823CC18F4002FF792 /* DailyPatrolLocationHelper.m */; };
 		82EFA88923C5800600327172 /* DailyPatrolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA88723C5800600327172 /* DailyPatrolDetailVC.m */; };
 		82EFA88A23C5800600327172 /* DailyPatrolDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82EFA88823C5800600327172 /* DailyPatrolDetailVC.xib */; };
@@ -744,6 +762,35 @@
 		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
 		8232904223F53735009A54AC /* IllegalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAPI.h; sourceTree = "<group>"; };
 		8232904323F53736009A54AC /* IllegalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAPI.m; sourceTree = "<group>"; };
+		829897CC23FDC6BB0060F17B /* IllegalAddDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailVC.h; sourceTree = "<group>"; };
+		829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddDetailVC.m; sourceTree = "<group>"; };
+		829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddDetailVC.xib; sourceTree = "<group>"; };
+		829897D123FDC7530060F17B /* IllegalAddDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailViewModel.h; sourceTree = "<group>"; };
+		829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddDetailViewModel.m; sourceTree = "<group>"; };
+		82B7550623F7D3DB0061F884 /* IllegalAddHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddHeadView.h; sourceTree = "<group>"; };
+		82B7550723F7D3DB0061F884 /* IllegalAddHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddHeadView.m; sourceTree = "<group>"; };
+		82B7550823F7D3DB0061F884 /* IllegalAddHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddHeadView.xib; sourceTree = "<group>"; };
+		82B7550B23F7D4530061F884 /* IllegalAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddVC.h; sourceTree = "<group>"; };
+		82B7550C23F7D4530061F884 /* IllegalAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddVC.m; sourceTree = "<group>"; };
+		82B7550D23F7D4530061F884 /* IllegalAddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddVC.xib; sourceTree = "<group>"; };
+		82B7551023F7D46E0061F884 /* IllegalAddViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddViewModel.h; sourceTree = "<group>"; };
+		82B7551123F7D46E0061F884 /* IllegalAddViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddViewModel.m; sourceTree = "<group>"; };
+		82B7551823FCD95A0061F884 /* IllegalSecAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalSecAddVC.h; sourceTree = "<group>"; };
+		82B7551923FCD95A0061F884 /* IllegalSecAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalSecAddVC.m; sourceTree = "<group>"; };
+		82B7551A23FCD95A0061F884 /* IllegalSecAddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalSecAddVC.xib; sourceTree = "<group>"; };
+		82B7551D23FD19C20061F884 /* IllegalSecAddViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalSecAddViewModel.h; sourceTree = "<group>"; };
+		82B7551E23FD19C20061F884 /* IllegalSecAddViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalSecAddViewModel.m; sourceTree = "<group>"; };
+		82B7552023FD82090061F884 /* IllegalAddListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddListVC.h; sourceTree = "<group>"; };
+		82B7552123FD82090061F884 /* IllegalAddListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddListVC.m; sourceTree = "<group>"; };
+		82B7552223FD82090061F884 /* IllegalAddListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddListVC.xib; sourceTree = "<group>"; };
+		82B7552523FD822E0061F884 /* IllegalAddListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddListViewModel.h; sourceTree = "<group>"; };
+		82B7552623FD822E0061F884 /* IllegalAddListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddListViewModel.m; sourceTree = "<group>"; };
+		82B7552823FD83BA0061F884 /* IllegalAddListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddListCell.h; sourceTree = "<group>"; };
+		82B7552923FD83BA0061F884 /* IllegalAddListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddListCell.m; sourceTree = "<group>"; };
+		82B7552A23FD83BA0061F884 /* IllegalAddListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddListCell.xib; sourceTree = "<group>"; };
+		82B7552D23FDA9170061F884 /* IllegalSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalSearchView.h; sourceTree = "<group>"; };
+		82B7552E23FDA9170061F884 /* IllegalSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalSearchView.m; sourceTree = "<group>"; };
+		82B7553023FDA9450061F884 /* IllegalSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalSearchView.xib; sourceTree = "<group>"; };
 		82DBF2A723CC18F4002FF792 /* DailyPatrolLocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolLocationHelper.h; sourceTree = "<group>"; };
 		82DBF2A823CC18F4002FF792 /* DailyPatrolLocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolLocationHelper.m; sourceTree = "<group>"; };
 		82EFA88623C5800600327172 /* DailyPatrolDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolDetailVC.h; sourceTree = "<group>"; };
@@ -2019,6 +2066,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82B7550023F7D3010061F884 /* 违停采集(石狮) */ = {
+			isa = PBXGroup;
+			children = (
+				82B7550123F7D3200061F884 /* APIS */,
+				82B7550223F7D3270061F884 /* Views */,
+				82B7550323F7D3330061F884 /* Models */,
+				82B7550423F7D33B0061F884 /* ViewModels */,
+				82B7550523F7D3430061F884 /* Controllers */,
+			);
+			path = "违停采集(石狮)";
+			sourceTree = "<group>";
+		};
+		82B7550123F7D3200061F884 /* APIS */ = {
+			isa = PBXGroup;
+			children = (
+				8232904223F53735009A54AC /* IllegalAPI.h */,
+				8232904323F53736009A54AC /* IllegalAPI.m */,
+			);
+			path = APIS;
+			sourceTree = "<group>";
+		};
+		82B7550223F7D3270061F884 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				82B7550623F7D3DB0061F884 /* IllegalAddHeadView.h */,
+				82B7550723F7D3DB0061F884 /* IllegalAddHeadView.m */,
+				82B7550823F7D3DB0061F884 /* IllegalAddHeadView.xib */,
+				82B7552823FD83BA0061F884 /* IllegalAddListCell.h */,
+				82B7552923FD83BA0061F884 /* IllegalAddListCell.m */,
+				82B7552A23FD83BA0061F884 /* IllegalAddListCell.xib */,
+				82B7552D23FDA9170061F884 /* IllegalSearchView.h */,
+				82B7552E23FDA9170061F884 /* IllegalSearchView.m */,
+				82B7553023FDA9450061F884 /* IllegalSearchView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		82B7550323F7D3330061F884 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		82B7550423F7D33B0061F884 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				82B7551023F7D46E0061F884 /* IllegalAddViewModel.h */,
+				82B7551123F7D46E0061F884 /* IllegalAddViewModel.m */,
+				82B7551D23FD19C20061F884 /* IllegalSecAddViewModel.h */,
+				82B7551E23FD19C20061F884 /* IllegalSecAddViewModel.m */,
+				82B7552523FD822E0061F884 /* IllegalAddListViewModel.h */,
+				82B7552623FD822E0061F884 /* IllegalAddListViewModel.m */,
+				829897D123FDC7530060F17B /* IllegalAddDetailViewModel.h */,
+				829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */,
+				CE5882DE22B3799500614219 /* IllegalReportAbnormalViewModel.h */,
+				CE5882DF22B3799500614219 /* IllegalReportAbnormalViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		82B7550523F7D3430061F884 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				82B7550B23F7D4530061F884 /* IllegalAddVC.h */,
+				82B7550C23F7D4530061F884 /* IllegalAddVC.m */,
+				82B7550D23F7D4530061F884 /* IllegalAddVC.xib */,
+				82B7551823FCD95A0061F884 /* IllegalSecAddVC.h */,
+				82B7551923FCD95A0061F884 /* IllegalSecAddVC.m */,
+				82B7551A23FCD95A0061F884 /* IllegalSecAddVC.xib */,
+				82B7552023FD82090061F884 /* IllegalAddListVC.h */,
+				82B7552123FD82090061F884 /* IllegalAddListVC.m */,
+				82B7552223FD82090061F884 /* IllegalAddListVC.xib */,
+				829897CC23FDC6BB0060F17B /* IllegalAddDetailVC.h */,
+				829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */,
+				829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */,
+				CE5882D922B33EBF00614219 /* IllegalReportAbnormalVC.h */,
+				CE5882DA22B33EBF00614219 /* IllegalReportAbnormalVC.m */,
+				CE5882DB22B33EBF00614219 /* IllegalReportAbnormalVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		82EFA87C23C577A400327172 /* 日常巡逻 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3238,11 +3368,6 @@
 				CE4E3C071F39B9F20057148B /* IllegalFootCell.h */,
 				CE4E3C081F39B9F20057148B /* IllegalFootCell.m */,
 				CE4E3C091F39B9F20057148B /* IllegalFootCell.xib */,
-				CE5882D922B33EBF00614219 /* IllegalReportAbnormalVC.h */,
-				CE5882DA22B33EBF00614219 /* IllegalReportAbnormalVC.m */,
-				CE5882DB22B33EBF00614219 /* IllegalReportAbnormalVC.xib */,
-				CE5882DE22B3799500614219 /* IllegalReportAbnormalViewModel.h */,
-				CE5882DF22B3799500614219 /* IllegalReportAbnormalViewModel.m */,
 			);
 			name = IllegalDetailVC;
 			sourceTree = "<group>";
@@ -3575,6 +3700,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				82B7550023F7D3010061F884 /* 违停采集(石狮) */,
 				82EFA87C23C577A400327172 /* 日常巡逻 */,
 				CE4A0D6623989C08004F99B1 /* 人员曝光 */,
 				CE12329B2328D2BC00E61AC4 /* 停车场管理 */,
@@ -4279,8 +4405,6 @@
 				CE72DF2021119F3C00F843CD /* ActionAPI.m */,
 				CE93BC6A2147C0B5001F2976 /* SpecialCarAPI.h */,
 				CE93BC6B2147C0B5001F2976 /* SpecialCarAPI.m */,
-				8232904223F53735009A54AC /* IllegalAPI.h */,
-				8232904323F53736009A54AC /* IllegalAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -4856,6 +4980,7 @@
 				CE5B93011F2F13D2000008AE /* IllegalThroughSecAddView.xib in Resources */,
 				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
 				CE37409F2175803600FEF14F /* UpCacheSettingVC.xib in Resources */,
+				82B7551C23FCD95A0061F884 /* IllegalSecAddVC.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE4139FA2178CF27006AA441 /* ZLPhotoBrowserCell.xib in Resources */,
 				CE12593522841B7B00B7BF48 /* TakeOutInfoVC.xib in Resources */,
@@ -4876,6 +5001,7 @@
 				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CE85A2C72011D69A005A3175 /* JointVideoVC.xib in Resources */,
 				CE93BC4521467879001F2976 /* SpecialNoticeVC.xib in Resources */,
+				82B7552423FD82090061F884 /* IllegalAddListVC.xib in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
 				CE763B1D1FCFF1DB00EB0815 /* JointTextCell.xib in Resources */,
 				CE1E3FFC20F48EB2003A5595 /* AccidentUpCell.xib in Resources */,
@@ -5001,12 +5127,15 @@
 				CE1E3FF720F460DA003A5595 /* AccidentInfoCell.xib in Resources */,
 				CE2C98A31F619607009851F6 /* VehicleCarNoShowCell.xib in Resources */,
 				CEB46568215CD8BA00B0D2C0 /* Assets.xcassets in Resources */,
+				82B7553123FDA9450061F884 /* IllegalSearchView.xib in Resources */,
+				82B7550A23F7D3DB0061F884 /* IllegalAddHeadView.xib in Resources */,
 				CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */,
 				CEAE95EC230CE52D008B9B3D /* FunctionView.xib in Resources */,
 				CE4A0D742398A43E004F99B1 /* IllegalExposureHeadView.xib in Resources */,
 				CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
 				CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */,
+				829897D023FDC6BB0060F17B /* IllegalAddDetailVC.xib in Resources */,
 				CE93BC4F2146A0FB001F2976 /* SpecialManageVC.xib in Resources */,
 				CE12DD872109AC43009C2893 /* AccidentAddHeadView.xib in Resources */,
 				CEFEFCEF1F29B16300C33CBD /* IllegalParkVC.xib in Resources */,
@@ -5038,10 +5167,12 @@
 				CE3285DB20E60B6D002B3B43 /* NoticeVC.xib in Resources */,
 				CE763B131FCFF0F300EB0815 /* JointImageCell.xib in Resources */,
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
+				82B7552C23FD83BA0061F884 /* IllegalAddListCell.xib in Resources */,
 				CE68110622854D88003055DF /* TakeOutAddHeadView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
 				CE71425C20B2EF5F00F9FCC2 /* VehicleRoadAlarmCell.xib in Resources */,
 				CE188E492015EA0C008418B9 /* JointPenaltiesCell.xib in Resources */,
+				82B7550F23F7D4530061F884 /* IllegalAddVC.xib in Resources */,
 				CE6D2DA81F6AF83700293753 /* PoliceDetailView.xib in Resources */,
 				CEFEFD011F29C22500C33CBD /* LRCameraVC.xib in Resources */,
 			);
@@ -5240,6 +5371,7 @@
 				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
 				CE93BC4E2146A0FB001F2976 /* SpecialManageVC.m in Sources */,
 				CED9B0F31F5D356E0010E68A /* SignListCell.m in Sources */,
+				82B7551223F7D46E0061F884 /* IllegalAddViewModel.m in Sources */,
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
 				CE12591F2282C87000B7BF48 /* TakeOutSearchVC.m in Sources */,
 				CE48A90022559F7F00D423C6 /* AttendanceSignInViewModel.m in Sources */,
@@ -5377,6 +5509,7 @@
 				CE87043420CE52B700E206AE /* LTSCircleView.m in Sources */,
 				CE55B7FD1F9727F900CD1567 /* AddressBookCell.m in Sources */,
 				CEE5E9D31F1C6CBB00AC515C /* AppDelegate.mm in Sources */,
+				82B7551B23FCD95A0061F884 /* IllegalSecAddVC.m in Sources */,
 				CE3BAE2722E8508A009E54A9 /* ParkingForensicsListVC.m in Sources */,
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE88FC4F20A998890011B729 /* VehicleUpInfoVC.m in Sources */,
@@ -5420,6 +5553,7 @@
 				CE4139E52178CF26006AA441 /* ZLDrawItem.m in Sources */,
 				CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */,
 				CE0731C41F5EC7E400B3831B /* VehicleAPI.m in Sources */,
+				82B7552F23FDA9170061F884 /* IllegalSearchView.m in Sources */,
 				CE68A7FB233363F40037811F /* ParkingManageListModel.m in Sources */,
 				CEA50C01202C47F2006E5A55 /* VehicleReportVC.m in Sources */,
 				CED37B9122E99B80003BCD45 /* ParkingForensicsModel.m in Sources */,
@@ -5492,6 +5626,7 @@
 				CE555F5E1F20568100829124 /* UserSetVC.m in Sources */,
 				CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */,
 				CEAA97181F1CF15900741A6F /* UIButton+NoRepeatClick.m in Sources */,
+				829897D323FDC7530060F17B /* IllegalAddDetailViewModel.m in Sources */,
 				CE25F4FD21250B300067E125 /* IllegalListCell.m in Sources */,
 				CE4E3C151F39BB860057148B /* IllegalMessageCell.m in Sources */,
 				CE5C6F031FB0425F005E53BF /* GCDTimer.m in Sources */,
@@ -5531,6 +5666,7 @@
 				CE48A8F72254D37600D423C6 /* AttendancePoliceCell.m in Sources */,
 				CEAAC2D220C8267D009DCC5E /* MainCellLayout.m in Sources */,
 				CE42B9021F1F3E16005CC5BD /* FastAccidentAPI.m in Sources */,
+				829897CF23FDC6BB0060F17B /* IllegalAddDetailVC.m in Sources */,
 				CED2B5B22319124F006CD8D3 /* AccidentDisposeVC.m in Sources */,
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,
@@ -5542,6 +5678,7 @@
 				CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */,
 				CE6AE97620B6901E005781DA /* VehicleTiredListCell.m in Sources */,
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
+				82B7552323FD82090061F884 /* IllegalAddListVC.m in Sources */,
 				CE87043620CE52B700E206AE /* LTSCalendarContentView.m in Sources */,
 				CE43DE01218FE14100AEBC9A /* PoliceDistributeVC.m in Sources */,
 				CE5B92F51F2F100D000008AE /* IllegalSecSaveVC.m in Sources */,
@@ -5565,14 +5702,19 @@
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
 				CE68111E2285BF4C003055DF /* MainFuncitonCell.m in Sources */,
 				CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */,
+				82B7550E23F7D4530061F884 /* IllegalAddVC.m in Sources */,
 				CE2C98B31F61C1E9009851F6 /* VehicleDriverCell.m in Sources */,
 				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,
+				82B7551F23FD19C20061F884 /* IllegalSecAddViewModel.m in Sources */,
 				CEFEFD061F29C60B00C33CBD /* DeviceOrientation.m in Sources */,
+				82B7550923F7D3DB0061F884 /* IllegalAddHeadView.m in Sources */,
+				82B7552723FD822E0061F884 /* IllegalAddListViewModel.m in Sources */,
 				CE65B8FB20AAC5EA00AA97BB /* VehicleCarInfoMoreVC.m in Sources */,
 				CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,
 				CE90F3D221CB852F0057E218 /* PoliceSearchVC.m in Sources */,
+				82B7552B23FD83BA0061F884 /* IllegalAddListCell.m in Sources */,
 				CE4A0D6E2398A3A6004F99B1 /* IllegalExposureVC.m in Sources */,
 				CE864F3D20089CE5007B20FE /* PGDatePickManagerHeaderView.m in Sources */,
 				CE4139F22178CF27006AA441 /* ZLForceTouchPreviewController.m in Sources */,
@@ -5723,7 +5865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5733,7 +5875,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.6;
+				MARKETING_VERSION = 2.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5747,7 +5889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -5757,7 +5899,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.6;
+				MARKETING_VERSION = 2.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

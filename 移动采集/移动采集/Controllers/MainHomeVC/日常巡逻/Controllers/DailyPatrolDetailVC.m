@@ -15,6 +15,7 @@
 #import "PatrolPolyline.h"
 #import "PeoplePointAnnotation.h"
 #import "IllegalExposureVC.h"
+#import "VideoColectVC.h"
 
 @interface DailyPatrolDetailVC ()<MAMapViewDelegate,AMapSearchDelegate>
 
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_illegal;
 @property (weak, nonatomic) IBOutlet UIButton *btn_takePicture;
 @property (weak, nonatomic) IBOutlet UIButton *btn_signIn;
+@property (weak, nonatomic) IBOutlet UIButton *btn_video;
 
 @property (strong, nonatomic) UIButton *rightButton;
 
@@ -178,6 +180,18 @@
         }
         IllegalExposureVC * vc = [[IllegalExposureVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+         
+    }];
+    
+    [[self.btn_video rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        
+        @strongify(self);
+        if (![ShareValue sharedDefault].dailyPratrol_on) {
+            [ShareFun showTipLable:@"未开启巡逻"];
+            return ;
+        }
+        VideoColectVC *t_vc = [[VideoColectVC alloc] init];
+        [self.navigationController pushViewController:t_vc animated:YES];
          
     }];
     

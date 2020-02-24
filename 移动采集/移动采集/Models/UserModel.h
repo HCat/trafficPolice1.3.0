@@ -80,6 +80,10 @@
     违法曝光         ILLEGAL_EXPOSURE
     违法曝光列表      EXPOSURE_LIST
     日常巡逻         PATROL_MANAGE
+    App采集违停权限： ILLEGAL_PARK_COLLECT
+    App采集违停列表： ILLEGAL_PARK_LIST
+
+ 
 
 */
 
@@ -125,6 +129,7 @@
 + (BOOL)isPermissionForCarInfoList;             //车辆列表
 + (BOOL)isPermissionForMotorBikeList;           //摩托车采集列表
 + (BOOL)isPermissionForExposureList;            //违法曝光列表
++ (BOOL)isPermissionForIllegalAddList;          //违章采集列表权限
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限

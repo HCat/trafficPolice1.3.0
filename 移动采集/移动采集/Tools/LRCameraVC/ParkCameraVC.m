@@ -37,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_tip;
 @property (weak, nonatomic) IBOutlet UILabel *lb_park;
 
-
+@property (strong, nonatomic) UIImage * cutImage;
 
 @property (nonatomic,strong) DeviceOrientation *deviceMotion;
 
@@ -203,6 +203,16 @@
                 
                 LxPrintf(@"截图结束。。。。。。。。。。。。");
                 
+            }else if(strongSelf.type == 3){
+                
+                CGRect t_frame = CGRectZero;
+                
+                if (strongSelf.v_masking.isLandscape) {
+                    t_frame = CGRectMake(image.size.width/2-(image.size.width*3/10),image.size.height/2-(image.size.height/4),image.size.width*3/5, image.size.height/2);
+                }else{
+                    t_frame = CGRectMake(image.size.width/2-(image.size.width * 3/10),image.size.height/2-(image.size.height*2/10),image.size.width*3/5, image.size.height*2/5);
+                }
+                self.cutImage = [self ct_imageFromImage:image inRect:t_frame];
             }
             
             TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
@@ -361,9 +371,16 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             strongSelf.imageInfo = [[ImageFileInfo alloc] initWithImage:image withName:key_files];
-            
-            if (strongSelf.fininshCaptureBlock) {
-                strongSelf.fininshCaptureBlock(strongSelf.imageInfo);
+            if (strongSelf.type == 3) {
+                strongSelf.cutImageInfo = [[ImageFileInfo alloc] initWithImage:self.cutImage withName:key_files];
+                if (strongSelf.fininshCaptureWithCutImageBlock) {
+                    strongSelf.fininshCaptureWithCutImageBlock(strongSelf.imageInfo, strongSelf.cutImageInfo);
+                }
+            }else{
+                
+                if (strongSelf.fininshCaptureBlock) {
+                    strongSelf.fininshCaptureBlock(strongSelf.imageInfo);
+                }
             }
             
             [strongSelf dismissViewControllerAnimated:YES completion:^{

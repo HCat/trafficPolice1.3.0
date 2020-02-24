@@ -17,6 +17,7 @@
 
 #import "IllegalDetailVC.h"
 #import "IllegalExposureDetailVC.h"
+#import "IllegalAddDetailVC.h"
 
 @interface IllegalImageCell()
 
@@ -217,6 +218,22 @@
         [browser showFromViewController:vc_target];
         
        
+    }else if ([self.type intValue] == 2) {
+        
+        IllegalAddDetailVC *vc_target = (IllegalAddDetailVC *)[ShareFun findViewController:self withClass:[IllegalAddDetailVC class]];
+        
+        KSPhotoBrowser *browser     = [KSPhotoBrowser browserWithPhotoItems:t_arr selectedIndex:tag - 100];
+        [KSPhotoBrowser setImageManagerClass:KSSDImageManager.class];
+        [browser setDelegate:(id<KSPhotoBrowserDelegate> _Nullable)self];
+        browser.dismissalStyle      = KSPhotoBrowserInteractiveDismissalStyleScale;
+        browser.backgroundStyle     = KSPhotoBrowserBackgroundStyleBlur;
+        browser.loadingStyle        = KSPhotoBrowserImageLoadingStyleIndeterminate;
+        browser.pageindicatorStyle  = KSPhotoBrowserPageIndicatorStyleText;
+        browser.bounces             = NO;
+        browser.isShowDeleteBtn     = NO;
+        [browser showFromViewController:vc_target];
+        
+       
     }else{
         
         IllegalDetailVC *vc_target = (IllegalDetailVC *)[ShareFun findViewController:self withClass:[IllegalDetailVC class]];
@@ -243,11 +260,11 @@
         if (_arr_images.count % 3 == 0) {
             
             //22.f 是UILabel的高度17加上UILabel和UIButton之间的距离5
-            return 80 + ((ScreenWidth - 4*10)/3 + 22.f + 10)*(_arr_images.count/3);
+            return 80 + ((ScreenWidth - 4*10)/3 + 22.f + 10 + 17)*(_arr_images.count/3);
             
         }else{
             
-            return 80 + ((ScreenWidth - 4*10)/3 + 22.f + 10)*((_arr_images.count/3) + 1);
+            return 80 + ((ScreenWidth - 4*10)/3 + 22.f + 10 + 17)*((_arr_images.count/3) + 1);
             
         }
         

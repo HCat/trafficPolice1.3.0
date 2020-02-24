@@ -13,10 +13,10 @@
 
 #define ISONLINE NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.123:8080/police-admin/"
+#define DEBUG_DACAO_URL @"http://192.168.10.201:8280/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
 
-#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://192.168.10.123:8080 @"http://h16552j072.51mypc.cn//police-admin"
+#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://192.168.10.123:8080 @"http://proda.degal.cn/police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 
@@ -26,7 +26,7 @@
 
 #define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket"
 //ws://192.168.10.201:8280//police-admin/websocket
-//外网@"ws://h16552j072.51mypc.cn//police-admin/websocket"
+
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
 
 #define KBase_URL ISONLINE ? RELEASE_URL : DEBUG_URL
@@ -109,6 +109,16 @@
 #define URL_ILLEGAL_REPORTABNORMAL @"app/illegalPark/reportAbnormal.json"       //违停、违法禁令上报异常(新)
 #define URL_ILLEGALPARK_CHECKROADCOLLECT @"app/illegalPark/checkRoadCollect.json"   //采集根据道路ID是否可以采集（设备重复采集问题）
 
+
+#pragma mark - 违章采集
+
+#define URL_ILLEGAL_SAVE @"app/parkIllegal/info/save.json"      //违章采集增加
+#define URL_ILLEGAL_QUERYSEC @"app/parkIllegal/info/queryCarNoSec.json" //查询违章采集是否需要二次采集
+#define URL_ILLEGAL_LISTPAGING @"app/parkIllegal/info/list.json" //违章采集列表
+#define URL_ILLEGAL_DETAIL @"app/parkIllegal/info/detail.json"   //违章详情
+#define URL_ILLEGAL_SECLOAD @"app/parkIllegal/info/secAdd.json" //二次采集加载一次采集数据
+#define URL_ILLEGAL_SECADD @"app/parkIllegal/info/secSave.json" //二次采集增加数据
+#define URL_ILLEGAL_CONFIRMABNORMAL @"app/parkIllegal/info/confirmAbnormal.json"    //违章采集确认异常
 
 #pragma mark - 违反禁令相关API
 

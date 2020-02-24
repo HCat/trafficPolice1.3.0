@@ -22,17 +22,17 @@
 @interface IllegalExposureHeadView()
 
 @property (weak, nonatomic) IBOutlet UITextField * tf_userName;             //姓名
-@property (weak, nonatomic) IBOutlet UITextField * tf_carNo;                //车牌号
+@property (weak, nonatomic) IBOutlet UITextField * tf_carNo;            //车牌号
 @property (weak, nonatomic) IBOutlet UITextField * tf_roadSection;
 
-@property (weak, nonatomic) IBOutlet UITextField * tf_address;              //所在位置
-@property (weak, nonatomic) IBOutlet UITextField * tf_remark;              //备注
+@property (weak, nonatomic) IBOutlet UITextField * tf_address;          //所在位置
+@property (weak, nonatomic) IBOutlet UITextField * tf_remark;           //备注
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_identify;                //识别
-@property (weak, nonatomic) IBOutlet UIButton *btn_IsHaveCar;   // 是否有车
+@property (weak, nonatomic) IBOutlet UIButton *btn_identify;            //识别
+@property (weak, nonatomic) IBOutlet UIButton *btn_IsHaveCar;           // 是否有车
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
-@property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
+@property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation;      //定位开关
+@property (weak, nonatomic) IBOutlet UIButton *btn_personLocation;      //手动定位
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
 
 
@@ -222,7 +222,8 @@
     }];
 
     //默认是手动定位还是自动定位操作
-    self.btnType = [LocationStorage sharedDefault].isIllegalExposure;
+    //self.btnType = [LocationStorage sharedDefault].isIllegalExposure;
+    self.btnType = YES;
     //不管是手动定位还是自动定位都需要经纬度
     if ([LocationStorage sharedDefault].isIllegalExposure == NO) {
         
@@ -278,38 +279,38 @@
     
     [_v_tag removeAllTags];
     
-    for (IllegalExposureIllegalTypeModel * model in self.illegalList) {
-        
-        for (int i = 0; i < model.exposureTypeList.count; i++) {
-            IllegalExposureIllegalTypeModel * t_model = model.exposureTypeList[i];
-            if (t_model.isSelected) {
-                t_model.isSelected = NO;
-            }
-        }
-    }
-    self.param.illegalType = nil;
+//    for (IllegalExposureIllegalTypeModel * model in self.illegalList) {
+//
+//        for (int i = 0; i < model.exposureTypeList.count; i++) {
+//            IllegalExposureIllegalTypeModel * t_model = model.exposureTypeList[i];
+//            if (t_model.isSelected) {
+//                t_model.isSelected = NO;
+//            }
+//        }
+//    }
+    //self.param.illegalType = nil;
     
     
     if (_t_illegalList && _t_illegalList.count > 0) {
         
         NSMutableArray <NSString * > * t_tag = @[].mutableCopy;
-        //NSMutableArray <NSNumber * > * t_tagIndexs = @[].mutableCopy;
+        NSMutableArray <NSNumber * > * t_tagIndexs = @[].mutableCopy;
         for (int i = 0; i < _t_illegalList.count; i++) {
             
             IllegalExposureIllegalTypeModel * model = _t_illegalList[i];
             [t_tag addObject:model.illegalName];
-//            if (model.isSelected) {
-//                [t_tagIndexs addObject:@(i)];
-//            }
+            if (model.isSelected) {
+                [t_tagIndexs addObject:@(i)];
+            }
         
         }
         
         [_v_tag addTags:t_tag];
-//        if (t_tagIndexs) {
-//            for (NSNumber *number in t_tagIndexs) {
-//                [_v_tag setTagAtIndex:number.integerValue selected:YES];
-//            }
-//        }
+        if (t_tagIndexs) {
+            for (NSNumber *number in t_tagIndexs) {
+                [_v_tag setTagAtIndex:number.integerValue selected:YES];
+            }
+        }
         
     }
  
@@ -486,13 +487,13 @@
 
 - (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected{
     
-    for (int i = 0; i < self.t_illegalList.count; i++) {
-        IllegalExposureIllegalTypeModel * t_model = self.t_illegalList[i];
-        if (t_model.isSelected) {
-            [_v_tag setTagAtIndex:i selected:NO];
-            t_model.isSelected = NO;
-        }
-    }
+//    for (int i = 0; i < self.t_illegalList.count; i++) {
+//        IllegalExposureIllegalTypeModel * t_model = self.t_illegalList[i];
+//        if (t_model.isSelected) {
+//            [_v_tag setTagAtIndex:i selected:NO];
+//            t_model.isSelected = NO;
+//        }
+//    }
     
     [_v_tag setTagAtIndex:index selected:selected];
     
@@ -531,17 +532,29 @@
         
         
         if ([x boolValue] == 1) {
-            [self.btn_IsHaveCar setBackgroundColor:DefaultBtnNuableColor];
+            [self.btn_IsHaveCar setBackgroundColor:UIColorFromRGB(0xeeeeee)];
+            [self.btn_IsHaveCar setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+            self.btn_IsHaveCar.layer.borderColor = UIColorFromRGB(0x333333).CGColor;
+            self.btn_IsHaveCar.layer.borderWidth = 1.f;
+            self.btn_IsHaveCar.layer.masksToBounds = YES;
+            
             [self.btn_identify setBackgroundColor:DefaultBtnColor];
             self.btn_identify.enabled = YES;
             self.tf_carNo.enabled = YES;
             self.tf_carNo.attributedPlaceholder = [ShareFun highlightInString:@"请填入车牌(必填)" withSubString:@"(必填)"];
+            self.tf_userName.attributedPlaceholder = [ShareFun highlightInString:@"请填入姓名" withSubString:@""];
         }else{
-            [self.btn_IsHaveCar setBackgroundColor:DefaultBtnColor];
+            [self.btn_IsHaveCar setBackgroundColor:[UIColor whiteColor]];
+            [self.btn_IsHaveCar setTitleColor:UIColorFromRGB(0x4281E8) forState:UIControlStateNormal];
+            self.btn_IsHaveCar.layer.borderColor = UIColorFromRGB(0x4281E8).CGColor;
+            self.btn_IsHaveCar.layer.borderWidth = 1.f;
+            self.btn_IsHaveCar.layer.masksToBounds = YES;
+            
             [self.btn_identify setBackgroundColor:DefaultBtnNuableColor];
             self.btn_identify.enabled = NO;
             self.tf_carNo.enabled = NO;
             self.tf_carNo.attributedPlaceholder = [ShareFun highlightInString:@"不用填入" withSubString:@""];
+            self.tf_userName.attributedPlaceholder = [ShareFun highlightInString:@"请填入姓名(必填)" withSubString:@"(必填)"];
         }
     
     }];

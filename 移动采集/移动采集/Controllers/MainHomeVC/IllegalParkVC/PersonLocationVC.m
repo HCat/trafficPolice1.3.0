@@ -65,20 +65,33 @@
 
 - (void)initMapView{
     
-    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView = [[MAMapView alloc] init];
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _mapView.delegate = self;
     
     [self.view addSubview:_mapView];
-    [_mapView configureForAutoLayout];
     
-    [_mapView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeBottom];
-    [_mapView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_tableView];
+    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@0);
+        make.right.equalTo(@0);
+        make.left.equalTo(@0);
+        make.bottom.equalTo(self.tableView.mas_top).with.offset(25);
+    }];
+//    [_mapView configureForAutoLayout];
+//
+//    [_mapView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeBottom];
+//    [_mapView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_tableView];
     
-    [_img_certenLocation autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    //[_img_certenLocation autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.view bringSubviewToFront:_img_certenLocation];
     
-    [_img_certenLocation autoConstrainAttribute:(ALAttribute)ALAxisHorizontal toAttribute:(ALAttribute)ALAxisHorizontal ofView:_mapView withOffset:-18];
+    [_img_certenLocation mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.mapView.mas_centerX);
+        make.centerY.equalTo(self.mapView.mas_centerY).with.offset(-18);
+       
+    }];
+    
+    //[_img_certenLocation autoConstrainAttribute:(ALAttribute)ALAxisHorizontal toAttribute:(ALAttribute)ALAxisHorizontal ofView:_mapView withOffset:-18];
     
     
     _mapView.showsUserLocation = YES;

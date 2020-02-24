@@ -26,14 +26,14 @@
         self.secend = self.arr_upImages[1];
         
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, illegalType),RACObserve(self.param, carNo),RACObserve(self.param, remarkNoCar)] reduce:^id (NSNumber * roadId,id first,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * illegalType,NSString * carNo,NSNumber * remarkNoCar){
+        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, illegalType),RACObserve(self.param, carNo),RACObserve(self.param, remarkNoCar),RACObserve(self.param, userName)] reduce:^id (NSNumber * roadId,id first,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * illegalType,NSString * carNo,NSNumber * remarkNoCar,NSString * userName){
             return @(roadId && ![first isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && illegalType.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);
             if ([self.param.remarkNoCar intValue] == 1) {
                 self.isCanCommit = [x boolValue] && self.param.carNo.length > 0;
             }else{
-                self.isCanCommit = [x boolValue];
+                self.isCanCommit = [x boolValue] && self.param.userName.length > 0;
             }
 
         }];
@@ -241,9 +241,6 @@
     }
     
 }
-
-
-
 
 
 @end

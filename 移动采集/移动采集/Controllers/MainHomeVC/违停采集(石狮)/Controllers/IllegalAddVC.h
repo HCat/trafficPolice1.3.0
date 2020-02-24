@@ -1,16 +1,16 @@
 //
-//  IllegalAPI.h
+//  IllegalAddVC.h
 //  移动采集
 //
-//  Created by hcat-89 on 2020/2/13.
+//  Created by hcat-89 on 2020/2/15.
 //  Copyright © 2020 Hcat. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HideTabSuperVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IllegalAPI : NSObject
+@interface IllegalAddVC : HideTabSuperVC
 
 @end
 

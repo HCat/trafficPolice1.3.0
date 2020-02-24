@@ -379,8 +379,7 @@ static NSString *const footId = @"IllegalSecSavFootViewID";
     }else{
         return (CGSize){ScreenWidth,75};
     }
-    
-    
+
 }
 
 #pragma mark - scrollViewDelegate

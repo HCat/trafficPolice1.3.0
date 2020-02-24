@@ -49,6 +49,7 @@ LRSingletonM(Default)
     [self setIsInhibitLine:YES];
     [self setIsTakeOut:YES];
     [self setIsIllegalExposure:YES];
+    [self setIsIllegal:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -216,7 +217,17 @@ LRSingletonM(Default)
     
 }
 
+- (void)setIsIllegal:(BOOL)isIllegal{
+    [[NSUserDefaults standardUserDefaults] setBool:isIllegal forKey:USERDEFAULT_KEY_ISILLEGAL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
 
+
+- (BOOL)isIllegal{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISILLEGAL];
+    
+}
 
 #pragma mark -
 - (void)setPark:(LocationStorageModel *)park{
@@ -392,6 +403,7 @@ LRSingletonM(Default)
 }
 
 #pragma mark -
+
 - (void)setTakeOut:(LocationStorageModel *)takeOut{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:takeOut];
@@ -414,6 +426,7 @@ LRSingletonM(Default)
 
 
 #pragma mark -
+
 - (void)setIllegalExposure:(LocationStorageModel *)illegalExposure{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:illegalExposure];
@@ -431,6 +444,28 @@ LRSingletonM(Default)
     }
     
     return illegalExposure;
+    
+}
+
+#pragma mark -
+
+- (void)setIllegal:(LocationStorageModel *)illegal{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:illegal];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_ILLEGAL];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)illegal{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_ILLEGAL];
+    LocationStorageModel *illegal = nil;
+    if (data) {
+        illegal = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return illegal;
     
 }
 

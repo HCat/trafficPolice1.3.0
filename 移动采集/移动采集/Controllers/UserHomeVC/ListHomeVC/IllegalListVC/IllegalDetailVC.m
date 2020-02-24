@@ -274,6 +274,7 @@
                 
                 cell.arr_images = m_array;
             }
+            
         }
         
         return cell;

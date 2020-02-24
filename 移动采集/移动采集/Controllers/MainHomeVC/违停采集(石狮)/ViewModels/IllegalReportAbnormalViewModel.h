@@ -10,12 +10,15 @@
 #import "ImageFileInfo.h"
 #import "IllegalParkAPI.h"
 #import "IllegalCollectModel.h"
+#import "IllegalAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IllegalReportAbnormalViewModel : NSObject
 
 @property (nonatomic,strong) IllegalCollectModel * illegalCollect; //事故对象
+@property (nonatomic,strong) IllegalParkListModel * illegalPark; //事故对象
+
 @property (strong, nonatomic, nullable) ImageFileInfo * userPhoto;
 @property (strong, nonatomic) IllegalReportAbnormalParam * param;
 

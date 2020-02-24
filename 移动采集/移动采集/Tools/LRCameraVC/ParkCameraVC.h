@@ -14,18 +14,22 @@ NS_ASSUME_NONNULL_BEGIN
 @class ParkCameraVC;
 
 typedef void (^fininshParkCaptureBlock)(ImageFileInfo * imageInfo);
+typedef void (^fininshCaptureWithCutImageBlock)(ImageFileInfo * imageInfo,ImageFileInfo * cutImageInfo);
 
 @interface ParkCameraVC : BaseViewController
 
-//type 1表示为拍照车牌识别模式  2表示正常拍照模式
+//type 1表示为拍照车牌识别模式  2表示正常拍照模式  3表示正常拍照模式下还截取车牌照片的截图
 @property (nonatomic,assign) NSInteger type;
 @property (nonatomic,copy) NSString * park_string;
 
 //获取得到的照片转换成需要的imageInfo信息，具体可以查看这个类中拥有的属性
 @property (nonatomic,strong) ImageFileInfo *imageInfo;
+@property (nonatomic,strong) ImageFileInfo *cutImageInfo;
 
 //拍照完之后调用的block
 @property (nonatomic,copy) fininshParkCaptureBlock fininshCaptureBlock;
+@property (nonatomic,copy) fininshCaptureWithCutImageBlock fininshCaptureWithCutImageBlock;
+
 
 @end
 

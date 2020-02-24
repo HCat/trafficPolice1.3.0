@@ -18,6 +18,10 @@
 
 #import "SRAlertView.h"
 
+#import "UserModel.h"
+#import "UINavigationBar+BarItem.h"
+#import "VideoListVC.h"
+
 @interface VideoColectVC ()
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_InputVideo;
@@ -47,6 +51,8 @@
     
     self.v_video.hidden = YES;
     self.param = [[VideoColectSaveParam alloc] init];
+    
+     [self showRightBarButtonItemWithImage:@"btn_illegalAdd_list" target:self action:@selector(handleBtnShowListClicked:)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChange) name:NOTIFICATION_CHANGELOCATION_SUCCESS object:nil];
     
@@ -241,6 +247,22 @@
     _param.longitude    = @([LocationHelper sharedDefault].longitude);
     _param.address      = [LocationHelper sharedDefault].address;
 }
+
+#pragma mark - buttonAction
+
+- (void)handleBtnShowListClicked:(id)sender{
+    
+    if ([UserModel isPermissionForVideoCollectList]) {
+        VideoListVC *t_vc = [[VideoListVC alloc] init];
+        t_vc.type = 1;
+        t_vc.title = @"视频列表";
+        [self.navigationController pushViewController:t_vc animated:YES];
+    }else{
+        [ShareFun showTipLable:@"您暂无权限查看"];
+    }
+    
+}
+
 
 #pragma mark - 实时监听UITextView内容的变化
 //只能监听键盘输入时的变化(setText: 方式无法监听),如果想修复可以参考http://www.jianshu.com/p/75355acdd058

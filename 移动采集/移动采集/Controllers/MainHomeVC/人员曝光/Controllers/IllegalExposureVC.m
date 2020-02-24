@@ -233,7 +233,7 @@
     
     if (indexPath.row == self.viewModel.arr_upImages.count) {
         
-        [self showCameraWithType:5 withFinishBlock:^(ImageFileInfo * imageInfo) {
+        [self showCameraWithType:2 withFinishBlock:^(ImageFileInfo * imageInfo) {
             @strongify(self);
             [self.viewModel addUpImageItemToUpImagesWithImageInfo:imageInfo remark:@"0"];
             [self.collectionView reloadData];
@@ -243,7 +243,7 @@
         
         if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]]) {
             
-            [self showCameraWithType:5 withFinishBlock:^(ImageFileInfo * imageInfo) {
+            [self showCameraWithType:2 withFinishBlock:^(ImageFileInfo * imageInfo) {
                 @strongify(self);
                 
                 [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:imageInfo remark:@"违法照片" replaceIndex:0];

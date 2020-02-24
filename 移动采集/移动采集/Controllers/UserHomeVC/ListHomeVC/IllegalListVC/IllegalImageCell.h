@@ -10,7 +10,7 @@
 
 @interface IllegalImageCell : UITableViewCell
 
-@property (nonatomic,strong) NSNumber * type;
+@property (nonatomic,strong) NSNumber * type; //1为IllegalExposureDetail调用 2为IllegalAddDetailVC调用
 @property (nonatomic,strong) NSMutableArray *arr_images;
 
 - (float)heightWithimages;
