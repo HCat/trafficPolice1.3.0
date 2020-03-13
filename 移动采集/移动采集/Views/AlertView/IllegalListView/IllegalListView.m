@@ -113,8 +113,6 @@
 }
 
 
-
-
 - (IBAction)handleBtnQuitClicked:(id)sender {
     
     if (self.block) {

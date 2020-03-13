@@ -29,12 +29,15 @@
 @implementation ActionDetailVC
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     self.title = @"行动内容";
     self.arr_content = [NSMutableArray array];
     [self setUpTableView];
     
     [self requestDetail];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

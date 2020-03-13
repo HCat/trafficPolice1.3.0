@@ -43,7 +43,7 @@
     [self configUI];
     
     @weakify(self);
-    
+
     [RACObserve(self.viewModel, userPhoto) subscribeNext:^(ImageFileInfo *  _Nullable x) {
         @strongify(self);
         if (x) {
@@ -51,10 +51,14 @@
             [self.btn_upPhoto setImage:x.image forState:UIControlStateNormal];
             self.btn_delete.hidden = NO;
             self.btn_delete.enabled = YES;
+            self.btn_up_info.enabled = YES;
+            [self.btn_up_info setBackgroundColor:DefaultBtnColor];
         }else{
             [self.btn_upPhoto setImage:[UIImage imageNamed:@"btn_realName_add"] forState:UIControlStateNormal];
             self.btn_delete.hidden = YES;
             self.btn_delete.enabled = NO;
+            self.btn_up_info.enabled = NO;
+            [self.btn_up_info setBackgroundColor:DefaultBtnNuableColor];
         }
         
     }];
@@ -99,7 +103,7 @@
     [[self.btn_delete rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         self.viewModel.userPhoto = nil;
-    }];;
+    }];
     
     [[self.btn_upPhoto rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);

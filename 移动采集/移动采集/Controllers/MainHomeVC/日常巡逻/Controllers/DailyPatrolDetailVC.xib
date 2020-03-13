@@ -13,6 +13,7 @@
                 <outlet property="btn_illegal" destination="mi5-zx-7FZ" id="bZM-aQ-QUG"/>
                 <outlet property="btn_signIn" destination="YQt-d2-13X" id="tah-YA-pSy"/>
                 <outlet property="btn_takePicture" destination="O1v-XZ-39U" id="Acf-rR-VDq"/>
+                <outlet property="btn_throuht" destination="yt2-pt-zrf" id="PuV-px-ACI"/>
                 <outlet property="btn_video" destination="tnb-na-7A1" id="QvX-lU-swd"/>
                 <outlet property="lb_distance" destination="hdY-hu-5hg" id="Gun-u2-AVD"/>
                 <outlet property="lb_expTime" destination="svg-zt-O0R" id="ZF3-Ip-4yk"/>
@@ -60,6 +61,10 @@
                         <constraint firstItem="hdY-hu-5hg" firstAttribute="leading" secondItem="Zne-QE-aJE" secondAttribute="leading" constant="15" id="zgo-yj-JfB"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-pt-zrf">
+                    <rect key="frame" x="330" y="344" width="69" height="69"/>
+                    <state key="normal" image="btn_dailyPatrol_through"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnb-na-7A1">
                     <rect key="frame" x="330" y="423" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_video"/>
@@ -117,6 +122,7 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="tnb-na-7A1" firstAttribute="top" secondItem="yt2-pt-zrf" secondAttribute="bottom" constant="10" id="0qH-mI-4An"/>
                 <constraint firstItem="mi5-zx-7FZ" firstAttribute="top" secondItem="tnb-na-7A1" secondAttribute="bottom" constant="10" id="DXT-XE-ldq"/>
                 <constraint firstItem="YQt-d2-13X" firstAttribute="top" secondItem="O1v-XZ-39U" secondAttribute="bottom" constant="10" id="ImE-iW-G4Y"/>
                 <constraint firstItem="mi5-zx-7FZ" firstAttribute="trailing" secondItem="O1v-XZ-39U" secondAttribute="trailing" id="KoU-6j-duo"/>
@@ -129,6 +135,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="11g-Fi-sua" secondAttribute="trailing" id="dy3-8m-L2k"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="YQt-d2-13X" secondAttribute="trailing" constant="15" id="gFN-tT-YU1"/>
                 <constraint firstItem="11g-Fi-sua" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="i3s-iE-eZN"/>
+                <constraint firstItem="tnb-na-7A1" firstAttribute="trailing" secondItem="yt2-pt-zrf" secondAttribute="trailing" id="l1G-5w-1uR"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="YQt-d2-13X" secondAttribute="bottom" constant="45" id="lYM-4l-jwq"/>
                 <constraint firstItem="11g-Fi-sua" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="rhp-0p-VSO"/>
                 <constraint firstItem="O1v-XZ-39U" firstAttribute="top" secondItem="mi5-zx-7FZ" secondAttribute="bottom" constant="10" id="sBk-T1-4bt"/>
@@ -142,6 +149,7 @@
         <image name="btn_dailyPatrol_illegal" width="69" height="69"/>
         <image name="btn_dailyPatrol_signIn" width="69" height="69"/>
         <image name="btn_dailyPatrol_takePictures" width="69" height="69"/>
+        <image name="btn_dailyPatrol_through" width="69" height="69"/>
         <image name="btn_dailyPatrol_video" width="69" height="69"/>
     </resources>
 </document>

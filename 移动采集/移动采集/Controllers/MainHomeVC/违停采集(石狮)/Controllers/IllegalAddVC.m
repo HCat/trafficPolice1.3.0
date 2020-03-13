@@ -164,13 +164,27 @@
                 
             }else if ([code isEqualToNumber:@13]){
                 
-                [self showAlertViewWithcontent:msg leftTitle:@"退出" rightTitle:@"重新采集" block:^(AlertViewActionType actionType) {
+                [self showAlertViewWithcontent:msg leftTitle:@"取消" rightTitle:@"确定" block:^(AlertViewActionType actionType) {
                     @strongify(self);
                     if (actionType == AlertViewActionTypeRight) {
                         
-                        if (self.viewModel.isCanCommit == YES) {
-                            [self submitIllegalData];
-                        }
+                        IllegalSecAddViewModel * t_viewModel = [[IllegalSecAddViewModel alloc] init];
+                        if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]) {
+                            t_viewModel.illegal_image = self.viewModel.arr_upImages[0];
+                        };
+                        t_viewModel.param.illegalId = reponse.illegalId;
+                        IllegalSecAddVC * vc = [[IllegalSecAddVC alloc] initWithViewModel:t_viewModel];
+                        vc.saveSuccessBlock = ^{
+                            @strongify(self);
+                            [self.viewModel handleBeforeCommit];
+                            [self.collectionView reloadData];
+                        };
+                        [self.navigationController pushViewController:vc animated:YES];
+                        
+            
+//                        if (self.viewModel.isCanCommit == YES) {
+//                            [self submitIllegalData];
+//                        }
                         
                     }else if (actionType == AlertViewActionTypeLeft){
                     
@@ -260,7 +274,7 @@
 #pragma mark - buttonAction
 
 - (void)handleBtnShowListClicked:(id)sender{
-    if ([UserModel isPermissionForAccidentList]) {
+    if ([UserModel isPermissionForIllegalAddList]) {
         IllegalAddListVC * vc = [[IllegalAddListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         

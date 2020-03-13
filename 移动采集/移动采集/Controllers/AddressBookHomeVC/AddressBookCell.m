@@ -28,7 +28,17 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    @weakify(self);
+    [RACObserve(self, isTaskFlows) subscribeNext:^(NSNumber * _Nullable x) {
+        @strongify(self);
+        
+        if ([x boolValue]) {
+            self.btn_phone.hidden = YES;
+        }else{
+            self.btn_phone.hidden = NO;
+        }
+    
+    }];
 }
 
 - (void)setModel:(AddressBookModel *)model{

@@ -226,9 +226,9 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         }
     }
     
-    self.section = section;
+    self.section = 3;
     
-    return section;
+    return self.section;
 }
 
 //返回每组多少个视图
@@ -304,11 +304,18 @@ static NSString *const cellId = @"BaseImageCollectionCell";
         
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"mainCollectHeader" forIndexPath:indexPath];
         headerView.backgroundColor =[UIColor clearColor];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 0, headerView.bounds.size.width - 15.f, headerView.bounds.size.height)];
+        
+        UILabel *label = [headerView viewWithTag:10086];
+        if (!label) {
+            label = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 0, headerView.bounds.size.width - 15.f, headerView.bounds.size.height)];
+            
+            label.tag = 10086;
+            label.textColor = DefaultTextColor;
+            label.font = [UIFont boldSystemFontOfSize:17.f];
+            [headerView addSubview:label];
+        }
+        
         label.text = t_title;
-        label.textColor = DefaultTextColor;
-        label.font = [UIFont boldSystemFontOfSize:17.f];
-        [headerView addSubview:label];
         
         return headerView;
     } else {

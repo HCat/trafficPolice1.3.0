@@ -285,5 +285,11 @@
 #define URL_DAILYPATRO_LOCATIONREPORT @"app/patrolInfo/locationReport.json"   //实时上报位置
 #define URL_DAILYPATRO_POINTLIST @"app/patrolInfo/pointReportList.json"   //实时上报位置列表
 
+#define URL_TASKFLOWS_TASKLIST @"app/adviceTask/taskList.json"    //指派给我的任务流
+#define URL_TASKFLOWS_SELFTASKLIST @"app/adviceTask/selftaskList.json"   //我创建的任务流
+#define URL_TASKFLOWS_DETAIL @"app/adviceTask/taskDetail.json"    //任务流详情
+#define URL_TASKFLOWS_SAVETASK @"app/adviceTask/saveTask.json"    //
+#define URL_TASKFLOWS_REPLYTASK @"app/adviceTask/replyTask.json"
+
 
 #endif /* URLMacro_h */

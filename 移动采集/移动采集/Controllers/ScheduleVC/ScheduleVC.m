@@ -23,12 +23,15 @@
 #import "UserTaskDetailVC.h"
 #import "SRAlertView.h"
 
+#import "TaskFlowsContainerVC.h"
+
 @interface ScheduleVC ()<LTSCalendarEventSource>
 
 @property (weak, nonatomic) IBOutlet UIView *v_nav;
 @property (weak, nonatomic) IBOutlet UILabel *lb_title;
 @property (weak, nonatomic) IBOutlet UIButton *btn_watch;
 @property (weak, nonatomic) IBOutlet UIButton *btn_task;
+@property (weak, nonatomic) IBOutlet UIButton *btn_action;
 
 /******************** 值班视图相关 ********************/
 @property (weak, nonatomic) IBOutlet UIView *v_watch;   //值班视图
@@ -36,17 +39,19 @@
 @property (copy, nonatomic) NSString *date; //显示的年月
 @property (strong, nonatomic) NSMutableArray * arr_data;
 
-/******************** 任务视图相关 ********************/
-@property (weak, nonatomic) IBOutlet UIView *v_task;    //任务视图
+/******************** 行动视图相关 ********************/
+@property (weak, nonatomic) IBOutlet UIView *v_task;    //行动视图
 @property (weak, nonatomic) IBOutlet UITableView *tb_task;
 @property (nonatomic, assign) NSInteger taskStatus; // -1 全部，1进行中，2已完成
 @property (strong,nonatomic) PFNavigationDropdownMenu *menuView;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSMutableArray *arr_tasks;
 
+@property (nonatomic, strong) TaskFlowsContainerVC * vc_taskFlows;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topHeight;
 
-@property (assign, nonatomic) NSInteger pageType; //页面类型：0代表值班 1代表行动
+@property (assign, nonatomic) NSInteger pageType; //页面类型：0代表值班 1代表行动 2代表任务
 
 @property (weak, nonatomic) IBOutlet UIView *v_tip_duty;
 @property (weak, nonatomic) IBOutlet UIView *v_tip_action;
@@ -89,6 +94,21 @@
     
     [self configWatchView];
     [self configTaskView];
+    
+    self.vc_taskFlows = [[TaskFlowsContainerVC alloc] init];
+    [self.view addSubview:self.vc_taskFlows.view];
+    [self.view sendSubviewToBack:self.vc_taskFlows.view];
+    
+    @weakify(self);
+    [self.vc_taskFlows.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.top.mas_equalTo(self.v_nav.mas_bottom);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -285,8 +305,12 @@
         _btn_task.backgroundColor = [UIColor whiteColor];
         [_btn_task setTitleColor:DefaultTextColor forState:UIControlStateNormal];
         
+        _btn_action.backgroundColor = [UIColor whiteColor];
+        [_btn_action setTitleColor:DefaultTextColor forState:UIControlStateNormal];
+        
         [self.view bringSubviewToFront:_v_watch];
         [self.view sendSubviewToBack:_v_task];
+        [self.view sendSubviewToBack:self.vc_taskFlows.view];
         [self.view bringSubviewToFront:_v_nav];
         _lb_title.text = _date;
         
@@ -296,11 +320,31 @@
         [_btn_task setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btn_watch.backgroundColor = [UIColor whiteColor];
         [_btn_watch setTitleColor:DefaultTextColor forState:UIControlStateNormal];
+        _btn_action.backgroundColor = [UIColor whiteColor];
+        [_btn_action setTitleColor:DefaultTextColor forState:UIControlStateNormal];
         
         [self.view bringSubviewToFront:_v_task];
         [self.view sendSubviewToBack:_v_watch];
+         [self.view sendSubviewToBack:self.vc_taskFlows.view];
         [self.view bringSubviewToFront:_v_nav];
         _lb_title.text = @"行动";
+        
+    }else if (_pageType == 2){
+        
+        _btn_action.backgroundColor = DefaultColor;
+        [_btn_action setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        _btn_watch.backgroundColor = [UIColor whiteColor];
+        [_btn_watch setTitleColor:DefaultTextColor forState:UIControlStateNormal];
+        
+        _btn_task.backgroundColor = [UIColor whiteColor];
+        [_btn_task setTitleColor:DefaultTextColor forState:UIControlStateNormal];
+        
+        [self.view bringSubviewToFront:self.vc_taskFlows.view];
+        [self.view sendSubviewToBack:_v_watch];
+        [self.view sendSubviewToBack:_v_task];
+        [self.view bringSubviewToFront:_v_nav];
+        _lb_title.text = @"任务";
     }
 
 }
@@ -454,6 +498,12 @@
 - (IBAction)handleBtnTaskClicked:(id)sender {
     self.pageType = 1;
     [[ShareValue sharedDefault] setActionTip:NO];
+    _v_tip_action.hidden = YES;
+}
+
+- (IBAction)handleBtnActionClicked:(id)sender {
+    self.pageType = 2;
+    _v_tip_duty.hidden = YES;
     _v_tip_action.hidden = YES;
 }
 

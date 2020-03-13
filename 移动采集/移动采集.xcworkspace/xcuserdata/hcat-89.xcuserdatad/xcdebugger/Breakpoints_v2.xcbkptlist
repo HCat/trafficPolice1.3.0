@@ -7,64 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "116AE7EC-DC76-49C5-B53D-4DF77F596C15"
+            uuid = "2F58F1C6-637C-4502-9819-E1DC3996EB54"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x8fdd;&#x505c;&#x91c7;&#x96c6;(&#x77f3;&#x72ee;)/ViewModels/IllegalAddViewModel.m"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/ScheduleVC/&#x4efb;&#x52a1;&#x6d41;/ViewModels/TaskFlowsDetailViewModel.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-init"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3537B8B7-B371-4105-9166-EBE5DD674E93"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x8fdd;&#x505c;&#x91c7;&#x96c6;(&#x77f3;&#x72ee;)/Controllers/IllegalAddListVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-handleBtnSearchClicked:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F86B0794-77E6-4A1E-A213-BC6CADBD70BD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x4eba;&#x5458;&#x66dd;&#x5149;/Views/IllegalExposureHeadView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "-setT_illegalList:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E0642159-574B-4433-811A-DA6F26E8987D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x4eba;&#x5458;&#x66dd;&#x5149;/Views/IllegalExposureHeadView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "-awakeFromNib"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-command_loadDetail"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

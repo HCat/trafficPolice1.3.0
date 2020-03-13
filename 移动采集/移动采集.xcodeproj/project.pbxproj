@@ -7,10 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82252CD42415D5A600D48561 /* TaskFlowsUserListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CD22415D5A600D48561 /* TaskFlowsUserListVC.m */; };
+		82252CD52415D5A600D48561 /* TaskFlowsUserListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CD32415D5A600D48561 /* TaskFlowsUserListVC.xib */; };
+		82252CD92415D5CD00D48561 /* TaskFlowsAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CD72415D5CD00D48561 /* TaskFlowsAddVC.m */; };
+		82252CDA2415D5CD00D48561 /* TaskFlowsAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CD82415D5CD00D48561 /* TaskFlowsAddVC.xib */; };
+		82252CDD241621D300D48561 /* TaskFlowsAddViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CDC241621D300D48561 /* TaskFlowsAddViewModel.m */; };
+		82252CE12417326900D48561 /* TaskFlowsHandleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CDF2417326900D48561 /* TaskFlowsHandleVC.m */; };
+		82252CE22417326900D48561 /* TaskFlowsHandleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CE02417326900D48561 /* TaskFlowsHandleVC.xib */; };
+		82252CE6241781B100D48561 /* TaskFlowsForwardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CE4241781B100D48561 /* TaskFlowsForwardVC.m */; };
+		82252CE7241781B100D48561 /* TaskFlowsForwardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CE5241781B100D48561 /* TaskFlowsForwardVC.xib */; };
+		82252CEA241781DA00D48561 /* TaskFlowsForwardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CE9241781DA00D48561 /* TaskFlowsForwardViewModel.m */; };
+		82252CEE2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CEC2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m */; };
+		82252CEF2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CED2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.xib */; };
 		8232904423F53736009A54AC /* IllegalAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8232904323F53736009A54AC /* IllegalAPI.m */; };
+		823DA431240DFCEF002B8336 /* TaskFlowsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA42F240DFCEF002B8336 /* TaskFlowsListVC.m */; };
+		823DA432240DFCEF002B8336 /* TaskFlowsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823DA430240DFCEF002B8336 /* TaskFlowsListVC.xib */; };
+		823DA436240E00AE002B8336 /* TaskFlowsContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA434240E00AE002B8336 /* TaskFlowsContainerVC.m */; };
+		823DA437240E00AE002B8336 /* TaskFlowsContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823DA435240E00AE002B8336 /* TaskFlowsContainerVC.xib */; };
+		823DA43A240E3A0E002B8336 /* TaskFlowsListViewModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA439240E3A0E002B8336 /* TaskFlowsListViewModels.m */; };
+		823DA43E240E3FB6002B8336 /* TaskFlowsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA43D240E3FB6002B8336 /* TaskFlowsAPI.m */; };
+		823DA441240E500B002B8336 /* TaskFlowsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA440240E500B002B8336 /* TaskFlowsListModel.m */; };
+		823DA445240F49A5002B8336 /* TaskFlowsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA443240F49A5002B8336 /* TaskFlowsListCell.m */; };
+		823DA446240F49A5002B8336 /* TaskFlowsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */; };
 		829897CF23FDC6BB0060F17B /* IllegalAddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */; };
 		829897D023FDC6BB0060F17B /* IllegalAddDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */; };
 		829897D323FDC7530060F17B /* IllegalAddDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */; };
+		82AE2DAD241A378A006E8352 /* ZQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AE2DAC241A378A006E8352 /* ZQPlayer.m */; };
 		82B7550923F7D3DB0061F884 /* IllegalAddHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7550723F7D3DB0061F884 /* IllegalAddHeadView.m */; };
 		82B7550A23F7D3DB0061F884 /* IllegalAddHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B7550823F7D3DB0061F884 /* IllegalAddHeadView.xib */; };
 		82B7550E23F7D4530061F884 /* IllegalAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7550C23F7D4530061F884 /* IllegalAddVC.m */; };
@@ -43,6 +65,18 @@
 		82EFA8AD23C70FDF00327172 /* PatrolPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA8AC23C70FDF00327172 /* PatrolPolyline.m */; };
 		82EFA8B023C710D500327172 /* PeoplePatrolPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA8AF23C710D500327172 /* PeoplePatrolPolyline.m */; };
 		82EFA8B323C717A300327172 /* PeoplePointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EFA8B223C717A300327172 /* PeoplePointAnnotation.m */; };
+		82F489242410936700B997F1 /* TaskFlowsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F489222410936700B997F1 /* TaskFlowsDetailVC.m */; };
+		82F489252410936700B997F1 /* TaskFlowsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F489232410936700B997F1 /* TaskFlowsDetailVC.xib */; };
+		82F48928241093E400B997F1 /* TaskFlowsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F48927241093E400B997F1 /* TaskFlowsDetailViewModel.m */; };
+		82F4892B2410950900B997F1 /* TaskFlowsReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F4892A2410950900B997F1 /* TaskFlowsReplyModel.m */; };
+		82F4892F2410A59A00B997F1 /* TaskFlowsDetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F4892D2410A59A00B997F1 /* TaskFlowsDetailContentCell.m */; };
+		82F489302410A59B00B997F1 /* TaskFlowsDetailContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F4892E2410A59A00B997F1 /* TaskFlowsDetailContentCell.xib */; };
+		82F489342410A5D400B997F1 /* TaskFlowsDetailReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F489322410A5D400B997F1 /* TaskFlowsDetailReplyCell.m */; };
+		82F489352410A5D400B997F1 /* TaskFlowsDetailReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F489332410A5D400B997F1 /* TaskFlowsDetailReplyCell.xib */; };
+		82F489392410AC1A00B997F1 /* TaskFlowsDetailResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F489372410AC1A00B997F1 /* TaskFlowsDetailResultCell.m */; };
+		82F4893A2410AC1A00B997F1 /* TaskFlowsDetailResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F489382410AC1A00B997F1 /* TaskFlowsDetailResultCell.xib */; };
+		82F4893E2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F4893C2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m */; };
+		82F4893F2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F4893D2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib */; };
 		A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */; };
 		CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0608481FE257A60063B06D /* VehicleRouteModel.m */; };
 		CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06084C1FE25EAE0063B06D /* VehicleRouteCell.m */; };
@@ -760,13 +794,49 @@
 
 /* Begin PBXFileReference section */
 		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
+		82252CD12415D5A600D48561 /* TaskFlowsUserListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsUserListVC.h; sourceTree = "<group>"; };
+		82252CD22415D5A600D48561 /* TaskFlowsUserListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsUserListVC.m; sourceTree = "<group>"; };
+		82252CD32415D5A600D48561 /* TaskFlowsUserListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsUserListVC.xib; sourceTree = "<group>"; };
+		82252CD62415D5CD00D48561 /* TaskFlowsAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsAddVC.h; sourceTree = "<group>"; };
+		82252CD72415D5CD00D48561 /* TaskFlowsAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsAddVC.m; sourceTree = "<group>"; };
+		82252CD82415D5CD00D48561 /* TaskFlowsAddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsAddVC.xib; sourceTree = "<group>"; };
+		82252CDB241621D300D48561 /* TaskFlowsAddViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsAddViewModel.h; sourceTree = "<group>"; };
+		82252CDC241621D300D48561 /* TaskFlowsAddViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsAddViewModel.m; sourceTree = "<group>"; };
+		82252CDE2417326900D48561 /* TaskFlowsHandleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsHandleVC.h; sourceTree = "<group>"; };
+		82252CDF2417326900D48561 /* TaskFlowsHandleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsHandleVC.m; sourceTree = "<group>"; };
+		82252CE02417326900D48561 /* TaskFlowsHandleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsHandleVC.xib; sourceTree = "<group>"; };
+		82252CE3241781B100D48561 /* TaskFlowsForwardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsForwardVC.h; sourceTree = "<group>"; };
+		82252CE4241781B100D48561 /* TaskFlowsForwardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsForwardVC.m; sourceTree = "<group>"; };
+		82252CE5241781B100D48561 /* TaskFlowsForwardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsForwardVC.xib; sourceTree = "<group>"; };
+		82252CE8241781DA00D48561 /* TaskFlowsForwardViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsForwardViewModel.h; sourceTree = "<group>"; };
+		82252CE9241781DA00D48561 /* TaskFlowsForwardViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsForwardViewModel.m; sourceTree = "<group>"; };
+		82252CEB2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsTrafficPermitCell.h; sourceTree = "<group>"; };
+		82252CEC2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsTrafficPermitCell.m; sourceTree = "<group>"; };
+		82252CED2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsTrafficPermitCell.xib; sourceTree = "<group>"; };
 		8232904223F53735009A54AC /* IllegalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAPI.h; sourceTree = "<group>"; };
 		8232904323F53736009A54AC /* IllegalAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAPI.m; sourceTree = "<group>"; };
+		823DA42E240DFCEF002B8336 /* TaskFlowsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListVC.h; sourceTree = "<group>"; };
+		823DA42F240DFCEF002B8336 /* TaskFlowsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListVC.m; sourceTree = "<group>"; };
+		823DA430240DFCEF002B8336 /* TaskFlowsListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsListVC.xib; sourceTree = "<group>"; };
+		823DA433240E00AE002B8336 /* TaskFlowsContainerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsContainerVC.h; sourceTree = "<group>"; };
+		823DA434240E00AE002B8336 /* TaskFlowsContainerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsContainerVC.m; sourceTree = "<group>"; };
+		823DA435240E00AE002B8336 /* TaskFlowsContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsContainerVC.xib; sourceTree = "<group>"; };
+		823DA438240E3A0E002B8336 /* TaskFlowsListViewModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListViewModels.h; sourceTree = "<group>"; };
+		823DA439240E3A0E002B8336 /* TaskFlowsListViewModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListViewModels.m; sourceTree = "<group>"; };
+		823DA43C240E3FB6002B8336 /* TaskFlowsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsAPI.h; sourceTree = "<group>"; };
+		823DA43D240E3FB6002B8336 /* TaskFlowsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsAPI.m; sourceTree = "<group>"; };
+		823DA43F240E500B002B8336 /* TaskFlowsListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListModel.h; sourceTree = "<group>"; };
+		823DA440240E500B002B8336 /* TaskFlowsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListModel.m; sourceTree = "<group>"; };
+		823DA442240F49A5002B8336 /* TaskFlowsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListCell.h; sourceTree = "<group>"; };
+		823DA443240F49A5002B8336 /* TaskFlowsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListCell.m; sourceTree = "<group>"; };
+		823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsListCell.xib; sourceTree = "<group>"; };
 		829897CC23FDC6BB0060F17B /* IllegalAddDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailVC.h; sourceTree = "<group>"; };
 		829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddDetailVC.m; sourceTree = "<group>"; };
 		829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddDetailVC.xib; sourceTree = "<group>"; };
 		829897D123FDC7530060F17B /* IllegalAddDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailViewModel.h; sourceTree = "<group>"; };
 		829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddDetailViewModel.m; sourceTree = "<group>"; };
+		82AE2DAB241A3789006E8352 /* ZQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPlayer.h; sourceTree = "<group>"; };
+		82AE2DAC241A378A006E8352 /* ZQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPlayer.m; sourceTree = "<group>"; };
 		82B7550623F7D3DB0061F884 /* IllegalAddHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddHeadView.h; sourceTree = "<group>"; };
 		82B7550723F7D3DB0061F884 /* IllegalAddHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddHeadView.m; sourceTree = "<group>"; };
 		82B7550823F7D3DB0061F884 /* IllegalAddHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddHeadView.xib; sourceTree = "<group>"; };
@@ -822,6 +892,25 @@
 		82EFA8AF23C710D500327172 /* PeoplePatrolPolyline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeoplePatrolPolyline.m; sourceTree = "<group>"; };
 		82EFA8B123C717A300327172 /* PeoplePointAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeoplePointAnnotation.h; sourceTree = "<group>"; };
 		82EFA8B223C717A300327172 /* PeoplePointAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeoplePointAnnotation.m; sourceTree = "<group>"; };
+		82F489212410936700B997F1 /* TaskFlowsDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailVC.h; sourceTree = "<group>"; };
+		82F489222410936700B997F1 /* TaskFlowsDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailVC.m; sourceTree = "<group>"; };
+		82F489232410936700B997F1 /* TaskFlowsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailVC.xib; sourceTree = "<group>"; };
+		82F48926241093E400B997F1 /* TaskFlowsDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailViewModel.h; sourceTree = "<group>"; };
+		82F48927241093E400B997F1 /* TaskFlowsDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailViewModel.m; sourceTree = "<group>"; };
+		82F489292410950900B997F1 /* TaskFlowsReplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsReplyModel.h; sourceTree = "<group>"; };
+		82F4892A2410950900B997F1 /* TaskFlowsReplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsReplyModel.m; sourceTree = "<group>"; };
+		82F4892C2410A59A00B997F1 /* TaskFlowsDetailContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailContentCell.h; sourceTree = "<group>"; };
+		82F4892D2410A59A00B997F1 /* TaskFlowsDetailContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailContentCell.m; sourceTree = "<group>"; };
+		82F4892E2410A59A00B997F1 /* TaskFlowsDetailContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailContentCell.xib; sourceTree = "<group>"; };
+		82F489312410A5D400B997F1 /* TaskFlowsDetailReplyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailReplyCell.h; sourceTree = "<group>"; };
+		82F489322410A5D400B997F1 /* TaskFlowsDetailReplyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailReplyCell.m; sourceTree = "<group>"; };
+		82F489332410A5D400B997F1 /* TaskFlowsDetailReplyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailReplyCell.xib; sourceTree = "<group>"; };
+		82F489362410AC1A00B997F1 /* TaskFlowsDetailResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailResultCell.h; sourceTree = "<group>"; };
+		82F489372410AC1A00B997F1 /* TaskFlowsDetailResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailResultCell.m; sourceTree = "<group>"; };
+		82F489382410AC1A00B997F1 /* TaskFlowsDetailResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailResultCell.xib; sourceTree = "<group>"; };
+		82F4893B2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsDetailBackWorkCell.h; sourceTree = "<group>"; };
+		82F4893C2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailBackWorkCell.m; sourceTree = "<group>"; };
+		82F4893D2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailBackWorkCell.xib; sourceTree = "<group>"; };
 		9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-移动采集.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0608471FE257A60063B06D /* VehicleRouteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleRouteModel.h; sourceTree = "<group>"; };
 		CE0608481FE257A60063B06D /* VehicleRouteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleRouteModel.m; sourceTree = "<group>"; };
@@ -2066,6 +2155,115 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		821431D9240CFA8E002B2C20 /* 任务流 */ = {
+			isa = PBXGroup;
+			children = (
+				823DA43B240E3F94002B8336 /* APIs */,
+				821431DB240CFA9E002B2C20 /* Models */,
+				821431DA240CFA97002B2C20 /* Views */,
+				821431DC240CFAA4002B2C20 /* ViewModels */,
+				821431DD240CFAAB002B2C20 /* Controllers */,
+			);
+			path = "任务流";
+			sourceTree = "<group>";
+		};
+		821431DA240CFA97002B2C20 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				823DA442240F49A5002B8336 /* TaskFlowsListCell.h */,
+				823DA443240F49A5002B8336 /* TaskFlowsListCell.m */,
+				823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */,
+				82F4892C2410A59A00B997F1 /* TaskFlowsDetailContentCell.h */,
+				82F4892D2410A59A00B997F1 /* TaskFlowsDetailContentCell.m */,
+				82F4892E2410A59A00B997F1 /* TaskFlowsDetailContentCell.xib */,
+				82F4893B2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.h */,
+				82F4893C2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m */,
+				82F4893D2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib */,
+				82252CEB2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.h */,
+				82252CEC2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m */,
+				82252CED2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.xib */,
+				82F489312410A5D400B997F1 /* TaskFlowsDetailReplyCell.h */,
+				82F489322410A5D400B997F1 /* TaskFlowsDetailReplyCell.m */,
+				82F489332410A5D400B997F1 /* TaskFlowsDetailReplyCell.xib */,
+				82F489362410AC1A00B997F1 /* TaskFlowsDetailResultCell.h */,
+				82F489372410AC1A00B997F1 /* TaskFlowsDetailResultCell.m */,
+				82F489382410AC1A00B997F1 /* TaskFlowsDetailResultCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		821431DB240CFA9E002B2C20 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				823DA43F240E500B002B8336 /* TaskFlowsListModel.h */,
+				823DA440240E500B002B8336 /* TaskFlowsListModel.m */,
+				82F489292410950900B997F1 /* TaskFlowsReplyModel.h */,
+				82F4892A2410950900B997F1 /* TaskFlowsReplyModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		821431DC240CFAA4002B2C20 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				823DA438240E3A0E002B8336 /* TaskFlowsListViewModels.h */,
+				823DA439240E3A0E002B8336 /* TaskFlowsListViewModels.m */,
+				82F48926241093E400B997F1 /* TaskFlowsDetailViewModel.h */,
+				82F48927241093E400B997F1 /* TaskFlowsDetailViewModel.m */,
+				82252CDB241621D300D48561 /* TaskFlowsAddViewModel.h */,
+				82252CDC241621D300D48561 /* TaskFlowsAddViewModel.m */,
+				82252CE8241781DA00D48561 /* TaskFlowsForwardViewModel.h */,
+				82252CE9241781DA00D48561 /* TaskFlowsForwardViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		821431DD240CFAAB002B2C20 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				823DA42E240DFCEF002B8336 /* TaskFlowsListVC.h */,
+				823DA42F240DFCEF002B8336 /* TaskFlowsListVC.m */,
+				823DA430240DFCEF002B8336 /* TaskFlowsListVC.xib */,
+				82F489212410936700B997F1 /* TaskFlowsDetailVC.h */,
+				82F489222410936700B997F1 /* TaskFlowsDetailVC.m */,
+				82F489232410936700B997F1 /* TaskFlowsDetailVC.xib */,
+				82252CD62415D5CD00D48561 /* TaskFlowsAddVC.h */,
+				82252CD72415D5CD00D48561 /* TaskFlowsAddVC.m */,
+				82252CD82415D5CD00D48561 /* TaskFlowsAddVC.xib */,
+				82252CE3241781B100D48561 /* TaskFlowsForwardVC.h */,
+				82252CE4241781B100D48561 /* TaskFlowsForwardVC.m */,
+				82252CE5241781B100D48561 /* TaskFlowsForwardVC.xib */,
+				82252CDE2417326900D48561 /* TaskFlowsHandleVC.h */,
+				82252CDF2417326900D48561 /* TaskFlowsHandleVC.m */,
+				82252CE02417326900D48561 /* TaskFlowsHandleVC.xib */,
+				82252CD12415D5A600D48561 /* TaskFlowsUserListVC.h */,
+				82252CD22415D5A600D48561 /* TaskFlowsUserListVC.m */,
+				82252CD32415D5A600D48561 /* TaskFlowsUserListVC.xib */,
+				823DA433240E00AE002B8336 /* TaskFlowsContainerVC.h */,
+				823DA434240E00AE002B8336 /* TaskFlowsContainerVC.m */,
+				823DA435240E00AE002B8336 /* TaskFlowsContainerVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82252CF02419D0F100D48561 /* LGAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				82AE2DAB241A3789006E8352 /* ZQPlayer.h */,
+				82AE2DAC241A378A006E8352 /* ZQPlayer.m */,
+			);
+			path = LGAudioPlayer;
+			sourceTree = "<group>";
+		};
+		823DA43B240E3F94002B8336 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				823DA43C240E3FB6002B8336 /* TaskFlowsAPI.h */,
+				823DA43D240E3FB6002B8336 /* TaskFlowsAPI.m */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
 		82B7550023F7D3010061F884 /* 违停采集(石狮) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2734,6 +2932,7 @@
 		CE27A9F720CA2D2B00AA922D /* ScheduleVC */ = {
 			isa = PBXGroup;
 			children = (
+				821431D9240CFA8E002B2C20 /* 任务流 */,
 				CE175B8420E4B6F1009E2282 /* View */,
 				CE27A9F820CA2D9E00AA922D /* ScheduleVC.h */,
 				CE27A9F920CA2D9E00AA922D /* ScheduleVC.m */,
@@ -4619,6 +4818,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				82252CF02419D0F100D48561 /* LGAudioPlayer */,
 				CEFACDA022C5BB5300C14DEC /* XTVerCodeInput */,
 				CE12593B2284245C00B7BF48 /* NSLayoutConstraintOnePixelLine */,
 				CE407C9D216DA7E80035DDED /* LYSideslipCell */,
@@ -4973,6 +5173,7 @@
 				CE0B55951F1CA8D0003CF361 /* LRShowHUD.bundle in Resources */,
 				CE675F191F38411B006FC15F /* IllegalListVC.xib in Resources */,
 				CE26B26622F1902500A1D1A1 /* TakeOutTempVC.xib in Resources */,
+				823DA432240DFCEF002B8336 /* TaskFlowsListVC.xib in Resources */,
 				CE6DC22220D3A757001FC1EB /* TaskCell.xib in Resources */,
 				CE1CF00C21A29D1D00CFEA9D /* PoliceDetailDisAnnotationView.xib in Resources */,
 				CE424F351F3AE1F1005741CA /* AccidentDetailVC.xib in Resources */,
@@ -4983,6 +5184,7 @@
 				82B7551C23FCD95A0061F884 /* IllegalSecAddVC.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE4139FA2178CF27006AA441 /* ZLPhotoBrowserCell.xib in Resources */,
+				82252CD52415D5A600D48561 /* TaskFlowsUserListVC.xib in Resources */,
 				CE12593522841B7B00B7BF48 /* TakeOutInfoVC.xib in Resources */,
 				CE27A9FC20CA2D9E00AA922D /* ScheduleVC.xib in Resources */,
 				CE5696621F62341C0073ADB7 /* VehicleCameraVC.xib in Resources */,
@@ -4996,10 +5198,12 @@
 				CE450BBB1F272F3B0025A20C /* FeedbackHeadView.xib in Resources */,
 				CED2B5B32319124F006CD8D3 /* AccidentDisposeVC.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
+				82F489252410936700B997F1 /* TaskFlowsDetailVC.xib in Resources */,
 				CE553FFF20B56FDA00DF3C0B /* VehicleSpeedAlarmListVC.xib in Resources */,
 				CEFA0C541F56A592006BE7FB /* ProcessResultCell.xib in Resources */,
 				CE450BC01F272F810025A20C /* FeedbackFootView.xib in Resources */,
 				CE85A2C72011D69A005A3175 /* JointVideoVC.xib in Resources */,
+				82252CE22417326900D48561 /* TaskFlowsHandleVC.xib in Resources */,
 				CE93BC4521467879001F2976 /* SpecialNoticeVC.xib in Resources */,
 				82B7552423FD82090061F884 /* IllegalAddListVC.xib in Resources */,
 				CEFEFCF91F29B22F00C33CBD /* IllegalParkAddFootView.xib in Resources */,
@@ -5007,6 +5211,7 @@
 				CE1E3FFC20F48EB2003A5595 /* AccidentUpCell.xib in Resources */,
 				CE43DE02218FE14100AEBC9A /* PoliceDistributeVC.xib in Resources */,
 				CE5C3BB81F57B0F2007A7EDD /* MessageCell.xib in Resources */,
+				82F489302410A59B00B997F1 /* TaskFlowsDetailContentCell.xib in Resources */,
 				CE6810F9228513ED003055DF /* TakeOutIllegalTypeCell.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE170FF020FF347400B93669 /* AccidentPeopleView.xib in Resources */,
@@ -5039,6 +5244,7 @@
 				CE3C0F6B1F30586A00D3B55D /* LRPlayVC.xib in Resources */,
 				CE6811152285BBA5003055DF /* MainAllFunctionVC.xib in Resources */,
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
+				82252CE7241781B100D48561 /* TaskFlowsForwardVC.xib in Resources */,
 				CE6AE96D20B65E2C005781DA /* VehicleExpireAlarmVC.xib in Resources */,
 				CEF67E09239A562B00A9DAD0 /* IllegalExposureDetailVC.xib in Resources */,
 				CE54C22A20D2A28200BE2693 /* DutyHeaderCell.xib in Resources */,
@@ -5051,6 +5257,7 @@
 				CED37BA722EAEF1A003BCD45 /* ParkingAreaCell.xib in Resources */,
 				CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */,
 				CE3C0F6D1F30586A00D3B55D /* LRVideoVC.xib in Resources */,
+				82F4893F2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib in Resources */,
 				CE8502161F558C02001DC495 /* VideoListVC.xib in Resources */,
 				CE90F3D321CB852F0057E218 /* PoliceSearchVC.xib in Resources */,
 				CE36CEED2159E057004B16A4 /* IllegalParkManageVC.xib in Resources */,
@@ -5067,6 +5274,7 @@
 				CE6A2E6F20BD2CCD00EA58DA /* VehicleUpCarDetailVC.xib in Resources */,
 				CE2C98B91F61C204009851F6 /* VehicleDriverNoShowCell.xib in Resources */,
 				CE555F5F1F20568100829124 /* UserSetVC.xib in Resources */,
+				82F489352410A5D400B997F1 /* TaskFlowsDetailReplyCell.xib in Resources */,
 				CE2C98A81F61AAA3009851F6 /* VehicleMemberCell.xib in Resources */,
 				CEEF36322338BC8A0086D6AC /* ParkingCarOperationVC.xib in Resources */,
 				CE538E0420AD230C006B3E44 /* VehicleUpImageCell.xib in Resources */,
@@ -5122,6 +5330,7 @@
 				CED5A86B20D10BB500953852 /* DutyPoliceCell.xib in Resources */,
 				CE6A2E7F20BD4B7F00EA58DA /* VehicleUpRemarkDetailCell.xib in Resources */,
 				CE93BC4A21468AA4001F2976 /* SpecialNoticeCell.xib in Resources */,
+				823DA437240E00AE002B8336 /* TaskFlowsContainerVC.xib in Resources */,
 				CE53286A2057FD50003D6152 /* IllegalParkAlertView.xib in Resources */,
 				CE2BA68A2101BA7300A7BD95 /* AccidentPeopleVC.xib in Resources */,
 				CE1E3FF720F460DA003A5595 /* AccidentInfoCell.xib in Resources */,
@@ -5132,6 +5341,7 @@
 				CE553FFA20B564A700DF3C0B /* VehicleSpeedAlarmCell.xib in Resources */,
 				CEAE95EC230CE52D008B9B3D /* FunctionView.xib in Resources */,
 				CE4A0D742398A43E004F99B1 /* IllegalExposureHeadView.xib in Resources */,
+				82252CEF2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.xib in Resources */,
 				CE71424F20B29F1E00F9FCC2 /* VehicleUpCell.xib in Resources */,
 				CE48DE58200C7F6F00AF6958 /* JointImageVC.xib in Resources */,
 				CE6810D52284ADC4003055DF /* TakeOutIllegalListVC.xib in Resources */,
@@ -5152,6 +5362,7 @@
 				CE4D71DE1FB44A86002F39D6 /* SearchImportCarVC.xib in Resources */,
 				CE71426120B2EFE900F9FCC2 /* VehicleTiredAlarmCell.xib in Resources */,
 				CE4F3C1A1F5FFC0000C6EF64 /* QRCodeScanVC.xib in Resources */,
+				823DA446240F49A5002B8336 /* TaskFlowsListCell.xib in Resources */,
 				CEEF362D2338BC070086D6AC /* ParkingCarInfoVC.xib in Resources */,
 				CE44BED0200E0182000357E4 /* DMProgressImgs.bundle in Resources */,
 				CE72DF1E2111594900F843CD /* ActionManageVC.xib in Resources */,
@@ -5168,8 +5379,10 @@
 				CE763B131FCFF0F300EB0815 /* JointImageCell.xib in Resources */,
 				CE6154B21F6789780018DF71 /* OnePoliceView.xib in Resources */,
 				82B7552C23FD83BA0061F884 /* IllegalAddListCell.xib in Resources */,
+				82252CDA2415D5CD00D48561 /* TaskFlowsAddVC.xib in Resources */,
 				CE68110622854D88003055DF /* TakeOutAddHeadView.xib in Resources */,
 				CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */,
+				82F4893A2410AC1A00B997F1 /* TaskFlowsDetailResultCell.xib in Resources */,
 				CE71425C20B2EF5F00F9FCC2 /* VehicleRoadAlarmCell.xib in Resources */,
 				CE188E492015EA0C008418B9 /* JointPenaltiesCell.xib in Resources */,
 				82B7550F23F7D4530061F884 /* IllegalAddVC.xib in Resources */,
@@ -5243,8 +5456,10 @@
 				CED797F51F7A3D36003FC68C /* SuperLogerListView.m in Sources */,
 				CE8EC9901FA06B71002E5456 /* DutyAPI.m in Sources */,
 				CED797F61F7A3D36003FC68C /* SuperLogger.m in Sources */,
+				82F4892F2410A59A00B997F1 /* TaskFlowsDetailContentCell.m in Sources */,
 				CE4139F32178CF27006AA441 /* ZLProgressHUD.m in Sources */,
 				CE72DF1D2111594900F843CD /* ActionManageVC.m in Sources */,
+				82252CE12417326900D48561 /* TaskFlowsHandleVC.m in Sources */,
 				CED797F71F7A3D36003FC68C /* SuperLoggerFunctions.m in Sources */,
 				CED797F81F7A3D36003FC68C /* SuperLoggerPreviewView.m in Sources */,
 				CE4139E32178CF26006AA441 /* ZLImageEditTool.m in Sources */,
@@ -5256,6 +5471,7 @@
 				CE5C3BB71F57B0F2007A7EDD /* MessageCell.m in Sources */,
 				CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */,
 				CE12594822842A2400B7BF48 /* TakeOutInfoCell.m in Sources */,
+				823DA43A240E3A0E002B8336 /* TaskFlowsListViewModels.m in Sources */,
 				CE1E3FFB20F48EB2003A5595 /* AccidentUpCell.m in Sources */,
 				CE59BB3F1F95A65800E24D3A /* AddressBookHomeVC.m in Sources */,
 				CE71425B20B2EF5F00F9FCC2 /* VehicleRoadAlarmCell.m in Sources */,
@@ -5263,6 +5479,7 @@
 				CE6810D022847DD1003055DF /* TakeOutCarInfoViewModel.m in Sources */,
 				CED37B9422E9A988003BCD45 /* ParkingForensicsAPI.m in Sources */,
 				CE6810E92284B805003055DF /* TakeOutIllegalDetailViewModel.m in Sources */,
+				82252CD92415D5CD00D48561 /* TaskFlowsAddVC.m in Sources */,
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */,
 				CEE1156D2399377F00D9D782 /* IllegalExposureViewModel.m in Sources */,
@@ -5279,6 +5496,7 @@
 				CE763B0D1FCF9CA200EB0815 /* JointEnforceVC.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
 				CE4139F02178CF27006AA441 /* ZLCustomCamera.m in Sources */,
+				82AE2DAD241A378A006E8352 /* ZQPlayer.m in Sources */,
 				CE86975720F33B170071D354 /* AccidentManageVC.m in Sources */,
 				CE88FC5920A9B7FB0011B729 /* VehicleCarInfoVC.m in Sources */,
 				CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */,
@@ -5291,6 +5509,7 @@
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
 				CE54C22920D2A28200BE2693 /* DutyHeaderCell.m in Sources */,
+				823DA445240F49A5002B8336 /* TaskFlowsListCell.m in Sources */,
 				CED37B9822EAD19C003BCD45 /* ParkingAreaVC.m in Sources */,
 				CEAE95EA230CE51A008B9B3D /* FunctionView.m in Sources */,
 				CE8CDE6B1F9455F80018044C /* UINavigationController+AKTabBarController.m in Sources */,
@@ -5320,6 +5539,7 @@
 				CEF67E02239A47C400A9DAD0 /* IllegalExposureListVC.m in Sources */,
 				CE6D0A9620B6DD7E00B45EAD /* VehicleCarAnnotationView.m in Sources */,
 				CE68110522854D88003055DF /* TakeOutAddHeadView.m in Sources */,
+				82F489242410936700B997F1 /* TaskFlowsDetailVC.m in Sources */,
 				CE8BB24E21CA144E006305D8 /* PoliceDistributeAPI.m in Sources */,
 				CE6AE96C20B65E2C005781DA /* VehicleExpireAlarmVC.m in Sources */,
 				CEEF36272338BBAF0086D6AC /* ParkingCarImageVC.m in Sources */,
@@ -5365,6 +5585,7 @@
 				82EFA8B323C717A300327172 /* PeoplePointAnnotation.m in Sources */,
 				CE26B24C22ED76A400A1D1A1 /* ParkingAreaDetailViewModel.m in Sources */,
 				CE88FC4A20A998690011B729 /* VehicleTrafficInfoVC.m in Sources */,
+				82252CE6241781B100D48561 /* TaskFlowsForwardVC.m in Sources */,
 				CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */,
 				CE26B26E22F1909300A1D1A1 /* TakeOutTempViewModel.m in Sources */,
 				CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */,
@@ -5381,6 +5602,7 @@
 				CE4139F62178CF27006AA441 /* ToastUtils.m in Sources */,
 				CE8502151F558C02001DC495 /* VideoListVC.m in Sources */,
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
+				82F4892B2410950900B997F1 /* TaskFlowsReplyModel.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE1259512284413300B7BF48 /* NSArray+MASConstraint.m in Sources */,
 				CE1CF00A21A29D0D00CFEA9D /* PoliceDetailDisAnnotationView.m in Sources */,
@@ -5430,6 +5652,7 @@
 				CEAA96F81F1CE97B00741A6F /* LRBaseRequest.m in Sources */,
 				CE17C6EF2179E30C00B7391C /* AccidentVC.m in Sources */,
 				CE61406A1F31CBBA0015B8CE /* YUSegmentedControl.m in Sources */,
+				82F4893E2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m in Sources */,
 				CE27D172215FA32B0014FEC8 /* IllegalParkUpListCell.m in Sources */,
 				CE4139F52178CF27006AA441 /* ZLInteractiveTrasition.m in Sources */,
 				CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */,
@@ -5452,6 +5675,7 @@
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CED2B5B7231912D6006CD8D3 /* AccidentDisposeViewModel.m in Sources */,
 				CE26B25622EE93B100A1D1A1 /* ParkingForensicsVC.m in Sources */,
+				82252CD42415D5A600D48561 /* TaskFlowsUserListVC.m in Sources */,
 				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
 				CE6810DC2284B001003055DF /* TakeOutIllegalCell.m in Sources */,
 				CE6DC22120D3A757001FC1EB /* TaskCell.m in Sources */,
@@ -5463,6 +5687,7 @@
 				CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
 				CE68A7FE233364B90037811F /* ParkingManagementAPI.m in Sources */,
+				82252CDD241621D300D48561 /* TaskFlowsAddViewModel.m in Sources */,
 				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
 				CE6154BA1F6789CE0018DF71 /* BoradPoliceView.m in Sources */,
@@ -5528,6 +5753,7 @@
 				CE4959A62254A29E003922FA /* AttendanceManageVC.m in Sources */,
 				CE87043B20CE52B700E206AE /* LTSCalendarWeekDayView.m in Sources */,
 				CE424F431F3AE694005741CA /* AccidentPartyCell.m in Sources */,
+				82252CEA241781DA00D48561 /* TaskFlowsForwardViewModel.m in Sources */,
 				CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */,
 				CEFEFD001F29C22500C33CBD /* LRCameraVC.m in Sources */,
 				CEFEFD1F1F29ED8100C33CBD /* KSPhotoView.m in Sources */,
@@ -5545,6 +5771,7 @@
 				CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */,
 				CE27587222ED7370006CDD6F /* ParkingAreaDetailVC.m in Sources */,
 				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
+				82252CEE2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m in Sources */,
 				CE93BC4421467879001F2976 /* SpecialNoticeVC.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */,
@@ -5567,6 +5794,7 @@
 				CEFEFD021F29C22500C33CBD /* maskingView.m in Sources */,
 				CE681101228519EB003055DF /* TakeOutIllegalTypeViewModel.m in Sources */,
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
+				823DA431240DFCEF002B8336 /* TaskFlowsListVC.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
 				CE864F3920089CE5007B20FE /* PGDatePickManager.m in Sources */,
 				CEAA96E11F1CE13200741A6F /* SAMKeychain.m in Sources */,
@@ -5582,8 +5810,10 @@
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
 				CE175B8120E48650009E2282 /* MakePhoneView.m in Sources */,
 				CEFACDA322C5BB6700C14DEC /* XTVerCodeInput.m in Sources */,
+				82F48928241093E400B997F1 /* TaskFlowsDetailViewModel.m in Sources */,
 				CE1259242282C94300B7BF48 /* TakeOutAPI.m in Sources */,
 				CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */,
+				823DA441240E500B002B8336 /* TaskFlowsListModel.m in Sources */,
 				8232904423F53736009A54AC /* IllegalAPI.m in Sources */,
 				CE2607D1207CB5FF00EFB1A0 /* PoliceCarDetailView.m in Sources */,
 				82EFA89623C5ABC200327172 /* DailyPatrolListCell.m in Sources */,
@@ -5641,6 +5871,7 @@
 				CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */,
 				CE65B90A20AB039400AA97BB /* VehicleUpBasicInfoCell.m in Sources */,
 				CE25F50721255F8D0067E125 /* IllegalRecordImageCell.m in Sources */,
+				82F489342410A5D400B997F1 /* TaskFlowsDetailReplyCell.m in Sources */,
 				CEBCFCEA20FE1EA6006FB37A /* LRSliderView.m in Sources */,
 				CE209712215DCD09007AEF4B /* IllegalDBModel.m in Sources */,
 				CE93BC3F214651C3001F2976 /* SpecialVehicleDetailVC.m in Sources */,
@@ -5677,6 +5908,7 @@
 				CE90F3D621CB970C0057E218 /* PoliceSearchViewModel.m in Sources */,
 				CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */,
 				CE6AE97620B6901E005781DA /* VehicleTiredListCell.m in Sources */,
+				82F489392410AC1A00B997F1 /* TaskFlowsDetailResultCell.m in Sources */,
 				CE4E3C0A1F39B9F20057148B /* IllegalFootCell.m in Sources */,
 				82B7552323FD82090061F884 /* IllegalAddListVC.m in Sources */,
 				CE87043620CE52B700E206AE /* LTSCalendarContentView.m in Sources */,
@@ -5698,6 +5930,7 @@
 				CEE7B80E215A7D8D005FF1BA /* UITableView+FDKeyedHeightCache.m in Sources */,
 				CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
+				823DA436240E00AE002B8336 /* TaskFlowsContainerVC.m in Sources */,
 				CE407CA0216DA8050035DDED /* LYSideslipCell.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
 				CE68111E2285BF4C003055DF /* MainFuncitonCell.m in Sources */,
@@ -5710,6 +5943,7 @@
 				82B7550923F7D3DB0061F884 /* IllegalAddHeadView.m in Sources */,
 				82B7552723FD822E0061F884 /* IllegalAddListViewModel.m in Sources */,
 				CE65B8FB20AAC5EA00AA97BB /* VehicleCarInfoMoreVC.m in Sources */,
+				823DA43E240E3FB6002B8336 /* TaskFlowsAPI.m in Sources */,
 				CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,

@@ -18,12 +18,4 @@
 @property (nonatomic,copy) NSString * firstChar;    //首字母
 @property (nonatomic,assign) BOOL canDial;          //是否有权限可以拨号
 
-
-
-
-
-
-
-
-
 @end

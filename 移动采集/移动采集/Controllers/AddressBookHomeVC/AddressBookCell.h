@@ -12,5 +12,7 @@
 @interface AddressBookCell : UITableViewCell
 
 @property (nonatomic,strong) AddressBookModel *model;
+@property (nonatomic,assign) BOOL isTaskFlows;
+
 
 @end

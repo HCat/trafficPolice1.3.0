@@ -77,6 +77,7 @@
         }else if ([x.state isEqualToNumber:@8]){
             //异常处理中
             self.image_statues.hidden  = NO;
+            self.image_statues.backgroundColor = UIColorFromRGB(0xFA4747);
             self.lb_statues.hidden = NO;
             self.lb_statues.text = @"上报异常";
             self.layout_carNo_leading.constant = 91.f;
@@ -87,6 +88,7 @@
             [self.btn_upAbnormal setTitle:@"确认异常" forState:UIControlStateNormal];
         }else if ([x.state isEqualToNumber:@9]){
             self.image_statues.hidden  = NO;
+            self.image_statues.backgroundColor = UIColorFromRGB(0x3396FC);
             self.lb_statues.hidden = NO;
             self.lb_statues.text = @"确认异常";
             self.layout_carNo_leading.constant = 91.f;
@@ -117,6 +119,7 @@
             
             [viewModel.subject subscribeNext:^(id  _Nullable x) {
                 @strongify(self);
+                self.view_more.hidden = YES;
                 UITableView * tableView = [ShareFun getTableView:self];
                 [tableView reloadData];
                 
@@ -134,21 +137,30 @@
             }
             
             IllegalMakeSureAbnormalManger * manger = [[IllegalMakeSureAbnormalManger alloc] init];
-            manger.illegalParkId = self.model.illegalParkId;;
+            manger.illegalParkId = self.model.illegalParkId;
+            manger.isNeedLoadHud = YES;
+            manger.loadingMessage = @"确认中...";
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 @strongify(self);
                 if (manger.responseModel.code == CODE_SUCCESS) {
-                    
+                    self.view_more.hidden = YES;
                     self.model.state = @9;
                     self.model.stateName = @"异常";
                     
                     UITableView * tableView = [ShareFun getTableView:self];
                     [tableView reloadData];
                     
+                }else if(manger.responseModel.code == 123){
+                    self.view_more.hidden = YES;
+                    [ShareFun showTipLable:@"当日确认异常数已达次数上限"];
+                    
                 }else{
+                    self.view_more.hidden = YES;
                     [LRShowHUD showError:@"确认异常失败" duration:1.5f];
-                }
+                };
+                
             } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                self.view_more.hidden = YES;
                 [LRShowHUD showError:@"确认异常失败" duration:1.5f];
             }];
             

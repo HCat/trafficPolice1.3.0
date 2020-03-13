@@ -16,6 +16,7 @@
 #import "PeoplePointAnnotation.h"
 #import "IllegalExposureVC.h"
 #import "VideoColectVC.h"
+#import "IllegalParkVC.h"
 
 @interface DailyPatrolDetailVC ()<MAMapViewDelegate,AMapSearchDelegate>
 
@@ -36,6 +37,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_takePicture;
 @property (weak, nonatomic) IBOutlet UIButton *btn_signIn;
 @property (weak, nonatomic) IBOutlet UIButton *btn_video;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_throuht;
+
 
 @property (strong, nonatomic) UIButton *rightButton;
 
@@ -126,7 +130,7 @@
                 }
                 
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-                if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 20)) {
+                if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
                     if ([model.status isEqualToNumber:@1]) {
                         DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
                         hud.style = DMProgressHUDStyleDark;
@@ -195,6 +199,19 @@
          
     }];
     
+    [[self.btn_throuht rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        
+        @strongify(self);
+        if (![ShareValue sharedDefault].dailyPratrol_on) {
+            [ShareFun showTipLable:@"未开启巡逻"];
+            return ;
+        }
+        IllegalParkVC *t_vc = [[IllegalParkVC alloc] init];
+        t_vc.illegalType = IllegalTypeThrough;
+        [self.navigationController pushViewController:t_vc animated:YES];
+         
+    }];
+    
     
 }
 
@@ -209,13 +226,18 @@
         if ([x boolValue]) {
             
             [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_on"] forState:UIControlStateNormal];
+            if (self.peoplePatrolPolyline) {
+                [self.mapView addOverlay:self.peoplePatrolPolyline];
+            }
             
             
         }else{
             
             [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_off"] forState:UIControlStateNormal];
-            
-            
+            if (self.peoplePatrolPolyline) {
+                [self.mapView removeOverlay:self.peoplePatrolPolyline];
+            }
+        
         }
     
     }];

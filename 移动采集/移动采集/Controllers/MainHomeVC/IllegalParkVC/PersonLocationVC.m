@@ -65,33 +65,19 @@
 
 - (void)initMapView{
     
-    self.mapView = [[MAMapView alloc] init];
-    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+//    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _mapView.delegate = self;
     
     [self.view addSubview:_mapView];
+
+    [_mapView configureForAutoLayout];
+    [_mapView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeBottom];
+    [_mapView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_tableView];
     
-    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@0);
-        make.right.equalTo(@0);
-        make.left.equalTo(@0);
-        make.bottom.equalTo(self.tableView.mas_top).with.offset(25);
-    }];
-//    [_mapView configureForAutoLayout];
-//
-//    [_mapView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) excludingEdge:ALEdgeBottom];
-//    [_mapView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_tableView];
-    
-    //[_img_certenLocation autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [_img_certenLocation autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.view bringSubviewToFront:_img_certenLocation];
-    
-    [_img_certenLocation mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.mapView.mas_centerX);
-        make.centerY.equalTo(self.mapView.mas_centerY).with.offset(-18);
-       
-    }];
-    
-    //[_img_certenLocation autoConstrainAttribute:(ALAttribute)ALAxisHorizontal toAttribute:(ALAttribute)ALAxisHorizontal ofView:_mapView withOffset:-18];
+    [_img_certenLocation autoConstrainAttribute:(ALAttribute)ALAxisHorizontal toAttribute:(ALAttribute)ALAxisHorizontal ofView:_mapView withOffset:-18];
     
     
     _mapView.showsUserLocation = YES;
@@ -100,7 +86,6 @@
     _mapView.showsScale= NO;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
     [_mapView setZoomLevel:16.1 animated:YES];
-    
 }
 
 #pragma mark - buttonAction
@@ -159,8 +144,12 @@
     // 放到该方法中用以保证userlocation的annotationView已经添加到地图上了。
     if ([view.annotation isKindOfClass:[MAUserLocation class]])
     {
+        dispatch_queue_t queue = dispatch_queue_create("net.gcd.testQueue", DISPATCH_QUEUE_CONCURRENT);
+        //任务1
+        dispatch_async(queue, ^{
+            [self requestAroundPoi];
         
-        [self requestAroundPoi];
+        });
         
         MAUserLocationRepresentation *pre = [[MAUserLocationRepresentation alloc] init];
         pre.fillColor = [UIColor colorWithRed:183/255.f green:230/255.f blue:251/255.f alpha:0.3];
@@ -182,12 +171,12 @@
 - (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation{
     
     if (!updatingLocation && self.userLocationAnnotationView != nil){
-        [UIView animateWithDuration:0.1 animations:^{
-            
-            double degree = userLocation.heading.trueHeading;
-            self.userLocationAnnotationView.transform = CGAffineTransformMakeRotation(degree * M_PI / 180.f );
-            
-        }];
+//        [UIView animateWithDuration:0.1 animations:^{
+//
+//            double degree = userLocation.heading.trueHeading;
+//            self.userLocationAnnotationView.transform = CGAffineTransformMakeRotation(degree * M_PI / 180.f );
+//
+//        }];
     }
 }
 

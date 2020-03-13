@@ -31,8 +31,8 @@
 
         }];
         
-        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self.param, carNo)] reduce:^id (NSNumber * roadId,NSString * carNo){
-            return @(roadId && carNo.length > 0 && [ShareFun validateCarNumber:carNo]);
+        [[RACSignal combineLatest:@[[RACObserve(self.param, roadId) distinctUntilChanged], [RACObserve(self.param, carNo) distinctUntilChanged]] reduce:^id (NSNumber * roadId,NSString * carNo){
+            return @(roadId && carNo && carNo.length > 0 && [ShareFun validateCarNumber:carNo]);
         }] subscribeNext:^(id x) {
             @strongify(self);
             if ([x boolValue]) {
@@ -347,8 +347,8 @@
 
     }];
     
-    [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self.param, carNo)] reduce:^id (NSNumber * roadId,NSString * carNo){
-        return @(roadId && carNo.length > 0 && [ShareFun validateCarNumber:carNo]);
+    [[RACSignal combineLatest:@[[RACObserve(self.param, roadId) distinctUntilChanged], [RACObserve(self.param, carNo) distinctUntilChanged]] reduce:^id (NSNumber * roadId,NSString * carNo){
+        return @(roadId && carNo && carNo.length > 0 && [ShareFun validateCarNumber:carNo]);
     }] subscribeNext:^(id x) {
         @strongify(self);
         if ([x boolValue]) {
