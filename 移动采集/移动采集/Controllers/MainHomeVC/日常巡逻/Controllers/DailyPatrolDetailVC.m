@@ -130,7 +130,8 @@
                 }
                 
                 CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-                if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+            if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                
                     if ([model.status isEqualToNumber:@1]) {
                         DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
                         hud.style = DMProgressHUDStyleDark;
@@ -146,7 +147,6 @@
                         
                     }
                     
-                    break;
                 }
                 
                 if (i == self.viewModel.reponseModel.patrolLocationList.count - 1) {

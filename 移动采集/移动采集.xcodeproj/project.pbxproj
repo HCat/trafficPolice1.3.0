@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820F0D15242CB68800886C2C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820F0D14242CB68800886C2C /* Launch Screen.storyboard */; };
 		82252CD42415D5A600D48561 /* TaskFlowsUserListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CD22415D5A600D48561 /* TaskFlowsUserListVC.m */; };
 		82252CD52415D5A600D48561 /* TaskFlowsUserListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82252CD32415D5A600D48561 /* TaskFlowsUserListVC.xib */; };
 		82252CD92415D5CD00D48561 /* TaskFlowsAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82252CD72415D5CD00D48561 /* TaskFlowsAddVC.m */; };
@@ -29,6 +30,7 @@
 		823DA441240E500B002B8336 /* TaskFlowsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA440240E500B002B8336 /* TaskFlowsListModel.m */; };
 		823DA445240F49A5002B8336 /* TaskFlowsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA443240F49A5002B8336 /* TaskFlowsListCell.m */; };
 		823DA446240F49A5002B8336 /* TaskFlowsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */; };
+		82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 82978CE1242C4CA1009201B7 /* UIViewController+LL_Utils.m */; };
 		829897CF23FDC6BB0060F17B /* IllegalAddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */; };
 		829897D023FDC6BB0060F17B /* IllegalAddDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */; };
 		829897D323FDC7530060F17B /* IllegalAddDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897D223FDC7530060F17B /* IllegalAddDetailViewModel.m */; };
@@ -568,8 +570,6 @@
 		CE8502181F558C02001DC495 /* VideoDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502141F558C02001DC495 /* VideoDetailVC.xib */; };
 		CE85021C1F558CB2001DC495 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85021A1F558CB2001DC495 /* VideoListCell.m */; };
 		CE85021D1F558CB2001DC495 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE85021B1F558CB2001DC495 /* VideoListCell.xib */; };
-		CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502201F559404001DC495 /* NJKWebViewProgress.m */; };
-		CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502221F559404001DC495 /* NJKWebViewProgressView.m */; };
 		CE8502291F559C30001DC495 /* AccidentCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8502271F559C30001DC495 /* AccidentCompleteVC.m */; };
 		CE85022A1F559C30001DC495 /* AccidentCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */; };
 		CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE85A2C42011D69A005A3175 /* JointVideoVC.m */; };
@@ -794,6 +794,7 @@
 
 /* Begin PBXFileReference section */
 		43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-移动采集.debug.xcconfig"; path = "Pods/Target Support Files/Pods-移动采集/Pods-移动采集.debug.xcconfig"; sourceTree = "<group>"; };
+		820F0D14242CB68800886C2C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		82252CD12415D5A600D48561 /* TaskFlowsUserListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsUserListVC.h; sourceTree = "<group>"; };
 		82252CD22415D5A600D48561 /* TaskFlowsUserListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsUserListVC.m; sourceTree = "<group>"; };
 		82252CD32415D5A600D48561 /* TaskFlowsUserListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsUserListVC.xib; sourceTree = "<group>"; };
@@ -830,6 +831,8 @@
 		823DA442240F49A5002B8336 /* TaskFlowsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListCell.h; sourceTree = "<group>"; };
 		823DA443240F49A5002B8336 /* TaskFlowsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListCell.m; sourceTree = "<group>"; };
 		823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsListCell.xib; sourceTree = "<group>"; };
+		82978CE0242C4C9E009201B7 /* UIViewController+LL_Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LL_Utils.h"; sourceTree = "<group>"; };
+		82978CE1242C4CA1009201B7 /* UIViewController+LL_Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LL_Utils.m"; sourceTree = "<group>"; };
 		829897CC23FDC6BB0060F17B /* IllegalAddDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailVC.h; sourceTree = "<group>"; };
 		829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalAddDetailVC.m; sourceTree = "<group>"; };
 		829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalAddDetailVC.xib; sourceTree = "<group>"; };
@@ -1725,10 +1728,6 @@
 		CE8502191F558CB2001DC495 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
 		CE85021A1F558CB2001DC495 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
 		CE85021B1F558CB2001DC495 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
-		CE85021F1F559404001DC495 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
-		CE8502201F559404001DC495 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
-		CE8502211F559404001DC495 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
-		CE8502221F559404001DC495 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		CE8502261F559C30001DC495 /* AccidentCompleteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentCompleteVC.h; sourceTree = "<group>"; };
 		CE8502271F559C30001DC495 /* AccidentCompleteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentCompleteVC.m; sourceTree = "<group>"; };
 		CE8502281F559C30001DC495 /* AccidentCompleteVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentCompleteVC.xib; sourceTree = "<group>"; };
@@ -4131,17 +4130,6 @@
 			path = VideoListVC;
 			sourceTree = "<group>";
 		};
-		CE85021E1F559404001DC495 /* NJKWebViewProgress */ = {
-			isa = PBXGroup;
-			children = (
-				CE85021F1F559404001DC495 /* NJKWebViewProgress.h */,
-				CE8502201F559404001DC495 /* NJKWebViewProgress.m */,
-				CE8502211F559404001DC495 /* NJKWebViewProgressView.h */,
-				CE8502221F559404001DC495 /* NJKWebViewProgressView.m */,
-			);
-			path = NJKWebViewProgress;
-			sourceTree = "<group>";
-		};
 		CE8502251F559C18001DC495 /* AccidentCompleteVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -4450,6 +4438,8 @@
 			children = (
 				CEB4656C215CDE4E00B0D2C0 /* UINavigationBar+Awesome.h */,
 				CEB4656D215CDE4E00B0D2C0 /* UINavigationBar+Awesome.m */,
+				82978CE0242C4C9E009201B7 /* UIViewController+LL_Utils.h */,
+				82978CE1242C4CA1009201B7 /* UIViewController+LL_Utils.m */,
 				CEAA97031F1CF15900741A6F /* NSObject+Swizzling.h */,
 				CEAA97041F1CF15900741A6F /* NSObject+Swizzling.m */,
 				CEAA97051F1CF15900741A6F /* UIButton+NoRepeatClick.h */,
@@ -4788,6 +4778,7 @@
 				CEE5E9E91F1C819F00AC515C /* Extra */,
 				CEE5E9DF1F1C6CBB00AC515C /* Info.plist */,
 				CEB46567215CD8BA00B0D2C0 /* Assets.xcassets */,
+				820F0D14242CB68800886C2C /* Launch Screen.storyboard */,
 				CEE5E9CE1F1C6CBB00AC515C /* Supporting Files */,
 			);
 			path = "移动采集";
@@ -4833,7 +4824,6 @@
 				CE96438F1F7A3B0800C72288 /* SuperLogger */,
 				CE496EFD1F6A1ACB004E69C6 /* TTGTagCollectionView */,
 				CED6EE841F69134C004FED7B /* PopMenuTableView */,
-				CE85021E1F559404001DC495 /* NJKWebViewProgress */,
 				CE675F1F1F384637006FC15F /* UITableView+FDTemplateLayoutCell */,
 				CE675F101F381651006FC15F /* LRPageMenu */,
 				CE6140641F31CBBA0015B8CE /* YUSegment */,
@@ -5230,6 +5220,7 @@
 				CE675F1E1F384350006FC15F /* IllegalCell.xib in Resources */,
 				CE424F421F3AE694005741CA /* AccidentMessageCell.xib in Resources */,
 				CE93BC542146A472001F2976 /* SpecialGroupCell.xib in Resources */,
+				820F0D15242CB68800886C2C /* Launch Screen.storyboard in Resources */,
 				CE6154B41F6789930018DF71 /* GroupPoliceView.xib in Resources */,
 				CE59BB401F95A65800E24D3A /* AddressBookHomeVC.xib in Resources */,
 				CED2B5BD231D201D006CD8D3 /* AccidentDisposeCell.xib in Resources */,
@@ -5687,6 +5678,7 @@
 				CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
 				CE68A7FE233364B90037811F /* ParkingManagementAPI.m in Sources */,
+				82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */,
 				82252CDD241621D300D48561 /* TaskFlowsAddViewModel.m in Sources */,
 				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
@@ -5768,7 +5760,6 @@
 				CE17A024210820410045167B /* AccidentPeopleModel.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
 				CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */,
-				CE8502241F559404001DC495 /* NJKWebViewProgressView.m in Sources */,
 				CE27587222ED7370006CDD6F /* ParkingAreaDetailVC.m in Sources */,
 				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
 				82252CEE2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m in Sources */,
@@ -5786,7 +5777,6 @@
 				CED37B9122E99B80003BCD45 /* ParkingForensicsModel.m in Sources */,
 				CE26B26A22F1904800A1D1A1 /* TakeOutTempHeadView.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
-				CE8502231F559404001DC495 /* NJKWebViewProgress.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
 				CE2BEEA120B7EA5900191FE3 /* VehicleUpDetailModel.m in Sources */,
 				CE12595422845DB500B7BF48 /* TakeOutInfoViewModel.m in Sources */,
@@ -6097,7 +6087,7 @@
 			baseConfigurationReference = 43B3969258655ECB2324C687 /* Pods-移动采集.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
@@ -6109,7 +6099,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.7;
+				MARKETING_VERSION = 2.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6121,7 +6111,7 @@
 			baseConfigurationReference = E384A29CA989121023ADC96A /* Pods-移动采集.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
@@ -6133,7 +6123,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.7;
+				MARKETING_VERSION = 2.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
