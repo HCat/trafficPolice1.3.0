@@ -152,6 +152,7 @@
     DailyPatrolListModel * model = self.viewModel.arr_data[indexPath.row];
     
     DailyPatrolDetailViewModel * viewModel = [[DailyPatrolDetailViewModel alloc] init];
+    viewModel.type = model.type;
     viewModel.shiftId = model.shiftId;
     viewModel.partrolId = model.partrolId;
     viewModel.shiftNum = model.shiftNum;

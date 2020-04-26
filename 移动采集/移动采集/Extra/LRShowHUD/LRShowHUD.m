@@ -53,6 +53,7 @@
     _hud.margin = 10.0f;
     _hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
     _hud.backgroundView.color = [UIColor clearColor];
+    _hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     _hud.bezelView.layer.cornerRadius = 3.f;
     _hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
 

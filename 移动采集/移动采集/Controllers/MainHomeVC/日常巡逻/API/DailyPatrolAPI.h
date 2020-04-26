@@ -11,6 +11,7 @@
 #import "DailyPatrolLocationModel.h"
 #import "DailyPatroInfoModel.h"
 #import "DailyPatrolPointModel.h"
+#import "DailyPatrolSignModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,8 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DailyPatrolDetailReponse : NSObject
 
 @property (nonatomic,copy) NSArray < DailyPatrolLocationModel *> * patrolLocationList;    //包含DailyPatrolLocationModel对象
+@property (nonatomic,copy) NSArray < DailyPatrolSignModel *> * patrolSignList;
 @property (nonatomic,strong) DailyPatroInfoModel * patrolInfo;    //DailyPatroInfoModel对象
 @property (nonatomic,strong) NSNumber * status;    //0时间未到 1正常 2超时
+
+
 
 @end
 
@@ -51,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber * point;         //第几个途经点
 @property (nonatomic, strong) NSNumber * patrolId;      //巡逻编号
 @property (nonatomic, strong) NSNumber * shiftId;       //班次编号
+@property (nonatomic, strong) NSNumber * pointType;     //站岗离岗  0为站岗 1为离岗
 @end
 
 @interface DailyPatrolSendSignManger:LRBaseRequest
@@ -94,6 +99,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /****** 返回数据 ******/
 @property (nonatomic,copy) NSArray < DailyPatrolPointModel *> * list;    //包含IllegalParkListModel对象
+
+@end
+
+
+@interface DailyPatrolPointSignManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) DailyPatrolSendSignParam * param;
+/****** 返回数据 ******/
+
 
 @end
 

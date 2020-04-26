@@ -20,9 +20,12 @@
 
 @interface LoginHomeVC ()
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_visitor;
-
 @property (weak, nonatomic) IBOutlet UIButton *btn_weixinLogin;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_select;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_clause;
+
 
 @end
 
@@ -40,20 +43,28 @@
 //        self.btn_weixinLogin.hidden = NO;
 //
 //    }
-    
-    self.btn_visitor.hidden = YES;
-    //[self judgeNeedShowVisitor];
-    
-//    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showVisitor)];
-//    tapGesture.numberOfTapsRequired = 10;
-//    tapGesture.numberOfTouchesRequired = 2;
-//    [self.view addGestureRecognizer:tapGesture];
-    
-    
+        
     UITapGestureRecognizer*tapGesture_2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showDevelopmentModel)];
     tapGesture_2.numberOfTapsRequired = 10;
     tapGesture_2.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:tapGesture_2];
+    
+    @weakify(self);
+    
+    self.btn_select.selected = YES;
+    
+    [[self.btn_select rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        
+        self.btn_select.selected = !self.btn_select.isSelected;
+    
+    }];
+    
+    [[self.btn_clause rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        
+    
+    }];
     
 }
 
@@ -63,33 +74,6 @@
 }
 
 #pragma mark -
-
-//- (void)judgeNeedShowVisitor{
-//
-//    WS(weakSelf);
-//    CommonValidVisitorManger *manger = [[CommonValidVisitorManger alloc] init];
-//    [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        SW(strongSelf, weakSelf);
-//
-//        if (manger.responseModel.code == CODE_SUCCESS) {
-//            if ([manger.responseModel.data intValue] == 0) {
-//                strongSelf.btn_visitor.hidden = YES;
-//            }else{
-//                strongSelf.btn_visitor.hidden = NO;
-//            }
-//        }
-//
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        SW(strongSelf, weakSelf);
-//        strongSelf.btn_visitor.hidden = YES;
-//    }];
-//
-//}
-
-//- (void)showVisitor{
-//
-//    self.btn_visitor.hidden = NO;
-//}
 
 - (void)showDevelopmentModel{
     
@@ -104,6 +88,11 @@
 
 
 - (IBAction)weixinLoginAction:(id)sender {
+    
+    if (!self.btn_select.isSelected) {
+        [LRShowHUD showError:@"请同意下方条款" duration:1.5f];
+        return;
+    }
 
     
     PhoneLoginVC *t_vc = [PhoneLoginVC new];

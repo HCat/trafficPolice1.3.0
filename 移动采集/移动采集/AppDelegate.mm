@@ -122,7 +122,7 @@
 -(void)addThirthPart:(NSDictionary *)launchOptions{
     
     
-    [WXApi registerApp:WEIXIN_APP_ID];
+    [WXApi registerApp:WEIXIN_APP_ID universalLink:@"nimeiLink"];
     
     [AMapServices sharedServices].apiKey = AMAP_APP_KEY;
     

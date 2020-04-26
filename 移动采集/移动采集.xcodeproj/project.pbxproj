@@ -30,6 +30,17 @@
 		823DA441240E500B002B8336 /* TaskFlowsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA440240E500B002B8336 /* TaskFlowsListModel.m */; };
 		823DA445240F49A5002B8336 /* TaskFlowsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 823DA443240F49A5002B8336 /* TaskFlowsListCell.m */; };
 		823DA446240F49A5002B8336 /* TaskFlowsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */; };
+		826AC7782451733900D803D4 /* ElectronicPoliceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC7762451733800D803D4 /* ElectronicPoliceVC.m */; };
+		826AC7792451733900D803D4 /* ElectronicPoliceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826AC7772451733900D803D4 /* ElectronicPoliceVC.xib */; };
+		826AC77C245174DF00D803D4 /* ElectronicPoliceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC77B245174DF00D803D4 /* ElectronicPoliceViewModel.m */; };
+		826AC77F245282CA00D803D4 /* ElectronicTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC77E245282CA00D803D4 /* ElectronicTypeModel.m */; };
+		826AC782245287B300D803D4 /* ElectronicPoliceAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC781245287B300D803D4 /* ElectronicPoliceAPI.m */; };
+		826AC7852452BDF600D803D4 /* ElectronicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC7842452BDF600D803D4 /* ElectronicDetailModel.m */; };
+		826AC7882452EDBE00D803D4 /* ElectronicAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC7872452EDBE00D803D4 /* ElectronicAnnotation.m */; };
+		826AC78B2452EE6B00D803D4 /* ElectronicAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AC78A2452EE6B00D803D4 /* ElectronicAnnotationView.m */; };
+		826B788D244462B100C764BD /* DailyPatrolAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B788C244462B100C764BD /* DailyPatrolAnnotation.m */; };
+		826B7890244464E200C764BD /* DailyPatrolAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B788F244464E200C764BD /* DailyPatrolAnnotationView.m */; };
+		826B78932446B78A00C764BD /* DailyPatrolSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B78922446B78A00C764BD /* DailyPatrolSignModel.m */; };
 		82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 82978CE1242C4CA1009201B7 /* UIViewController+LL_Utils.m */; };
 		829897CF23FDC6BB0060F17B /* IllegalAddDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 829897CD23FDC6BB0060F17B /* IllegalAddDetailVC.m */; };
 		829897D023FDC6BB0060F17B /* IllegalAddDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829897CE23FDC6BB0060F17B /* IllegalAddDetailVC.xib */; };
@@ -831,6 +842,27 @@
 		823DA442240F49A5002B8336 /* TaskFlowsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskFlowsListCell.h; sourceTree = "<group>"; };
 		823DA443240F49A5002B8336 /* TaskFlowsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsListCell.m; sourceTree = "<group>"; };
 		823DA444240F49A5002B8336 /* TaskFlowsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsListCell.xib; sourceTree = "<group>"; };
+		826AC7752451733800D803D4 /* ElectronicPoliceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicPoliceVC.h; sourceTree = "<group>"; };
+		826AC7762451733800D803D4 /* ElectronicPoliceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicPoliceVC.m; sourceTree = "<group>"; };
+		826AC7772451733900D803D4 /* ElectronicPoliceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElectronicPoliceVC.xib; sourceTree = "<group>"; };
+		826AC77A245174DF00D803D4 /* ElectronicPoliceViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicPoliceViewModel.h; sourceTree = "<group>"; };
+		826AC77B245174DF00D803D4 /* ElectronicPoliceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicPoliceViewModel.m; sourceTree = "<group>"; };
+		826AC77D245282CA00D803D4 /* ElectronicTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicTypeModel.h; sourceTree = "<group>"; };
+		826AC77E245282CA00D803D4 /* ElectronicTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicTypeModel.m; sourceTree = "<group>"; };
+		826AC780245287B300D803D4 /* ElectronicPoliceAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicPoliceAPI.h; sourceTree = "<group>"; };
+		826AC781245287B300D803D4 /* ElectronicPoliceAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicPoliceAPI.m; sourceTree = "<group>"; };
+		826AC7832452BDF600D803D4 /* ElectronicDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicDetailModel.h; sourceTree = "<group>"; };
+		826AC7842452BDF600D803D4 /* ElectronicDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicDetailModel.m; sourceTree = "<group>"; };
+		826AC7862452EDBE00D803D4 /* ElectronicAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicAnnotation.h; sourceTree = "<group>"; };
+		826AC7872452EDBE00D803D4 /* ElectronicAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicAnnotation.m; sourceTree = "<group>"; };
+		826AC7892452EE6B00D803D4 /* ElectronicAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicAnnotationView.h; sourceTree = "<group>"; };
+		826AC78A2452EE6B00D803D4 /* ElectronicAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicAnnotationView.m; sourceTree = "<group>"; };
+		826B788B244462B100C764BD /* DailyPatrolAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolAnnotation.h; sourceTree = "<group>"; };
+		826B788C244462B100C764BD /* DailyPatrolAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolAnnotation.m; sourceTree = "<group>"; };
+		826B788E244464E200C764BD /* DailyPatrolAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolAnnotationView.h; sourceTree = "<group>"; };
+		826B788F244464E200C764BD /* DailyPatrolAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolAnnotationView.m; sourceTree = "<group>"; };
+		826B78912446B78A00C764BD /* DailyPatrolSignModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyPatrolSignModel.h; sourceTree = "<group>"; };
+		826B78922446B78A00C764BD /* DailyPatrolSignModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyPatrolSignModel.m; sourceTree = "<group>"; };
 		82978CE0242C4C9E009201B7 /* UIViewController+LL_Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LL_Utils.h"; sourceTree = "<group>"; };
 		82978CE1242C4CA1009201B7 /* UIViewController+LL_Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LL_Utils.m"; sourceTree = "<group>"; };
 		829897CC23FDC6BB0060F17B /* IllegalAddDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalAddDetailVC.h; sourceTree = "<group>"; };
@@ -2263,6 +2295,68 @@
 			path = APIs;
 			sourceTree = "<group>";
 		};
+		826AC76F245130E900D803D4 /* 电子警察 */ = {
+			isa = PBXGroup;
+			children = (
+				826AC77424516A1200D803D4 /* API */,
+				826AC770245169E200D803D4 /* View */,
+				826AC772245169F300D803D4 /* Model */,
+				826AC771245169EA00D803D4 /* ViewModel */,
+				826AC773245169FB00D803D4 /* Controllers */,
+			);
+			path = "电子警察";
+			sourceTree = "<group>";
+		};
+		826AC770245169E200D803D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				826AC7892452EE6B00D803D4 /* ElectronicAnnotationView.h */,
+				826AC78A2452EE6B00D803D4 /* ElectronicAnnotationView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		826AC771245169EA00D803D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				826AC77A245174DF00D803D4 /* ElectronicPoliceViewModel.h */,
+				826AC77B245174DF00D803D4 /* ElectronicPoliceViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		826AC772245169F300D803D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				826AC77D245282CA00D803D4 /* ElectronicTypeModel.h */,
+				826AC77E245282CA00D803D4 /* ElectronicTypeModel.m */,
+				826AC7832452BDF600D803D4 /* ElectronicDetailModel.h */,
+				826AC7842452BDF600D803D4 /* ElectronicDetailModel.m */,
+				826AC7862452EDBE00D803D4 /* ElectronicAnnotation.h */,
+				826AC7872452EDBE00D803D4 /* ElectronicAnnotation.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		826AC773245169FB00D803D4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				826AC7752451733800D803D4 /* ElectronicPoliceVC.h */,
+				826AC7762451733800D803D4 /* ElectronicPoliceVC.m */,
+				826AC7772451733900D803D4 /* ElectronicPoliceVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		826AC77424516A1200D803D4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				826AC780245287B300D803D4 /* ElectronicPoliceAPI.h */,
+				826AC781245287B300D803D4 /* ElectronicPoliceAPI.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		82B7550023F7D3010061F884 /* 违停采集(石狮) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2370,6 +2464,8 @@
 				82EFA8AF23C710D500327172 /* PeoplePatrolPolyline.m */,
 				82EFA8B123C717A300327172 /* PeoplePointAnnotation.h */,
 				82EFA8B223C717A300327172 /* PeoplePointAnnotation.m */,
+				826B788E244464E200C764BD /* DailyPatrolAnnotationView.h */,
+				826B788F244464E200C764BD /* DailyPatrolAnnotationView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2398,6 +2494,10 @@
 				82EFA8A623C6BA4600327172 /* DailyPatroInfoModel.m */,
 				82EFA8A823C6C86200327172 /* DailyPatrolPointModel.h */,
 				82EFA8A923C6C86200327172 /* DailyPatrolPointModel.m */,
+				826B788B244462B100C764BD /* DailyPatrolAnnotation.h */,
+				826B788C244462B100C764BD /* DailyPatrolAnnotation.m */,
+				826B78912446B78A00C764BD /* DailyPatrolSignModel.h */,
+				826B78922446B78A00C764BD /* DailyPatrolSignModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3898,6 +3998,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				826AC76F245130E900D803D4 /* 电子警察 */,
 				82B7550023F7D3010061F884 /* 违停采集(石狮) */,
 				82EFA87C23C577A400327172 /* 日常巡逻 */,
 				CE4A0D6623989C08004F99B1 /* 人员曝光 */,
@@ -5172,6 +5273,7 @@
 				CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */,
 				CE37409F2175803600FEF14F /* UpCacheSettingVC.xib in Resources */,
 				82B7551C23FCD95A0061F884 /* IllegalSecAddVC.xib in Resources */,
+				826AC7792451733900D803D4 /* ElectronicPoliceVC.xib in Resources */,
 				CE424F401F3AE694005741CA /* AccidentImageCell.xib in Resources */,
 				CE4139FA2178CF27006AA441 /* ZLPhotoBrowserCell.xib in Resources */,
 				82252CD52415D5A600D48561 /* TaskFlowsUserListVC.xib in Resources */,
@@ -5536,6 +5638,7 @@
 				CEEF36272338BBAF0086D6AC /* ParkingCarImageVC.m in Sources */,
 				CE0731D01F5ECF9A00B3831B /* VehicleDriverModel.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
+				826AC7852452BDF600D803D4 /* ElectronicDetailModel.m in Sources */,
 				CE2BA68E2101C2CB00A7BD95 /* AccidentPeopleChangeCell.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
 				CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */,
@@ -5623,6 +5726,7 @@
 				CE78EC34216B29AC00212D17 /* IllegalParkUpListViewModel.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
 				CE4139DF2178CF26006AA441 /* ZLPhotoConfiguration.m in Sources */,
+				826AC782245287B300D803D4 /* ElectronicPoliceAPI.m in Sources */,
 				CE240AD71FDFC3DC002EA369 /* IllOperationAPI.m in Sources */,
 				CE170FEB20FEEAB100B93669 /* AccidentUpFactory.m in Sources */,
 				CE2C98BE1F61D1FF009851F6 /* VehicleRemarkCell.m in Sources */,
@@ -5649,6 +5753,7 @@
 				CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */,
 				CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */,
 				CECF753720C9505300A4DAC4 /* PFTableViewCell.m in Sources */,
+				826AC78B2452EE6B00D803D4 /* ElectronicAnnotationView.m in Sources */,
 				CE93BC672147A756001F2976 /* SpecialDeleteCar.m in Sources */,
 				CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */,
 				CE7E9F2920BC0FE40018583A /* DriverChooseView.m in Sources */,
@@ -5679,6 +5784,7 @@
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
 				CE68A7FE233364B90037811F /* ParkingManagementAPI.m in Sources */,
 				82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */,
+				826AC77F245282CA00D803D4 /* ElectronicTypeModel.m in Sources */,
 				82252CDD241621D300D48561 /* TaskFlowsAddViewModel.m in Sources */,
 				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
@@ -5717,10 +5823,12 @@
 				CE538E0320AD230C006B3E44 /* VehicleUpImageCell.m in Sources */,
 				CE42B9371F1F4AE4005CC5BD /* ArtVideoModel.m in Sources */,
 				CE19ADC621129E8900A3C4C0 /* ActionListCell.m in Sources */,
+				826AC77C245174DF00D803D4 /* ElectronicPoliceViewModel.m in Sources */,
 				CE78EC35216B29AC00212D17 /* IllegalParkManageViewModel.m in Sources */,
 				CE2AF88A1FD68C42005B643E /* FHHFPSIndicator.m in Sources */,
 				CE5B93001F2F13D2000008AE /* IllegalThroughSecAddView.m in Sources */,
 				CE7348F21F6BC8B700EBDA0A /* CarInfoAddVC.m in Sources */,
+				826B78932446B78A00C764BD /* DailyPatrolSignModel.m in Sources */,
 				CE17C6F62179F48C00B7391C /* AccidentUpListViewModel.m in Sources */,
 				CE508F391F3D51C60066A9B7 /* AccidentRemarkCell.m in Sources */,
 				CE87043420CE52B700E206AE /* LTSCircleView.m in Sources */,
@@ -5878,6 +5986,7 @@
 				CE6154B01F67896D0018DF71 /* OnePoliceView.m in Sources */,
 				CE2AF8891FD68C42005B643E /* UIWindow+FHH.m in Sources */,
 				CE26B25A22EEA36F00A1D1A1 /* ParkingForensicsViewModel.m in Sources */,
+				826B788D244462B100C764BD /* DailyPatrolAnnotation.m in Sources */,
 				CE12593422841B7B00B7BF48 /* TakeOutInfoVC.m in Sources */,
 				CE864F3A20089CE5007B20FE /* NSBundle+PGDatePicker.m in Sources */,
 				CE4139E12178CF26006AA441 /* ZLEditViewController.m in Sources */,
@@ -5892,7 +6001,9 @@
 				CE42B93C1F1F4B6D005CC5BD /* VideoColectListModel.m in Sources */,
 				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,
 				CE93BC532146A472001F2976 /* SpecialGroupCell.m in Sources */,
+				826B7890244464E200C764BD /* DailyPatrolAnnotationView.m in Sources */,
 				CE36CEF3215A1FC3004B16A4 /* IllegalParkUpListVC.m in Sources */,
+				826AC7782451733900D803D4 /* ElectronicPoliceVC.m in Sources */,
 				CE0731D31F5ED5DD00B3831B /* VehicleGPSModel.m in Sources */,
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
 				CE90F3D621CB970C0057E218 /* PoliceSearchViewModel.m in Sources */,
@@ -5935,6 +6046,7 @@
 				CE65B8FB20AAC5EA00AA97BB /* VehicleCarInfoMoreVC.m in Sources */,
 				823DA43E240E3FB6002B8336 /* TaskFlowsAPI.m in Sources */,
 				CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */,
+				826AC7882452EDBE00D803D4 /* ElectronicAnnotation.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
 				CE2C98AD1F61AAD7009851F6 /* VehicleMemberNoShowCell.m in Sources */,
 				CE90F3D221CB852F0057E218 /* PoliceSearchVC.m in Sources */,
@@ -6099,7 +6211,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6123,7 +6235,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

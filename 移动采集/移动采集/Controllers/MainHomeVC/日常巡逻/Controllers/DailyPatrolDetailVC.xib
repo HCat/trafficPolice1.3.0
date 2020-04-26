@@ -15,10 +15,13 @@
                 <outlet property="btn_takePicture" destination="O1v-XZ-39U" id="Acf-rR-VDq"/>
                 <outlet property="btn_throuht" destination="yt2-pt-zrf" id="PuV-px-ACI"/>
                 <outlet property="btn_video" destination="tnb-na-7A1" id="QvX-lU-swd"/>
+                <outlet property="lb_daogangTime" destination="AJW-lh-gf5" id="Hm6-6f-yfP"/>
                 <outlet property="lb_distance" destination="hdY-hu-5hg" id="Gun-u2-AVD"/>
                 <outlet property="lb_expTime" destination="svg-zt-O0R" id="ZF3-Ip-4yk"/>
+                <outlet property="lb_ligangTime" destination="V59-u5-Edp" id="6FL-lN-M0h"/>
                 <outlet property="lb_points" destination="hE4-5Q-xPe" id="4RT-ae-i3p"/>
                 <outlet property="lb_top" destination="L2c-6j-yZ0" id="A4f-4J-8GN"/>
+                <outlet property="v_daogang" destination="DiG-WD-fTK" id="0hR-vp-0ps"/>
                 <outlet property="v_top" destination="11g-Fi-sua" id="rbi-ur-I2p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,23 +64,50 @@
                         <constraint firstItem="hdY-hu-5hg" firstAttribute="leading" secondItem="Zne-QE-aJE" secondAttribute="leading" constant="15" id="zgo-yj-JfB"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiG-WD-fTK">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 到岗时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-lh-gf5">
+                            <rect key="frame" x="15" y="14" width="197" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="离岗时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V59-u5-Edp">
+                            <rect key="frame" x="212" y="14" width="187" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="AJW-lh-gf5" firstAttribute="centerY" secondItem="DiG-WD-fTK" secondAttribute="centerY" id="27Q-vm-qdI"/>
+                        <constraint firstItem="AJW-lh-gf5" firstAttribute="width" secondItem="V59-u5-Edp" secondAttribute="width" multiplier="1.05172" id="GAu-P4-f7I"/>
+                        <constraint firstItem="V59-u5-Edp" firstAttribute="centerY" secondItem="DiG-WD-fTK" secondAttribute="centerY" id="S4G-zx-mm1"/>
+                        <constraint firstItem="AJW-lh-gf5" firstAttribute="leading" secondItem="DiG-WD-fTK" secondAttribute="leading" constant="15" id="cSB-DS-pPc"/>
+                        <constraint firstAttribute="height" constant="45" id="kdU-8u-mek"/>
+                        <constraint firstItem="V59-u5-Edp" firstAttribute="leading" secondItem="AJW-lh-gf5" secondAttribute="trailing" id="oDL-aY-b2I"/>
+                        <constraint firstAttribute="trailing" secondItem="V59-u5-Edp" secondAttribute="trailing" constant="15" id="ycO-bA-CaC"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-pt-zrf">
-                    <rect key="frame" x="330" y="344" width="69" height="69"/>
+                    <rect key="frame" x="330" y="423" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_through"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnb-na-7A1">
-                    <rect key="frame" x="330" y="423" width="69" height="69"/>
+                    <rect key="frame" x="330" y="502" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_video"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mi5-zx-7FZ">
-                    <rect key="frame" x="330" y="502" width="69" height="69"/>
+                    <rect key="frame" x="330" y="581" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_illegal"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-XZ-39U">
-                    <rect key="frame" x="330" y="581" width="69" height="69"/>
+                    <rect key="frame" x="330" y="660" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_takePictures"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQt-d2-13X">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQt-d2-13X">
                     <rect key="frame" x="330" y="660" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_signIn"/>
                 </button>
@@ -123,10 +153,13 @@
             <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tnb-na-7A1" firstAttribute="top" secondItem="yt2-pt-zrf" secondAttribute="bottom" constant="10" id="0qH-mI-4An"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="O1v-XZ-39U" secondAttribute="bottom" constant="45" id="2S0-Pt-FOa"/>
+                <constraint firstItem="DiG-WD-fTK" firstAttribute="leading" secondItem="Zne-QE-aJE" secondAttribute="leading" id="Bwi-HE-8QS"/>
                 <constraint firstItem="mi5-zx-7FZ" firstAttribute="top" secondItem="tnb-na-7A1" secondAttribute="bottom" constant="10" id="DXT-XE-ldq"/>
-                <constraint firstItem="YQt-d2-13X" firstAttribute="top" secondItem="O1v-XZ-39U" secondAttribute="bottom" constant="10" id="ImE-iW-G4Y"/>
                 <constraint firstItem="mi5-zx-7FZ" firstAttribute="trailing" secondItem="O1v-XZ-39U" secondAttribute="trailing" id="KoU-6j-duo"/>
+                <constraint firstItem="DiG-WD-fTK" firstAttribute="top" secondItem="Zne-QE-aJE" secondAttribute="top" id="KyY-SH-DRM"/>
                 <constraint firstItem="Zne-QE-aJE" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="QSi-ZJ-IMs"/>
+                <constraint firstItem="DiG-WD-fTK" firstAttribute="trailing" secondItem="Zne-QE-aJE" secondAttribute="trailing" id="SCa-wa-IqB"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Zne-QE-aJE" secondAttribute="trailing" id="U7N-VR-QhB"/>
                 <constraint firstItem="O1v-XZ-39U" firstAttribute="trailing" secondItem="YQt-d2-13X" secondAttribute="trailing" id="WlZ-As-7OZ"/>
                 <constraint firstItem="Zne-QE-aJE" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="aXQ-ZS-T6S"/>

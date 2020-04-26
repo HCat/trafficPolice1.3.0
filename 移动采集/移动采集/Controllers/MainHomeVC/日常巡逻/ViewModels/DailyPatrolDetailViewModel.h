@@ -15,11 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DailyPatrolDetailViewModel : NSObject
 
 @property(nonatomic, strong) NSNumber * partrolId;  //巡逻编号
+@property(nonatomic, strong) NSNumber * type;       //1为站岗  0为巡逻
 @property(nonatomic, strong) NSNumber * shiftId;    //班次编号
 @property(nonatomic, strong) NSNumber * shiftNum;   //巡逻班次
 @property(nonatomic, strong) NSNumber * point;      //第几个途经点
 @property(nonatomic, strong) NSNumber * latitude;   //纬度
 @property(nonatomic, strong) NSNumber * longitude;  //经度
+@property(nonatomic, strong) NSNumber * pointType;  //到岗状态  0为签到  1为签退
 
 @property(nonatomic, strong) NSMutableArray * arr_point;    //存储巡逻点
 @property(nonatomic, strong) NSArray * arr_people;   //存储路径点
@@ -31,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //巡逻打卡请求
 @property(nonatomic, strong) RACCommand * command_sign;
+
+//到岗打卡请求
+@property(nonatomic, strong) RACCommand * command_pointSign;
 
 //位置上报
 @property(nonatomic, strong) RACCommand * command_locationReport;

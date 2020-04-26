@@ -1,0 +1,285 @@
+//
+//  ElectronicPoliceVC.m
+//  移动采集
+//
+//  Created by hcat-89 on 2020/4/23.
+//  Copyright © 2020 Hcat. All rights reserved.
+//
+
+#import "ElectronicPoliceVC.h"
+#import <PureLayout.h>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import "UIButton+NoRepeatClick.h"
+
+
+#import "ElectronicPoliceAPI.h"
+#import "PFNavigationDropdownMenu.h"
+#import "ElectronicPoliceViewModel.h"
+
+
+#import "ElectronicAnnotation.h"
+#import "ElectronicAnnotationView.h"
+
+
+
+@interface ElectronicPoliceVC ()<MAMapViewDelegate>
+
+@property (strong,nonatomic) PFNavigationDropdownMenu * menuView;
+@property (nonatomic, strong) MAMapView * mapView;
+
+@property (strong, nonatomic) UIButton *rightButton;
+@property(nonatomic,strong) ElectronicPoliceViewModel * viewModel;
+
+
+
+@end
+
+@implementation ElectronicPoliceVC
+
+- (instancetype)initWithViewModel:(ElectronicPoliceViewModel *)viewModel{
+    
+    if (self = [super init]) {
+        
+        self.viewModel = viewModel;
+    
+    }
+    
+    return self;
+    
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configUI];
+    [self bindViewModel];
+    
+    [self.viewModel.command_group execute:nil];
+    
+}
+
+- (void)configUI{
+    
+    self.title = @"电子警察位置";
+
+    @weakify(self);
+    
+    self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 25)];
+    self.rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 19, 0, -19);
+    [self.rightButton setTitle:@"卫星" forState:UIControlStateNormal];
+    self.rightButton.isIgnore = YES;
+    
+    [[_rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        self.viewModel.isSate = !self.viewModel.isSate;
+    }];
+    UIBarButtonItem * rightitem = [[UIBarButtonItem alloc] initWithCustomView:_rightButton];
+    self.navigationItem.rightBarButtonItem = rightitem;
+    
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _mapView.delegate = self;
+    
+    [self.view addSubview:_mapView];
+    [self.view sendSubviewToBack:_mapView];
+    
+    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@0);
+        make.right.equalTo(@0);
+        make.left.equalTo(@0);
+        make.bottom.equalTo(@0);
+    }];
+    _mapView.distanceFilter = 5.f;
+    _mapView.showsCompass= NO;
+    _mapView.showsScale= NO;
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
+    
+    
+}
+
+
+- (void)bindViewModel{
+    
+    @weakify(self);
+
+    [RACObserve(self.viewModel, isSate) subscribeNext:^(NSNumber * _Nullable x) {
+        
+        @strongify(self);
+        
+        if ([x boolValue]) {
+            
+            [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_on"] forState:UIControlStateNormal];
+            [self.mapView setMapType:MAMapTypeSatellite];
+                       
+        }else{
+                       
+            [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_off"] forState:UIControlStateNormal];
+            [self.mapView setMapType:MAMapTypeSatellite];
+        }
+        
+    }];
+    
+    [self.viewModel.command_group.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        
+        if([x isEqualToString:@"加载成功"]){
+            
+            if (self.viewModel.arr_group.count > 0) {
+                [self setUpDropdownMenu:self.viewModel.arr_group];
+            }
+        }
+        
+    }];
+    
+    [self.viewModel.command_detail.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
+        
+        @strongify(self);
+        
+        if([x isEqualToString:@"加载成功"]){
+            
+            
+            
+            
+            
+            
+        }
+        
+    }];
+    
+    
+}
+
+#pragma mark - set
+
+- (void)setUpDropdownMenu:(NSArray *)items{
+    
+    @weakify(self);
+    
+    NSMutableArray *items_t = [NSMutableArray array];
+    
+    for (int i = 0; i < items.count; i++) {
+        ElectronicTypeModel * model = items[i];
+        [items_t addObject:model.typeName];
+    }
+    
+    if (_menuView) {
+        [_menuView removeFromSuperview];
+        _menuView = nil;
+    }
+
+    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)
+                                                          title:items_t.firstObject
+                                                          items:items_t
+                                                  containerView:self.view];
+    _menuView.backgroundColor = [UIColor whiteColor];
+    
+    _menuView.cellHeight = 50;
+    _menuView.cellBackgroundColor = [UIColor whiteColor];
+    _menuView.cellSelectionColor = [UIColor whiteColor];
+    _menuView.cellTextLabelColor = DefaultTextColor;
+    _menuView.cellTextLabelFont = [UIFont systemFontOfSize:14.f];
+    _menuView.arrowImage = [UIImage imageNamed:@"icon_dropdown_down"];
+    _menuView.checkMarkImage = [UIImage imageNamed:@"icon_dropdown_selected"];
+    _menuView.arrowPadding = 15;
+    _menuView.animationDuration = 0.5f;
+    _menuView.maskBackgroundColor = [UIColor blackColor];
+    _menuView.maskBackgroundOpacity = 0.3f;
+    
+    _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
+        NSLog(@"Did select item at index: %ld", indexPath);
+        @strongify(self);
+        
+        ElectronicTypeModel * model = self.viewModel.arr_group[indexPath];
+        [self.viewModel.command_detail execute:model.typeId];
+        
+        
+    };
+    
+    [self.view addSubview:_menuView];
+    [_menuView configureForAutoLayout];
+    [_menuView autoSetDimension:ALDimensionHeight toSize:44];
+    
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+    [_menuView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+    
+    [self.mapView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@44);
+    }];
+    [self.view layoutIfNeeded];
+    
+}
+
+#pragma mark - MAMapViewDelegate
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
+    
+    if ([annotation isKindOfClass:[ElectronicAnnotation class]]){
+        
+        ElectronicAnnotation *vehicle = (ElectronicAnnotation *)annotation;
+        
+        static NSString *customReuseIndetifier = @"ElectronicAnnotationID";
+        ElectronicAnnotationView *vehicleCarView = (ElectronicAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        @weakify(self);
+        if (vehicleCarView == nil)
+        {
+            vehicleCarView = [[ElectronicAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            vehicleCarView.block = ^(ElectronicAnnotation *carAnnotation) {
+                @strongify(self);
+                LxDBAnyVar(carAnnotation);
+                
+                
+            };
+        }
+        
+        //很重要的，配置关联的模型数据
+        vehicleCarView.annotation = vehicle;
+        
+        
+        return vehicleCarView;
+        
+    }
+        
+    return nil;
+}
+
+
+/**
+ * brief 根据传入的annotation来展现：保持中心点不变的情况下，展示所有传入annotation
+ * @param annotations annotation
+ * @param insets 填充框，用于让annotation不会靠在地图边缘显示
+ * @param mapView 地图view
+ */
+- (void)showsAnnotations:(NSArray *)annotations edgePadding:(UIEdgeInsets)insets andMapView:(MAMapView *)mapView {
+    
+    MAMapRect rect = MAMapRectZero;
+    
+    for (MAPointAnnotation *annotation in annotations) {
+        
+        ///annotation相对于中心点的对角线坐标
+        CLLocationCoordinate2D diagonalPoint = CLLocationCoordinate2DMake(mapView.centerCoordinate.latitude - (annotation.coordinate.latitude - mapView.centerCoordinate.latitude),mapView.centerCoordinate.longitude - (annotation.coordinate.longitude - mapView.centerCoordinate.longitude));
+        
+        MAMapPoint annotationMapPoint = MAMapPointForCoordinate(annotation.coordinate);
+        MAMapPoint diagonalPointMapPoint = MAMapPointForCoordinate(diagonalPoint);
+        
+        ///根据annotation点和对角线点计算出对应的rect（相对于中心点）
+        MAMapRect annotationRect = MAMapRectMake(MIN(annotationMapPoint.x, diagonalPointMapPoint.x), MIN(annotationMapPoint.y, diagonalPointMapPoint.y), ABS(annotationMapPoint.x - diagonalPointMapPoint.x), ABS(annotationMapPoint.y - diagonalPointMapPoint.y));
+        
+        rect = MAMapRectUnion(rect, annotationRect);
+    }
+    
+    [mapView setVisibleMapRect:rect edgePadding:insets animated:NO];
+}
+
+
+#pragma mark - dealloc
+
+- (void)dealloc{
+    LxPrintf(@"%@-dealloc",[self class]);
+}
+
+@end

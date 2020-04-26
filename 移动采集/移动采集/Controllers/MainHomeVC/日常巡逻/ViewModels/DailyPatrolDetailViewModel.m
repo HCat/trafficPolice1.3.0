@@ -103,6 +103,57 @@
     
 }
 
+- (RACCommand *)command_pointSign{
+
+    if (_command_pointSign == nil) {
+        @weakify(self);
+        self.command_pointSign = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                @strongify(self);
+                DailyPatrolSendSignParam * param = [[DailyPatrolSendSignParam alloc] init];
+                DailyPatrolPointSignManger * manger = [[DailyPatrolPointSignManger alloc] init];
+                param.shiftId = self.shiftId;
+                param.patrolId = self.partrolId;
+                param.latitude = self.latitude;
+                param.longitude = self.longitude;
+                param.point = @0;
+                param.pointType = self.pointType;
+                manger.param = param;
+                if ([self.pointType isEqualToNumber:@0]) {
+                    [manger configLoadingTitle:@"到岗"];
+                }else{
+                    [manger configLoadingTitle:@"离岗"];
+                }
+                
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        [subscriber sendNext:@"签到成功"];
+                    }else if(manger.responseModel.code == 100){
+                        [LRShowHUD showError:@"未到离岗时间" duration:1.5];
+                    }else{
+                        [subscriber sendNext:@"签到失败"];
+                    }
+                    
+                    [subscriber sendCompleted];
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendNext:@"签到失败"];
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            }];
+            
+            return t_signal;
+        }];
+        
+    }
+    
+    return _command_pointSign;
+    
+}
+
 
 - (RACCommand *)command_pointList{
 

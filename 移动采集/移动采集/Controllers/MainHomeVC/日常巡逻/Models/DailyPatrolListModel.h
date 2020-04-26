@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSNumber * shiftId;     //班次
 @property(strong, nonatomic) NSNumber * shiftNum;     //班次
 @property(copy, nonatomic) NSString * partrolName;  //线路名称
+@property(copy, nonatomic) NSNumber * type;  //1为站岗  0为巡逻
 
 @end
 

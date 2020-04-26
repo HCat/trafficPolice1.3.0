@@ -2,20 +2,20 @@ platform :ios, '8.0'
 
 target '移动采集' do
 
-pod 'SDWebImage'
-pod 'YYKit'
-pod 'YTKNetwork'
-pod 'IQKeyboardManager'
+pod 'SDWebImage', '~> 4.2.2’
+pod 'YYKit', '~> 1.0.9’
+pod 'YTKNetwork', '~> 2.0.4’
+pod 'IQKeyboardManager', '~> 5.0.6’
 pod 'MBProgressHUD'
 pod 'LxDBAnything'
-pod 'MJRefresh'
+pod 'MJRefresh', '~> 3.1.15’
 pod 'AMScrollingNavbar', '~> 1.5.1’
-pod 'TOCropViewController'
-pod 'PureLayout'
+pod 'TOCropViewController', '~> 2.1.0’
+pod 'PureLayout', '~> 3.0.2’
 pod 'Masonry'
 pod 'JPush'
 pod 'JAnalytics'
-pod 'WechatOpenSDK'
+pod 'WechatOpenSDK', '~> 1.8.0’
 pod 'Reachability'
 pod 'AMap2DMap'
 pod 'AMapSearch'

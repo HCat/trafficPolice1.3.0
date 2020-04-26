@@ -23,6 +23,11 @@ typedef enum  {
 //获取渐变色的图片
 + (UIImage *)imageFromColors:(NSArray*)colors ByGradientType:(GradientType)gradientType;
 
+- (UIImage *)imageChangeColor:(UIColor *)color;
+
+- (UIImage *)imageRotateIndegree:(float)degree;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

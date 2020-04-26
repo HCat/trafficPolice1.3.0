@@ -70,7 +70,7 @@ LRSingletonM(Default)
     //设置允许在后台定位
     [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
-    self.locationManager.distanceFilter = 50.f;
+    self.locationManager.distanceFilter = 10.f;
     
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
@@ -96,6 +96,7 @@ LRSingletonM(Default)
             param.latitude = self.latitude;
             DailyPatrolLocationReportManger * manger = [[DailyPatrolLocationReportManger alloc] init];
             manger.param = param;
+            manger.isNoShowFail = YES;
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                
 

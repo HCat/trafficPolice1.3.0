@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE NO
+#define ISONLINE  NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.201:8280/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
@@ -284,6 +284,7 @@
 #define URL_DAILYPATRO_SENDSIGN @"app/patrolInfo/sendPatrolSign.json"   //巡逻打卡
 #define URL_DAILYPATRO_LOCATIONREPORT @"app/patrolInfo/locationReport.json"   //实时上报位置
 #define URL_DAILYPATRO_POINTLIST @"app/patrolInfo/pointReportList.json"   //实时上报位置列表
+#define URL_DAILYPATRO_POINTSIGN @"app/patrolInfo/sendPointSign.json"     //到岗离岗功能
 
 #define URL_TASKFLOWS_TASKLIST @"app/adviceTask/taskList.json"    //指派给我的任务流
 #define URL_TASKFLOWS_SELFTASKLIST @"app/adviceTask/selftaskList.json"   //我创建的任务流
@@ -291,5 +292,8 @@
 #define URL_TASKFLOWS_SAVETASK @"app/adviceTask/saveTask.json"    //
 #define URL_TASKFLOWS_REPLYTASK @"app/adviceTask/replyTask.json"
 
+
+#define URL_ELECTRONIC_TYPE @"app/trafficManage/elecTypeList.json" //电子警察摄像头类型
+#define URL_ELECTRONIC_LIST @"app/trafficManage/cameraPoliceList.json"  //电子警察摄像头列表
 
 #endif /* URLMacro_h */

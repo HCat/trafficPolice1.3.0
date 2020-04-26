@@ -37,7 +37,8 @@
 @implementation DailyPatrolDetailReponse
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"patrolLocationList" : [DailyPatrolLocationModel class]
+    return @{@"patrolLocationList" : [DailyPatrolLocationModel class],
+             @"patrolSignList" : [DailyPatrolSignModel class]
              };
 }
 
@@ -148,6 +149,23 @@
     return nil;
     
 }
+
+
+@end
+
+@implementation DailyPatrolPointSignManger
+
+- (NSString *)requestUrl
+{
+    return URL_DAILYPATRO_POINTSIGN;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return self.param.modelToJSONObject;
+}
+
 
 
 @end

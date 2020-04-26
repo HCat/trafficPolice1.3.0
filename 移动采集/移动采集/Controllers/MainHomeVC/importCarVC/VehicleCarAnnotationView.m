@@ -69,7 +69,6 @@
     width = width + 8;
     frame = CGRectMake(0, 0, width, 60);
     
-    
     self.imgv_title_bg.frame =  CGRectMake(0, 0, width, 28);
     UIImage *initialImage = [UIImage imageNamed:@"icon_vehicleCar_info.png"];
     UIImage *rightStretchImage = [initialImage stretchableImageWithLeftCapWidth:initialImage.size.width *0.7 topCapHeight:initialImage.size.height *0.2];

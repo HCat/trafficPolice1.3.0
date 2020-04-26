@@ -17,6 +17,8 @@
 #import "IllegalExposureVC.h"
 #import "VideoColectVC.h"
 #import "IllegalParkVC.h"
+#import "DailyPatrolAnnotation.h"
+#import "DailyPatrolAnnotationView.h"
 
 @interface DailyPatrolDetailVC ()<MAMapViewDelegate,AMapSearchDelegate>
 
@@ -40,10 +42,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn_throuht;
 
+@property (weak, nonatomic) IBOutlet UIView *v_daogang;
+
+@property (weak, nonatomic) IBOutlet UILabel *lb_daogangTime;
+@property (weak, nonatomic) IBOutlet UILabel *lb_ligangTime;
+
 
 @property (strong, nonatomic) UIButton *rightButton;
-
-@property (nonatomic,strong) NSTimer *time_upLocation;
+@property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
 
 @end
 
@@ -65,7 +71,10 @@
     [self lr_bindViewModel];
     
     [self.viewModel.command_detail execute:nil];
-    [self.viewModel.command_pointList execute:nil];
+    if ([self.viewModel.type isEqualToNumber:@0]) {
+        [self.viewModel.command_pointList execute:nil];
+    }
+    
 }
 
 - (void)lr_configUI{
@@ -74,25 +83,30 @@
     
     self.v_top.hidden = YES;
     
-    self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 25)];
-    self.rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 19, 0, -19);
-    self.rightButton.isIgnore = YES;
-    
     @weakify(self);
-    [[_rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        
-        if ([ShareValue sharedDefault].dailyPratrol_on) {
-            [ShareValue sharedDefault].dailyPratrol_on = NO;
-        }else{
-            [ShareValue sharedDefault].dailyPratrol_on = YES;
-        }
-         
-    }];
-    UIBarButtonItem * rightitem = [[UIBarButtonItem alloc] initWithCustomView:_rightButton];
-    self.navigationItem.rightBarButtonItem = rightitem;
     
+    if ([self.viewModel.type isEqualToNumber:@0]) {
+        self.v_daogang.hidden = YES;
+        self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 25)];
+        self.rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 19, 0, -19);
+        self.rightButton.isIgnore = YES;
     
+        [[_rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+            
+            if ([ShareValue sharedDefault].dailyPratrol_on) {
+                [ShareValue sharedDefault].dailyPratrol_on = NO;
+            }else{
+                [ShareValue sharedDefault].dailyPratrol_on = YES;
+            }
+             
+        }];
+        UIBarButtonItem * rightitem = [[UIBarButtonItem alloc] initWithCustomView:_rightButton];
+        self.navigationItem.rightBarButtonItem = rightitem;
+    }else{
+        self.v_daogang.hidden = NO;
+    }
     
+
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _mapView.delegate = self;
@@ -106,67 +120,16 @@
         make.left.equalTo(@0);
         make.bottom.equalTo(@0);
     }];
-    _mapView.distanceFilter = 200;
+    _mapView.distanceFilter = 5.f;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
     
-    [[self.btn_signIn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        @strongify(self);
-        
-        if (![ShareValue sharedDefault].dailyPratrol_on) {
-            [ShareFun showTipLable:@"未开启巡逻"];
-            return ;
-        }
-        
-        if (self.viewModel.reponseModel.patrolLocationList && self.viewModel.reponseModel.patrolLocationList.count > 0) {
-         
-            for (int i = 0; i < self.viewModel.reponseModel.patrolLocationList.count; i++) {
-            
-                DailyPatrolLocationModel * model = self.viewModel.reponseModel.patrolLocationList[i];
-                if ([model.type isEqualToNumber:@0]) {
-                    continue;
-                }
-                
-                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-            if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
-                
-                    if ([model.status isEqualToNumber:@1]) {
-                        DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
-                        hud.style = DMProgressHUDStyleDark;
-                        hud.text = @"当前签到点已经签到过";
-                        [hud dismissAfter:1.0f];
-                       
-                    }else{
-                        
-                        self.viewModel.latitude = model.latitude;
-                        self.viewModel.longitude = model.longitude;
-                        self.viewModel.point = model.sort;
-                        [self.viewModel.command_sign execute:nil];
-                        
-                    }
-                    
-                }
-                
-                if (i == self.viewModel.reponseModel.patrolLocationList.count - 1) {
-                    DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
-                    hud.style = DMProgressHUDStyleDark;
-                    hud.text = @"当前不在签到位置范围";
-                    [hud dismissAfter:1.0f];
-                }
-                
-            }
-            
-        }
-        
-        
-    }];
-    
     [[self.btn_takePicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
-        if (![ShareValue sharedDefault].dailyPratrol_on) {
+        if (![ShareValue sharedDefault].dailyPratrol_on &&[self.viewModel.type isEqualToNumber:@0]) {
             [ShareFun showTipLable:@"未开启巡逻"];
             return ;
         }
@@ -178,7 +141,7 @@
     [[self.btn_illegal rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
-        if (![ShareValue sharedDefault].dailyPratrol_on) {
+        if (![ShareValue sharedDefault].dailyPratrol_on&&[self.viewModel.type isEqualToNumber:@0]) {
             [ShareFun showTipLable:@"未开启巡逻"];
             return ;
         }
@@ -190,7 +153,7 @@
     [[self.btn_video rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
-        if (![ShareValue sharedDefault].dailyPratrol_on) {
+        if (![ShareValue sharedDefault].dailyPratrol_on&&[self.viewModel.type isEqualToNumber:@0]) {
             [ShareFun showTipLable:@"未开启巡逻"];
             return ;
         }
@@ -202,7 +165,7 @@
     [[self.btn_throuht rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
         @strongify(self);
-        if (![ShareValue sharedDefault].dailyPratrol_on) {
+        if (![ShareValue sharedDefault].dailyPratrol_on&&[self.viewModel.type isEqualToNumber:@0]) {
             [ShareFun showTipLable:@"未开启巡逻"];
             return ;
         }
@@ -272,39 +235,71 @@
                     
                     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
                     
+                    if ([self.viewModel.type isEqualToNumber:@1]) {
+                        
+                        if (x.patrolSignList &&x.patrolSignList.count > 0) {
+                            
+                            for (int j = 0; j < x.patrolSignList.count; j++) {
+                                DailyPatrolSignModel * t_model = x.patrolSignList[j];
+                                
+                                if (j == 0) {
+                                    model.pointType = @0;
+                                    model.signInTime = t_model.createTime;
+                                    self.lb_daogangTime.text = [NSString stringWithFormat:@"到岗时间：%@",[ShareFun timeWithTimeInterval:t_model.createTime dateFormat:@"MM-dd HH:mm:ss"]];
+                                }else if (j == 1){
+                                    model.pointType = @1;
+                                    model.signOutTime = t_model.createTime;
+                                    self.lb_ligangTime.text = [NSString stringWithFormat:@"离岗时间：%@",[ShareFun timeWithTimeInterval:t_model.createTime dateFormat:@"MM-dd HH:mm:ss"]];
+                                }
+                            
+                            }
+                            
+                        }else{
+                            model.pointType = @2;
+                        }
+                        
+                        DailyPatrolAnnotation * annotation = [[DailyPatrolAnnotation alloc] init];
+                        annotation.coordinate = coordinate;
+                        annotation.title    = [NSString stringWithFormat:@"巡逻点%d",i];
+                        annotation.model = model;
+                        annotation.type = self.viewModel.type;
+                        [self.viewModel.arr_point addObject:annotation];
+                        break;
+                        
+                    }
                     
                     
                     if (i == 0) {
                         
-                        MAPointAnnotation *startAnnotation = [[MAPointAnnotation alloc] init];
-                        startAnnotation.coordinate = coordinate;
-                        startAnnotation.title    = @"起点";
-                        startAnnotation.subtitle = @"起点";
-                        [self.viewModel.arr_point addObject:startAnnotation];
-                        
-                        PeoplePointAnnotation *annotation = [[PeoplePointAnnotation alloc] init];
+                        DailyPatrolAnnotation * annotation = [[DailyPatrolAnnotation alloc] init];
                         annotation.coordinate = coordinate;
                         annotation.title    = [NSString stringWithFormat:@"巡逻点%d",i];
                         annotation.model = model;
                         [self.viewModel.arr_point addObject:annotation];
+                        
+//                        MAPointAnnotation *startAnnotation = [[MAPointAnnotation alloc] init];
+//                        startAnnotation.coordinate = coordinate;
+//                        startAnnotation.title    = @"起点";
+//                        startAnnotation.subtitle = @"起点";
+//                        [self.viewModel.arr_point addObject:startAnnotation];
                         
                     }else if(i == t_arr.count - 1){
                         
-                        PeoplePointAnnotation *annotation = [[PeoplePointAnnotation alloc] init];
+                        DailyPatrolAnnotation *annotation = [[DailyPatrolAnnotation alloc] init];
                         annotation.coordinate = coordinate;
                         annotation.title    = [NSString stringWithFormat:@"巡逻点%d",i];
                         annotation.model = model;
                         [self.viewModel.arr_point addObject:annotation];
                         
-                        MAPointAnnotation *endAnnotation = [[MAPointAnnotation alloc] init];
-                        endAnnotation.coordinate = coordinate;
-                        endAnnotation.title    = @"终点";
-                        endAnnotation.subtitle = @"终点";
-                        [self.viewModel.arr_point addObject:endAnnotation];
+//                        MAPointAnnotation *endAnnotation = [[MAPointAnnotation alloc] init];
+//                        endAnnotation.coordinate = coordinate;
+//                        endAnnotation.title    = @"终点";
+//                        endAnnotation.subtitle = @"终点";
+//                        [self.viewModel.arr_point addObject:endAnnotation];
                         
                     }else{
                         
-                        PeoplePointAnnotation *annotation = [[PeoplePointAnnotation alloc] init];
+                        DailyPatrolAnnotation *annotation = [[DailyPatrolAnnotation alloc] init];
                         annotation.coordinate = coordinate;
                         annotation.title    = [NSString stringWithFormat:@"巡逻点%d",i];
                         annotation.model = model;
@@ -320,15 +315,23 @@
                 
                 [self.mapView addAnnotations:self.viewModel.arr_point];
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    @strongify(self);
-                    [self showsAnnotations:self.viewModel.arr_point edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) andMapView:self.mapView];
-                    
-                });
+                if ([self.viewModel.type isEqualToNumber:@1]) {
+                    DailyPatrolAnnotation *annotation = self.viewModel.arr_point[0];
+                    [self.mapView setCenterCoordinate:annotation.coordinate];
+                    [self.mapView setZoomLevel:15];
+                }else{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        @strongify(self);
+                        [self showsAnnotations:self.viewModel.arr_point edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) andMapView:self.mapView];
+                        
+                    });
+                }
+                
+                
             }
             
             //画巡逻折线
-            if (x.patrolLocationList && x.patrolLocationList.count > 0) {
+            if (x.patrolLocationList && x.patrolLocationList.count > 0 && [self.viewModel.type isEqualToNumber:@0]) {
             
             
                 NSMutableArray * t_arr = @[].mutableCopy;
@@ -361,7 +364,7 @@
             }
             
             
-            if (x.patrolInfo) {
+            if (x.patrolInfo && [self.viewModel.type isEqualToNumber:@0]) {
                 
                 NSString * t_distance = [NSString stringWithFormat:@"路线长度%@m",x.patrolInfo.distance];  //距离
                 self.lb_distance.attributedText = [ShareFun highlightInString:t_distance withSubString:x.patrolInfo.distance];
@@ -397,21 +400,19 @@
     
         if ([x isEqualToString:@"签到成功"]) {
         
-            if (self.viewModel.reponseModel.patrolLocationList && self.viewModel.reponseModel.patrolLocationList.count > 0) {
+                [self.viewModel.command_detail execute:nil];
             
-               for (int i = 0; i < self.viewModel.reponseModel.patrolLocationList.count; i++) {
-               
-                   DailyPatrolLocationModel * model = self.viewModel.reponseModel.patrolLocationList[i];
-                   if ([model.sort isEqualToNumber:self.viewModel.point]) {
-                       model.status = @1;
-                       self.viewModel.reponseModel = self.viewModel.reponseModel;
-                   }
-                
-               }
-            }
-           
         }
         
+    }];
+    
+    [self.viewModel.command_pointSign.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        
+        if ([x isEqualToString:@"签到成功"]) {
+            [self.viewModel.command_detail execute:nil];
+        }
+            
     }];
     
     [RACObserve(self.viewModel, arr_people) subscribeNext:^(NSArray<DailyPatrolPointModel *>  * _Nullable x) {
@@ -449,47 +450,95 @@
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
     
-    if ([annotation isKindOfClass:[PeoplePointAnnotation class]]){
+    if ([annotation isKindOfClass:[DailyPatrolAnnotation class]]){
         
-        PeoplePointAnnotation *vehicle = (PeoplePointAnnotation *)annotation;
+        DailyPatrolAnnotation *vehicle = (DailyPatrolAnnotation *)annotation;
         
-        static NSString *customReuseIndetifier = @"PeoplePointAnnotationID";
-        MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-               
-        if (positionView == nil) {
-            positionView = [[MAAnnotationView alloc] initWithAnnotation:vehicle reuseIdentifier:customReuseIndetifier];
+        static NSString *customReuseIndetifier = @"DailyPatrolAnnotationID";
+        DailyPatrolAnnotationView *vehicleCarView = (DailyPatrolAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        @weakify(self);
+        if (vehicleCarView == nil)
+        {
+            vehicleCarView = [[DailyPatrolAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            vehicleCarView.block = ^(DailyPatrolAnnotation *carAnnotation) {
+                @strongify(self);
+                LxDBAnyVar(carAnnotation);
+                
+                
+                if ([carAnnotation.type isEqualToNumber:@1]) {
+                    //站岗
+                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([carAnnotation.model.latitude doubleValue], [carAnnotation.model.longitude doubleValue]);
+                    
+                    if ([carAnnotation.model.pointType isEqualToNumber:@2]) {
+                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                                
+                            self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
+                            self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);
+                            self.viewModel.point = @0;
+                            self.viewModel.pointType = @0;
+                            [self.viewModel.command_pointSign execute:nil];
+                                    
+                        }else{
+                            DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
+                            hud.style = DMProgressHUDStyleDark;
+                            hud.text = @"当前不在签到位置范围";
+                            [hud dismissAfter:1.0f];
+                        }
+                    }else if ([carAnnotation.model.pointType isEqualToNumber:@0]){
+                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                                
+                            self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
+                            self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);
+                            self.viewModel.point = @0;
+                            self.viewModel.pointType = @1;
+                            [self.viewModel.command_pointSign execute:nil];
+                                    
+                        }else{
+                            DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
+                            hud.style = DMProgressHUDStyleDark;
+                            hud.text = @"当前不在签到位置范围";
+                            [hud dismissAfter:1.0f];
+                        }
+                        
+                    }else{
+                        [LRShowHUD showError:@"已离岗无法操作" duration:1.5];
+                    }
+                    
+                    
+                }else{
+                    if (![ShareValue sharedDefault].dailyPratrol_on) {
+                        [ShareFun showTipLable:@"未开启巡逻"];
+                        return ;
+                    }
+                    
+                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([carAnnotation.model.latitude doubleValue], [carAnnotation.model.longitude doubleValue]);
+                if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                        
+                        self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
+                        self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);
+                        self.viewModel.point = carAnnotation.model.sort;
+                            [self.viewModel.command_sign execute:nil];
+                            
+                    }else{
+                        DMProgressHUD *hud = [DMProgressHUD showStatusHUDAddedTo:self.view statusType:DMProgressHUDStatusTypeFail];
+                        hud.style = DMProgressHUDStyleDark;
+                        hud.text = @"当前不在签到位置范围";
+                        [hud dismissAfter:1.0f];
+                    }
+                    
+                }
+                
+            };
         }
-               
-        positionView.canShowCallout = YES;
-        //起点，终点的图标标注
-        if ([vehicle.model.status isEqualToNumber:@0]) {
-            positionView.image = [UIImage imageNamed:@"icon_dailyPatrol_unSignIn"];
-        }else{
-            positionView.image = [UIImage imageNamed:@"icon_dailyPatrol_signIn"];
-        }
-               
-        return positionView;
         
-    }else if ([annotation isKindOfClass:[MAPointAnnotation class]]){
-        static NSString *customReuseIndetifier = @"positionAnnotationID";
-        MAAnnotationView *positionView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        //很重要的，配置关联的模型数据
+        vehicleCarView.annotation = vehicle;
         
-        if (positionView == nil) {
-            positionView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
-        }
         
-        positionView.canShowCallout = YES;
-        positionView.centerOffset = CGPointMake(0, -16.8f);
-        //起点，终点的图标标注
-        if ([annotation.title isEqualToString:@"起点"]) {
-            positionView.image = [UIImage imageNamed:@"icon_map_origin"];
-        }else{
-            positionView.image = [UIImage imageNamed:@"icon_map_destination"];
-        }
+        return vehicleCarView;
         
-        return positionView;
     }
-    
+        
     return nil;
 }
 
@@ -547,10 +596,44 @@
         rect = MAMapRectUnion(rect, annotationRect);
     }
     
-    [mapView setVisibleMapRect:rect edgePadding:insets animated:YES];
+    [mapView setVisibleMapRect:rect edgePadding:insets animated:NO];
 }
 
+- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    MAAnnotationView *view = views[0];
+    
+    // 放到该方法中用以保证userlocation的annotationView已经添加到地图上了。
+    if ([view.annotation isKindOfClass:[MAUserLocation class]])
+    {
+        MAUserLocationRepresentation *pre = [[MAUserLocationRepresentation alloc] init];
+        pre.fillColor = [UIColor clearColor];
+        pre.strokeColor = [UIColor clearColor];
+        pre.image = [UIImage imageNamed:@"map_location"];
+        pre.lineWidth = 0;
+        //        pre.lineDashPattern = @[@6, @3];
+        
+        [self.mapView updateUserLocationRepresentation:pre];
+        
+        view.calloutOffset = CGPointMake(0, 0);
+        view.canShowCallout = NO;
+        self.userLocationAnnotationView = view;
+    }
+}
 
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    if (!updatingLocation && self.userLocationAnnotationView != nil)
+    {
+        [UIView animateWithDuration:0.1 animations:^{
+            
+            double degree = userLocation.heading.trueHeading;
+            self.userLocationAnnotationView.transform = CGAffineTransformMakeRotation(degree * M_PI / 180.f );
+            
+        }];
+    }
+    
+}
 
 #pragma mark - dealloc
 

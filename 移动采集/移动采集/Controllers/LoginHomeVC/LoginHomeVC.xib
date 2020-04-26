@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginHomeVC">
             <connections>
-                <outlet property="btn_visitor" destination="tb7-Zi-Ej6" id="i1j-Eh-oOe"/>
+                <outlet property="btn_clause" destination="JzK-tf-A1i" id="Rnu-v1-lcZ"/>
+                <outlet property="btn_select" destination="WVz-jo-dnS" id="sz3-ci-zlN"/>
                 <outlet property="btn_weixinLogin" destination="a0r-46-M90" id="Azr-N0-nsD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,44 +50,70 @@
                         <action selector="weixinLoginAction:" destination="-1" eventType="touchUpInside" id="xpO-Lk-EKc"/>
                     </connections>
                 </button>
-                <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb7-Zi-Ej6">
-                    <rect key="frame" x="67.5" y="542" width="240" height="37"/>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529411764708" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKP-3U-eVk">
+                    <rect key="frame" x="67.5" y="535" width="240" height="41"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVz-jo-dnS">
+                            <rect key="frame" x="0.0" y="0.0" width="28" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="28" id="huy-Fn-6lb"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="-14" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="btn_login_unSelect"/>
+                            <state key="selected" image="btn_login_select"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzK-tf-A1i">
+                            <rect key="frame" x="28" y="0.0" width="212" height="41"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已同意《移动采集许可及服务协议》及《隐私条款》" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-PM-qrW">
+                            <rect key="frame" x="28" y="0.0" width="212" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="8Mm-Ik-7A9"/>
-                        <constraint firstAttribute="width" constant="240" id="mBn-Oe-R53"/>
+                        <constraint firstAttribute="bottom" secondItem="WVz-jo-dnS" secondAttribute="bottom" id="1Jm-Dk-fDV"/>
+                        <constraint firstItem="l0I-PM-qrW" firstAttribute="top" secondItem="JzK-tf-A1i" secondAttribute="top" id="9gh-9I-HWc"/>
+                        <constraint firstItem="JzK-tf-A1i" firstAttribute="leading" secondItem="WVz-jo-dnS" secondAttribute="trailing" id="ZK9-rh-tTl"/>
+                        <constraint firstItem="l0I-PM-qrW" firstAttribute="leading" secondItem="JzK-tf-A1i" secondAttribute="leading" id="e0d-E2-sST"/>
+                        <constraint firstAttribute="trailing" secondItem="JzK-tf-A1i" secondAttribute="trailing" id="ham-pY-yRb"/>
+                        <constraint firstAttribute="height" constant="41" id="iDA-ym-lcI"/>
+                        <constraint firstAttribute="bottom" secondItem="JzK-tf-A1i" secondAttribute="bottom" id="nah-M1-wdB"/>
+                        <constraint firstItem="l0I-PM-qrW" firstAttribute="trailing" secondItem="JzK-tf-A1i" secondAttribute="trailing" id="qtx-yo-SFI"/>
+                        <constraint firstItem="l0I-PM-qrW" firstAttribute="bottom" secondItem="JzK-tf-A1i" secondAttribute="bottom" id="sTV-9L-1Pc"/>
+                        <constraint firstItem="WVz-jo-dnS" firstAttribute="top" secondItem="EKP-3U-eVk" secondAttribute="top" id="uNQ-W2-yw9"/>
+                        <constraint firstItem="WVz-jo-dnS" firstAttribute="leading" secondItem="EKP-3U-eVk" secondAttribute="leading" id="wkQ-2e-SW6"/>
+                        <constraint firstItem="JzK-tf-A1i" firstAttribute="top" secondItem="EKP-3U-eVk" secondAttribute="top" id="ww2-1z-8ee"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="逛一逛"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <real key="value" value="18.5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="handleLoginOfVisitorAction:" destination="-1" eventType="touchUpInside" id="nlJ-1R-iKR"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="a0r-46-M90" secondAttribute="bottom" constant="148" id="4iZ-XV-h6n"/>
+                <constraint firstItem="EKP-3U-eVk" firstAttribute="top" secondItem="a0r-46-M90" secondAttribute="bottom" constant="16" id="8Ax-ka-oxn"/>
                 <constraint firstItem="a0r-46-M90" firstAttribute="centerX" secondItem="bYD-XA-znR" secondAttribute="centerX" id="8WW-P2-mEu"/>
                 <constraint firstItem="gis-AN-I7e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8X6-1z-bvP"/>
                 <constraint firstItem="bYD-XA-znR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-143" id="Ng7-0m-NjH"/>
-                <constraint firstItem="tb7-Zi-Ej6" firstAttribute="centerX" secondItem="a0r-46-M90" secondAttribute="centerX" id="PMn-HE-AbU"/>
-                <constraint firstItem="tb7-Zi-Ej6" firstAttribute="top" secondItem="a0r-46-M90" secondAttribute="bottom" constant="23" id="QTk-91-hsh"/>
                 <constraint firstAttribute="bottom" secondItem="gis-AN-I7e" secondAttribute="bottom" id="RBq-eC-3KG"/>
                 <constraint firstAttribute="trailing" secondItem="gis-AN-I7e" secondAttribute="trailing" id="bG2-Eq-BDA"/>
                 <constraint firstItem="ANW-C5-p8O" firstAttribute="centerX" secondItem="bYD-XA-znR" secondAttribute="centerX" id="cF5-hk-Krq"/>
                 <constraint firstItem="gis-AN-I7e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cjk-L5-A4H"/>
                 <constraint firstItem="ANW-C5-p8O" firstAttribute="top" secondItem="bYD-XA-znR" secondAttribute="bottom" constant="23" id="dpU-zb-E8F"/>
-                <constraint firstAttribute="bottom" secondItem="tb7-Zi-Ej6" secondAttribute="bottom" constant="88" id="fZS-Id-T8a"/>
+                <constraint firstItem="EKP-3U-eVk" firstAttribute="trailing" secondItem="a0r-46-M90" secondAttribute="trailing" id="fsp-BL-EsN"/>
+                <constraint firstItem="EKP-3U-eVk" firstAttribute="leading" secondItem="a0r-46-M90" secondAttribute="leading" id="qq2-f7-Lwd"/>
                 <constraint firstItem="bYD-XA-znR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uMa-rd-5BJ"/>
             </constraints>
-            <point key="canvasLocation" x="229.5" y="54.5"/>
+            <point key="canvasLocation" x="228" y="54.422788605697157"/>
         </view>
     </objects>
     <resources>
+        <image name="btn_login_select" width="13" height="13"/>
+        <image name="btn_login_unSelect" width="13" height="13"/>
         <image name="login_bg" width="360" height="640"/>
         <image name="login_logo" width="83" height="83"/>
     </resources>
