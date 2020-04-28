@@ -91,6 +91,10 @@
 		82F4893E2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F4893C2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m */; };
 		82F4893F2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F4893D2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib */; };
 		A6DCA239A3D0E0509D46EDB5 /* libPods-移动采集.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */; };
+		CE04C0DD2456F74100321113 /* ElectronicImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04C0DB2456F74100321113 /* ElectronicImageVC.m */; };
+		CE04C0DE2456F74100321113 /* ElectronicImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04C0DC2456F74100321113 /* ElectronicImageVC.xib */; };
+		CE04C0E12457011C00321113 /* ElectronicImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04C0E02457011C00321113 /* ElectronicImageViewModel.m */; };
+		CE04C0E42457146000321113 /* ElectronicImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04C0E32457146000321113 /* ElectronicImageModel.m */; };
 		CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0608481FE257A60063B06D /* VehicleRouteModel.m */; };
 		CE06084E1FE25EAE0063B06D /* VehicleRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06084C1FE25EAE0063B06D /* VehicleRouteCell.m */; };
 		CE06084F1FE25EAE0063B06D /* VehicleRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE06084D1FE25EAE0063B06D /* VehicleRouteCell.xib */; };
@@ -947,6 +951,13 @@
 		82F4893C2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskFlowsDetailBackWorkCell.m; sourceTree = "<group>"; };
 		82F4893D2410DE5400B997F1 /* TaskFlowsDetailBackWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskFlowsDetailBackWorkCell.xib; sourceTree = "<group>"; };
 		9AC1BEEB7FA8AD0D894D9FAE /* libPods-移动采集.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-移动采集.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE04C0DA2456F74100321113 /* ElectronicImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicImageVC.h; sourceTree = "<group>"; };
+		CE04C0DB2456F74100321113 /* ElectronicImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicImageVC.m; sourceTree = "<group>"; };
+		CE04C0DC2456F74100321113 /* ElectronicImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElectronicImageVC.xib; sourceTree = "<group>"; };
+		CE04C0DF2457011C00321113 /* ElectronicImageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicImageViewModel.h; sourceTree = "<group>"; };
+		CE04C0E02457011C00321113 /* ElectronicImageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicImageViewModel.m; sourceTree = "<group>"; };
+		CE04C0E22457146000321113 /* ElectronicImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElectronicImageModel.h; sourceTree = "<group>"; };
+		CE04C0E32457146000321113 /* ElectronicImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElectronicImageModel.m; sourceTree = "<group>"; };
 		CE0608471FE257A60063B06D /* VehicleRouteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleRouteModel.h; sourceTree = "<group>"; };
 		CE0608481FE257A60063B06D /* VehicleRouteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleRouteModel.m; sourceTree = "<group>"; };
 		CE06084B1FE25EAE0063B06D /* VehicleRouteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleRouteCell.h; sourceTree = "<group>"; };
@@ -2321,6 +2332,8 @@
 			children = (
 				826AC77A245174DF00D803D4 /* ElectronicPoliceViewModel.h */,
 				826AC77B245174DF00D803D4 /* ElectronicPoliceViewModel.m */,
+				CE04C0DF2457011C00321113 /* ElectronicImageViewModel.h */,
+				CE04C0E02457011C00321113 /* ElectronicImageViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2334,6 +2347,8 @@
 				826AC7842452BDF600D803D4 /* ElectronicDetailModel.m */,
 				826AC7862452EDBE00D803D4 /* ElectronicAnnotation.h */,
 				826AC7872452EDBE00D803D4 /* ElectronicAnnotation.m */,
+				CE04C0E22457146000321113 /* ElectronicImageModel.h */,
+				CE04C0E32457146000321113 /* ElectronicImageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2344,6 +2359,9 @@
 				826AC7752451733800D803D4 /* ElectronicPoliceVC.h */,
 				826AC7762451733800D803D4 /* ElectronicPoliceVC.m */,
 				826AC7772451733900D803D4 /* ElectronicPoliceVC.xib */,
+				CE04C0DA2456F74100321113 /* ElectronicImageVC.h */,
+				CE04C0DB2456F74100321113 /* ElectronicImageVC.m */,
+				CE04C0DC2456F74100321113 /* ElectronicImageVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -5374,6 +5392,7 @@
 				CE864F3C20089CE5007B20FE /* PGDatePicker.bundle in Resources */,
 				82EFA89723C5ABC200327172 /* DailyPatrolListCell.xib in Resources */,
 				CE6915701F1DE2AC008911A6 /* LSStatusBarHUD.bundle in Resources */,
+				CE04C0DE2456F74100321113 /* ElectronicImageVC.xib in Resources */,
 				CE6810FE2285140C003055DF /* TakeOutIllegalTypeTopCell.xib in Resources */,
 				CE55B7FE1F9727F900CD1567 /* AddressBookCell.xib in Resources */,
 				CE188E442015E9ED008418B9 /* JointPenaltiesVC.xib in Resources */,
@@ -5644,6 +5663,7 @@
 				CE87043220CE52B700E206AE /* LTSCalendarDayItem.m in Sources */,
 				CED37BA222EAE83D003BCD45 /* ParkingAreaModel.m in Sources */,
 				CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */,
+				CE04C0E12457011C00321113 /* ElectronicImageViewModel.m in Sources */,
 				CE1F10332356F79900E5CA48 /* ParkCameraVC.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
 				CE4139FB2178CF27006AA441 /* UIButton+EnlargeTouchArea.m in Sources */,
@@ -5868,6 +5888,7 @@
 				CE17A024210820410045167B /* AccidentPeopleModel.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
 				CE3285DA20E60B6D002B3B43 /* NoticeVC.m in Sources */,
+				CE04C0DD2456F74100321113 /* ElectronicImageVC.m in Sources */,
 				CE27587222ED7370006CDD6F /* ParkingAreaDetailVC.m in Sources */,
 				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
 				82252CEE2418BB8F00D48561 /* TaskFlowsTrafficPermitCell.m in Sources */,
@@ -5988,6 +6009,7 @@
 				CE26B25A22EEA36F00A1D1A1 /* ParkingForensicsViewModel.m in Sources */,
 				826B788D244462B100C764BD /* DailyPatrolAnnotation.m in Sources */,
 				CE12593422841B7B00B7BF48 /* TakeOutInfoVC.m in Sources */,
+				CE04C0E42457146000321113 /* ElectronicImageModel.m in Sources */,
 				CE864F3A20089CE5007B20FE /* NSBundle+PGDatePicker.m in Sources */,
 				CE4139E12178CF26006AA441 /* ZLEditViewController.m in Sources */,
 				CE37409E2175803600FEF14F /* UpCacheSettingVC.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ElectronicAnnotationView.h"
 #import "UIImage+Category.h"
+#import "ElectronicAnnotation.h"
 
 
 @interface ElectronicAnnotationView()
@@ -22,7 +23,15 @@
 
 @property(nonatomic,strong) UIImageView *imgv_icon;
 
+@property(nonatomic,strong) UILabel *lb_name;
+@property(nonatomic,strong) UILabel *lb_name_t;
+@property(nonatomic,strong) UILabel *lb_type;
+@property(nonatomic,strong) UILabel *lb_type_t;
+@property(nonatomic,strong) UILabel *lb_use;
+@property(nonatomic,strong) UILabel *lb_use_t;
 
+@property(nonatomic,strong)UIImageView * imageView_top;
+@property(nonatomic,strong) UILabel * lb_top;
 
 @property(nonatomic,strong) UIButton *btn_showImg;
 
@@ -72,25 +81,181 @@
 
     [self.imgv_action_bg setImage:[UIImage imageNamed:@"electronic_bg"]];
     [self.imgv_action_bg setFrame:CGRectMake(0, 0, 233, 143)];
-    [self.btn_close setFrame:CGRectMake(13, 13, 40, 40)];
-    [self.btn_showImg setFrame:CGRectMake(32, 33, 60, 20)];
+    [self.btn_close setFrame:CGRectMake(193, 0, 40, 40)];
     
+    
+    if (self.imageView_top) {
+        [self.imageView_top removeFromSuperview];
+    }
+    
+    self.imageView_top = [[UIImageView alloc] init];
+    [self.imageView_top setImage:[UIImage imageNamed:@"electronic_carmera_pre"]];
+    [self.imageView_top setFrame:CGRectMake(15, 14, 17, 17)];
+    [self.v_action addSubview:self.imageView_top];
+    
+    if (self.lb_top) {
+        [self.lb_top removeFromSuperview];
+    }
+    
+    self.lb_top = [[UILabel alloc] init];
+    [self.lb_top setFrame:CGRectMake(15+17+5, 14, 70, 17)];
+    self.lb_top.text = @"设备信息";
+    self.lb_top.textColor = UIColorFromRGB(0x3396FC);
+    self.lb_top.font = [UIFont systemFontOfSize:15];
+    [self.v_action addSubview:self.lb_top];
+    
+    [self lb_name];
+    [self lb_type];
+    [self lb_use];
+    
+    CGFloat width = [self getWidthWithTitle:ann.model.cameraName font:[UIFont systemFontOfSize:15]];
+    if (width > 160) {
+        width = 160;
+    }
+    
+    [self.lb_name_t setFrame:CGRectMake(15+45, 14+17+10, width, 17)];
+    self.lb_name_t.text = ann.model.cameraName;
+    
+    
+    
+    width = [self getWidthWithTitle:ann.model.cameraType font:[UIFont systemFontOfSize:15]];
+    if (width > 90) {
+        width = 90;
+    }
+    
+    [self.lb_type_t setFrame:CGRectMake(15+45, 14+17+10+17+10, width, 17)];
+    self.lb_type_t.text = ann.model.cameraType;
+    
+   
+    
+    [self.btn_showImg setFrame:CGRectMake(15+45+90+10, 14+17+10+17+10-3, 60, 20)];
+    
+
+    width = [self getWidthWithTitle:ann.model.usePlace font:[UIFont systemFontOfSize:15]];
+    if (width > 160) {
+        width = 160;
+    }
+    
+    [self.lb_use_t setFrame:CGRectMake(15+45, 14+17+10+17+10+17+10, width, 17)];
+    self.lb_use_t.text = ann.model.usePlace;
+   
+
     self.v_action.frame = CGRectMake(0, 0, 233, 143);
-    
+
     UIImage * image = [UIImage imageNamed:@"electronic_carmera"];
-    
-    
+
+    image = [image imageChangeColor:[self stringTOColor:ann.model.color]];
     self.imgv_icon.image = image;
     self.imgv_icon.frame = CGRectMake(0, 0, 20, 30);
+    self.imgv_icon.contentMode = UIViewContentModeCenter;
+    self.imgv_icon.transform = CGAffineTransformMakeRotation([ann.model.rotate floatValue]*M_PI/180);
     frame = CGRectMake(0, 0, 233, 143+30);
     self.imgv_icon.center = CGPointMake(frame.size.width*0.5, 143 + 30/2);
     self.centerOffset = CGPointMake(0, - (143+30)/2 + 30/2);
     
+    self.btn_action.center = CGPointMake(frame.size.width*0.5, 143 + 40/2);
+    
+    
     self.v_back.frame = frame;
+    
+    
 
     self.bounds = frame;
     
 }
+
+
+- (UILabel *)lb_name{
+    
+    if (!_lb_name) {
+        _lb_name = [[UILabel alloc] init];
+        [_lb_name setFrame:CGRectMake(15, 14+17+10, 45, 17)];
+        _lb_name.text = @"名称：";
+        _lb_name.textColor = UIColorFromRGB(0x999999);
+        _lb_name.font = [UIFont systemFontOfSize:15];
+        [self.v_action addSubview:_lb_name];
+    }
+    
+    return _lb_name;
+}
+
+- (UILabel *)lb_type{
+    
+    if (!_lb_type) {
+        _lb_type = [[UILabel alloc] init];
+        [_lb_type setFrame:CGRectMake(15, 14+17+10+17+10, 45, 17)];
+        _lb_type.text = @"类型：";
+        _lb_type.textColor = UIColorFromRGB(0x999999);
+        _lb_type.font = [UIFont systemFontOfSize:15];
+        [self.v_action addSubview:_lb_type];
+    }
+    
+    return _lb_type;
+}
+
+
+- (UILabel *)lb_use{
+    
+    if (!_lb_use) {
+          _lb_use = [[UILabel alloc] init];
+          [_lb_use setFrame:CGRectMake(15, 14+17+10+17+10+17+10, 45, 17)];
+          _lb_use.text = @"用途：";
+          _lb_use.textColor = UIColorFromRGB(0x999999);
+          _lb_use.font = [UIFont systemFontOfSize:15];
+          [self.v_action addSubview:_lb_use];
+    }
+    
+    return _lb_use;
+}
+
+
+
+
+
+- (UILabel *)lb_name_t{
+    
+    if (!_lb_name_t) {
+        _lb_name_t = [[UILabel alloc] init];
+        _lb_name_t.textColor = UIColorFromRGB(0x66666);
+        _lb_name_t.font = [UIFont systemFontOfSize:15];
+        [self.v_action addSubview:_lb_name_t];
+    }
+    
+    return _lb_name_t;
+}
+
+
+- (UILabel *)lb_type_t{
+    
+    if (!_lb_type_t) {
+        _lb_type_t = [[UILabel alloc] init];
+        _lb_type_t.textColor = UIColorFromRGB(0x66666);
+        _lb_type_t.font = [UIFont systemFontOfSize:15];
+        [self.v_action addSubview:_lb_type_t];
+    }
+    
+    return _lb_type_t;
+}
+
+
+
+- (UILabel *)lb_use_t{
+    
+    if (!_lb_use_t) {
+        _lb_use_t = [[UILabel alloc] init];
+        _lb_use_t.textColor = UIColorFromRGB(0x66666);
+        _lb_use_t.font = [UIFont systemFontOfSize:15];
+        [self.v_action addSubview:_lb_use_t];
+    }
+    
+    return _lb_use_t;
+}
+
+
+
+
+
+
 
 - (UIImageView *)imgv_action_bg{
     
@@ -103,19 +268,31 @@
     
 }
 
+- (UIImageView *)imgv_icon{
+    if (!_imgv_icon) {
+        _imgv_icon = [[UIImageView alloc] init];
+        _imgv_icon.frame = CGRectMake(0, 0, 20, 30);
+        [_v_back addSubview:_imgv_icon];
+    }
+    return _imgv_icon;
+    
+}
+
+
 - (UIButton *)btn_action{
     
     if (!_btn_action) {
         _btn_action = [[UIButton alloc] init];
         _btn_action.backgroundColor = [UIColor clearColor];
         [_btn_action addTarget:self action:@selector(handleBtnActionClicked:) forControlEvents:UIControlEventTouchUpInside];
-        self.btn_action.frame = CGRectMake(0, 143, 233, 40);
+        _btn_action.frame = CGRectMake(0, 133, 85, 50);
         [self.v_back addSubview:_btn_action];
     }
     
     return _btn_action;
     
 }
+
 
 
 - (UIButton *)btn_close{
@@ -159,6 +336,52 @@
     }
     
 }
+
+- (UIView *)v_back {
+    if (!_v_back) {
+        _v_back = [[UIView alloc] init];
+        [self addSubview:_v_back];
+    }
+    return _v_back;
+}
+
+- (UIView *)v_action {
+    if (!_v_action) {
+        _v_action = [[UIView alloc] init];
+        [self.v_back addSubview:_v_action];
+    }
+    return _v_action;
+}
+
+- (CGFloat)getWidthWithTitle:(NSString *)title font:(UIFont *)font {
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1000, 0)];
+    label.text = title;
+    label.font = font;
+    [label sizeToFit];
+    return label.frame.size.width;
+    
+}
+
+
+- (UIColor *) stringTOColor:(NSString *)str
+{
+    if (!str || [str isEqualToString:@""]) {
+        return nil;
+    }
+    unsigned red,green,blue;
+    NSRange range;
+    range.length = 2;
+    range.location = 1;
+    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&red];
+    range.location = 3;
+    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&green];
+    range.location = 5;
+    [[NSScanner scannerWithString:[str substringWithRange:range]] scanHexInt:&blue];
+    UIColor *color= [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
+    return color;
+}
+
 
 #pragma mark - button Action
 

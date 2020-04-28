@@ -10,6 +10,7 @@
 #import "LRBaseRequest.h"
 #import "ElectronicTypeModel.h"
 #import "ElectronicDetailModel.h"
+#import "ElectronicImageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,6 +35,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)   NSArray<ElectronicDetailModel * > * list;    //包含AccidentListModel对象
 
 @end
+
+
+
+#pragma mark - 摄像图片
+
+@interface ElectronicPoliceImageManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * cameraId;    //空值则为传全部
+
+/****** 返回数据 ******/
+@property (nonatomic,copy)   NSArray<ElectronicImageModel * > * list;    //包含AccidentListModel对象
+
+@end
+
 
 
 NS_ASSUME_NONNULL_END

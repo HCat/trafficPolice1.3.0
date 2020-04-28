@@ -40,8 +40,14 @@
 
 - (nullable id)requestArgument
 {
-    return @{@"cameraType":_cameraType
-            };
+    
+    if (_cameraType) {
+        return @{@"cameraType":_cameraType
+        };
+    }else{
+        return nil;
+    }
+    
 }
 
 - (NSArray *)list{
@@ -49,6 +55,41 @@
     if (self.responseModel) {
     
         return _list = [NSArray modelArrayWithClass:[ElectronicDetailModel class] json:self.responseJSONObject[@"data"]];
+    }
+    
+    return nil;
+}
+
+
+@end
+
+
+@implementation ElectronicPoliceImageManger
+
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_ELECTRONIC_IMAGE;
+}
+
+- (nullable id)requestArgument
+{
+    
+    if (_cameraId) {
+        return @{@"id":_cameraId
+        };
+    }else{
+        return nil;
+    }
+    
+}
+
+- (NSArray *)list{
+
+    if (self.responseModel) {
+    
+        return _list = [NSArray modelArrayWithClass:[ElectronicImageModel class] json:self.responseJSONObject[@"data"]];
     }
     
     return nil;

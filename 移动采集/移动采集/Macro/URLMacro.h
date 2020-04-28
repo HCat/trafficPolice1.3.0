@@ -295,5 +295,6 @@
 
 #define URL_ELECTRONIC_TYPE @"app/trafficManage/elecTypeList.json" //电子警察摄像头类型
 #define URL_ELECTRONIC_LIST @"app/trafficManage/cameraPoliceList.json"  //电子警察摄像头列表
+#define URL_ELECTRONIC_IMAGE @"app/trafficManage/picList.json"          //图片列表
 
 #endif /* URLMacro_h */

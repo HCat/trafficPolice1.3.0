@@ -20,6 +20,8 @@
 
 #import "ElectronicAnnotation.h"
 #import "ElectronicAnnotationView.h"
+#import "ElectronicImageVC.h"
+
 
 
 
@@ -37,11 +39,11 @@
 
 @implementation ElectronicPoliceVC
 
-- (instancetype)initWithViewModel:(ElectronicPoliceViewModel *)viewModel{
+- (instancetype)init{
     
     if (self = [super init]) {
         
-        self.viewModel = viewModel;
+        self.viewModel = [[ElectronicPoliceViewModel alloc] init];
     
     }
     
@@ -67,7 +69,9 @@
     @weakify(self);
     
     self.rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 25)];
-    self.rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 19, 0, -19);
+    self.rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, -35);
+    self.rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -95, 0, 0);
+    self.rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [self.rightButton setTitle:@"卫星" forState:UIControlStateNormal];
     self.rightButton.isIgnore = YES;
     
@@ -91,11 +95,11 @@
         make.left.equalTo(@0);
         make.bottom.equalTo(@0);
     }];
-    _mapView.distanceFilter = 5.f;
+    _mapView.distanceFilter = 50.f;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = YES;
-    _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
     
     
 }
@@ -117,7 +121,7 @@
         }else{
                        
             [self.rightButton setImage:[UIImage imageNamed:@"btn_dailyPatrol_off"] forState:UIControlStateNormal];
-            [self.mapView setMapType:MAMapTypeSatellite];
+            [self.mapView setMapType:MAMapTypeStandard];
         }
         
     }];
@@ -129,6 +133,7 @@
             
             if (self.viewModel.arr_group.count > 0) {
                 [self setUpDropdownMenu:self.viewModel.arr_group];
+                [self.viewModel.command_detail execute:nil];
             }
         }
         
@@ -140,8 +145,35 @@
         
         if([x isEqualToString:@"加载成功"]){
             
+            if (self.viewModel.arr_point.count > 0) {
+                [self.mapView removeAnnotations:self.viewModel.arr_point];
+                [self.viewModel.arr_point removeAllObjects];
+            }
             
+            for (int i = 0; i < self.viewModel.arr_detail.count; i++) {
             
+                ElectronicDetailModel * model = self.viewModel.arr_detail[i];
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.lat doubleValue], [model.lng doubleValue]);
+                ElectronicAnnotation * annotation = [[ElectronicAnnotation alloc] init];
+                annotation.coordinate = coordinate;
+                annotation.title    = [NSString stringWithFormat:@"摄像头%d",i];
+                annotation.model = model;
+                [self.viewModel.arr_point addObject:annotation];
+                
+            }
+            
+            if (self.viewModel.arr_point.count > 0) {
+                
+                [self.mapView addAnnotations:self.viewModel.arr_point];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    @strongify(self);
+                    [self showsAnnotations:self.viewModel.arr_point edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) andMapView:self.mapView];
+                    
+                });
+                
+                
+            }
             
             
             
@@ -194,8 +226,6 @@
         
         ElectronicTypeModel * model = self.viewModel.arr_group[indexPath];
         [self.viewModel.command_detail execute:model.typeId];
-        
-        
     };
     
     [self.view addSubview:_menuView];
@@ -232,7 +262,11 @@
                 @strongify(self);
                 LxDBAnyVar(carAnnotation);
                 
-                
+                ElectronicImageViewModel * viewModel = [[ElectronicImageViewModel alloc] init];
+                viewModel.cameraId = carAnnotation.model.electronicId;
+                ElectronicImageVC * vc = [[ElectronicImageVC alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:vc animated:YES];
+            
             };
         }
         

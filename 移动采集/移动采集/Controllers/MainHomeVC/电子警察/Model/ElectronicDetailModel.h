@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSNumber * electronicId;       //设备编号
 @property (nonatomic,copy) NSString   * cameraType;         //设备类型编号
 @property (nonatomic,copy) NSString   * usePlace;           //用处
-@property (nonatomic,copy) NSString   * rotate;             //角度
+@property (nonatomic,strong) NSNumber   * rotate;             //角度
 @property (nonatomic,copy) NSString   * color;              //颜色
 @property (nonatomic,strong) NSNumber * lat;                //经度
 @property (nonatomic,strong) NSNumber * lng;                //纬度

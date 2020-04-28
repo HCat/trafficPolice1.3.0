@@ -124,7 +124,7 @@
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = YES;
-    _mapView.userTrackingMode = MAUserTrackingModeFollowWithHeading;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
     
     [[self.btn_takePicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
@@ -320,7 +320,7 @@
                     [self.mapView setCenterCoordinate:annotation.coordinate];
                     [self.mapView setZoomLevel:15];
                 }else{
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         @strongify(self);
                         [self showsAnnotations:self.viewModel.arr_point edgePadding:UIEdgeInsetsMake(50, 50, 50, 50) andMapView:self.mapView];
                         
