@@ -63,7 +63,7 @@
         
         if ([x isEqualToString:@"提交成功"]) {
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"快处处理成功" object:nil];;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"快处处理成功" object:nil];
             
             [self.navigationController popViewControllerAnimated:YES];
         }
@@ -71,6 +71,7 @@
     }];
     
     [self.viewModel.command_people execute:nil];
+    
 }
 
 

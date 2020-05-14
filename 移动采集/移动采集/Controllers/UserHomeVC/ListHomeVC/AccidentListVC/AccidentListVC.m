@@ -49,6 +49,14 @@
         
     }];
     
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处认定成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        
+        [self.tb_content reloadData];
+        
+        
+    }];
+    
     self.str_search = _tf_search.text;
     _tb_content.isNeedPlaceholderView = YES;
     _tb_content.firstReload = YES;
@@ -341,8 +349,6 @@
         t_vc.accidentId = t_model.accidentId;
         t_vc.state = t_model;
         [self.navigationController pushViewController:t_vc animated:YES];
-        
-        
         
     }
 }

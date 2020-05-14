@@ -63,6 +63,10 @@
     };
     
     [_tf_search addTarget:self action:@selector(passConTextChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    _tf_search.text = self.search_text;
+    [self passConTextChange:_tf_search];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -241,14 +245,33 @@
         SW(strongSelf, weakSelf);
         if (strongSelf.searchType == SearchLocationTypeIllegal) {
             CommonGetRoadModel *model = (CommonGetRoadModel *)obj;
-            if ([model.getRoadName containsString:textField.text]) {
+            
+            //----------->把所有的搜索结果转成成拼音
+            NSString *pinyin = [self transformToPinyin:model.getRoadName];
+            NSLog(@"pinyin--%@",pinyin);
+            
+            if ([pinyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
+                //把搜索结果存放self.resultArray数组
                 [arr addObject:model];
             }
+            
+            
         }else{
+            
             AccidentGetCodesModel *model = (AccidentGetCodesModel *)obj;
-            if ([model.modelName containsString:textField.text]) {
+            
+            //----------->把所有的搜索结果转成成拼音
+            NSString *pinyin = [self transformToPinyin:model.modelName];
+            NSLog(@"pinyin--%@",pinyin);
+            
+            if ([pinyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
+                //把搜索结果存放self.resultArray数组
                 [arr addObject:model];
             }
+            
+//            if ([model.modelName containsString:textField.text]) {
+//                [arr addObject:model];
+//            }
         }
         
        
@@ -256,6 +279,53 @@
     self.arr_content = [NSArray arrayWithArray:arr];
     [self.tb_content reloadData];
 }
+
+
+#pragma mark--获取汉字转成拼音字符串 通讯录模糊搜索 支持拼音检索 首字母 全拼 汉字 搜索
+- (NSString *)transformToPinyin:(NSString *)aString{
+    //转成了可变字符串
+    NSMutableString *str = [NSMutableString stringWithString:aString];
+    CFStringTransform((CFMutableStringRef)str,NULL, kCFStringTransformMandarinLatin,NO);
+    //再转换为不带声调的拼音
+    CFStringTransform((CFMutableStringRef)str,NULL, kCFStringTransformStripDiacritics,NO);
+    NSArray *pinyinArray = [str componentsSeparatedByString:@" "];
+    NSMutableString *allString = [NSMutableString new];
+    
+    int count = 0;
+    
+    for (int  i = 0; i < pinyinArray.count; i++)
+    {
+        
+        for(int i = 0; i < pinyinArray.count;i++)
+        {
+            if (i == count) {
+                [allString appendString:@"#"];//区分第几个字母
+            }
+            [allString appendFormat:@"%@",pinyinArray[i]];
+            
+        }
+        [allString appendString:@","];
+        count ++;
+        
+    }
+    
+    NSMutableString *initialStr = [NSMutableString new];//拼音首字母
+    
+    for (NSString *s in pinyinArray)
+    {
+        if (s.length > 0)
+        {
+            
+            [initialStr appendString:  [s substringToIndex:1]];
+        }
+    }
+    
+    [allString appendFormat:@"#%@",initialStr];
+    [allString appendFormat:@",#%@",aString];
+    
+    return allString;
+}
+
 
 
 #pragma mark - dealloc

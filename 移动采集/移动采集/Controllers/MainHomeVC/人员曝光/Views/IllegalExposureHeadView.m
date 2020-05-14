@@ -469,6 +469,7 @@
     t_searchLocationvc.searchType = SearchLocationTypeIllegal;
     t_searchLocationvc.arr_content = self.codes;
     t_searchLocationvc.arr_temp = self.codes;
+    t_searchLocationvc.search_text = self.param.roadName;
     
     t_searchLocationvc.getRoadBlock = ^(CommonGetRoadModel *model) {
         SW(strongSelf, weakSelf);

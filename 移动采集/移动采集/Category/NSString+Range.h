@@ -21,4 +21,7 @@
  */
 - (NSArray <NSValue *> *)rangesOfString:(NSString *)searchString options:(NSStringCompareOptions)mask serachRange:(NSRange)range;
 
+//获取汉字转成拼音字符串
++ (NSString *)transformToPinyin:(NSString *)aString;
+
 @end

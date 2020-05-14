@@ -113,7 +113,7 @@
         width = 160;
     }
     
-    [self.lb_name_t setFrame:CGRectMake(15+45, 14+17+10, width, 17)];
+    [self.lb_name_t setFrame:CGRectMake(15+50, 14+17+10, width, 17)];
     self.lb_name_t.text = ann.model.cameraName;
     
     
@@ -123,7 +123,7 @@
         width = 90;
     }
     
-    [self.lb_type_t setFrame:CGRectMake(15+45, 14+17+10+17+10, width, 17)];
+    [self.lb_type_t setFrame:CGRectMake(15+50, 14+17+10+17+10, width, 17)];
     self.lb_type_t.text = ann.model.cameraType;
     
    
@@ -136,7 +136,7 @@
         width = 160;
     }
     
-    [self.lb_use_t setFrame:CGRectMake(15+45, 14+17+10+17+10+17+10, width, 17)];
+    [self.lb_use_t setFrame:CGRectMake(15+50, 14+17+10+17+10+17+10, width, 17)];
     self.lb_use_t.text = ann.model.usePlace;
    
 
@@ -169,7 +169,7 @@
     
     if (!_lb_name) {
         _lb_name = [[UILabel alloc] init];
-        [_lb_name setFrame:CGRectMake(15, 14+17+10, 45, 17)];
+        [_lb_name setFrame:CGRectMake(15, 14+17+10, 50, 17)];
         _lb_name.text = @"名称：";
         _lb_name.textColor = UIColorFromRGB(0x999999);
         _lb_name.font = [UIFont systemFontOfSize:15];
@@ -183,7 +183,7 @@
     
     if (!_lb_type) {
         _lb_type = [[UILabel alloc] init];
-        [_lb_type setFrame:CGRectMake(15, 14+17+10+17+10, 45, 17)];
+        [_lb_type setFrame:CGRectMake(15, 14+17+10+17+10, 50, 17)];
         _lb_type.text = @"类型：";
         _lb_type.textColor = UIColorFromRGB(0x999999);
         _lb_type.font = [UIFont systemFontOfSize:15];
@@ -198,7 +198,7 @@
     
     if (!_lb_use) {
           _lb_use = [[UILabel alloc] init];
-          [_lb_use setFrame:CGRectMake(15, 14+17+10+17+10+17+10, 45, 17)];
+          [_lb_use setFrame:CGRectMake(15, 14+17+10+17+10+17+10, 50, 17)];
           _lb_use.text = @"用途：";
           _lb_use.textColor = UIColorFromRGB(0x999999);
           _lb_use.font = [UIFont systemFontOfSize:15];

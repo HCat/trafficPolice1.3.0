@@ -156,3 +156,14 @@ AccidentSaveParam来当返回参数，具体详情请查看AccidentSaveParam对�
 @property (nonatomic, strong) NSNumber * hasPermiss;
 
 @end
+
+
+#pragma mark - 处理用户提交的快处信息
+
+@interface FastAccidentAuditAccidentManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * accidentId; //事故ID
+
+
+@end

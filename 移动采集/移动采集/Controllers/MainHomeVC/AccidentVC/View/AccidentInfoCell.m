@@ -294,6 +294,7 @@
     t_searchLocationvc.searchType = SearchLocationTypeAccident;
     t_searchLocationvc.arr_content = self.codes.road;
     t_searchLocationvc.arr_temp = self.codes.road;
+    t_searchLocationvc.search_text = self.partyFactory.param.roadName;
     
     WS(weakSelf);
     t_searchLocationvc.searchLocationBlock = ^(AccidentGetCodesModel *model) {

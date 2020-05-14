@@ -29,6 +29,7 @@ typedef void(^SearchCommonGetRoadBlock)(CommonGetRoadModel *model);
 @property (nonatomic,copy) SearchCommonGetRoadBlock getRoadBlock;
 @property (nonatomic,copy) NSArray *arr_content;
 @property (nonatomic,copy) NSArray *arr_temp; //用于临时存储总数据
+@property (nonatomic,copy) NSString * search_text;  //搜索字段
 @property (nonatomic,assign) SearchLocationType searchType;
 
 @end

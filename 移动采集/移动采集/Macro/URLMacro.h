@@ -94,7 +94,7 @@
 #define URL_FASTACCIDENT_PEOPLE @"app/fastAccident/accidentDetail.json"         //用户提交的快处信息
 #define URL_FASTACCIDENT_DEALACCIDENT @"app/fastAccident/dealAccident.json"     //处理用户提交的快处信息
 #define URL_FASTACCIDENT_CHECKPERMISS @"app/fastAccident/checkPermiss.json"     //是否有权限处理用户提交的快处信息
-
+#define URL_FASTACCIDENT_AUDIT @"app/fastAccident/audit.json"                   //快处认定接口
 
 #pragma mark - 违停相关API
 

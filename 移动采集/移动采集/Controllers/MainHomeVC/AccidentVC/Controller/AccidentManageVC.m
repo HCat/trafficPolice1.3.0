@@ -18,6 +18,9 @@
 #import "AccidentUpFactory.h"
 #import "IllegalNetErrorView.h"
 #import "AccidentDBModel.h"
+#import "UINavigationBar+BarItem.h"
+#import "AccidentListVC.h"
+#import "UserModel.h"
 
 @interface AccidentManageVC ()
 
@@ -42,6 +45,8 @@
     }else if (_accidentType == AccidentTypeAccident){
         self.title = @"事故录入";
     }
+    
+    [self showRightBarButtonItemWithImage:@"btn_illegalAdd_list" target:self action:@selector(handleBtnShowListClicked:)];
     
     self.isUpLoading = NO;
     
@@ -344,6 +349,38 @@
     
     [self.tableView reloadData];
     
+}
+
+
+#pragma mark - buttonAction
+
+- (void)handleBtnShowListClicked:(id)sender{
+    
+    if (_accidentType == AccidentTypeFastAccident) {
+        if ([UserModel isPermissionForFastAccidentList]) {
+            AccidentListVC *t_vc = [AccidentListVC new];
+            t_vc.accidentType = AccidentTypeFastAccident;
+            t_vc.type = 1;
+            t_vc.title = @"快处列表";
+            [self.navigationController pushViewController:t_vc animated:YES];
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }else if (_accidentType == AccidentTypeAccident){
+        if ([UserModel isPermissionForAccidentList]) {
+            AccidentListVC *t_vc = [AccidentListVC new];
+            t_vc.accidentType = AccidentTypeAccident;
+            t_vc.type = 1;
+            t_vc.title = @"事故列表";
+            
+            [self.navigationController pushViewController:t_vc animated:YES];
+            
+        }else{
+            [ShareFun showTipLable:@"您暂无权限查看"];
+        }
+    }
+    
+
 }
 
 

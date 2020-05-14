@@ -14,6 +14,7 @@
 #import "UINavigationBar+BarItem.h"
 #import "AccidentDisposeVC.h"
 #import "FastAccidentAPI.h"
+#import "SRAlertView.h"
 
 @interface AccidentCompleteVC ()
 
@@ -21,7 +22,7 @@
 @property (nonatomic,strong) NSArray *arr_menus;
 
 @property (nonatomic,strong) RACCommand * command_dispose;
-
+@property (nonatomic,strong) RACCommand * command_audit;
 
 @end
 
@@ -63,7 +64,13 @@
     [self.command_dispose.executionSignals.switchToLatest subscribeNext:^(NSNumber * _Nullable x) {
         @strongify(self);
         if ([x isEqualToNumber:@1]) {
-            [self showRightBarButtonItemWithTitle:@"处理" target:self action:@selector(handleBtnDisposeClicked:)];
+            
+            if ([self.state.state isEqualToNumber:@11]) {
+                [self showRightBarButtonItemWithTitle:@"处理" target:self action:@selector(handleBtnDisposeClicked:)];
+            }else if ([self.state.state isEqualToNumber:@0]) {
+                [self showRightBarButtonItemWithTitle:@"认定" target:self action:@selector(handleBtnAuditClicked:)];
+            }
+            
         }
         
     }];
@@ -75,7 +82,8 @@
         @strongify(self);
         
         if ([x isEqualToNumber:@11]) {
-            
+            [self.command_dispose execute:nil];
+        }else if ([x isEqualToNumber:@0]) {
             [self.command_dispose execute:nil];
         }else{
             self.navigationItem.rightBarButtonItem = nil;
@@ -128,6 +136,49 @@
     return _command_dispose;
     
 }
+
+- (RACCommand *)command_audit{
+    
+    if (_command_audit == nil) {
+        
+        @weakify(self);
+        self.command_audit = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            @strongify(self);
+            RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                
+                FastAccidentAuditAccidentManger * manger = [[FastAccidentAuditAccidentManger alloc] init];
+                manger.accidentId = self.accidentId;
+                [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    
+                    if (manger.responseModel.code == CODE_SUCCESS) {
+                        
+                        self.state.state = @9;
+                        [self initPageMenu];
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"快处认定成功" object:nil];
+                        
+                    }
+                    
+                    [subscriber sendCompleted];
+                    
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            }];
+            
+            return t_signal;
+        }];
+        
+    }
+    
+    return _command_audit;
+    
+}
+
+
+
 
 
 
@@ -194,6 +245,28 @@
     model.accidentId = self.accidentId;
     AccidentDisposeVC * t_vc = [[AccidentDisposeVC alloc] initWithViewModel:model];
     [self.navigationController pushViewController:t_vc animated:YES];
+    
+}
+
+- (void)handleBtnAuditClicked:(id)sender{
+    
+    @weakify(self);
+    SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"确认认定"
+                                                        message:@"此操作无法撤销"
+                                                leftActionTitle:@"取消"
+                                               rightActionTitle:@"确定"
+                                                 animationStyle:AlertViewAnimationNone
+                                                   selectAction:^(AlertViewActionType actionType) {
+                                                        @strongify(self);
+                                                        if (actionType == AlertViewActionTypeRight) {
+                                                            [self.command_audit execute:nil];
+                                                        }
+                                                    
+                                                   }];
+    alertView.blurCurrentBackgroundView = NO;
+    [alertView show];
+    
+    
     
 }
 

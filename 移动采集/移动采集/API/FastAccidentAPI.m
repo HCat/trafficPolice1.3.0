@@ -417,3 +417,24 @@
 
 @end
 
+
+#pragma mark - 处理用户提交的快处信息
+
+@implementation FastAccidentAuditAccidentManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_FASTACCIDENT_AUDIT;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+
+    return @{@"id":_accidentId};;
+}
+
+
+
+@end
