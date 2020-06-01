@@ -13,6 +13,7 @@
 #import "MakePhoneView.h"
 #import "IllegalListView.h"
 #import "IllegalSearchView.h"
+#import "IllegalRoadView.h"
 
 @interface AlertView : UIView
 
@@ -29,6 +30,8 @@
 + (void)showWindowWithMakePhoneViewWith:(DutyPeopleModel *)people;
 
 + (void)showWindowWithIllegalListViewWith:(IllegalListView *)view inView:(UIView *)contentView;
++ (void)showWindowWithIllegalRoadViewWith:(IllegalRoadView *)view inView:(UIView *)contentView;
+
 + (void)showWindowWithIllegalSearchViewWith:(IllegalSearchView *)view inView:(UIView *)contentView;
 
 - (void)handleBtnDismissClick:(id)sender;

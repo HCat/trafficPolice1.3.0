@@ -47,4 +47,9 @@
     // Configure the view for the selected state
 }
 
+
+- (void)dealloc{
+    NSLog(@"IllegalRoadCell dealloc");
+}
+
 @end

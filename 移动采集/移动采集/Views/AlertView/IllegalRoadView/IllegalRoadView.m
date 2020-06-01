@@ -108,10 +108,18 @@
         }
     }
     
+    [self.tableView reloadData];
+    
 }
 
 
 - (IBAction)handleBtnQuitClicked:(id)sender {
+    
+    for (int i = 0; i < _arr_content.count; i++) {
+           
+           CommonGetRoadModel *model = _arr_content[i];
+           model.isSelected = NO;
+       }
     
     AlertView * alertView = (AlertView *)self.superview;
     [alertView handleBtnDismissClick:nil];
@@ -133,6 +141,12 @@
         
     }
 
+    for (int i = 0; i < _arr_content.count; i++) {
+        
+        CommonGetRoadModel *model = _arr_content[i];
+        model.isSelected = NO;
+    }
+    
     AlertView * alertView = (AlertView *)self.superview;
     [alertView handleBtnDismissClick:nil];
     
@@ -184,6 +198,8 @@
     return allString;
 }
 
-
+- (void)dealloc{
+    NSLog(@"IllegalRoadView dealloc");
+}
 
 @end

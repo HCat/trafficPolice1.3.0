@@ -12,6 +12,9 @@
 #import "CarInfoAddVC.h"
 #import "SearchLocationVC.h"
 #import "PersonLocationVC.h"
+#import "AlertView.h"
+#import "UserModel.h"
+
 
 @interface IllegalParkAddHeadView()
 
@@ -23,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
+@property (nonatomic,strong) RACDisposable * disposable;
+
 
 
 
@@ -61,6 +66,60 @@
     [self addChangeForEventEditingChanged:_tf_addressRemarks];
     
 }
+
+    
+- (void)setParam:(IllegalParkSaveParam *)param{
+    
+    if (!_param) {
+        _param = param;
+        
+        @weakify(self);
+        self.disposable = [[RACObserve(_param, roadName) distinctUntilChanged] subscribeNext:^(NSString * _Nullable x) {
+            @strongify(self);
+            if (x) {
+                
+                if (([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"SSJJ"] ) && [[UserModel getUserModel].secRoadStatus isEqualToNumber:@1] ) {
+                    
+                    IllegalRoadView *view = [IllegalRoadView initCustomView];
+                     view.block = ^(CommonGetRoadModel * model) {
+                         @strongify(self);
+                         self.tf_roadSection.text = model.getRoadName;
+                         self.param.roadId = model.getRoadId;
+                         self.param.roadName = model.getRoadName;
+                         
+                         // 判断是否可以提交
+                         self.isCanCommit =  [self juegeCanCommit];
+                         //当为闯禁令的时候，需要去请求是否有一次闯禁令数据，因为请求是需要地址的，所以这里需要进行监听
+                         if (self.delegate && [self.delegate respondsToSelector:@selector(listentCarNumber)]) {
+                            
+                             [self.delegate listentCarNumber];
+                         }
+                     };
+                     view.arr_content = self.codes;
+                     view.roadName = self.param.roadName;
+                     if (self.subType == ParkTypeCarInfoAdd || self.subType == ParkTypeMotorbikeAdd) {
+                        CarInfoAddVC* t_vc = (CarInfoAddVC *)[ShareFun findViewController:self withClass:[CarInfoAddVC class]];
+                        [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
+                    }else{
+                        IllegalParkVC *t_vc = (IllegalParkVC *)[ShareFun findViewController:self withClass:[IllegalParkVC class]];
+                        [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
+                    }
+                    
+                    
+                }
+            
+                [self.disposable dispose];
+
+            }
+        
+        }];
+        
+    }
+
+}
+
+
+
 
 #pragma mark - set && get 
 

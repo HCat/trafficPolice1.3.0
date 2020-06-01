@@ -28,6 +28,11 @@
 @property (nonatomic,assign) BOOL workstate;            //签到状态 1签到0签退
 @property (nonatomic,copy) NSArray *userPrivileges;     //权限列表
 
+@property (nonatomic,copy) NSString * orgCode;          //机构编码
+@property (nonatomic,strong) NSNumber * secRoadStatus;  //二级路段开关  0 关闭 1开启
+
+
+
 @property (nonatomic,copy) NSArray *menus;          //可操作的菜单列表
 
 

@@ -23,54 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/WebSocketHelper.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-webSocket:didFailWithError:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - 67845f06e12492d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WebSocketHelper webSocket:didFailWithError:]"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "61C3EFBE-21D5-42F5-9CF6-50A918296A68 - 9c3c20ffca977f4c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[WebSocketHelper webSocket:didFailWithError:]_block_invoke"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Tools/WebSocketHelper.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8E1EE541-738C-494F-91DB-162745CFB00A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -119,32 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C1754733-8376-4238-B96D-44D9B7CEE700"
+            uuid = "59E57C80-3F89-4095-A01F-480F01897AAD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/SearchLocationVC/SearchLocationVC.m"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Views/AlertView/IllegalRoadView/IllegalRoadCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "-passConTextChange:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "14B021E1-5801-4BEE-9B22-F3E56949C06D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/SearchLocationVC/SearchLocationVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-passConTextChange:"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-awakeFromNib"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

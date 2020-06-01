@@ -11,6 +11,8 @@
 #import "SearchLocationVC.h"
 #import "ParkCameraVC.h"
 #import "PersonLocationVC.h"
+#import "AlertView.h"
+#import "UserModel.h"
 
 @interface IllegalAddHeadView()
 
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_switchLocation; //定位开关
 @property (weak, nonatomic) IBOutlet UIButton *btn_personLocation; //手动定位
 @property (nonatomic,assign) BOOL btnType; //1:代表开  0:代表关
+@property (nonatomic,strong) RACDisposable * disposable;
 
 @property(nonatomic,strong) NSArray *codes;
 
@@ -142,6 +145,35 @@
          }
     }];
     
+    self.disposable = [RACObserve(self.param, roadName)  subscribeNext:^(NSString * _Nullable x) {
+           @strongify(self);
+           if (x) {
+               
+               if (([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"SSJJ"] ) && [[UserModel getUserModel].secRoadStatus isEqualToNumber:@1] ) {
+                   
+                   IllegalRoadView *view = [IllegalRoadView initCustomView];
+                                 view.block = ^(CommonGetRoadModel * model) {
+                                     @strongify(self);
+                                     
+                                     self.param.roadId = model.getRoadId;
+                                     self.param.roadName = model.getRoadName;
+                                     
+                                  
+                                 };
+                    view.arr_content = self.codes;
+                    view.roadName = self.param.roadName;
+                    IllegalAddVC* t_vc = (IllegalAddVC *)[ShareFun findViewController:self withClass:[IllegalAddVC class]];
+                    [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
+                   
+               }
+              
+
+               [self.disposable dispose];
+           }
+       
+    }];
+    
+
     _tf_roadSection.text = _param.roadName;
     _tf_address.text     = _param.address;
     _tf_carNo.text   = _param.carNo;
