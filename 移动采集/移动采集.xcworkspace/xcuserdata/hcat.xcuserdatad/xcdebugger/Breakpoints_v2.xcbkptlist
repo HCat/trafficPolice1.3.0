@@ -71,80 +71,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "25ED40AE-6D45-480B-A927-384641464D29"
-            shouldBeEnabled = "Yes"
+            uuid = "59E57C80-3F89-4095-A01F-480F01897AAD"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x8fdd;&#x505c;&#x91c7;&#x96c6;(&#x77f3;&#x72ee;)/Views/IllegalAddHeadView.m"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Views/AlertView/IllegalRoadView/IllegalRoadCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "-awakeFromNib"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0D672D47-A9E0-4615-BDAD-F033C3540BE9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/&#x8fdd;&#x505c;&#x91c7;&#x96c6;(&#x77f3;&#x72ee;)/Views/IllegalAddHeadView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0D672D47-A9E0-4615-BDAD-F033C3540BE9 - 1e4ab2788b2a2128"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[IllegalAddHeadView awakeFromNib]"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Controllers/MainHomeVC/%E8%BF%9D%E5%81%9C%E9%87%87%E9%9B%86(%E7%9F%B3%E7%8B%AE)/Views/IllegalAddHeadView.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "2400">
-               </Location>
-               <Location
-                  uuid = "0D672D47-A9E0-4615-BDAD-F033C3540BE9 - 1e4ab2788b2a2128"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[IllegalAddHeadView awakeFromNib]"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Controllers/MainHomeVC/%E8%BF%9D%E5%81%9C%E9%87%87%E9%9B%86(%E7%9F%B3%E7%8B%AE)/Views/IllegalAddHeadView.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "2408">
-               </Location>
-               <Location
-                  uuid = "0D672D47-A9E0-4615-BDAD-F033C3540BE9 - 9b183ff3866e3e48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__34-[IllegalAddHeadView awakeFromNib]_block_invoke.133"
-                  moduleName = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hcat/Desktop/trafficPolice/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/%E7%A7%BB%E5%8A%A8%E9%87%87%E9%9B%86/Controllers/MainHomeVC/%E8%BF%9D%E5%81%9C%E9%87%87%E9%9B%86(%E7%9F%B3%E7%8B%AE)/Views/IllegalAddHeadView.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
