@@ -11,14 +11,16 @@
 #import "LAJIBaseRequest.h"
 #import "LoginAPI.h"
 #import "JPUSHService.h"
-#import "XTVerCodeInput.h"
+#import "CRBoxInputView.h"
 
 @interface PhoneLoginVC ()
 
 @property (weak, nonatomic) IBOutlet LRCountDownButton *btn_countDown;
 @property (weak, nonatomic) IBOutlet UITextField *tf_phone;
 @property (weak, nonatomic) IBOutlet UILabel *lb_tip;
-@property (weak, nonatomic) IBOutlet XTVerCodeInput *tf_codeInput;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_back;
+@property(nonatomic, strong) CRBoxInputView *boxInputView;
 
 @property (nonatomic,copy) NSString * str_code;     //短信验证码
 @property (nonatomic,copy) NSString * acId;         //获取验证码得到的短信ID
@@ -33,29 +35,82 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.title = @"登录";
-    [self.navigationController.navigationBar setBarTintColor:DefaultNavColor];
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.tf_phone becomeFirstResponder];
     
     _btn_countDown.durationOfCountDown = 60;
-    _btn_countDown.originalBGColor = UIColorFromRGB(0x1DBE7E);
-    _btn_countDown.processBGColor = DefaultBtnNuableColor;
-    _btn_countDown.processFont = [UIFont systemFontOfSize:12.f];
+    _btn_countDown.originalBGColor = [UIColor clearColor];
+    _btn_countDown.processBGColor = [UIColor clearColor];
+    _btn_countDown.originalColor = UIColorFromRGB(0x315DF1);
+    _btn_countDown.processColor = UIColorFromRGB(0x315DF1);
+    _btn_countDown.processFont = [UIFont systemFontOfSize:15.f];
     _btn_countDown.originalFont = [UIFont systemFontOfSize:15.f];
     
     WS(weakSelf);
     
-    self.tf_codeInput.inputType = 4;
-    [self.tf_codeInput initSubviews];
-    self.tf_codeInput.verCodeBlock = ^(NSString *text){
-        NSLog(@"您输入的验证码是%@",text);
-        SW(strongSelf, weakSelf);
-        strongSelf.str_code = text;
+    [[_btn_back rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         
-        if (strongSelf.str_code.length == 4) {
-            [strongSelf handleBtnLoginClicked:nil];
-        }
-    };
-
+        SW(strongSelf, weakSelf);
+        
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    
+    CRBoxInputCellProperty *cellProperty = [CRBoxInputCellProperty new];
+    cellProperty.cellBorderColorNormal = UIColorFromRGB(0xE5E5E5);
+    cellProperty.cellBorderColorSelected = UIColorFromRGB(0x315DF1);
+    cellProperty.cellBorderColorFilled = UIColorFromRGB(0xF4F4F4);
+    cellProperty.borderWidth = 1.0f;
+    cellProperty.cellBgColorNormal = UIColorFromRGB(0xF4F4F4);
+    cellProperty.cellBgColorSelected = UIColorFromRGB(0xFFFFFF);
+    cellProperty.cellBgColorFilled = UIColorFromRGB(0xFFFFFF);
+    cellProperty.cellFont = [UIFont systemFontOfSize:30]; //可选
+    cellProperty.cellTextColor = UIColorFromRGB(0x333333); //可选
+//    cellProperty.configCellShadowBlock = ^(CALayer * _Nonnull layer) {
+//        layer.shadowColor = [UIColorFromRGB(0x313340) colorWithAlphaComponent:0.2].CGColor;
+//        layer.shadowOpacity = 1;
+//        layer.shadowOffset = CGSizeMake(0, 2);
+//        layer.shadowRadius = 4;
+//    };
+    
+    self.boxInputView = [CRBoxInputView new];
+    self.boxInputView.boxFlowLayout.itemSize = CGSizeMake(60, 60);
+    
+    self.boxInputView.ifNeedCursor = NO;
+    self.boxInputView.customCellProperty = cellProperty;
+    [self.boxInputView loadAndPrepareViewWithBeginEdit:NO];
+    
+    if (@available(iOS 12.0, *)) {
+        _boxInputView.textContentType = UITextContentTypeOneTimeCode;
+    }else if (@available(iOS 10.0, *)) {
+        _boxInputView.textContentType = @"one-time-code";
+    }
+    
+    
+    if (!_boxInputView.textDidChangeblock) {
+        _boxInputView.textDidChangeblock = ^(NSString *text, BOOL isFinished) {
+            
+            SW(strongSelf, weakSelf);
+            NSLog(@"您输入的验证码是%@",text);
+            
+            strongSelf.str_code = text;
+            if (strongSelf.str_code.length == 4) {
+                [strongSelf handleBtnLoginClicked:nil];
+            }
+        };
+    }
+    
+    [self.view addSubview:_boxInputView];
+    [_boxInputView mas_makeConstraints:^(MASConstraintMaker *make) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        make.leading.mas_equalTo(34);
+        make.trailing.mas_equalTo(-34);
+        make.height.mas_equalTo(60);
+        make.top.equalTo(strongSelf.lb_tip.mas_bottom).offset(20);
+    }];
+    
     _btn_countDown.beginBlock = ^{
         
         SW(strongSelf, weakSelf);
@@ -96,10 +151,8 @@
 //                [strongSelf.tf_codeInput initSubviews];
 
                 if ([strongSelf.codeType isEqualToNumber:@0]) {
-                    self.lb_tip.text = @"请输入短信验证码";
                     [ShareFun showTipLable:@"短信验证码已发送到您的手机，请注意查收"];
                 }else{
-                    self.lb_tip.text = @"请输入微信验证码";
                     [ShareFun showTipLable:@"微信验证码已发送到您的微信，请注意查收"];
                 }
                 
@@ -133,8 +186,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setBackgroundColor:DefaultNavColor];
-    self.navigationController.navigationBarHidden = NO;
+//    [self.navigationController.navigationBar setBackgroundColor:DefaultNavColor];
+//    self.navigationController.navigationBarHidden = NO;
     
 }
 

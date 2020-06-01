@@ -31,9 +31,6 @@
 
 #import "UserModel.h"
 
-
-
-
 @interface IllegalAddVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
@@ -137,8 +134,6 @@
         
     }];
     
-    
-        
     //检查是否需要二次采集工作
     [self.viewModel.command_carNoSect.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
@@ -147,7 +142,6 @@
             RACTupleUnpack(NSNumber * code,IllegalCarNoSecReponse * reponse,NSString * msg) = x;
             
             if ([code isEqualToNumber:@0]) {
-                
                 
                 IllegalSecAddViewModel * t_viewModel = [[IllegalSecAddViewModel alloc] init];
                 if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSMutableDictionary class]]) {
@@ -226,7 +220,6 @@
                 //不做处理
                 //无任何记录，无需做处理
             }else if ([code isEqualToNumber:@1]){
-                
                 
                 if (reponse.illegalList && reponse.illegalList.count > 0) {
                     

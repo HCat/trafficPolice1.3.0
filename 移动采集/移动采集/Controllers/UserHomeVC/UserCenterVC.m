@@ -1,70 +1,74 @@
 //
-//  UserSetVC.m
+//  UserCenterVC.m
 //  移动采集
 //
-//  Created by hcat on 2017/7/20.
-//  Copyright © 2017年 Hcat. All rights reserved.
+//  Created by 黄芦荣 on 2020/5/18.
+//  Copyright © 2020 Hcat. All rights reserved.
 //
 
-#import "UserSetVC.h"
-
+#import "UserCenterVC.h"
 #import "LRSettingCell.h"
 #import "LRSettingItemModel.h"
 #import "LRSettingSectionModel.h"
 
 #import "UserModel.h"
-
 #import "FeedbackVC.h"
-#import "SuperLogger.h"
 
 
-@interface UserSetVC ()
+@interface UserCenterVC ()
 
 @property (nonatomic,strong) NSArray  *sectionArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height_bottom;
 
 @end
 
-@implementation UserSetVC
+@implementation UserCenterVC
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @"设置";
-    [_tb_content setSeparatorInset:UIEdgeInsetsZero];
-    [_tb_content setLayoutMargins:UIEdgeInsetsZero];
-    [self setupSections];
     
-    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showLog)];
-    tapGesture.numberOfTapsRequired = 10;
-    [self.view addGestureRecognizer:tapGesture];
+    [super viewDidLoad];
+    //self.layout_height_bottom.constant = Height_TabBar;
+    self.tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self setupSections];
     
 }
 
-#pragma mark - setUp
 
 - (void)setupSections
 {
     
-    WS(weakSelf);
+    @weakify(self);
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     
     LRSettingItemModel *item1 = [[LRSettingItemModel alloc]init];
-    item1.funcName = @"用户名";
+    item1.funcName = @"姓名";
     item1.detailText = [UserModel getUserModel].realName;
     item1.accessoryType = LRSettingAccessoryTypeNone;
     
     LRSettingItemModel *item2 = [[LRSettingItemModel alloc]init];
-    item2.funcName = @"手机号码";
+    item2.funcName = @"手机";
     item2.detailText = [UserModel getUserModel].phone;
     item2.accessoryType = LRSettingAccessoryTypeNone;
     
-    
     LRSettingItemModel *item3 = [[LRSettingItemModel alloc]init];
-    item3.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-    item3.funcName = @"版本更新";
-    item3.detailText = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    item3.executeCode = ^{
+    item3.funcName = @"部门";
+    item3.detailText = [UserModel getUserModel].departmentName;
+    item3.accessoryType = LRSettingAccessoryTypeNone;
+    
+    LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
+    item4.funcName = @"单位";
+    item4.detailText = [UserModel getUserModel].orgName;
+    item4.accessoryType = LRSettingAccessoryTypeNone;
+    
+    
+    
+    LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
+    item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item5.funcName = @"版本更新";
+    item5.detailText = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    item5.executeCode = ^{
         LxPrintf(@"版本更新");
         [ShareFun checkForVersionUpdates];
     };
@@ -72,26 +76,26 @@
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     float folderSize = [ShareFun folderSizeAtPath:documentPath];
     
-    LRSettingItemModel *item4 = [[LRSettingItemModel alloc]init];
-    item4.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-    item4.funcName = @"清除缓存";
-    item4.detailText = [NSString stringWithFormat:@"%.2fM", folderSize];
+    LRSettingItemModel *item6 = [[LRSettingItemModel alloc]init];
+    item6.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item6.funcName = @"清除缓存";
+    item6.detailText = [NSString stringWithFormat:@"%.2fM", folderSize];
     
-    item4.executeCode = ^{
+    item6.executeCode = ^{
         LxPrintf(@"清除缓存");
-        SW(strongSelf, weakSelf);
-        [strongSelf clearCache];
+        @strongify(self);
+        [self clearCache];
         
     };
     
-    LRSettingItemModel *item5 = [[LRSettingItemModel alloc]init];
-    item5.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
-    item5.funcName = @"意见反馈";
-    item5.executeCode = ^{
+    LRSettingItemModel *item7 = [[LRSettingItemModel alloc]init];
+    item7.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
+    item7.funcName = @"意见反馈";
+    item7.executeCode = ^{
         LxPrintf(@"意见反馈");
-        SW(strongSelf, weakSelf);
+        @strongify(self);
         FeedbackVC *t_vc = [FeedbackVC new];
-        [strongSelf.navigationController pushViewController:t_vc animated:YES];
+        [self.navigationController pushViewController:t_vc animated:YES];
     };
     
     
@@ -99,31 +103,27 @@
     section1.sectionHeaderHeight = 10;
     
     section1.sectionHeaderBgColor = [UIColor clearColor];
-    section1.itemArray = @[item1,item2];
+    section1.itemArray = @[item1,item2,item3,item4];
     
     LRSettingSectionModel *section2 = [[LRSettingSectionModel alloc]init];
-    section2.sectionHeaderHeight = 10;
+    section2.sectionHeaderHeight = 50;
+    section2.sectionHeaderName = @"版本信息";
     
     section2.sectionHeaderBgColor = [UIColor clearColor];
-    section2.itemArray = @[item3,item4];
+    section2.itemArray = @[item5,item6,item7];
     
-    LRSettingSectionModel *section3 = [[LRSettingSectionModel alloc]init];
-    section3.sectionHeaderHeight = 10;
-    
-    section3.sectionHeaderBgColor = [UIColor clearColor];
-    section3.itemArray = @[item5];
-    
-    self.sectionArray = @[section1,section2,section3];
+    self.sectionArray = @[section1,section2];
 }
 
 #pragma mark - 清除缓存
 
 - (void)clearCache{
 
+    @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         LxPrintf(@"%@", cachPath);
-        
+        @strongify(self);
         NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
         LxPrintf(@"files :%lu",(unsigned long)[files count]);
         for (NSString *p in files) {
@@ -173,11 +173,8 @@
     if (!cell) {
         cell = [[LRSettingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    if (indexPath.section == 0) {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }else{
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     cell.item = itemModel;
     return cell;
@@ -185,6 +182,26 @@
 }
 
 #pragma - mark UITableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    LRSettingSectionModel *sectionModel = self.sectionArray[section];
+    UIView *view = [[UIView alloc] init];
+
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 45);
+    view.backgroundColor = UIColorFromRGB(0xEFF2FA);
+    
+    UILabel *label = [[UILabel alloc] init];
+    
+    label.frame = CGRectMake(15, 20, view.frame.size.width, view.frame.size.height-20);
+    label.text = sectionModel.sectionHeaderName;
+    label.font = [UIFont systemFontOfSize:14.f];
+    label.textColor = UIColorFromRGB(0x666666);
+    [view addSubview:label];
+    return view;
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 49;
@@ -207,8 +224,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    [cell setSeparatorInset:UIEdgeInsetsZero];
-    [cell setLayoutMargins:UIEdgeInsetsZero];
+    [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 15)];
+    [cell setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 15)];
+    
 }
 
 
@@ -220,33 +238,24 @@
     
 }
 
-#pragma mark - 显示日志重定向列表
 
-- (void)showLog{
-    [self.navigationController presentViewController:[[SuperLogger sharedInstance] getListView] animated:YES completion:nil];
+#pragma mark - AKTabBar Method
+
+- (NSString *)tabImageName{
+    return @"tabbar_user_n";
 }
 
-#pragma mark -dealloc
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSString *)tabSelectedImageName{
+    return @"tabbar_user_h";
 }
+
+- (NSString *)tabTitle{
+    return NSLocalizedString(@"我的", nil);
+}
+
 
 - (void)dealloc{
-    
-    LxPrintf(@"UserSetVC dealloc");
-    
+    NSLog(@"%@ - dealloc", [self class]);
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

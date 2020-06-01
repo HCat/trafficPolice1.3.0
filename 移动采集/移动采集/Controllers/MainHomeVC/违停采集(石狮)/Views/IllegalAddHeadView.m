@@ -11,6 +11,8 @@
 #import "SearchLocationVC.h"
 #import "ParkCameraVC.h"
 #import "PersonLocationVC.h"
+#import "AlertView.h"
+#import "UserModel.h"
 
 @interface IllegalAddHeadView()
 
@@ -54,13 +56,7 @@
     _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
     
     _tf_carNo.attributedPlaceholder = [ShareFun highlightInString:@"请填入车牌(必填)" withSubString:@"(必填)"];
-    
-    //配置点击UITextField
-
-//    [self setUpCommonUITextField:self.tf_carNo];
-//    [self setUpCommonUITextField:self.tf_address];
-//    [self setUpCommonUITextField:self.tf_remark];
-    
+        
     _btn_personLocation.enabled = YES;
     [_btn_personLocation setBackgroundColor:DefaultBtnColor];
     
@@ -96,6 +92,33 @@
         [self getRoadId];
 
     }
+    
+    [RACObserve(self.param, roadName)  subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        if (x) {
+            
+            if (([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"SSJJ"] ) && [[UserModel getUserModel].secRoadStatus isEqualToNumber:@1] ) {
+                
+                
+            }
+            IllegalRoadView *view = [IllegalRoadView initCustomView];
+            view.block = ^(CommonGetRoadModel * model) {
+                @strongify(self);
+                
+                self.param.roadId = model.getRoadId;
+                self.param.roadName = model.getRoadName;
+                
+             
+            };
+            view.arr_content = self.codes;
+            view.roadName = self.param.roadName;
+            IllegalAddVC* t_vc = (IllegalAddVC *)[ShareFun findViewController:self withClass:[IllegalAddVC class]];
+            [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
+
+        }
+    
+    }];
+    
     
     [[LocationHelper sharedDefault] startLocation];
     

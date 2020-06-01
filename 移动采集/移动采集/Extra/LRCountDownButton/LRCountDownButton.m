@@ -86,7 +86,7 @@
         // 设置默认的倒计时时长为60秒
         self.durationOfCountDown = 60;
         // 设置button的默认标题为“获取验证码”
-        [self setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self setTitle:@"发送验证码" forState:UIControlStateNormal];
     }
     return self;
 }
@@ -104,7 +104,7 @@
         // 设置默认的倒计时时长为60秒
         self.durationOfCountDown = 60;
         // 设置button的默认标题为“获取验证码”
-        [self setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self setTitle:@"发送验证码" forState:UIControlStateNormal];
     }
     return self;
 }
@@ -161,7 +161,7 @@
         } else {
             
             // 设置LRCountDownButton的title为当前倒计时剩余的时间
-            [strongSelf setTitle:[NSString stringWithFormat:@"重新发送验证码(%zds)", self.tempDurationOfCountDown--] forState:UIControlStateNormal];
+            [strongSelf setTitle:[NSString stringWithFormat:@"已发送(%zds)", self.tempDurationOfCountDown--] forState:UIControlStateNormal];
              [strongSelf setBackgroundColor:strongSelf.processBGColor];
             if (strongSelf.processColor) {
                 [strongSelf setTitleColor:strongSelf.processColor forState:UIControlStateNormal];

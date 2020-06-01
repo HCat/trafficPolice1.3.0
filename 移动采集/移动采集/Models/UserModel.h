@@ -17,6 +17,7 @@
 @property (nonatomic,copy) NSString *token;             //token
 @property (nonatomic,copy) NSString * userId;           //用户Id
 @property (nonatomic,copy) NSString * phone;            //用户手机
+@property (nonatomic,copy) NSString * orgName;          //部门
 @property (nonatomic,copy) NSString * name;             //用户名
 @property (nonatomic,copy) NSString * nickName;         //昵称
 @property (nonatomic,copy) NSString * realName;         //真实姓名
@@ -26,7 +27,9 @@
 @property (nonatomic,copy) NSString * dutyCode;         //职位编码         只有为BIG_LEADER才可以选择中队
 @property (nonatomic,copy) NSString * systemCode;       //所属系统
 @property (nonatomic,assign) BOOL workstate;            //签到状态 1签到0签退
-@property (nonatomic,copy) NSArray *userPrivileges;     //权限列表
+@property (nonatomic,copy) NSArray * userPrivileges;    //权限列表
+@property (nonatomic,copy) NSString * orgCode;          //机构编码
+@property (nonatomic,strong) NSNumber * secRoadStatus;  //二级路段开关  0 关闭 1开启
 
 @property (nonatomic,copy) NSArray *menus;          //可操作的菜单列表
 

@@ -24,7 +24,8 @@
 #import "MainHomeVC.h"
 #import "MessageHomeVC.h"
 #import "ScheduleVC.h"
-#import "UserHomeVC.h"
+#import "UserCenterVC.h"
+//#import "UserHomeVC.h"
 
 #import "UserModel.h"
 #import "MessageHomeVC.h"
@@ -187,7 +188,7 @@
         MessageHomeVC *t_vc_message = [MessageHomeVC new];
         UINavigationController *t_nav_message = [[UINavigationController alloc] initWithRootViewController:t_vc_message];
         
-        UserHomeVC *t_vc_user = [UserHomeVC new];
+        UserCenterVC *t_vc_user = [UserCenterVC new];
         UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
         
         [_vc_tabBar setViewControllers:[@[t_nav_addressBook,t_nav_schedule,t_nav_main,t_nav_message,t_nav_user]mutableCopy]];

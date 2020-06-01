@@ -10,7 +10,7 @@
 #import <PureLayout.h>
 
 //功能图片到左边界的距离
-#define XBFuncImgToLeftGap 21
+#define XBFuncImgToLeftGap 15
 
 //功能名称字体
 #define XBFuncLabelFont 15
@@ -19,13 +19,13 @@
 #define XBFuncLabelToFuncImgGap 18
 
 //指示箭头或开关到右边界的距离
-#define XBIndicatorToRightGap 20
+#define XBIndicatorToRightGap 15
 
 //详情文字字体
-#define XBDetailLabelFont 12
+#define XBDetailLabelFont 15
 
 //详情到指示箭头或开关的距离
-#define XBDetailViewToIndicatorGap 13
+#define XBDetailViewToIndicatorGap 8
 
 @interface LRSettingCell ()
 
@@ -119,7 +119,7 @@
 {
     self.detailLabel = [[UILabel alloc]init];
     self.detailLabel.text = self.item.detailText;
-    self.detailLabel.textColor = RGBA(142, 142, 142, 1);
+    self.detailLabel.textColor = UIColorFromRGB(0x333333);
     self.detailLabel.font = [UIFont systemFontOfSize:XBDetailLabelFont];
     [self.contentView addSubview:self.detailLabel];
     [self.detailLabel configureForAutoLayout];
