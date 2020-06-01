@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="IllegalRoadView">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="346"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbm-uc-YNW">
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择路段" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcA-RO-5cO">
+                            <rect key="frame" x="99" y="16" width="62" height="18"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dl-xn-fpY">
+                            <rect key="frame" x="212" y="0.0" width="48" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="QwA-Re-oQn"/>
+                                <constraint firstAttribute="height" constant="50" id="WHg-K6-VMP"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="10" minY="-13" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="btn_vehicleDriverClose"/>
+                            <connections>
+                                <action selector="handleBtnQuitClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="13L-3e-JiE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7Dl-xn-fpY" secondAttribute="trailing" id="8et-ob-nxv"/>
+                        <constraint firstItem="NcA-RO-5cO" firstAttribute="centerX" secondItem="rbm-uc-YNW" secondAttribute="centerX" id="Flk-xn-7Xn"/>
+                        <constraint firstItem="7Dl-xn-fpY" firstAttribute="top" secondItem="rbm-uc-YNW" secondAttribute="top" id="T64-x2-sVj"/>
+                        <constraint firstItem="NcA-RO-5cO" firstAttribute="centerY" secondItem="rbm-uc-YNW" secondAttribute="centerY" id="nsU-Eq-dXR"/>
+                        <constraint firstAttribute="height" constant="50" id="wyu-7C-bgy"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mPx-bb-NA4">
+                    <rect key="frame" x="0.0" y="50" width="260" height="238"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-io-Fqh">
+                    <rect key="frame" x="140" y="296" width="105" height="35"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.58823529409999997" blue="0.98823529409999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="105" id="9w5-Wh-mbj"/>
+                        <constraint firstAttribute="height" constant="35" id="L1N-Oe-IFU"/>
+                    </constraints>
+                    <state key="normal" title="确定">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnCollectClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="7zF-4R-JX3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-QD-cJ1">
+                    <rect key="frame" x="15" y="296" width="105" height="35"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="QPF-db-9Mc"/>
+                        <constraint firstAttribute="width" constant="105" id="lIv-eZ-kDh"/>
+                    </constraints>
+                    <state key="normal" title="退出">
+                        <color key="titleColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleBtnQuitClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="dz8-mj-Fpi"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="mPx-bb-NA4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0gg-PQ-yep"/>
+                <constraint firstItem="Qhc-QD-cJ1" firstAttribute="centerY" secondItem="lEf-io-Fqh" secondAttribute="centerY" id="15p-H2-x3K"/>
+                <constraint firstItem="rbm-uc-YNW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Er-hy-s3V"/>
+                <constraint firstAttribute="bottom" secondItem="mPx-bb-NA4" secondAttribute="bottom" constant="58" id="FcU-ao-kXy"/>
+                <constraint firstItem="rbm-uc-YNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JoS-uV-AHW"/>
+                <constraint firstAttribute="trailing" secondItem="rbm-uc-YNW" secondAttribute="trailing" id="TvC-bs-yLz"/>
+                <constraint firstItem="mPx-bb-NA4" firstAttribute="top" secondItem="rbm-uc-YNW" secondAttribute="bottom" id="YQY-GH-fgk"/>
+                <constraint firstAttribute="trailing" secondItem="mPx-bb-NA4" secondAttribute="trailing" id="YRS-AZ-KcP"/>
+                <constraint firstItem="Qhc-QD-cJ1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="kWq-9Q-aub"/>
+                <constraint firstAttribute="trailing" secondItem="lEf-io-Fqh" secondAttribute="trailing" constant="15" id="mhF-AS-WI2"/>
+                <constraint firstAttribute="bottom" secondItem="lEf-io-Fqh" secondAttribute="bottom" constant="15" id="nNR-xo-26H"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="mPx-bb-NA4" id="WOX-r6-g6g"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="148.66071428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_vehicleDriverClose" width="14" height="14"/>
+    </resources>
+</document>

@@ -56,6 +56,7 @@
 
 @property (nonatomic,copy) NSNumber * getRoadId;     //通用值id
 @property (nonatomic,copy) NSString * getRoadName;   //通用值名称
+@property (nonatomic,assign) BOOL isSelected;        //是否被选中
 
 
 @end
