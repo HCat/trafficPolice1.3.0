@@ -145,34 +145,35 @@
          }
     }];
     
-    self.disposable = [RACObserve(self.param, roadName)  subscribeNext:^(NSString * _Nullable x) {
-           @strongify(self);
-           if (x) {
-               
-               if (([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"SSJJ"] ) && [[UserModel getUserModel].secRoadStatus isEqualToNumber:@1] ) {
+    if (self.disposable == nil) {
+        self.disposable = [RACObserve(self.param, roadName)  subscribeNext:^(NSString * _Nullable x) {
+               @strongify(self);
+               if (x) {
                    
-                   IllegalRoadView *view = [IllegalRoadView initCustomView];
-                                 view.block = ^(CommonGetRoadModel * model) {
-                                     @strongify(self);
-                                     
-                                     self.param.roadId = model.getRoadId;
-                                     self.param.roadName = model.getRoadName;
-                                     
-                                  
-                                 };
-                    view.arr_content = self.codes;
-                    view.roadName = self.param.roadName;
-                    IllegalAddVC* t_vc = (IllegalAddVC *)[ShareFun findViewController:self withClass:[IllegalAddVC class]];
-                    [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
-                   
-               }
-              
+                   if (([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"SSJJ"] ) && [[UserModel getUserModel].secRoadStatus isEqualToNumber:@1] ) {
+                       
+                       IllegalRoadView *view = [IllegalRoadView initCustomView];
+                                     view.block = ^(CommonGetRoadModel * model) {
+                                         @strongify(self);
+                                         
+                                         self.param.roadId = model.getRoadId;
+                                         self.param.roadName = model.getRoadName;
+                                         
+                                      
+                                     };
+                        view.arr_content = self.codes;
+                        view.roadName = self.param.roadName;
+                        IllegalAddVC* t_vc = (IllegalAddVC *)[ShareFun findViewController:self withClass:[IllegalAddVC class]];
+                        [AlertView showWindowWithIllegalRoadViewWith:view inView:t_vc.view];
+                       
+                   }
+                  
 
-               [self.disposable dispose];
-           }
-       
-    }];
-    
+                   [self.disposable dispose];
+               }
+           
+        }];
+    }
 
     _tf_roadSection.text = _param.roadName;
     _tf_address.text     = _param.address;
