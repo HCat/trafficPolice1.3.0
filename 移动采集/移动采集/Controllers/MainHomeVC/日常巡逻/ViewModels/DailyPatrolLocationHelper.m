@@ -159,6 +159,14 @@ LRSingletonM(Default)
    
 }
 
+- (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager*)locationManager
+{
+    [locationManager requestAlwaysAuthorization];
+    
+}
+
+
+
 - (void)dealloc{
     
     if (self.time_upLocation) {

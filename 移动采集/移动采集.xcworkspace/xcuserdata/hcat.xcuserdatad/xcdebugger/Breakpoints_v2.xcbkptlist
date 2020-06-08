@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6C71286E-10E1-4541-BF16-C3F4CC037669"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Tools/LRCameraVC/LRCameraVC.m"
@@ -33,22 +33,6 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-startLocation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A28335AA-5F06-4DE4-A376-1DBA14A5357B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Models/UserModel.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "+isPermissionForExposureList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -81,6 +65,22 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "-awakeFromNib"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE53DE00-7B19-4408-BBA9-D45E6989D898"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/MainHomeVC/IllegalParkVC/&#x8fdd;&#x7ae0;&#x91c7;&#x96c6;/IllegalParkVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "950"
+            endingLineNumber = "950"
+            landmarkName = "-submitIllegalData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
