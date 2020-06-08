@@ -1045,12 +1045,14 @@ static NSString *const headId = @"IllegalParkAddHeadViewID";
     [_arr_upImages addObject:[NSNull null]];
     [_arr_upImages addObject:[NSNull null]];
     
-    [_collectionView reloadData];
+    
     
     self.param = [[IllegalParkSaveParam alloc] init];
     
-    _headView.param = _param;
+    _headView.param = self.param;
     [_headView handleBeforeCommit];
+    
+    [_collectionView reloadData];
 }
 
 #pragma mark - 管理上传图片

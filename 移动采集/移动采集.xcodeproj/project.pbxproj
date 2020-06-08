@@ -6261,7 +6261,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6285,7 +6285,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

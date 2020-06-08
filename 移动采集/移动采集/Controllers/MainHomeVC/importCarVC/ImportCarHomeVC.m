@@ -378,6 +378,11 @@
     
 }
 
+- (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager*)locationManager
+{
+    [locationManager requestAlwaysAuthorization];
+}
+
 #pragma mark - button Action
 
 - (IBAction)handleBtnQRCodeClicked:(id)sender {

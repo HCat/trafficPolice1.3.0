@@ -70,10 +70,10 @@
     
 - (void)setParam:(IllegalParkSaveParam *)param{
     
-    if (!_param) {
-        _param = param;
-        
-        @weakify(self);
+    _param = param;
+    
+    @weakify(self);
+    if (self.disposable == nil) {
         self.disposable = [[RACObserve(_param, roadName) distinctUntilChanged] subscribeNext:^(NSString * _Nullable x) {
             @strongify(self);
             if (x) {
@@ -113,8 +113,8 @@
             }
         
         }];
-        
     }
+    
 
 }
 

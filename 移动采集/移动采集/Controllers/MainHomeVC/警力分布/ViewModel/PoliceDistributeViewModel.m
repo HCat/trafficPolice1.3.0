@@ -248,6 +248,11 @@
     
 }
 
+- (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager*)locationManager
+{
+    [locationManager requestAlwaysAuthorization];
+}
+
 
 - (void)dealloc{
     
