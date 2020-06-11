@@ -301,6 +301,7 @@
         SW(strongSelf, weakSelf);
         strongSelf.tf_location.text = model.modelName;
         strongSelf.partyFactory.param.roadId = @(model.modelId);
+        strongSelf.partyFactory.param.roadName = model.modelName;
         [strongSelf.partyFactory juegeCanCommit];
     };
     [t_vc.navigationController pushViewController:t_searchLocationvc animated:YES];

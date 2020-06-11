@@ -28,6 +28,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     [self.tableView setDelegate:(id<UITableViewDelegate> _Nullable)self];
     [self.tableView setDataSource:(id<UITableViewDataSource> _Nullable)self];
     
@@ -40,11 +41,7 @@
             @strongify(self);
             CommonGetRoadModel *model = (CommonGetRoadModel *)obj;
             
-            //----------->把所有的搜索结果转成成拼音
-            NSString *pinyin = [self transformToPinyin:model.getRoadName];
-            NSLog(@"pinyin--%@",pinyin);
-            
-            if ([pinyin rangeOfString:x options:NSCaseInsensitiveSearch].length >0 ) {
+            if ([model.roadName_pingyin rangeOfString:x options:NSCaseInsensitiveSearch].length >0 ) {
                 //把搜索结果存放self.resultArray数组
                 [arr addObject:model];
             }
@@ -57,6 +54,20 @@
         
     }];
    
+}
+
+- (void)setArr_content:(NSArray<CommonGetRoadModel *> *)arr_content{
+    
+    _arr_content = arr_content;
+    
+    
+    for (int i = 0; i < _arr_content.count; i++) {
+            CommonGetRoadModel *model = _arr_content[i];
+            NSString *pinyin = [self transformToPinyin:model.getRoadName];
+            NSLog(@"pinyin--%@",pinyin);
+            model.roadName_pingyin = pinyin;
+    }
+    
 }
 
 

@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingForensicsListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<ParkingForensicsModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ParkingForensicsModel * > * list;    //包含ParkingForensicsModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 @end
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParkingOccPercentListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<ParkingOccPercentModel * > * rows;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ParkingOccPercentModel * > * rows;    //包含ParkingOccPercentModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 @end
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ParkingAreaManger:LAJIBaseRequest
 
 /****** 返回数据 ******/
-@property (nonatomic,copy)   NSArray<ParkingAreaModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ParkingAreaModel * > * list;    //包含ParkingAreaModel对象
 
 @end
 

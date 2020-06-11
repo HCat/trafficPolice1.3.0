@@ -25,6 +25,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *img_state;
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_source;
+@property (weak, nonatomic) IBOutlet UILabel *lb_source_title;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_bottom;
+
 @end
 
 
@@ -63,8 +68,13 @@
             
             _lb_handleTitle.text = @"事故处理:";
             _lb_handle.text     =  _model.operatorName;
+            _lb_source_title.hidden = YES;
+            _lb_source.hidden = YES;
+            _layout_bottom.constant = 12.f;
+            [self layoutIfNeeded];
             
         }else{
+            
             //快处 ("未认定",0),("已认定",9),("未审核",11),("有疑义",12),
             if ([_model.state isEqualToNumber:@9]) {
                 [_img_state setImage:[UIImage imageNamed:@"icon_accident_recognized"]];
@@ -75,7 +85,11 @@
             }
             _lb_handleTitle.text = @"事故认定:";
             _lb_handle.text     =  _model.identPoliceName;
-            
+            _lb_source_title.hidden = NO;
+            _lb_source.hidden = NO;
+            _lb_source.text = [ShareFun takeStringNoNull:model.source];
+            _layout_bottom.constant = 40.f;
+            [self layoutIfNeeded];
         }
         
         

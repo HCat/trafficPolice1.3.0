@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE  YES
+#define ISONLINE  NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.201:8280/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"

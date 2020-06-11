@@ -239,7 +239,7 @@
 
 @interface VehicleSpeedAlarmListReponse : NSObject
 
-@property (nonatomic,copy) NSArray <VehicleSpeedAlarmModel *> * list;  //包含AccidentListModel对象
+@property (nonatomic,copy) NSArray <VehicleSpeedAlarmModel *> * list;  //包含VehicleSpeedAlarmModel对象
 @property (nonatomic,assign) NSInteger total;                     //总数
 
 
@@ -344,7 +344,7 @@
 
 @interface VehicleUpCarListReponse : NSObject
 
-@property (nonatomic,copy) NSArray <VehicleUpDetailModel *> * list;  //包含AccidentListModel对象
+@property (nonatomic,copy) NSArray <VehicleUpDetailModel *> * list;  //包含VehicleUpDetailModel对象
 @property (nonatomic,assign) NSInteger total;                     //总数
 
 
