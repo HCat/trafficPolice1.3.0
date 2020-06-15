@@ -341,7 +341,6 @@
 		CE43DE02218FE14100AEBC9A /* PoliceDistributeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE43DE00218FE14100AEBC9A /* PoliceDistributeVC.xib */; };
 		CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464CE1F2189E20056A9EB /* FXBlurView.m */; };
 		CE4464D21F2189E20056A9EB /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D01F2189E20056A9EB /* SRAlertView.m */; };
-		CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4464D51F218A530056A9EB /* HSUpdateApp.m */; };
 		CE44BED0200E0182000357E4 /* DMProgressImgs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE44BECE200E0182000357E4 /* DMProgressImgs.bundle */; };
 		CE44BED1200E0182000357E4 /* DMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44BECF200E0182000357E4 /* DMProgressHUD.m */; };
 		CE450BB51F272A920025A20C /* FeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE450BB31F272A920025A20C /* FeedbackVC.m */; };
@@ -372,6 +371,7 @@
 		CE4A0D742398A43E004F99B1 /* IllegalExposureHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4A0D722398A43E004F99B1 /* IllegalExposureHeadView.xib */; };
 		CE4A0D782398DFAB004F99B1 /* ExposureCollectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D772398DFAB004F99B1 /* ExposureCollectAPI.m */; };
 		CE4A0D7B2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A0D7A2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m */; };
+		CE4C5A022492589D000949AE /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C5A002492589D000949AE /* HSUpdateApp.m */; };
 		CE4CDF5A1F56A0D20065375D /* AccidentProcessResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */; };
 		CE4CDF5B1F56A0D20065375D /* AccidentProcessResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */; };
 		CE4D71DD1FB44A86002F39D6 /* SearchImportCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4D71DB1FB44A86002F39D6 /* SearchImportCarVC.m */; };
@@ -1380,8 +1380,6 @@
 		CE4464CE1F2189E20056A9EB /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		CE4464CF1F2189E20056A9EB /* SRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertView.h; sourceTree = "<group>"; };
 		CE4464D01F2189E20056A9EB /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
-		CE4464D41F218A530056A9EB /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
-		CE4464D51F218A530056A9EB /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
 		CE44BECD200E0182000357E4 /* DMProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProgressHUD.h; sourceTree = "<group>"; };
 		CE44BECE200E0182000357E4 /* DMProgressImgs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DMProgressImgs.bundle; sourceTree = "<group>"; };
 		CE44BECF200E0182000357E4 /* DMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProgressHUD.m; sourceTree = "<group>"; };
@@ -1431,6 +1429,8 @@
 		CE4A0D772398DFAB004F99B1 /* ExposureCollectAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExposureCollectAPI.m; sourceTree = "<group>"; };
 		CE4A0D792398EA65004F99B1 /* IllegalExposureIllegalTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureIllegalTypeModel.h; sourceTree = "<group>"; };
 		CE4A0D7A2398EA65004F99B1 /* IllegalExposureIllegalTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureIllegalTypeModel.m; sourceTree = "<group>"; };
+		CE4C5A002492589D000949AE /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
+		CE4C5A012492589D000949AE /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
 		CE4CDF571F56A0D20065375D /* AccidentProcessResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentProcessResultVC.h; sourceTree = "<group>"; };
 		CE4CDF581F56A0D20065375D /* AccidentProcessResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentProcessResultVC.m; sourceTree = "<group>"; };
 		CE4CDF591F56A0D20065375D /* AccidentProcessResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccidentProcessResultVC.xib; sourceTree = "<group>"; };
@@ -3512,8 +3512,8 @@
 		CE4464D31F218A530056A9EB /* HSUpdateApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE4464D41F218A530056A9EB /* HSUpdateApp.h */,
-				CE4464D51F218A530056A9EB /* HSUpdateApp.m */,
+				CE4C5A012492589D000949AE /* HSUpdateApp.h */,
+				CE4C5A002492589D000949AE /* HSUpdateApp.m */,
 			);
 			path = HSUpdateApp;
 			sourceTree = "<group>";
@@ -5677,6 +5677,7 @@
 				CEF67E02239A47C400A9DAD0 /* IllegalExposureListVC.m in Sources */,
 				CE6D0A9620B6DD7E00B45EAD /* VehicleCarAnnotationView.m in Sources */,
 				CE68110522854D88003055DF /* TakeOutAddHeadView.m in Sources */,
+				CE4C5A022492589D000949AE /* HSUpdateApp.m in Sources */,
 				82F489242410936700B997F1 /* TaskFlowsDetailVC.m in Sources */,
 				CE8BB24E21CA144E006305D8 /* PoliceDistributeAPI.m in Sources */,
 				CE6AE96C20B65E2C005781DA /* VehicleExpireAlarmVC.m in Sources */,
@@ -5765,7 +5766,6 @@
 				CE36CEEC2159E057004B16A4 /* IllegalParkManageVC.m in Sources */,
 				CE90F3DA21CC89430057E218 /* PoliceSearchCell.m in Sources */,
 				CE1259422284245C00B7BF48 /* NSLayoutConstraintTopHeight.m in Sources */,
-				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE3C0F6C1F30586A00D3B55D /* LRVideoVC.m in Sources */,
 				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
 				82EFA88923C5800600327172 /* DailyPatrolDetailVC.m in Sources */,
