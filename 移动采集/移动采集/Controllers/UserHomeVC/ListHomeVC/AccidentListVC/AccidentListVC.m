@@ -11,7 +11,6 @@
 
 #import "NetWorkHelper.h"
 #import "UITableView+Lr_Placeholder.h"
-#import "UITableView+FDTemplateLayoutCell.h"
 
 #import "AccidentAPI.h"
 #import "FastAccidentAPI.h"
@@ -64,7 +63,8 @@
     _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [_tb_content setSeparatorInset:UIEdgeInsetsZero];
     [_tb_content setLayoutMargins:UIEdgeInsetsZero];
-   
+    self.tb_content.estimatedRowHeight = 148.5;
+    self.tb_content.rowHeight = UITableViewAutomaticDimension;
     [_tb_content registerNib:[UINib nibWithNibName:@"AccidentCell" bundle:nil] forCellReuseIdentifier:@"AccidentCellID"];
 
     self.arr_content = [NSMutableArray array];
@@ -302,22 +302,6 @@
     return _arr_content.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    WS(weakSelf);
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:@"AccidentCellID" cacheByIndexPath:indexPath configuration:^(AccidentCell *cell) {
-        SW(strongSelf, weakSelf);
-        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
-            AccidentListModel *t_model = strongSelf.arr_content[indexPath.row];
-            cell.accidentType = strongSelf.accidentType;
-            cell.model = t_model;
-            
-        }
-    }];
-
-    return height;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AccidentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCellID"];
@@ -325,6 +309,7 @@
     if (_arr_content && _arr_content.count > 0) {
         
         AccidentListModel *t_model = _arr_content[indexPath.row];
+        cell.accidentType = self.accidentType;
         cell.model = t_model;
     }
     

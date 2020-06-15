@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ElectronicPoliceTypeManger:LRBaseRequest
 
 /****** 返回数据 ******/
-@property (nonatomic,copy)   NSArray<ElectronicTypeModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ElectronicTypeModel * > * list;    //包含ElectronicTypeModel对象
 
 
 @end
@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber * cameraType;    //空值则为传全部
 
 /****** 返回数据 ******/
-@property (nonatomic,copy)   NSArray<ElectronicDetailModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ElectronicDetailModel * > * list;    //包含ElectronicDetailModel对象
 
 @end
 
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber * cameraId;    //空值则为传全部
 
 /****** 返回数据 ******/
-@property (nonatomic,copy)   NSArray<ElectronicImageModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ElectronicImageModel * > * list;    //包含ElectronicImageModel对象
 
 @end
 

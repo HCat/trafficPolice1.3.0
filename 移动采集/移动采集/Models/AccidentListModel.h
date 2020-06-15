@@ -21,6 +21,7 @@
 @property (nonatomic,strong) NSNumber * state;
 // 快处 ("未认定",0),("已认定",9),("未审核",11),("有疑义",12),
 // 事故 ("创建",0),("结案",1),("中队调解中",3),
+@property (nonatomic,strong) NSString * source;             //来源
 
 
 @end

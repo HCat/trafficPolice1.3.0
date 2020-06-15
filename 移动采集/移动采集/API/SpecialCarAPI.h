@@ -30,7 +30,7 @@
 
 @interface SpecialGroupListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<SpecialCarModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<SpecialCarModel * > * list;    //包含SpecialCarModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 
@@ -73,7 +73,7 @@
 
 @interface SpecialRecordListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<SpecialRecordModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<SpecialRecordModel * > * list;    //包含SpecialRecordModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 
@@ -169,7 +169,7 @@
 
 @interface SpecialNoticeReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<SpecialNoticeModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<SpecialNoticeModel * > * list;    //包含SpecialNoticeModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 

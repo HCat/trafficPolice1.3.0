@@ -520,7 +520,7 @@
 
 + (void)checkForVersionUpdates{
 
-    [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+    [HSUpdateApp hs_updateWithAPPID:nil withBundleId:BUNDID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
         
         if (isUpdate == YES) {
             
@@ -554,7 +554,7 @@
         if (manger.responseModel.code == CODE_SUCCESS) {
             if ( manger.commonVersionUpdateModel.isForce == YES) {
                 
-                [HSUpdateApp hs_updateWithAPPID:ITUNESAPPID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+                [HSUpdateApp hs_updateWithAPPID:nil withBundleId:BUNDID block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
                     
                     if (isUpdate == YES) {
                         

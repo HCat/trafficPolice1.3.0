@@ -10,6 +10,7 @@
 #pragma mark -Redefine
 
 #define ITUNESAPPID @"1252501276"
+#define BUNDID @"com.Degal.trafficPolice"
 
 #define DefaultColor UIColorFromRGB(0x3396fc)
 #define DefaultTextColor UIColorFromRGB(0x333333)

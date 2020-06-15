@@ -20,6 +20,7 @@
 @property (nonatomic,assign)    NSInteger  modelId;
 @property (nonatomic,copy)      NSString * modelName;
 @property (nonatomic,assign)    NSInteger  modelType;
+@property (nonatomic,copy) NSString * roadName_pingyin; //路段拼音
 @end
 
 @interface AccidentGetCodesResponse : NSObject

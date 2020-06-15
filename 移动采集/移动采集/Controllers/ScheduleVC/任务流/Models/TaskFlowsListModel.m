@@ -31,7 +31,7 @@
     browser.isShowDeleteBtn     = NO;
     
     TaskFlowsDetailVC *vc_target = (TaskFlowsDetailVC *)[ShareFun findViewController:cell withClass:[TaskFlowsDetailVC class]];
-           [browser showFromViewController:vc_target];
+    [browser showFromViewController:vc_target];
 
 }
 

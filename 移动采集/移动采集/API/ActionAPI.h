@@ -39,7 +39,7 @@
 
 @interface ActionPageListReponse : NSObject
 
-@property (nonatomic,copy)   NSArray<ActionListModel * > * list;    //包含AccidentListModel对象
+@property (nonatomic,copy)   NSArray<ActionListModel * > * list;    //包含ActionListModel对象
 @property (nonatomic,assign) NSInteger total;    //总数
 
 

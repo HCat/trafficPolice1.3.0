@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
 @property (weak, nonatomic) IBOutlet UITableView *tb_content;
 
+@property (nonatomic, strong) NSMutableArray * arr_pingyin;
+
+
 @end
 
 @implementation SearchLocationVC
@@ -25,6 +28,8 @@
     
     self.tb_content.isNeedPlaceholderView = YES;
     self.tb_content.firstReload = YES;
+    
+    self.arr_pingyin = @[].mutableCopy;
     
     //隐藏多余行的分割线
     self.tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -41,6 +46,30 @@
             [self getRoadName];
         }else{
             [self getAccidentCodes];
+        }
+        
+    }else{
+        
+        if (_searchType == SearchLocationTypeIllegal){
+            
+            for (int i = 0; i < self.arr_temp.count; i++) {
+                    
+                    CommonGetRoadModel *model = self.arr_temp[i];
+                    NSString *pinyin = [self transformToPinyin:model.getRoadName];
+                    NSLog(@"pinyin--%@",pinyin);
+                    model.roadName_pingyin = pinyin;
+            
+            }
+        
+        }else{
+    
+            for (int i = 0; i < self.arr_temp.count; i++) {
+                AccidentGetCodesModel *model = self.arr_temp[i];
+                NSString *pinyin = [self transformToPinyin:model.modelName];
+                NSLog(@"pinyin--%@",pinyin);
+                model.roadName_pingyin = pinyin;
+            }
+    
         }
         
     }
@@ -81,7 +110,7 @@
         }
         strongSelf.tb_content.isNetAvailable = NO;
         
-        if (_searchType == SearchLocationTypeIllegal){
+        if (strongSelf.searchType == SearchLocationTypeIllegal){
             [strongSelf getRoadName];
         }else{
             [strongSelf getAccidentCodes];
@@ -106,6 +135,12 @@
             [ShareValue sharedDefault].accidentCodes = manger.accidentGetCodesResponse;
             strongSelf.arr_content = [ShareValue sharedDefault].accidentCodes.road;
             strongSelf.arr_temp = [ShareValue sharedDefault].accidentCodes.road;
+            for (int i = 0; i < strongSelf.arr_temp.count; i++) {
+                AccidentGetCodesModel *model = strongSelf.arr_temp[i];
+                NSString *pinyin = [self transformToPinyin:model.modelName];
+                NSLog(@"pinyin--%@",pinyin);
+                model.roadName_pingyin = pinyin;
+            }
             [strongSelf.tb_content reloadData];
         }
         
@@ -139,6 +174,16 @@
             [ShareValue sharedDefault].roadModels = manger.commonGetRoadResponse;
             strongSelf.arr_content = manger.commonGetRoadResponse;
             strongSelf.arr_temp =  manger.commonGetRoadResponse;
+            
+            for (int i = 0; i < strongSelf.arr_temp.count; i++) {
+                
+                CommonGetRoadModel *model = strongSelf.arr_temp[i];
+                NSString *pinyin = [self transformToPinyin:model.getRoadName];
+                NSLog(@"pinyin--%@",pinyin);
+                model.roadName_pingyin = pinyin;
+        
+            }
+            
             [strongSelf.tb_content reloadData];
         }
         
@@ -241,37 +286,25 @@
     
     NSMutableArray *arr = [NSMutableArray array];
     WS(weakSelf);
+
     [_arr_temp enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SW(strongSelf, weakSelf);
         if (strongSelf.searchType == SearchLocationTypeIllegal) {
             CommonGetRoadModel *model = (CommonGetRoadModel *)obj;
             
-            //----------->把所有的搜索结果转成成拼音
-            NSString *pinyin = [self transformToPinyin:model.getRoadName];
-            NSLog(@"pinyin--%@",pinyin);
-            
-            if ([pinyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
+            if ([model.roadName_pingyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
                 //把搜索结果存放self.resultArray数组
                 [arr addObject:model];
             }
-            
-            
+        
         }else{
             
             AccidentGetCodesModel *model = (AccidentGetCodesModel *)obj;
-            
-            //----------->把所有的搜索结果转成成拼音
-            NSString *pinyin = [self transformToPinyin:model.modelName];
-            NSLog(@"pinyin--%@",pinyin);
-            
-            if ([pinyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
+            if ([model.roadName_pingyin rangeOfString:textField.text options:NSCaseInsensitiveSearch].length >0 ) {
                 //把搜索结果存放self.resultArray数组
                 [arr addObject:model];
             }
             
-//            if ([model.modelName containsString:textField.text]) {
-//                [arr addObject:model];
-//            }
         }
         
        
