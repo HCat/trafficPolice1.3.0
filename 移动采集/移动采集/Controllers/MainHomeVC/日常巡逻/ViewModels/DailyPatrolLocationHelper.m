@@ -162,7 +162,7 @@ LRSingletonM(Default)
 - (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager*)locationManager
 {
     [locationManager requestAlwaysAuthorization];
-    
+
 }
 
 

@@ -34,13 +34,14 @@ LRSingletonM(Default)
     
     [self.locationManager setDelegate:self];
     
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     //设置不允许系统暂停定位
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
     //设置允许在后台定位
     [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
-    self.locationManager.distanceFilter = 50.f;
+    self.locationManager.distanceFilter = 10.f;
     
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];

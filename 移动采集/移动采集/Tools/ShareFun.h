@@ -119,4 +119,15 @@
  */
 + (NSString *)translationArabicNum:(NSInteger)arabicNum;
 
+
+//设置字体不同颜色
++ (NSAttributedString *)getAttributeWith:(id)sender
+                                  string:(NSString *)string
+                               orginFont:(CGFloat)orginFont
+                              orginColor:(UIColor *)orginColor
+                           attributeFont:(CGFloat)attributeFont
+                          attributeColor:(UIColor *)attributeColor;
+
++ (NSString *)getStringWithRange:(NSRange)range;
+
 @end

@@ -421,10 +421,6 @@
     
 }
 
-
-
-
-
 #pragma mark - 获取联合执法权限
 
 + (BOOL)isPermissionForJointEnforcement{

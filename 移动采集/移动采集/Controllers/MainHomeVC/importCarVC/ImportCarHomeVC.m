@@ -104,7 +104,7 @@
     [_mapView configureForAutoLayout];
     [_mapView autoPinEdgesToSuperviewEdges];
     
-    _mapView.distanceFilter = 200;
+    _mapView.distanceFilter = 10;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = YES;
@@ -121,7 +121,7 @@
     
     [self.locationManager setDelegate:self];
     
-    self.locationManager.distanceFilter = 20.0f;
+    self.locationManager.distanceFilter = 5.0f;
     
     //设置期望定位精度
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];

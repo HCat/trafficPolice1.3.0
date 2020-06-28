@@ -240,11 +240,12 @@
             }else if ([menuModel.code isEqualToString:@"ELE_POLICE_MANAGE"]) {
                 menuModel.funTitle = @"电子警察";
                 menuModel.funImage = @"menu_electronic";
+            }else if ([menuModel.code isEqualToString:@"BOOKING_RECEIVE"]) {
+                menuModel.funTitle = @"综合屏管理";
+                menuModel.funImage = @"menu_screen";
             }
-            
-
-        }
         
+        }
         
     }
     

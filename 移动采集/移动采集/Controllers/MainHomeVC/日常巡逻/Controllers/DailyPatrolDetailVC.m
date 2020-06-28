@@ -120,7 +120,7 @@
         make.left.equalTo(@0);
         make.bottom.equalTo(@0);
     }];
-    _mapView.distanceFilter = 5.f;
+    _mapView.distanceFilter = 2.f;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = YES;

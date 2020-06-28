@@ -29,8 +29,8 @@ PODS:
   - IQKeyboardManager (5.0.8)
   - JAnalytics (2.1.2):
     - JCore (< 3.0.0, >= 1.2.0)
-  - JCore (2.2.4)
-  - JPush (3.3.2):
+  - JCore (2.3.0)
+  - JPush (3.3.3):
     - JCore (< 3.0.0, >= 2.0.0)
   - LKDBHelper (2.5.3):
     - LKDBHelper/standard (= 2.5.3)
@@ -48,7 +48,7 @@ PODS:
   - SDWebImage/Core (4.2.3)
   - SocketRocket (0.5.1)
   - TOCropViewController (2.1.0)
-  - WechatOpenSDK (1.8.7)
+  - WechatOpenSDK (1.8.7.1)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
   - YYKit (1.0.9):
@@ -75,7 +75,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.2.2)
   - SocketRocket
   - TOCropViewController (~> 2.1.0)
-  - WechatOpenSDK (~> 1.8.0)
+  - WechatOpenSDK
   - YTKNetwork (~> 2.0.4)
   - YYKit (~> 1.0.9)
 
@@ -119,8 +119,8 @@ SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   JAnalytics: 46c696f8ebbe486f871cebd31047e00b299be6ba
-  JCore: b007693f7ac4d12d5c77861660a4184522454eb1
-  JPush: 9468c84a3809dc3ac2fc1c89c6d1d6c858a91bf5
+  JCore: 7fb83e1e75e00df37e9e1e33f3adae79182ad57c
+  JPush: 61b3dc8c2bdefb7c48e7ca283f9fe42e71bfe063
   LKDBHelper: 26b47fdd6f4c800ef83c478554829ff8a1da20c5
   LxDBAnything: 154a2ad1ae32e70355d886b5443260543bb60c71
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -132,10 +132,10 @@ SPEC CHECKSUMS:
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TOCropViewController: f88194a084f6afe1fd6f21a3f0edda7dd097e38b
-  WechatOpenSDK: 7cd4d3386fb6ba5595d5fb863e0a3bfd43bc6768
+  WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 5f3a6a606caed616991bb44a93723185d1a51a9c
+PODFILE CHECKSUM: 4ce527ac94901518a8230314116564d6cbb7d438
 
 COCOAPODS: 1.5.3

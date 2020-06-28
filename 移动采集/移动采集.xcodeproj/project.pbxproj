@@ -752,6 +752,9 @@
 		CED797F71F7A3D36003FC68C /* SuperLoggerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643971F7A3B0800C72288 /* SuperLoggerFunctions.m */; };
 		CED797F81F7A3D36003FC68C /* SuperLoggerPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9643991F7A3B0800C72288 /* SuperLoggerPreviewView.m */; };
 		CED797F91F7A41FC003FC68C /* SuperLogger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE9643911F7A3B0800C72288 /* SuperLogger.bundle */; };
+		CED8996E249C57ED0032C494 /* ScreenManageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CED8996D249C57ED0032C494 /* ScreenManageAPI.m */; };
+		CED89972249C659E0032C494 /* ScreenManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED89970249C659E0032C494 /* ScreenManageCell.m */; };
+		CED89973249C659E0032C494 /* ScreenManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED89971249C659E0032C494 /* ScreenManageCell.xib */; };
 		CED9B0E51F5CFB5C0010E68A /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E31F5CFB5C0010E68A /* SignInVC.m */; };
 		CED9B0E61F5CFB5C0010E68A /* SignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */; };
 		CED9B0E91F5CFFBC0010E68A /* BorderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0E81F5CFFBC0010E68A /* BorderLabel.m */; };
@@ -761,6 +764,8 @@
 		CED9B0F41F5D356E0010E68A /* SignListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F21F5D356E0010E68A /* SignListCell.xib */; };
 		CED9B0F81F5D358C0010E68A /* SignInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9B0F61F5D358C0010E68A /* SignInCell.m */; };
 		CED9B0F91F5D358C0010E68A /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED9B0F71F5D358C0010E68A /* SignInCell.xib */; };
+		CEDAF3FD249C4F4C00F55691 /* ScreenManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDAF3FB249C4F4C00F55691 /* ScreenManageVC.m */; };
+		CEDAF3FE249C4F4C00F55691 /* ScreenManageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDAF3FC249C4F4C00F55691 /* ScreenManageVC.xib */; };
 		CEE1156D2399377F00D9D782 /* IllegalExposureViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE1156C2399377F00D9D782 /* IllegalExposureViewModel.m */; };
 		CEE45BA81FAC492500BF472F /* UserTaskDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE45BA61FAC492500BF472F /* UserTaskDetailVC.m */; };
 		CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE45BA71FAC492500BF472F /* UserTaskDetailVC.xib */; };
@@ -784,6 +789,10 @@
 		CEEF36312338BC8A0086D6AC /* ParkingCarOperationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF362F2338BC8A0086D6AC /* ParkingCarOperationVC.m */; };
 		CEEF36322338BC8A0086D6AC /* ParkingCarOperationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEEF36302338BC8A0086D6AC /* ParkingCarOperationVC.xib */; };
 		CEEF3635233A02930086D6AC /* ParkingCarDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF3634233A02930086D6AC /* ParkingCarDetailViewModel.m */; };
+		CEF1EB2D24A2FC71005523ED /* ScreenAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EB2B24A2FC71005523ED /* ScreenAddVC.m */; };
+		CEF1EB2E24A2FC71005523ED /* ScreenAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF1EB2C24A2FC71005523ED /* ScreenAddVC.xib */; };
+		CEF1EB3224A32659005523ED /* ScreenAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EB3024A32659005523ED /* ScreenAddCell.m */; };
+		CEF1EB3324A32659005523ED /* ScreenAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF1EB3124A32659005523ED /* ScreenAddCell.xib */; };
 		CEF67E02239A47C400A9DAD0 /* IllegalExposureListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF67E00239A47C400A9DAD0 /* IllegalExposureListVC.m */; };
 		CEF67E03239A47C400A9DAD0 /* IllegalExposureListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF67E01239A47C400A9DAD0 /* IllegalExposureListVC.xib */; };
 		CEF67E08239A562B00A9DAD0 /* IllegalExposureDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF67E06239A562B00A9DAD0 /* IllegalExposureDetailVC.m */; };
@@ -2073,6 +2082,11 @@
 		CED6EE8C1F691358004FED7B /* UIView+AdjustFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AdjustFrame.m"; sourceTree = "<group>"; };
 		CED6F5CC1F2B240D000D1293 /* KSSDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSDImageManager.h; sourceTree = "<group>"; };
 		CED6F5CD1F2B240D000D1293 /* KSSDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSDImageManager.m; sourceTree = "<group>"; };
+		CED8996C249C57ED0032C494 /* ScreenManageAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenManageAPI.h; sourceTree = "<group>"; };
+		CED8996D249C57ED0032C494 /* ScreenManageAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenManageAPI.m; sourceTree = "<group>"; };
+		CED8996F249C659E0032C494 /* ScreenManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenManageCell.h; sourceTree = "<group>"; };
+		CED89970249C659E0032C494 /* ScreenManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenManageCell.m; sourceTree = "<group>"; };
+		CED89971249C659E0032C494 /* ScreenManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenManageCell.xib; sourceTree = "<group>"; };
 		CED9B0E21F5CFB5C0010E68A /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
 		CED9B0E31F5CFB5C0010E68A /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
 		CED9B0E41F5CFB5C0010E68A /* SignInVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInVC.xib; sourceTree = "<group>"; };
@@ -2088,6 +2102,9 @@
 		CED9B0F51F5D358C0010E68A /* SignInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInCell.h; sourceTree = "<group>"; };
 		CED9B0F61F5D358C0010E68A /* SignInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInCell.m; sourceTree = "<group>"; };
 		CED9B0F71F5D358C0010E68A /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
+		CEDAF3FA249C4F4C00F55691 /* ScreenManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenManageVC.h; sourceTree = "<group>"; };
+		CEDAF3FB249C4F4C00F55691 /* ScreenManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenManageVC.m; sourceTree = "<group>"; };
+		CEDAF3FC249C4F4C00F55691 /* ScreenManageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenManageVC.xib; sourceTree = "<group>"; };
 		CEE1156B2399377F00D9D782 /* IllegalExposureViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureViewModel.h; sourceTree = "<group>"; };
 		CEE1156C2399377F00D9D782 /* IllegalExposureViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureViewModel.m; sourceTree = "<group>"; };
 		CEE45BA51FAC492500BF472F /* UserTaskDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTaskDetailVC.h; sourceTree = "<group>"; };
@@ -2131,6 +2148,12 @@
 		CEEF36302338BC8A0086D6AC /* ParkingCarOperationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkingCarOperationVC.xib; sourceTree = "<group>"; };
 		CEEF3633233A02930086D6AC /* ParkingCarDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkingCarDetailViewModel.h; sourceTree = "<group>"; };
 		CEEF3634233A02930086D6AC /* ParkingCarDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkingCarDetailViewModel.m; sourceTree = "<group>"; };
+		CEF1EB2A24A2FC71005523ED /* ScreenAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenAddVC.h; sourceTree = "<group>"; };
+		CEF1EB2B24A2FC71005523ED /* ScreenAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenAddVC.m; sourceTree = "<group>"; };
+		CEF1EB2C24A2FC71005523ED /* ScreenAddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenAddVC.xib; sourceTree = "<group>"; };
+		CEF1EB2F24A32659005523ED /* ScreenAddCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenAddCell.h; sourceTree = "<group>"; };
+		CEF1EB3024A32659005523ED /* ScreenAddCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenAddCell.m; sourceTree = "<group>"; };
+		CEF1EB3124A32659005523ED /* ScreenAddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenAddCell.xib; sourceTree = "<group>"; };
 		CEF67DFF239A47C400A9DAD0 /* IllegalExposureListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureListVC.h; sourceTree = "<group>"; };
 		CEF67E00239A47C400A9DAD0 /* IllegalExposureListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureListVC.m; sourceTree = "<group>"; };
 		CEF67E01239A47C400A9DAD0 /* IllegalExposureListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureListVC.xib; sourceTree = "<group>"; };
@@ -4027,6 +4050,7 @@
 		CE69154A1F1DD47A008911A6 /* MainHomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				CEDAF3F6249C4E8700F55691 /* 大屏管理 */,
 				826AC76F245130E900D803D4 /* 电子警察 */,
 				82B7550023F7D3010061F884 /* 违停采集(石狮) */,
 				82EFA87C23C577A400327172 /* 日常巡逻 */,
@@ -4870,6 +4894,15 @@
 			path = PopMenuTableView;
 			sourceTree = "<group>";
 		};
+		CED8996B249C57CF0032C494 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				CED8996C249C57ED0032C494 /* ScreenManageAPI.h */,
+				CED8996D249C57ED0032C494 /* ScreenManageAPI.m */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
 		CED9B0E11F5CFB1D0010E68A /* SignInVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -4884,6 +4917,50 @@
 				CED9B0F71F5D358C0010E68A /* SignInCell.xib */,
 			);
 			path = SignInVC;
+			sourceTree = "<group>";
+		};
+		CEDAF3F6249C4E8700F55691 /* 大屏管理 */ = {
+			isa = PBXGroup;
+			children = (
+				CED8996B249C57CF0032C494 /* APIs */,
+				CEDAF3F9249C4EC600F55691 /* Views */,
+				CEDAF3F8249C4EB700F55691 /* ViewModels */,
+				CEDAF3F7249C4EAC00F55691 /* Controllers */,
+			);
+			path = "大屏管理";
+			sourceTree = "<group>";
+		};
+		CEDAF3F7249C4EAC00F55691 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEDAF3FA249C4F4C00F55691 /* ScreenManageVC.h */,
+				CEDAF3FB249C4F4C00F55691 /* ScreenManageVC.m */,
+				CEDAF3FC249C4F4C00F55691 /* ScreenManageVC.xib */,
+				CEF1EB2A24A2FC71005523ED /* ScreenAddVC.h */,
+				CEF1EB2B24A2FC71005523ED /* ScreenAddVC.m */,
+				CEF1EB2C24A2FC71005523ED /* ScreenAddVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEDAF3F8249C4EB700F55691 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CEDAF3F9249C4EC600F55691 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED8996F249C659E0032C494 /* ScreenManageCell.h */,
+				CED89970249C659E0032C494 /* ScreenManageCell.m */,
+				CED89971249C659E0032C494 /* ScreenManageCell.xib */,
+				CEF1EB2F24A32659005523ED /* ScreenAddCell.h */,
+				CEF1EB3024A32659005523ED /* ScreenAddCell.m */,
+				CEF1EB3124A32659005523ED /* ScreenAddCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CEE5E9C21F1C6CBB00AC515C = {
@@ -5294,11 +5371,13 @@
 				CE6AE97720B6901E005781DA /* VehicleTiredListCell.xib in Resources */,
 				CED37B9922EAD19C003BCD45 /* ParkingAreaVC.xib in Resources */,
 				82EFA88A23C5800600327172 /* DailyPatrolDetailVC.xib in Resources */,
+				CEF1EB3324A32659005523ED /* ScreenAddCell.xib in Resources */,
 				CE6810DD2284B001003055DF /* TakeOutIllegalCell.xib in Resources */,
 				CEF67E03239A47C400A9DAD0 /* IllegalExposureListVC.xib in Resources */,
 				CE6915651F1DDA01008911A6 /* UserHomeVC.xib in Resources */,
 				CE5B92EB1F2F0AED000008AE /* SearchLocationVC.xib in Resources */,
 				CE508F3A1F3D51C60066A9B7 /* AccidentRemarkCell.xib in Resources */,
+				CEF1EB2E24A2FC71005523ED /* ScreenAddVC.xib in Resources */,
 				CED5A86620D10B9500953852 /* DutyLeaderCell.xib in Resources */,
 				CE26B25722EE93B100A1D1A1 /* ParkingForensicsVC.xib in Resources */,
 				CE21D1092330CB0D004F4B18 /* ParkingManageListCell.xib in Resources */,
@@ -5403,6 +5482,7 @@
 				CE175B8320E4865C009E2282 /* MakePhoneView.xib in Resources */,
 				CE19ADC721129E8900A3C4C0 /* ActionListCell.xib in Resources */,
 				CEFEFCF71F29B22F00C33CBD /* IllegalParkAddHeadView.xib in Resources */,
+				CED89973249C659E0032C494 /* ScreenManageCell.xib in Resources */,
 				CE78E2122113326A00E900C3 /* ActionDetailVC.xib in Resources */,
 				CE675F361F386F07006FC15F /* AccidentCell.xib in Resources */,
 				CEE45BA91FAC492500BF472F /* UserTaskDetailVC.xib in Resources */,
@@ -5436,6 +5516,7 @@
 				CE2AAEAA212BE228009088C3 /* LoginDevelopListVC.xib in Resources */,
 				CE88FC4B20A998690011B729 /* VehicleTrafficInfoVC.xib in Resources */,
 				CE90F3DB21CC89430057E218 /* PoliceSearchCell.xib in Resources */,
+				CEDAF3FE249C4F4C00F55691 /* ScreenManageVC.xib in Resources */,
 				CE93BC6421479CBB001F2976 /* SpecialEditGroupView.xib in Resources */,
 				CE25F50821255F8D0067E125 /* IllegalRecordImageCell.xib in Resources */,
 				CE1B7EFE20BE8594002243AF /* VehicleTrafficTopCell.xib in Resources */,
@@ -5693,6 +5774,7 @@
 				CE04C0E12457011C00321113 /* ElectronicImageViewModel.m in Sources */,
 				CE1F10332356F79900E5CA48 /* ParkCameraVC.m in Sources */,
 				CE85A2C62011D69A005A3175 /* JointVideoVC.m in Sources */,
+				CEF1EB2D24A2FC71005523ED /* ScreenAddVC.m in Sources */,
 				CE4139FB2178CF27006AA441 /* UIButton+EnlargeTouchArea.m in Sources */,
 				CE48A8FC22559EF300D423C6 /* AttendanceSignInVC.m in Sources */,
 				CE42B9261F1F4968005CC5BD /* IllegalThroughSecDetailModel.m in Sources */,
@@ -5817,7 +5899,9 @@
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
 				CED2B5B7231912D6006CD8D3 /* AccidentDisposeViewModel.m in Sources */,
+				CED89972249C659E0032C494 /* ScreenManageCell.m in Sources */,
 				CE26B25622EE93B100A1D1A1 /* ParkingForensicsVC.m in Sources */,
+				CED8996E249C57ED0032C494 /* ScreenManageAPI.m in Sources */,
 				82252CD42415D5A600D48561 /* TaskFlowsUserListVC.m in Sources */,
 				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
 				CE6810DC2284B001003055DF /* TakeOutIllegalCell.m in Sources */,
@@ -5829,6 +5913,7 @@
 				CE93BC582147587E001F2976 /* SpecialMemberCell.m in Sources */,
 				CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE424F3F1F3AE694005741CA /* AccidentImageCell.m in Sources */,
+				CEF1EB3224A32659005523ED /* ScreenAddCell.m in Sources */,
 				CE68A7FE233364B90037811F /* ParkingManagementAPI.m in Sources */,
 				82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */,
 				826AC77F245282CA00D803D4 /* ElectronicTypeModel.m in Sources */,
@@ -5948,6 +6033,7 @@
 				CE4139EA2178CF26006AA441 /* ZLPhotoBrowser.m in Sources */,
 				CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */,
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
+				CEDAF3FD249C4F4C00F55691 /* ScreenManageVC.m in Sources */,
 				CE1E3FF620F460DA003A5595 /* AccidentInfoCell.m in Sources */,
 				CE1259302283C1D900B7BF48 /* DeliveryVehicleModel.m in Sources */,
 				CE6811142285BBA5003055DF /* MainAllFunctionVC.m in Sources */,
@@ -6184,7 +6270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -6236,7 +6322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6251,6 +6337,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
@@ -6264,6 +6352,7 @@
 				MARKETING_VERSION = 2.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6275,6 +6364,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
@@ -6288,6 +6379,7 @@
 				MARKETING_VERSION = 2.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
