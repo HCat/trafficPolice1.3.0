@@ -103,7 +103,13 @@
             NSLog(@"%@",self.arr_name);
             
 
+            if (self.arr_name.count == 0) {
+                [LRShowHUD showError:@"输入姓名不能为空" duration:1.5f];
+                return;
+            }
+        
             manger.nameArr = [self.arr_name componentsJoinedByString:@","];
+            
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 @strongify(self);
                        
@@ -162,7 +168,7 @@
     if (self.arr_name.count > 0) {
         return self.arr_name.count + 1;
     }else{
-        return 1;
+        return 2;
     }
 
 }
@@ -229,26 +235,60 @@
         
     }else{
         
-        UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddID" forIndexPath:indexPath];
-        UIButton * button = [[UIButton alloc] init];
-        [button setImage:[UIImage imageNamed:@"icon_screen_add"] forState:UIControlStateNormal];
-        [button setTitle:@"新增" forState:UIControlStateNormal];
-        [button setTitleColor:UIColorFromRGB(0x3396FC) forState:UIControlStateNormal];
-        [cell.contentView addSubview:button];
-        button.backgroundColor = UIColorFromRGB(0xF5F9FE);
-        button.layer.borderColor = UIColorFromRGB(0x3396FC).CGColor;
-        button.layer.borderWidth = .5f;
-        button.layer.cornerRadius = 5.f;
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.bottom.left.right.equalTo(cell.contentView).offset(1);
-        }];
-        [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-            @strongify(self);
+        
+        if (indexPath.row == 1) {
+            UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddID" forIndexPath:indexPath];
+            UIButton * button = [[UIButton alloc] init];
+            [button setImage:[UIImage imageNamed:@"icon_screen_add"] forState:UIControlStateNormal];
+            [button setTitle:@"新增" forState:UIControlStateNormal];
+            [button setTitleColor:UIColorFromRGB(0x3396FC) forState:UIControlStateNormal];
+            [cell.contentView addSubview:button];
+            button.backgroundColor = UIColorFromRGB(0xF5F9FE);
+            button.layer.borderColor = UIColorFromRGB(0x3396FC).CGColor;
+            button.layer.borderWidth = .5f;
+            button.layer.cornerRadius = 5.f;
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.bottom.left.right.equalTo(cell.contentView).offset(1);
+            }];
+            [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
+                NSString * name = @"";
+                [self.arr_name addObject:name];
+                [self.mainCollectionView reloadData];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     ScreenAddCell *cell = (ScreenAddCell*)[self.mainCollectionView
+                                                                      cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.arr_name.count-1 inSection:0]];
+                    [cell.tf_name becomeFirstResponder];
+                    [self.mainCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.arr_name.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+                });
+                
+            }];
             
+            return cell;
             
+        }else{
+            
+            ScreenAddCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddNameID" forIndexPath:indexPath];
             NSString * name = @"";
             [self.arr_name addObject:name];
-            [self.mainCollectionView reloadData];
+            
+            cell.index = @(indexPath.row);
+            cell.count = @(self.arr_name.count);
+            cell.block = ^(NSNumber * _Nonnull index) {
+                
+                [self.arr_name removeObjectAtIndex:[index intValue]];
+                [self.mainCollectionView reloadData];
+            };
+            cell.doneBlock = ^(NSNumber * _Nonnull index, NSString * _Nonnull name) {
+                if (([index intValue] > self.arr_name.count -1) || self.arr_name.count == 0) {
+                    return;
+                }else{
+                    [self.arr_name replaceObjectAtIndex:[index integerValue] withObject:name];
+                    [self.mainCollectionView reloadData];
+                }
+                
+            };
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  ScreenAddCell *cell = (ScreenAddCell*)[self.mainCollectionView
@@ -256,11 +296,11 @@
                 [cell.tf_name becomeFirstResponder];
                 [self.mainCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.arr_name.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
             });
-           
             
-        }];
+            return cell;
+        }
         
-        return cell;
+       
     }
     
 }

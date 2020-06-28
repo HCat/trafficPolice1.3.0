@@ -74,8 +74,13 @@
 //请求参数
 - (nullable id)requestArgument{
     
-    return @{@"nameArr":_nameArr
-            };
+    if (_nameArr) {
+        return @{@"nameArr":_nameArr
+        };
+    }else{
+        return nil;
+    }
+    
 }
 
 @end
