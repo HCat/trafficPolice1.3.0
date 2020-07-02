@@ -93,22 +93,24 @@
         if (self.arr_name.count > 0) {
             ScreenAddManger * manger = [[ScreenAddManger alloc] init];
             
-            [self.arr_name enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSMutableArray * t_arr = self.arr_name.mutableCopy;
+            
+            [t_arr enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSString * name = (NSString * )obj;
                 if (name.length == 0) {
-                    [self.arr_name removeObject:name];
+                    [t_arr removeObject:name];
+                     * stop = YES;
                 }
             }];
 
-            NSLog(@"%@",self.arr_name);
+            NSLog(@"%@",t_arr);
             
-
-            if (self.arr_name.count == 0) {
+            if (t_arr.count == 0) {
                 [LRShowHUD showError:@"输入姓名不能为空" duration:1.5f];
                 return;
             }
-        
-            manger.nameArr = [self.arr_name componentsJoinedByString:@","];
+            
+            manger.nameArr = [t_arr componentsJoinedByString:@","];
             
             [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                 @strongify(self);
@@ -215,6 +217,7 @@
             cell.index = @(indexPath.row);
             cell.count = @(self.arr_name.count);
             cell.name = t_name;
+            cell.tf_name.text = t_name;
             cell.block = ^(NSNumber * _Nonnull index) {
                 
                 [self.arr_name removeObjectAtIndex:[index intValue]];

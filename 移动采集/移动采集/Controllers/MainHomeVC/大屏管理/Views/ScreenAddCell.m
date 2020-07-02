@@ -27,13 +27,7 @@
     
     RAC(self,name) = [self.tf_name.rac_textSignal skip:1];
     
-    [RACObserve(self, name) subscribeNext:^(NSString * _Nullable x) {
-        @strongify(self);
-        self.tf_name.text = x;
-        
-    }];
 
-    
     [[_btn_cancel rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
         

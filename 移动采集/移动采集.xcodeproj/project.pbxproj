@@ -111,6 +111,7 @@
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
+		CE115D3024AD8A6600C057F4 /* NSTimer+UnRetain.m in Sources */ = {isa = PBXBuildFile; fileRef = CE115D2E24AD8A6600C057F4 /* NSTimer+UnRetain.m */; };
 		CE121D5C219C17F80043A07C /* PoliceDistributeAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D5B219C17F80043A07C /* PoliceDistributeAnnotation.m */; };
 		CE121D5F219C26290043A07C /* PoliceLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D5E219C26290043A07C /* PoliceLocationModel.m */; };
 		CE121D62219C29AD0043A07C /* PoliceDisAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE121D61219C29AD0043A07C /* PoliceDisAnnotationView.m */; };
@@ -698,7 +699,6 @@
 		CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA970C1F1CF15900741A6F /* UITableView+Lr_Placeholder.m */; };
 		CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA970E1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m */; };
 		CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97101F1CF15900741A6F /* NSString+Range.m */; };
-		CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97121F1CF15900741A6F /* NSTimer+UnRetain.m */; };
 		CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97141F1CF15900741A6F /* UIButton+Block.m */; };
 		CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97161F1CF15900741A6F /* CALayer+Additions.m */; };
 		CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA97221F1CF17A00741A6F /* ShareValue.m */; };
@@ -1003,6 +1003,8 @@
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
 		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
+		CE115D2E24AD8A6600C057F4 /* NSTimer+UnRetain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+UnRetain.m"; sourceTree = "<group>"; };
+		CE115D2F24AD8A6600C057F4 /* NSTimer+UnRetain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+UnRetain.h"; sourceTree = "<group>"; };
 		CE121D5A219C17F80043A07C /* PoliceDistributeAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceDistributeAnnotation.h; sourceTree = "<group>"; };
 		CE121D5B219C17F80043A07C /* PoliceDistributeAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceDistributeAnnotation.m; sourceTree = "<group>"; };
 		CE121D5D219C26290043A07C /* PoliceLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceLocationModel.h; sourceTree = "<group>"; };
@@ -1997,8 +1999,6 @@
 		CEAA970E1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Lr_Placeholder.m"; sourceTree = "<group>"; };
 		CEAA970F1F1CF15900741A6F /* NSString+Range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Range.h"; sourceTree = "<group>"; };
 		CEAA97101F1CF15900741A6F /* NSString+Range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Range.m"; sourceTree = "<group>"; };
-		CEAA97111F1CF15900741A6F /* NSTimer+UnRetain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+UnRetain.h"; sourceTree = "<group>"; };
-		CEAA97121F1CF15900741A6F /* NSTimer+UnRetain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+UnRetain.m"; sourceTree = "<group>"; };
 		CEAA97131F1CF15900741A6F /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
 		CEAA97141F1CF15900741A6F /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
 		CEAA97151F1CF15900741A6F /* CALayer+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Additions.h"; sourceTree = "<group>"; };
@@ -4603,6 +4603,8 @@
 		CEAA96E61F1CE6C700741A6F /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CE115D2F24AD8A6600C057F4 /* NSTimer+UnRetain.h */,
+				CE115D2E24AD8A6600C057F4 /* NSTimer+UnRetain.m */,
 				CEB4656C215CDE4E00B0D2C0 /* UINavigationBar+Awesome.h */,
 				CEB4656D215CDE4E00B0D2C0 /* UINavigationBar+Awesome.m */,
 				82978CE0242C4C9E009201B7 /* UIViewController+LL_Utils.h */,
@@ -4623,8 +4625,6 @@
 				CEAA97101F1CF15900741A6F /* NSString+Range.m */,
 				CE2CE43A1F9F357A00E63953 /* NSDate+Formatter.h */,
 				CE2CE43B1F9F357A00E63953 /* NSDate+Formatter.m */,
-				CEAA97111F1CF15900741A6F /* NSTimer+UnRetain.h */,
-				CEAA97121F1CF15900741A6F /* NSTimer+UnRetain.m */,
 				CEAA97131F1CF15900741A6F /* UIButton+Block.h */,
 				CEAA97141F1CF15900741A6F /* UIButton+Block.m */,
 				CEAA97151F1CF15900741A6F /* CALayer+Additions.h */,
@@ -5811,7 +5811,6 @@
 				82252CE6241781B100D48561 /* TaskFlowsForwardVC.m in Sources */,
 				CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */,
 				CE26B26E22F1909300A1D1A1 /* TakeOutTempViewModel.m in Sources */,
-				CEAA971E1F1CF15900741A6F /* NSTimer+UnRetain.m in Sources */,
 				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
 				CE93BC4E2146A0FB001F2976 /* SpecialManageVC.m in Sources */,
 				CED9B0F31F5D356E0010E68A /* SignListCell.m in Sources */,
@@ -6055,6 +6054,7 @@
 				CE6810E52284B7F0003055DF /* TakeOutIllegalDetailVC.m in Sources */,
 				CE87043320CE52B700E206AE /* LTSCalendarManager.m in Sources */,
 				CE672D151FA6D8D400CB3081 /* LocationStorage.m in Sources */,
+				CE115D3024AD8A6600C057F4 /* NSTimer+UnRetain.m in Sources */,
 				CE6915561F1DD70A008911A6 /* ShowTabSuperVC.m in Sources */,
 				CEFEFCEE1F29B16300C33CBD /* IllegalParkVC.m in Sources */,
 				CE450BBF1F272F810025A20C /* FeedbackFootView.m in Sources */,
