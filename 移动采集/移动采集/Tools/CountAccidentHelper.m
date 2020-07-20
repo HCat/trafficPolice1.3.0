@@ -135,46 +135,43 @@ LRSingletonM(Default)
     
     if (_telNum) {
         
-        if ([ShareFun validatePhoneNumber:_telNum]) {
-            
-            AccidentCountByTelNumManger *manger = [AccidentCountByTelNumManger new];
-            
-            manger.telNum = _telNum;
-            manger.state = _state;
-      
-            [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-                
-                if (manger.responseModel.code == CODE_SUCCESS) {
-                    
-                    AccidentCountModel *accidentCountModel = manger.accidentCountModel;
-                    
-                    if (accidentCountModel) {
-                        
-                        if (accidentCountModel.accidentWeek >= 2 && accidentCountModel.accidentYear >= 3) {
-                            NSString *t_string = [NSString stringWithFormat:@"该手机号近一周内发生过%ld起交通事故,近一年内发生过%ld起交通事故",accidentCountModel.accidentWeek,accidentCountModel.accidentYear];
-                            
-                            [AlertView showWindowWithTitle:@"提示" contents:t_string];
-                            
-                        }else if (accidentCountModel.accidentWeek >= 2){
-                            NSString *t_string = [NSString stringWithFormat:@"该手机号近一周内发生过%ld起交通事故",accidentCountModel.accidentWeek];
-                            
-                            [AlertView showWindowWithTitle:@"提示" contents:t_string];
-                        
-                        }else if (accidentCountModel.accidentYear >= 3){
-                            NSString *t_string = [NSString stringWithFormat:@"该手机号近一年内发生过%ld起交通事故",accidentCountModel.accidentYear];
-                            
-                            [AlertView showWindowWithTitle:@"提示" contents:t_string];
-                        }
-                    
-                    }
-                    
-                }
-                
-            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-                
-                
-            }];
-        }
+        AccidentCountByTelNumManger *manger = [AccidentCountByTelNumManger new];
+              
+              manger.telNum = _telNum;
+              manger.state = _state;
+        
+              [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                  
+                  if (manger.responseModel.code == CODE_SUCCESS) {
+                      
+                      AccidentCountModel *accidentCountModel = manger.accidentCountModel;
+                      
+                      if (accidentCountModel) {
+                          
+                          if (accidentCountModel.accidentWeek >= 2 && accidentCountModel.accidentYear >= 3) {
+                              NSString *t_string = [NSString stringWithFormat:@"该手机号近一周内发生过%ld起交通事故,近一年内发生过%ld起交通事故",accidentCountModel.accidentWeek,accidentCountModel.accidentYear];
+                              
+                              [AlertView showWindowWithTitle:@"提示" contents:t_string];
+                              
+                          }else if (accidentCountModel.accidentWeek >= 2){
+                              NSString *t_string = [NSString stringWithFormat:@"该手机号近一周内发生过%ld起交通事故",accidentCountModel.accidentWeek];
+                              
+                              [AlertView showWindowWithTitle:@"提示" contents:t_string];
+                          
+                          }else if (accidentCountModel.accidentYear >= 3){
+                              NSString *t_string = [NSString stringWithFormat:@"该手机号近一年内发生过%ld起交通事故",accidentCountModel.accidentYear];
+                              
+                              [AlertView showWindowWithTitle:@"提示" contents:t_string];
+                          }
+                      
+                      }
+                      
+                  }
+                  
+              } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                  
+                  
+              }];
     }
     
 }

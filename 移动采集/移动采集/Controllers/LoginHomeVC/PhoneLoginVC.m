@@ -68,13 +68,13 @@
             return ;
         }
         
-        if (![ShareFun validatePhoneNumber:strongSelf.tf_phone.text]) {
-            
-            [LRShowHUD showError:@"手机号码格式错误!" duration:1.0f inView:strongSelf.view config:nil];
-            [strongSelf.btn_countDown endCountDown];
-            
-            return ;
-        }
+//        if (![ShareFun validatePhoneNumber:strongSelf.tf_phone.text]) {
+//            
+//            [LRShowHUD showError:@"手机号码格式错误!" duration:1.0f inView:strongSelf.view config:nil];
+//            [strongSelf.btn_countDown endCountDown];
+//            
+//            return ;
+//        }
         
         [strongSelf.tf_phone resignFirstResponder];
         
@@ -145,10 +145,10 @@
         return ;
     }
     
-    if (![ShareFun validatePhoneNumber:self.tf_phone.text]) {
-        [LRShowHUD showError:@"手机号码格式错误!" duration:1.0f inView:self.view config:nil];
-        return ;
-    }
+//    if (![ShareFun validatePhoneNumber:self.tf_phone.text]) {
+//        [LRShowHUD showError:@"手机号码格式错误!" duration:1.0f inView:self.view config:nil];
+//        return ;
+//    }
     
     LoginCheck2Param *param = [[LoginCheck2Param alloc] init];
     param.acId = self.acId;
