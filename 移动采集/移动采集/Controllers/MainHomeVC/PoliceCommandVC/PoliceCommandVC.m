@@ -197,7 +197,7 @@ typedef NS_ENUM(NSUInteger, PoliceType) {
     [self.view sendSubviewToBack:_mapView];
     
     _mapView.showsUserLocation = YES;
-    _mapView.distanceFilter = 200;
+    _mapView.distanceFilter = 10;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;

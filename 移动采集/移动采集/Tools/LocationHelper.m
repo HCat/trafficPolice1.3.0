@@ -21,7 +21,7 @@ LRSingletonM(Default)
     
     [self.locationManager setDelegate:self];
     
-    self.locationManager.distanceFilter = 20.0f;
+    self.locationManager.distanceFilter = 5.0f;
     
     //设置期望定位精度
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];

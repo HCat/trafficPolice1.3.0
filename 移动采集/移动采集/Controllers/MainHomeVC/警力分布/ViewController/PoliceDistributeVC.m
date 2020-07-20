@@ -205,7 +205,7 @@
     [_mapView autoPinEdgesToSuperviewEdges];
     
     
-    _mapView.distanceFilter = 200;
+    _mapView.distanceFilter = 10;
     _mapView.showsCompass= NO;
     _mapView.showsScale= NO;
     _mapView.showsUserLocation = NO;

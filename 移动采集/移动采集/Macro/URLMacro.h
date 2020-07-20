@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE  YES
+#define ISONLINE  NO
 
 #define DEBUG_DACAO_URL @"http://192.168.10.201:8280/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
@@ -296,5 +296,10 @@
 #define URL_ELECTRONIC_TYPE @"app/trafficManage/elecTypeList.json" //电子警察摄像头类型
 #define URL_ELECTRONIC_LIST @"app/trafficManage/cameraPoliceList.json"  //电子警察摄像头列表
 #define URL_ELECTRONIC_IMAGE @"app/trafficManage/picList.json"          //图片列表
+
+#define URL_SCREEN_LIST @"app/bookReceive/bookinglist.json"         //领取证件列表分页
+#define URL_SCREEN_ADD @"app/bookReceive/saveBookingReceive.json"         //领取证件添加
+#define URL_SCREEN_DEL @"app/bookReceive/delBookReceive.json"         //领取证件删除
+
 
 #endif /* URLMacro_h */

@@ -34,7 +34,7 @@
 
         self.locationManager = [[AMapLocationManager alloc] init];
         [_locationManager setDelegate:self];
-        _locationManager.distanceFilter = 20.0f;
+        _locationManager.distanceFilter = 10.0f;
         //设置期望定位精度
         [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         //设置不允许系统暂停定位

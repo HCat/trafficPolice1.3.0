@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '10.0'
 
 target '移动采集' do
 
@@ -15,7 +15,7 @@ pod 'PureLayout', '~> 3.0.2’
 pod 'Masonry'
 pod 'JPush'
 pod 'JAnalytics'
-pod 'WechatOpenSDK', '~> 1.8.0’
+pod 'WechatOpenSDK'
 pod 'Reachability'
 pod 'AMap2DMap'
 pod 'AMapSearch'
