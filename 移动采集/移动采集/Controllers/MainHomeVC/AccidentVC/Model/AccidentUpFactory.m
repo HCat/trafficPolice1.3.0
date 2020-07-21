@@ -187,12 +187,12 @@
                 }
             }
             
-            if (model.phone) {
-                if ([ShareFun validatePhoneNumber:model.phone] == NO) {
-                    [LRShowHUD showError:[NSString stringWithFormat:@"%ld号手机号码格式错误",[model.sorting integerValue]] duration:1.f inView:window config:nil];
-                    return NO;
-                }
-            }
+//            if (model.phone) {
+//                if ([ShareFun validatePhoneNumber:model.phone] == NO) {
+//                    [LRShowHUD showError:[NSString stringWithFormat:@"%ld号手机号码格式错误",[model.sorting integerValue]] duration:1.f inView:window config:nil];
+//                    return NO;
+//                }
+//            }
             
             
         }
