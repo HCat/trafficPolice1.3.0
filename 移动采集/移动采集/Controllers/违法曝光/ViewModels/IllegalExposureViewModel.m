@@ -50,6 +50,7 @@
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
                     if (manger.responseModel.code == CODE_SUCCESS) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ILLEGALEXPOSURE_SUCCESS object:nil];
                         [subscriber sendNext:@"提交成功"];
                     }else{
                         [subscriber sendNext:@"提交失败"];

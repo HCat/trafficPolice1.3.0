@@ -72,6 +72,8 @@
         
     };
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(IllegalExposureSuccess:) name:NOTIFICATION_ILLEGALEXPOSURE_SUCCESS object:nil];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"IllegalCollectListCell" bundle:nil] forCellReuseIdentifier:@"IllegalCollectListCellID"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -230,6 +232,11 @@
     vc.title =  [self.title substringToIndex:range.location];
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+- (void)IllegalExposureSuccess:(NSNotification *)notification{
+    [self.tableView beginRefresh];
+    
 }
 
 

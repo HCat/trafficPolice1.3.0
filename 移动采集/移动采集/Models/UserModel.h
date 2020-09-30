@@ -115,6 +115,7 @@
 + (BOOL)isPermissionForExposure;                //违法曝光权限
 
 
+
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;            //事故权限列表
 + (BOOL)isPermissionForFastAccidentList;        //快处权限列表
