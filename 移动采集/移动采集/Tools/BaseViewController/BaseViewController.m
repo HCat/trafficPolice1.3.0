@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "UINavigationBar+BarItem.h"
 #import <JANALYTICSService.h>
 
 @interface BaseViewController ()
@@ -16,10 +15,57 @@
 
 @implementation BaseViewController
 
++ (instancetype)alloc{
+    
+    BaseViewController *viewController = [super alloc];
+    
+    @weakify(viewController)
+    
+    [[viewController rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
+        
+        @strongify(viewController)
+        [viewController lr_configUI];
+        [viewController lr_bindViewModel];
+    }];
+    
+    [[viewController rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
+        
+        //@strongify(viewController)
+        
+        
+    }];
+    
+    return viewController;
+}
+
+- (instancetype)init{
+    
+    if (self = [super init]) {
+        
+        
+    }
+    
+    return self;
+}
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = DefaultBGColor;
-    // Do any additional setup after loading the view.
+    self.zx_navStatusBarStyle = ZXNavStatusBarStyleDefault;
+    self.zx_navLineView.hidden = YES;
+    [self.zx_navBar setBackgroundColor:DefaultNavColor];
+    self.zx_navTintColor = UIColorFromRGB(0xffffff);
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    if (@available(iOS 11.0, *)) {
+        
+    } else {
+        
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -37,43 +83,23 @@
     
 }
 
-#pragma mark - set && get
-
-
-- (void)setCanBack:(BOOL)canBack{
-
-    _canBack = canBack;
-
-    if (_canBack) {
-        
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.navigationController.navigationBar.translucent = NO;
-        
-        if (self.navigationController.viewControllers.count == 1) {
-            [self showLeftBarButtonItemWithImage:@"nav_down" target:self action:@selector(handleBtnBackClicked)];
-        }else{
-            [self showLeftBarButtonItemWithImage:@"nav_back" target:self action:@selector(handleBtnBackClicked)];
-        }
-    }else{
-        [self showLeftBarButtonItemWithImage:@"" target:nil action:nil];
+#pragma mark - RAC
+/**
+ *  添加控件
+ */
+- (void)lr_configUI{
     
-    }
+    
     
 }
 
--(void)handleBtnBackClicked{
+/**
+ *  绑定
+ */
+- (void)lr_bindViewModel{
     
-    if (self.navigationController.viewControllers.count == 1) {
-        
-        [self.navigationController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-    }else{
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
+    
+    
     
 }
 
@@ -87,17 +113,9 @@
 
 - (void)dealloc{
    
+    NSLog(@"%@-dealloc",[self class]);
 
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

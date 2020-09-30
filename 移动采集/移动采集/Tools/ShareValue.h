@@ -24,8 +24,9 @@ typedef NS_ENUM(NSInteger, AccidentType) {
 };
 
 typedef NS_ENUM(NSInteger, IllegalType) {
-    IllegalTypePark,        //违停
-    IllegalTypeThrough,     //闯禁令
+    IllegalTypePark = 1,        //违停
+    IllegalTypeThrough = 2,     //闯禁令
+    IllegalTypeThroughManage = 3,   //闯禁令管理
 };
 
 typedef NS_ENUM(NSUInteger, ParkType) {
@@ -35,7 +36,8 @@ typedef NS_ENUM(NSUInteger, ParkType) {
     ParkTypeMotorbikeAdd = 2001,    //摩托车录入
     ParkTypeViolationLine = 1003,   //违反禁止线
     ParkTypeCarInfoAdd = 2002,      //车辆录入
-    ParkTypeThrough = 2333          //闯禁令
+    ParkTypeThrough = 2333,         //闯禁令
+    ParkTypeThroughManage = 2335,   //闯禁令管理
 };
 
 typedef NS_ENUM(NSUInteger, MessageType) {

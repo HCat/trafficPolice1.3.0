@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 //第三方平台
-#import <WXApi.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <JANALYTICSService.h>
 // 引入JPush功能所需头文件
@@ -19,15 +18,13 @@
 
 #endif
 
-#import "AKTabBarController.h"
+#import "MainVC.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate,JPUSHRegisterDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) AKTabBarController *vc_tabBar;
-
-
--(void)initAKTabBarController;
+@property (strong, nonatomic) MainVC * mainvc;
+@property (strong, nonatomic) UINavigationController * nav_main;
 
 @end
 

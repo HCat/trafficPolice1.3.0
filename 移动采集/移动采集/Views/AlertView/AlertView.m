@@ -98,8 +98,6 @@
     [window.keyWindow makeKeyAndVisible];
     [[UIApplication sharedApplication].keyWindow addSubview:window];
     
-    
-    
     IllegalParkAlertView *view = [IllegalParkAlertView initCustomView];
     view.block = selectAction;
     window.contentView = view;
@@ -168,7 +166,7 @@
 + (void)showWindowWithIllegalListViewWith:(IllegalListView *)view inView:(UIView *)contentView{
     
     
-    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
 
     [contentView addSubview:window];
     
@@ -189,7 +187,7 @@
 
 + (void)showWindowWithIllegalRoadViewWith:(IllegalRoadView *)view inView:(UIView *)contentView{
     
-    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
 
     [contentView addSubview:window];
     
@@ -209,7 +207,7 @@
 + (void)showWindowWithIllegalSearchViewWith:(IllegalSearchView *)view inView:(UIView *)contentView{
     
     
-    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64)];
+    AlertView *window = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height )];
 
     [contentView addSubview:window];
     

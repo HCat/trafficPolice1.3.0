@@ -10,29 +10,24 @@
 #import "ImageFileInfo.h"
 #import <AFNetworking.h>
 
+
 #pragma mark - 违反禁令查询是否需要二次采集API
 
-@implementation IllegalThroughQuerySecManger
 
-//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
-- (NSString *)requestUrl
-{
-    return URL_ILLEGALTHROUGH_QUERYSEC;
+@implementation IllegalThroughCarNoSecReponse
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"illegalId" : @"id",
+             };
 }
 
-//请求参数
-- (nullable id)requestArgument
-{
-    return @{@"carNo": _carNo,
-             @"roadId":_roadId};
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"illegalList" : [IllegalListModel class]
+             };
 }
-
-//返回参数
-
 
 @end
 
-#pragma mark - 违反禁令查询是否需要二次采集API
 
 @implementation IllegalThroughCarNoSecManger
 
@@ -69,6 +64,17 @@
     if (self.responseModel) {
         _deckCarNo = self.responseModel.data[@"deckCarNo"];
         return _deckCarNo;
+    }
+    
+    return nil;
+}
+
+
+//返回参数
+- (IllegalThroughCarNoSecReponse *)illegalReponse{
+    
+    if (self.responseModel.data) {
+        return [IllegalThroughCarNoSecReponse modelWithDictionary:self.responseModel.data];
     }
     
     return nil;

@@ -50,6 +50,7 @@ LRSingletonM(Default)
     [self setIsTakeOut:YES];
     [self setIsIllegalExposure:YES];
     [self setIsIllegal:YES];
+    [self setIsThroughManage:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -68,6 +69,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsInforInput:NO];
     }else if (type == ParkTypeThrough){
         [[LocationStorage sharedDefault] setIsThrough:NO];
+    }else if (type == ParkTypeThroughManage){
+        [[LocationStorage sharedDefault] setIsThroughManage:NO];
     }
     
 }
@@ -88,6 +91,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsInforInput:YES];
     }else if (type == ParkTypeThrough){
         [[LocationStorage sharedDefault] setIsThrough:YES];
+    }else if (type == ParkTypeThroughManage){
+        [[LocationStorage sharedDefault] setIsThroughManage:YES];
     }
     
 }
@@ -228,6 +233,18 @@ LRSingletonM(Default)
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISILLEGAL];
     
 }
+
+- (void)setIsThroughManage:(BOOL)isThroughManage{
+    [[NSUserDefaults standardUserDefaults] setBool:isThroughManage forKey:USERDEFAULT_KEY_ISTHROUGHMANAGE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isThroughManage{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISTHROUGHMANAGE];
+    
+}
+
 
 #pragma mark -
 - (void)setPark:(LocationStorageModel *)park{
@@ -468,6 +485,30 @@ LRSingletonM(Default)
     return illegal;
     
 }
+
+
+#pragma mark -
+
+- (void)setThroughManage:(LocationStorageModel *)throughManage{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:throughManage];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_THROUGHMANAGE];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)throughManage{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_THROUGHMANAGE];
+    LocationStorageModel *throughManage = nil;
+    if (data) {
+        throughManage = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return throughManage;
+    
+}
+
 
 
 @end

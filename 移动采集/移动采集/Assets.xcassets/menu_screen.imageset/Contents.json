@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "menu_screen@2x.png",
+      "filename" : "大屏管理@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "menu_screen@3x.png",
+      "filename" : "大屏管理@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

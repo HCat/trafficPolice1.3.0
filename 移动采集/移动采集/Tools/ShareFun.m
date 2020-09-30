@@ -12,7 +12,6 @@
 #import "SAMKeychainQuery.h"
 #import "HSUpdateApp.h"
 #import "SRAlertView.h"
-#import "SuperLogger.h"
 
 #import "UserModel.h"
 #import "LoginHomeVC.h"
@@ -23,12 +22,9 @@
 #import "WebSocketHelper.h"
 #import "SocketModel.h"
 #import "CommonAPI.h"
-#import "AutomaicUpCacheModel.h"
+
 #import <CoreGraphics/CoreGraphics.h>
-#import "IllegalDBModel.h"
-#import "AccidentDBModel.h"
 #import "StepNumberHelper.h"
-#import "UpCacheHelper.h"
 #import "DailyPatrolLocationHelper.h"
 
 
@@ -441,6 +437,7 @@
     
     //开启webSocket
     [ShareFun openWebSocket];
+    
     [[DailyPatrolLocationHelper sharedDefault] startUpLocation];
     if ([UserModel getUserModel].workstate == YES) {
         
@@ -454,40 +451,12 @@
         
     }
     
-    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *current = [formatter stringFromDate:now];
-    
-    
-    NSString * sql = [NSString stringWithFormat:@"commitTimeString not like '%%%@%%'",current];
-    NSArray *array = [IllegalDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
-    
-    for (IllegalDBModel * model in array) {
-        [model deleteDB];
-    }
-    
-    NSArray *array_accident = [AccidentDBModel searchWithWhere:sql orderBy:nil offset:0 count:0];
-    for (AccidentDBModel * model in array_accident) {
-        [model deleteDB];
-    }
-    
-    [[UpCacheHelper sharedDefault] startWithAll];
-    
+
 }
 
 #pragma mark - 注销需要执行的操作
 
 + (void)loginOut{
-    
-    [AutomaicUpCacheModel sharedDefault].isAutoPark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoReversePark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoLockPark = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoCarInfoAdd = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoThrough = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoAccident = NO;
-    [AutomaicUpCacheModel sharedDefault].isAutoFastAccident = NO;
-    [[UpCacheHelper sharedDefault] stopAll];
     
     [ShareFun closeWebSocket];
     [[DailyPatrolLocationHelper sharedDefault] stopLocation];
@@ -509,7 +478,7 @@
     [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         
     } seq:0];
-    ApplicationDelegate.vc_tabBar = nil;
+    
     LoginHomeVC *t_vc = [LoginHomeVC new];
     UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
     ApplicationDelegate.window.rootViewController = t_nav;
@@ -550,6 +519,7 @@
     
     CommonVersionUpdateManger *manger = [[CommonVersionUpdateManger alloc] init];
     manger.appType = @"IOS";
+    manger.isNoShowFail = YES;
     [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         if (manger.responseModel.code == CODE_SUCCESS) {
             if ( manger.commonVersionUpdateModel.isForce == YES) {
@@ -797,28 +767,11 @@
     
 }
 
-#pragma mark - 打印崩溃日志重定向
-+ (void)printCrashLog{
-    
-    //日子重定向用于记录崩溃日志
-    SuperLogger *logger = [SuperLogger sharedInstance];
-    // Start NSLogToDocument
-    [logger redirectNSLogToDocumentFolder];
-    // Set Email info
-    logger.mailTitle = @"移动采集日志信息";
-    logger.mailContect = @"移动采集日志信息";
-    logger.mailRecipients = @[@"qgwzhuanglr@163.com"];
-    //每次进来清除一周前的日志
-    NSDate *five = [[NSDate date]dateByAddingTimeInterval:-60*60*24*7];
-    [[SuperLogger sharedInstance] cleanLogsBefore:five deleteStarts:YES];
-    
-}
-
 #pragma mark - 退出程序
 
 + (void)exitApplication{
     
-    AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIWindow *window = app.window;
     
     [UIView animateWithDuration:1.0f animations:^{

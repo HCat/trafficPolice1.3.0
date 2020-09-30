@@ -16,12 +16,13 @@ PODS:
     - AFNetworking/NSURLSession
   - AMap2DMap (5.6.1):
     - AMapFoundation (~> 1.4)
-  - AMapFoundation (1.6.3)
-  - AMapLocation (2.6.5):
-    - AMapFoundation (~> 1.6.3)
-  - AMapSearch (7.3.0):
+  - AMapFoundation (1.6.4)
+  - AMapLocation (2.6.7):
+    - AMapFoundation (~> 1.6.4)
+  - AMapSearch (7.6.0):
     - AMapFoundation (~> 1.6.3)
   - AMScrollingNavbar (1.5.1)
+  - DZNEmptyDataSet (1.8.1)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -29,9 +30,10 @@ PODS:
   - IQKeyboardManager (5.0.8)
   - JAnalytics (2.1.2):
     - JCore (< 3.0.0, >= 1.2.0)
-  - JCore (2.3.0)
-  - JPush (3.3.3):
+  - JCore (2.3.4)
+  - JPush (3.3.6):
     - JCore (< 3.0.0, >= 2.0.0)
+  - JXCategoryView (1.5.6)
   - LKDBHelper (2.5.3):
     - LKDBHelper/standard (= 2.5.3)
   - LKDBHelper/standard (2.5.3):
@@ -39,7 +41,7 @@ PODS:
   - LxDBAnything (1.1.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
-  - MJRefresh (3.1.17)
+  - MJRefresh (3.4.0)
   - PureLayout (3.0.2)
   - Reachability (3.2)
   - ReactiveObjC (3.1.1)
@@ -60,15 +62,17 @@ DEPENDENCIES:
   - AMapLocation
   - AMapSearch
   - AMScrollingNavbar (~> 1.5.1)
+  - DZNEmptyDataSet
   - GPUImage
   - IQKeyboardManager (~> 5.0.6)
   - JAnalytics
   - JPush
+  - JXCategoryView
   - LKDBHelper
   - LxDBAnything
   - Masonry
   - MBProgressHUD
-  - MJRefresh (~> 3.1.15)
+  - MJRefresh (= 3.4.0)
   - PureLayout (~> 3.0.2)
   - Reachability
   - ReactiveObjC
@@ -87,12 +91,14 @@ SPEC REPOS:
     - AMapLocation
     - AMapSearch
     - AMScrollingNavbar
+    - DZNEmptyDataSet
     - FMDB
     - GPUImage
     - IQKeyboardManager
     - JAnalytics
     - JCore
     - JPush
+    - JXCategoryView
     - LKDBHelper
     - LxDBAnything
     - Masonry
@@ -111,21 +117,23 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AMap2DMap: cac76bc057de18a1641f34df6b50bf5bc6b23571
-  AMapFoundation: 9ed923193b357ebb30a073e9fe255d3c24054d5a
-  AMapLocation: c566d448285cd502c1e313063d9e2460bd4d7100
-  AMapSearch: a048bcca3bf0b8083345070e1f193f814bd8dc01
+  AMapFoundation: 3638198dfa40be54648570c3520edefad288286b
+  AMapLocation: a46c30d9930d0f3a3bd21139d8f845d10ac3f01d
+  AMapSearch: ea3151e626c91b1ef99ec0ec72afdbdb577e16b2
   AMScrollingNavbar: 767ed2db60d927a809bddff5d01b739b7020b12b
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   JAnalytics: 46c696f8ebbe486f871cebd31047e00b299be6ba
-  JCore: 7fb83e1e75e00df37e9e1e33f3adae79182ad57c
-  JPush: 61b3dc8c2bdefb7c48e7ca283f9fe42e71bfe063
+  JCore: 8aa29dc57ba3730dd9fe7544ce1a4e1cbe221135
+  JPush: a401b946dcc76b37335422487201bc1ecc8dd296
+  JXCategoryView: 603ccd8277a89b1a73e9cedb9d8ed4b294576008
   LKDBHelper: 26b47fdd6f4c800ef83c478554829ff8a1da20c5
   LxDBAnything: 154a2ad1ae32e70355d886b5443260543bb60c71
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
+  MJRefresh: 95b08b3b8b6457d2c69510439e0349599050ea34
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
@@ -136,6 +144,6 @@ SPEC CHECKSUMS:
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 4ce527ac94901518a8230314116564d6cbb7d438
+PODFILE CHECKSUM: 6cc873e56c50739a00f123f51d81adf01e607e12
 
 COCOAPODS: 1.5.3

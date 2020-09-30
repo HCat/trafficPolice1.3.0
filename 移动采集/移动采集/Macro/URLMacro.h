@@ -11,12 +11,12 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE  YES
+#define ISONLINE  NO
 
-#define DEBUG_DACAO_URL @"http://192.168.10.201:8280/police-admin/"
+#define DEBUG_DACAO_URL @"http://proda.degal.cn/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
 
-#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://192.168.10.123:8080 @"http://proda.degal.cn/police-admin"
+#define DEBUG_URL @"http://proda.degal.cn/police-admin" //  外网 http://192.168.10.201:8280/police-admin/login.htm @"http://proda.degal.cn/police-admin"
 #define RELEASE_URL @"http://jj.police.degal.cn"
 
 
@@ -24,7 +24,7 @@
 #define PARK_RELEASE_URL @"http://topark.host/api"   //停车取证正式环境
 
 
-#define WEBSOCKET_DEBUG_URL @"ws://192.168.10.201:8280//police-admin/websocket"
+#define WEBSOCKET_DEBUG_URL @"ws://proda.degal.cn/police-admin/websocket"
 //ws://192.168.10.201:8280//police-admin/websocket
 
 #define WEBSOCKET_RELEASE_URL @"ws://jj.police.degal.cn/websocket"
@@ -301,5 +301,28 @@
 #define URL_SCREEN_ADD @"app/bookReceive/saveBookingReceive.json"         //领取证件添加
 #define URL_SCREEN_DEL @"app/bookReceive/delBookReceive.json"         //领取证件删除
 
+
+#define URL_MAIN_POLICEMENULIST @"app/policeMenu/policeMenuList.json"   //常用个人应用菜单
+#define URL_MAIN_LOGINCHECK @"app/loginCheck.json"                      //app个人信息头像
+#define URL_MAIN_GETMENUINFO @"app/policeMenu/getMenuInfo.json"         //机构全部菜单
+#define URL_MAIN_MENUINFOSAVE @"app/policeMenu/savePoliceMenu.json"     //保存个人常用菜单
+#define URL_MAIN_GETMENUTYPE @"app/policeMenu/menuType.json"            //菜单类型列表
+
+
+#pragma mark - 闯禁令相关API
+
+#define URL_THROUGHMANAGE_SAVE          @"app/throughCollect/save.json"                 //闯禁令第一次采集
+#define URL_THROUGHMANAGE_QUERYSEC      @"app/throughCollect/queryCarNoSec.json"        //闯禁令查询第二次是否采集
+#define URL_THROUGHMANAGE_LISTPAGING    @"app/throughCollect/list.json"                 //违章车辆查询列表
+#define URL_THROUGHMANAGE_COUNTCOLLECT  @"app/throughCollect/countCollect.json"         //车牌查询违章次数
+#define URL_THROUGHMANAGE_COUNTIDENTNO  @"app/throughCollect/countIdentNo.json"         //身份证位置次数查询
+#define URL_THROUGHMANAGE_SECSAVE       @"app/throughCollect/secSave.json"              //闯禁令管理第二次采集提交
+#define URL_THROUGHMANAGE_DETAIL        @"app/throughCollect/detail.json"               //闯禁令管理详情
+
+
+#pragma mark - 快递员监管相关
+
+#define URL_EXPRESS_GETCOURIERLIST @"app/courierInfo/queryCouierMessage.json"  //查询接口
+#define URL_EXPRESS_DETAIL @"app/courierInfo/courierDetail.json"               //详情接口
 
 #endif /* URLMacro_h */

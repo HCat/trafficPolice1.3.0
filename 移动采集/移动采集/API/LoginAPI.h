@@ -105,6 +105,7 @@
 @property (nonatomic,copy) NSString * platform;      //设备平台
 @property (nonatomic, copy) NSString * userId;       //用户ID
 @property (nonatomic, copy) NSString * mobile;       //手机号
+
 @end
 
 @interface LoginCheck2Manger:LRBaseRequest

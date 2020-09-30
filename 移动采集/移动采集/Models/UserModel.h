@@ -29,6 +29,7 @@
 @property (nonatomic,assign) BOOL workstate;            //签到状态 1签到0签退
 @property (nonatomic,copy) NSArray * userPrivileges;    //权限列表
 @property (nonatomic,copy) NSString * orgCode;          //机构编码
+@property (nonatomic,copy) NSString * photoUrl;         //用户头像
 @property (nonatomic,strong) NSNumber * secRoadStatus;  //二级路段开关  0 关闭 1开启
 
 @property (nonatomic,copy) NSArray *menus;          //可操作的菜单列表
@@ -55,10 +56,14 @@
 	不按朝向列表     ILLEGAL_REVERSE_LIST
 	违停锁车采集     ILLEGAL_LOCK_PARKING
 	违停锁车列表     ILLEGAL_LOCK_LIST
+    违反禁止线       ILLEGAL_INHIBIT_LINE
+    违反禁止线列表    ILLEGAL_INHIBIT_LINE_LIST
 	车辆录入        CAR_INFO_ADD
 	车辆列表        CAR_INFO_LIST
+    摩托车采集       MOTOR_INFO_ADD
+    摩托车采集列表    MOTOR_INFO_LIST
     闯禁令采集      ILLEGAL_THROUGH
-	闯禁令列表      THROUGH_LIST
+    闯禁令列表      THROUGH_LIST
 	视频采集        VIDEO_COLLECT
 	视频采集列表     VIDEO_COLLECT_LIST
 	重点车辆        IMPORTANT_CAR
@@ -71,10 +76,6 @@
     行动管理        ACTION_MANAGE
     行动管理-发布    ACTIONMANAGE06
     行动管理-结束    ACTIONMANAGE08
-    摩托车采集       MOTOR_INFO_ADD
-    摩托车采集列表    MOTOR_INFO_LIST
-    违反禁止线       ILLEGAL_INHIBIT_LINE
-    违反禁止线列表    ILLEGAL_INHIBIT_LINE_LIST
     勤务管理         POLICE_MANAGE
  
     车场出入库管理    CAR_YARD_COLLECT
@@ -85,7 +86,7 @@
     日常巡逻         PATROL_MANAGE
     App采集违停权限： ILLEGAL_PARK_COLLECT
     App采集违停列表： ILLEGAL_PARK_LIST
-
+    闯禁令管理列表    THROUGH_COLLECT_LIST
  
 
 */
@@ -101,38 +102,42 @@
 + (BOOL)isPermissionForAccident;                //事故录入权限
 + (BOOL)isPermissionForFastAccident;            //快处录入权限
 + (BOOL)isPermissionForIllegal;                 //违章录入权限
-+ (BOOL)isPermissionForThrough;                 //闯禁令录入权限
-+ (BOOL)isPermissionForVideoCollect;            //视频录入权限
-
 + (BOOL)isPermissionForIllegalReverseParking;   //获取不按朝向采集权限
 + (BOOL)isPermissionForLockParking;             //获取违停锁车采集权限
 + (BOOL)isPermissionForInhibitLine;             //获取违反禁止线权限
-
++ (BOOL)isPermissionForThrough;                 //闯禁令录入权限
 + (BOOL)isPermissionForCarInfoAdd;              //获取车辆录入权限
 + (BOOL)isPermissionForMotorBikeAdd;            //获取摩托车违章录入权限
-
-+ (BOOL)isPermissionForImportantCar;            //获取重点车辆权限
-+ (BOOL)isPermissionForPoliceCommand;           //获取勤务指挥权限
-
-+ (BOOL)isPermissionForRoadInfo;                //路面实况权限
-+ (BOOL)isPermissionForJointEnforcement;        //联合执法权限
-+ (BOOL)isPermissionForSpecialCar;              //特殊车辆权限
-+ (BOOL)isPermissionForAttendance;              //勤务管理
++ (BOOL)isPermissionForVideoCollect;            //视频录入权限
++ (BOOL)isPermissionForThroughCollect;          //闯禁令管理权限
++ (BOOL)isPermissionForIllegalAdd;              //违停采集权限(石狮)
++ (BOOL)isPermissionForExpressRegulation;       //快递监管权限
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;            //事故权限列表
 + (BOOL)isPermissionForFastAccidentList;        //快处权限列表
-+ (BOOL)isPermissionForIllegalList;             //违章权限列表
-+ (BOOL)isPermissionForThroughList;             //闯禁令权限列表
-+ (BOOL)isPermissionForVideoCollectList;        //视频录入权限列表
 
++ (BOOL)isPermissionForIllegalList;             //违章权限列表
 + (BOOL)isPermissionForIllegalReverseList;      //不按朝向列表权限
 + (BOOL)isPermissionForIllegalLockList;         //违停锁车列表权限
 + (BOOL)isPermissionForInhibitLineList;         //获取违反禁止线列表权限
-+ (BOOL)isPermissionForCarInfoList;             //车辆列表
++ (BOOL)isPermissionForCarInfoList;             //车辆录入列表
 + (BOOL)isPermissionForMotorBikeList;           //摩托车采集列表
++ (BOOL)isPermissionForThroughList;             //闯禁令权限列表
++ (BOOL)isPermissionForVideoCollectList;        //视频录入权限列表
+
++ (BOOL)isPermissionForIllegalAddList;          //违章采集列表权限(石狮)
 + (BOOL)isPermissionForExposureList;            //违法曝光列表
-+ (BOOL)isPermissionForIllegalAddList;          //违章采集列表权限
++ (BOOL)isPermissionForThroughCollectList;      //闯禁令管理列表权限
+
++ (BOOL)isPermissionForIllegalReport;           //违停采集上报异常(晋江)
++ (BOOL)isPermissionForThroughReport;           //违反禁令上报异常权限
++ (BOOL)isPermissionForReverseParkingReport;    //不按朝向上报异常权限
++ (BOOL)isPermissionForLockParkingReport;       //违停锁车上报异常权限
++ (BOOL)isPermissionForInhibitLineReport;       //违反禁止线上报异常权限
++ (BOOL)isPermissionForMotorBikeAddReport;      //摩托车上报异常权限
++ (BOOL)isPermissionForThroughCollectReport;    //闯禁令管理上报异常权限
+
 
 //获取一些功能性权限
 + (BOOL)isPermissionForAccidentCase;            //事故结案权限
@@ -143,7 +148,13 @@
 //获取一些功能性权限
 + (BOOL)isPermissionForAcitonEnd;               //行动管理结束
 
++ (BOOL)isPermissionForImportantCar;            //获取重点车辆权限
++ (BOOL)isPermissionForPoliceCommand;           //获取勤务指挥权限
 
++ (BOOL)isPermissionForRoadInfo;                //路面实况权限
++ (BOOL)isPermissionForJointEnforcement;        //联合执法权限
++ (BOOL)isPermissionForSpecialCar;              //特殊车辆权限
++ (BOOL)isPermissionForAttendance;              //勤务管理
 
  
 @end

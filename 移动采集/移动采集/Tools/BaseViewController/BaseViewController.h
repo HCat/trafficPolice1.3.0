@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewControllerProtocol.h"
+#import "ZXNavigationBarController.h"
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : ZXNavigationBarController <BaseViewControllerProtocol>
 
-@property (nonatomic,assign) BOOL canBack;
 
 @end

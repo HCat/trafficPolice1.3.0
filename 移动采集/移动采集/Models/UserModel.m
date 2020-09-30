@@ -116,6 +116,51 @@
     
 }
 
++ (BOOL)isPermissionForThroughCollect{
+    
+    NSString *match = @"THROUGH_MANAGE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
++ (BOOL)isPermissionForIllegalAdd{
+    
+    NSString *match = @"ILLEGAL_PARK_COLLECT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
++ (BOOL)isPermissionForExpressRegulation{
+    
+    NSString *match = @"LOGISTICS_MANAGE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
+
 #pragma mark - 获取不按朝向采集权限
 
 + (BOOL)isPermissionForIllegalReverseParking{
@@ -529,6 +574,7 @@
     
 }
 
+#pragma mark - 获取违章采集列表（石狮的）权限
 + (BOOL)isPermissionForIllegalAddList{
     
     NSString *match = @"ILLEGAL_PARK_LIST";
@@ -543,6 +589,124 @@
     
     
 }
+
+#pragma mark - 获取闯进令管理列表（石狮的）权限
++ (BOOL)isPermissionForThroughCollectList{
+    
+    NSString *match = @"THROUGH_COLLECT_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
+
+#pragma mark - 获取违章采集上报异常权限
++ (BOOL)isPermissionForIllegalReport{
+    
+    NSString *match = @"PARKING_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+
+}
++ (BOOL)isPermissionForThroughReport{
+    
+    NSString *match = @"THROUGH_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
++ (BOOL)isPermissionForReverseParkingReport{
+    
+    NSString *match = @"REVERSE_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
++ (BOOL)isPermissionForLockParkingReport{
+    
+    NSString *match = @"LOCK_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
++ (BOOL)isPermissionForInhibitLineReport{
+    
+    NSString *match = @"INHIBIT_LINE_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
++ (BOOL)isPermissionForMotorBikeAddReport{
+    
+    NSString *match = @"MOTOR_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+    
+}
+
++ (BOOL)isPermissionForThroughCollectReport{
+    
+    NSString *match = @"THROUGH_COLLECT_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 
 
 @end

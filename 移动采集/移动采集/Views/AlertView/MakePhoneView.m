@@ -34,10 +34,12 @@
 
 - (IBAction)handleBtnTakePhoneClicked:(id)sender {
     
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel://%@",_people.telNum];
-    //            NSLog(@"str======%@",str);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel://%@",_people.telNum];
+//    //            NSLog(@"str======%@",str);
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
+    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",_people.telNum];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
     
 }
 

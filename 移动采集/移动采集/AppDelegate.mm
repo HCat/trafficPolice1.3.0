@@ -10,37 +10,21 @@
 #import <AVFoundation/AVFoundation.h>
 #import <YTKNetwork.h>
 #import "LSStatusBarHUD.h"
-#import "UINavigationBar+Awesome.h"
-
 
 #import "LRBaseRequest.h"
 #import "LAJIBaseRequest.h"
 #import "NetWorkHelper.h"
 
-
 #import "LoginHomeVC.h"
-#import "AddressBookHomeVC.h"
-#import "ScheduleVC.h"
-#import "MainHomeVC.h"
-#import "MessageHomeVC.h"
-#import "ScheduleVC.h"
-#import "UserCenterVC.h"
-//#import "UserHomeVC.h"
 
 #import "UserModel.h"
-#import "MessageHomeVC.h"
+
 #import "IdentifyAPI.h"
 #import "MessageDetailVC.h"
 #import "IllegalOperatCarVC.h"
-#import "ScheduleVC.h"
-
 #import "ParkingForensicsListVC.h"
 
-#if defined(DEBUG) || defined(_DEBUG)
-#import "FHHFPSIndicator.h"
-#endif
-
-@interface AppDelegate ()
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *player;
 
@@ -53,8 +37,7 @@
     
     [self commonConfig];
     [self addThirthPart:launchOptions];
-    [ShareFun printCrashLog];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -66,8 +49,11 @@
         } seq:0];
         [LRBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
         //[LAJIBaseRequest setupRequestFilters:@{@"token": [ShareValue sharedDefault].token}];
-        [self initAKTabBarController];
-        self.window.rootViewController = self.vc_tabBar;
+        
+        self.mainvc = [[MainVC alloc] init];
+        self.nav_main = [[UINavigationController alloc] initWithRootViewController:self.mainvc];
+        self.window.rootViewController = self.nav_main;
+        [self.window makeKeyAndVisible];
         
     }else{
         
@@ -79,12 +65,6 @@
     
     [self.window makeKeyAndVisible];
     
-    // Add the follwing code after the window become keywindow
-#if defined(DEBUG) || defined(_DEBUG)
-    [[FHHFPSIndicator sharedFPSIndicator] show];
-    //        [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionTopRight;
-#endif
-    
     return YES;
 }
 
@@ -92,21 +72,30 @@
 
 -(void)commonConfig{
     
-    //设置导航栏
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    //[[UINavigationBar appearance] lt_setBackgroundColor:DefaultNavColor];
-
-    [[UINavigationBar appearance] setTranslucent:NO];
-    [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    
-    
     //开启网络监听通知
     [[NetWorkHelper sharedDefault] startNotification];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReconnection) name:NOTIFICATION_HAVENETWORK_SUCCESS object:nil];
 
-    //同步通知消息数目
-    [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    
     //添加点击消息通知时候弹出具体详情
+    @weakify(self);
+    [RACObserve([ShareValue sharedDefault], makeNumber) subscribeNext:^(NSNumber * _Nullable x) {
+        @strongify(self);
+        
+        if ([x integerValue] > 0) {
+            self.mainvc.lb_message.text = [NSString stringWithFormat:@"%ld",[x integerValue]];
+            self.mainvc.lb_message.hidden = NO;
+        }else{
+            
+            self.mainvc.lb_message.text = @"";
+            self.mainvc.lb_message.hidden = YES;
+        }
+        
+        
+    }];
+    
+    //同步通知消息数目
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationSuccess:) name:NOTIFICATION_RECEIVENOTIFICATION_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makesureNotification:) name:NOTIFICATION_MAKESURENOTIFICATION_SUCCESS object:nil];
     
@@ -121,9 +110,6 @@
 #pragma mark - 第三方SDK接入
 
 -(void)addThirthPart:(NSDictionary *)launchOptions{
-    
-    
-    [WXApi registerApp:WEIXIN_APP_ID universalLink:@"nimeiLink"];
     
     [AMapServices sharedServices].apiKey = AMAP_APP_KEY;
     
@@ -160,56 +146,6 @@
     
 }
 
-#pragma mark - 初始化Tabbar
-
--(void)initAKTabBarController{
-    
-    if (_vc_tabBar == nil) {
-        
-        self.vc_tabBar = [[AKTabBarController alloc]initWithTabBarHeight:50];
-        [_vc_tabBar setDelegate:(id<AKTabBarControllerDelegate>)self];
-    
-        [_vc_tabBar setTabBar_bgImageName:@"tabbar_bg"];
-        [_vc_tabBar setTab_selectedBgImageName:@"tabbar_bg"];
-        [_vc_tabBar setTab_titleColor:UIColorFromRGB(0xbbbbbb)];
-        [_vc_tabBar setTab_selectedTitleColor:DefaultColor];
-        [_vc_tabBar setTab_titleFont:[UIFont systemFontOfSize:11.f]];
-        
-
-        AddressBookHomeVC *t_vc_addressBook = [AddressBookHomeVC new];
-        UINavigationController *t_nav_addressBook = [[UINavigationController alloc] initWithRootViewController:t_vc_addressBook];
-        
-        ScheduleVC *t_vc_schedule = [ScheduleVC new];
-        UINavigationController *t_nav_schedule = [[UINavigationController alloc] initWithRootViewController:t_vc_schedule];
-        
-        MainHomeVC *t_vc_main = [MainHomeVC new];
-        UINavigationController *t_nav_main = [[UINavigationController alloc] initWithRootViewController:t_vc_main];
-        
-        MessageHomeVC *t_vc_message = [MessageHomeVC new];
-        UINavigationController *t_nav_message = [[UINavigationController alloc] initWithRootViewController:t_vc_message];
-        
-        UserCenterVC *t_vc_user = [UserCenterVC new];
-        UINavigationController *t_nav_user = [[UINavigationController alloc] initWithRootViewController:t_vc_user];
-        
-        [_vc_tabBar setViewControllers:[@[t_nav_addressBook,t_nav_schedule,t_nav_main,t_nav_message,t_nav_user]mutableCopy]];
-        _vc_tabBar.selectedIndex = 2;
-        
-    }
-    
-}
-
-
-
-#pragma mark -AKTabbarDelegete
-- (void)tabBarControllerdidSelectTabAtIndex:(NSInteger)index{
-    if (index == 3) {
-        [ShareValue sharedDefault].makeNumber = 0;
-        [_vc_tabBar loadTabs];
-    }else if(index == 1){
-        [_vc_tabBar loadTabs];
-        
-    }
-}
 
 #pragma mark - 网络改变监听
 
@@ -230,82 +166,8 @@
 
 
 // 返回是否支持设备自动旋转
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate{
     return NO;
-}
-
-
-#pragma mark - 微信相关
-
--(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-    
-    /*! @brief 处理微信通过URL启动App时传递的数据
-     *
-     * 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。
-     * @param url 微信启动第三方应用时传递过来的URL
-     * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
-     * @return 成功返回YES，失败返回NO。
-     */
-    
-    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
-}
-
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
-    
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
-    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)self];
-}
-
-/*! 微信回调，不管是登录还是分享成功与否，都是走这个方法 @brief 发送一个sendReq后，收到微信的回应
- *
- * 收到一个来自微信的处理结果。调用一次sendReq后会收到onResp。
- * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。
- * param resp具体的回应内容，是自动释放的
- */
--(void) onResp:(BaseResp*)resp{
-    
-    /*
-     enum  WXErrCode {
-     WXSuccess           = 0,    成功
-     WXErrCodeCommon     = -1,  普通错误类型
-     WXErrCodeUserCancel = -2,    用户点击取消并返回
-     WXErrCodeSentFail   = -3,   发送失败
-     WXErrCodeAuthDeny   = -4,    授权失败
-     WXErrCodeUnsupport  = -5,   微信不支持
-     };
-     */
-    if ([resp isKindOfClass:[SendAuthResp class]]) {   //授权登录的类。
-        
-        SendAuthResp* SendRsp = (SendAuthResp*)resp;
-        int nErrCode = SendRsp.errCode;
-        NSString* strState = SendRsp.state;
-        LxDBAnyVar(nErrCode);
-        
-        if (0 == nErrCode) {  //成功。
-            if ([@"wxlogin" isEqualToString:strState]) {
-                NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:SendRsp.code, @"code", nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_WX_LOGIN_SUCCESS object:nil userInfo:dict];
-                
-            }
-        }else{ //失败
-            LxPrintf(@"error %@",resp.errStr);
-            if (!resp.errStr) {
-                
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"登录失败，授权被取消" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                [alert show];
-                
-            }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:[NSString stringWithFormat:@"reason : %@",resp.errStr] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                [alert show];
-                
-            }
-        }
-    }
 }
 
 #pragma mark - jpush相关
@@ -342,21 +204,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *type = [userInfo objectForKey:@"type"];
         if ([type isEqualToString:@"100"] || [type isEqualToString:@"101"]) {
             
-            NSDictionary *apsd = nil;
+            NSDictionary *apsd = aps;
             
-            if (_vc_tabBar.selectedIndex == 1) {
-                apsd = aps;
-                
-            }else{
-                
-                if ([type isEqualToString:@"100"]) {
-                    [ShareValue sharedDefault].dutyTip = YES;
-                }
-                
-                if ([type isEqualToString:@"101"]) {
-                    [ShareValue sharedDefault].actionTip = YES;
-                }
-                
+            if ([type isEqualToString:@"100"]) {
+                [ShareValue sharedDefault].dutyTip = YES;
+            }
+            
+            if ([type isEqualToString:@"101"]) {
+                [ShareValue sharedDefault].actionTip = YES;
             }
             
             if ([type isEqualToString:@"100"]) {
@@ -367,29 +222,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_RECEIVENOTIFICATION_ACTION object:apsd];
             }
             
-            
         }else{
             
-            if (_vc_tabBar.selectedIndex == 3) {
-                [ShareValue sharedDefault].makeNumber = 0;
-                UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
-                MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
-                [vc reloadDataUseMJRefresh];
-                
-            }else{
-                
-                [ShareValue sharedDefault].makeNumber = [badge integerValue];
-                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[3];
-                MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
-                [vc reloadDataUseMJRefresh];
-            }
+            [ShareValue sharedDefault].makeNumber = [badge integerValue];
             
         }
         
-        
-        [_vc_tabBar loadTabs];
-        
-        
+
         if ([sound containsString:@"police"]) {
             
             if (self.player) {
@@ -482,26 +321,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             if ([type isEqualToString:@"100"]) {
                 [ShareValue sharedDefault].dutyTip = NO;
                 
-                
-                [_vc_tabBar setSelectedIndex:1];
-                
-                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[1];
-                ScheduleVC *vc = (ScheduleVC *)nav.viewControllers[0];
-                [vc setButtonIndex:0];
-                
-                [_vc_tabBar loadTabs];
             }
             
             if ([type isEqualToString:@"101"]) {
                 [ShareValue sharedDefault].actionTip = NO;
                 
-                [_vc_tabBar setSelectedIndex:1];
-                
-                UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[1];
-                ScheduleVC *vc = (ScheduleVC *)nav.viewControllers[0];
-                [vc setButtonIndex:1];
-                
-                 [_vc_tabBar loadTabs];
             }
             
     
@@ -525,48 +349,31 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 
             }
             
-            UINavigationController *nav = (UINavigationController *)_vc_tabBar.viewControllers[2];
-            MainHomeVC * mainhomeVC = (MainHomeVC *)nav.viewControllers[0];
-            if (mainhomeVC.viewModel.arr_illegal && [mainhomeVC.viewModel.arr_illegal count] > 0) {
-                for (CommonMenuModel * menuModel in mainhomeVC.viewModel.arr_illegal) {
-                    if ([menuModel.funTitle isEqualToString:@"停车取证"]){
+            @weakify(self);
+            ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
+                
+            [viewModel.command_isRegister.executionSignals.switchToLatest subscribeNext:^(id _Nullable x) {
+                @strongify(self);
                     
-                        if ([menuModel.isUser isEqualToNumber:@1]) {
+                if ([x isKindOfClass:[NSNumber class]]) {
                         
-                            @weakify(self);
-                            ParkingForensicsListViewModel * viewModel = [[ParkingForensicsListViewModel alloc] init];
-                        
-                            [viewModel.command_isRegister.executionSignals.switchToLatest subscribeNext:^(id _Nullable x) {
-                                @strongify(self);
-                            
-                                if ([x isKindOfClass:[NSNumber class]]) {
-                                
-                                    if ([x intValue] == 0 || [x intValue] == 2) {
-                                        [ShareFun showTipLable:@"您暂无权限使用本功能"];
-                                    }else {
-                                        ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
-                                        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
-                                        [self.vc_tabBar presentViewController:t_nav animated:YES completion:^{
-                                        }];
-                                    }
-                                
-                                }else{
-                                    [ShareFun showTipLable:@"未知错误,技术人员正在修复,请稍后再试."];
-                                }
-                            
-                            }];
-                        
-                            [viewModel.command_isRegister execute:nil];
-                        
-                        }else{
-                            [ShareFun showTipLable:@"您暂无权限使用本功能"];
-                        }
+                    if ([x intValue] == 0 || [x intValue] == 2) {
+                        [ShareFun showTipLable:@"您暂无权限使用本功能"];
+                    }else {
+                        ParkingForensicsListVC *t_vc = [[ParkingForensicsListVC alloc] initWithViewModel:viewModel];
+                        UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
+                        [self.mainvc presentViewController:t_nav animated:YES completion:^{
+                        }];
                     }
+                        
+                }else{
+                    [ShareFun showTipLable:@"未知错误,技术人员正在修复,请稍后再试."];
                 }
-            }
-            
-            
-            
+                    
+            }];
+                
+            [viewModel.command_isRegister execute:nil];
+                
         }else{
             
             if (msgId) {
@@ -585,7 +392,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                             manger.identifyModel.source = @1;
                             t_vc.model = manger.identifyModel;
                             UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
-                            [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                            [weakSelf.mainvc presentViewController:t_nav animated:YES completion:^{
                             }];
                             
                         }else{
@@ -594,7 +401,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                             manger.identifyModel.source = @1;
                             t_vc.model = manger.identifyModel;
                             UINavigationController *t_nav = [[UINavigationController alloc] initWithRootViewController:t_vc];
-                            [weakSelf.vc_tabBar presentViewController:t_nav animated:YES completion:^{
+                            [weakSelf.mainvc presentViewController:t_nav animated:YES completion:^{
                             }];
                             
                         }
@@ -652,16 +459,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    if (_vc_tabBar.selectedIndex == 3) {
-        [ShareValue sharedDefault].makeNumber = 0;
-        UINavigationController *nav = (UINavigationController *)_vc_tabBar.selectedViewController;
-        MessageHomeVC *vc = (MessageHomeVC *)nav.viewControllers[0];
-        [vc reloadDataUseMJRefresh];
-    }else{
-        [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    }
-    
-    [_vc_tabBar loadTabs];
+    [ShareValue sharedDefault].makeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
 }
 
 

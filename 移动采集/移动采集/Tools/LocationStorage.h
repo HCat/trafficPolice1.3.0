@@ -22,17 +22,18 @@
 LRSingletonH(Default)
 
 
-@property (nonatomic, assign) BOOL isPark;
-@property (nonatomic, assign) BOOL isThrough;
-@property (nonatomic, assign) BOOL isTowardError;
-@property (nonatomic, assign) BOOL isLockCar;
-@property (nonatomic, assign) BOOL isMotorBike;
-@property (nonatomic, assign) BOOL isInforInput;
+@property (nonatomic, assign) BOOL isPark;              //违法停车（晋江）
+@property (nonatomic, assign) BOOL isThrough;           //违反禁令
+@property (nonatomic, assign) BOOL isTowardError;       //不按朝向
+@property (nonatomic, assign) BOOL isLockCar;           //违停锁车
+@property (nonatomic, assign) BOOL isMotorBike;         //摩托车采集
+@property (nonatomic, assign) BOOL isInforInput;        //车辆录入
 @property (nonatomic, assign) BOOL isVehicle;
-@property (nonatomic, assign) BOOL isInhibitLine;
-@property (nonatomic, assign) BOOL isTakeOut;
-@property (nonatomic, assign) BOOL isIllegalExposure;
-@property (nonatomic, assign) BOOL isIllegal;   //违章采集
+@property (nonatomic, assign) BOOL isInhibitLine;       //违反禁止线
+@property (nonatomic, assign) BOOL isTakeOut;           //外卖监管
+@property (nonatomic, assign) BOOL isIllegalExposure;   //违法录入
+@property (nonatomic, assign) BOOL isIllegal;              //违章采集(石狮)
+@property (nonatomic, assign) BOOL isThroughManage;     //闯禁令管理
 
 
 @property (nonatomic, strong) LocationStorageModel *park;
@@ -45,7 +46,12 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *inhibitLine;
 @property (nonatomic, strong) LocationStorageModel *takeOut;
 @property (nonatomic, strong) LocationStorageModel *illegalExposure;
-@property (nonatomic, strong) LocationStorageModel *illegal;
+@property (nonatomic, strong) LocationStorageModel *illegal;            //石狮违停采集
+@property (nonatomic, strong) LocationStorageModel *throughManage;
+
+
+
+
 
 
 - (void)initializationSwitchLocation; //默认开启定位开关

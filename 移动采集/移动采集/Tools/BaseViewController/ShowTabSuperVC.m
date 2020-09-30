@@ -35,14 +35,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    [ApplicationDelegate.vc_tabBar showTabBarAnimated:NO];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
-    self.navigationController.navigationBarHidden = YES;
+//    [ApplicationDelegate.vc_tabBar showTabBarAnimated:NO];
+//    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
+//    self.navigationController.navigationBarHidden = YES;
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    //self.navigationController.navigationBarHidden = NO;
     [super viewWillDisappear:animated];
     
 }

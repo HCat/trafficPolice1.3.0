@@ -15,27 +15,17 @@
 #import "IllegalParkAPI.h"
 
 
-#pragma mark - 违反禁令查询是否需要二次采集API(旧)
+#pragma mark - 违反禁令查询是否需要二次采集API(新)
 
 
-@interface IllegalThroughQuerySecManger:LRBaseRequest
+@interface IllegalThroughCarNoSecReponse : NSObject
 
-/****** 请求数据 ******/
-@property (nonatomic, copy)     NSString * carNo;  //车牌号
-@property (nonatomic, strong)   NSNumber * roadId; //道路ID
-
-/****** 返回数据 ******/
-
-/******
-code:0 超过90秒有一次采集记录，返回一次采集ID、采集时间，提示“同路段该车于yyyy-MM-dd已被拍照采集”，跳转至二次采集页面
-code:110 提示“同路段当天已有违章行为，请不要重复采集！”
-code:13 提示“同路段该车1分30秒内有采集记录，是否重新采集？”
-code:999 无采集记录,不用任何提示
-******/
+@property (nonatomic,strong) NSArray <IllegalListModel *> * illegalList;
+@property (nonatomic,copy)   NSString * deckCarNo;
+@property (nonatomic,strong) NSNumber * illegalId;
 
 @end
 
-#pragma mark - 违反禁令查询是否需要二次采集API(新)
 
 @interface IllegalThroughCarNoSecManger:LRBaseRequest
 
@@ -48,6 +38,10 @@ code:999 无采集记录,不用任何提示
 
 @property (nonatomic,strong) NSArray <IllegalListModel *> * illegalList;
 @property (nonatomic,copy) NSString * deckCarNo;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) IllegalThroughCarNoSecReponse * illegalReponse;
+
 /******
  code:0 超过90秒有一次采集记录，返回一次采集ID、采集时间，提示“同路段该车于yyyy-MM-dd已被拍照采集”，跳转至二次采集页面
  code:110 提示“同路段当天已有违章行为，请不要重复采集！”

@@ -31,7 +31,7 @@
 @property (nonatomic,copy)   NSString * cutImageUrl;          //裁剪车牌近照url
 @property (nonatomic,copy)   NSString * taketime;             //裁剪车牌近照时间
 @property (nonatomic,strong) NSNumber * isManualPos;          //0自动定位，1手动定位，默认0
-@property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，1003:违反禁止线,2001:摩托车，信息录入2002
+@property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，1003:违反禁止线,2001:摩托车，信息录入2002 闯禁令:5010
 @property (nonatomic,strong) NSNumber * state;                //异常状态:9
 @property (nonatomic,strong) NSNumber * offtime;              //缓存时候的时间段
 @end
@@ -132,6 +132,14 @@
 
 @end
 
+@interface IllegalParkCarNoRecordReponse : NSObject
+
+@property (nonatomic,strong) NSArray <IllegalListModel *> * illegalList;
+@property (nonatomic,copy)   NSString * deckCarNo;
+@property (nonatomic,strong) NSNumber * illegalId;
+
+@end
+
 @interface IllegalParkCarNoRecordManger:LRBaseRequest
 
 /****** 请求数据 ******/
@@ -144,6 +152,12 @@
 
 @property (nonatomic,strong) NSArray <IllegalListModel *> * illegalList;
 @property (nonatomic,copy) NSString * deckCarNo;
+
+/****** 返回数据 ******/
+@property (nonatomic, strong) IllegalParkCarNoRecordReponse * illegalReponse;
+
+
+
 /******
  code:0 无记录
  code:110 有记录

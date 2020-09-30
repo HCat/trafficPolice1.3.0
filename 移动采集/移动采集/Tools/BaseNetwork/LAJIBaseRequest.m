@@ -126,16 +126,16 @@
         
     }else if (self.responseModel.code == CODE_LAJI_TOKENTIMEOUT || self.responseModel.code == CODE_LAJI_TOKENAGAIN || self.responseModel.code == CODE_LAJI_TOKENERROR || self.responseModel.code == CODE_LAJI_NOLOGIN){
         
-        AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
-        UINavigationController *nav = (UINavigationController *)app.vc_tabBar.selectedViewController;
-        if (nav.viewControllers.count == 1) {
-            [nav dismissViewControllerAnimated:YES completion:^{
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+        if (app.nav_main.viewControllers.count == 1) {
+            [app.mainvc dismissViewControllerAnimated:YES completion:^{
                 
             }];
             
         }else{
             
-            [nav popToRootViewControllerAnimated:YES];
+            [app.nav_main popToRootViewControllerAnimated:YES];
             
         }
         
@@ -171,16 +171,15 @@
 
     if (self.responseStatusCode == CODE_LAJI_TOKENTIMEOUT || self.responseStatusCode == CODE_LAJI_TOKENAGAIN || self.responseStatusCode == CODE_LAJI_TOKENERROR || self.responseStatusCode == CODE_LAJI_NOLOGIN){
         
-         AppDelegate *app = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
-         UINavigationController *nav = (UINavigationController *)app.vc_tabBar.selectedViewController;
-         if (nav.viewControllers.count == 1) {
-             [nav dismissViewControllerAnimated:YES completion:^{
+         AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (app.nav_main.viewControllers.count == 1) {
+            [app.mainvc dismissViewControllerAnimated:YES completion:^{
                  
              }];
              
          }else{
              
-             [nav popToRootViewControllerAnimated:YES];
+             [app.nav_main popToRootViewControllerAnimated:YES];
              
          }
                

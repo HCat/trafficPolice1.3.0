@@ -269,6 +269,21 @@
 
 @end
 
+
+@implementation IllegalParkCarNoRecordReponse
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"illegalId" : @"id",
+             };
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"illegalList" : [IllegalListModel class]
+             };
+}
+
+@end
+
 @implementation IllegalParkCarNoRecordManger
 
 //请求的url，不包括域名`域名通过YTKNetworkConfig配置`
@@ -305,6 +320,17 @@
     if (self.responseModel) {
         _deckCarNo = self.responseModel.data[@"deckCarNo"];
         return _deckCarNo;
+    }
+    
+    return nil;
+}
+
+
+//返回参数
+- (IllegalParkCarNoRecordReponse *)illegalReponse{
+    
+    if (self.responseModel.data) {
+        return [IllegalParkCarNoRecordReponse modelWithDictionary:self.responseModel.data];
     }
     
     return nil;
@@ -437,6 +463,7 @@
 #pragma mark - 采集根据道路ID是否可以采集（设备重复采集问题）
 
 @implementation IllegalCheckRoadCollectResponse
+
 
 
 @end

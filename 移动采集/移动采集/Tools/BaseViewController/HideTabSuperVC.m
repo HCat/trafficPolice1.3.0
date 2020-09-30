@@ -7,7 +7,7 @@
 //
 
 #import "HideTabSuperVC.h"
-#import "UINavigationBar+BarItem.h"
+
 #import "UINavigationBar+Awesome.h"
 #import "AppDelegate.h"
 
@@ -21,15 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.canBack = YES;
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar lt_setBackgroundColor:DefaultNavColor];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
-    [ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
+    //[self.zx_navBar setBackgroundColor:DefaultNavColor];
+    //[self.navigationController.navigationBar lt_setBackgroundColor:DefaultNavColor];
+    //[UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+    //[ApplicationDelegate.vc_tabBar hideTabBarAnimated:NO];
     
     
 }
