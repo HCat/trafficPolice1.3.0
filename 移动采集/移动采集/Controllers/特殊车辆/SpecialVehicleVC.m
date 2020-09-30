@@ -46,6 +46,7 @@
     
     [super viewDidLoad];
    
+    self.zx_hideBaseNavBar = YES;
     if (_type == 1) {
         
         _v_normalBar.hidden = NO;
@@ -55,8 +56,6 @@
             _layout_normalHeight.constant = _layout_normalHeight.constant + 24;
             _layout_tableViewTop.constant = _layout_tableViewTop.constant + 24;
         }
-        
-        
         
     }else if (_type == 2){
         
@@ -86,7 +85,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    //self.navigationController.navigationBarHidden = YES;
     WS(weakSelf);
     [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
         SW(strongSelf, weakSelf);
@@ -97,7 +96,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    //self.navigationController.navigationBarHidden = NO;
     [super viewWillAppear:animated];
     
 }

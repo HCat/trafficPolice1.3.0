@@ -56,6 +56,7 @@
 #import "IllegalAddForSSVC.h"
 
 #import "ExpressRegulationVC.h"
+#import "IllegalExposureListVC.h"
 
 
 @interface MainCommonVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -480,8 +481,23 @@
             
         }else if ([menuModel.menuCode isEqualToString:@"ILLEGAL_EXPOSURE"]) {
             //menuModel.funTitle = @"违法曝光";
-            IllegalExposureVC *t_vc = [[IllegalExposureVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
+            
+            
+            if ([menuModel.t_template isEqualToNumber:@1]) {
+                
+                IllegalExposureListVC * vc = [[IllegalExposureListVC alloc] init];
+                vc.title = [NSString stringWithFormat:@"%@列表",menuModel.menuName];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+
+            }else if ([menuModel.t_template isEqualToNumber:@2]) {
+                
+                IllegalExposureVC *t_vc = [[IllegalExposureVC alloc] init];
+                t_vc.title = menuModel.menuName;
+                [self.navigationController pushViewController:t_vc animated:YES];
+            
+            }
+            
         }else if ([menuModel.menuCode isEqualToString:@"PATROL_MANAGE"]) {
             //menuModel.funTitle = @"日常巡逻";
             DailyPatrolListVC *t_vc = [[DailyPatrolListVC alloc] init];
@@ -502,10 +518,9 @@
                 [self.navigationController pushViewController:vc animated:YES];
             
             }
-            
-            
-            IllegalAddVC *t_vc = [[IllegalAddVC alloc] init];
-            [self.navigationController pushViewController:t_vc animated:YES];
+        
+//            IllegalAddVC *t_vc = [[IllegalAddVC alloc] init];
+//            [self.navigationController pushViewController:t_vc animated:YES];
         }else if ([menuModel.menuCode isEqualToString:@"ELE_POLICE_MANAGE"]) {
             //menuModel.funTitle = @"电子警察";
             ElectronicPoliceVC *t_vc = [[ElectronicPoliceVC alloc] init];

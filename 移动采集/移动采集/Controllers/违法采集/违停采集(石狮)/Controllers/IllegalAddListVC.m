@@ -259,6 +259,7 @@
     
     if ([UserModel isPermissionForIllegalAddList] == NO) {
         [LRShowHUD showError:@"请联系管理员授权" duration:1.f];
+        return;
     }
     
     @weakify(self);

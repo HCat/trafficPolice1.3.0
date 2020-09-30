@@ -98,11 +98,11 @@
     
     self.layout_scrollView_top.constant = Height_NavBar;
     
-    self.btn_carNoNumer.hidden = YES;
-    self.image_carNoNumber.hidden = YES;
-    
-    self.btn_userNumber.hidden = YES;
-    self.image_userNumber.hidden = YES;
+//    self.btn_carNoNumer.hidden = YES;
+//    self.image_carNoNumber.hidden = YES;
+//
+//    self.btn_userNumber.hidden = YES;
+//    self.image_userNumber.hidden = YES;
     
     self.btn_carNo.layer.cornerRadius = 5.f;
     self.btn_carNo.layer.masksToBounds = YES;
@@ -172,8 +172,8 @@
         
         if ([UserModel isPermissionForThroughCollect] == NO) {
             [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+            return;
         }
-        
         
         [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
             
@@ -800,11 +800,11 @@
     self.tf_address.text     = nil;
     self.tf_carNo.text       = nil;
     
-    self.btn_userNumber.hidden = YES;
-    self.image_userNumber.hidden = YES;
-    
-    self.btn_carNoNumer.hidden = YES;
-    self.image_carNoNumber.hidden = YES;
+//    self.btn_userNumber.hidden = YES;
+//    self.image_userNumber.hidden = YES;
+//
+//    self.btn_carNoNumer.hidden = YES;
+//    self.image_carNoNumber.hidden = YES;
     
     if (self.btnType != 1) {
         [self stopLocationAction:[LocationStorage sharedDefault].throughManage];

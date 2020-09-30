@@ -71,5 +71,29 @@
     
 }
 
+- (void)setModel_exposure:(ExposureCollectListModel *)model_exposure{
+    
+    _model_exposure = model_exposure;
+    
+    if (_model_exposure) {
+        
+        _lb_roadName.text = [NSString stringWithFormat:@"路名：%@",_model_exposure.roadName];
+        if ([_model_exposure.remarkNoCar intValue] == 0) {
+            _lb_carNumber.text = @"无牌";
+        }else{
+            _lb_carNumber.text = [ShareFun takeStringNoNull:_model_exposure.carNo];
+        }
+        
+        _lb_time.text = [NSString stringWithFormat:@"时间：%@",[ShareFun timeWithTimeInterval:_model_exposure.collectTime]];
+        
+        
+        
+        _lb_statues.hidden = YES;
+
+    }
+    
+}
+
+
 
 @end

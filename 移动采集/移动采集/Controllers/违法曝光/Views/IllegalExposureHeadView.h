@@ -15,10 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)recognitionCarNumber:(ImageFileInfo * )imageInfo;
 
+-(void)handleCommitClicked;
+
 @end
 
 @interface IllegalExposureHeadView : UICollectionReusableView
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_commit;
 @property (nonatomic,strong) ExposureCollectReportParam * param;
 @property (nonatomic, strong) NSArray < IllegalExposureIllegalTypeModel *> * illegalList; //违法类型
 @property (nonatomic,weak) id<IllegalExposureHeadViewDelegate>delegate;

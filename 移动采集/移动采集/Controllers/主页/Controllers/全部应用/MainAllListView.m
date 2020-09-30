@@ -56,6 +56,8 @@
 #import "ExpressRegulationVC.h"
 #import "UserModel.h"
 
+#import "IllegalExposureListVC.h"
+
 
 @interface MainAllListView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @end
@@ -444,8 +446,20 @@
         
     }else if ([menuModel.menuCode isEqualToString:@"ILLEGAL_EXPOSURE"]) {
         //menuModel.funTitle = @"违法曝光";
-        IllegalExposureVC *t_vc = [[IllegalExposureVC alloc] init];
-        [mainAllVC.navigationController pushViewController:t_vc animated:YES];
+        if ([menuModel.t_template isEqualToNumber:@1]) {
+            
+            IllegalExposureListVC * vc = [[IllegalExposureListVC alloc] init];
+            vc.title = [NSString stringWithFormat:@"%@列表",menuModel.menuName];
+            [mainAllVC.navigationController pushViewController:vc animated:YES];
+            
+
+        }else if ([menuModel.t_template isEqualToNumber:@2]) {
+            
+            IllegalExposureVC *t_vc = [[IllegalExposureVC alloc] init];
+            t_vc.title = menuModel.menuName;
+            [mainAllVC.navigationController pushViewController:t_vc animated:YES];
+        
+        }
     }else if ([menuModel.menuCode isEqualToString:@"PATROL_MANAGE"]) {
         //menuModel.funTitle = @"日常巡逻";
         DailyPatrolListVC *t_vc = [[DailyPatrolListVC alloc] init];
@@ -506,8 +520,6 @@
             [mainAllVC.navigationController pushViewController:vc animated:YES];
         
         }
-        
-        
         
     }else if ([menuModel.menuCode isEqualToString:@"LOGISTICS_MANAGE"]) {
         //menuModel.funTitle = @"快递监管管理";

@@ -112,6 +112,8 @@
 + (BOOL)isPermissionForThroughCollect;          //闯禁令管理权限
 + (BOOL)isPermissionForIllegalAdd;              //违停采集权限(石狮)
 + (BOOL)isPermissionForExpressRegulation;       //快递监管权限
++ (BOOL)isPermissionForExposure;                //违法曝光权限
+
 
 //获取列表权限
 + (BOOL)isPermissionForAccidentList;            //事故权限列表

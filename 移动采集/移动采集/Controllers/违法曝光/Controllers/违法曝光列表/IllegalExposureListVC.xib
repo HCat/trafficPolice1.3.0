@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IllegalExposureListVC">
             <connections>
-                <outlet property="tb_content" destination="Gfo-Jw-nQt" id="hQb-5s-YTi"/>
+                <outlet property="tableView" destination="kw3-Mx-rxT" id="rNj-oJ-qve"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gfo-Jw-nQt">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kw3-Mx-rxT" customClass="LRBaseTableView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="d6r-lH-f2h"/>
-                        <outlet property="delegate" destination="-1" id="rzH-Cr-iHi"/>
-                    </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94b-9t-pKF">
+                    <rect key="frame" x="291" y="437" width="70" height="70"/>
+                    <state key="normal" image="btn_illegalList_add"/>
+                    <connections>
+                        <action selector="handleIllegalAdd:" destination="-1" eventType="touchUpInside" id="B6N-2g-JDZ"/>
+                    </connections>
+                </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Gfo-Jw-nQt" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="3af-Q5-Mrm"/>
-                <constraint firstItem="Gfo-Jw-nQt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="9T0-fE-4HG"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Gfo-Jw-nQt" secondAttribute="trailing" id="CgN-RD-UMt"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Gfo-Jw-nQt" secondAttribute="bottom" id="aZA-1R-YKx"/>
+                <constraint firstItem="kw3-Mx-rxT" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="1J4-P7-4PT"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="94b-9t-pKF" secondAttribute="bottom" constant="116" id="au0-RZ-BjB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="kw3-Mx-rxT" secondAttribute="bottom" id="jil-m3-EEs"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="94b-9t-pKF" secondAttribute="trailing" constant="14" id="lh5-gh-9fV"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kw3-Mx-rxT" secondAttribute="trailing" id="nBc-Ks-Dsy"/>
+                <constraint firstItem="kw3-Mx-rxT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="vpc-72-oZg"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="131.8840579710145" y="141.96428571428569"/>
+            <point key="canvasLocation" x="130.40000000000001" y="141.67916041979012"/>
         </view>
     </objects>
+    <resources>
+        <image name="btn_illegalList_add" width="70" height="70"/>
+    </resources>
 </document>

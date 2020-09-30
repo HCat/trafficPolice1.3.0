@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_phone;
 
+@property (weak, nonatomic) IBOutlet UILabel *lb_carNum;
+
 @property (weak, nonatomic) IBOutlet UILabel *lb_carNumber;
 
 @property (weak, nonatomic) IBOutlet UILabel *lb_dongNumber;
@@ -67,6 +69,7 @@
             self.lb_name.text = [ShareFun takeStringNoNull:t_x.name];
             self.lb_idNO.text = [ShareFun takeStringNoNull:t_x.licenseNo];
             self.lb_phone.text = [ShareFun takeStringNoNull:t_x.telephone];
+            self.lb_carNum.text = [ShareFun takeStringNoNull:t_x.plateNo];
             self.lb_carNumber.text = [ShareFun takeStringNoNull:t_x.frameNo];
             self.lb_dongNumber.text = [ShareFun takeStringNoNull:t_x.powerNo];
             self.lb_gongsi.text = [ShareFun takeStringNoNull:t_x.companyName];

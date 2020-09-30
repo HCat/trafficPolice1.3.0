@@ -10,6 +10,7 @@
 #import "BaseImageCollectionCell.h"
 #import "IllegalExposureHeadView.h"
 #import "IllegalParkAddFootView.h"
+#import "IllegalExposureFeadView.h"
 
 #import "IllegalExposureViewModel.h"
 
@@ -29,7 +30,8 @@
 @property (nonatomic,weak)   IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic,strong) IllegalExposureHeadView *headView;
-@property (nonatomic,strong) IllegalParkAddFootView *footView;
+//@property (nonatomic,strong) IllegalExposureFeadView *footView;
+//@property (nonatomic,strong) IllegalParkAddFootView *footView;
 
 @property(nonatomic, strong) IllegalExposureViewModel * viewModel;
 
@@ -79,15 +81,16 @@
     self.title = @"违法曝光";
     
     @weakify(self);
-    [self zx_setRightBtnWithImgName:@"btn_illegalAdd_list" clickedBlock:^(ZXNavItemBtn * _Nonnull btn) {
-        @strongify(self);
-        [self handleBtnShowListClicked:nil];
-    }];
+//    [self zx_setRightBtnWithImgName:@"btn_illegalAdd_list" clickedBlock:^(ZXNavItemBtn * _Nonnull btn) {
+//        @strongify(self);
+//        [self handleBtnShowListClicked:nil];
+//    }];
     
     //注册collection格式
     [_collectionView registerClass:[BaseImageCollectionCell class] forCellWithReuseIdentifier:@"BaseImageCollectionCellID"];
-    [_collectionView registerNib:[UINib nibWithNibName:@"IllegalParkAddFootView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"IllegalExposureFootViewID"];
-    [_collectionView registerNib:[UINib nibWithNibName:@"IllegalExposureHeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"IllegalExposureHeadViewID"];
+    
+    [_collectionView registerNib:[UINib nibWithNibName:@"IllegalExposureFeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"IllegalExposureFeadViewID"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"IllegalExposureHeadView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"IllegalExposureHeadViewID"];
     
 }
 
@@ -99,12 +102,12 @@
     [RACObserve(self.viewModel, isCanCommit) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         if ([x boolValue]) {
-            self.footView.btn_commit.enabled = YES;
-            [self.footView.btn_commit setBackgroundColor:DefaultBtnColor];
+            self.headView.btn_commit.enabled = YES;
+            [self.headView.btn_commit setBackgroundColor:DefaultBtnColor];
             
         }else{
-            self.footView.btn_commit.enabled = NO;
-            [self.footView.btn_commit setBackgroundColor:DefaultBtnNuableColor];
+            self.headView.btn_commit.enabled = NO;
+            [self.headView.btn_commit setBackgroundColor:DefaultBtnNuableColor];
             
         }
         
@@ -215,18 +218,18 @@
     
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
+        IllegalExposureFeadView * footView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IllegalExposureFeadViewID" forIndexPath:indexPath];
+        return footView;
+        
+    }else if([kind isEqualToString:UICollectionElementKindSectionFooter]){
+        
         self.headView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IllegalExposureHeadViewID" forIndexPath:indexPath];
         [_headView setDelegate:(id<IllegalExposureHeadViewDelegate>)self];
         _headView.param = self.viewModel.param;
         
         return _headView;
         
-    }else if([kind isEqualToString:UICollectionElementKindSectionFooter]){
         
-        self.footView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IllegalExposureFootViewID" forIndexPath:indexPath];
-        [_footView setDelegate:(id<IllegalParkAddFootViewDelegate>)self];
-        
-        return _footView;
         
     }
     
@@ -333,20 +336,24 @@
 
 //header头部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    if (self.viewModel.illegalList && self.viewModel.illegalList.count > 0) {
-        NSInteger index =  self.viewModel.illegalList.count;
-        CGFloat height = 30 * index + 15 * (index + 2);
-        return (CGSize){ScreenWidth,330 + height};
-    }else{
-        return (CGSize){ScreenWidth,360};
-    }
+    
+    return (CGSize){ScreenWidth,45};
+    
 }
 
 
 //footer底部大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     
-    return (CGSize){ScreenWidth,75};
+    if (self.viewModel.illegalList && self.viewModel.illegalList.count > 0) {
+        NSInteger index =  self.viewModel.illegalList.count;
+        CGFloat height = 30 * index + 15 * (index + 2);
+        return (CGSize){ScreenWidth,574 + height};
+    }else{
+        return (CGSize){ScreenWidth,604};
+    }
+    
+    
     
 }
 
@@ -463,6 +470,12 @@
 
 - (void)handleCommitClicked{
     
+    if ([UserModel isPermissionForExposure] == NO) {
+        [LRShowHUD showError:@"请联系管理员授权" duration:1.f];
+        return;
+    }
+    
+    
     [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
         
         //大类 : 0没有网络 1为WIFI网络 2/6/7为2G网络  3/4/5/8/9/11/12为3G网络
@@ -490,19 +503,6 @@
     [self.viewModel configParamInFilesAndRemarksAndTimes];
 
     [self.viewModel.command_commit execute:nil];
-}
-
-
-- (void)handleBtnShowListClicked:(id)sender{
-    if ([UserModel isPermissionForExposureList]) {
-        IllegalExposureListVC *t_vc = [[IllegalExposureListVC alloc] init];
-        t_vc.title = @"违法曝光列表";
-        [self.navigationController pushViewController:t_vc animated:YES];
-        
-    }else{
-        [ShareFun showTipLable:@"您暂无权限查看"];
-    }
-
 }
 
 

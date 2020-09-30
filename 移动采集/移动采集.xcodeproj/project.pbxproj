@@ -771,6 +771,8 @@
 		CE7AE6C02523BF3E00719687 /* ThroughManageShowList.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AE6BE2523BF3E00719687 /* ThroughManageShowList.m */; };
 		CE7AE6C12523BF3E00719687 /* ThroughManageShowList.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7AE6BF2523BF3E00719687 /* ThroughManageShowList.xib */; };
 		CE7AE6C52523BF5E00719687 /* ThroughManageShowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AE6C42523BF5E00719687 /* ThroughManageShowViewModel.m */; };
+		CE7AE6CE2524696700719687 /* IllegalExposureFeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AE6CC2524696700719687 /* IllegalExposureFeadView.m */; };
+		CE7AE6CF2524696700719687 /* IllegalExposureFeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7AE6CD2524696700719687 /* IllegalExposureFeadView.xib */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
 		CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2320089CE5007B20FE /* PGDatePicker.m */; };
 		CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2420089CE5007B20FE /* UIColor+PGHex.m */; };
@@ -2151,6 +2153,9 @@
 		CE7AE6BF2523BF3E00719687 /* ThroughManageShowList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThroughManageShowList.xib; sourceTree = "<group>"; };
 		CE7AE6C32523BF5E00719687 /* ThroughManageShowViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThroughManageShowViewModel.h; sourceTree = "<group>"; };
 		CE7AE6C42523BF5E00719687 /* ThroughManageShowViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThroughManageShowViewModel.m; sourceTree = "<group>"; };
+		CE7AE6CB2524696700719687 /* IllegalExposureFeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureFeadView.h; sourceTree = "<group>"; };
+		CE7AE6CC2524696700719687 /* IllegalExposureFeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureFeadView.m; sourceTree = "<group>"; };
+		CE7AE6CD2524696700719687 /* IllegalExposureFeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureFeadView.xib; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
 		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
 		CE864F2320089CE5007B20FE /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
@@ -3255,19 +3260,19 @@
 		CE2DDB6A24FF773F00423042 /* 特殊车辆 */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDB6B24FF773F00423042 /* SpecialVehicleDetailVC.xib */,
+				CE2DDB7224FF773F00423042 /* SpecialNoticeVC.h */,
 				CE2DDB6C24FF773F00423042 /* SpecialNoticeVC.m */,
-				CE2DDB6D24FF773F00423042 /* SpecialVehicleVC.xib */,
 				CE2DDB6E24FF773F00423042 /* SpecialNoticeVC.xib */,
 				CE2DDB6F24FF773F00423042 /* SpecialVehicleVC.h */,
-				CE2DDB7024FF773F00423042 /* SpecialManageVC.m */,
-				CE2DDB7124FF773F00423042 /* SpecialVehicleDetailVC.m */,
-				CE2DDB7224FF773F00423042 /* SpecialNoticeVC.h */,
 				CE2DDB7324FF773F00423042 /* SpecialVehicleVC.m */,
-				CE2DDB7424FF773F00423042 /* SpecialManageVC.xib */,
-				CE2DDB7524FF773F00423042 /* View */,
+				CE2DDB6D24FF773F00423042 /* SpecialVehicleVC.xib */,
 				CE2DDB8C24FF773F00423042 /* SpecialManageVC.h */,
+				CE2DDB7024FF773F00423042 /* SpecialManageVC.m */,
+				CE2DDB7424FF773F00423042 /* SpecialManageVC.xib */,
 				CE2DDB8D24FF773F00423042 /* SpecialVehicleDetailVC.h */,
+				CE2DDB7124FF773F00423042 /* SpecialVehicleDetailVC.m */,
+				CE2DDB6B24FF773F00423042 /* SpecialVehicleDetailVC.xib */,
+				CE2DDB7524FF773F00423042 /* View */,
 			);
 			path = "特殊车辆";
 			sourceTree = "<group>";
@@ -4318,9 +4323,9 @@
 			children = (
 				CE2DDDB724FF774000423042 /* ViewModels */,
 				CE2DDDBA24FF774000423042 /* APIs */,
+				CE2DDDCC24FF774000423042 /* Views */,
 				CE2DDDBD24FF774000423042 /* Models */,
 				CE2DDDC024FF774000423042 /* Controllers */,
-				CE2DDDCC24FF774000423042 /* Views */,
 			);
 			path = "违法曝光";
 			sourceTree = "<group>";
@@ -4390,6 +4395,9 @@
 				CE2DDDCE24FF774000423042 /* IllegalExposureHeadView.h */,
 				CE2DDDCD24FF774000423042 /* IllegalExposureHeadView.m */,
 				CE2DDDCF24FF774000423042 /* IllegalExposureHeadView.xib */,
+				CE7AE6CB2524696700719687 /* IllegalExposureFeadView.h */,
+				CE7AE6CC2524696700719687 /* IllegalExposureFeadView.m */,
+				CE7AE6CD2524696700719687 /* IllegalExposureFeadView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5901,6 +5909,7 @@
 				CE2DE01524FF77E100423042 /* ZXNavigationBar.bundle in Resources */,
 				CE2DDE1124FF774100423042 /* ActionDetailCell.xib in Resources */,
 				CE175B8320E4865C009E2282 /* MakePhoneView.xib in Resources */,
+				CE7AE6CF2524696700719687 /* IllegalExposureFeadView.xib in Resources */,
 				CE2DDEFB24FF774100423042 /* VehicleUpImageCell.xib in Resources */,
 				CE2DDF8624FF774100423042 /* IllegalSearchView.xib in Resources */,
 				CE2DDF7124FF774100423042 /* IllegalCell.xib in Resources */,
@@ -6421,6 +6430,7 @@
 				CE864F4920089D53007B20FE /* PGPickerView.m in Sources */,
 				CE2DDF3324FF774100423042 /* LRPlayVC.m in Sources */,
 				CE2DDFB724FF774100423042 /* DailyPatrolListVC.m in Sources */,
+				CE7AE6CE2524696700719687 /* IllegalExposureFeadView.m in Sources */,
 				CE2DDEFF24FF774100423042 /* VehicleUpImageDetailCell.m in Sources */,
 				CE2DE01124FF77E100423042 /* NSString+ZXNavCalcSizeExtension.m in Sources */,
 				CE6915501F1DD590008911A6 /* CommonAPI.m in Sources */,

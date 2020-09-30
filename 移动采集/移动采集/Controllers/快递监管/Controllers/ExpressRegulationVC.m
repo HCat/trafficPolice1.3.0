@@ -102,7 +102,7 @@
     self.tableView.mj_footer.automaticallyHidden = YES;
     
     
-    RAC(self.viewModel, searchName) = _tf_search.rac_textSignal;
+    RAC(self.viewModel, searchName) = [_tf_search.rac_textSignal skip:1];
     
 }
 
@@ -207,7 +207,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     LRSettingItemModel * cellModel = [[LRSettingItemModel alloc] init];
-    cellModel.funcName = [NSString stringWithFormat:@"%@%@",itemModel.frameNo,itemModel.courierName];
+    cellModel.funcName = [NSString stringWithFormat:@"%@ %@",[ShareFun takeStringNoNull:itemModel.frameNo],[ShareFun takeStringNoNull:itemModel.courierName]];
     cellModel.accessoryType = LRSettingAccessoryTypeDisclosureIndicator;
     cell.item = cellModel;
     return cell;

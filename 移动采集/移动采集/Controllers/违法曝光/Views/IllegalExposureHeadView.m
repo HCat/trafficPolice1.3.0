@@ -72,17 +72,26 @@
     
     self.arr_button = @[].mutableCopy;
     
-    _tf_roadSection.attributedPlaceholder = [ShareFun highlightInString:@"请选择路段(必选)" withSubString:@"(必选)"];
+    self.btn_IsHaveCar.layer.cornerRadius = 5.f;
+    self.btn_IsHaveCar.layer.masksToBounds = YES;
     
-    _tf_address.attributedPlaceholder     = [ShareFun highlightInString:@"请输入所在位置(必填)" withSubString:@"(必填)"];
+    self.btn_identify.layer.cornerRadius = 5.f;
+    self.btn_identify.layer.masksToBounds = YES;
+    
+    
+    self.btn_commit.layer.cornerRadius = 5.f;
+    self.btn_commit.layer.masksToBounds = YES;
+    _btn_commit.enabled = NO;
+    [_btn_commit setBackgroundColor:DefaultBtnNuableColor];
     
     //配置点击UITextField
 
-    [self setUpCommonUITextField:self.tf_userName];
-    [self setUpCommonUITextField:self.tf_carNo];
-    [self setUpCommonUITextField:self.tf_address];
-    [self setUpCommonUITextField:self.tf_remark];
+//    [self setUpCommonUITextField:self.tf_userName];
+//    [self setUpCommonUITextField:self.tf_carNo];
+//    [self setUpCommonUITextField:self.tf_address];
+//    [self setUpCommonUITextField:self.tf_remark];
 
+    [self.tf_roadSection setDelegate:(id<UITextFieldDelegate> _Nullable)self];
 
     self.btn_IsHaveCar.isIgnore = YES;
     
@@ -444,21 +453,18 @@
     
 }
 
-#pragma mark - 通用显示模态PickView视图
+#pragma mark - UITextFieldDelegate
 
-- (void)showBottomPickViewWithTitle:(NSString *)title items:(NSArray *)items block:(void(^)(NSString *title,NSString * itemId))block{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    BottomPickerView *t_view = [BottomPickerView initCustomView];
-    [t_view setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 207)];
-    t_view.pickerTitle = title;
-    t_view.items = items;
-    t_view.selectedCompanyBtnBlock = block;
+    if (textField == self.tf_roadSection) {
+        [self handlebtnChoiceLocationClicked:nil];
+        return NO;
+    }
     
-    [BottomView showWindowWithBottomView:t_view];
+    return YES;
     
 }
-
-
 
 #pragma mark - 选择路段按钮事件
 - (IBAction)handlebtnChoiceLocationClicked:(id)sender {
@@ -590,6 +596,13 @@
     
 }
 
+- (IBAction)handleBtnCommitClicked:(id)sender {
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(handleCommitClicked)]) {
+        [self.delegate handleCommitClicked];
+    }
+
+}
 
 
 @end

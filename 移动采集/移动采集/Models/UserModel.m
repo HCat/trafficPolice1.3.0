@@ -160,6 +160,20 @@
     
 }
 
++ (BOOL)isPermissionForExposure{
+    
+    NSString *match = @"ILLEGAL_EXPOSURE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 
 #pragma mark - 获取不按朝向采集权限
 

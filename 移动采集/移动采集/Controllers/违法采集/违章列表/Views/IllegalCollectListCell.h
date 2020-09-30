@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IllegalParkListModel.h"
+#import "ExposureCollectAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) IllegalParkListModel *model;
 
+@property (nonatomic,strong) ExposureCollectListModel * model_exposure;
 @end
 
 NS_ASSUME_NONNULL_END

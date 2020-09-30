@@ -23,6 +23,11 @@
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
+                if (self.searchName == nil || self.searchName.length == 0) {
+                    [subscriber sendNext:@"加载失败"];
+                    [subscriber sendCompleted];
+                }
+                
                 ExpressRegulationListParam * param = [[ExpressRegulationListParam alloc] init];
                 param.start = self.start;
                 param.length = @20;

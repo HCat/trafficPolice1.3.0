@@ -8,6 +8,7 @@
 
 #import "IllegalExposureListVC.h"
 #import "ExposureCollectAPI.h"
+#import "IllegalExposureVC.h"
 
 #import <MJRefresh.h>
 
@@ -18,11 +19,14 @@
 #import "NetWorkHelper.h"
 #import "IllegalExposureDetailVC.h"
 
+#import "LRBaseTableView.h"
+#import "IllegalCollectListCell.h"
+#import "UserModel.h"
 
 
-@interface IllegalExposureListVC ()
+@interface IllegalExposureListVC ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tb_content;
+@property (weak, nonatomic) IBOutlet LRBaseTableView *tableView;
 
 @property (nonatomic,strong) NSMutableArray *arr_content;
 
@@ -35,69 +39,74 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = YES;
-    //隐藏多余行的分割线
-    _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [_tb_content setSeparatorInset:UIEdgeInsetsZero];
-    [_tb_content setLayoutMargins:UIEdgeInsetsZero];
-       
-    [_tb_content registerNib:[UINib nibWithNibName:@"IllegalCell" bundle:nil] forCellReuseIdentifier:@"IllegalCellID"];
-       
+    
+    @weakify(self);
+    
+    self.tableView.autoNetworkNotice = YES;
+    self.tableView.isHavePlaceholder = YES;
+
+    self.tableView.tableViewPlaceholderBlock = ^{
+        @strongify(self);
+        
+        if (self.arr_content.count > 0) {
+            [self.arr_content removeAllObjects];
+            [self.tableView reloadData];
+        }
+        
+        self.tableView.lr_handler.state = LRDataLoadStateLoading;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              @strongify(self);
+              [self reloadData];
+        });
+    };
+    
+    self.tableView.tableViewHeaderRefresh = ^{
+        @strongify(self);
+        [self reloadData];
+        
+    };
+    
+    self.tableView.tableViewFooterLoadMore = ^{
+        @strongify(self);
+        [self loadData];
+        
+    };
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"IllegalCollectListCell" bundle:nil] forCellReuseIdentifier:@"IllegalCollectListCellID"];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = 135.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     self.arr_content = [NSMutableArray array];
        
-    [self initRefresh];
-     
-    WS(weakSelf);
-    //点击重新加载之后的处理
-    [_tb_content setReloadBlock:^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
-        [strongSelf.tb_content.mj_header beginRefreshing];
-    }];
+  
+    if ([UserModel isPermissionForExposureList]) {
         
-    [_tb_content.mj_header beginRefreshing];
+        if (self.arr_content.count > 0) {
+            [self.arr_content removeAllObjects];
+            [self.tableView reloadData];
+        }
+        self.tableView.enableRefresh = YES;
+        self.tableView.enableLoadMore = YES;
+        [self.tableView resetNoMoreData];
+        self.tableView.lr_handler.state = LRDataLoadStateLoading;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            @strongify(self);
+            [self reloadData];
+        });
+    }else{
+        if (self.arr_content.count > 0) {
+            [self.arr_content removeAllObjects];
+            [self.tableView reloadData];
+        }
+        self.tableView.enableRefresh = NO;
+        self.tableView.enableLoadMore = NO;
+        self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+        [self.tableView reloadData];
+    }
     
     
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    WS(weakSelf);
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
-        [strongSelf.tb_content.mj_header beginRefreshing];
-    };
-
-}
-#pragma mark - 创建下拉刷新，以及上拉加载更多
-
-- (void)initRefresh{
-    
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadData)];
-    [header setTitle:@"下拉查询" forState:MJRefreshStateIdle];
-    [header setTitle:@"松手开始查询" forState:MJRefreshStatePulling];
-    [header setTitle:@"查询中..." forState:MJRefreshStateRefreshing];
-    header.stateLabel.font = [UIFont systemFontOfSize:15];
-    
-    header.automaticallyChangeAlpha = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    _tb_content.mj_header = header;
-    
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    
-    [footer setTitle:@"" forState:MJRefreshStateIdle];
-    [footer setTitle:@"加载更多..." forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"— 没有更多内容了 —" forState:MJRefreshStateNoMoreData];
-    
-    footer.stateLabel.font = [UIFont systemFontOfSize:15];
-    footer.stateLabel.textColor = UIColorFromRGB(0xa6a6a6);
-    _tb_content.mj_footer = footer;
-    _tb_content.mj_footer.automaticallyHidden = YES;
     
 }
 
@@ -110,7 +119,7 @@
 
 - (void)loadData{
     
-    WS(weakSelf);
+    @weakify(self);
     if (_index == 0) {
         if (_arr_content && _arr_content.count > 0) {
             [_arr_content removeAllObjects];
@@ -126,38 +135,42 @@
      manger.param = param;
     
      [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-         SW(strongSelf, weakSelf);
-         [strongSelf.tb_content.mj_header endRefreshing];
-         [strongSelf.tb_content.mj_footer endRefreshing];
+         @strongify(self);
+         [self.tableView endingRefresh];
+         [self.tableView endingLoadMore];
          
          if (manger.responseModel.code == CODE_SUCCESS) {
              
-             [strongSelf.arr_content addObjectsFromArray:manger.exposureCollectListPagingReponse.list];
-             if (strongSelf.arr_content.count == manger.exposureCollectListPagingReponse.total) {
-                 [strongSelf.tb_content.mj_footer endRefreshingWithNoMoreData];
+             [self.arr_content addObjectsFromArray:manger.exposureCollectListPagingReponse.list];
+             if (self.arr_content.count == manger.exposureCollectListPagingReponse.total) {
+                 [self.tableView endingNoMoreData];
+                 if (self.arr_content.count == 0) {
+                     self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+                 }
              }else{
-                 strongSelf.index += param.length;
+                 self.index += param.length;
+                 if (self.arr_content.count == 0) {
+                     self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+                 }else{
+                     self.tableView.lr_handler.state = LRDataLoadStateIdle;
+                 }
              }
-             [strongSelf.tb_content reloadData];
+             [self.tableView reloadData];
          }else{
-             NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%ld msg:%@",manger.responseModel.code,manger.responseModel.msg];
-             [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
+             if (self.arr_content.count == 0) {
+                 self.tableView.lr_handler.state = LRDataLoadStateFailed;
+                 [self.tableView reloadData];
+             }
+             
          }
          
      } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-         SW(strongSelf,weakSelf);
-         [strongSelf.tb_content.mj_header endRefreshing];
-         [strongSelf.tb_content.mj_footer endRefreshing];
+         @strongify(self);
+         [self.tableView endingRefresh];
+         [self.tableView endingLoadMore];
+         self.tableView.lr_handler.state = LRDataLoadStateFailed;
+         [self.tableView reloadData];
          
-         Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
-         NetworkStatus status = [reach currentReachabilityStatus];
-         if (status == NotReachable) {
-             if (strongSelf.arr_content.count > 0) {
-                 [strongSelf.arr_content removeAllObjects];
-             }
-             strongSelf.tb_content.isNetAvailable = YES;
-             [strongSelf.tb_content reloadData];
-         }
      }];
     
 }
@@ -173,28 +186,17 @@
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WS(weakSelf);
-    return [tableView fd_heightForCellWithIdentifier:@"IllegalCellID" cacheByIndexPath:indexPath configuration:^(IllegalCell *cell) {
-        SW(strongSelf, weakSelf);
-        if (strongSelf.arr_content && strongSelf.arr_content.count > 0) {
-            ExposureCollectListModel *t_model = strongSelf.arr_content[indexPath.row];
-            cell.model_exposure = t_model;
-
-        }
-    }];
-    
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    IllegalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalCellID"];
-    cell.fd_enforceFrameLayout = NO;
+    
+    
+    IllegalCollectListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IllegalCollectListCellID"];
+    
     if (_arr_content && _arr_content.count > 0) {
         ExposureCollectListModel *t_model = _arr_content[indexPath.row];
         cell.model_exposure = t_model;
     }
-    
+
     return cell;
 }
 
@@ -219,9 +221,22 @@
     
 }
 
+
+- (IBAction)handleIllegalAdd:(id)sender {
+    
+    IllegalExposureVC * vc = [[IllegalExposureVC alloc] init];
+    NSRange range = [self.title rangeOfString:@"列表"];
+    NSLog(@"rang:%@",NSStringFromRange(range));
+    vc.title =  [self.title substringToIndex:range.location];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+
+
 - (void)dealloc{
 
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
+    
     
     LxPrintf(@"IllegalList dealloc");
     

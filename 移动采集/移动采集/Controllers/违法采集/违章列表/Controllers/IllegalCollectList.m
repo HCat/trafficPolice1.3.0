@@ -339,6 +339,61 @@
 #pragma mark - buttonAction
 
 - (IBAction)handleBtnSearchClicked:(id)sender {
+    
+    if (self.viewModel.illegalType == IllegalTypePark) {
+        
+        if (self.viewModel.subType == ParkTypePark) {
+            
+            if ([UserModel isPermissionForIllegalList] == NO) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }else if (self.viewModel.subType == ParkTypeReversePark) {
+            
+            if ([UserModel isPermissionForIllegalReverseList] == NO) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }else if (self.viewModel.subType == ParkTypeLockPark) {
+            
+            if ([UserModel isPermissionForIllegalLockList] == NO) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }else if (self.viewModel.subType == ParkTypeViolationLine) {
+            
+            if ([UserModel isPermissionForInhibitLineList] == NO) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }else if (self.viewModel.subType == ParkTypeCarInfoAdd) {
+            
+            if ([UserModel isPermissionForCarInfoList] == NO ) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }else if (self.viewModel.subType == ParkTypeMotorbikeAdd) {
+            
+            if ([UserModel isPermissionForMotorBikeList] == NO ) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }
+        
+    }else if (self.viewModel.illegalType == IllegalTypeThrough){
+        
+        if (self.viewModel.subType == ParkTypeThrough) {
+            
+            if ([UserModel isPermissionForThroughList] == NO) {
+                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                return;
+            }
+        }
+        
+    }
+    
+    
+    
     IllegalCollectListViewModel * viewModel = [[IllegalCollectListViewModel alloc] init];
     viewModel.illegalType = self.viewModel.illegalType;
     viewModel.subType = self.viewModel.subType;
