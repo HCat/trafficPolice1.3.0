@@ -24,8 +24,8 @@
         self.secend = self.arr_upImages[1];
         
         @weakify(self);
-        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self, secend),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, carNo),RACObserve(self.param, userName),RACObserve(self.param, identNo)] reduce:^id (NSNumber * roadId,id first,id secend,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * carNo,NSString * userName,NSString * identNo){
-            return @(roadId && ![first isKindOfClass:[NSNull class]]&& ![secend isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && carNo.length > 0&& userName.length > 0&& identNo.length > 0);
+        [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self, secend),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, carNo)] reduce:^id (NSNumber * roadId,id first,id secend,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * carNo){
+            return @(roadId && ![first isKindOfClass:[NSNull class]]&& ![secend isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && carNo.length > 0);
         }] subscribeNext:^(id x) {
             @strongify(self);
             self.isCanCommit = [x boolValue];
@@ -402,8 +402,8 @@
     self.secend = self.arr_upImages[1];
     
     @weakify(self);
-    [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self, secend),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, carNo),RACObserve(self.param, userName),RACObserve(self.param, identNo)] reduce:^id (NSNumber * roadId,id first,id secend,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * carNo,NSString * userName,NSString * identNo){
-        return @(roadId && ![first isKindOfClass:[NSNull class]]&& ![secend isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && carNo.length > 0&& userName.length > 0&& identNo.length > 0);
+    [[RACSignal combineLatest:@[RACObserve(self.param, roadId), RACObserve(self, first),RACObserve(self, secend),RACObserve(self.param, address),RACObserve(self.param, longitude),RACObserve(self.param, latitude),RACObserve(self.param, carNo)] reduce:^id (NSNumber * roadId,id first,id secend,NSString * address,NSNumber * longitude,NSNumber * latitude,NSString * carNo){
+        return @(roadId && ![first isKindOfClass:[NSNull class]]&& ![secend isKindOfClass:[NSNull class]] && address.length > 0 && longitude && latitude && carNo.length > 0);
     }] subscribeNext:^(id x) {
         @strongify(self);
         self.isCanCommit = [x boolValue];
@@ -420,7 +420,7 @@
     
     }];
     
-    [[RACObserve(self.param, carNo) distinctUntilChanged] subscribeNext:^(NSString *  x) {
+    [RACObserve(self.param, carNo) subscribeNext:^(NSString *  x) {
         @strongify(self);
         
         if (x && x.length > 6) {

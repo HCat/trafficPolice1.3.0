@@ -383,7 +383,7 @@
             NSNumber * t_x = (NSNumber *)x;
             self.btn_carNoNumer.hidden = NO;
             self.image_carNoNumber.hidden = NO;
-            [self.btn_carNoNumer setTitle:[NSString stringWithFormat:@"近一个月记录%d",[t_x intValue]] forState:UIControlStateNormal];
+            [self.btn_carNoNumer setTitle:[NSString stringWithFormat:@"历史%d",[t_x intValue]] forState:UIControlStateNormal];
         }
         
         
@@ -396,7 +396,7 @@
             NSNumber * t_x = (NSNumber *)x;
             self.btn_userNumber.hidden = NO;
             self.image_userNumber.hidden = NO;
-            [self.btn_userNumber setTitle:[NSString stringWithFormat:@"近一个月记录%d",[t_x intValue]] forState:UIControlStateNormal];
+            [self.btn_userNumber setTitle:[NSString stringWithFormat:@"历史%d",[t_x intValue]] forState:UIControlStateNormal];
         }
         
     
@@ -791,6 +791,8 @@
         
 }
 
+#pragma mark -
+
 - (void)handleAfterCommitForUI{
     
     //采集之后的UI处理
@@ -801,10 +803,15 @@
     self.tf_carNo.text       = nil;
     
 //    self.btn_userNumber.hidden = YES;
+    
 //    self.image_userNumber.hidden = YES;
 //
 //    self.btn_carNoNumer.hidden = YES;
 //    self.image_carNoNumber.hidden = YES;
+    
+    [self.btn_userNumber setTitle:@"历史0" forState:UIControlStateNormal];
+    [self.btn_carNoNumer setTitle:@"历史0" forState:UIControlStateNormal];
+    
     
     if (self.btnType != 1) {
         [self stopLocationAction:[LocationStorage sharedDefault].throughManage];

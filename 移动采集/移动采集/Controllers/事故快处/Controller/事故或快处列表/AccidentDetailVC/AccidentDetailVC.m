@@ -20,6 +20,7 @@
 #import "AccidentImageCell.h"
 #import "AccidentMessageCell.h"
 #import "AccidentPartyCell.h"
+#import "AccidentCallMessageCell.h"
 #import "AccidentRemarkListVC.h"
 
 
@@ -219,7 +220,12 @@
         count += 1;
     }
     if (_model) {
-        count += 3;
+        if (self.accidentType == AccidentTypeAccident) {
+            count += 4;
+        }else if (self.accidentType == AccidentTypeFastAccident){
+            count += 3;
+        }
+        
     }
     
     return count;
@@ -247,8 +253,21 @@
         AccidentMessageCell *cell = (AccidentMessageCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [cell heightWithAccident];
     }else if (indexPath.row == (_remarkModel ? 3:2)){
-        AccidentPartyCell *cell = (AccidentPartyCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-        return [cell heightWithAccident];
+        if (self.accidentType == AccidentTypeAccident) {
+            AccidentCallMessageCell *cell = (AccidentCallMessageCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+            return [cell heightWithAccident];
+        }else if (self.accidentType == AccidentTypeFastAccident){
+            AccidentPartyCell *cell = (AccidentPartyCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+            return [cell heightWithAccident];
+        }
+        
+        
+    }else if (indexPath.row == (_remarkModel ? 4:3)){
+        if (self.accidentType == AccidentTypeAccident) {
+            AccidentPartyCell *cell = (AccidentPartyCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+            return [cell heightWithAccident];
+        }
+        
     }
     
     return 105;
@@ -304,39 +323,96 @@
         
         return cell;
     
-    }else if(indexPath.row == (_remarkModel ? 3:2)){
+    }else if (indexPath.row == (_remarkModel ? 3:2)){
         
-        if (!_partycell) {
-            [tableView registerNib:[UINib nibWithNibName:@"AccidentPartyCell" bundle:nil] forCellReuseIdentifier:@"AccidentPartyCellID"];
-            self.partycell = [tableView dequeueReusableCellWithIdentifier:@"AccidentPartyCellID"];
-        }
-        
-        _partycell.accidentType = _accidentType;
-        if (_model) {
-            if (_model.accidentList) {
-                _partycell.list = _model.accidentList;
-                WS(weakSelf);
-                _partycell.block = ^() {
-                    SW(strongSelf, weakSelf);
-                    [strongSelf.tb_content beginUpdates];
-                    [strongSelf.tb_content endUpdates];
-                    [strongSelf.tb_content scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-                };
+        if (self.accidentType == AccidentTypeAccident) {
+            AccidentCallMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCallMessageCellID"];
+            if (!cell) {
+                [tableView registerNib:[UINib nibWithNibName:@"AccidentCallMessageCell" bundle:nil] forCellReuseIdentifier:@"AccidentCallMessageCellID"];
+                cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCallMessageCellID"];
             }
             
+            if (_model) {
+                if (_model.accident ) {
+                    cell.accident = _model.accident;
+                }
+            }
+            
+            return cell;
+        }else if (self.accidentType == AccidentTypeFastAccident){
+            if (!_partycell) {
+                [tableView registerNib:[UINib nibWithNibName:@"AccidentPartyCell" bundle:nil] forCellReuseIdentifier:@"AccidentPartyCellID"];
+                self.partycell = [tableView dequeueReusableCellWithIdentifier:@"AccidentPartyCellID"];
+            }
+            
+            _partycell.accidentType = _accidentType;
+            if (_model) {
+                if (_model.accidentList) {
+                    _partycell.list = _model.accidentList;
+                    WS(weakSelf);
+                    _partycell.block = ^() {
+                        SW(strongSelf, weakSelf);
+                        [strongSelf.tb_content beginUpdates];
+                        [strongSelf.tb_content endUpdates];
+                        [strongSelf.tb_content scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                    };
+                }
+                
+            }
+            
+            return _partycell;
         }
         
-        return _partycell;
+        
+    }else if (indexPath.row == (_remarkModel ? 4:3)){
+        
+        if (self.accidentType == AccidentTypeAccident) {
+            if (!_partycell) {
+                [tableView registerNib:[UINib nibWithNibName:@"AccidentPartyCell" bundle:nil] forCellReuseIdentifier:@"AccidentPartyCellID"];
+                self.partycell = [tableView dequeueReusableCellWithIdentifier:@"AccidentPartyCellID"];
+            }
+            
+            _partycell.accidentType = _accidentType;
+            if (_model) {
+                if (_model.accidentList) {
+                    _partycell.list = _model.accidentList;
+                    WS(weakSelf);
+                    _partycell.block = ^() {
+                        SW(strongSelf, weakSelf);
+                        [strongSelf.tb_content beginUpdates];
+                        [strongSelf.tb_content endUpdates];
+                        [strongSelf.tb_content scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                    };
+                }
+                
+            }
+            
+            return _partycell;
+        }
+        
+        
         
     }
-
+    
     return nil;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == (_remarkModel ? 3:2)) {
         
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, ScreenWidth, 0, 0)];
+        if (self.accidentType == AccidentTypeFastAccident){
+        
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, ScreenWidth, 0, 0)];
+        }else{
+            [cell setSeparatorInset:UIEdgeInsetsZero];
+        }
+        
+    }else if (indexPath.row == (_remarkModel ? 4:3)) {
+        
+        if (self.accidentType == AccidentTypeAccident){
+        
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, ScreenWidth, 0, 0)];
+        }
         
     }else{
         

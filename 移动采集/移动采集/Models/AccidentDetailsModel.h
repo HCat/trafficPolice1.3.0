@@ -25,7 +25,11 @@
 @property (nonatomic,copy)   NSString * causes;           //事故成因
 @property (nonatomic,copy)   NSString * mediationRecord;  //中队调解记录
 @property (nonatomic,copy)   NSString * memo;             //备注记录与领导意见
-@property (nonatomic,copy)   NSString * responsibility;             //事故责任认定建议,这个只有快处才有的数据
+@property (nonatomic,copy)   NSString * responsibility;   //事故责任认定建议,这个只有快处才有的数据
+
+@property (nonatomic,copy)   NSString * callpoliceMan;    //报案人
+@property (nonatomic,copy)   NSString * callpoliceManPhone;  //手机号
+
 
 @end
 

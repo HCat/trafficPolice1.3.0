@@ -17,7 +17,7 @@
         @weakify(self);
         
         self.arr_content = @[].mutableCopy;
-        self.searchType = @0;
+        self.searchType = @3;
         
         self.requestCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             @strongify(self);

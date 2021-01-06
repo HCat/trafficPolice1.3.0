@@ -163,6 +163,11 @@
                                         menuModel.menuIcon = @"menu_courier";
                                         [self.arr_content addObject:menuModel];
                                         
+                                    }else if ([menuModel.menuCode isEqualToString:@"ACCIDENT_REPORTS"]) {
+                                        //menuModel.funTitle = @"数据分析";
+                                        menuModel.menuIcon = @"menu_dataAnalysis";
+                                        [self.arr_content addObject:menuModel];
+                                        
                                     }
                                 
                                 }

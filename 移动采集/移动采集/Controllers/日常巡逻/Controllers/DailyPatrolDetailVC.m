@@ -20,6 +20,9 @@
 #import "DailyPatrolAnnotation.h"
 #import "DailyPatrolAnnotationView.h"
 
+
+#define k_distance_patrol 100
+
 @interface DailyPatrolDetailVC ()<MAMapViewDelegate,AMapSearchDelegate>
 
 @property (nonatomic, strong) DailyPatrolDetailViewModel * viewModel;
@@ -470,7 +473,7 @@
                     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([carAnnotation.model.latitude doubleValue], [carAnnotation.model.longitude doubleValue]);
                     
                     if ([carAnnotation.model.pointType isEqualToNumber:@2]) {
-                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, k_distance_patrol)) {
                                 
                             self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
                             self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);
@@ -485,7 +488,7 @@
                             [hud dismissAfter:1.0f];
                         }
                     }else if ([carAnnotation.model.pointType isEqualToNumber:@0]){
-                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, k_distance_patrol)) {
                                 
                             self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
                             self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);
@@ -512,7 +515,7 @@
                     }
                     
                     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([carAnnotation.model.latitude doubleValue], [carAnnotation.model.longitude doubleValue]);
-                if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, 50)) {
+                    if(MACircleContainsCoordinate(self.mapView.userLocation.location.coordinate, coordinate, k_distance_patrol)) {
                         
                         self.viewModel.latitude = @(self.mapView.userLocation.location.coordinate.latitude);
                         self.viewModel.longitude = @(self.mapView.userLocation.location.coordinate.longitude);

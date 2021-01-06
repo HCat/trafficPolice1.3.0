@@ -7,10 +7,6 @@
 //
 
 #import "AccidentListVC.h"
-#import <MJRefresh.h>
-
-#import "NetWorkHelper.h"
-#import "UITableView+Lr_Placeholder.h"
 
 #import "AccidentAPI.h"
 #import "FastAccidentAPI.h"
@@ -18,63 +14,134 @@
 #import "AccidentCell.h"
 #import "AccidentCompleteVC.h"
 
-@interface AccidentListVC ()
+#import "LRBaseTableView.h"
+#import "UserModel.h"
 
-@property (weak, nonatomic) IBOutlet UITableView *tb_content;
+#import "AccidentManageVC.h"
 
-@property (nonatomic,strong) NSMutableArray *arr_content;
+#import "AlertView.h"
 
-@property (nonatomic,assign) NSInteger index; //加载更多数据索引
+
+@interface AccidentListVC ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (strong,nonatomic) AccidentListViewModel * viewModel;
+
+@property (weak, nonatomic) IBOutlet LRBaseTableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UITextField *tf_search;
 @property (weak, nonatomic) IBOutlet UIView *v_search;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_viewSearch_height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_viewSearch_top;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_changeView_top;
+
+@property (weak, nonatomic) IBOutlet UIView *v_change;
+
 @property (nonatomic,copy) NSString *str_search;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_illegalAdd;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arr_button;
+
 
 @end
 
 @implementation AccidentListVC
 
+- (instancetype)initWithViewModel:(AccidentListViewModel *)viewModel{
+    
+    if (self = [super init]) {
+        self.viewModel = viewModel;
+    }
+    
+    return  self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowScreenClick:) name:@"筛选视图点击事件" object:nil];
+}
+
+- (void)lr_configUI{
     
     @weakify(self);
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处处理成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+    
+    self.viewModel.stateType = 3;
+    
+    for (UIButton * t_button in self.arr_button) {
+        if (t_button.tag == 3) {
+            t_button.selected = YES;
+        }else{
+            t_button.selected = NO;
+        }
+    }
+    
+    [[RACObserve(self.viewModel, stateType) skip:1] subscribeNext:^(NSNumber * _Nullable x) {
+        
         @strongify(self);
+       
+        for (UIButton * t_button in self.arr_button) {
+            if (t_button.tag == [x intValue]) {
+                t_button.selected = YES;
+            }else{
+                t_button.selected = NO;
+            }
+        }
         
-        [self.tb_content reloadData];
-        
+        [self.tableView beginRefresh];
         
     }];
     
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"快处认定成功" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+    if (self.viewModel.accidentType == AccidentTypeAccident) {
+        
+        self.layout_changeView_top.constant = 40.f;
+        self.v_change.hidden = NO;
+    }else if (self.viewModel.accidentType == AccidentTypeFastAccident){
+        self.layout_changeView_top.constant = 0.f;
+        self.v_change.hidden = YES;
+        
+    }
+    
+    self.tableView.autoNetworkNotice = YES;
+    self.tableView.isHavePlaceholder = YES;
+    
+    
+    self.tableView.tableViewPlaceholderBlock = ^{
         @strongify(self);
         
-        [self.tb_content reloadData];
+        if (self.viewModel.arr_content.count > 0) {
+            [self.viewModel.arr_content removeAllObjects];
+            [self.tableView reloadData];
+        }
         
+        self.tableView.lr_handler.state = LRDataLoadStateLoading;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              @strongify(self);
+              [self reloadData];
+        });
+    };
+    
+    self.tableView.tableViewHeaderRefresh = ^{
+        @strongify(self);
+        [self reloadData];
         
-    }];
+    };
     
-    self.str_search = _tf_search.text;
-    _tb_content.isNeedPlaceholderView = YES;
-    _tb_content.firstReload = YES;
-    //隐藏多余行的分割线
-    _tb_content.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    [_tb_content setSeparatorInset:UIEdgeInsetsZero];
-    [_tb_content setLayoutMargins:UIEdgeInsetsZero];
-    self.tb_content.estimatedRowHeight = 148.5;
-    self.tb_content.rowHeight = UITableViewAutomaticDimension;
-    [_tb_content registerNib:[UINib nibWithNibName:@"AccidentCell" bundle:nil] forCellReuseIdentifier:@"AccidentCellID"];
-
-    self.arr_content = [NSMutableArray array];
-    
-    [self initRefresh];
-    
-    
-    if (_type == 1) {
+    self.tableView.tableViewFooterLoadMore = ^{
+        @strongify(self);
+        [self loadData];
         
-
+    };
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"AccidentCell" bundle:nil] forCellReuseIdentifier:@"AccidentCellID"];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = 148.5f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    if (self.viewModel.type == 1) {
+        
         @weakify(self);
         [self zx_setRightBtnWithImgName:@"btn_search" clickedBlock:^(ZXNavItemBtn * _Nonnull btn) {
             @strongify(self);
@@ -82,221 +149,157 @@
         }];
         
         
-        if (_accidentType == AccidentTypeAccident) {
+        if (self.viewModel.accidentType == AccidentTypeAccident) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
-        }else if (_accidentType == AccidentTypeFastAccident){
+        }else if (self.viewModel.accidentType == AccidentTypeFastAccident){
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
         }
-        [_tb_content.mj_header beginRefreshing];
-    
+        
+        if (self.viewModel.accidentType == AccidentTypeFastAccident) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:@"快处处理成功" object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accidentSuccess:) name:@"快处认定成功" object:nil];
+        }
+        
         _v_search.hidden = YES;
         _layout_viewSearch_height.constant = 0;
         
+        self.btn_illegalAdd.hidden = NO;
         
-    }else if(_type == 2){
+    }else if(self.viewModel.type == 2){
         
         self.zx_hideBaseNavBar = YES;
-        
         if (IS_IPHONE_X_MORE){
-            _layout_viewSearch_height.constant = _layout_viewSearch_height.constant + 24;
+            _layout_viewSearch_height.constant = _layout_viewSearch_height.constant + 24 ;
+            
         }
+        
         _layout_viewSearch_top.constant = - Height_StatusBar;
+    
+        self.btn_illegalAdd.hidden = YES;
         
     }
     
+    
+}
 
-    WS(weakSelf);
-    //点击重新加载之后的处理
-    [_tb_content setReloadBlock:^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
-        [strongSelf.tb_content.mj_header beginRefreshing];
+- (void)lr_bindViewModel{
+    
+    
+    @weakify(self);
+    
+
+    [self.viewModel.command_list.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        
+        [self.tableView endingRefresh];
+        [self.tableView endingLoadMore];
+        
+        if ([x isEqualToString:@"请求最后一条成功"]) {
+            [self.tableView endingNoMoreData];
+            if (self.viewModel.arr_content.count == 0) {
+                self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+            }
+        }else if([x isEqualToString:@"加载成功"]){
+            if (self.viewModel.arr_content.count == 0) {
+                self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+            }else{
+                self.tableView.lr_handler.state = LRDataLoadStateIdle;
+            }
+            
+        }else if([x isEqualToString:@"加载失败"]){
+        
+            if (self.viewModel.arr_content.count == 0) {
+                self.tableView.lr_handler.state = LRDataLoadStateFailed;
+            }
+        }
+        
+        [self.tableView reloadData];
+        
     }];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    WS(weakSelf);
-    
-    if (_type == 2) {
-        self.navigationController.navigationBarHidden = YES;
+    if (self.viewModel.type == 1) {
+        
+#pragma mark - 权限判断
+        if (self.viewModel.accidentType == AccidentTypeAccident) {
+            if ([UserModel isPermissionForAccidentList]) {
+                [self loadDataForStart];
+            }else{
+                [self loadDataForEmpty];
+            }
+            
+        }else if (self.viewModel.accidentType == AccidentTypeFastAccident){
+            
+            if ([UserModel isPermissionForFastAccidentList]) {
+                [self loadDataForStart];
+            }else{
+                [self loadDataForEmpty];
+            }
+            
+        }
+        
+    }else{
+        
+        if (self.viewModel.arr_content.count > 0) {
+            [self.viewModel.arr_content removeAllObjects];
+            [self.tableView reloadData];
+        }
+        self.tableView.enableRefresh = NO;
+        self.tableView.enableLoadMore = NO;
+        self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+        [self.tableView reloadData];
+        
     }
     
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = ^{
-        SW(strongSelf, weakSelf);
-        strongSelf.tb_content.isNetAvailable = NO;
-        strongSelf.index = 0;
-        [strongSelf.tb_content.mj_header beginRefreshing];
-    };
-
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    
-    if (_type == 2) {
-        self.navigationController.navigationBarHidden = NO;
+#pragma mark - 开始加载数据
+
+- (void)loadDataForStart{
+    @weakify(self);
+    if (self.viewModel.arr_content.count > 0) {
+        [self.viewModel.arr_content removeAllObjects];
+        [self.tableView reloadData];
     }
+    self.tableView.enableRefresh = YES;
+    self.tableView.enableLoadMore = YES;
+    [self.tableView resetNoMoreData];
+    self.tableView.lr_handler.state = LRDataLoadStateLoading;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
+        [self reloadData];
+    });
     
-    [super viewWillDisappear:animated];
+}
+
+
+#pragma mark - 配置不能加载数据
+
+- (void)loadDataForEmpty{
+    
+    //[ShareFun showTipLable:@"请联系管理员授权"];
+    
+    if (self.viewModel.arr_content.count > 0) {
+        [self.viewModel.arr_content removeAllObjects];
+        [self.tableView reloadData];
+    }
+    self.tableView.enableRefresh = NO;
+    self.tableView.enableLoadMore = NO;
+    self.tableView.lr_handler.state = LRDataLoadStateEmpty;
+    [self.tableView reloadData];
     
 }
 
-
-#pragma mark - 创建下拉刷新，以及上拉加载更多
-
-- (void)initRefresh{
-    
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadData)];
-    [header setTitle:@"下拉查询" forState:MJRefreshStateIdle];
-    [header setTitle:@"松手开始查询" forState:MJRefreshStatePulling];
-    [header setTitle:@"查询中..." forState:MJRefreshStateRefreshing];
-    header.stateLabel.font = [UIFont systemFontOfSize:15];
-    
-    header.automaticallyChangeAlpha = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    _tb_content.mj_header = header;
-    
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    
-    [footer setTitle:@"" forState:MJRefreshStateIdle];
-    [footer setTitle:@"加载更多..." forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"— 没有更多内容了 —" forState:MJRefreshStateNoMoreData];
-    
-    
-    footer.stateLabel.font = [UIFont systemFontOfSize:15];
-    footer.stateLabel.textColor = UIColorFromRGB(0xa6a6a6);
-    _tb_content.mj_footer = footer;
-    _tb_content.mj_footer.automaticallyHidden = YES;
-    
-}
 
 #pragma mark - 加载新数据
 
 - (void)reloadData{
-    self.index = 0;
-    [self loadData];
+    self.viewModel.index= 0;
+    [self.tableView resetNoMoreData];
+    [self.viewModel.command_list execute:nil];
 }
 
 - (void)loadData{
-    
-    WS(weakSelf);
-    
-    if (_index == 0) {
-        if (_arr_content && _arr_content.count > 0) {
-            [_arr_content removeAllObjects];
-        }
-    }
-    
-    if (_type == 2) {
-        if (_str_search.length == 0) {
-            [self.tb_content.mj_header endRefreshing];
-            [self.tb_content.mj_footer endRefreshing];
-            [self.tb_content reloadData];
-            return;
-            
-        }
-        
-    }
-    
-
-    if (_accidentType == AccidentTypeAccident) {
-        
-        AccidentListPagingParam *param = [[AccidentListPagingParam alloc] init];
-        param.start = _index;
-        param.length = 10;
-        if (_str_search.length > 0) {
-            param.search = _str_search;
-        }
-       
-        AccidentListPagingManger *manger = [[AccidentListPagingManger alloc] init];
-        manger.param = param;
-       
-        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf, weakSelf);
-            [strongSelf.tb_content.mj_header endRefreshing];
-            [strongSelf.tb_content.mj_footer endRefreshing];
-            
-            if (manger.responseModel.code == CODE_SUCCESS) {
-                
-                [strongSelf.arr_content addObjectsFromArray:manger.accidentListPagingReponse.list];
-                if (strongSelf.arr_content.count == manger.accidentListPagingReponse.total) {
-                    [strongSelf.tb_content.mj_footer endRefreshingWithNoMoreData];
-                }else{
-                    strongSelf.index += param.length;
-                }
-                [strongSelf.tb_content reloadData];
-            }else{
-                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%ld msg:%@",manger.responseModel.code,manger.responseModel.msg];
-                [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
-            }
-            
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf,weakSelf);
-            [strongSelf.tb_content.mj_header endRefreshing];
-            [strongSelf.tb_content.mj_footer endRefreshing];
-            
-            Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
-            NetworkStatus status = [reach currentReachabilityStatus];
-            if (status == NotReachable) {
-                if (strongSelf.arr_content.count > 0) {
-                    [strongSelf.arr_content removeAllObjects];
-                }
-                strongSelf.tb_content.isNetAvailable = YES;
-                [strongSelf.tb_content reloadData];
-            }
-        }];
-        
-    }else if (_accidentType == AccidentTypeFastAccident){
-    
-        FastAccidentListPagingParam *param = [[FastAccidentListPagingParam alloc] init];
-        param.start = _index;
-        param.length = 10;
-        if (_str_search.length > 0) {
-            param.search = _str_search;
-        }
-
-        FastAccidentListPagingManger *manger = [[FastAccidentListPagingManger alloc] init];
-        manger.param = param;
-       
-        [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf, weakSelf);
-            [strongSelf.tb_content.mj_header endRefreshing];
-            [strongSelf.tb_content.mj_footer endRefreshing];
-            
-            if (manger.responseModel.code == CODE_SUCCESS) {
-                
-                [strongSelf.arr_content addObjectsFromArray:manger.fastAccidentListPagingReponse.list];
-                if (strongSelf.arr_content.count == manger.fastAccidentListPagingReponse.total) {
-                    [strongSelf.tb_content.mj_footer endRefreshingWithNoMoreData];
-                }else{
-                    strongSelf.index += param.length;
-                }
-                [strongSelf.tb_content reloadData];
-            }else{
-                NSString *t_errString = [NSString stringWithFormat:@"网络错误:code:%ld msg:%@",manger.responseModel.code,manger.responseModel.msg];
-                [LRShowHUD showError:t_errString duration:1.5 inView:strongSelf.view config:nil];
-            }
-            
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            SW(strongSelf,weakSelf);
-            [strongSelf.tb_content.mj_header endRefreshing];
-            [strongSelf.tb_content.mj_footer endRefreshing];
-            
-            Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
-            NetworkStatus status = [reach currentReachabilityStatus];
-            if (status == NotReachable) {
-                if (strongSelf.arr_content.count > 0) {
-                    [strongSelf.arr_content removeAllObjects];
-                }
-                strongSelf.tb_content.isNetAvailable = YES;
-                [strongSelf.tb_content reloadData];
-            }
-        }];
-    
-    }
-    
+    [self.viewModel.command_list execute:nil];
 }
 
 #pragma mark - UITableViewDelegate
@@ -306,17 +309,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _arr_content.count;
+    return self.viewModel.arr_content.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AccidentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccidentCellID"];
     
-    if (_arr_content && _arr_content.count > 0) {
+    if (self.viewModel.arr_content && self.viewModel.arr_content.count > 0) {
         
-        AccidentListModel *t_model = _arr_content[indexPath.row];
-        cell.accidentType = self.accidentType;
+        AccidentListModel *t_model = self.viewModel.arr_content[indexPath.row];
+        cell.accidentType = self.viewModel.accidentType;
         cell.model = t_model;
     }
     
@@ -332,12 +335,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (_arr_content && _arr_content.count > 0) {
+    if (self.viewModel.arr_content && self.viewModel.arr_content.count > 0) {
         
-        AccidentListModel *t_model = _arr_content[indexPath.row];
+        AccidentListModel *t_model = self.viewModel.arr_content[indexPath.row];
     
         AccidentCompleteVC *t_vc = [[AccidentCompleteVC alloc] init];
-        t_vc.accidentType = _accidentType;
+        t_vc.accidentType = self.viewModel.accidentType;
         t_vc.accidentId = t_model.accidentId;
         t_vc.state = t_model;
         [self.navigationController pushViewController:t_vc animated:YES];
@@ -347,12 +350,43 @@
 
 #pragma mark - buttonAction
 
+
+- (IBAction)handleBtnNameClicked:(id)sender {
+    self.viewModel.stateType = 0;
+}
+
+- (IBAction)handleBtnCodeClicked:(id)sender {
+    self.viewModel.stateType = 1;
+}
+
+
+- (IBAction)handleBtnCarNoClicked:(id)sender {
+    self.viewModel.stateType = 2;
+}
+
+- (IBAction)handleBtnCarInfoClicked:(id)sender {
+    self.viewModel.stateType = 3;
+}
+
 - (IBAction)handleBtnSearchClicked:(id)sender {
     
-    AccidentListVC *vc = [[AccidentListVC alloc] init];
-    vc.accidentType = _accidentType;
-    vc.type = 2;
-    [self.navigationController pushViewController:vc animated:YES];
+
+    if (self.viewModel.accidentType == AccidentTypeAccident) {
+        if ([UserModel isPermissionForAccidentList]) {
+            [AlertView showFiltartWithCar:self.viewModel.str_car withName:self.viewModel.str_name withAddress:self.viewModel.str_address withStartTime:self.viewModel.str_startTime withEndTime:self.viewModel.str_endTime inViewController:self.view];
+        }
+
+    }else if (self.viewModel.accidentType == AccidentTypeFastAccident){
+
+        if ([UserModel isPermissionForFastAccidentList]) {
+            AccidentListViewModel * viewModel = [[AccidentListViewModel alloc] init];
+            viewModel.accidentType = self.viewModel.accidentType;
+            viewModel.type = 2;
+            AccidentListVC *vc = [[AccidentListVC alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+
+    }
     
 }
 
@@ -376,23 +410,54 @@
 
 #pragma mark - UItextFieldDelegate
 
--(BOOL) textFieldShouldReturn:(UITextField*) textField
-{
-    [textField resignFirstResponder];
-    _str_search = textField.text;
-    if (_str_search.length == 0) {
+- (IBAction)handleBtnSearch:(id)sender {
+    
+    [self.tf_search resignFirstResponder];
+     self.viewModel.str_search = self.tf_search.text;
+    if (self.viewModel.str_search.length == 0) {
         [LRShowHUD showError:@"请输入搜索内容" duration:1.5f];
     }
-    [self.tb_content.mj_header beginRefreshing];
-    return YES;
+    self.tableView.enableRefresh = YES;
+    self.tableView.enableLoadMore = YES;
+    [self.tableView beginRefresh];
+    
 }
+
 
 
 #pragma mark - Notication
 
 - (void)accidentSuccess:(NSNotification *)notification{
-     [_tb_content.mj_header beginRefreshing];
+     [self.tableView beginRefresh];
 }
+
+- (IBAction)handleIllegalAdd:(id)sender {
+    
+    AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
+    t_vc.accidentType = self.viewModel.accidentType;
+    NSRange range = [self.title rangeOfString:@"列表"];
+    NSLog(@"rang:%@",NSStringFromRange(range));
+    t_vc.title =  [self.title substringToIndex:range.location];
+    [self.navigationController pushViewController:t_vc animated:YES];
+
+}
+
+#pragma mark - NSNotificationCenter
+
+- (void)handleShowScreenClick:(NSNotification *)notification{
+    
+    RACTupleUnpack(NSString * str_car,NSString * str_name, NSString * str_address, NSString * str_startTime, NSString * str_endTime) = notification.object;
+    
+    self.viewModel.str_car = str_car;
+    self.viewModel.str_name = str_name;
+    self.viewModel.str_address = str_address;
+    self.viewModel.str_startTime = str_startTime;
+    self.viewModel.str_endTime = str_endTime;
+    
+    [self.tableView beginRefresh];
+    
+}
+
 
 #pragma mark - dealloc
 
@@ -403,16 +468,22 @@
 
 - (void)dealloc{
     
-    [NetWorkHelper sharedDefault].networkReconnectionBlock = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"筛选视图点击事件" object:nil];
     
-    if (_accidentType == AccidentTypeAccident) {
+    if (self.viewModel.accidentType == AccidentTypeAccident) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_ACCIDENT_SUCCESS object:nil];
-    }else if (_accidentType == AccidentTypeFastAccident){
+    }else if (self.viewModel.accidentType == AccidentTypeFastAccident){
          [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_FASTACCIDENT_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"快处处理成功" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"快处认定成功" object:nil];
+        
     }
 
     LxPrintf(@"AccidentListVC dealloc");
     
 }
+
+
+
 
 @end

@@ -370,6 +370,8 @@
                     [strongSelf loadIllegalParkDetail];
                 }else if (strongSelf.illegalType == IllegalTypeThrough){
                     [strongSelf loadIllegalThroughDetail];
+                }else if (strongSelf.illegalType == IllegalTypeThroughManage){
+                    [self loadIllegalThroughManagelDetail];
                 }
                 
             }];

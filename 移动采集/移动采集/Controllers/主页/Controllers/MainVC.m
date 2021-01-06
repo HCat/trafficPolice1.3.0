@@ -188,9 +188,11 @@
     
     
     if ([[UserModel getUserModel].photoUrl isKindOfClass:[NSNull class]]) {
+        
         [self.headerView.imageV_user setImage:[UIImage imageNamed:@"main_image_user"]];
     }else{
-        [self.headerView.imageV_user sd_setImageWithURL:[NSURL URLWithString:self.viewModel.photoUrl] placeholderImage:[UIImage imageNamed:@"main_image_user"]];
+        NSLog(@"%@",[UserModel getUserModel].photoUrl);
+        [self.headerView.imageV_user sd_setImageWithURL:[NSURL URLWithString:[UserModel getUserModel].photoUrl] placeholderImage:[UIImage imageNamed:@"main_image_user"]];
     }
 
 //    [self.viewModel.command_userIcon.executionSignals.switchToLatest subscribeNext:^(NSString * _Nullable x) {
@@ -204,7 +206,7 @@
 //
 //    }];
     
-    //[self.viewModel.command_userIcon execute:nil];
+//    [self.viewModel.command_userIcon execute:nil];
     
 }
 

@@ -55,6 +55,13 @@
 #import "IllegalAddListVC.h"
 #import "IllegalAddForSSVC.h"
 
+#import "AccidentListVC.h"
+#import "DataStatisticsVC.h"
+
+
+
+
+
 #import "ExpressRegulationVC.h"
 #import "IllegalExposureListVC.h"
 
@@ -125,7 +132,6 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, UIApplication.sharedApplication.keyWindow.jx_layoutInsets.bottom, 0);
     self.collectionView.isHavePlaceholder = YES;
     self.collectionView.enableRefresh = YES;
-    
     self.collectionView.collectionViewPlaceholderBlock = ^{
         @strongify(self);
         
@@ -411,15 +417,24 @@
            [self.navigationController pushViewController:t_vc animated:YES];
         }else if ([menuModel.menuCode isEqualToString:@"NORMAL_ACCIDENT_ADD"]) {
             //menuModel.funTitle = @"事故录入";
-            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-            t_vc.accidentType = AccidentTypeAccident;
-            [self.navigationController pushViewController:t_vc animated:YES];
-           
+            
+            AccidentListViewModel * viewModel = [[AccidentListViewModel alloc] init];
+            viewModel.accidentType = AccidentTypeAccident;
+            viewModel.type = 1;
+            AccidentListVC * vc = [[AccidentListVC alloc] initWithViewModel:viewModel];
+            vc.title = [NSString stringWithFormat:@"%@列表",menuModel.menuName];
+            [self.navigationController pushViewController:vc animated:YES];
+            
         }else if ([menuModel.menuCode isEqualToString:@"FAST_ACCIDENT_ADD"]) {
             //menuModel.funTitle = @"快处录入";
-            AccidentManageVC *t_vc = [[AccidentManageVC alloc] init];
-            t_vc.accidentType = AccidentTypeFastAccident;
-            [self.navigationController pushViewController:t_vc animated:YES];
+            
+            AccidentListViewModel * viewModel = [[AccidentListViewModel alloc] init];
+            viewModel.accidentType = AccidentTypeFastAccident;
+            viewModel.type = 1;
+            AccidentListVC * vc = [[AccidentListVC alloc] initWithViewModel:viewModel];
+            vc.title = [NSString stringWithFormat:@"%@列表",menuModel.menuName];
+            [self.navigationController pushViewController:vc animated:YES];
+        
         }else if ([menuModel.menuCode isEqualToString:@"IMPORTANT_CAR"]) {
             //menuModel.funTitle = @"工程车辆";
             ImportCarHomeVC * t_vc = [[ImportCarHomeVC alloc] init];
@@ -568,6 +583,11 @@
         }else if ([menuModel.menuCode isEqualToString:@"LOGISTICS_MANAGE"]) {
             //menuModel.funTitle = @"快递监管管理";
             ExpressRegulationVC * vc = [[ExpressRegulationVC alloc] init];
+            vc.title = menuModel.menuName;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if ([menuModel.menuCode isEqualToString:@"ACCIDENT_REPORTS"]) {
+            //menuModel.funTitle = @"数据分析";
+            DataStatisticsVC * vc = [[DataStatisticsVC alloc] init];
             vc.title = menuModel.menuName;
             [self.navigationController pushViewController:vc animated:YES];
         }

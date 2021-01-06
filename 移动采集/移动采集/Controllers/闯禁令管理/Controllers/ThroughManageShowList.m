@@ -92,41 +92,41 @@
     [items_t addObject:@"近一年"];
     
     
-    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, Height_NavBar, SCREEN_WIDTH, 44)
-                                                          title:items_t.firstObject
-                                                          items:items_t
-                                                  containerView:self.view];
-    _menuView.backgroundColor = [UIColor whiteColor];
-    
-    _menuView.cellHeight = 50;
-    _menuView.cellBackgroundColor = [UIColor whiteColor];
-    _menuView.cellSelectionColor = [UIColor whiteColor];
-    _menuView.cellTextLabelColor = DefaultTextColor;
-    _menuView.cellTextLabelFont = [UIFont systemFontOfSize:14.f];
-    _menuView.arrowImage = [UIImage imageNamed:@"icon_dropdown_down"];
-    _menuView.checkMarkImage = [UIImage imageNamed:@"icon_dropdown_selected"];
-    _menuView.arrowPadding = 15;
-    _menuView.animationDuration = 0.5f;
-    _menuView.maskBackgroundColor = [UIColor blackColor];
-    _menuView.maskBackgroundOpacity = 0.3f;
-    
-    _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
-        NSLog(@"Did select item at index: %ld", indexPath);
-        @strongify(self);
-        self.viewModel.param.timeType = @(indexPath + 1);
-        [self.tableView beginRefresh];
-        
-    };
-    
-    [self.view addSubview:_menuView];
-    
-    [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@44);
-        make.top.equalTo(self.view).offset(Height_NavBar);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-            
-    }];
+//    _menuView = [[PFNavigationDropdownMenu alloc] initWithFrame:CGRectMake(0, Height_NavBar, SCREEN_WIDTH, 44)
+//                                                          title:items_t.firstObject
+//                                                          items:items_t
+//                                                  containerView:self.view];
+//    _menuView.backgroundColor = [UIColor whiteColor];
+//
+//    _menuView.cellHeight = 50;
+//    _menuView.cellBackgroundColor = [UIColor whiteColor];
+//    _menuView.cellSelectionColor = [UIColor whiteColor];
+//    _menuView.cellTextLabelColor = DefaultTextColor;
+//    _menuView.cellTextLabelFont = [UIFont systemFontOfSize:14.f];
+//    _menuView.arrowImage = [UIImage imageNamed:@"icon_dropdown_down"];
+//    _menuView.checkMarkImage = [UIImage imageNamed:@"icon_dropdown_selected"];
+//    _menuView.arrowPadding = 15;
+//    _menuView.animationDuration = 0.5f;
+//    _menuView.maskBackgroundColor = [UIColor blackColor];
+//    _menuView.maskBackgroundOpacity = 0.3f;
+//
+//    _menuView.didSelectItemAtIndexHandler = ^(NSUInteger indexPath){
+//        NSLog(@"Did select item at index: %ld", indexPath);
+//        @strongify(self);
+//        self.viewModel.param.timeType = @(indexPath + 1);
+//        [self.tableView beginRefresh];
+//
+//    };
+//
+//    [self.view addSubview:_menuView];
+//
+//    [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.equalTo(@44);
+//        make.top.equalTo(self.view).offset(Height_NavBar);
+//        make.left.equalTo(self.view);
+//        make.right.equalTo(self.view);
+//
+//    }];
     
 }
 
@@ -165,7 +165,7 @@
         
     }];
     
-    self.viewModel.param.timeType = @(1);
+    //self.viewModel.param.timeType = @(0);
     
     if (self.viewModel.arr_content.count > 0) {
         [self.viewModel.arr_content removeAllObjects];

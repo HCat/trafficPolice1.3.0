@@ -152,10 +152,20 @@
         [self.peopleArray addObject:t_model];
     }
     
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
-    [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    if (self.accidentType == AccidentTypeAccident) {
+        
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:3 inSection:0];
+        [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+        [self sliderViewScrolledtoPageAtIndex:self.sliderView.currentIndex];
+        
+    }else if(self.accidentType == AccidentTypeFastAccident){
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+        [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+        [self sliderViewScrolledtoPageAtIndex:self.sliderView.currentIndex];
+    }
     
-    [self sliderViewScrolledtoPageAtIndex:self.sliderView.currentIndex];
 
 }
 
@@ -167,8 +177,17 @@
         [self.peopleArray removeObject:t_model];
     }
     
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
-    [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    if (self.accidentType == AccidentTypeAccident) {
+        
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:3 inSection:0];
+        [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+    }else if(self.accidentType == AccidentTypeFastAccident){
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+        [[ShareFun getTableView:self] reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    
     
 }
 

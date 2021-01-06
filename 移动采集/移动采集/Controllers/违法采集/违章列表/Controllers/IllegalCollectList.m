@@ -433,7 +433,6 @@
     self.tableView.enableLoadMore = YES;
     [self.tableView beginRefresh];
     
-    
 }
 
 #pragma mark - Notification

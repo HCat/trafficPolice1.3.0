@@ -60,11 +60,23 @@
                                 <constraint firstAttribute="bottom" secondItem="QXJ-3i-jx8" secondAttribute="bottom" constant="5" id="qfc-10-ZaT"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwW-63-n2l">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwW-63-n2l">
                             <rect key="frame" x="15" y="62" width="80.5" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="nC3-eq-5Fr"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="车辆编号" image="btn_takeout_n">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                            </state>
+                            <state key="selected" image="btn_takeout_h"/>
+                            <connections>
+                                <action selector="handleBtnCarInfoClicked:" destination="-1" eventType="touchUpInside" id="qLd-hG-CI5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-T4-nBT">
+                            <rect key="frame" x="103.5" y="62" width="80" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="姓名" image="btn_takeout_n">
@@ -72,11 +84,11 @@
                             </state>
                             <state key="selected" image="btn_takeout_h"/>
                             <connections>
-                                <action selector="handleBtnNameClicked:" destination="-1" eventType="touchUpInside" id="VKP-Ee-5pW"/>
+                                <action selector="handleBtnNameClicked:" destination="-1" eventType="touchUpInside" id="EfO-af-RLV"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-T4-nBT">
-                            <rect key="frame" x="103.5" y="62" width="80" height="28"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIm-As-f9h">
+                            <rect key="frame" x="191.5" y="62" width="80.5" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="身份证" image="btn_takeout_n">
@@ -84,11 +96,11 @@
                             </state>
                             <state key="selected" image="btn_takeout_h"/>
                             <connections>
-                                <action selector="handleBtnCodeClicked:" destination="-1" eventType="touchUpInside" id="mn4-nw-uOv"/>
+                                <action selector="handleBtnCodeClicked:" destination="-1" eventType="touchUpInside" id="S5V-Pt-5ar"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIm-As-f9h">
-                            <rect key="frame" x="191.5" y="62" width="80.5" height="28"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoD-Mj-liR">
+                            <rect key="frame" x="280" y="62" width="80" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="车架号" image="btn_takeout_n">
@@ -96,19 +108,7 @@
                             </state>
                             <state key="selected" image="btn_takeout_h"/>
                             <connections>
-                                <action selector="handleBtnCarNoClicked:" destination="-1" eventType="touchUpInside" id="btD-fM-g1C"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoD-Mj-liR">
-                            <rect key="frame" x="280" y="62" width="80" height="28"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="车牌号" image="btn_takeout_n">
-                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                            </state>
-                            <state key="selected" image="btn_takeout_h"/>
-                            <connections>
-                                <action selector="handleBtnCarInfoClicked:" destination="-1" eventType="touchUpInside" id="niI-Zn-vVq"/>
+                                <action selector="handleBtnCarNoClicked:" destination="-1" eventType="touchUpInside" id="bCV-uI-7Jh"/>
                             </connections>
                         </button>
                     </subviews>

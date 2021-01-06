@@ -7,11 +7,11 @@
 //
 
 #import "HideTabSuperVC.h"
+#import "AccidentListViewModel.h"
 
-@interface AccidentListVC : HideTabSuperVC
+@interface AccidentListVC : BaseViewController
 
-@property(nonatomic,assign) AccidentType accidentType;
+- (instancetype)initWithViewModel:(AccidentListViewModel *)viewModel;
 
-@property(nonatomic,assign) int type; // 1表示正常列表页面  2表示搜索列表页面
 
 @end

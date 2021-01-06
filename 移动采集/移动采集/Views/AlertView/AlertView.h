@@ -33,6 +33,8 @@
 + (void)showWindowWithIllegalRoadViewWith:(IllegalRoadView *)view inView:(UIView *)contentView;
 + (void)showWindowWithIllegalSearchViewWith:(IllegalSearchView *)view inView:(UIView *)contentView;
 
++ (void )showFiltartWithCar:(NSString *)car withName:(NSString *)name  withAddress:(NSString *)address withStartTime:(NSString *)startTime withEndTime:(NSString *)endTime inViewController:(UIView *)root_view;
+
 - (void)handleBtnDismissClick:(id)sender;
 
 @end

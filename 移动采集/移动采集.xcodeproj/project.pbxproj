@@ -607,6 +607,7 @@
 		CE2DE04624FF792300423042 /* LRBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2DE04124FF792300423042 /* LRBaseCollectionView.m */; };
 		CE2DE04924FF794B00423042 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2DE04824FF794B00423042 /* UIWindow+JXSafeArea.m */; };
 		CE36A03B1FF4D06800BAAD18 /* JointLawAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */; };
+		CE391DF0254BB5BA003B924F /* AccidentListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE391DEF254BB5BA003B924F /* AccidentListViewModel.m */; };
 		CE3C0F711F3070C900D3B55D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F701F3070C900D3B55D /* CoreMotion.framework */; };
 		CE3C0F731F3070D100D3B55D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */; };
 		CE3C0F751F3070D800D3B55D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3C0F741F3070D800D3B55D /* MessageUI.framework */; };
@@ -683,6 +684,9 @@
 		CE5328682057FD3C003D6152 /* IllegalParkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5328672057FD3C003D6152 /* IllegalParkAlertView.m */; };
 		CE53286A2057FD50003D6152 /* IllegalParkAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */; };
 		CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */; };
+		CE546B12255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE546B11255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.m */; };
+		CE546B17255E8CFC0004D3FD /* AccidentHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE546B15255E8CFB0004D3FD /* AccidentHistoryListVC.m */; };
+		CE546B18255E8CFC0004D3FD /* AccidentHistoryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE546B16255E8CFB0004D3FD /* AccidentHistoryListVC.xib */; };
 		CE54C22520D210A900BE2693 /* NSArray+PureLayoutMore.m in Sources */ = {isa = PBXBuildFile; fileRef = CE54C22420D210A900BE2693 /* NSArray+PureLayoutMore.m */; };
 		CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F51F96F19F00CD1567 /* AddressBookAPI.m */; };
 		CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE55B7F81F96F29F00CD1567 /* AddressBookModel.m */; };
@@ -773,7 +777,14 @@
 		CE7AE6C52523BF5E00719687 /* ThroughManageShowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AE6C42523BF5E00719687 /* ThroughManageShowViewModel.m */; };
 		CE7AE6CE2524696700719687 /* IllegalExposureFeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AE6CC2524696700719687 /* IllegalExposureFeadView.m */; };
 		CE7AE6CF2524696700719687 /* IllegalExposureFeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7AE6CD2524696700719687 /* IllegalExposureFeadView.xib */; };
+		CE7AF515256271E800BB32DD /* AccidentCallMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AF513256271E800BB32DD /* AccidentCallMessageCell.m */; };
+		CE7AF516256271E800BB32DD /* AccidentCallMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7AF514256271E800BB32DD /* AccidentCallMessageCell.xib */; };
 		CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */; };
+		CE820FFA2589AB0A005833F9 /* DataStatisticsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE820FF82589AB0A005833F9 /* DataStatisticsListVC.m */; };
+		CE820FFB2589AB0A005833F9 /* DataStatisticsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE820FF92589AB0A005833F9 /* DataStatisticsListVC.xib */; };
+		CE820FFF2589B861005833F9 /* DataStatisticsListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE820FFE2589B861005833F9 /* DataStatisticsListViewModel.m */; };
+		CE821004258A01A3005833F9 /* FiltrateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE821001258A01A2005833F9 /* FiltrateView.xib */; };
+		CE821005258A01A3005833F9 /* FiltrateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE821002258A01A3005833F9 /* FiltrateView.m */; };
 		CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2320089CE5007B20FE /* PGDatePicker.m */; };
 		CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2420089CE5007B20FE /* UIColor+PGHex.m */; };
 		CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE864F2520089CE5007B20FE /* PGDatePickerView.m */; };
@@ -807,6 +818,144 @@
 		CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE8671F6690E800CC64B0 /* LocationAPI.m */; };
 		CE8EE86B1F66926300CC64B0 /* UserGpsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */; };
 		CE93BC6C2147C0B5001F2976 /* SpecialCarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93BC6B2147C0B5001F2976 /* SpecialCarAPI.m */; };
+		CEA004082559209600F66636 /* AccidentCallPoliceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004062559209600F66636 /* AccidentCallPoliceCell.m */; };
+		CEA004092559209600F66636 /* AccidentCallPoliceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA004072559209600F66636 /* AccidentCallPoliceCell.xib */; };
+		CEA0040F25593D7A00F66636 /* AccidentMoreAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0040E25593D7A00F66636 /* AccidentMoreAPIs.m */; };
+		CEA0041A255BEB5400F66636 /* DataStatisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00418255BEB5400F66636 /* DataStatisticsVC.m */; };
+		CEA0041B255BEB5400F66636 /* DataStatisticsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA00419255BEB5400F66636 /* DataStatisticsVC.xib */; };
+		CEA00420255BEB7300F66636 /* DataStatisticsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0041F255BEB7300F66636 /* DataStatisticsViewModel.m */; };
+		CEA00424255BEB8F00F66636 /* DataStatisticsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00423255BEB8F00F66636 /* DataStatisticsAPI.m */; };
+		CEA0056C255D3AE700F66636 /* ProgressChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0042A255D3AE600F66636 /* ProgressChart.m */; };
+		CEA0056D255D3AE700F66636 /* BarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0042E255D3AE600F66636 /* BarChart.m */; };
+		CEA0056E255D3AE700F66636 /* LineBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0042F255D3AE600F66636 /* LineBarChart.m */; };
+		CEA0056F255D3AE700F66636 /* BaseLineBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00434255D3AE600F66636 /* BaseLineBarChart.m */; };
+		CEA00570255D3AE700F66636 /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00435255D3AE600F66636 /* LineChart.m */; };
+		CEA00571255D3AE700F66636 /* RadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00438255D3AE600F66636 /* RadarChart.m */; };
+		CEA00572255D3AE700F66636 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0043B255D3AE600F66636 /* PieChart.m */; };
+		CEA00573255D3AE700F66636 /* BaseChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0043C255D3AE600F66636 /* BaseChart.m */; };
+		CEA00574255D3AE700F66636 /* NumberData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00441255D3AE600F66636 /* NumberData.m */; };
+		CEA00575255D3AE700F66636 /* CenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00442255D3AE600F66636 /* CenterData.m */; };
+		CEA00576255D3AE700F66636 /* LineBarDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00446255D3AE600F66636 /* LineBarDataSet.m */; };
+		CEA00577255D3AE700F66636 /* LineData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00448255D3AE600F66636 /* LineData.m */; };
+		CEA00578255D3AE700F66636 /* LineDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0044B255D3AE600F66636 /* LineDataSet.m */; };
+		CEA00579255D3AE700F66636 /* BarDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0044F255D3AE600F66636 /* BarDataSet.m */; };
+		CEA0057A255D3AE700F66636 /* BarData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00450255D3AE600F66636 /* BarData.m */; };
+		CEA0057B255D3AE700F66636 /* BaseLineBarSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00452255D3AE600F66636 /* BaseLineBarSet.m */; };
+		CEA0057C255D3AE700F66636 /* BaseLineBarData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00455255D3AE600F66636 /* BaseLineBarData.m */; };
+		CEA0057D255D3AE700F66636 /* OutSideLable.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00457255D3AE600F66636 /* OutSideLable.m */; };
+		CEA0057E255D3AE700F66636 /* InnerLable.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00458255D3AE600F66636 /* InnerLable.m */; };
+		CEA0057F255D3AE700F66636 /* PieDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0045A255D3AE600F66636 /* PieDataSet.m */; };
+		CEA00580255D3AE700F66636 /* PieData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0045D255D3AE600F66636 /* PieData.m */; };
+		CEA00581255D3AE700F66636 /* ProgressLable.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00462255D3AE600F66636 /* ProgressLable.m */; };
+		CEA00582255D3AE700F66636 /* ProgressData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00463255D3AE600F66636 /* ProgressData.m */; };
+		CEA00583255D3AE700F66636 /* XAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00466255D3AE600F66636 /* XAxis.m */; };
+		CEA00584255D3AE700F66636 /* LineBarGird.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00467255D3AE600F66636 /* LineBarGird.m */; };
+		CEA00585255D3AE700F66636 /* YAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00468255D3AE600F66636 /* YAxis.m */; };
+		CEA00586255D3AE700F66636 /* LineBarQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00469255D3AE600F66636 /* LineBarQuery.m */; };
+		CEA00587255D3AE700F66636 /* AxisName.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0046B255D3AE600F66636 /* AxisName.m */; };
+		CEA00588255D3AE700F66636 /* RadarData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00471255D3AE600F66636 /* RadarData.m */; };
+		CEA00589255D3AE700F66636 /* RadarDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00473255D3AE600F66636 /* RadarDataSet.m */; };
+		CEA0058A255D3AE700F66636 /* RadarIndicatorData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00474255D3AE600F66636 /* RadarIndicatorData.m */; };
+		CEA0058B255D3AE700F66636 /* GGAxisRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00479255D3AE600F66636 /* GGAxisRenderer.m */; };
+		CEA0058C255D3AE700F66636 /* GGLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0047A255D3AE600F66636 /* GGLineRenderer.m */; };
+		CEA0058D255D3AE700F66636 /* GGCircleRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0047C255D3AE600F66636 /* GGCircleRenderer.m */; };
+		CEA0058E255D3AE700F66636 /* GGPolygonRenderder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0047E255D3AE600F66636 /* GGPolygonRenderder.m */; };
+		CEA0058F255D3AE700F66636 /* GGRectRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00482255D3AE600F66636 /* GGRectRenderer.m */; };
+		CEA00590255D3AE700F66636 /* GGNumberRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00484255D3AE600F66636 /* GGNumberRenderer.m */; };
+		CEA00591255D3AE700F66636 /* GGGridRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00486255D3AE600F66636 /* GGGridRenderer.m */; };
+		CEA00592255D3AE700F66636 /* GGStringRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00487255D3AE600F66636 /* GGStringRenderer.m */; };
+		CEA00593255D3AE700F66636 /* GGRect.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0048A255D3AE600F66636 /* GGRect.m */; };
+		CEA00594255D3AE700F66636 /* GGCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0048C255D3AE600F66636 /* GGCircle.m */; };
+		CEA00595255D3AE700F66636 /* GGArcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0048D255D3AE600F66636 /* GGArcLine.m */; };
+		CEA00596255D3AE700F66636 /* GGSizeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00492255D3AE600F66636 /* GGSizeRange.m */; };
+		CEA00597255D3AE700F66636 /* GGLine.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00493255D3AE600F66636 /* GGLine.m */; };
+		CEA00598255D3AE700F66636 /* GGAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00496255D3AE600F66636 /* GGAxis.m */; };
+		CEA00599255D3AE700F66636 /* GGArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00498255D3AE600F66636 /* GGArrow.m */; };
+		CEA0059A255D3AE700F66636 /* GGPie.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00499255D3AE600F66636 /* GGPie.m */; };
+		CEA0059B255D3AE700F66636 /* GGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0049A255D3AE600F66636 /* GGPolygon.m */; };
+		CEA0059C255D3AE700F66636 /* GGKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0049F255D3AE600F66636 /* GGKShape.m */; };
+		CEA0059D255D3AE700F66636 /* GGGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004A0255D3AE600F66636 /* GGGrid.m */; };
+		CEA0059E255D3AE700F66636 /* PieAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004A3255D3AE600F66636 /* PieAnimationManager.m */; };
+		CEA0059F255D3AE700F66636 /* LineAnimationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004A4255D3AE600F66636 /* LineAnimationsManager.m */; };
+		CEA005A0255D3AE700F66636 /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004A5255D3AE600F66636 /* Animator.m */; };
+		CEA005A1255D3AE700F66636 /* BarAnimationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004A6255D3AE600F66636 /* BarAnimationsManager.m */; };
+		CEA005A2255D3AE700F66636 /* GGShapeCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B0255D3AE600F66636 /* GGShapeCanvas.m */; };
+		CEA005A3255D3AE700F66636 /* GGPieLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B1255D3AE600F66636 /* GGPieLayer.m */; };
+		CEA005A4255D3AE700F66636 /* GGCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B2255D3AE600F66636 /* GGCanvas.m */; };
+		CEA005A5255D3AE700F66636 /* PieCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B5255D3AE600F66636 /* PieCanvas.m */; };
+		CEA005A6255D3AE700F66636 /* CenterCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B7255D3AE600F66636 /* CenterCanvas.m */; };
+		CEA005A7255D3AE800F66636 /* GridBackCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004B8255D3AE600F66636 /* GridBackCanvas.m */; };
+		CEA005A8255D3AE800F66636 /* LineCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004BA255D3AE600F66636 /* LineCanvas.m */; };
+		CEA005A9255D3AE800F66636 /* RadarCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004BD255D3AE600F66636 /* RadarCanvas.m */; };
+		CEA005AA255D3AE800F66636 /* BarCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004BE255D3AE600F66636 /* BarCanvas.m */; };
+		CEA005AB255D3AE800F66636 /* ProgressCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004C0255D3AE600F66636 /* ProgressCanvas.m */; };
+		CEA005AC255D3AE800F66636 /* QueryCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004C3255D3AE600F66636 /* QueryCanvas.m */; };
+		CEA005AD255D3AE800F66636 /* NSAttributedString+GGChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004C7255D3AE600F66636 /* NSAttributedString+GGChart.m */; };
+		CEA005AE255D3AE800F66636 /* NSDate+GGDate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004C9255D3AE600F66636 /* NSDate+GGDate.m */; };
+		CEA005AF255D3AE800F66636 /* UIView+GGFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004CB255D3AE600F66636 /* UIView+GGFrame.m */; };
+		CEA005B0255D3AE800F66636 /* NSArray+GGGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004CD255D3AE600F66636 /* NSArray+GGGraphics.m */; };
+		CEA005B1255D3AE800F66636 /* NSObject+FireBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004CE255D3AE600F66636 /* NSObject+FireBlock.m */; };
+		CEA005B2255D3AE800F66636 /* DRadarScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004D2255D3AE600F66636 /* DRadarScaler.m */; };
+		CEA005B3255D3AE800F66636 /* DBarScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004D5255D3AE600F66636 /* DBarScaler.m */; };
+		CEA005B4255D3AE800F66636 /* BaseScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004D6255D3AE600F66636 /* BaseScaler.m */; };
+		CEA005B5255D3AE800F66636 /* DLineScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004D8255D3AE600F66636 /* DLineScaler.m */; };
+		CEA005B6255D3AE800F66636 /* DKLineScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004DB255D3AE600F66636 /* DKLineScaler.m */; };
+		CEA005B7255D3AE800F66636 /* BaseShapeScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004DC255D3AE600F66636 /* BaseShapeScaler.m */; };
+		CEA005B8255D3AE800F66636 /* DPieScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004DD255D3AE600F66636 /* DPieScaler.m */; };
+		CEA005B9255D3AE800F66636 /* GGGraphicsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004FB255D3AE700F66636 /* GGGraphicsConstants.m */; };
+		CEA005BA255D3AE800F66636 /* CrissCrossQueryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA004FE255D3AE700F66636 /* CrissCrossQueryView.m */; };
+		CEA005BB255D3AE800F66636 /* MinuteChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00503255D3AE700F66636 /* MinuteChart.m */; };
+		CEA005BC255D3AE800F66636 /* BaseStockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00504255D3AE700F66636 /* BaseStockChart.m */; };
+		CEA005BD255D3AE800F66636 /* KLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00506255D3AE700F66636 /* KLineChart.m */; };
+		CEA005BE255D3AE800F66636 /* IndexLuaCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CEA00508255D3AE700F66636 /* IndexLuaCode.bundle */; };
+		CEA005BF255D3AE800F66636 /* KLineIndexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00509255D3AE700F66636 /* KLineIndexManager.m */; };
+		CEA005C0255D3AE800F66636 /* MALayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0050B255D3AE700F66636 /* MALayer.m */; };
+		CEA005C1255D3AE800F66636 /* TDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0050C255D3AE700F66636 /* TDLayer.m */; };
+		CEA005C2255D3AE800F66636 /* KDJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0050F255D3AE700F66636 /* KDJLayer.m */; };
+		CEA005C3255D3AE800F66636 /* MIKELayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00511255D3AE700F66636 /* MIKELayer.m */; };
+		CEA005C4255D3AE800F66636 /* EMALayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00513255D3AE700F66636 /* EMALayer.m */; };
+		CEA005C5255D3AE800F66636 /* MACDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00514255D3AE700F66636 /* MACDLayer.m */; };
+		CEA005C6255D3AE800F66636 /* ATRLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00519255D3AE700F66636 /* ATRLayer.m */; };
+		CEA005C7255D3AE800F66636 /* MAVOLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0051A255D3AE700F66636 /* MAVOLLayer.m */; };
+		CEA005C8255D3AE800F66636 /* RSILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0051D255D3AE700F66636 /* RSILayer.m */; };
+		CEA005C9255D3AE800F66636 /* BaseIndexLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0051F255D3AE700F66636 /* BaseIndexLayer.m */; };
+		CEA005CA255D3AE800F66636 /* BOLLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00521255D3AE700F66636 /* BOLLLayer.m */; };
+		CEA005CB255D3AE800F66636 /* BBILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00522255D3AE700F66636 /* BBILayer.m */; };
+		CEA005CC255D3AE800F66636 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0052B255D3AE700F66636 /* lauxlib.c */; };
+		CEA005CD255D3AE800F66636 /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00531255D3AE700F66636 /* liolib.c */; };
+		CEA005CE255D3AE800F66636 /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00532255D3AE700F66636 /* lopcodes.c */; };
+		CEA005CF255D3AE800F66636 /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00533255D3AE700F66636 /* lstate.c */; };
+		CEA005D0255D3AE800F66636 /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00535255D3AE700F66636 /* lobject.c */; };
+		CEA005D1255D3AE800F66636 /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00537255D3AE700F66636 /* lmathlib.c */; };
+		CEA005D2255D3AE800F66636 /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00538255D3AE700F66636 /* loadlib.c */; };
+		CEA005D3255D3AE800F66636 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00539255D3AE700F66636 /* lvm.c */; };
+		CEA005D4255D3AE800F66636 /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0053A255D3AE700F66636 /* lfunc.c */; };
+		CEA005D5255D3AE800F66636 /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0053B255D3AE700F66636 /* lstrlib.c */; };
+		CEA005D6255D3AE800F66636 /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0053D255D3AE700F66636 /* linit.c */; };
+		CEA005D7255D3AE800F66636 /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00540255D3AE700F66636 /* lstring.c */; };
+		CEA005D8255D3AE800F66636 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00542255D3AE700F66636 /* lundump.c */; };
+		CEA005D9255D3AE800F66636 /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00543255D3AE700F66636 /* lctype.c */; };
+		CEA005DA255D3AE800F66636 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00546255D3AE700F66636 /* ltable.c */; };
+		CEA005DB255D3AE800F66636 /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00548255D3AE700F66636 /* ldump.c */; };
+		CEA005DC255D3AE800F66636 /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0054C255D3AE700F66636 /* loslib.c */; };
+		CEA005DD255D3AE800F66636 /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0054D255D3AE700F66636 /* lgc.c */; };
+		CEA005DE255D3AE800F66636 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0054E255D3AE700F66636 /* lzio.c */; };
+		CEA005DF255D3AE800F66636 /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0054F255D3AE700F66636 /* ldblib.c */; };
+		CEA005E0255D3AE800F66636 /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00550255D3AE700F66636 /* lutf8lib.c */; };
+		CEA005E1255D3AE800F66636 /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00551255D3AE700F66636 /* lmem.c */; };
+		CEA005E2255D3AE800F66636 /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00554255D3AE700F66636 /* lcorolib.c */; };
+		CEA005E3255D3AE800F66636 /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00556255D3AE700F66636 /* lcode.c */; };
+		CEA005E4255D3AE800F66636 /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00557255D3AE700F66636 /* ltablib.c */; };
+		CEA005E5255D3AE800F66636 /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00558255D3AE700F66636 /* lbitlib.c */; };
+		CEA005E6255D3AE800F66636 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00559255D3AE700F66636 /* lapi.c */; };
+		CEA005E7255D3AE800F66636 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0055A255D3AE700F66636 /* lbaselib.c */; };
+		CEA005E8255D3AE800F66636 /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0055C255D3AE700F66636 /* ldebug.c */; };
+		CEA005E9255D3AE800F66636 /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA0055F255D3AE700F66636 /* lparser.c */; };
+		CEA005EA255D3AE800F66636 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00560255D3AE700F66636 /* llex.c */; };
+		CEA005EB255D3AE800F66636 /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00562255D3AE700F66636 /* ltm.c */; };
+		CEA005EC255D3AE800F66636 /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = CEA00564255D3AE700F66636 /* ldo.c */; };
+		CEA005ED255D3AE800F66636 /* LuaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA00569255D3AE700F66636 /* LuaContext.m */; };
+		CEA005EE255D3AE800F66636 /* LuaExportMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA0056B255D3AE700F66636 /* LuaExportMetaData.m */; };
 		CEA389BB20B3BED7009B0A32 /* VehicleAlarmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA389BA20B3BED7009B0A32 /* VehicleAlarmModel.m */; };
 		CEA5FC9A233DBE8000D9E10B /* LAJIBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA5FC99233DBE8000D9E10B /* LAJIBaseRequest.m */; };
 		CEAA96DB1F1CDFE300741A6F /* ShareFun.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAA96DA1F1CDFE300741A6F /* ShareFun.m */; };
@@ -1850,6 +1999,8 @@
 		CE36A0391FF4D06800BAAD18 /* JointLawAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointLawAPI.h; sourceTree = "<group>"; };
 		CE36A03A1FF4D06800BAAD18 /* JointLawAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JointLawAPI.m; sourceTree = "<group>"; };
 		CE36CEEE215A11D2004B16A4 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		CE391DEE254BB5BA003B924F /* AccidentListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentListViewModel.h; sourceTree = "<group>"; };
+		CE391DEF254BB5BA003B924F /* AccidentListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentListViewModel.m; sourceTree = "<group>"; };
 		CE3C0F701F3070C900D3B55D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		CE3C0F721F3070D100D3B55D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE3C0F741F3070D800D3B55D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -1995,6 +2146,11 @@
 		CE5328692057FD50003D6152 /* IllegalParkAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalParkAlertView.xib; sourceTree = "<group>"; };
 		CE53D0391FBD72FA00445877 /* NetworkStatusMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkStatusMonitor.m; sourceTree = "<group>"; };
 		CE53D03A1FBD72FB00445877 /* NetworkStatusMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkStatusMonitor.h; sourceTree = "<group>"; };
+		CE546B10255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentHistoricalListViewmodel.h; sourceTree = "<group>"; };
+		CE546B11255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentHistoricalListViewmodel.m; sourceTree = "<group>"; };
+		CE546B14255E8CFB0004D3FD /* AccidentHistoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentHistoryListVC.h; sourceTree = "<group>"; };
+		CE546B15255E8CFB0004D3FD /* AccidentHistoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentHistoryListVC.m; sourceTree = "<group>"; };
+		CE546B16255E8CFB0004D3FD /* AccidentHistoryListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentHistoryListVC.xib; sourceTree = "<group>"; };
 		CE54C22320D210A900BE2693 /* NSArray+PureLayoutMore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayoutMore.h"; sourceTree = "<group>"; };
 		CE54C22420D210A900BE2693 /* NSArray+PureLayoutMore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayoutMore.m"; sourceTree = "<group>"; };
 		CE55B7F41F96F19F00CD1567 /* AddressBookAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookAPI.h; sourceTree = "<group>"; };
@@ -2156,8 +2312,19 @@
 		CE7AE6CB2524696700719687 /* IllegalExposureFeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalExposureFeadView.h; sourceTree = "<group>"; };
 		CE7AE6CC2524696700719687 /* IllegalExposureFeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllegalExposureFeadView.m; sourceTree = "<group>"; };
 		CE7AE6CD2524696700719687 /* IllegalExposureFeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IllegalExposureFeadView.xib; sourceTree = "<group>"; };
+		CE7AF512256271E800BB32DD /* AccidentCallMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentCallMessageCell.h; sourceTree = "<group>"; };
+		CE7AF513256271E800BB32DD /* AccidentCallMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentCallMessageCell.m; sourceTree = "<group>"; };
+		CE7AF514256271E800BB32DD /* AccidentCallMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentCallMessageCell.xib; sourceTree = "<group>"; };
 		CE7DBFF01F493E4A003318F7 /* AccidentChangePhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccidentChangePhotoModel.h; sourceTree = "<group>"; };
 		CE7DBFF11F493E4A003318F7 /* AccidentChangePhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccidentChangePhotoModel.m; sourceTree = "<group>"; };
+		CE820FF72589AB0A005833F9 /* DataStatisticsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStatisticsListVC.h; sourceTree = "<group>"; };
+		CE820FF82589AB0A005833F9 /* DataStatisticsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStatisticsListVC.m; sourceTree = "<group>"; };
+		CE820FF92589AB0A005833F9 /* DataStatisticsListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataStatisticsListVC.xib; sourceTree = "<group>"; };
+		CE820FFD2589B861005833F9 /* DataStatisticsListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStatisticsListViewModel.h; sourceTree = "<group>"; };
+		CE820FFE2589B861005833F9 /* DataStatisticsListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStatisticsListViewModel.m; sourceTree = "<group>"; };
+		CE821001258A01A2005833F9 /* FiltrateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltrateView.xib; sourceTree = "<group>"; };
+		CE821002258A01A3005833F9 /* FiltrateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltrateView.m; sourceTree = "<group>"; };
+		CE821003258A01A3005833F9 /* FiltrateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltrateView.h; sourceTree = "<group>"; };
 		CE864F2320089CE5007B20FE /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
 		CE864F2420089CE5007B20FE /* UIColor+PGHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PGHex.m"; sourceTree = "<group>"; };
 		CE864F2520089CE5007B20FE /* PGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickerView.m; sourceTree = "<group>"; };
@@ -2226,6 +2393,301 @@
 		CE8EE86A1F66926300CC64B0 /* UserGpsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGpsListModel.m; sourceTree = "<group>"; };
 		CE93BC6A2147C0B5001F2976 /* SpecialCarAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialCarAPI.h; sourceTree = "<group>"; };
 		CE93BC6B2147C0B5001F2976 /* SpecialCarAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialCarAPI.m; sourceTree = "<group>"; };
+		CEA004052559209600F66636 /* AccidentCallPoliceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentCallPoliceCell.h; sourceTree = "<group>"; };
+		CEA004062559209600F66636 /* AccidentCallPoliceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentCallPoliceCell.m; sourceTree = "<group>"; };
+		CEA004072559209600F66636 /* AccidentCallPoliceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentCallPoliceCell.xib; sourceTree = "<group>"; };
+		CEA0040D25593D7A00F66636 /* AccidentMoreAPIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccidentMoreAPIs.h; sourceTree = "<group>"; };
+		CEA0040E25593D7A00F66636 /* AccidentMoreAPIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccidentMoreAPIs.m; sourceTree = "<group>"; };
+		CEA00417255BEB5400F66636 /* DataStatisticsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStatisticsVC.h; sourceTree = "<group>"; };
+		CEA00418255BEB5400F66636 /* DataStatisticsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStatisticsVC.m; sourceTree = "<group>"; };
+		CEA00419255BEB5400F66636 /* DataStatisticsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataStatisticsVC.xib; sourceTree = "<group>"; };
+		CEA0041E255BEB7300F66636 /* DataStatisticsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStatisticsViewModel.h; sourceTree = "<group>"; };
+		CEA0041F255BEB7300F66636 /* DataStatisticsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStatisticsViewModel.m; sourceTree = "<group>"; };
+		CEA00422255BEB8F00F66636 /* DataStatisticsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStatisticsAPI.h; sourceTree = "<group>"; };
+		CEA00423255BEB8F00F66636 /* DataStatisticsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStatisticsAPI.m; sourceTree = "<group>"; };
+		CEA0042A255D3AE600F66636 /* ProgressChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressChart.m; sourceTree = "<group>"; };
+		CEA0042B255D3AE600F66636 /* ProgressChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressChart.h; sourceTree = "<group>"; };
+		CEA0042C255D3AE600F66636 /* BaseChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChart.h; sourceTree = "<group>"; };
+		CEA0042E255D3AE600F66636 /* BarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChart.m; sourceTree = "<group>"; };
+		CEA0042F255D3AE600F66636 /* LineBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineBarChart.m; sourceTree = "<group>"; };
+		CEA00430255D3AE600F66636 /* BaseLineBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLineBarChart.h; sourceTree = "<group>"; };
+		CEA00431255D3AE600F66636 /* LineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChart.h; sourceTree = "<group>"; };
+		CEA00432255D3AE600F66636 /* LineBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBarChart.h; sourceTree = "<group>"; };
+		CEA00433255D3AE600F66636 /* BarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChart.h; sourceTree = "<group>"; };
+		CEA00434255D3AE600F66636 /* BaseLineBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLineBarChart.m; sourceTree = "<group>"; };
+		CEA00435255D3AE600F66636 /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
+		CEA00437255D3AE600F66636 /* RadarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarChart.h; sourceTree = "<group>"; };
+		CEA00438255D3AE600F66636 /* RadarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarChart.m; sourceTree = "<group>"; };
+		CEA0043A255D3AE600F66636 /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
+		CEA0043B255D3AE600F66636 /* PieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChart.m; sourceTree = "<group>"; };
+		CEA0043C255D3AE600F66636 /* BaseChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseChart.m; sourceTree = "<group>"; };
+		CEA0043F255D3AE600F66636 /* CenterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterData.h; sourceTree = "<group>"; };
+		CEA00440255D3AE600F66636 /* NumberData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberData.h; sourceTree = "<group>"; };
+		CEA00441255D3AE600F66636 /* NumberData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberData.m; sourceTree = "<group>"; };
+		CEA00442255D3AE600F66636 /* CenterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterData.m; sourceTree = "<group>"; };
+		CEA00445255D3AE600F66636 /* LineBarDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBarDataSet.h; sourceTree = "<group>"; };
+		CEA00446255D3AE600F66636 /* LineBarDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineBarDataSet.m; sourceTree = "<group>"; };
+		CEA00448255D3AE600F66636 /* LineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineData.m; sourceTree = "<group>"; };
+		CEA00449255D3AE600F66636 /* LineDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDataSet.h; sourceTree = "<group>"; };
+		CEA0044A255D3AE600F66636 /* LineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineData.h; sourceTree = "<group>"; };
+		CEA0044B255D3AE600F66636 /* LineDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDataSet.m; sourceTree = "<group>"; };
+		CEA0044D255D3AE600F66636 /* BarDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarDataSet.h; sourceTree = "<group>"; };
+		CEA0044E255D3AE600F66636 /* BarData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarData.h; sourceTree = "<group>"; };
+		CEA0044F255D3AE600F66636 /* BarDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarDataSet.m; sourceTree = "<group>"; };
+		CEA00450255D3AE600F66636 /* BarData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarData.m; sourceTree = "<group>"; };
+		CEA00452255D3AE600F66636 /* BaseLineBarSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLineBarSet.m; sourceTree = "<group>"; };
+		CEA00453255D3AE600F66636 /* BaseLineBarData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLineBarData.h; sourceTree = "<group>"; };
+		CEA00454255D3AE600F66636 /* BaseLineBarSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLineBarSet.h; sourceTree = "<group>"; };
+		CEA00455255D3AE600F66636 /* BaseLineBarData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLineBarData.m; sourceTree = "<group>"; };
+		CEA00457255D3AE600F66636 /* OutSideLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutSideLable.m; sourceTree = "<group>"; };
+		CEA00458255D3AE600F66636 /* InnerLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerLable.m; sourceTree = "<group>"; };
+		CEA00459255D3AE600F66636 /* PieData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieData.h; sourceTree = "<group>"; };
+		CEA0045A255D3AE600F66636 /* PieDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieDataSet.m; sourceTree = "<group>"; };
+		CEA0045B255D3AE600F66636 /* OutSideLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutSideLable.h; sourceTree = "<group>"; };
+		CEA0045C255D3AE600F66636 /* InnerLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerLable.h; sourceTree = "<group>"; };
+		CEA0045D255D3AE600F66636 /* PieData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieData.m; sourceTree = "<group>"; };
+		CEA0045E255D3AE600F66636 /* PieDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieDataSet.h; sourceTree = "<group>"; };
+		CEA00460255D3AE600F66636 /* ProgressLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressLable.h; sourceTree = "<group>"; };
+		CEA00461255D3AE600F66636 /* ProgressData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressData.h; sourceTree = "<group>"; };
+		CEA00462255D3AE600F66636 /* ProgressLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressLable.m; sourceTree = "<group>"; };
+		CEA00463255D3AE600F66636 /* ProgressData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressData.m; sourceTree = "<group>"; };
+		CEA00465255D3AE600F66636 /* AxisName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisName.h; sourceTree = "<group>"; };
+		CEA00466255D3AE600F66636 /* XAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAxis.m; sourceTree = "<group>"; };
+		CEA00467255D3AE600F66636 /* LineBarGird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineBarGird.m; sourceTree = "<group>"; };
+		CEA00468255D3AE600F66636 /* YAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAxis.m; sourceTree = "<group>"; };
+		CEA00469255D3AE600F66636 /* LineBarQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineBarQuery.m; sourceTree = "<group>"; };
+		CEA0046A255D3AE600F66636 /* XAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAxis.h; sourceTree = "<group>"; };
+		CEA0046B255D3AE600F66636 /* AxisName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisName.m; sourceTree = "<group>"; };
+		CEA0046C255D3AE600F66636 /* LineBarGird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBarGird.h; sourceTree = "<group>"; };
+		CEA0046D255D3AE600F66636 /* LineBarQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBarQuery.h; sourceTree = "<group>"; };
+		CEA0046E255D3AE600F66636 /* YAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAxis.h; sourceTree = "<group>"; };
+		CEA00470255D3AE600F66636 /* RadarDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarDataSet.h; sourceTree = "<group>"; };
+		CEA00471255D3AE600F66636 /* RadarData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarData.m; sourceTree = "<group>"; };
+		CEA00472255D3AE600F66636 /* RadarIndicatorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarIndicatorData.h; sourceTree = "<group>"; };
+		CEA00473255D3AE600F66636 /* RadarDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarDataSet.m; sourceTree = "<group>"; };
+		CEA00474255D3AE600F66636 /* RadarIndicatorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarIndicatorData.m; sourceTree = "<group>"; };
+		CEA00475255D3AE600F66636 /* RadarData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarData.h; sourceTree = "<group>"; };
+		CEA00478255D3AE600F66636 /* GGRectRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRectRenderer.h; sourceTree = "<group>"; };
+		CEA00479255D3AE600F66636 /* GGAxisRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAxisRenderer.m; sourceTree = "<group>"; };
+		CEA0047A255D3AE600F66636 /* GGLineRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLineRenderer.m; sourceTree = "<group>"; };
+		CEA0047B255D3AE600F66636 /* GGGridRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGGridRenderer.h; sourceTree = "<group>"; };
+		CEA0047C255D3AE600F66636 /* GGCircleRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCircleRenderer.m; sourceTree = "<group>"; };
+		CEA0047D255D3AE600F66636 /* GGNumberRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGNumberRenderer.h; sourceTree = "<group>"; };
+		CEA0047E255D3AE600F66636 /* GGPolygonRenderder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPolygonRenderder.m; sourceTree = "<group>"; };
+		CEA0047F255D3AE600F66636 /* GGStringRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGStringRenderer.h; sourceTree = "<group>"; };
+		CEA00480255D3AE600F66636 /* GGRenderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRenderProtocol.h; sourceTree = "<group>"; };
+		CEA00481255D3AE600F66636 /* GGAxisRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAxisRenderer.h; sourceTree = "<group>"; };
+		CEA00482255D3AE600F66636 /* GGRectRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRectRenderer.m; sourceTree = "<group>"; };
+		CEA00483255D3AE600F66636 /* GGLineRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLineRenderer.h; sourceTree = "<group>"; };
+		CEA00484255D3AE600F66636 /* GGNumberRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNumberRenderer.m; sourceTree = "<group>"; };
+		CEA00485255D3AE600F66636 /* GGCircleRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCircleRenderer.h; sourceTree = "<group>"; };
+		CEA00486255D3AE600F66636 /* GGGridRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGGridRenderer.m; sourceTree = "<group>"; };
+		CEA00487255D3AE600F66636 /* GGStringRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGStringRenderer.m; sourceTree = "<group>"; };
+		CEA00488255D3AE600F66636 /* GGPolygonRenderder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPolygonRenderder.h; sourceTree = "<group>"; };
+		CEA0048A255D3AE600F66636 /* GGRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRect.m; sourceTree = "<group>"; };
+		CEA0048B255D3AE600F66636 /* GGAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAxis.h; sourceTree = "<group>"; };
+		CEA0048C255D3AE600F66636 /* GGCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCircle.m; sourceTree = "<group>"; };
+		CEA0048D255D3AE600F66636 /* GGArcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGArcLine.m; sourceTree = "<group>"; };
+		CEA0048E255D3AE600F66636 /* GGPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPolygon.h; sourceTree = "<group>"; };
+		CEA0048F255D3AE600F66636 /* GGArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGArrow.h; sourceTree = "<group>"; };
+		CEA00490255D3AE600F66636 /* GGPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPie.h; sourceTree = "<group>"; };
+		CEA00491255D3AE600F66636 /* GGKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGKShape.h; sourceTree = "<group>"; };
+		CEA00492255D3AE600F66636 /* GGSizeRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSizeRange.m; sourceTree = "<group>"; };
+		CEA00493255D3AE600F66636 /* GGLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLine.m; sourceTree = "<group>"; };
+		CEA00494255D3AE600F66636 /* GGGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGGrid.h; sourceTree = "<group>"; };
+		CEA00495255D3AE600F66636 /* GGCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCircle.h; sourceTree = "<group>"; };
+		CEA00496255D3AE600F66636 /* GGAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAxis.m; sourceTree = "<group>"; };
+		CEA00497255D3AE600F66636 /* GGRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRect.h; sourceTree = "<group>"; };
+		CEA00498255D3AE600F66636 /* GGArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGArrow.m; sourceTree = "<group>"; };
+		CEA00499255D3AE600F66636 /* GGPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPie.m; sourceTree = "<group>"; };
+		CEA0049A255D3AE600F66636 /* GGPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPolygon.m; sourceTree = "<group>"; };
+		CEA0049B255D3AE600F66636 /* GGArcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGArcLine.h; sourceTree = "<group>"; };
+		CEA0049C255D3AE600F66636 /* GGLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLine.h; sourceTree = "<group>"; };
+		CEA0049D255D3AE600F66636 /* GGChartGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGChartGeometry.h; sourceTree = "<group>"; };
+		CEA0049E255D3AE600F66636 /* GGSizeRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSizeRange.h; sourceTree = "<group>"; };
+		CEA0049F255D3AE600F66636 /* GGKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGKShape.m; sourceTree = "<group>"; };
+		CEA004A0255D3AE600F66636 /* GGGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGGrid.m; sourceTree = "<group>"; };
+		CEA004A1255D3AE600F66636 /* GGGraphicsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGGraphicsConstants.h; sourceTree = "<group>"; };
+		CEA004A3255D3AE600F66636 /* PieAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieAnimationManager.m; sourceTree = "<group>"; };
+		CEA004A4255D3AE600F66636 /* LineAnimationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineAnimationsManager.m; sourceTree = "<group>"; };
+		CEA004A5255D3AE600F66636 /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
+		CEA004A6255D3AE600F66636 /* BarAnimationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarAnimationsManager.m; sourceTree = "<group>"; };
+		CEA004A7255D3AE600F66636 /* PieAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieAnimationManager.h; sourceTree = "<group>"; };
+		CEA004A8255D3AE600F66636 /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
+		CEA004A9255D3AE600F66636 /* LineAnimationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineAnimationsManager.h; sourceTree = "<group>"; };
+		CEA004AA255D3AE600F66636 /* BarAnimationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarAnimationsManager.h; sourceTree = "<group>"; };
+		CEA004AD255D3AE600F66636 /* GGPieLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPieLayer.h; sourceTree = "<group>"; };
+		CEA004AE255D3AE600F66636 /* GGShapeCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGShapeCanvas.h; sourceTree = "<group>"; };
+		CEA004AF255D3AE600F66636 /* GGCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCanvas.h; sourceTree = "<group>"; };
+		CEA004B0255D3AE600F66636 /* GGShapeCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGShapeCanvas.m; sourceTree = "<group>"; };
+		CEA004B1255D3AE600F66636 /* GGPieLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPieLayer.m; sourceTree = "<group>"; };
+		CEA004B2255D3AE600F66636 /* GGCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCanvas.m; sourceTree = "<group>"; };
+		CEA004B4255D3AE600F66636 /* RadarCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarCanvas.h; sourceTree = "<group>"; };
+		CEA004B5255D3AE600F66636 /* PieCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieCanvas.m; sourceTree = "<group>"; };
+		CEA004B6255D3AE600F66636 /* BarCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCanvas.h; sourceTree = "<group>"; };
+		CEA004B7255D3AE600F66636 /* CenterCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterCanvas.m; sourceTree = "<group>"; };
+		CEA004B8255D3AE600F66636 /* GridBackCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridBackCanvas.m; sourceTree = "<group>"; };
+		CEA004B9255D3AE600F66636 /* ProgressCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressCanvas.h; sourceTree = "<group>"; };
+		CEA004BA255D3AE600F66636 /* LineCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineCanvas.m; sourceTree = "<group>"; };
+		CEA004BB255D3AE600F66636 /* QueryCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryCanvas.h; sourceTree = "<group>"; };
+		CEA004BC255D3AE600F66636 /* PieCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieCanvas.h; sourceTree = "<group>"; };
+		CEA004BD255D3AE600F66636 /* RadarCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarCanvas.m; sourceTree = "<group>"; };
+		CEA004BE255D3AE600F66636 /* BarCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCanvas.m; sourceTree = "<group>"; };
+		CEA004BF255D3AE600F66636 /* LineCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCanvas.h; sourceTree = "<group>"; };
+		CEA004C0255D3AE600F66636 /* ProgressCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressCanvas.m; sourceTree = "<group>"; };
+		CEA004C1255D3AE600F66636 /* GridBackCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridBackCanvas.h; sourceTree = "<group>"; };
+		CEA004C2255D3AE600F66636 /* CenterCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterCanvas.h; sourceTree = "<group>"; };
+		CEA004C3255D3AE600F66636 /* QueryCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryCanvas.m; sourceTree = "<group>"; };
+		CEA004C4255D3AE600F66636 /* GGGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGGraphics.h; sourceTree = "<group>"; };
+		CEA004C6255D3AE600F66636 /* NSArray+GGGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+GGGraphics.h"; sourceTree = "<group>"; };
+		CEA004C7255D3AE600F66636 /* NSAttributedString+GGChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GGChart.m"; sourceTree = "<group>"; };
+		CEA004C8255D3AE600F66636 /* UIView+GGFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GGFrame.h"; sourceTree = "<group>"; };
+		CEA004C9255D3AE600F66636 /* NSDate+GGDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+GGDate.m"; sourceTree = "<group>"; };
+		CEA004CA255D3AE600F66636 /* NSObject+FireBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FireBlock.h"; sourceTree = "<group>"; };
+		CEA004CB255D3AE600F66636 /* UIView+GGFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GGFrame.m"; sourceTree = "<group>"; };
+		CEA004CC255D3AE600F66636 /* NSAttributedString+GGChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GGChart.h"; sourceTree = "<group>"; };
+		CEA004CD255D3AE600F66636 /* NSArray+GGGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+GGGraphics.m"; sourceTree = "<group>"; };
+		CEA004CE255D3AE600F66636 /* NSObject+FireBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FireBlock.m"; sourceTree = "<group>"; };
+		CEA004CF255D3AE600F66636 /* NSDate+GGDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+GGDate.h"; sourceTree = "<group>"; };
+		CEA004D1255D3AE600F66636 /* DLineScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLineScaler.h; sourceTree = "<group>"; };
+		CEA004D2255D3AE600F66636 /* DRadarScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRadarScaler.m; sourceTree = "<group>"; };
+		CEA004D3255D3AE600F66636 /* BaseShapeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseShapeScaler.h; sourceTree = "<group>"; };
+		CEA004D4255D3AE600F66636 /* DKLineScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLineScaler.h; sourceTree = "<group>"; };
+		CEA004D5255D3AE600F66636 /* DBarScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBarScaler.m; sourceTree = "<group>"; };
+		CEA004D6255D3AE600F66636 /* BaseScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScaler.m; sourceTree = "<group>"; };
+		CEA004D7255D3AE600F66636 /* DPieScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPieScaler.h; sourceTree = "<group>"; };
+		CEA004D8255D3AE600F66636 /* DLineScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLineScaler.m; sourceTree = "<group>"; };
+		CEA004D9255D3AE600F66636 /* DRadarScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRadarScaler.h; sourceTree = "<group>"; };
+		CEA004DA255D3AE600F66636 /* DBarScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBarScaler.h; sourceTree = "<group>"; };
+		CEA004DB255D3AE600F66636 /* DKLineScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLineScaler.m; sourceTree = "<group>"; };
+		CEA004DC255D3AE600F66636 /* BaseShapeScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseShapeScaler.m; sourceTree = "<group>"; };
+		CEA004DD255D3AE600F66636 /* DPieScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPieScaler.m; sourceTree = "<group>"; };
+		CEA004DE255D3AE600F66636 /* BaseScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScaler.h; sourceTree = "<group>"; };
+		CEA004E1255D3AE600F66636 /* NumberAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberAbstract.h; sourceTree = "<group>"; };
+		CEA004E2255D3AE600F66636 /* CenterAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterAbstract.h; sourceTree = "<group>"; };
+		CEA004E4255D3AE600F66636 /* QueryAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryAbstract.h; sourceTree = "<group>"; };
+		CEA004E5255D3AE600F66636 /* LableAxisAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LableAxisAbstract.h; sourceTree = "<group>"; };
+		CEA004E6255D3AE600F66636 /* GridAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridAbstract.h; sourceTree = "<group>"; };
+		CEA004E7255D3AE600F66636 /* NumberAxisAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberAxisAbstract.h; sourceTree = "<group>"; };
+		CEA004E8255D3AE600F66636 /* BaseAxisAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAxisAbstract.h; sourceTree = "<group>"; };
+		CEA004EA255D3AE700F66636 /* PieOutSideLableAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieOutSideLableAbstract.h; sourceTree = "<group>"; };
+		CEA004EB255D3AE700F66636 /* PieCanvasAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieCanvasAbstract.h; sourceTree = "<group>"; };
+		CEA004EC255D3AE700F66636 /* PieInnerLableAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieInnerLableAbstract.h; sourceTree = "<group>"; };
+		CEA004ED255D3AE700F66636 /* PieDrawAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieDrawAbstract.h; sourceTree = "<group>"; };
+		CEA004EF255D3AE700F66636 /* BarDrawAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarDrawAbstract.h; sourceTree = "<group>"; };
+		CEA004F0255D3AE700F66636 /* LineCanvasAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCanvasAbstract.h; sourceTree = "<group>"; };
+		CEA004F1255D3AE700F66636 /* BarCanvasAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCanvasAbstract.h; sourceTree = "<group>"; };
+		CEA004F2255D3AE700F66636 /* BaseLineBarCanvasAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLineBarCanvasAbstract.h; sourceTree = "<group>"; };
+		CEA004F3255D3AE700F66636 /* LineDrawAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDrawAbstract.h; sourceTree = "<group>"; };
+		CEA004F4255D3AE700F66636 /* BaseLineBarAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLineBarAbstract.h; sourceTree = "<group>"; };
+		CEA004F6255D3AE700F66636 /* ProgressAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressAbstract.h; sourceTree = "<group>"; };
+		CEA004F8255D3AE700F66636 /* RadarSetAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSetAbstract.h; sourceTree = "<group>"; };
+		CEA004F9255D3AE700F66636 /* RadarBackAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarBackAbstract.h; sourceTree = "<group>"; };
+		CEA004FA255D3AE700F66636 /* RadarAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarAbstract.h; sourceTree = "<group>"; };
+		CEA004FB255D3AE700F66636 /* GGGraphicsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGGraphicsConstants.m; sourceTree = "<group>"; };
+		CEA004FE255D3AE700F66636 /* CrissCrossQueryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrissCrossQueryView.m; sourceTree = "<group>"; };
+		CEA004FF255D3AE700F66636 /* CrissCrossQueryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrissCrossQueryView.h; sourceTree = "<group>"; };
+		CEA00501255D3AE700F66636 /* BaseStockChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseStockChart.h; sourceTree = "<group>"; };
+		CEA00502255D3AE700F66636 /* KLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineChart.h; sourceTree = "<group>"; };
+		CEA00503255D3AE700F66636 /* MinuteChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinuteChart.m; sourceTree = "<group>"; };
+		CEA00504255D3AE700F66636 /* BaseStockChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseStockChart.m; sourceTree = "<group>"; };
+		CEA00505255D3AE700F66636 /* MinuteChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinuteChart.h; sourceTree = "<group>"; };
+		CEA00506255D3AE700F66636 /* KLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineChart.m; sourceTree = "<group>"; };
+		CEA00508255D3AE700F66636 /* IndexLuaCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IndexLuaCode.bundle; sourceTree = "<group>"; };
+		CEA00509255D3AE700F66636 /* KLineIndexManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineIndexManager.m; sourceTree = "<group>"; };
+		CEA0050B255D3AE700F66636 /* MALayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALayer.m; sourceTree = "<group>"; };
+		CEA0050C255D3AE700F66636 /* TDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLayer.m; sourceTree = "<group>"; };
+		CEA0050D255D3AE700F66636 /* ATRLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRLayer.h; sourceTree = "<group>"; };
+		CEA0050E255D3AE700F66636 /* BOLLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOLLLayer.h; sourceTree = "<group>"; };
+		CEA0050F255D3AE700F66636 /* KDJLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDJLayer.m; sourceTree = "<group>"; };
+		CEA00510255D3AE700F66636 /* BaseIndexLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIndexLayer.h; sourceTree = "<group>"; };
+		CEA00511255D3AE700F66636 /* MIKELayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIKELayer.m; sourceTree = "<group>"; };
+		CEA00512255D3AE700F66636 /* RSILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSILayer.h; sourceTree = "<group>"; };
+		CEA00513255D3AE700F66636 /* EMALayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMALayer.m; sourceTree = "<group>"; };
+		CEA00514255D3AE700F66636 /* MACDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MACDLayer.m; sourceTree = "<group>"; };
+		CEA00515255D3AE700F66636 /* MAVOLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVOLLayer.h; sourceTree = "<group>"; };
+		CEA00516255D3AE700F66636 /* BBILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBILayer.h; sourceTree = "<group>"; };
+		CEA00517255D3AE700F66636 /* TDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLayer.h; sourceTree = "<group>"; };
+		CEA00518255D3AE700F66636 /* MALayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALayer.h; sourceTree = "<group>"; };
+		CEA00519255D3AE700F66636 /* ATRLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRLayer.m; sourceTree = "<group>"; };
+		CEA0051A255D3AE700F66636 /* MAVOLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVOLLayer.m; sourceTree = "<group>"; };
+		CEA0051B255D3AE700F66636 /* MACDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MACDLayer.h; sourceTree = "<group>"; };
+		CEA0051C255D3AE700F66636 /* EMALayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMALayer.h; sourceTree = "<group>"; };
+		CEA0051D255D3AE700F66636 /* RSILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSILayer.m; sourceTree = "<group>"; };
+		CEA0051E255D3AE700F66636 /* MIKELayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIKELayer.h; sourceTree = "<group>"; };
+		CEA0051F255D3AE700F66636 /* BaseIndexLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseIndexLayer.m; sourceTree = "<group>"; };
+		CEA00520255D3AE700F66636 /* KDJLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDJLayer.h; sourceTree = "<group>"; };
+		CEA00521255D3AE700F66636 /* BOLLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOLLLayer.m; sourceTree = "<group>"; };
+		CEA00522255D3AE700F66636 /* BBILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBILayer.m; sourceTree = "<group>"; };
+		CEA00523255D3AE700F66636 /* KLineIndexManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineIndexManager.h; sourceTree = "<group>"; };
+		CEA00525255D3AE700F66636 /* VolumeAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeAbstract.h; sourceTree = "<group>"; };
+		CEA00526255D3AE700F66636 /* KLineAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineAbstract.h; sourceTree = "<group>"; };
+		CEA00527255D3AE700F66636 /* MinuteAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinuteAbstract.h; sourceTree = "<group>"; };
+		CEA00528255D3AE700F66636 /* QueryViewAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewAbstract.h; sourceTree = "<group>"; };
+		CEA0052B255D3AE700F66636 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
+		CEA0052C255D3AE700F66636 /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
+		CEA0052D255D3AE700F66636 /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
+		CEA0052E255D3AE700F66636 /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
+		CEA0052F255D3AE700F66636 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
+		CEA00530255D3AE700F66636 /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
+		CEA00531255D3AE700F66636 /* liolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = liolib.c; sourceTree = "<group>"; };
+		CEA00532255D3AE700F66636 /* lopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lopcodes.c; sourceTree = "<group>"; };
+		CEA00533255D3AE700F66636 /* lstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstate.c; sourceTree = "<group>"; };
+		CEA00534255D3AE700F66636 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
+		CEA00535255D3AE700F66636 /* lobject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lobject.c; sourceTree = "<group>"; };
+		CEA00536255D3AE700F66636 /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
+		CEA00537255D3AE700F66636 /* lmathlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmathlib.c; sourceTree = "<group>"; };
+		CEA00538255D3AE700F66636 /* loadlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loadlib.c; sourceTree = "<group>"; };
+		CEA00539255D3AE700F66636 /* lvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lvm.c; sourceTree = "<group>"; };
+		CEA0053A255D3AE700F66636 /* lfunc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfunc.c; sourceTree = "<group>"; };
+		CEA0053B255D3AE700F66636 /* lstrlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstrlib.c; sourceTree = "<group>"; };
+		CEA0053C255D3AE700F66636 /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
+		CEA0053D255D3AE700F66636 /* linit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = linit.c; sourceTree = "<group>"; };
+		CEA0053E255D3AE700F66636 /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
+		CEA0053F255D3AE700F66636 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
+		CEA00540255D3AE700F66636 /* lstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lstring.c; sourceTree = "<group>"; };
+		CEA00541255D3AE700F66636 /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
+		CEA00542255D3AE700F66636 /* lundump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lundump.c; sourceTree = "<group>"; };
+		CEA00543255D3AE700F66636 /* lctype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lctype.c; sourceTree = "<group>"; };
+		CEA00544255D3AE700F66636 /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
+		CEA00545255D3AE700F66636 /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
+		CEA00546255D3AE700F66636 /* ltable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltable.c; sourceTree = "<group>"; };
+		CEA00547255D3AE700F66636 /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
+		CEA00548255D3AE700F66636 /* ldump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldump.c; sourceTree = "<group>"; };
+		CEA00549255D3AE700F66636 /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
+		CEA0054A255D3AE700F66636 /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
+		CEA0054B255D3AE700F66636 /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
+		CEA0054C255D3AE700F66636 /* loslib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loslib.c; sourceTree = "<group>"; };
+		CEA0054D255D3AE700F66636 /* lgc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lgc.c; sourceTree = "<group>"; };
+		CEA0054E255D3AE700F66636 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
+		CEA0054F255D3AE700F66636 /* ldblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldblib.c; sourceTree = "<group>"; };
+		CEA00550255D3AE700F66636 /* lutf8lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lutf8lib.c; sourceTree = "<group>"; };
+		CEA00551255D3AE700F66636 /* lmem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lmem.c; sourceTree = "<group>"; };
+		CEA00552255D3AE700F66636 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
+		CEA00553255D3AE700F66636 /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
+		CEA00554255D3AE700F66636 /* lcorolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lcorolib.c; sourceTree = "<group>"; };
+		CEA00555255D3AE700F66636 /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
+		CEA00556255D3AE700F66636 /* lcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lcode.c; sourceTree = "<group>"; };
+		CEA00557255D3AE700F66636 /* ltablib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltablib.c; sourceTree = "<group>"; };
+		CEA00558255D3AE700F66636 /* lbitlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbitlib.c; sourceTree = "<group>"; };
+		CEA00559255D3AE700F66636 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
+		CEA0055A255D3AE700F66636 /* lbaselib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbaselib.c; sourceTree = "<group>"; };
+		CEA0055B255D3AE700F66636 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
+		CEA0055C255D3AE700F66636 /* ldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldebug.c; sourceTree = "<group>"; };
+		CEA0055D255D3AE700F66636 /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
+		CEA0055E255D3AE700F66636 /* lprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
+		CEA0055F255D3AE700F66636 /* lparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lparser.c; sourceTree = "<group>"; };
+		CEA00560255D3AE700F66636 /* llex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = llex.c; sourceTree = "<group>"; };
+		CEA00561255D3AE700F66636 /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
+		CEA00562255D3AE700F66636 /* ltm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltm.c; sourceTree = "<group>"; };
+		CEA00563255D3AE700F66636 /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
+		CEA00564255D3AE700F66636 /* ldo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ldo.c; sourceTree = "<group>"; };
+		CEA00565255D3AE700F66636 /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
+		CEA00567255D3AE700F66636 /* LuaContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaContext.h; sourceTree = "<group>"; };
+		CEA00568255D3AE700F66636 /* LuaExportMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaExportMetaData.h; sourceTree = "<group>"; };
+		CEA00569255D3AE700F66636 /* LuaContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaContext.m; sourceTree = "<group>"; };
+		CEA0056A255D3AE700F66636 /* LuaExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaExport.h; sourceTree = "<group>"; };
+		CEA0056B255D3AE700F66636 /* LuaExportMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaExportMetaData.m; sourceTree = "<group>"; };
 		CEA389B920B3BED7009B0A32 /* VehicleAlarmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleAlarmModel.h; sourceTree = "<group>"; };
 		CEA389BA20B3BED7009B0A32 /* VehicleAlarmModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleAlarmModel.m; sourceTree = "<group>"; };
 		CEA5FC98233DBE8000D9E10B /* LAJIBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAJIBaseRequest.h; sourceTree = "<group>"; };
@@ -2500,6 +2962,7 @@
 		CE2DD9FD24FF773F00423042 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEA00413255BE3C700F66636 /* 数据统计 */,
 				CE7AE69D25237E6600719687 /* 快递监管 */,
 				CEF2D8B7250880510047D777 /* 闯禁令管理 */,
 				CE2DDC1824FF774000423042 /* 登录页 */,
@@ -2535,9 +2998,11 @@
 		CE2DD9FE24FF773F00423042 /* 事故快处 */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DD9FF24FF773F00423042 /* Controller */,
-				CE2DDA3924FF773F00423042 /* Model */,
+				CEA0040C25593D3B00F66636 /* APIs */,
+				CE391DED254B9D73003B924F /* ViewModel */,
 				CE2DDA3C24FF773F00423042 /* View */,
+				CE2DDA3924FF773F00423042 /* Model */,
+				CE2DD9FF24FF773F00423042 /* Controller */,
 			);
 			path = "事故快处";
 			sourceTree = "<group>";
@@ -2574,6 +3039,9 @@
 				CE2DDA1724FF773F00423042 /* AccidentListVC.h */,
 				CE2DDA3324FF773F00423042 /* AccidentListVC.m */,
 				CE2DDA2524FF773F00423042 /* AccidentListVC.xib */,
+				CE546B14255E8CFB0004D3FD /* AccidentHistoryListVC.h */,
+				CE546B15255E8CFB0004D3FD /* AccidentHistoryListVC.m */,
+				CE546B16255E8CFB0004D3FD /* AccidentHistoryListVC.xib */,
 				CE2DDA3224FF773F00423042 /* AccidentRemarkCell.h */,
 				CE2DDA1824FF773F00423042 /* AccidentRemarkCell.m */,
 				CE2DDA2624FF773F00423042 /* AccidentRemarkCell.xib */,
@@ -2594,6 +3062,9 @@
 				CE2DDA0724FF773F00423042 /* AccidentMessageCell.h */,
 				CE2DDA0D24FF773F00423042 /* AccidentMessageCell.m */,
 				CE2DDA0924FF773F00423042 /* AccidentMessageCell.xib */,
+				CE7AF512256271E800BB32DD /* AccidentCallMessageCell.h */,
+				CE7AF513256271E800BB32DD /* AccidentCallMessageCell.m */,
+				CE7AF514256271E800BB32DD /* AccidentCallMessageCell.xib */,
 				CE2DDA0F24FF773F00423042 /* AccidentDetailVC.h */,
 				CE2DDA0824FF773F00423042 /* AccidentDetailVC.m */,
 				CE2DDA0A24FF773F00423042 /* AccidentDetailVC.xib */,
@@ -2667,24 +3138,27 @@
 		CE2DDA3C24FF773F00423042 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDA3D24FF773F00423042 /* AccidentPeopleChangeCell.m */,
 				CE2DDA4024FF773F00423042 /* AccidentPeopleView.h */,
+				CE2DDA4B24FF773F00423042 /* AccidentPeopleView.m */,
 				CE2DDA3E24FF773F00423042 /* AccidentPeopleView.xib */,
-				CE2DDA3F24FF773F00423042 /* AccidentUpImageCell.m */,
-				CE2DDA4124FF773F00423042 /* AccidentInfoCell.m */,
-				CE2DDA4224FF773F00423042 /* AccidentPeopleCell.xib */,
-				CE2DDA4324FF773F00423042 /* AccidentUpCell.h */,
 				CE2DDA4424FF773F00423042 /* AccidentPeopleCell.h */,
+				CE2DDA4D24FF773F00423042 /* AccidentPeopleCell.m */,
+				CE2DDA4224FF773F00423042 /* AccidentPeopleCell.xib */,
+				CE2DDA4A24FF773F00423042 /* AccidentUpImageCell.h */,
+				CE2DDA3F24FF773F00423042 /* AccidentUpImageCell.m */,
 				CE2DDA4524FF773F00423042 /* AccidentUpImageCell.xib */,
 				CE2DDA4624FF773F00423042 /* AccidentPeopleChangeCell.h */,
-				CE2DDA4724FF773F00423042 /* AccidentInfoCell.xib */,
-				CE2DDA4824FF773F00423042 /* AccidentInfoCell.h */,
+				CE2DDA3D24FF773F00423042 /* AccidentPeopleChangeCell.m */,
 				CE2DDA4924FF773F00423042 /* AccidentPeopleChangeCell.xib */,
-				CE2DDA4A24FF773F00423042 /* AccidentUpImageCell.h */,
-				CE2DDA4B24FF773F00423042 /* AccidentPeopleView.m */,
-				CE2DDA4C24FF773F00423042 /* AccidentUpCell.xib */,
-				CE2DDA4D24FF773F00423042 /* AccidentPeopleCell.m */,
+				CE2DDA4824FF773F00423042 /* AccidentInfoCell.h */,
+				CE2DDA4124FF773F00423042 /* AccidentInfoCell.m */,
+				CE2DDA4724FF773F00423042 /* AccidentInfoCell.xib */,
+				CEA004052559209600F66636 /* AccidentCallPoliceCell.h */,
+				CEA004062559209600F66636 /* AccidentCallPoliceCell.m */,
+				CEA004072559209600F66636 /* AccidentCallPoliceCell.xib */,
+				CE2DDA4324FF773F00423042 /* AccidentUpCell.h */,
 				CE2DDA4E24FF773F00423042 /* AccidentUpCell.m */,
+				CE2DDA4C24FF773F00423042 /* AccidentUpCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3563,13 +4037,13 @@
 		CE2DDC2524FF774000423042 /* 行动 */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDC2624FF774000423042 /* ActionVC.xib */,
+				CE2DDC2A24FF774000423042 /* ActionVC.h */,
 				CE2DDC2724FF774000423042 /* ActionVC.m */,
+				CE2DDC2624FF774000423042 /* ActionVC.xib */,
+				CE2DDC2F24FF774000423042 /* UserTaskDetailVC.h */,
 				CE2DDC2824FF774000423042 /* UserTaskDetailVC.m */,
 				CE2DDC2924FF774000423042 /* UserTaskDetailVC.xib */,
-				CE2DDC2A24FF774000423042 /* ActionVC.h */,
 				CE2DDC2B24FF774000423042 /* View */,
-				CE2DDC2F24FF774000423042 /* UserTaskDetailVC.h */,
 			);
 			path = "行动";
 			sourceTree = "<group>";
@@ -3577,9 +4051,9 @@
 		CE2DDC2B24FF774000423042 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE2DDC2E24FF774000423042 /* TaskCell.h */,
 				CE2DDC2C24FF774000423042 /* TaskCell.m */,
 				CE2DDC2D24FF774000423042 /* TaskCell.xib */,
-				CE2DDC2E24FF774000423042 /* TaskCell.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3588,9 +4062,9 @@
 			isa = PBXGroup;
 			children = (
 				CE2DDC3124FF774000423042 /* schedulVC.h */,
+				CE2DDC3D24FF774000423042 /* schedulVC.m */,
 				CE2DDC3224FF774000423042 /* schedulVC.xib */,
 				CE2DDC3324FF774000423042 /* view */,
-				CE2DDC3D24FF774000423042 /* schedulVC.m */,
 			);
 			path = "排班";
 			sourceTree = "<group>";
@@ -3598,15 +4072,15 @@
 		CE2DDC3324FF774000423042 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDC3424FF774000423042 /* DutyLeaderCell.m */,
-				CE2DDC3524FF774000423042 /* DutyHeaderCell.h */,
-				CE2DDC3624FF774000423042 /* DutyPoliceCell.m */,
-				CE2DDC3724FF774000423042 /* DutyHeaderCell.xib */,
-				CE2DDC3824FF774000423042 /* DutyPoliceCell.xib */,
-				CE2DDC3924FF774000423042 /* DutyHeaderCell.m */,
 				CE2DDC3A24FF774000423042 /* DutyLeaderCell.h */,
-				CE2DDC3B24FF774000423042 /* DutyPoliceCell.h */,
+				CE2DDC3424FF774000423042 /* DutyLeaderCell.m */,
 				CE2DDC3C24FF774000423042 /* DutyLeaderCell.xib */,
+				CE2DDC3524FF774000423042 /* DutyHeaderCell.h */,
+				CE2DDC3924FF774000423042 /* DutyHeaderCell.m */,
+				CE2DDC3724FF774000423042 /* DutyHeaderCell.xib */,
+				CE2DDC3B24FF774000423042 /* DutyPoliceCell.h */,
+				CE2DDC3624FF774000423042 /* DutyPoliceCell.m */,
+				CE2DDC3824FF774000423042 /* DutyPoliceCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4525,6 +4999,17 @@
 			path = LREmptyDataSet;
 			sourceTree = "<group>";
 		};
+		CE391DED254B9D73003B924F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE391DEE254BB5BA003B924F /* AccidentListViewModel.h */,
+				CE391DEF254BB5BA003B924F /* AccidentListViewModel.m */,
+				CE546B10255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.h */,
+				CE546B11255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CE407C9D216DA7E80035DDED /* LYSideslipCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4770,6 +5255,9 @@
 		CE5E20421F32C325009D98A6 /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
+				CE821003258A01A3005833F9 /* FiltrateView.h */,
+				CE821002258A01A3005833F9 /* FiltrateView.m */,
+				CE821001258A01A2005833F9 /* FiltrateView.xib */,
 				CE6ACF2024849BBD00CE23FD /* IllegalRoadView */,
 				CE16003B212419CB009440C0 /* IllegalListView */,
 				CE5E20431F32C325009D98A6 /* AlertView.h */,
@@ -5210,6 +5698,684 @@
 			path = AKTabBarController;
 			sourceTree = "<group>";
 		};
+		CEA0040C25593D3B00F66636 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0040D25593D7A00F66636 /* AccidentMoreAPIs.h */,
+				CEA0040E25593D7A00F66636 /* AccidentMoreAPIs.m */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		CEA00413255BE3C700F66636 /* 数据统计 */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00416255BEB0F00F66636 /* APIS */,
+				CEA00414255BEACA00F66636 /* ViewModels */,
+				CEA00415255BEB0500F66636 /* Controllers */,
+			);
+			path = "数据统计";
+			sourceTree = "<group>";
+		};
+		CEA00414255BEACA00F66636 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0041E255BEB7300F66636 /* DataStatisticsViewModel.h */,
+				CEA0041F255BEB7300F66636 /* DataStatisticsViewModel.m */,
+				CE820FFD2589B861005833F9 /* DataStatisticsListViewModel.h */,
+				CE820FFE2589B861005833F9 /* DataStatisticsListViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CEA00415255BEB0500F66636 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00417255BEB5400F66636 /* DataStatisticsVC.h */,
+				CEA00418255BEB5400F66636 /* DataStatisticsVC.m */,
+				CEA00419255BEB5400F66636 /* DataStatisticsVC.xib */,
+				CE820FF72589AB0A005833F9 /* DataStatisticsListVC.h */,
+				CE820FF82589AB0A005833F9 /* DataStatisticsListVC.m */,
+				CE820FF92589AB0A005833F9 /* DataStatisticsListVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEA00416255BEB0F00F66636 /* APIS */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00422255BEB8F00F66636 /* DataStatisticsAPI.h */,
+				CEA00423255BEB8F00F66636 /* DataStatisticsAPI.m */,
+			);
+			path = APIS;
+			sourceTree = "<group>";
+		};
+		CEA00426255D3AE600F66636 /* GGChartKit */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00427255D3AE600F66636 /* GGChart */,
+				CEA00476255D3AE600F66636 /* GGGraphics */,
+				CEA004FC255D3AE700F66636 /* StockChart */,
+			);
+			path = GGChartKit;
+			sourceTree = "<group>";
+		};
+		CEA00427255D3AE600F66636 /* GGChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00428255D3AE600F66636 /* Charts */,
+				CEA0043D255D3AE600F66636 /* Data */,
+			);
+			path = GGChart;
+			sourceTree = "<group>";
+		};
+		CEA00428255D3AE600F66636 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00429255D3AE600F66636 /* ProgressChart */,
+				CEA0042C255D3AE600F66636 /* BaseChart.h */,
+				CEA0043C255D3AE600F66636 /* BaseChart.m */,
+				CEA0042D255D3AE600F66636 /* LineBarChart */,
+				CEA00436255D3AE600F66636 /* RadarChart */,
+				CEA00439255D3AE600F66636 /* PieChart */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		CEA00429255D3AE600F66636 /* ProgressChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0042A255D3AE600F66636 /* ProgressChart.m */,
+				CEA0042B255D3AE600F66636 /* ProgressChart.h */,
+			);
+			path = ProgressChart;
+			sourceTree = "<group>";
+		};
+		CEA0042D255D3AE600F66636 /* LineBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0042E255D3AE600F66636 /* BarChart.m */,
+				CEA0042F255D3AE600F66636 /* LineBarChart.m */,
+				CEA00430255D3AE600F66636 /* BaseLineBarChart.h */,
+				CEA00431255D3AE600F66636 /* LineChart.h */,
+				CEA00432255D3AE600F66636 /* LineBarChart.h */,
+				CEA00433255D3AE600F66636 /* BarChart.h */,
+				CEA00434255D3AE600F66636 /* BaseLineBarChart.m */,
+				CEA00435255D3AE600F66636 /* LineChart.m */,
+			);
+			path = LineBarChart;
+			sourceTree = "<group>";
+		};
+		CEA00436255D3AE600F66636 /* RadarChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00437255D3AE600F66636 /* RadarChart.h */,
+				CEA00438255D3AE600F66636 /* RadarChart.m */,
+			);
+			path = RadarChart;
+			sourceTree = "<group>";
+		};
+		CEA00439255D3AE600F66636 /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0043A255D3AE600F66636 /* PieChart.h */,
+				CEA0043B255D3AE600F66636 /* PieChart.m */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
+		CEA0043D255D3AE600F66636 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0043E255D3AE600F66636 /* CenterData */,
+				CEA00443255D3AE600F66636 /* LineBarData */,
+				CEA00456255D3AE600F66636 /* PieData */,
+				CEA0045F255D3AE600F66636 /* ProgressData */,
+				CEA00464255D3AE600F66636 /* LineBarGridData */,
+				CEA0046F255D3AE600F66636 /* RadarData */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CEA0043E255D3AE600F66636 /* CenterData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0043F255D3AE600F66636 /* CenterData.h */,
+				CEA00440255D3AE600F66636 /* NumberData.h */,
+				CEA00441255D3AE600F66636 /* NumberData.m */,
+				CEA00442255D3AE600F66636 /* CenterData.m */,
+			);
+			path = CenterData;
+			sourceTree = "<group>";
+		};
+		CEA00443255D3AE600F66636 /* LineBarData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00444255D3AE600F66636 /* LineBarData */,
+				CEA00447255D3AE600F66636 /* LineData */,
+				CEA0044C255D3AE600F66636 /* BarData */,
+				CEA00451255D3AE600F66636 /* BaseLineBar */,
+			);
+			path = LineBarData;
+			sourceTree = "<group>";
+		};
+		CEA00444255D3AE600F66636 /* LineBarData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00445255D3AE600F66636 /* LineBarDataSet.h */,
+				CEA00446255D3AE600F66636 /* LineBarDataSet.m */,
+			);
+			path = LineBarData;
+			sourceTree = "<group>";
+		};
+		CEA00447255D3AE600F66636 /* LineData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00448255D3AE600F66636 /* LineData.m */,
+				CEA00449255D3AE600F66636 /* LineDataSet.h */,
+				CEA0044A255D3AE600F66636 /* LineData.h */,
+				CEA0044B255D3AE600F66636 /* LineDataSet.m */,
+			);
+			path = LineData;
+			sourceTree = "<group>";
+		};
+		CEA0044C255D3AE600F66636 /* BarData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0044D255D3AE600F66636 /* BarDataSet.h */,
+				CEA0044E255D3AE600F66636 /* BarData.h */,
+				CEA0044F255D3AE600F66636 /* BarDataSet.m */,
+				CEA00450255D3AE600F66636 /* BarData.m */,
+			);
+			path = BarData;
+			sourceTree = "<group>";
+		};
+		CEA00451255D3AE600F66636 /* BaseLineBar */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00452255D3AE600F66636 /* BaseLineBarSet.m */,
+				CEA00453255D3AE600F66636 /* BaseLineBarData.h */,
+				CEA00454255D3AE600F66636 /* BaseLineBarSet.h */,
+				CEA00455255D3AE600F66636 /* BaseLineBarData.m */,
+			);
+			path = BaseLineBar;
+			sourceTree = "<group>";
+		};
+		CEA00456255D3AE600F66636 /* PieData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00457255D3AE600F66636 /* OutSideLable.m */,
+				CEA00458255D3AE600F66636 /* InnerLable.m */,
+				CEA00459255D3AE600F66636 /* PieData.h */,
+				CEA0045A255D3AE600F66636 /* PieDataSet.m */,
+				CEA0045B255D3AE600F66636 /* OutSideLable.h */,
+				CEA0045C255D3AE600F66636 /* InnerLable.h */,
+				CEA0045D255D3AE600F66636 /* PieData.m */,
+				CEA0045E255D3AE600F66636 /* PieDataSet.h */,
+			);
+			path = PieData;
+			sourceTree = "<group>";
+		};
+		CEA0045F255D3AE600F66636 /* ProgressData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00460255D3AE600F66636 /* ProgressLable.h */,
+				CEA00461255D3AE600F66636 /* ProgressData.h */,
+				CEA00462255D3AE600F66636 /* ProgressLable.m */,
+				CEA00463255D3AE600F66636 /* ProgressData.m */,
+			);
+			path = ProgressData;
+			sourceTree = "<group>";
+		};
+		CEA00464255D3AE600F66636 /* LineBarGridData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00465255D3AE600F66636 /* AxisName.h */,
+				CEA00466255D3AE600F66636 /* XAxis.m */,
+				CEA00467255D3AE600F66636 /* LineBarGird.m */,
+				CEA00468255D3AE600F66636 /* YAxis.m */,
+				CEA00469255D3AE600F66636 /* LineBarQuery.m */,
+				CEA0046A255D3AE600F66636 /* XAxis.h */,
+				CEA0046B255D3AE600F66636 /* AxisName.m */,
+				CEA0046C255D3AE600F66636 /* LineBarGird.h */,
+				CEA0046D255D3AE600F66636 /* LineBarQuery.h */,
+				CEA0046E255D3AE600F66636 /* YAxis.h */,
+			);
+			path = LineBarGridData;
+			sourceTree = "<group>";
+		};
+		CEA0046F255D3AE600F66636 /* RadarData */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00470255D3AE600F66636 /* RadarDataSet.h */,
+				CEA00471255D3AE600F66636 /* RadarData.m */,
+				CEA00472255D3AE600F66636 /* RadarIndicatorData.h */,
+				CEA00473255D3AE600F66636 /* RadarDataSet.m */,
+				CEA00474255D3AE600F66636 /* RadarIndicatorData.m */,
+				CEA00475255D3AE600F66636 /* RadarData.h */,
+			);
+			path = RadarData;
+			sourceTree = "<group>";
+		};
+		CEA00476255D3AE600F66636 /* GGGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00477255D3AE600F66636 /* Renderer */,
+				CEA00489255D3AE600F66636 /* Shape */,
+				CEA004A1255D3AE600F66636 /* GGGraphicsConstants.h */,
+				CEA004A2255D3AE600F66636 /* Animation */,
+				CEA004AB255D3AE600F66636 /* Canvas */,
+				CEA004C4255D3AE600F66636 /* GGGraphics.h */,
+				CEA004C5255D3AE600F66636 /* GUtils */,
+				CEA004D0255D3AE600F66636 /* DataScaler */,
+				CEA004DF255D3AE600F66636 /* CanvasAbstract */,
+				CEA004FB255D3AE700F66636 /* GGGraphicsConstants.m */,
+			);
+			path = GGGraphics;
+			sourceTree = "<group>";
+		};
+		CEA00477255D3AE600F66636 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00478255D3AE600F66636 /* GGRectRenderer.h */,
+				CEA00479255D3AE600F66636 /* GGAxisRenderer.m */,
+				CEA0047A255D3AE600F66636 /* GGLineRenderer.m */,
+				CEA0047B255D3AE600F66636 /* GGGridRenderer.h */,
+				CEA0047C255D3AE600F66636 /* GGCircleRenderer.m */,
+				CEA0047D255D3AE600F66636 /* GGNumberRenderer.h */,
+				CEA0047E255D3AE600F66636 /* GGPolygonRenderder.m */,
+				CEA0047F255D3AE600F66636 /* GGStringRenderer.h */,
+				CEA00480255D3AE600F66636 /* GGRenderProtocol.h */,
+				CEA00481255D3AE600F66636 /* GGAxisRenderer.h */,
+				CEA00482255D3AE600F66636 /* GGRectRenderer.m */,
+				CEA00483255D3AE600F66636 /* GGLineRenderer.h */,
+				CEA00484255D3AE600F66636 /* GGNumberRenderer.m */,
+				CEA00485255D3AE600F66636 /* GGCircleRenderer.h */,
+				CEA00486255D3AE600F66636 /* GGGridRenderer.m */,
+				CEA00487255D3AE600F66636 /* GGStringRenderer.m */,
+				CEA00488255D3AE600F66636 /* GGPolygonRenderder.h */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
+		CEA00489255D3AE600F66636 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0048A255D3AE600F66636 /* GGRect.m */,
+				CEA0048B255D3AE600F66636 /* GGAxis.h */,
+				CEA0048C255D3AE600F66636 /* GGCircle.m */,
+				CEA0048D255D3AE600F66636 /* GGArcLine.m */,
+				CEA0048E255D3AE600F66636 /* GGPolygon.h */,
+				CEA0048F255D3AE600F66636 /* GGArrow.h */,
+				CEA00490255D3AE600F66636 /* GGPie.h */,
+				CEA00491255D3AE600F66636 /* GGKShape.h */,
+				CEA00492255D3AE600F66636 /* GGSizeRange.m */,
+				CEA00493255D3AE600F66636 /* GGLine.m */,
+				CEA00494255D3AE600F66636 /* GGGrid.h */,
+				CEA00495255D3AE600F66636 /* GGCircle.h */,
+				CEA00496255D3AE600F66636 /* GGAxis.m */,
+				CEA00497255D3AE600F66636 /* GGRect.h */,
+				CEA00498255D3AE600F66636 /* GGArrow.m */,
+				CEA00499255D3AE600F66636 /* GGPie.m */,
+				CEA0049A255D3AE600F66636 /* GGPolygon.m */,
+				CEA0049B255D3AE600F66636 /* GGArcLine.h */,
+				CEA0049C255D3AE600F66636 /* GGLine.h */,
+				CEA0049D255D3AE600F66636 /* GGChartGeometry.h */,
+				CEA0049E255D3AE600F66636 /* GGSizeRange.h */,
+				CEA0049F255D3AE600F66636 /* GGKShape.m */,
+				CEA004A0255D3AE600F66636 /* GGGrid.m */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		CEA004A2255D3AE600F66636 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004A3255D3AE600F66636 /* PieAnimationManager.m */,
+				CEA004A4255D3AE600F66636 /* LineAnimationsManager.m */,
+				CEA004A5255D3AE600F66636 /* Animator.m */,
+				CEA004A6255D3AE600F66636 /* BarAnimationsManager.m */,
+				CEA004A7255D3AE600F66636 /* PieAnimationManager.h */,
+				CEA004A8255D3AE600F66636 /* Animator.h */,
+				CEA004A9255D3AE600F66636 /* LineAnimationsManager.h */,
+				CEA004AA255D3AE600F66636 /* BarAnimationsManager.h */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		CEA004AB255D3AE600F66636 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004AC255D3AE600F66636 /* BaseCanvas */,
+				CEA004B3255D3AE600F66636 /* ChartCanvas */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		CEA004AC255D3AE600F66636 /* BaseCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004AD255D3AE600F66636 /* GGPieLayer.h */,
+				CEA004AE255D3AE600F66636 /* GGShapeCanvas.h */,
+				CEA004AF255D3AE600F66636 /* GGCanvas.h */,
+				CEA004B0255D3AE600F66636 /* GGShapeCanvas.m */,
+				CEA004B1255D3AE600F66636 /* GGPieLayer.m */,
+				CEA004B2255D3AE600F66636 /* GGCanvas.m */,
+			);
+			path = BaseCanvas;
+			sourceTree = "<group>";
+		};
+		CEA004B3255D3AE600F66636 /* ChartCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004B4255D3AE600F66636 /* RadarCanvas.h */,
+				CEA004B5255D3AE600F66636 /* PieCanvas.m */,
+				CEA004B6255D3AE600F66636 /* BarCanvas.h */,
+				CEA004B7255D3AE600F66636 /* CenterCanvas.m */,
+				CEA004B8255D3AE600F66636 /* GridBackCanvas.m */,
+				CEA004B9255D3AE600F66636 /* ProgressCanvas.h */,
+				CEA004BA255D3AE600F66636 /* LineCanvas.m */,
+				CEA004BB255D3AE600F66636 /* QueryCanvas.h */,
+				CEA004BC255D3AE600F66636 /* PieCanvas.h */,
+				CEA004BD255D3AE600F66636 /* RadarCanvas.m */,
+				CEA004BE255D3AE600F66636 /* BarCanvas.m */,
+				CEA004BF255D3AE600F66636 /* LineCanvas.h */,
+				CEA004C0255D3AE600F66636 /* ProgressCanvas.m */,
+				CEA004C1255D3AE600F66636 /* GridBackCanvas.h */,
+				CEA004C2255D3AE600F66636 /* CenterCanvas.h */,
+				CEA004C3255D3AE600F66636 /* QueryCanvas.m */,
+			);
+			path = ChartCanvas;
+			sourceTree = "<group>";
+		};
+		CEA004C5255D3AE600F66636 /* GUtils */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004C6255D3AE600F66636 /* NSArray+GGGraphics.h */,
+				CEA004C7255D3AE600F66636 /* NSAttributedString+GGChart.m */,
+				CEA004C8255D3AE600F66636 /* UIView+GGFrame.h */,
+				CEA004C9255D3AE600F66636 /* NSDate+GGDate.m */,
+				CEA004CA255D3AE600F66636 /* NSObject+FireBlock.h */,
+				CEA004CB255D3AE600F66636 /* UIView+GGFrame.m */,
+				CEA004CC255D3AE600F66636 /* NSAttributedString+GGChart.h */,
+				CEA004CD255D3AE600F66636 /* NSArray+GGGraphics.m */,
+				CEA004CE255D3AE600F66636 /* NSObject+FireBlock.m */,
+				CEA004CF255D3AE600F66636 /* NSDate+GGDate.h */,
+			);
+			path = GUtils;
+			sourceTree = "<group>";
+		};
+		CEA004D0255D3AE600F66636 /* DataScaler */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004D1255D3AE600F66636 /* DLineScaler.h */,
+				CEA004D2255D3AE600F66636 /* DRadarScaler.m */,
+				CEA004D3255D3AE600F66636 /* BaseShapeScaler.h */,
+				CEA004D4255D3AE600F66636 /* DKLineScaler.h */,
+				CEA004D5255D3AE600F66636 /* DBarScaler.m */,
+				CEA004D6255D3AE600F66636 /* BaseScaler.m */,
+				CEA004D7255D3AE600F66636 /* DPieScaler.h */,
+				CEA004D8255D3AE600F66636 /* DLineScaler.m */,
+				CEA004D9255D3AE600F66636 /* DRadarScaler.h */,
+				CEA004DA255D3AE600F66636 /* DBarScaler.h */,
+				CEA004DB255D3AE600F66636 /* DKLineScaler.m */,
+				CEA004DC255D3AE600F66636 /* BaseShapeScaler.m */,
+				CEA004DD255D3AE600F66636 /* DPieScaler.m */,
+				CEA004DE255D3AE600F66636 /* BaseScaler.h */,
+			);
+			path = DataScaler;
+			sourceTree = "<group>";
+		};
+		CEA004DF255D3AE600F66636 /* CanvasAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004E0255D3AE600F66636 /* CenterAbstract */,
+				CEA004E3255D3AE600F66636 /* LineBarBackAbstract */,
+				CEA004E9255D3AE700F66636 /* PieAbstract */,
+				CEA004EE255D3AE700F66636 /* LineBarAbstract */,
+				CEA004F5255D3AE700F66636 /* ProgressAbstract */,
+				CEA004F7255D3AE700F66636 /* RadarAbstract */,
+			);
+			path = CanvasAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004E0255D3AE600F66636 /* CenterAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004E1255D3AE600F66636 /* NumberAbstract.h */,
+				CEA004E2255D3AE600F66636 /* CenterAbstract.h */,
+			);
+			path = CenterAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004E3255D3AE600F66636 /* LineBarBackAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004E4255D3AE600F66636 /* QueryAbstract.h */,
+				CEA004E5255D3AE600F66636 /* LableAxisAbstract.h */,
+				CEA004E6255D3AE600F66636 /* GridAbstract.h */,
+				CEA004E7255D3AE600F66636 /* NumberAxisAbstract.h */,
+				CEA004E8255D3AE600F66636 /* BaseAxisAbstract.h */,
+			);
+			path = LineBarBackAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004E9255D3AE700F66636 /* PieAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004EA255D3AE700F66636 /* PieOutSideLableAbstract.h */,
+				CEA004EB255D3AE700F66636 /* PieCanvasAbstract.h */,
+				CEA004EC255D3AE700F66636 /* PieInnerLableAbstract.h */,
+				CEA004ED255D3AE700F66636 /* PieDrawAbstract.h */,
+			);
+			path = PieAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004EE255D3AE700F66636 /* LineBarAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004EF255D3AE700F66636 /* BarDrawAbstract.h */,
+				CEA004F0255D3AE700F66636 /* LineCanvasAbstract.h */,
+				CEA004F1255D3AE700F66636 /* BarCanvasAbstract.h */,
+				CEA004F2255D3AE700F66636 /* BaseLineBarCanvasAbstract.h */,
+				CEA004F3255D3AE700F66636 /* LineDrawAbstract.h */,
+				CEA004F4255D3AE700F66636 /* BaseLineBarAbstract.h */,
+			);
+			path = LineBarAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004F5255D3AE700F66636 /* ProgressAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004F6255D3AE700F66636 /* ProgressAbstract.h */,
+			);
+			path = ProgressAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004F7255D3AE700F66636 /* RadarAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004F8255D3AE700F66636 /* RadarSetAbstract.h */,
+				CEA004F9255D3AE700F66636 /* RadarBackAbstract.h */,
+				CEA004FA255D3AE700F66636 /* RadarAbstract.h */,
+			);
+			path = RadarAbstract;
+			sourceTree = "<group>";
+		};
+		CEA004FC255D3AE700F66636 /* StockChart */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004FD255D3AE700F66636 /* QueryView */,
+				CEA00500255D3AE700F66636 /* Charts */,
+				CEA00507255D3AE700F66636 /* KLineIndex */,
+				CEA00524255D3AE700F66636 /* Data */,
+				CEA00529255D3AE700F66636 /* Vender */,
+			);
+			path = StockChart;
+			sourceTree = "<group>";
+		};
+		CEA004FD255D3AE700F66636 /* QueryView */ = {
+			isa = PBXGroup;
+			children = (
+				CEA004FE255D3AE700F66636 /* CrissCrossQueryView.m */,
+				CEA004FF255D3AE700F66636 /* CrissCrossQueryView.h */,
+			);
+			path = QueryView;
+			sourceTree = "<group>";
+		};
+		CEA00500255D3AE700F66636 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00501255D3AE700F66636 /* BaseStockChart.h */,
+				CEA00502255D3AE700F66636 /* KLineChart.h */,
+				CEA00503255D3AE700F66636 /* MinuteChart.m */,
+				CEA00504255D3AE700F66636 /* BaseStockChart.m */,
+				CEA00505255D3AE700F66636 /* MinuteChart.h */,
+				CEA00506255D3AE700F66636 /* KLineChart.m */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		CEA00507255D3AE700F66636 /* KLineIndex */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00508255D3AE700F66636 /* IndexLuaCode.bundle */,
+				CEA00509255D3AE700F66636 /* KLineIndexManager.m */,
+				CEA0050A255D3AE700F66636 /* IndexLayer */,
+				CEA00523255D3AE700F66636 /* KLineIndexManager.h */,
+			);
+			path = KLineIndex;
+			sourceTree = "<group>";
+		};
+		CEA0050A255D3AE700F66636 /* IndexLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0050B255D3AE700F66636 /* MALayer.m */,
+				CEA0050C255D3AE700F66636 /* TDLayer.m */,
+				CEA0050D255D3AE700F66636 /* ATRLayer.h */,
+				CEA0050E255D3AE700F66636 /* BOLLLayer.h */,
+				CEA0050F255D3AE700F66636 /* KDJLayer.m */,
+				CEA00510255D3AE700F66636 /* BaseIndexLayer.h */,
+				CEA00511255D3AE700F66636 /* MIKELayer.m */,
+				CEA00512255D3AE700F66636 /* RSILayer.h */,
+				CEA00513255D3AE700F66636 /* EMALayer.m */,
+				CEA00514255D3AE700F66636 /* MACDLayer.m */,
+				CEA00515255D3AE700F66636 /* MAVOLLayer.h */,
+				CEA00516255D3AE700F66636 /* BBILayer.h */,
+				CEA00517255D3AE700F66636 /* TDLayer.h */,
+				CEA00518255D3AE700F66636 /* MALayer.h */,
+				CEA00519255D3AE700F66636 /* ATRLayer.m */,
+				CEA0051A255D3AE700F66636 /* MAVOLLayer.m */,
+				CEA0051B255D3AE700F66636 /* MACDLayer.h */,
+				CEA0051C255D3AE700F66636 /* EMALayer.h */,
+				CEA0051D255D3AE700F66636 /* RSILayer.m */,
+				CEA0051E255D3AE700F66636 /* MIKELayer.h */,
+				CEA0051F255D3AE700F66636 /* BaseIndexLayer.m */,
+				CEA00520255D3AE700F66636 /* KDJLayer.h */,
+				CEA00521255D3AE700F66636 /* BOLLLayer.m */,
+				CEA00522255D3AE700F66636 /* BBILayer.m */,
+			);
+			path = IndexLayer;
+			sourceTree = "<group>";
+		};
+		CEA00524255D3AE700F66636 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00525255D3AE700F66636 /* VolumeAbstract.h */,
+				CEA00526255D3AE700F66636 /* KLineAbstract.h */,
+				CEA00527255D3AE700F66636 /* MinuteAbstract.h */,
+				CEA00528255D3AE700F66636 /* QueryViewAbstract.h */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CEA00529255D3AE700F66636 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0052A255D3AE700F66636 /* Lua */,
+				CEA00566255D3AE700F66636 /* LuaContext */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		CEA0052A255D3AE700F66636 /* Lua */ = {
+			isa = PBXGroup;
+			children = (
+				CEA0052B255D3AE700F66636 /* lauxlib.c */,
+				CEA0052C255D3AE700F66636 /* lmem.h */,
+				CEA0052D255D3AE700F66636 /* llimits.h */,
+				CEA0052E255D3AE700F66636 /* luaconf.h */,
+				CEA0052F255D3AE700F66636 /* lzio.h */,
+				CEA00530255D3AE700F66636 /* lgc.h */,
+				CEA00531255D3AE700F66636 /* liolib.c */,
+				CEA00532255D3AE700F66636 /* lopcodes.c */,
+				CEA00533255D3AE700F66636 /* lstate.c */,
+				CEA00534255D3AE700F66636 /* lua.hpp */,
+				CEA00535255D3AE700F66636 /* lobject.c */,
+				CEA00536255D3AE700F66636 /* lualib.h */,
+				CEA00537255D3AE700F66636 /* lmathlib.c */,
+				CEA00538255D3AE700F66636 /* loadlib.c */,
+				CEA00539255D3AE700F66636 /* lvm.c */,
+				CEA0053A255D3AE700F66636 /* lfunc.c */,
+				CEA0053B255D3AE700F66636 /* lstrlib.c */,
+				CEA0053C255D3AE700F66636 /* ldebug.h */,
+				CEA0053D255D3AE700F66636 /* linit.c */,
+				CEA0053E255D3AE700F66636 /* lcode.h */,
+				CEA0053F255D3AE700F66636 /* lapi.h */,
+				CEA00540255D3AE700F66636 /* lstring.c */,
+				CEA00541255D3AE700F66636 /* ldo.h */,
+				CEA00542255D3AE700F66636 /* lundump.c */,
+				CEA00543255D3AE700F66636 /* lctype.c */,
+				CEA00544255D3AE700F66636 /* llex.h */,
+				CEA00545255D3AE700F66636 /* ltm.h */,
+				CEA00546255D3AE700F66636 /* ltable.c */,
+				CEA00547255D3AE700F66636 /* lparser.h */,
+				CEA00548255D3AE700F66636 /* ldump.c */,
+				CEA00549255D3AE700F66636 /* lobject.h */,
+				CEA0054A255D3AE700F66636 /* lstate.h */,
+				CEA0054B255D3AE700F66636 /* lopcodes.h */,
+				CEA0054C255D3AE700F66636 /* loslib.c */,
+				CEA0054D255D3AE700F66636 /* lgc.c */,
+				CEA0054E255D3AE700F66636 /* lzio.c */,
+				CEA0054F255D3AE700F66636 /* ldblib.c */,
+				CEA00550255D3AE700F66636 /* lutf8lib.c */,
+				CEA00551255D3AE700F66636 /* lmem.c */,
+				CEA00552255D3AE700F66636 /* lauxlib.h */,
+				CEA00553255D3AE700F66636 /* lvm.h */,
+				CEA00554255D3AE700F66636 /* lcorolib.c */,
+				CEA00555255D3AE700F66636 /* lstring.h */,
+				CEA00556255D3AE700F66636 /* lcode.c */,
+				CEA00557255D3AE700F66636 /* ltablib.c */,
+				CEA00558255D3AE700F66636 /* lbitlib.c */,
+				CEA00559255D3AE700F66636 /* lapi.c */,
+				CEA0055A255D3AE700F66636 /* lbaselib.c */,
+				CEA0055B255D3AE700F66636 /* lua.h */,
+				CEA0055C255D3AE700F66636 /* ldebug.c */,
+				CEA0055D255D3AE700F66636 /* lfunc.h */,
+				CEA0055E255D3AE700F66636 /* lprefix.h */,
+				CEA0055F255D3AE700F66636 /* lparser.c */,
+				CEA00560255D3AE700F66636 /* llex.c */,
+				CEA00561255D3AE700F66636 /* ltable.h */,
+				CEA00562255D3AE700F66636 /* ltm.c */,
+				CEA00563255D3AE700F66636 /* lctype.h */,
+				CEA00564255D3AE700F66636 /* ldo.c */,
+				CEA00565255D3AE700F66636 /* lundump.h */,
+			);
+			path = Lua;
+			sourceTree = "<group>";
+		};
+		CEA00566255D3AE700F66636 /* LuaContext */ = {
+			isa = PBXGroup;
+			children = (
+				CEA00567255D3AE700F66636 /* LuaContext.h */,
+				CEA00568255D3AE700F66636 /* LuaExportMetaData.h */,
+				CEA00569255D3AE700F66636 /* LuaContext.m */,
+				CEA0056A255D3AE700F66636 /* LuaExport.h */,
+				CEA0056B255D3AE700F66636 /* LuaExportMetaData.m */,
+			);
+			path = LuaContext;
+			sourceTree = "<group>";
+		};
 		CEAA96DC1F1CE13200741A6F /* SAMKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -5502,6 +6668,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CEA00426255D3AE600F66636 /* GGChartKit */,
 				CE2DE02524FF790400423042 /* JXPagerView */,
 				CE2DDFF624FF77E100423042 /* ZXNavigationBar */,
 				CE68B5A9246E871B0091DA9F /* CRBoxInputView */,
@@ -5833,6 +7000,7 @@
 				CE7AE6C12523BF3E00719687 /* ThroughManageShowList.xib in Resources */,
 				CE0C358A1F25D75000405A99 /* police.m4a in Resources */,
 				CE2DDED824FF774100423042 /* VehicleDriverNoShowCell.xib in Resources */,
+				CE546B18255E8CFC0004D3FD /* AccidentHistoryListVC.xib in Resources */,
 				CE5E203E1F32C0AD009D98A6 /* CertificateView.xib in Resources */,
 				CE2DDFCD24FF774100423042 /* MainCommonVC.xib in Resources */,
 				CE2DDF5B24FF774100423042 /* TaskFlowsDetailContentCell.xib in Resources */,
@@ -5853,6 +7021,7 @@
 				CE2DDEA524FF774100423042 /* SpecialManageVC.xib in Resources */,
 				CE2DDFEB24FF774200423042 /* IllegalExposureListVC.xib in Resources */,
 				CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */,
+				CEA005BE255D3AE800F66636 /* IndexLuaCode.bundle in Resources */,
 				820F0D15242CB68800886C2C /* Launch Screen.storyboard in Resources */,
 				CE2DDF4824FF774100423042 /* TaskFlowsListVC.xib in Resources */,
 				CE2DDE2024FF774100423042 /* ParkingCarDetailVC.xib in Resources */,
@@ -5880,6 +7049,7 @@
 				CE2DDE7024FF774100423042 /* ParkingForensicsListVC.xib in Resources */,
 				CE2DDF9924FF774100423042 /* AccidentAddHeadView.xib in Resources */,
 				CE25F4FE21250B300067E125 /* IllegalListCell.xib in Resources */,
+				CE821004258A01A3005833F9 /* FiltrateView.xib in Resources */,
 				CE5E203B1F32C0AD009D98A6 /* BottomPickerView.xib in Resources */,
 				CE2DDF7E24FF774100423042 /* IllegalAddDetailVC.xib in Resources */,
 				CE2DDE8024FF774100423042 /* MessageCell.xib in Resources */,
@@ -5897,6 +7067,7 @@
 				CE2DDEFD24FF774100423042 /* VehicleUpRemarkDetailCell.xib in Resources */,
 				CE2DDF1A24FF774100423042 /* DutyLeaderCell.xib in Resources */,
 				CE2DDF1724FF774100423042 /* DutyHeaderCell.xib in Resources */,
+				CEA004092559209600F66636 /* AccidentCallPoliceCell.xib in Resources */,
 				CE2DDEE724FF774100423042 /* VehicleUpCell.xib in Resources */,
 				CE2DDEFE24FF774100423042 /* VehicleUpCarDetailVC.xib in Resources */,
 				CE2DDF3D24FF774100423042 /* AttendancePoliceCell.xib in Resources */,
@@ -5968,6 +7139,7 @@
 				CE4139F92178CF27006AA441 /* ZLPhotoActionSheet.xib in Resources */,
 				CE2DDE4B24FF774100423042 /* TakeOutIllegalListVC.xib in Resources */,
 				CE2DDE0424FF774100423042 /* AccidentPeopleCell.xib in Resources */,
+				CE7AF516256271E800BB32DD /* AccidentCallMessageCell.xib in Resources */,
 				CE2DDF0D24FF774100423042 /* LoginHomeVC.xib in Resources */,
 				CE2DDF4A24FF774100423042 /* TaskFlowsContainerVC.xib in Resources */,
 				CE2DDFA824FF774100423042 /* JointImageVC.xib in Resources */,
@@ -5987,6 +7159,7 @@
 				CE2DDF1824FF774100423042 /* DutyPoliceCell.xib in Resources */,
 				CE2DDF1C24FF774100423042 /* AddressBookHomeVC.xib in Resources */,
 				CE2DDE5324FF774100423042 /* TakeOutTempHeadView.xib in Resources */,
+				CEA0041B255BEB5400F66636 /* DataStatisticsVC.xib in Resources */,
 				CE2DDE6124FF774100423042 /* TakeOutIllegalTypeCell.xib in Resources */,
 				CE2DDE7524FF774100423042 /* ParkingForensicsVC.xib in Resources */,
 				CE762C4A2519DB6B00D6CCE6 /* InhibitLineVC.xib in Resources */,
@@ -6015,6 +7188,7 @@
 				CE2DDECB24FF774100423042 /* VehicleCarInfoMoreVC.xib in Resources */,
 				CE2DDF9E24FF774100423042 /* JointTextCell.xib in Resources */,
 				CE2DDFC824FF774100423042 /* ScreenManageCell.xib in Resources */,
+				CE820FFB2589AB0A005833F9 /* DataStatisticsListVC.xib in Resources */,
 				CE2DDF5C24FF774100423042 /* TaskFlowsDetailBackWorkCell.xib in Resources */,
 				CE2DDFE624FF774200423042 /* IllegalExposureVC.xib in Resources */,
 				CE2DDFC124FF774100423042 /* ScreenManageVC.xib in Resources */,
@@ -6121,7 +7295,9 @@
 				CE2DDEDE24FF774100423042 /* VehicleReportVC.m in Sources */,
 				CE2DDEC324FF774100423042 /* VehicleExpireAlarmVC.m in Sources */,
 				CE2DDE9624FF774100423042 /* PoliceReleaseRadioVC.m in Sources */,
+				CEA005A2255D3AE700F66636 /* GGShapeCanvas.m in Sources */,
 				CE8EC9901FA06B71002E5456 /* DutyAPI.m in Sources */,
+				CEA005E1255D3AE800F66636 /* lmem.c in Sources */,
 				CE2DDF4724FF774100423042 /* TaskFlowsListModel.m in Sources */,
 				CE4139F32178CF27006AA441 /* ZLProgressHUD.m in Sources */,
 				CE2DDE5B24FF774100423042 /* TakeOutIllegalTypeVC.m in Sources */,
@@ -6134,15 +7310,19 @@
 				CE762CB7251C97A600D6CCE6 /* IllegalCollectListCell.m in Sources */,
 				CE2DDFA724FF774100423042 /* JointPenaltiesVC.m in Sources */,
 				CE762C622519F66100D6CCE6 /* CarInfoInputVC.m in Sources */,
+				CEA005C6255D3AE800F66636 /* ATRLayer.m in Sources */,
 				CE2DDF9824FF774100423042 /* IllegalSecSaveVC.m in Sources */,
 				CE2DDEF224FF774100423042 /* VehicleTrafficTopCell.m in Sources */,
 				CE2DDE4424FF774100423042 /* DeliveryVehicleModel.m in Sources */,
 				CE2DDEB924FF774100423042 /* QRCodeScanVC.m in Sources */,
+				CEA005C0255D3AE800F66636 /* MALayer.m in Sources */,
 				CE2DDF1924FF774100423042 /* DutyHeaderCell.m in Sources */,
+				CE821005258A01A3005833F9 /* FiltrateView.m in Sources */,
 				CE7AE6AA2523856400719687 /* ExpressRegulationViewModel.m in Sources */,
 				CE4139E32178CF26006AA441 /* ZLImageEditTool.m in Sources */,
 				CE4139F42178CF27006AA441 /* ZLAnimateTransition.m in Sources */,
 				CE2DDF6D24FF774100423042 /* IllegalMessageCell.m in Sources */,
+				CEA005A3255D3AE700F66636 /* GGPieLayer.m in Sources */,
 				CE864F3620089CE5007B20FE /* UIColor+PGHex.m in Sources */,
 				CEA389BB20B3BED7009B0A32 /* VehicleAlarmModel.m in Sources */,
 				CE2DDE3F24FF774100423042 /* TakeOutSearchViewModel.m in Sources */,
@@ -6150,17 +7330,23 @@
 				CEAA97021F1CEFE800741A6F /* LoginAPI.m in Sources */,
 				CE2DDDDE24FF774100423042 /* AccidentManageVC.m in Sources */,
 				CE2DDEB324FF774100423042 /* SpecialAddCar.m in Sources */,
+				CEA0056C255D3AE700F66636 /* ProgressChart.m in Sources */,
 				CE2DDF8E24FF774100423042 /* IllegalParkAddFootView.m in Sources */,
 				CE2DDFB924FF774100423042 /* DailyPatrolDetailVC.m in Sources */,
 				CE2DDEC524FF774100423042 /* VehicleSpeedAlarmListVC.m in Sources */,
 				CE2DDF4024FF774100423042 /* AttendanceSignInCell.m in Sources */,
+				CEA005AE255D3AE800F66636 /* NSDate+GGDate.m in Sources */,
 				CE2DDDE124FF774100423042 /* AccidentDetailVC.m in Sources */,
 				CEF2D8C7250A15160047D777 /* ThroughManageAPIS.m in Sources */,
 				CE2DDEE124FF774100423042 /* VehicleAreaAlarmCell.m in Sources */,
+				CEA00424255BEB8F00F66636 /* DataStatisticsAPI.m in Sources */,
 				CE2DDE3C24FF774100423042 /* TakeOutTempViewModel.m in Sources */,
 				CEF2D8C4250A14070047D777 /* ThroughManageViewModel.m in Sources */,
 				CE2DDEDD24FF774100423042 /* VehicleCarInfoVC.m in Sources */,
 				CE2DDEE324FF774100423042 /* VehicleTiredAlarmCell.m in Sources */,
+				CEA005B3255D3AE800F66636 /* DBarScaler.m in Sources */,
+				CEA00583255D3AE700F66636 /* XAxis.m in Sources */,
+				CEA005C2255D3AE800F66636 /* KDJLayer.m in Sources */,
 				CE2DDF7424FF774100423042 /* IllegalAddDetailViewModel.m in Sources */,
 				CE2DE01824FF77E100423042 /* ZXNavTitleLabel.m in Sources */,
 				CE59BB441F95DF4200E24D3A /* LGUIView.m in Sources */,
@@ -6170,11 +7356,17 @@
 				CE53D03B1FBD72FB00445877 /* NetworkStatusMonitor.m in Sources */,
 				CE2DDE2724FF774100423042 /* ParkingManageListCell.m in Sources */,
 				CE5E203D1F32C0AD009D98A6 /* CertificateView.m in Sources */,
+				CEA005C8255D3AE800F66636 /* RSILayer.m in Sources */,
+				CEA005DE255D3AE800F66636 /* lzio.c in Sources */,
 				CE2DDDF924FF774100423042 /* AccidentDisposeCell.m in Sources */,
+				CEA005EA255D3AE800F66636 /* llex.c in Sources */,
 				CE8CDE671F9455F80018044C /* AKTab.m in Sources */,
 				CE2DE04924FF794B00423042 /* UIWindow+JXSafeArea.m in Sources */,
+				CEA005E0255D3AE800F66636 /* lutf8lib.c in Sources */,
 				CE68B5B9246E87440091DA9F /* CRSecrectImageView.m in Sources */,
+				CEA0058B255D3AE700F66636 /* GGAxisRenderer.m in Sources */,
 				CE8CDE681F9455F80018044C /* AKTabBar.m in Sources */,
+				CEA005CC255D3AE800F66636 /* lauxlib.c in Sources */,
 				CE4139F02178CF27006AA441 /* ZLCustomCamera.m in Sources */,
 				82AE2DAD241A378A006E8352 /* ZQPlayer.m in Sources */,
 				CE2DDE0F24FF774100423042 /* ActionDetailCell.m in Sources */,
@@ -6191,10 +7383,13 @@
 				CE2DDF8224FF774100423042 /* IllegalAddListCell.m in Sources */,
 				CE2DDFC024FF774100423042 /* ScreenManageAPI.m in Sources */,
 				CE2DDE4224FF774100423042 /* TakeOutAPI.m in Sources */,
+				CEA005CE255D3AE800F66636 /* lopcodes.c in Sources */,
 				CE2DDF1E24FF774100423042 /* AddressBookCell.m in Sources */,
 				CE2DDE2F24FF774100423042 /* ElectronicPoliceAPI.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
+				CEA005A8255D3AE800F66636 /* LineCanvas.m in Sources */,
+				CEA00598255D3AE700F66636 /* GGAxis.m in Sources */,
 				CE2DDDEB24FF774100423042 /* AccidentRemarkCell.m in Sources */,
 				CE7AE69B252330A900719687 /* IllegalAddForSSViewModel.m in Sources */,
 				CE2DDF1224FF774100423042 /* TaskCell.m in Sources */,
@@ -6212,6 +7407,7 @@
 				CE5E203C1F32C0AD009D98A6 /* BottomView.m in Sources */,
 				CE2DDFB424FF774100423042 /* DailyPatrolSignModel.m in Sources */,
 				CE2DDFAE24FF774100423042 /* DailyPatrolListViewModel.m in Sources */,
+				CEA0058C255D3AE700F66636 /* GGLineRenderer.m in Sources */,
 				CE2DDF5E24FF774100423042 /* TaskFlowsDetailContentCell.m in Sources */,
 				CE4139EC2178CF26006AA441 /* ZLBigImageCell.m in Sources */,
 				CE42B9011F1F3E16005CC5BD /* AccidentAPI.m in Sources */,
@@ -6222,18 +7418,22 @@
 				CEAA96E21F1CE13200741A6F /* SAMKeychainQuery.m in Sources */,
 				CE762C492519DB6B00D6CCE6 /* InhibitLineVC.m in Sources */,
 				CE762C392519A2FD00D6CCE6 /* NoPressTowardVC.m in Sources */,
+				CEA005DA255D3AE800F66636 /* ltable.c in Sources */,
 				CE2DE02424FF78CA00423042 /* BaseViewModel.m in Sources */,
 				CE4139EE2178CF27006AA441 /* ZLShowBigImgViewController.m in Sources */,
 				CE2DDF4424FF774100423042 /* TaskFlowsForwardViewModel.m in Sources */,
 				CE7AE6C02523BF3E00719687 /* ThroughManageShowList.m in Sources */,
 				CE2DDFD124FF774100423042 /* WebVC.m in Sources */,
 				CE26B26022F16E1700A1D1A1 /* UIImage+Category.m in Sources */,
+				CEA00580255D3AE700F66636 /* PieData.m in Sources */,
+				CEA00420255BEB7300F66636 /* DataStatisticsViewModel.m in Sources */,
 				CE68B5BA246E87440091DA9F /* CRBoxInputView.m in Sources */,
 				CE2DDE6724FF774100423042 /* ParkingForensicsListViewModel.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
 				CE2DDFD224FF774100423042 /* MainAddMoreListViewModel.m in Sources */,
 				CE2DDE7624FF774100423042 /* ParkingForensicsHeadView.m in Sources */,
 				CE2DDFBD24FF774100423042 /* PeoplePointAnnotation.m in Sources */,
+				CEA0057C255D3AE700F66636 /* BaseLineBarData.m in Sources */,
 				CE0731D01F5ECF9A00B3831B /* VehicleDriverModel.m in Sources */,
 				CE42B91F1F1F48DB005CC5BD /* IllegalParkListModel.m in Sources */,
 				CE2DDE8B24FF774100423042 /* PoliceDistributeAnnotation.m in Sources */,
@@ -6242,6 +7442,7 @@
 				CEF2D8C0250A042D0047D777 /* ThroughManageVC.m in Sources */,
 				CE2DDE2D24FF774100423042 /* ElectronicDetailModel.m in Sources */,
 				CED6EE8F1F691358004FED7B /* MenuModel.m in Sources */,
+				CEA005AD255D3AE800F66636 /* NSAttributedString+GGChart.m in Sources */,
 				CE2DDE2C24FF774100423042 /* ElectronicTypeModel.m in Sources */,
 				CE2DDFB124FF774100423042 /* DailyPatroInfoModel.m in Sources */,
 				CE7AE6A32523851300719687 /* ExpressRegulationVC.m in Sources */,
@@ -6257,26 +7458,33 @@
 				CE2DDEAD24FF774100423042 /* SpecialNoticeCell.m in Sources */,
 				CE2DDFDB24FF774100423042 /* JXCategoryTitleBackgroundCell.m in Sources */,
 				CE2DDFD424FF774100423042 /* MainAddMoreListVC.m in Sources */,
+				CEA005BF255D3AE800F66636 /* KLineIndexManager.m in Sources */,
 				CE2DDF6824FF774100423042 /* IllegalFootCell.m in Sources */,
 				CE2DDDDF24FF774100423042 /* AccidentPeopleVC.m in Sources */,
 				CE864F4720089D53007B20FE /* PGPickerColumnCell.m in Sources */,
 				CE2DDF6B24FF774100423042 /* IllegalDetailVC.m in Sources */,
+				CE820FFF2589B861005833F9 /* DataStatisticsListViewModel.m in Sources */,
 				CE5C6F011FB0425F005E53BF /* GCDQueue.m in Sources */,
 				CE2DDEA624FF774100423042 /* SpecialEditGroupView.m in Sources */,
 				CE87043920CE52B700E206AE /* LTSCalendarScrollView.m in Sources */,
 				CE2DDE5024FF774100423042 /* TakeOutIllegalListVC.m in Sources */,
+				CEA0056D255D3AE700F66636 /* BarChart.m in Sources */,
+				CEA0056E255D3AE700F66636 /* LineBarChart.m in Sources */,
 				CE2DDF9D24FF774100423042 /* JointImageCell.m in Sources */,
 				CE2DDF6A24FF774100423042 /* IllegalListVC.m in Sources */,
 				CEAA971F1F1CF15900741A6F /* UIButton+Block.m in Sources */,
 				CE2DDEAE24FF774100423042 /* SpecialMemberCell.m in Sources */,
+				CEA005D3255D3AE800F66636 /* lvm.c in Sources */,
 				CE2DDFBB24FF774100423042 /* DailyPatrolListCell.m in Sources */,
 				CE2DDEB624FF774100423042 /* VehicleSearchListVC.m in Sources */,
 				CE2DDDEA24FF774100423042 /* AccidentRemarkListVC.m in Sources */,
 				CEFEFD0E1F29C62900C33CBD /* LLSimpleCamera+Helper.m in Sources */,
+				CEA005DD255D3AE800F66636 /* lgc.c in Sources */,
 				CE2DDF8824FF774100423042 /* PersonLocationVC.m in Sources */,
 				CE2DDE9024FF774100423042 /* PoliceDetailDisAnnotationView.m in Sources */,
 				CE72DF2121119F3C00F843CD /* ActionAPI.m in Sources */,
 				CE4139DC2178CF26006AA441 /* ZLCollectionCell.m in Sources */,
+				CEA005A7255D3AE800F66636 /* GridBackCanvas.m in Sources */,
 				CE762C4E2519DB7C00D6CCE6 /* InhibitLineViewModel.m in Sources */,
 				CE2DDE7224FF774100423042 /* ParkingForensicsListVC.m in Sources */,
 				CE5C6F001FB0425F005E53BF /* GCDGroup.m in Sources */,
@@ -6288,19 +7496,25 @@
 				CE2DDF1524FF774100423042 /* DutyLeaderCell.m in Sources */,
 				CE4139F72178CF27006AA441 /* UIImage+ZLPhotoBrowser.m in Sources */,
 				CE4139E92178CF26006AA441 /* NSBundle+ZLPhotoBrowser.m in Sources */,
+				CEA005E5255D3AE800F66636 /* lbitlib.c in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
+				CEA0041A255BEB5400F66636 /* DataStatisticsVC.m in Sources */,
 				CE2DDE7824FF774100423042 /* ParkingAreaVC.m in Sources */,
+				CEA005B4255D3AE800F66636 /* BaseScaler.m in Sources */,
 				CE2DDF5124FF774100423042 /* TaskFlowsDetailVC.m in Sources */,
 				CE2DDF3E24FF774100423042 /* AttendancePoliceCell.m in Sources */,
 				CE17A01E210814510045167B /* AccidentDetailsModel.m in Sources */,
 				CE2DDFF424FF774200423042 /* FeedbackVC.m in Sources */,
+				CEA005EC255D3AE800F66636 /* ldo.c in Sources */,
 				CE2DDFE924FF774200423042 /* IllegalExposureVC.m in Sources */,
+				CEA005CB255D3AE800F66636 /* BBILayer.m in Sources */,
 				CE2DDFF124FF774200423042 /* FeedbackFootView.m in Sources */,
 				CE2DDFAC24FF774100423042 /* DailyPatrolLocationHelper.m in Sources */,
 				CEE5E9F91F1C896400AC515C /* BaseViewController.m in Sources */,
 				CEAA973B1F1CF2AD00741A6F /* LRPlaceholderView.m in Sources */,
 				CE42B91A1F1F46DC005CC5BD /* IllegalThroughAPI.m in Sources */,
 				CE2DDE7C24FF774100423042 /* ParkingAreaCell.m in Sources */,
+				CEA005CA255D3AE800F66636 /* BOLLLayer.m in Sources */,
 				CE762C5C2519DEA800D6CCE6 /* ThroughAddVC.m in Sources */,
 				CE2DDF9424FF774100423042 /* SearchLocationVC.m in Sources */,
 				CE5E203A1F32C0AD009D98A6 /* BottomPickerView.m in Sources */,
@@ -6308,52 +7522,71 @@
 				CE4139F62178CF27006AA441 /* ToastUtils.m in Sources */,
 				CE2DDFE524FF774200423042 /* IllegalExposureIllegalTypeModel.m in Sources */,
 				CE2DDF7624FF774100423042 /* IllegalAddListViewModel.m in Sources */,
+				CEA0059B255D3AE700F66636 /* GGPolygon.m in Sources */,
 				CE42B9351F1F4AE4005CC5BD /* ArtAnimationRecordView.m in Sources */,
 				CE2DDE0824FF774100423042 /* AccidentPeopleView.m in Sources */,
+				CEA005C5255D3AE800F66636 /* MACDLayer.m in Sources */,
+				CEA005E2255D3AE800F66636 /* lcorolib.c in Sources */,
 				CE2DDF2F24FF774100423042 /* VideoDetailVC.m in Sources */,
 				CE2DDE6824FF774100423042 /* ParkingForensicsViewModel.m in Sources */,
 				CE2DDF0924FF774100423042 /* LoginHomeVC.m in Sources */,
+				CEA00570255D3AE700F66636 /* LineChart.m in Sources */,
 				CE42B9291F1F49A5005CC5BD /* VideoColectAPI.m in Sources */,
 				CE1259512284413300B7BF48 /* NSArray+MASConstraint.m in Sources */,
 				CE2DDECA24FF774100423042 /* VehicleCarInfoMoreVC.m in Sources */,
 				CED6EE901F691358004FED7B /* UIView+AdjustFrame.m in Sources */,
+				CE546B12255E8A3D0004D3FD /* AccidentHistoricalListViewmodel.m in Sources */,
 				CE2DDFE724FF774200423042 /* IllegalExposureDetailVC.m in Sources */,
 				CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */,
+				CEA00592255D3AE700F66636 /* GGStringRenderer.m in Sources */,
 				CE2DE01224FF77E100423042 /* UIImage+ZXNavColorRender.m in Sources */,
 				CE6ACF2A24849BBE00CE23FD /* IllegalRoadView.m in Sources */,
 				CE2DDE1224FF774100423042 /* ActionTopCell.m in Sources */,
+				CEA00585255D3AE700F66636 /* YAxis.m in Sources */,
 				CE4139DD2178CF26006AA441 /* ZLPhotoManager.m in Sources */,
+				CEA00584255D3AE700F66636 /* LineBarGird.m in Sources */,
 				CE864F4820089D53007B20FE /* PGPickerColumnView.m in Sources */,
 				CEE45BB41FAC601C00BF472F /* TaskModel.m in Sources */,
+				CEA005B9255D3AE800F66636 /* GGGraphicsConstants.m in Sources */,
 				CE1259422284245C00B7BF48 /* NSLayoutConstraintTopHeight.m in Sources */,
 				CE4464D61F218A530056A9EB /* HSUpdateApp.m in Sources */,
 				CE68B5B8246E87440091DA9F /* CRBoxInputCellProperty.m in Sources */,
+				CEA005DF255D3AE800F66636 /* ldblib.c in Sources */,
 				CE2DDE4024FF774100423042 /* TakeOutIllegalDetailViewModel.m in Sources */,
 				CE41C7A91F5E57120058FE8D /* SocketModel.m in Sources */,
 				CE2DDFF524FF774200423042 /* UserCenterVC.m in Sources */,
 				CE2DDECD24FF774100423042 /* VehicleRouteCell.m in Sources */,
+				CEA00591255D3AE700F66636 /* GGGridRenderer.m in Sources */,
 				CE2DDF8A24FF774100423042 /* PoliceLocationCell.m in Sources */,
 				CE2DDDFF24FF774100423042 /* AccidentUpFactory.m in Sources */,
 				CEAA96F91F1CE97B00741A6F /* LRBaseResponse.m in Sources */,
+				CEA0057F255D3AE700F66636 /* PieDataSet.m in Sources */,
+				CEA00599255D3AE700F66636 /* GGArrow.m in Sources */,
 				CE4139DF2178CF26006AA441 /* ZLPhotoConfiguration.m in Sources */,
 				CE240AD71FDFC3DC002EA369 /* IllOperationAPI.m in Sources */,
 				CE2DDE6C24FF774100423042 /* ParkingForensicsModel.m in Sources */,
 				CE762C262519293E00D6CCE6 /* IllegalParkForJJViewModel.m in Sources */,
 				CE2DDE7424FF774100423042 /* ParkingForensicsVC.m in Sources */,
+				CEA005EB255D3AE800F66636 /* ltm.c in Sources */,
 				CE42B9201F1F48DB005CC5BD /* IllegalParkDetailModel.m in Sources */,
+				CEA005C4255D3AE800F66636 /* EMALayer.m in Sources */,
 				CEAA971A1F1CF15900741A6F /* UINavigationBar+BarItem.m in Sources */,
 				CE2DDE2524FF774100423042 /* ParkingCarDetailVC.m in Sources */,
+				CEA005BB255D3AE800F66636 /* MinuteChart.m in Sources */,
 				CE2DDF3524FF774100423042 /* LRVideoVC.m in Sources */,
 				CE2DDEDB24FF774100423042 /* VehicleRemarkCell.m in Sources */,
 				CE2DDFDC24FF774100423042 /* JXCategoryTitleBackgroundView.m in Sources */,
 				CE2DDF7F24FF774100423042 /* IllegalAddVC.m in Sources */,
 				CE2DDF5224FF774100423042 /* TaskFlowsAddVC.m in Sources */,
 				CE2DDEC624FF774100423042 /* VehicleAlarmInfoVC.m in Sources */,
+				CEA00581255D3AE700F66636 /* ProgressLable.m in Sources */,
 				CE2DE04324FF792300423042 /* LREmptyDataSetGeneralHandler.m in Sources */,
 				CE2DDF0124FF774100423042 /* VehicleUpRemarkDetailCell.m in Sources */,
 				CE2DDEF524FF774100423042 /* VehicleCarAnnotationView.m in Sources */,
 				CE2DDEF024FF774100423042 /* VehicleTrafficInfoVC.m in Sources */,
+				CE546B17255E8CFC0004D3FD /* AccidentHistoryListVC.m in Sources */,
 				CE2DDF9B24FF774100423042 /* AccidentAddHeadView.m in Sources */,
+				CEA005E6255D3AE800F66636 /* lapi.c in Sources */,
 				CE2DDE9B24FF774100423042 /* PoliceDistributeVC.m in Sources */,
 				CE675F131F381651006FC15F /* LRPageMenu.m in Sources */,
 				CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */,
@@ -6369,18 +7602,22 @@
 				CEA5FC9A233DBE8000D9E10B /* LAJIBaseRequest.m in Sources */,
 				CE41C7AF1F5E58320058FE8D /* LocationModel.m in Sources */,
 				CE2DDEF324FF774100423042 /* VehicleUpInfoVC.m in Sources */,
+				CEA005C1255D3AE800F66636 /* TDLayer.m in Sources */,
 				CE2DDED624FF774100423042 /* VehicleMemberCell.m in Sources */,
 				CE4139E42178CF26006AA441 /* ZLBrushBoardImageView.m in Sources */,
 				CE2DE04524FF792300423042 /* LREmptyDataSetHandler.m in Sources */,
+				CEA00577255D3AE700F66636 /* LineData.m in Sources */,
 				CE2DDEE424FF774100423042 /* VehicleUpCell.m in Sources */,
 				CE4464D11F2189E20056A9EB /* FXBlurView.m in Sources */,
 				CE57F7931F1E0F6D00CA9FCF /* LRCountDownButton.m in Sources */,
 				CE2DDE4124FF774100423042 /* TakeOutIllegalTypeViewModel.m in Sources */,
 				CE2DDFDE24FF774100423042 /* MainHeaderView.m in Sources */,
+				CEA005D6255D3AE800F66636 /* linit.c in Sources */,
 				CE2DDE7F24FF774100423042 /* IllegalOperatCarVC.m in Sources */,
 				CE2DDE4724FF774100423042 /* DeliveryIllegalDetailModel.m in Sources */,
 				CE2DDFBA24FF774100423042 /* DailyPatrolAnnotationView.m in Sources */,
 				CE2DDDE424FF774100423042 /* AccidentPartyCell.m in Sources */,
+				CEA00595255D3AE700F66636 /* GGArcLine.m in Sources */,
 				CE2DDE3924FF774100423042 /* SignInVC.m in Sources */,
 				CE2DDE5D24FF774100423042 /* TakeOutIllegalCell.m in Sources */,
 				CEAA971D1F1CF15900741A6F /* NSString+Range.m in Sources */,
@@ -6388,20 +7625,27 @@
 				CE0608491FE257A60063B06D /* VehicleRouteModel.m in Sources */,
 				CE42B9231F1F4901005CC5BD /* IllegalCollectModel.m in Sources */,
 				CE2DDE4324FF774100423042 /* DeliveryIllegalModel.m in Sources */,
+				CEA00573255D3AE700F66636 /* BaseChart.m in Sources */,
 				CE2DDEF924FF774100423042 /* VehicleUpVC.m in Sources */,
 				CE87043A20CE52B700E206AE /* LTSCalendarCollectionViewFlowLayout.m in Sources */,
 				CE2DE01024FF77E100423042 /* ZXNavigationBarController.m in Sources */,
+				CEA00589255D3AE700F66636 /* RadarDataSet.m in Sources */,
 				CE42B9051F1F4272005CC5BD /* AccidentListModel.m in Sources */,
 				CE2DDFB024FF774100423042 /* DailyPatrolLocationModel.m in Sources */,
 				CE2DDF5A24FF774100423042 /* TaskFlowsListCell.m in Sources */,
+				CEA004082559209600F66636 /* AccidentCallPoliceCell.m in Sources */,
+				CEA00582255D3AE700F66636 /* ProgressData.m in Sources */,
 				CE2DDE9424FF774100423042 /* PoliceSearchCell.m in Sources */,
 				CE2DDF9624FF774100423042 /* IllegalThroughSecAddView.m in Sources */,
+				CEA00588255D3AE700F66636 /* RadarData.m in Sources */,
 				CEE7B80F215A7D8D005FF1BA /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				CE2DDF5024FF774100423042 /* TaskFlowsForwardVC.m in Sources */,
+				CEA005B2255D3AE800F66636 /* DRadarScaler.m in Sources */,
 				82978CE2242C4CA2009201B7 /* UIViewController+LL_Utils.m in Sources */,
 				CE864F3B20089CE5007B20FE /* NSDate+PGCategory.m in Sources */,
 				CE2DDF7224FF774100423042 /* IllegalAddViewModel.m in Sources */,
 				CE42B9191F1F46DC005CC5BD /* IllegalParkAPI.m in Sources */,
+				CEA005BA255D3AE800F66636 /* CrissCrossQueryView.m in Sources */,
 				CE2DDE6524FF774100423042 /* TakeOutInfoCell.m in Sources */,
 				CE2DDF3824FF774100423042 /* AttendanceSignInViewModel.m in Sources */,
 				CE2DDE1024FF774100423042 /* ActionListCell.m in Sources */,
@@ -6413,6 +7657,7 @@
 				CE2DDE0024FF774100423042 /* AccidentPeopleChangeCell.m in Sources */,
 				CE4139E22178CF26006AA441 /* ZLFilterTool.m in Sources */,
 				CE2DDFB524FF774100423042 /* DailyPatrolAPI.m in Sources */,
+				CEA005D0255D3AE800F66636 /* lobject.c in Sources */,
 				CE2DDF3B24FF774100423042 /* AttendanceSignInVC.m in Sources */,
 				CE2DDF2E24FF774100423042 /* VideoListCell.m in Sources */,
 				CE4139EB2178CF26006AA441 /* ZLEditVideoController.m in Sources */,
@@ -6425,6 +7670,7 @@
 				CE4139E72178CF26006AA441 /* ZLFilterItem.m in Sources */,
 				CE2DDFC924FF774100423042 /* MainViewModel.m in Sources */,
 				CE2DDE6D24FF774100423042 /* ParkingOccPercentModel.m in Sources */,
+				CEA005E9255D3AE800F66636 /* lparser.c in Sources */,
 				CE1259432284245D00B7BF48 /* NSLayoutConstraintBottomHeight.m in Sources */,
 				CE2DDE6A24FF774100423042 /* ParkingAreaViewModel.m in Sources */,
 				CE864F4920089D53007B20FE /* PGPickerView.m in Sources */,
@@ -6442,9 +7688,11 @@
 				CE7AE67D2520709800719687 /* ThroughManageListViewModel.m in Sources */,
 				CE2DDFB324FF774100423042 /* DailyPatrolListModel.m in Sources */,
 				CE2DDED224FF774100423042 /* VehicleCarCell.m in Sources */,
+				CEA005D2255D3AE800F66636 /* loadlib.c in Sources */,
 				CE2DDF1D24FF774100423042 /* AddressBookHomeVC.m in Sources */,
 				CE2AF88A1FD68C42005B643E /* FHHFPSIndicator.m in Sources */,
 				CE87043420CE52B700E206AE /* LTSCircleView.m in Sources */,
+				CEA005D9255D3AE800F66636 /* lctype.c in Sources */,
 				CE2DDEBE24FF774100423042 /* VehicleCarAnnotation.m in Sources */,
 				CE7AE6B02523860E00719687 /* ExpressRegulationAPIS.m in Sources */,
 				CE2DE01424FF77E100423042 /* UIView+ZXNavFrameExtension.m in Sources */,
@@ -6456,12 +7704,15 @@
 				CE42B9381F1F4AE4005CC5BD /* ArtVideoUtil.m in Sources */,
 				CE6915551F1DD70A008911A6 /* HideTabSuperVC.m in Sources */,
 				CE2DDFA124FF774100423042 /* JointTextCell.m in Sources */,
+				CEA005C3255D3AE800F66636 /* MIKELayer.m in Sources */,
 				CE2DDE4624FF774100423042 /* DeliveryInfoModel.m in Sources */,
 				CE7DBFF21F493E4A003318F7 /* AccidentChangePhotoModel.m in Sources */,
 				CEE7B80C215A7D8D005FF1BA /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				CEA005DC255D3AE800F66636 /* loslib.c in Sources */,
 				CE2DDE7924FF774100423042 /* ParkingAreaDetailVC.m in Sources */,
 				CE2DDDED24FF774100423042 /* AccidentRemarkListCell.m in Sources */,
 				CE5328682057FD3C003D6152 /* IllegalParkAlertView.m in Sources */,
+				CEA0058D255D3AE700F66636 /* GGCircleRenderer.m in Sources */,
 				CE2DDEB524FF774100423042 /* SearchImportCarVC.m in Sources */,
 				CECF753420C9505300A4DAC4 /* PFNavigationDropdownMenu.m in Sources */,
 				CECF753320C9505300A4DAC4 /* PFConfiguration.m in Sources */,
@@ -6481,29 +7732,38 @@
 				CE68B5BB246E87440091DA9F /* CRBoxInputCell.m in Sources */,
 				CE2DDE0A24FF774100423042 /* AccidentPeopleCell.m in Sources */,
 				CED6EE8E1F691358004FED7B /* MenuTableViewCell.m in Sources */,
+				CEA0057B255D3AE700F66636 /* BaseLineBarSet.m in Sources */,
 				CE2DDED024FF774100423042 /* VehicleMemberNoShowCell.m in Sources */,
 				CE17A024210820410045167B /* AccidentPeopleModel.m in Sources */,
 				CE5C6F021FB0425F005E53BF /* GCDSemaphore.m in Sources */,
+				CEA0059A255D3AE700F66636 /* GGPie.m in Sources */,
 				CE87043520CE52B700E206AE /* LTSCalendarAppearance.m in Sources */,
 				CE57F78A1F1E017300CA9FCF /* NetWorkHelper.m in Sources */,
 				CE762C332519A2E100D6CCE6 /* NoPressTowardViewModel.m in Sources */,
 				CE2DDEA224FF774100423042 /* SpecialManageVC.m in Sources */,
+				CEA00579255D3AE700F66636 /* BarDataSet.m in Sources */,
 				CE8EE8681F6690E800CC64B0 /* LocationAPI.m in Sources */,
 				CE42B90E1F1F45BF005CC5BD /* AccidentPicListModel.m in Sources */,
 				CE2DDE1C24FF774100423042 /* ParkingManagementVC.m in Sources */,
+				CEA00587255D3AE700F66636 /* AxisName.m in Sources */,
 				CE2DDF4C24FF774100423042 /* TaskFlowsListVC.m in Sources */,
 				CE2DDE2924FF774100423042 /* ElectronicPoliceViewModel.m in Sources */,
 				CE2DDFD524FF774100423042 /* MainAllViewModel.m in Sources */,
+				CEA005B8255D3AE800F66636 /* DPieScaler.m in Sources */,
 				CE2DDEE824FF774100423042 /* VehicleRoadAlarmCell.m in Sources */,
 				CE2DDE2424FF774100423042 /* ParkingCarImageVC.m in Sources */,
 				CE4139E52178CF26006AA441 /* ZLDrawItem.m in Sources */,
 				CE2DDF8724FF774100423042 /* IllegalAddHeadView.m in Sources */,
+				CEA00596255D3AE700F66636 /* GGSizeRange.m in Sources */,
 				CE450BC81F2741050025A20C /* BaseImageCollectionCell.m in Sources */,
 				CE0731C41F5EC7E400B3831B /* VehicleAPI.m in Sources */,
 				CE42B9421F1F4BE3005CC5BD /* IdentifyModel.m in Sources */,
 				CEE5E9D01F1C6CBB00AC515C /* main.m in Sources */,
+				CEA00578255D3AE700F66636 /* LineDataSet.m in Sources */,
+				CEA0040F25593D7A00F66636 /* AccidentMoreAPIs.m in Sources */,
 				CE2DDF3124FF774100423042 /* VideoListVC.m in Sources */,
 				CE2BEEA120B7EA5900191FE3 /* VehicleUpDetailModel.m in Sources */,
+				CEA0058E255D3AE700F66636 /* GGPolygonRenderder.m in Sources */,
 				CE0731CD1F5ECF0200B3831B /* VehicleRemarkModel.m in Sources */,
 				CE2DDE4E24FF774100423042 /* TakeOutIllegalDetailVC.m in Sources */,
 				CE2DDE8424FF774100423042 /* MessageHomeVC.m in Sources */,
@@ -6514,7 +7774,11 @@
 				CEFEFD021F29C22500C33CBD /* maskingView.m in Sources */,
 				CE2DE03324FF790400423042 /* JXPagerSmoothView.m in Sources */,
 				CE5E20451F32C325009D98A6 /* AlertView.m in Sources */,
+				CEA005C9255D3AE800F66636 /* BaseIndexLayer.m in Sources */,
+				CEA005D1255D3AE800F66636 /* lmathlib.c in Sources */,
+				CE7AF515256271E800BB32DD /* AccidentCallMessageCell.m in Sources */,
 				CE2DDFCB24FF774100423042 /* MainCommonVC.m in Sources */,
+				CEA005A5255D3AE700F66636 /* PieCanvas.m in Sources */,
 				CEFEFD201F29ED8100C33CBD /* KSProgressLayer.m in Sources */,
 				CE7AE6962523304600719687 /* IllegalAddForSSVC.m in Sources */,
 				CE864F3920089CE5007B20FE /* PGDatePickManager.m in Sources */,
@@ -6523,14 +7787,17 @@
 				CE2DE01724FF77E100423042 /* ZXNavItemBtn.m in Sources */,
 				CE2CE43C1F9F357A00E63953 /* NSDate+Formatter.m in Sources */,
 				CE2DDE3224FF774100423042 /* ElectronicImageVC.m in Sources */,
+				CEA005BD255D3AE800F66636 /* KLineChart.m in Sources */,
 				CE7AE6B62523B85A00719687 /* ExpressRegulationDetailVC.m in Sources */,
 				CEAA97201F1CF15900741A6F /* CALayer+Additions.m in Sources */,
 				CE2DDF8D24FF774100423042 /* CarInfoAddVC.m in Sources */,
+				CEA00572255D3AE700F66636 /* PieChart.m in Sources */,
 				CE2DDE9724FF774100423042 /* PoliceSearchVC.m in Sources */,
 				CE2DDEE924FF774100423042 /* VehicleTiredListCell.m in Sources */,
 				CE2DDFCF24FF774100423042 /* MainVC.m in Sources */,
 				CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */,
 				CE42B9391F1F4AE4005CC5BD /* NSString+ALi.m in Sources */,
+				CEA00593255D3AE700F66636 /* GGRect.m in Sources */,
 				CE2DDFBF24FF774100423042 /* PatrolPolyline.m in Sources */,
 				CE2DDF0324FF774100423042 /* VehicleUpImageCell.m in Sources */,
 				CE762C83251A4E5A00D6CCE6 /* IllegalCollectListViewModel.m in Sources */,
@@ -6542,6 +7809,7 @@
 				CE61406B1F31CBBA0015B8CE /* YUSegmentedControlItem.m in Sources */,
 				CE87043320CE52B700E206AE /* LTSCalendarManager.m in Sources */,
 				CE2DDF3A24FF774100423042 /* AttendanceManageVC.m in Sources */,
+				CEA005E4255D3AE800F66636 /* ltablib.c in Sources */,
 				CE672D151FA6D8D400CB3081 /* LocationStorage.m in Sources */,
 				CE115D3024AD8A6600C057F4 /* NSTimer+UnRetain.m in Sources */,
 				CE2DDF6924FF774100423042 /* IllegalCell.m in Sources */,
@@ -6551,16 +7819,24 @@
 				CE2DDE3E24FF774100423042 /* TakeOutAddViewModel.m in Sources */,
 				CE864F4A20089D53007B20FE /* PGPickerTableView.m in Sources */,
 				CE0731CA1F5ECBF400B3831B /* VehicleModel.m in Sources */,
+				CEA005B1255D3AE800F66636 /* NSObject+FireBlock.m in Sources */,
+				CEA005CF255D3AE800F66636 /* lstate.c in Sources */,
+				CEA00575255D3AE700F66636 /* CenterData.m in Sources */,
 				CE2DDED124FF774100423042 /* VehicleCarNoShowCell.m in Sources */,
 				CE2DDE2E24FF774100423042 /* ElectronicAnnotationView.m in Sources */,
 				CE762C6C251A22C000D6CCE6 /* MotorbikeAddViewModel.m in Sources */,
 				CE68B5BC246E87440091DA9F /* CRLineView.m in Sources */,
 				CE4139992178A4E6006AA441 /* StepNumberHelper.m in Sources */,
+				CEA005AC255D3AE800F66636 /* QueryCanvas.m in Sources */,
 				CEAA97231F1CF17A00741A6F /* ShareValue.m in Sources */,
 				CE2DDFEC24FF774200423042 /* IllegalExposureHeadView.m in Sources */,
+				CEA005A4255D3AE700F66636 /* GGCanvas.m in Sources */,
+				CEA00594255D3AE700F66636 /* GGCircle.m in Sources */,
+				CEA005D4255D3AE800F66636 /* lfunc.c in Sources */,
 				CE2DDF0F24FF774100423042 /* ActionVC.m in Sources */,
 				CE2DDE4924FF774100423042 /* TakeOutSearchVC.m in Sources */,
 				CE2DDF9024FF774100423042 /* IllegalParkAddHeadView.m in Sources */,
+				CEA005D5255D3AE800F66636 /* lstrlib.c in Sources */,
 				CE6915771F1DED15008911A6 /* ImageFileInfo.m in Sources */,
 				CE2DDFC524FF774100423042 /* ScreenAddCell.m in Sources */,
 				CE2DDFA224FF774100423042 /* JointVideoVC.m in Sources */,
@@ -6570,29 +7846,44 @@
 				CE4139E62178CF26006AA441 /* ZLClipItem.m in Sources */,
 				CEFEFD0F1F29C62900C33CBD /* LLSimpleCamera.m in Sources */,
 				CE8C6FC21F4179CF0009B09F /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
+				CEA005EE255D3AE800F66636 /* LuaExportMetaData.m in Sources */,
 				CE762C672519F67400D6CCE6 /* CarInfoInputViewModel.m in Sources */,
 				CE93BC6C2147C0B5001F2976 /* SpecialCarAPI.m in Sources */,
 				CE2DDE4824FF774100423042 /* DeliveryCourierModel.m in Sources */,
+				CEA005D7255D3AE800F66636 /* lstring.c in Sources */,
 				CE4139E82178CF26006AA441 /* ZLNoAuthorityViewController.m in Sources */,
 				CE2DDE2824FF774100423042 /* ElectronicImageViewModel.m in Sources */,
 				CE2DDF5D24FF774100423042 /* TaskFlowsTrafficPermitCell.m in Sources */,
 				CE2DDE1524FF774100423042 /* ActionManageVC.m in Sources */,
+				CEA005D8255D3AE800F66636 /* lundump.c in Sources */,
+				CEA005E8255D3AE800F66636 /* ldebug.c in Sources */,
 				CE2DDF0824FF774100423042 /* LoginDevelopListVC.m in Sources */,
+				CEA005B6255D3AE800F66636 /* DKLineScaler.m in Sources */,
+				CEA00586255D3AE700F66636 /* LineBarQuery.m in Sources */,
 				CE864F3520089CE5007B20FE /* PGDatePicker.m in Sources */,
 				CE2DDE5724FF774100423042 /* TakeOutAddVC.m in Sources */,
+				CEA005A9255D3AE800F66636 /* RadarCanvas.m in Sources */,
+				CEA00574255D3AE700F66636 /* NumberData.m in Sources */,
 				CE2DDE6224FF774100423042 /* TakeOutIllegalTypeCell.m in Sources */,
 				CE864F3720089CE5007B20FE /* PGDatePickerView.m in Sources */,
+				CEA005AB255D3AE800F66636 /* ProgressCanvas.m in Sources */,
 				CE2DDE6E24FF774100423042 /* ParkingAreaDetailModel.m in Sources */,
 				CE41C7B21F5E798A0058FE8D /* BackgroundLocationHelper.m in Sources */,
+				CE391DF0254BB5BA003B924F /* AccidentListViewModel.m in Sources */,
 				CE2DDF7724FF774100423042 /* IllegalAPI.m in Sources */,
 				CE2DDE3A24FF774100423042 /* TakeOutIllegalListViewModel.m in Sources */,
 				CE2DDE2124FF774100423042 /* ParkingCarInfoVC.m in Sources */,
 				CE2DDFAB24FF774100423042 /* JointEnforceVC.m in Sources */,
+				CEA005E7255D3AE800F66636 /* lbaselib.c in Sources */,
 				CE2DDF4624FF774100423042 /* TaskFlowsReplyModel.m in Sources */,
+				CEA005AF255D3AE800F66636 /* UIView+GGFrame.m in Sources */,
+				CEA005A0255D3AE700F66636 /* Animator.m in Sources */,
 				CE762C7D251A4DD400D6CCE6 /* IllegalCollectList.m in Sources */,
+				CEA005E3255D3AE800F66636 /* lcode.c in Sources */,
 				CE508F3D1F3D80F10066A9B7 /* RemarkModel.m in Sources */,
 				CEAA97181F1CF15900741A6F /* UIButton+NoRepeatClick.m in Sources */,
 				CE2DE03224FF790400423042 /* JXPagerView.m in Sources */,
+				CEA005B5255D3AE800F66636 /* DLineScaler.m in Sources */,
 				CE25F4FD21250B300067E125 /* IllegalListCell.m in Sources */,
 				CE6ACF2924849BBE00CE23FD /* IllegalRoadCell.m in Sources */,
 				CE5C6F031FB0425F005E53BF /* GCDTimer.m in Sources */,
@@ -6611,6 +7902,7 @@
 				CE2DDF6024FF774100423042 /* TaskFlowsDetailResultCell.m in Sources */,
 				CE2DDF4324FF774100423042 /* TaskFlowsAddViewModel.m in Sources */,
 				CE2DDE8724FF774100423042 /* PoliceSearchCellViewModel.m in Sources */,
+				CEA00590255D3AE700F66636 /* GGNumberRenderer.m in Sources */,
 				CE2DDE8E24FF774100423042 /* PolicePerformView.m in Sources */,
 				CE2DDF6324FF774100423042 /* IllegalRecordImageCell.m in Sources */,
 				CE2DDFA924FF774100423042 /* JointImageVC.m in Sources */,
@@ -6621,6 +7913,7 @@
 				CE2DDFE424FF774100423042 /* ExposureCollectAPI.m in Sources */,
 				CE2DDE8824FF774100423042 /* PoliceSearchViewModel.m in Sources */,
 				CE2DDF5724FF774100423042 /* TaskFlowsDetailBackWorkCell.m in Sources */,
+				CEA00571255D3AE700F66636 /* RadarChart.m in Sources */,
 				CE36A03B1FF4D06800BAAD18 /* JointLawAPI.m in Sources */,
 				CE2DDFCC24FF774100423042 /* MainCommonViewModel.m in Sources */,
 				CE7AE6782520707300719687 /* ThroughManageListVC.m in Sources */,
@@ -6636,13 +7929,18 @@
 				CE2DDF0224FF774100423042 /* VehicleUpMoreCell.m in Sources */,
 				CE7AE6C52523BF5E00719687 /* ThroughManageShowViewModel.m in Sources */,
 				CE2DDF5424FF774100423042 /* TaskFlowsContainerVC.m in Sources */,
+				CEA0057E255D3AE700F66636 /* InnerLable.m in Sources */,
 				CE55B7F91F96F29F00CD1567 /* AddressBookModel.m in Sources */,
 				CE2DDF8424FF774100423042 /* IllegalSearchView.m in Sources */,
+				CEA0058F255D3AE700F66636 /* GGRectRenderer.m in Sources */,
 				CE0731D31F5ED5DD00B3831B /* VehicleGPSModel.m in Sources */,
 				CE2DDE8524FF774100423042 /* MessageCell.m in Sources */,
 				CE2DDE9324FF774100423042 /* PoliceDisAnnotationView.m in Sources */,
+				CEA00597255D3AE700F66636 /* GGLine.m in Sources */,
 				CED6F5CE1F2B240D000D1293 /* KSSDImageManager.m in Sources */,
+				CEA005CD255D3AE800F66636 /* liolib.c in Sources */,
 				CE2DDFC424FF774100423042 /* ScreenManageVC.m in Sources */,
+				CEA0059F255D3AE700F66636 /* LineAnimationsManager.m in Sources */,
 				CED6EE8D1F691358004FED7B /* CommonMenuView.m in Sources */,
 				CE2DDE3824FF774100423042 /* SignListCell.m in Sources */,
 				CE87043620CE52B700E206AE /* LTSCalendarContentView.m in Sources */,
@@ -6654,9 +7952,14 @@
 				CE2DDF1624FF774100423042 /* DutyPoliceCell.m in Sources */,
 				CE55B7F61F96F19F00CD1567 /* AddressBookAPI.m in Sources */,
 				CEAA971B1F1CF15900741A6F /* UITableView+Lr_Placeholder.m in Sources */,
+				CEA0059D255D3AE700F66636 /* GGGrid.m in Sources */,
+				CEA005DB255D3AE800F66636 /* ldump.c in Sources */,
 				CE2DE03024FF790400423042 /* JXPagerListContainerView.m in Sources */,
 				CE2DDE6B24FF774100423042 /* ParkingAreaModel.m in Sources */,
+				CEA005A1255D3AE700F66636 /* BarAnimationsManager.m in Sources */,
 				CE2DDF8024FF774100423042 /* IllegalAddDetailVC.m in Sources */,
+				CEA005C7255D3AE800F66636 /* MAVOLLayer.m in Sources */,
+				CEA005B0255D3AE800F66636 /* NSArray+GGGraphics.m in Sources */,
 				CE4139DE2178CF26006AA441 /* ZLPhotoActionSheet.m in Sources */,
 				CE2DDFE324FF774100423042 /* IllegalExposureViewModel.m in Sources */,
 				CE2DDFEA24FF774200423042 /* IllegalExposureListVC.m in Sources */,
@@ -6670,23 +7973,33 @@
 				CE864F3820089CE5007B20FE /* NSCalendar+PGCurrent.m in Sources */,
 				CE2DDE4C24FF774100423042 /* TakeOutInfoVC.m in Sources */,
 				CE2DDE9F24FF774100423042 /* SpecialNoticeVC.m in Sources */,
+				CEA005B7255D3AE800F66636 /* BaseShapeScaler.m in Sources */,
 				CE2DDFD824FF774100423042 /* MainAllListView.m in Sources */,
 				CEAA97171F1CF15900741A6F /* NSObject+Swizzling.m in Sources */,
+				CEA0058A255D3AE700F66636 /* RadarIndicatorData.m in Sources */,
 				CE407CA0216DA8050035DDED /* LYSideslipCell.m in Sources */,
 				CE2DDE1924FF774100423042 /* ParkingCarDetailViewModel.m in Sources */,
+				CEA0056F255D3AE700F66636 /* BaseLineBarChart.m in Sources */,
 				CEFEFD1D1F29ED8100C33CBD /* KSPhotoBrowser.m in Sources */,
 				CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */,
 				CE2DDEFA24FF774100423042 /* VehicleUpCarDetailVC.m in Sources */,
+				CEA005BC255D3AE800F66636 /* BaseStockChart.m in Sources */,
 				CE2DDFBC24FF774100423042 /* PeoplePatrolPolyline.m in Sources */,
 				CE2DDE8A24FF774100423042 /* PoliceLocationModel.m in Sources */,
+				CEA0057A255D3AE700F66636 /* BarData.m in Sources */,
 				CE450BC41F2730160025A20C /* FSTextView.m in Sources */,
+				CEA005A6255D3AE700F66636 /* CenterCanvas.m in Sources */,
 				CE2DDE0224FF774100423042 /* AccidentUpImageCell.m in Sources */,
 				CE2DDF4124FF774100423042 /* TaskFlowsListViewModels.m in Sources */,
 				CEFEFD061F29C60B00C33CBD /* DeviceOrientation.m in Sources */,
 				CE2DDFE124FF774100423042 /* MainListCell.m in Sources */,
+				CEA005AA255D3AE800F66636 /* BarCanvas.m in Sources */,
+				CEA00576255D3AE700F66636 /* LineBarDataSet.m in Sources */,
+				CEA005ED255D3AE800F66636 /* LuaContext.m in Sources */,
 				CE762C71251A22E400D6CCE6 /* MotorbikeAddVC.m in Sources */,
 				CE2DDDE624FF774100423042 /* AccidentMessageCell.m in Sources */,
 				CEAA96EC1F1CE70800741A6F /* UserModel.m in Sources */,
+				CEA0059C255D3AE700F66636 /* GGKShape.m in Sources */,
 				CE864F3D20089CE5007B20FE /* PGDatePickManagerHeaderView.m in Sources */,
 				CE762C552519DE9300D6CCE6 /* ThroughAddViewModel.m in Sources */,
 				CE4139F22178CF27006AA441 /* ZLForceTouchPreviewController.m in Sources */,
@@ -6694,14 +8007,17 @@
 				CE4139F12178CF27006AA441 /* ZLPhotoBrowserCell.m in Sources */,
 				CEE7B80D215A7D8D005FF1BA /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				CE2DDEB824FF774100423042 /* ImportCarHomeVC.m in Sources */,
+				CEA0059E255D3AE700F66636 /* PieAnimationManager.m in Sources */,
 				CE68B5BD246E87440091DA9F /* CRBoxFlowLayout.m in Sources */,
 				CE2DDEA824FF774100423042 /* SpecialDeleteCar.m in Sources */,
 				CE2DDFA624FF774100423042 /* JointPenaltiesCell.m in Sources */,
+				CEA0057D255D3AE700F66636 /* OutSideLable.m in Sources */,
 				CE54C22520D210A900BE2693 /* NSArray+PureLayoutMore.m in Sources */,
 				CE2DDE7A24FF774100423042 /* ParkingForensicsListCell.m in Sources */,
 				CE2DDE5524FF774100423042 /* TakeOutTempHeadView.m in Sources */,
 				CE2DE01624FF77E100423042 /* ZXNavigationBar.m in Sources */,
 				CE2DDDEE24FF774100423042 /* ProcessResultCell.m in Sources */,
+				CE820FFA2589AB0A005833F9 /* DataStatisticsListVC.m in Sources */,
 				CE2DDE8624FF774100423042 /* PoliceDistributeViewModel.m in Sources */,
 				CE2DE04624FF792300423042 /* LRBaseCollectionView.m in Sources */,
 				CEFEFD1E1F29ED8100C33CBD /* KSPhotoItem.m in Sources */,
@@ -6835,7 +8151,7 @@
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -6845,7 +8161,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.4;
+				MARKETING_VERSION = 3.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6862,7 +8178,7 @@
 				CODE_SIGN_ENTITLEMENTS = "移动采集/移动采集.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XYWLXM32EU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "移动采集/Info.plist";
@@ -6872,7 +8188,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.4;
+				MARKETING_VERSION = 3.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

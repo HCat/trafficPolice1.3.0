@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE  YES
+#define ISONLINE  NO
 
 #define DEBUG_DACAO_URL @"http://proda.degal.cn/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
@@ -324,5 +324,16 @@
 
 #define URL_EXPRESS_GETCOURIERLIST @"app/courierInfo/queryCouierMessage.json"  //查询接口
 #define URL_EXPRESS_DETAIL @"app/courierInfo/courierDetail.json"               //详情接口
+
+#pragma mark - 事故处理新增查询
+
+#define URL_ACCIDENTMORE_COUNT @"app/accident/countAccident.json"      //事故处理历史数据查询
+#define URL_ACCIDENTMORE_LISTPAGING @"app/accident/accidentList.json"
+
+#pragma mark - 数据统计
+
+#define URL_DATA_STATISTICS @"app/accident/accidentReports.json"    //数据统计
+#define URL_DATA_LISTPAGING @"app/accident/accidentTotalPage.json"  //饼状图详情列表分页
+
 
 #endif /* URLMacro_h */

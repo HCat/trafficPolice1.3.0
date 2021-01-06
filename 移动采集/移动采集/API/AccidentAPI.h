@@ -158,6 +158,11 @@
 @property (nonatomic,copy)    NSString * weather;           //天气 默认值从天气接口获取，可编辑
 @property (nonatomic,copy)    NSString * injuredNum;        //受伤人数
 @property (nonatomic,strong)  NSNumber * roadType;          //事故地点类型 从通用值【事故地点类型】获取ID
+
+@property (nonatomic,copy)    NSString * callpoliceMan;        //报案人
+
+@property (nonatomic,copy)    NSString * callpoliceManPhone;        //手机号
+
 @property (nonatomic,copy)    NSString * accidentInfoStr;   //事故人员信息
 @property (nonatomic,copy)    NSArray  * files;             //事故图片 列表，最多可上传30张
 @property (nonatomic,copy)    NSArray  * certFiles;         //证件图片 识别的图片，文件格式列表。识别后图片不需要显示出来
@@ -193,7 +198,13 @@
 @property (nonatomic,assign) NSInteger  start;      //开始的索引号 从0开始
 @property (nonatomic,assign) NSInteger  length;     //显示的记录数 默认为10
 @property (nonatomic,copy)   NSString * search;     //搜索的关键字
-//@property (nonatomic,strong) NSNumber * isHandle;   //选填，1已处理 0未处理
+
+@property (nonatomic,assign) NSInteger  stateType;
+@property (nonatomic,copy)   NSString * address;
+@property (nonatomic,copy)   NSString * happenTimeStr;
+@property (nonatomic,copy)   NSString * happenTimeStrEnd;
+@property (nonatomic,copy)   NSString * name;
+
 
 @end
 

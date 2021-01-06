@@ -162,6 +162,11 @@
                                     menuModel.menuIcon = @"menu_courier";
                                     [self.arr_items addObject:menuModel];
                                     
+                                }else if ([menuModel.menuCode isEqualToString:@"ACCIDENT_REPORTS"]) {
+                                    //menuModel.funTitle = @"快递监管管理";
+                                    menuModel.menuIcon = @"menu_dataAnalysis";
+                                    [self.arr_items addObject:menuModel];
+                                    
                                 }
                                 
                                 

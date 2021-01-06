@@ -9,6 +9,7 @@
 #import "AlertView.h"
 #import "ShareFun.h"
 #import "DriverChooseView.h"
+#import "FiltrateView.h"
 
 #define SPACE 40.0
 #define WINDOW_WIDTH ([UIScreen mainScreen].bounds.size.width - (SPACE * 2))
@@ -224,12 +225,53 @@
     
 }
 
++ (void )showFiltartWithCar:(NSString *)car withName:(NSString *)name  withAddress:(NSString *)address withStartTime:(NSString *)startTime withEndTime:(NSString *)endTime inViewController:(UIView *)root_view{
+    
+    FiltrateView * view = [FiltrateView initCustomView];
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    view.string_car = car;
+    view.string_name = name;
+    view.string_address = address;
+    view.string_startTime = startTime;
+    view.string_endTime = endTime;
+    
+    view.tf_car.text = car;
+    view.tf_name.text = name;
+    view.tf_address.text = address;
+    view.tf_startTime.text = startTime;
+    view.tf_endTime.text = endTime;
+
+    AlertView *window = [[AlertView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    window.keyWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    window.keyWindow.backgroundColor = [UIColor clearColor];
+//    //window.keyWindow.windowLevel = UIWindowLevelAlert+100000000;
+//    [window.keyWindow makeKeyAndVisible];
+    window.contentView.hidden = YES;
+//    [[UIApplication sharedApplication].keyWindow addSubview:window];
+    
+    
+    
+    [root_view addSubview:window];
+    
+    
+    [window addSubview:view];
+    
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(window);
+        make.top.equalTo(window).offset(-Height_StatusBar);
+    }];
+    
+    
+}
+
+
 
 #pragma mark -
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleBtnDismissClick:) name:@"筛选视图消失事件" object:nil];
     }
     return self;
 }
@@ -242,6 +284,9 @@
 - (void)createUI {
     [self addSubview:self.maskView];
     [self addSubview:self.contentView];
+    if (self.subviews.count > 2) {
+        [self exchangeSubviewAtIndex: 0  withSubviewAtIndex: 2 ];
+    }
 }
 
 #pragma mark - set && get 
@@ -267,13 +312,16 @@
         _contentView.layer.borderWidth = .5;
         _contentView.layer.cornerRadius = 10.0;
         
-        [_contentView addSubview:self.lb_title];
-        [_contentView addSubview:self.lb_content];
-        [_contentView addSubview:self.btn_quit];
+        if (_title.length > 0 && _content.length > 0) {
+            [_contentView addSubview:self.lb_title];
+            [_contentView addSubview:self.lb_content];
+            [_contentView addSubview:self.btn_quit];
+            
+            CGRect frame = _contentView.frame;
+            frame.size.height = CGRectGetMinY(_lb_content.frame) + CGRectGetHeight(_lb_content.frame) +30;
+            _contentView.frame = frame;
+        }
         
-        CGRect frame = _contentView.frame;
-        frame.size.height = CGRectGetMinY(_lb_content.frame) + CGRectGetHeight(_lb_content.frame) +30;
-        _contentView.frame = frame;
         
     }
     
@@ -357,7 +405,7 @@
 }
 
 - (void)dealloc{
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"筛选视图消失事件" object:nil];
     LxPrintf(@"AlertView dealloc");
 }
 

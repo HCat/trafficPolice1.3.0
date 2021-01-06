@@ -18,6 +18,7 @@
 #import "UserModel.h"
 #import "BaseImageCollectionCell.h"
 #import "ParkCameraVC.h"
+#import "LRCameraVC.h"
 
 #import "KSPhotoBrowser.h"
 #import "KSSDImageManager.h"
@@ -398,6 +399,21 @@
 
 #pragma mark - 弹出照相机
 
+
+-(void)showCameraWithType:(NSInteger)type withFinishBlock:(void(^)(LRCameraVC *camera))finishBlock isNeedRecognition:(BOOL)isNeedRecognition{
+    
+    LRCameraVC *home = [[LRCameraVC alloc] init];
+    home.type = type;
+    home.isIllegal = isNeedRecognition;
+    home.fininshCaptureBlock = finishBlock;
+    [self presentViewController:home
+                       animated:YES
+                     completion:^{
+                     }];
+    
+}
+
+
 -(void)showCameraWithType:(NSInteger)type withFinishBlock:(void(^)(ImageFileInfo * imageInfo))finishBlock {
     
     ParkCameraVC *home = [[ParkCameraVC alloc] init];
@@ -753,12 +769,27 @@
         
         if ([self.viewModel.arr_upImages[0] isKindOfClass:[NSNull class]]) {
             
-            [self showCameraWithType:2 withFinishBlock:^(ImageFileInfo *imageInfo) {
-                @strongify(self);
-                [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:imageInfo remark:@"摩托车照片" replaceIndex:0];
+            
+            [self showCameraWithType:2001 withFinishBlock:^(LRCameraVC *camera) {
+                if (camera) {
+                    
+                    @strongify(self);
+                    
+                    if (camera.type == 2001) {
+                        [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:camera.imageInfo remark:@"摩托车照片" replaceIndex:0];
+                        [self.collectionView reloadData];
+                    }
+                }
                 
-                [self.collectionView reloadData];
-            }];
+            } isNeedRecognition:NO];
+            
+            
+//            [self showCameraWithType:2 withFinishBlock:^(ImageFileInfo *imageInfo) {
+//                @strongify(self);
+//                [self.viewModel replaceUpImageItemToUpImagesWithImageInfo:imageInfo remark:@"摩托车照片" replaceIndex:0];
+//
+//                [self.collectionView reloadData];
+//            }];
             
 
         }else{
