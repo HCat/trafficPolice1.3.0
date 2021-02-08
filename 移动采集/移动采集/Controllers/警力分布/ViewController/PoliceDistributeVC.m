@@ -17,9 +17,11 @@
 #import "PoliceReleaseRadioVC.h"
 #import "PoliceHistorySearchVC.h"
 #import "PoliceCarDetailView.h"
+#import "XDSDropDownMenu.h"
+#import "UIButton+NoRepeatClick.h"
 
 
-@interface PoliceDistributeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
+@interface PoliceDistributeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,XDSDropDownMenuDelegate>
 
 @property (nonatomic,strong) PoliceDistributeViewModel * viewModel;
 
@@ -27,6 +29,11 @@
 @property (weak, nonatomic) IBOutlet UIButton * btn_usrLocation;
 @property (weak, nonatomic) IBOutlet UIButton * btn_radio;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topView_height;
+
+@property (weak, nonatomic) IBOutlet UIButton *btn_selected;
+@property (weak, nonatomic) IBOutlet UIButton *btn_refresh;
+
+@property (nonatomic, strong) XDSDropDownMenu *dropDownMenu;
 
 @property (nonatomic, strong) MAMapView * mapView;
 @property (nonatomic, strong) MAPointAnnotation * positionAnnotation; //定位的坐标点
@@ -52,8 +59,17 @@
     @weakify(self);
     self.zx_hideBaseNavBar = YES;
     _layout_topView_height.constant = Height_NavBar;
+    self.btn_selected.isIgnore = YES;
+    
     
     [self initMapView];
+    
+    self.dropDownMenu = [[XDSDropDownMenu alloc] init];
+    self.dropDownMenu.tag = 1000;
+    
+    self.btn_selected.layer.cornerRadius = 3.f;
+    self.btn_refresh.layer.cornerRadius = 3.f;
+    
     
     //发起定位请求
     [self.viewModel.locationCommand execute:@1];
@@ -124,6 +140,15 @@
         if (self.viewModel.arr_point && self.viewModel.arr_point.count > 0) {
             [self.mapView addAnnotations:self.viewModel.arr_point];
         }
+        
+        if (self.viewModel.peopleNumber) {
+           
+            NSString * t_string = [NSString stringWithFormat:@"在岗数：%d,离岗数：%d",[self.viewModel.peopleNumber.online intValue],[self.viewModel.peopleNumber.offline intValue]];
+            
+            [self.btn_selected setTitle:t_string forState:UIControlStateNormal];
+        
+        }
+        
     
     }];
     
@@ -140,7 +165,9 @@
         }
         
         view.editBlock = ^{
+            
             @strongify(self);
+            
             NSMutableArray * t_arr = @[].mutableCopy;
             if (self.viewModel.arr_data && self.viewModel.arr_data.count > 0) {
                 for (PoliceLocationModel * model in self.viewModel.arr_data) {
@@ -313,7 +340,94 @@
 
 - (IBAction)handleBtnBackClickingAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
+
+- (IBAction)handleBtnNumber:(id)sender {
+    
+    if(self.viewModel.arr_people.count > 0){
+        
+        self.dropDownMenu.delegate = self;//设置代理
+        //调用方法判断是显示下拉菜单，还是隐藏下拉菜单
+        
+        NSMutableArray * t_arr = @[].mutableCopy;
+        
+        for (PoliceLocationModel * model in self.viewModel.arr_people) {
+            
+            NSString * t_strt = [model.isline boolValue] ? @"在线" : @"离线";
+            NSString * t_nameStr = [NSString stringWithFormat:@"%@(%@)",[ShareFun takeStringNoNull:model.userName],t_strt];
+            [t_arr addObject:t_nameStr];
+            
+        }
+        
+        
+        [self setupDropDownMenu:self.dropDownMenu withTitleArray:t_arr andButton:sender andDirection:@"down"];
+        
+    }
+    
+}
+
+
+- (IBAction)handleBtnRefresh:(id)sender {
+    
+    [self.viewModel.allPoliceCommand execute:nil];
+    
+    
+    
+}
+
+
+#pragma mark - 设置dropDownMenu
+
+/*
+ 判断是显示dropDownMenu还是收回dropDownMenu
+ */
+
+- (void)setupDropDownMenu:(XDSDropDownMenu *)dropDownMenu withTitleArray:(NSArray *)titleArray andButton:(UIButton *)button andDirection:(NSString *)direction{
+    
+    CGRect btnFrame = button.frame; //如果按钮在UIIiew上用这个
+    
+    //  CGRect btnFrame = [self getBtnFrame:button];//如果按钮在UITabelView上用这个
+    
+    
+    if(dropDownMenu.tag == 1000){
+        
+        /*
+         如果dropDownMenu的tag值为1000，表示dropDownMenu没有打开，则打开dropDownMenu
+         */
+        
+        //初始化选择菜单
+        [dropDownMenu showDropDownMenu:button withButtonFrame:btnFrame arrayOfTitle:titleArray arrayOfImage:nil animationDirection:direction];
+        
+        //添加到主视图上
+        [self.view addSubview:dropDownMenu];
+        
+        //将dropDownMenu的tag值设为2000，表示已经打开了dropDownMenu
+        dropDownMenu.tag = 2000;
+        
+    }else {
+        
+        /*
+         如果dropDownMenu的tag值为2000，表示dropDownMenu已经打开，则隐藏dropDownMenu
+         */
+        
+        [dropDownMenu hideDropDownMenuWithBtnFrame:btnFrame];
+        dropDownMenu.tag = 1000;
+    }
+}
+
+#pragma mark - 隐藏其它DropDownMenu
+/*
+ 在点击按钮的时候，隐藏其它打开的下拉菜单（dropDownMenu）
+ */
+- (void)hideOtherDropDownMenu:(XDSDropDownMenu *)dropDownMenu{
+    
+    CGRect btnFrame = self.btn_selected.frame;//如果按钮在UIIiew上用这个
+    [self.dropDownMenu hideDropDownMenuWithBtnFrame:btnFrame];
+    self.dropDownMenu.tag = 1000;
+}
+
+
 
 
 #pragma mark - dealloc

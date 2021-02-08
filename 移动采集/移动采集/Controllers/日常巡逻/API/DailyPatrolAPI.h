@@ -12,6 +12,7 @@
 #import "DailyPatroInfoModel.h"
 #import "DailyPatrolPointModel.h"
 #import "DailyPatrolSignModel.h"
+#import "PoliceLocationModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -111,5 +112,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @end
+
+#pragma mark - 巡逻路线详情
+
+@interface DailyPatrolNewDetailReponse : NSObject
+
+@property (nonatomic,copy) NSArray < DailyPatrolLocationModel *> * patrolLocationList;    //包含DailyPatrolLocationModel对象
+@property (nonatomic,copy) NSArray < DailyPatrolSignModel *> * patrolSignList;
+@property (nonatomic, strong) NSArray <PoliceLocationModel *> * userGpsList;    //车辆信息列表
+@property (nonatomic,strong) DailyPatroInfoModel * patrolInfo;    //DailyPatroInfoModel对象
+@property (nonatomic,strong) NSNumber * status;    //0时间未到 1正常 2超时
+
+
+
+@end
+
+@interface DailyPatrolNewDetailManger:LRBaseRequest
+
+/****** 请求数据 ******/
+@property (nonatomic, strong) NSNumber * partrolId;
+@property (nonatomic, strong) NSNumber * shiftId;       //班次编号
+/****** 返回数据 ******/
+@property (nonatomic, strong) DailyPatrolNewDetailReponse * reponseModel;
+
+@end
+
+
+
 
 NS_ASSUME_NONNULL_END

@@ -25,6 +25,7 @@
 		CE0C358E1F25ED6800405A99 /* LRSettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C358D1F25ED6800405A99 /* LRSettingItemModel.m */; };
 		CE0C35911F25ED8600405A99 /* LRSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */; };
 		CE0C35941F25F9A200405A99 /* LRSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C35931F25F9A200405A99 /* LRSettingCell.m */; };
+		CE0D465425D0D0D900D74BA2 /* XDSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D465325D0D0D900D74BA2 /* XDSDropDownMenu.m */; };
 		CE115D3024AD8A6600C057F4 /* NSTimer+UnRetain.m in Sources */ = {isa = PBXBuildFile; fileRef = CE115D2E24AD8A6600C057F4 /* NSTimer+UnRetain.m */; };
 		CE1259422284245C00B7BF48 /* NSLayoutConstraintTopHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12593C2284245C00B7BF48 /* NSLayoutConstraintTopHeight.m */; };
 		CE1259432284245D00B7BF48 /* NSLayoutConstraintBottomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12593E2284245C00B7BF48 /* NSLayoutConstraintBottomHeight.m */; };
@@ -1061,6 +1062,8 @@
 		CE0C35901F25ED8600405A99 /* LRSettingSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingSectionModel.m; sourceTree = "<group>"; };
 		CE0C35921F25F9A200405A99 /* LRSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSettingCell.h; sourceTree = "<group>"; };
 		CE0C35931F25F9A200405A99 /* LRSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSettingCell.m; sourceTree = "<group>"; };
+		CE0D465225D0D0D900D74BA2 /* XDSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSDropDownMenu.h; sourceTree = "<group>"; };
+		CE0D465325D0D0D900D74BA2 /* XDSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSDropDownMenu.m; sourceTree = "<group>"; };
 		CE115D2E24AD8A6600C057F4 /* NSTimer+UnRetain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+UnRetain.m"; sourceTree = "<group>"; };
 		CE115D2F24AD8A6600C057F4 /* NSTimer+UnRetain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+UnRetain.h"; sourceTree = "<group>"; };
 		CE12593C2284245C00B7BF48 /* NSLayoutConstraintTopHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLayoutConstraintTopHeight.m; sourceTree = "<group>"; };
@@ -2922,6 +2925,15 @@
 			path = LRDefaultSettingVC;
 			sourceTree = "<group>";
 		};
+		CE0D465125D0D0D900D74BA2 /* XDSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D465225D0D0D900D74BA2 /* XDSDropDownMenu.h */,
+				CE0D465325D0D0D900D74BA2 /* XDSDropDownMenu.m */,
+			);
+			path = XDSDropDownMenu;
+			sourceTree = "<group>";
+		};
 		CE12593B2284245C00B7BF48 /* NSLayoutConstraintOnePixelLine */ = {
 			isa = PBXGroup;
 			children = (
@@ -3647,10 +3659,10 @@
 		CE2DDB3C24FF773F00423042 /* 警力分布 */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDB3D24FF773F00423042 /* ViewModel */,
+				CE2DDB5A24FF773F00423042 /* API */,
 				CE2DDB4424FF773F00423042 /* Model */,
 				CE2DDB4B24FF773F00423042 /* View */,
-				CE2DDB5A24FF773F00423042 /* API */,
+				CE2DDB3D24FF773F00423042 /* ViewModel */,
 				CE2DDB5D24FF773F00423042 /* ViewController */,
 			);
 			path = "警力分布";
@@ -3659,12 +3671,12 @@
 		CE2DDB3D24FF773F00423042 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDB3E24FF773F00423042 /* PoliceDistributeViewModel.m */,
-				CE2DDB3F24FF773F00423042 /* PoliceSearchCellViewModel.m */,
-				CE2DDB4024FF773F00423042 /* PoliceSearchViewModel.m */,
 				CE2DDB4124FF773F00423042 /* PoliceDistributeViewModel.h */,
+				CE2DDB3E24FF773F00423042 /* PoliceDistributeViewModel.m */,
 				CE2DDB4224FF773F00423042 /* PoliceSearchViewModel.h */,
+				CE2DDB4024FF773F00423042 /* PoliceSearchViewModel.m */,
 				CE2DDB4324FF773F00423042 /* PoliceSearchCellViewModel.h */,
+				CE2DDB3F24FF773F00423042 /* PoliceSearchCellViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3672,12 +3684,12 @@
 		CE2DDB4424FF773F00423042 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE2DDB4824FF773F00423042 /* SearchTagHelper.h */,
 				CE2DDB4524FF773F00423042 /* SearchTagHelper.m */,
+				CE2DDB4A24FF773F00423042 /* PoliceLocationModel.h */,
 				CE2DDB4624FF773F00423042 /* PoliceLocationModel.m */,
 				CE2DDB4724FF773F00423042 /* PoliceDistributeAnnotation.h */,
-				CE2DDB4824FF773F00423042 /* SearchTagHelper.h */,
 				CE2DDB4924FF773F00423042 /* PoliceDistributeAnnotation.m */,
-				CE2DDB4A24FF773F00423042 /* PoliceLocationModel.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3685,20 +3697,20 @@
 		CE2DDB4B24FF773F00423042 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDB4C24FF773F00423042 /* PolicePerformView.xib */,
-				CE2DDB4D24FF773F00423042 /* PoliceCarDetailView.m */,
-				CE2DDB4E24FF773F00423042 /* PolicePerformView.m */,
-				CE2DDB4F24FF773F00423042 /* PoliceDetailDisAnnotationView.h */,
-				CE2DDB5024FF773F00423042 /* PoliceDisAnnotationView.h */,
-				CE2DDB5124FF773F00423042 /* PoliceSearchCell.h */,
-				CE2DDB5224FF773F00423042 /* PoliceCarDetailView.xib */,
-				CE2DDB5324FF773F00423042 /* PoliceDetailDisAnnotationView.m */,
 				CE2DDB5424FF773F00423042 /* PolicePerformView.h */,
+				CE2DDB4E24FF773F00423042 /* PolicePerformView.m */,
+				CE2DDB4C24FF773F00423042 /* PolicePerformView.xib */,
 				CE2DDB5524FF773F00423042 /* PoliceCarDetailView.h */,
-				CE2DDB5624FF773F00423042 /* PoliceSearchCell.xib */,
-				CE2DDB5724FF773F00423042 /* PoliceDetailDisAnnotationView.xib */,
+				CE2DDB4D24FF773F00423042 /* PoliceCarDetailView.m */,
+				CE2DDB5224FF773F00423042 /* PoliceCarDetailView.xib */,
+				CE2DDB5024FF773F00423042 /* PoliceDisAnnotationView.h */,
 				CE2DDB5824FF773F00423042 /* PoliceDisAnnotationView.m */,
+				CE2DDB4F24FF773F00423042 /* PoliceDetailDisAnnotationView.h */,
+				CE2DDB5324FF773F00423042 /* PoliceDetailDisAnnotationView.m */,
+				CE2DDB5724FF773F00423042 /* PoliceDetailDisAnnotationView.xib */,
+				CE2DDB5124FF773F00423042 /* PoliceSearchCell.h */,
 				CE2DDB5924FF773F00423042 /* PoliceSearchCell.m */,
+				CE2DDB5624FF773F00423042 /* PoliceSearchCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3706,8 +3718,8 @@
 		CE2DDB5A24FF773F00423042 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DDB5B24FF773F00423042 /* PoliceDistributeAPI.m */,
 				CE2DDB5C24FF773F00423042 /* PoliceDistributeAPI.h */,
+				CE2DDB5B24FF773F00423042 /* PoliceDistributeAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -3716,17 +3728,17 @@
 			isa = PBXGroup;
 			children = (
 				CE2DDB5E24FF773F00423042 /* PoliceHistorySearchVC.h */,
-				CE2DDB5F24FF773F00423042 /* PoliceSearchVC.h */,
-				CE2DDB6024FF773F00423042 /* PoliceDistributeVC.h */,
-				CE2DDB6124FF773F00423042 /* PoliceReleaseRadioVC.m */,
-				CE2DDB6224FF773F00423042 /* PoliceSearchVC.m */,
 				CE2DDB6324FF773F00423042 /* PoliceHistorySearchVC.m */,
+				CE2DDB6824FF773F00423042 /* PoliceHistorySearchVC.xib */,
+				CE2DDB5F24FF773F00423042 /* PoliceSearchVC.h */,
+				CE2DDB6224FF773F00423042 /* PoliceSearchVC.m */,
 				CE2DDB6424FF773F00423042 /* PoliceSearchVC.xib */,
+				CE2DDB6924FF773F00423042 /* PoliceReleaseRadioVC.h */,
+				CE2DDB6124FF773F00423042 /* PoliceReleaseRadioVC.m */,
 				CE2DDB6524FF773F00423042 /* PoliceReleaseRadioVC.xib */,
+				CE2DDB6024FF773F00423042 /* PoliceDistributeVC.h */,
 				CE2DDB6624FF773F00423042 /* PoliceDistributeVC.m */,
 				CE2DDB6724FF773F00423042 /* PoliceDistributeVC.xib */,
-				CE2DDB6824FF773F00423042 /* PoliceHistorySearchVC.xib */,
-				CE2DDB6924FF773F00423042 /* PoliceReleaseRadioVC.h */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4138,8 +4150,8 @@
 			isa = PBXGroup;
 			children = (
 				CE2DDC7124FF774000423042 /* ViewModels */,
-				CE2DDC7624FF774000423042 /* Controllers */,
 				CE2DDC7D24FF774000423042 /* Views */,
+				CE2DDC7624FF774000423042 /* Controllers */,
 			);
 			path = "勤务管理";
 			sourceTree = "<group>";
@@ -6668,6 +6680,7 @@
 		CEE5E9E91F1C819F00AC515C /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				CE0D465125D0D0D900D74BA2 /* XDSDropDownMenu */,
 				CEA00426255D3AE600F66636 /* GGChartKit */,
 				CE2DE02524FF790400423042 /* JXPagerView */,
 				CE2DDFF624FF77E100423042 /* ZXNavigationBar */,
@@ -7305,6 +7318,7 @@
 				CE2DDFAF24FF774100423042 /* DailyPatrolPointModel.m in Sources */,
 				CE2DDFB224FF774100423042 /* DailyPatrolAnnotation.m in Sources */,
 				CE2DDF4224FF774100423042 /* TaskFlowsDetailViewModel.m in Sources */,
+				CE0D465425D0D0D900D74BA2 /* XDSDropDownMenu.m in Sources */,
 				CE2DDDE924FF774100423042 /* AccidentCompleteVC.m in Sources */,
 				CE2DDEE024FF774100423042 /* VehicleExpireAlarmCell.m in Sources */,
 				CE762CB7251C97A600D6CCE6 /* IllegalCollectListCell.m in Sources */,
@@ -8161,7 +8175,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.7;
+				MARKETING_VERSION = 3.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8188,7 +8202,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.7;
+				MARKETING_VERSION = 3.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

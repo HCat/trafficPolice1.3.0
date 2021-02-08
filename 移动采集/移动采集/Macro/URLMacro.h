@@ -11,7 +11,7 @@
 
 #pragma mark - 基地址
 
-#define ISONLINE  NO
+#define ISONLINE  YES
 
 #define DEBUG_DACAO_URL @"http://proda.degal.cn/police-admin/"
 #define WEBSOCKET_DEBUGDACAO_URL @"ws://192.168.10.123:8080/police-admin/websocket"
@@ -186,7 +186,7 @@
 #define URL_POLICE_SEARCH @"app/location/search.json"                   //搜索
 #define URL_POLICE_ANALYZELIST @"app/location/policeAnalyzeList.json"   //勤务管理列表
 #define URL_POLICE_USERSIGNLIST @"app/common/getUserSignList.json"      //获取签到列表
-
+#define URL_POLICE_NEW_GETLIST @"app/location/getLocationList.json"     //当前警员位置
 
 #pragma mark - 通讯录相关API
 
@@ -281,6 +281,7 @@
 
 #define URL_DAILYPATROL_LIST @"app/patrolInfo/PatrolShiftList.json"     //排班信息列表
 #define URL_DAILYPATRO_DETAIL @"app/patrolInfo/patrolLocationDetail.json"   //巡逻路线详情
+#define URL_DAILYPATRO_NEW_DETAIL @"app/patrolInfo/policeLocationDetail.json"   //巡逻路线详情
 #define URL_DAILYPATRO_SENDSIGN @"app/patrolInfo/sendPatrolSign.json"   //巡逻打卡
 #define URL_DAILYPATRO_LOCATIONREPORT @"app/patrolInfo/locationReport.json"   //实时上报位置
 #define URL_DAILYPATRO_POINTLIST @"app/patrolInfo/pointReportList.json"   //实时上报位置列表

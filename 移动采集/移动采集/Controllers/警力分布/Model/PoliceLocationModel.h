@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * departmentId;                    //机构id
 @property (nonatomic, copy) NSString * departmentName;                  //机构名称
 @property (nonatomic, copy) NSString * telNum;                          //用户手机号码
+@property (nonatomic, strong) NSNumber * isline;                        //在线离线
 
 @end
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PoliceDistributeVC">
             <connections>
                 <outlet property="btn_radio" destination="5xu-ih-e9C" id="Bv8-qD-1wO"/>
+                <outlet property="btn_refresh" destination="cSA-M4-uun" id="Wu2-Hq-6B2"/>
                 <outlet property="btn_search" destination="ZBb-eX-9Px" id="v8R-gk-eef"/>
+                <outlet property="btn_selected" destination="28r-2J-rGR" id="p1C-LO-Eoz"/>
                 <outlet property="btn_usrLocation" destination="OzK-11-j66" id="AY7-kI-McH"/>
                 <outlet property="layout_topView_height" destination="hIY-E0-Pw1" id="YTc-eC-LI8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -74,6 +74,38 @@
                     <rect key="frame" x="307" y="580" width="53" height="53"/>
                     <state key="normal" image="btn_policeDis_ radio"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSA-M4-uun">
+                    <rect key="frame" x="307" y="72" width="55" height="30"/>
+                    <color key="backgroundColor" red="0.14117647059999999" green="0.49019607840000001" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="SvJ-CK-MiJ"/>
+                        <constraint firstAttribute="width" constant="55" id="Ynx-w4-pWE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                    <state key="normal" title="刷新">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="handleBtnRefresh:" destination="-1" eventType="touchUpInside" id="93e-Hf-2eG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28r-2J-rGR">
+                    <rect key="frame" x="15" y="72" width="200" height="30"/>
+                    <color key="backgroundColor" red="0.14117647059999999" green="0.49019607840000001" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="slO-la-eDr"/>
+                        <constraint firstAttribute="width" constant="200" id="zjs-xl-N4Q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                    <inset key="titleEdgeInsets" minX="-42" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="180" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title=" 在岗数：0 离岗数：0" image="btn_police_down">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="handleBtnNumber:" destination="-1" eventType="touchUpInside" id="TXj-Cy-TPK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -84,6 +116,10 @@
                 <constraint firstItem="OzK-11-j66" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Jg5-JL-XVN"/>
                 <constraint firstItem="Y7d-gV-Ui1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KtW-yv-ZId"/>
                 <constraint firstAttribute="trailing" secondItem="Y7d-gV-Ui1" secondAttribute="trailing" id="MLm-9x-f68"/>
+                <constraint firstItem="28r-2J-rGR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="VfV-PE-efq"/>
+                <constraint firstAttribute="trailing" secondItem="cSA-M4-uun" secondAttribute="trailing" constant="13" id="ae4-AC-L3N"/>
+                <constraint firstItem="28r-2J-rGR" firstAttribute="top" secondItem="Y7d-gV-Ui1" secondAttribute="bottom" constant="8" symbolic="YES" id="h74-Az-5zy"/>
+                <constraint firstItem="cSA-M4-uun" firstAttribute="top" secondItem="28r-2J-rGR" secondAttribute="top" id="mPa-B0-T0k"/>
             </constraints>
             <point key="canvasLocation" x="132" y="122.78860569715144"/>
         </view>
@@ -91,7 +127,8 @@
     <resources>
         <image name="btn_policeDis_ radio" width="53" height="53"/>
         <image name="btn_policeDis_userLocation" width="53" height="53"/>
-        <image name="icon_adressBook_search" width="26" height="26"/>
+        <image name="btn_police_down" width="10" height="6.5"/>
+        <image name="icon_adressBook_search" width="13" height="13"/>
         <image name="nav_back" width="10" height="17"/>
     </resources>
 </document>

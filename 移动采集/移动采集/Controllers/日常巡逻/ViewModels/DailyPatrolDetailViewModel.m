@@ -14,6 +14,7 @@
     
     if (self = [super init]) {
         self.arr_point = @[].mutableCopy;
+        self.arr_point_people = @[].mutableCopy;
     }
     
     return self;
@@ -29,9 +30,10 @@
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
-                DailyPatrolDetailManger * manger = [[DailyPatrolDetailManger alloc] init];
+                DailyPatrolNewDetailManger * manger = [[DailyPatrolNewDetailManger alloc] init];
                 manger.partrolId = self.partrolId;
                 manger.shiftId = self.shiftId;
+                [manger configLoadingTitle:@"加载"];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     
                     if (manger.responseModel.code == CODE_SUCCESS) {

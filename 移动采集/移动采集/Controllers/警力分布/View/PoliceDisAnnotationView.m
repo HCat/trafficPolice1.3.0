@@ -13,13 +13,13 @@
 
 #define kPoliceMinWidth  20
 #define kPoliceMaxWidth  200
-#define kPoliceHeight    44
+#define kPoliceHeight    54
 
 #define kPoliceHoriMargin 3
 #define kPoliceVertMargin 5
 
 #define kPoliceFontSize   12
-#define kPoliceIconSize   22
+#define kPoliceIconSize   30
 
 #define kPoliceArrorHeight 3
 #define kPoliceArrorWidth  6
@@ -107,7 +107,13 @@
     }
     
     if ([annotation.policeType isEqualToNumber:@1]) {
-        self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeLocation"];
+        if ([annotation.policeModel.isline isEqualToNumber:@0]) {
+            self.imgv_icon.image = [UIImage imageNamed:@"警察-离线"];
+        }else if ([annotation.policeModel.isline isEqualToNumber:@1]){
+            self.imgv_icon.image = [UIImage imageNamed:@"警察"];
+        }
+        
+        //self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeLocation"];
     }else{
         self.imgv_icon.image = [UIImage imageNamed:@"icon_policeDis_policeCar"];
     }

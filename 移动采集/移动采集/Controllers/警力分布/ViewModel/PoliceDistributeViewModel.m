@@ -30,6 +30,7 @@
         
         self.arr_point = @[].mutableCopy;
         self.arr_data = @[].mutableCopy;
+        self.arr_people = @[].mutableCopy;
         self.range = @3;
 
         self.locationManager = [[AMapLocationManager alloc] init];
@@ -69,11 +70,12 @@
             
             RACSignal * signalA = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 @strongify(self);
-                PoliceDistributeGetListParam * param = [[PoliceDistributeGetListParam alloc] init];
+                //PoliceDistributeGetListParam * param = [[PoliceDistributeGetListParam alloc] init];
     
-                PoliceDistributeGetListManger * manger = [[PoliceDistributeGetListManger alloc] init];
-                manger.param = param;
-                manger.isNeedShowHud = NO;
+                PoliceDistributeNewGetListManger * manger = [[PoliceDistributeNewGetListManger alloc] init];
+                //manger.param = param;
+                manger.isNeedShowHud = YES;
+                [manger configLoadingTitle:@"请求"];
                 [manger startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
                     @strongify(self);
                     
@@ -96,6 +98,13 @@
                             annotation.policeModel = model;
                             annotation.policeType = @1;
                             [self.arr_point addObject:annotation];
+                            [self.arr_people addObject:model];
+                        }
+                        
+                        if (manger.totalList.count > 0) {
+                            
+                            self.peopleNumber = manger.totalList[0];
+                            
                         }
                         
                     };

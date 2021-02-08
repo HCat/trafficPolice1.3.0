@@ -166,6 +166,49 @@
     return self.param.modelToJSONObject;
 }
 
+@end
+
+
+#pragma mark - 巡逻路线详情
+
+@implementation DailyPatrolNewDetailReponse
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"patrolLocationList" : [DailyPatrolLocationModel class],
+             @"patrolSignList" : [DailyPatrolSignModel class],
+             @"userGpsList" : [PoliceLocationModel class]
+             };
+}
 
 
 @end
+
+@implementation DailyPatrolNewDetailManger
+
+- (NSString *)requestUrl
+{
+    return URL_DAILYPATRO_NEW_DETAIL;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return @{@"patrolId":_partrolId,
+             @"shiftId":_shiftId
+            };
+}
+
+
+//返回参数
+- (DailyPatrolNewDetailReponse *)reponseModel{
+    
+    if (self.responseModel.data) {
+        return [DailyPatrolNewDetailReponse modelWithDictionary:self.responseModel.data];
+    }
+    
+    return nil;
+}
+
+
+@end
+

@@ -167,3 +167,48 @@
 }
 
 @end
+
+
+@implementation PoliceDistributeTotalListModel
+
+
+
+@end
+
+
+
+@implementation PoliceDistributeNewGetListManger
+
+
+- (NSString *)requestUrl{
+    return URL_POLICE_NEW_GETLIST;
+}
+
+
+//返回参数
+- (NSArray <PoliceLocationModel * > *)userGpsList{
+    
+    if (self.responseModel) {
+        _userGpsList = [NSArray modelArrayWithClass:[PoliceLocationModel class] json:self.responseJSONObject[@"data"][@"userGpsList"]];
+        return _userGpsList;
+    }
+    
+    return nil;
+}
+
+
+//返回参数
+- (NSArray <PoliceDistributeTotalListModel * > *)totalList{
+    
+    if (self.responseModel) {
+        _totalList = [NSArray modelArrayWithClass:[PoliceDistributeTotalListModel class] json:self.responseJSONObject[@"data"][@"totalList"]];
+        return _totalList;
+    }
+    
+    return nil;
+}
+
+
+
+
+@end

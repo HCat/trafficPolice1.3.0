@@ -436,7 +436,7 @@
 + (void)LoginInbeforeDone{
     
     //开启webSocket
-    //[ShareFun openWebSocket];
+    [ShareFun openWebSocket];
     
     [[DailyPatrolLocationHelper sharedDefault] startUpLocation];
     if ([UserModel getUserModel].workstate == YES) {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PoliceDistributeAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, strong) NSMutableArray * arr_data;            // 用来存半径内警员请求数据
+
+
+@property (nonatomic, strong) PoliceDistributeTotalListModel * peopleNumber;    //
+
+@property (nonatomic, strong) NSMutableArray  <PoliceLocationModel *> * arr_people;
 
 @property (nonatomic, strong) NSMutableArray * arr_point;           // 用来存储警员或者警车点数据
 

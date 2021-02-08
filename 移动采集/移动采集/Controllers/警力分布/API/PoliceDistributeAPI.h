@@ -126,4 +126,27 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
+#pragma mark - (2021年2月5号)新的获取警员位置信息
+
+
+@interface PoliceDistributeTotalListModel : NSObject
+
+@property (nonatomic, strong) NSNumber * offline;   //离线人数
+@property (nonatomic, strong) NSNumber * online;    //在线人数
+
+@end
+
+
+@interface PoliceDistributeNewGetListManger : LRBaseRequest
+
+@property (nonatomic, strong) NSArray <PoliceLocationModel *> * userGpsList;    //车辆信息列表
+
+@property (nonatomic, strong) NSArray <PoliceDistributeTotalListModel *> * totalList;    //车辆信息列表
+
+@end
+
+
+
+
+
 NS_ASSUME_NONNULL_END
