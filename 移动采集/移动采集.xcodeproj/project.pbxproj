@@ -42,6 +42,8 @@
 		CE17A024210820410045167B /* AccidentPeopleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE17A023210820410045167B /* AccidentPeopleModel.m */; };
 		CE1F10332356F79900E5CA48 /* ParkCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1F10312356F79900E5CA48 /* ParkCameraVC.m */; };
 		CE1F10342356F79900E5CA48 /* ParkCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1F10322356F79900E5CA48 /* ParkCameraVC.xib */; };
+		CE21F81526E8A85800BDB864 /* VehicleTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F81326E8A85800BDB864 /* VehicleTypeVC.m */; };
+		CE21F81626E8A85800BDB864 /* VehicleTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE21F81426E8A85800BDB864 /* VehicleTypeVC.xib */; };
 		CE240AD71FDFC3DC002EA369 /* IllOperationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE240AD61FDFC3DC002EA369 /* IllOperationAPI.m */; };
 		CE25F4FD21250B300067E125 /* IllegalListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE25F4FB21250B300067E125 /* IllegalListCell.m */; };
 		CE25F4FE21250B300067E125 /* IllegalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE25F4FC21250B300067E125 /* IllegalListCell.xib */; };
@@ -985,6 +987,13 @@
 		CEBCFCE820FE1EA6006FB37A /* SliderTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBCFCE420FE1EA5006FB37A /* SliderTitleCell.m */; };
 		CEBCFCE920FE1EA6006FB37A /* LRSliderViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBCFCE520FE1EA5006FB37A /* LRSliderViewConfig.m */; };
 		CEBCFCEA20FE1EA6006FB37A /* LRSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBCFCE620FE1EA5006FB37A /* LRSliderView.m */; };
+		CEC6BA422616BB0100C6F208 /* StreetAPIS.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6BA412616BB0100C6F208 /* StreetAPIS.m */; };
+		CEC6BA4726171AF900C6F208 /* StreetAddForSSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6BA4526171AF900C6F208 /* StreetAddForSSVC.m */; };
+		CEC6BA4826171AF900C6F208 /* StreetAddForSSVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC6BA4626171AF900C6F208 /* StreetAddForSSVC.xib */; };
+		CEC6BA4C26171B9500C6F208 /* StreetAddForSSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6BA4B26171B9500C6F208 /* StreetAddForSSViewModel.m */; };
+		CEC6BA51261C585B00C6F208 /* StreetAddListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6BA4F261C585B00C6F208 /* StreetAddListVC.m */; };
+		CEC6BA52261C585B00C6F208 /* StreetAddListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC6BA50261C585B00C6F208 /* StreetAddListVC.xib */; };
+		CEC6BA6B261C594300C6F208 /* StreetAddListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC6BA6A261C594300C6F208 /* StreetAddListViewModel.m */; };
 		CECF753320C9505300A4DAC4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752820C9505300A4DAC4 /* PFConfiguration.m */; };
 		CECF753420C9505300A4DAC4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752920C9505300A4DAC4 /* PFNavigationDropdownMenu.m */; };
 		CECF753520C9505300A4DAC4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CECF752A20C9505300A4DAC4 /* PFTableView.m */; };
@@ -1092,6 +1101,9 @@
 		CE1F10302356F79900E5CA48 /* ParkCameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkCameraVC.h; sourceTree = "<group>"; };
 		CE1F10312356F79900E5CA48 /* ParkCameraVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkCameraVC.m; sourceTree = "<group>"; };
 		CE1F10322356F79900E5CA48 /* ParkCameraVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkCameraVC.xib; sourceTree = "<group>"; };
+		CE21F81226E8A85800BDB864 /* VehicleTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VehicleTypeVC.h; sourceTree = "<group>"; };
+		CE21F81326E8A85800BDB864 /* VehicleTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VehicleTypeVC.m; sourceTree = "<group>"; };
+		CE21F81426E8A85800BDB864 /* VehicleTypeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleTypeVC.xib; sourceTree = "<group>"; };
 		CE240AD51FDFC3DC002EA369 /* IllOperationAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllOperationAPI.h; sourceTree = "<group>"; };
 		CE240AD61FDFC3DC002EA369 /* IllOperationAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IllOperationAPI.m; sourceTree = "<group>"; };
 		CE25F4FA21250B300067E125 /* IllegalListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IllegalListCell.h; sourceTree = "<group>"; };
@@ -2748,6 +2760,18 @@
 		CEBCFCE520FE1EA5006FB37A /* LRSliderViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSliderViewConfig.m; sourceTree = "<group>"; };
 		CEBCFCE620FE1EA5006FB37A /* LRSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSliderView.m; sourceTree = "<group>"; };
 		CEBCFCE720FE1EA5006FB37A /* SliderTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderTitleCell.h; sourceTree = "<group>"; };
+		CEC6BA402616BB0100C6F208 /* StreetAPIS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetAPIS.h; sourceTree = "<group>"; };
+		CEC6BA412616BB0100C6F208 /* StreetAPIS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreetAPIS.m; sourceTree = "<group>"; };
+		CEC6BA4426171AF900C6F208 /* StreetAddForSSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetAddForSSVC.h; sourceTree = "<group>"; };
+		CEC6BA4526171AF900C6F208 /* StreetAddForSSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreetAddForSSVC.m; sourceTree = "<group>"; };
+		CEC6BA4626171AF900C6F208 /* StreetAddForSSVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StreetAddForSSVC.xib; sourceTree = "<group>"; };
+		CEC6BA4A26171B9500C6F208 /* StreetAddForSSViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetAddForSSViewModel.h; sourceTree = "<group>"; };
+		CEC6BA4B26171B9500C6F208 /* StreetAddForSSViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreetAddForSSViewModel.m; sourceTree = "<group>"; };
+		CEC6BA4E261C585B00C6F208 /* StreetAddListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetAddListVC.h; sourceTree = "<group>"; };
+		CEC6BA4F261C585B00C6F208 /* StreetAddListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreetAddListVC.m; sourceTree = "<group>"; };
+		CEC6BA50261C585B00C6F208 /* StreetAddListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StreetAddListVC.xib; sourceTree = "<group>"; };
+		CEC6BA69261C594300C6F208 /* StreetAddListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreetAddListViewModel.h; sourceTree = "<group>"; };
+		CEC6BA6A261C594300C6F208 /* StreetAddListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreetAddListViewModel.m; sourceTree = "<group>"; };
 		CECF752820C9505300A4DAC4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
 		CECF752920C9505300A4DAC4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
 		CECF752A20C9505300A4DAC4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
@@ -2958,6 +2982,16 @@
 				CE25F4FC21250B300067E125 /* IllegalListCell.xib */,
 			);
 			path = IllegalListView;
+			sourceTree = "<group>";
+		};
+		CE21F81126E8A7F000BDB864 /* 车辆类型页面 */ = {
+			isa = PBXGroup;
+			children = (
+				CE21F81226E8A85800BDB864 /* VehicleTypeVC.h */,
+				CE21F81326E8A85800BDB864 /* VehicleTypeVC.m */,
+				CE21F81426E8A85800BDB864 /* VehicleTypeVC.xib */,
+			);
+			path = "车辆类型页面";
 			sourceTree = "<group>";
 		};
 		CE2AF8841FD68C42005B643E /* FHHFPSIndicator */ = {
@@ -4296,6 +4330,7 @@
 		CE2DDCBF24FF774000423042 /* 违法采集 */ = {
 			isa = PBXGroup;
 			children = (
+				CE21F81126E8A7F000BDB864 /* 车辆类型页面 */,
 				CE762C74251A4A5D00D6CCE6 /* 违章详情 */,
 				CE2DDD0324FF774000423042 /* 手动定位 */,
 				CE2DDD1824FF774000423042 /* 路段选择页面 */,
@@ -4308,6 +4343,7 @@
 				CE762C2B2519983E00D6CCE6 /* 违反禁令 */,
 				CE762C2C2519989A00D6CCE6 /* 车辆录入(新) */,
 				CE762C2D251998C700D6CCE6 /* 摩托车违章 */,
+				CEC6BA3B2615B9A800C6F208 /* 大妈采集(石狮) */,
 				CE2DDCDA24FF774000423042 /* 违停采集(石狮) */,
 				CE2DDD0A24FF774000423042 /* 车辆录入 */,
 				CE2DDD0E24FF774000423042 /* 违章采集 */,
@@ -6596,6 +6632,57 @@
 			path = LRSliderView;
 			sourceTree = "<group>";
 		};
+		CEC6BA3B2615B9A800C6F208 /* 大妈采集(石狮) */ = {
+			isa = PBXGroup;
+			children = (
+				CEC6BA3C2616ADAB00C6F208 /* APIS */,
+				CEC6BA3D2616ADB300C6F208 /* Views */,
+				CEC6BA3E2616ADBF00C6F208 /* ViewModels */,
+				CEC6BA3F2616ADCB00C6F208 /* Controllers */,
+			);
+			path = "大妈采集(石狮)";
+			sourceTree = "<group>";
+		};
+		CEC6BA3C2616ADAB00C6F208 /* APIS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC6BA402616BB0100C6F208 /* StreetAPIS.h */,
+				CEC6BA412616BB0100C6F208 /* StreetAPIS.m */,
+			);
+			path = APIS;
+			sourceTree = "<group>";
+		};
+		CEC6BA3D2616ADB300C6F208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CEC6BA3E2616ADBF00C6F208 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEC6BA4A26171B9500C6F208 /* StreetAddForSSViewModel.h */,
+				CEC6BA4B26171B9500C6F208 /* StreetAddForSSViewModel.m */,
+				CEC6BA69261C594300C6F208 /* StreetAddListViewModel.h */,
+				CEC6BA6A261C594300C6F208 /* StreetAddListViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CEC6BA3F2616ADCB00C6F208 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEC6BA4426171AF900C6F208 /* StreetAddForSSVC.h */,
+				CEC6BA4526171AF900C6F208 /* StreetAddForSSVC.m */,
+				CEC6BA4626171AF900C6F208 /* StreetAddForSSVC.xib */,
+				CEC6BA4E261C585B00C6F208 /* StreetAddListVC.h */,
+				CEC6BA4F261C585B00C6F208 /* StreetAddListVC.m */,
+				CEC6BA50261C585B00C6F208 /* StreetAddListVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		CECF752620C9505300A4DAC4 /* PFDropdownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -6973,6 +7060,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC6BA52261C585B00C6F208 /* StreetAddListVC.xib in Resources */,
 				CE2DDEBA24FF774100423042 /* QRCodeScanVC.xib in Resources */,
 				CE2DDEF124FF774100423042 /* VehicleTrafficTopCell.xib in Resources */,
 				CE2DDFC624FF774100423042 /* ScreenAddCell.xib in Resources */,
@@ -7021,6 +7109,7 @@
 				CE2DDE0924FF774100423042 /* AccidentUpCell.xib in Resources */,
 				CE2DDF3924FF774100423042 /* AttendanceManageVC.xib in Resources */,
 				CE2DDFE824FF774200423042 /* IllegalExposureDetailVC.xib in Resources */,
+				CE21F81626E8A85800BDB864 /* VehicleTypeVC.xib in Resources */,
 				CE762CB8251C97A600D6CCE6 /* IllegalCollectListCell.xib in Resources */,
 				CE2DDEB224FF774100423042 /* SpecialAddCar.xib in Resources */,
 				CE2DDF9C24FF774100423042 /* JointImageCell.xib in Resources */,
@@ -7034,6 +7123,7 @@
 				CE2DDEA524FF774100423042 /* SpecialManageVC.xib in Resources */,
 				CE2DDFEB24FF774200423042 /* IllegalExposureListVC.xib in Resources */,
 				CE12794D20E109B100ED9948 /* IllegalCarView.xib in Resources */,
+				CEC6BA4826171AF900C6F208 /* StreetAddForSSVC.xib in Resources */,
 				CEA005BE255D3AE800F66636 /* IndexLuaCode.bundle in Resources */,
 				820F0D15242CB68800886C2C /* Launch Screen.storyboard in Resources */,
 				CE2DDF4824FF774100423042 /* TaskFlowsListVC.xib in Resources */,
@@ -7401,10 +7491,12 @@
 				CE2DDF1E24FF774100423042 /* AddressBookCell.m in Sources */,
 				CE2DDE2F24FF774100423042 /* ElectronicPoliceAPI.m in Sources */,
 				CE518BC71F99E3F2008F52B5 /* WeatherModel.m in Sources */,
+				CEC6BA4726171AF900C6F208 /* StreetAddForSSVC.m in Sources */,
 				CE8CDE6A1F9455F80018044C /* AKTabBarView.m in Sources */,
 				CEA005A8255D3AE800F66636 /* LineCanvas.m in Sources */,
 				CEA00598255D3AE700F66636 /* GGAxis.m in Sources */,
 				CE2DDDEB24FF774100423042 /* AccidentRemarkCell.m in Sources */,
+				CEC6BA6B261C594300C6F208 /* StreetAddListViewModel.m in Sources */,
 				CE7AE69B252330A900719687 /* IllegalAddForSSViewModel.m in Sources */,
 				CE2DDF1224FF774100423042 /* TaskCell.m in Sources */,
 				CE2DDE9824FF774100423042 /* PoliceHistorySearchVC.m in Sources */,
@@ -7443,6 +7535,7 @@
 				CEA00420255BEB7300F66636 /* DataStatisticsViewModel.m in Sources */,
 				CE68B5BA246E87440091DA9F /* CRBoxInputView.m in Sources */,
 				CE2DDE6724FF774100423042 /* ParkingForensicsListViewModel.m in Sources */,
+				CEC6BA4C26171B9500C6F208 /* StreetAddForSSViewModel.m in Sources */,
 				CE6915711F1DE2AC008911A6 /* LSStatusBarHUD.m in Sources */,
 				CE2DDFD224FF774100423042 /* MainAddMoreListViewModel.m in Sources */,
 				CE2DDE7624FF774100423042 /* ParkingForensicsHeadView.m in Sources */,
@@ -7482,6 +7575,7 @@
 				CE2DDEA624FF774100423042 /* SpecialEditGroupView.m in Sources */,
 				CE87043920CE52B700E206AE /* LTSCalendarScrollView.m in Sources */,
 				CE2DDE5024FF774100423042 /* TakeOutIllegalListVC.m in Sources */,
+				CE21F81526E8A85800BDB864 /* VehicleTypeVC.m in Sources */,
 				CEA0056D255D3AE700F66636 /* BarChart.m in Sources */,
 				CEA0056E255D3AE700F66636 /* LineBarChart.m in Sources */,
 				CE2DDF9D24FF774100423042 /* JointImageCell.m in Sources */,
@@ -7513,6 +7607,7 @@
 				CEA005E5255D3AE800F66636 /* lbitlib.c in Sources */,
 				CEAA971C1F1CF15900741A6F /* UICollectionView+Lr_Placeholder.m in Sources */,
 				CEA0041A255BEB5400F66636 /* DataStatisticsVC.m in Sources */,
+				CEC6BA51261C585B00C6F208 /* StreetAddListVC.m in Sources */,
 				CE2DDE7824FF774100423042 /* ParkingAreaVC.m in Sources */,
 				CEA005B4255D3AE800F66636 /* BaseScaler.m in Sources */,
 				CE2DDF5124FF774100423042 /* TaskFlowsDetailVC.m in Sources */,
@@ -7554,6 +7649,7 @@
 				CE0731C71F5ECA2D00B3831B /* MemberInfoModel.m in Sources */,
 				CEA00592255D3AE700F66636 /* GGStringRenderer.m in Sources */,
 				CE2DE01224FF77E100423042 /* UIImage+ZXNavColorRender.m in Sources */,
+				CEC6BA422616BB0100C6F208 /* StreetAPIS.m in Sources */,
 				CE6ACF2A24849BBE00CE23FD /* IllegalRoadView.m in Sources */,
 				CE2DDE1224FF774100423042 /* ActionTopCell.m in Sources */,
 				CEA00585255D3AE700F66636 /* YAxis.m in Sources */,
@@ -8175,7 +8271,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.8;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -8202,7 +8298,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/移动采集/Extra/极光统计",
 				);
-				MARKETING_VERSION = 3.0.8;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Degal.trafficPolice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

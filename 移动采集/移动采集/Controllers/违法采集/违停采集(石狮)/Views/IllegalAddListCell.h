@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong)IllegalParkListModel * model;
 @property (nonatomic,strong) NSNumber * permission;               //确认异常权限 true有 false没有
+@property (nonatomic,assign) BOOL isStreet;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

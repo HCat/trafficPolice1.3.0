@@ -58,8 +58,8 @@
 #import "AccidentListVC.h"
 #import "DataStatisticsVC.h"
 
-
-
+#import "StreetAddListVC.h"
+#import "StreetAddForSSVC.h"
 
 
 #import "ExpressRegulationVC.h"
@@ -590,6 +590,25 @@
             DataStatisticsVC * vc = [[DataStatisticsVC alloc] init];
             vc.title = menuModel.menuName;
             [self.navigationController pushViewController:vc animated:YES];
+        }else if ([menuModel.menuCode isEqualToString:@"STREETPARK_MANAGE"]) {
+            //menuModel.funTitle = @"违停采集";
+            
+            if ([menuModel.t_template isEqualToNumber:@1]) {
+                
+                StreetAddListVC * vc = [[StreetAddListVC alloc] init];
+                vc.title = [NSString stringWithFormat:@"%@列表",menuModel.menuName];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+
+            }else if ([menuModel.t_template isEqualToNumber:@2]) {
+                StreetAddForSSVC * vc = [[StreetAddForSSVC alloc] init];
+                vc.title = menuModel.menuName;
+                [self.navigationController pushViewController:vc animated:YES];
+            
+            }
+        
+//            IllegalAddVC *t_vc = [[IllegalAddVC alloc] init];
+//            [self.navigationController pushViewController:t_vc animated:YES];
         }
         
         

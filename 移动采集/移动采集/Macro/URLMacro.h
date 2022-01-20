@@ -68,7 +68,7 @@
 #define URL_COMMON_GETDEPARTMENT @"app/common/getDepartment.json"               //获取部门列表
 #define URL_COMMON_GETGROUPBYDEPARTMENTID @"app/common/getGroupByDepartmentId.json"     //根据部门获取勤务组
 #define URL_COMMON_GETMENU @"app/common/getMenu.json"                           //APP菜单折叠接口
-
+#define URL_COMMON_GETVEHICLE @"app/illegalPark/carTypeList.json"    //获取车辆类型数据
 
 #pragma mark - 事故相关API
 
@@ -335,6 +335,12 @@
 
 #define URL_DATA_STATISTICS @"app/accident/accidentReports.json"    //数据统计
 #define URL_DATA_LISTPAGING @"app/accident/accidentTotalPage.json"  //饼状图详情列表分页
+
+
+#pragma mark - 街道采集
+
+#define URL_STREETILLEGAL_SAVE @"app/streetIllegal/save.json"
+#define URL_STREETILLEGAL_LISTPAGING @"app/streetIllegal/listPaging.json"
 
 
 #endif /* URLMacro_h */

@@ -51,6 +51,7 @@ LRSingletonM(Default)
     [self setIsIllegalExposure:YES];
     [self setIsIllegal:YES];
     [self setIsThroughManage:YES];
+    [self setIsStreet:YES];
 }
 
 - (void)closeLocation:(ParkType)type{
@@ -71,6 +72,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsThrough:NO];
     }else if (type == ParkTypeThroughManage){
         [[LocationStorage sharedDefault] setIsThroughManage:NO];
+    }else if (type == ParkTypeStreet){
+        [[LocationStorage sharedDefault] setIsStreet:NO];
     }
     
 }
@@ -93,6 +96,8 @@ LRSingletonM(Default)
         [[LocationStorage sharedDefault] setIsThrough:YES];
     }else if (type == ParkTypeThroughManage){
         [[LocationStorage sharedDefault] setIsThroughManage:YES];
+    }else if (type == ParkTypeStreet){
+        [[LocationStorage sharedDefault] setIsStreet:YES];
     }
     
 }
@@ -242,6 +247,17 @@ LRSingletonM(Default)
 
 - (BOOL)isThroughManage{
     return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISTHROUGHMANAGE];
+    
+}
+
+- (void)setIsStreet:(BOOL)isStreet{
+    [[NSUserDefaults standardUserDefaults] setBool:isStreet forKey:USERDEFAULT_KEY_ISSTREET];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (BOOL)isStreet{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USERDEFAULT_KEY_ISSTREET];
     
 }
 
@@ -506,6 +522,27 @@ LRSingletonM(Default)
     }
     
     return throughManage;
+    
+}
+
+
+- (void)setStreet:(LocationStorageModel *)street{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:street];
+    [userDefaults setObject:data forKey:USERDEFAULT_KEY_STREET];
+    [userDefaults synchronize];
+    
+}
+
+- (LocationStorageModel *)street{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:USERDEFAULT_KEY_STREET];
+    LocationStorageModel *street = nil;
+    if (data) {
+        street = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    
+    return street;
     
 }
 

@@ -174,6 +174,21 @@
     
 }
 
++ (BOOL)isPermissionForStreet{
+    
+    NSString *match = @"STREETPARK_MANAGE";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
 
 #pragma mark - 获取不按朝向采集权限
 
@@ -617,8 +632,23 @@
     
     return NO;
     
+}
+
+
++ (BOOL)isPermissionForStreetList{
+    
+    NSString *match = @"STREETPARK_LIST";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
     
 }
+
 
 
 #pragma mark - 获取违章采集上报异常权限
@@ -710,6 +740,20 @@
 + (BOOL)isPermissionForThroughCollectReport{
     
     NSString *match = @"THROUGH_COLLECT_REPORT";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
+    NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
+    
+    if (results && results.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
++ (BOOL)isPermissionForStreetReport{
+    
+    NSString *match = @"STREETPARK_REPORT";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", match];
     NSArray *results = [[UserModel getUserModel].menus filteredArrayUsingPredicate:predicate];
     

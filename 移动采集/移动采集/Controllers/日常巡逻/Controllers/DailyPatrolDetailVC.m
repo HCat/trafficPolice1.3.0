@@ -19,8 +19,8 @@
 #import "IllegalParkVC.h"
 #import "DailyPatrolAnnotation.h"
 #import "DailyPatrolAnnotationView.h"
-#import "PoliceDistributeAnnotation.h"
-#import "PoliceDisAnnotationView.h"
+//#import "PoliceDistributeAnnotation.h"
+//#import "PoliceDisAnnotationView.h"
 
 
 #define k_distance_patrol 100
@@ -52,7 +52,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lb_daogangTime;
 @property (weak, nonatomic) IBOutlet UILabel *lb_ligangTime;
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_refresh;
+//@property (weak, nonatomic) IBOutlet UIButton *btn_refresh;
 
 
 @property (nonatomic, strong) MAAnnotationView *userLocationAnnotationView;
@@ -87,7 +87,7 @@
     self.title = [NSString stringWithFormat:@"班次%@",[ShareFun translationArabicNum:[self.viewModel.shiftNum integerValue]]];
     
     self.v_top.hidden = YES;
-    self.btn_refresh.layer.cornerRadius = 3.f;
+    //self.btn_refresh.layer.cornerRadius = 3.f;
     
     self.layout_view_top.constant = Height_NavBar;
     
@@ -216,37 +216,37 @@
     }];
     
     
-    [RACObserve(self.viewModel, reponseModel) subscribeNext:^(DailyPatrolNewDetailReponse  * _Nullable x) {
+    [RACObserve(self.viewModel, reponseModel) subscribeNext:^(DailyPatrolDetailReponse  * _Nullable x) {
         @strongify(self);
         
         if (x) {
             
-            //画警员数据
-            
-            if (x.userGpsList && x.userGpsList.count > 0) {
-                if (self.viewModel.arr_point_people.count > 0) {
-                    [self.mapView removeAnnotations:self.viewModel.arr_point_people];
-                    [self.viewModel.arr_point_people removeAllObjects];
-                }
-                
-                for (PoliceLocationModel * model in x.userGpsList) {
-                    
-                    PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
-                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-                    annotation.coordinate = coordinate;
-                    annotation.title    = @"警员";
-                    annotation.subtitle = @"警员";
-                    annotation.policeModel = model;
-                    annotation.policeType = @1;
-                    [self.viewModel.arr_point_people addObject:annotation];
-                   
-                }
-                
-                if (self.viewModel.arr_point_people && self.viewModel.arr_point_people.count > 0) {
-                    [self.mapView addAnnotations:self.viewModel.arr_point_people];
-                }
-                
-            }
+//            //画警员数据
+//
+//            if (x.userGpsList && x.userGpsList.count > 0) {
+//                if (self.viewModel.arr_point_people.count > 0) {
+//                    [self.mapView removeAnnotations:self.viewModel.arr_point_people];
+//                    [self.viewModel.arr_point_people removeAllObjects];
+//                }
+//
+//                for (PoliceLocationModel * model in x.userGpsList) {
+//
+//                    PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+//                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+//                    annotation.coordinate = coordinate;
+//                    annotation.title    = @"警员";
+//                    annotation.subtitle = @"警员";
+//                    annotation.policeModel = model;
+//                    annotation.policeType = @1;
+//                    [self.viewModel.arr_point_people addObject:annotation];
+//
+//                }
+//
+//                if (self.viewModel.arr_point_people && self.viewModel.arr_point_people.count > 0) {
+//                    [self.mapView addAnnotations:self.viewModel.arr_point_people];
+//                }
+//
+//            }
             
             
             
@@ -584,22 +584,22 @@
         
         return vehicleCarView;
         
-    }if ([annotation isKindOfClass:[PoliceDistributeAnnotation class]]){
-        
-        PoliceDistributeAnnotation *vehicle = (PoliceDistributeAnnotation *)annotation;
-        
-        static NSString *customReuseIndetifier = @"PoliceViewID";
-        PoliceDisAnnotationView *policeView = (PoliceDisAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-        if (policeView == nil){
-            policeView = [[PoliceDisAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
-            
-        }
-
-        //很重要的，配置关联的模型数据
-        policeView.annotation = vehicle;
-        
-        return policeView;
-        
+//    }if ([annotation isKindOfClass:[PoliceDistributeAnnotation class]]){
+//        
+//        PoliceDistributeAnnotation *vehicle = (PoliceDistributeAnnotation *)annotation;
+//        
+//        static NSString *customReuseIndetifier = @"PoliceViewID";
+//        PoliceDisAnnotationView *policeView = (PoliceDisAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+//        if (policeView == nil){
+//            policeView = [[PoliceDisAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+//            
+//        }
+//
+//        //很重要的，配置关联的模型数据
+//        policeView.annotation = vehicle;
+//        
+//        return policeView;
+//        
     }
         
     return nil;
@@ -698,13 +698,13 @@
     
 }
 
-- (IBAction)handleBtnRefresh:(id)sender {
-    
-    [self.viewModel.command_detail execute:nil];
-    
-    
-    
-}
+//- (IBAction)handleBtnRefresh:(id)sender {
+//    
+//    [self.viewModel.command_detail execute:nil];
+//    
+//    
+//    
+//}
 
 
 

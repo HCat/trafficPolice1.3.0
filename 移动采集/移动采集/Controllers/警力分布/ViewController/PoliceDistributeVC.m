@@ -30,10 +30,12 @@
 @property (weak, nonatomic) IBOutlet UIButton * btn_radio;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_topView_height;
 
-@property (weak, nonatomic) IBOutlet UIButton *btn_selected;
+@property (weak, nonatomic) IBOutlet UIButton *btn_selected_online;
+@property (weak, nonatomic) IBOutlet UIButton *btn_selected_offline;
 @property (weak, nonatomic) IBOutlet UIButton *btn_refresh;
 
-@property (nonatomic, strong) XDSDropDownMenu *dropDownMenu;
+@property (nonatomic, strong) XDSDropDownMenu *dropDownMenu_online;
+@property (nonatomic, strong) XDSDropDownMenu *dropDownMenu_offline;
 
 @property (nonatomic, strong) MAMapView * mapView;
 @property (nonatomic, strong) MAPointAnnotation * positionAnnotation; //定位的坐标点
@@ -59,15 +61,19 @@
     @weakify(self);
     self.zx_hideBaseNavBar = YES;
     _layout_topView_height.constant = Height_NavBar;
-    self.btn_selected.isIgnore = YES;
-    
+    self.btn_selected_online.isIgnore = YES;
+    self.btn_selected_offline.isIgnore = YES;
     
     [self initMapView];
     
-    self.dropDownMenu = [[XDSDropDownMenu alloc] init];
-    self.dropDownMenu.tag = 1000;
+    self.dropDownMenu_online = [[XDSDropDownMenu alloc] init];
+    self.dropDownMenu_online.tag = 1000;
+    self.dropDownMenu_offline = [[XDSDropDownMenu alloc] init];
+    self.dropDownMenu_offline.tag = 1000;
     
-    self.btn_selected.layer.cornerRadius = 3.f;
+//    self.btn_selected_online.layer.cornerRadius = 3.f;
+//    self.btn_selected_offline.layer.cornerRadius = 3.f;
+    
     self.btn_refresh.layer.cornerRadius = 3.f;
     
     
@@ -143,9 +149,11 @@
         
         if (self.viewModel.peopleNumber) {
            
-            NSString * t_string = [NSString stringWithFormat:@"在岗数：%d,离岗数：%d",[self.viewModel.peopleNumber.online intValue],[self.viewModel.peopleNumber.offline intValue]];
+            NSString * t_string_online = [NSString stringWithFormat:@"在岗数：%d",[self.viewModel.peopleNumber.online intValue]];
+            NSString * t_string_offline = [NSString stringWithFormat:@"离岗数：%d",[self.viewModel.peopleNumber.offline intValue]];
             
-            [self.btn_selected setTitle:t_string forState:UIControlStateNormal];
+            [self.btn_selected_online setTitle:t_string_online forState:UIControlStateNormal];
+            [self.btn_selected_offline setTitle:t_string_offline forState:UIControlStateNormal];
         
         }
         
@@ -343,26 +351,52 @@
     
 }
 
-- (IBAction)handleBtnNumber:(id)sender {
+- (IBAction)handleBtnNumber_online:(id)sender {
     
     if(self.viewModel.arr_people.count > 0){
         
-        self.dropDownMenu.delegate = self;//设置代理
+        self.dropDownMenu_online.delegate = self;//设置代理
         //调用方法判断是显示下拉菜单，还是隐藏下拉菜单
         
         NSMutableArray * t_arr = @[].mutableCopy;
         
         for (PoliceLocationModel * model in self.viewModel.arr_people) {
             
-            NSString * t_strt = [model.isline boolValue] ? @"在线" : @"离线";
-            NSString * t_nameStr = [NSString stringWithFormat:@"%@(%@)",[ShareFun takeStringNoNull:model.userName],t_strt];
-            [t_arr addObject:t_nameStr];
-            
+            if ([model.isline boolValue]) {
+                NSString * t_nameStr = [NSString stringWithFormat:@"%@(%@)",[ShareFun takeStringNoNull:model.userName],[ShareFun takeStringNoNull:model.telNum]];
+                [t_arr addObject:t_nameStr];
+            }
+        
         }
         
         
-        [self setupDropDownMenu:self.dropDownMenu withTitleArray:t_arr andButton:sender andDirection:@"down"];
         
+        [self setupDropDownMenu:self.dropDownMenu_online withTitleArray:t_arr andButton:sender andDirection:@"down"];
+        [self hideOtherDropDownMenu:self.dropDownMenu_online];
+    }
+    
+}
+
+- (IBAction)handleBtnNumber_offline:(id)sender {
+    
+    if(self.viewModel.arr_people.count > 0){
+        
+        self.dropDownMenu_offline.delegate = self;//设置代理
+        //调用方法判断是显示下拉菜单，还是隐藏下拉菜单
+        
+        NSMutableArray * t_arr = @[].mutableCopy;
+        
+        for (PoliceLocationModel * model in self.viewModel.arr_people) {
+            
+            if (![model.isline boolValue]) {
+                NSString * t_nameStr = [NSString stringWithFormat:@"%@(%@)",[ShareFun takeStringNoNull:model.userName],[ShareFun takeStringNoNull:model.telNum]];
+                [t_arr addObject:t_nameStr];
+            }
+        }
+        
+        
+        [self setupDropDownMenu:self.dropDownMenu_offline withTitleArray:t_arr andButton:sender andDirection:@"down"];
+        [self hideOtherDropDownMenu:self.dropDownMenu_offline];
     }
     
 }
@@ -396,6 +430,24 @@
          如果dropDownMenu的tag值为1000，表示dropDownMenu没有打开，则打开dropDownMenu
          */
         
+        if (dropDownMenu == self.dropDownMenu_offline) {
+            btnFrame.origin.x = btnFrame.origin.x - 125;
+            [self.btn_selected_offline setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self.btn_selected_offline setBackgroundColor:UIColorFromRGB(0x247DF0)];
+            
+            [self.btn_selected_online setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+            [self.btn_selected_online setBackgroundColor:[UIColor whiteColor]];
+        }else{
+            [self.btn_selected_online setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [self.btn_selected_online setBackgroundColor:UIColorFromRGB(0x247DF0)];
+            
+            [self.btn_selected_offline setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+            [self.btn_selected_offline setBackgroundColor:[UIColor whiteColor]];
+        }
+        
+        
+        
+        
         //初始化选择菜单
         [dropDownMenu showDropDownMenu:button withButtonFrame:btnFrame arrayOfTitle:titleArray arrayOfImage:nil animationDirection:direction];
         
@@ -407,12 +459,13 @@
         
     }else {
         
-        /*
-         如果dropDownMenu的tag值为2000，表示dropDownMenu已经打开，则隐藏dropDownMenu
-         */
-        
-        [dropDownMenu hideDropDownMenuWithBtnFrame:btnFrame];
-        dropDownMenu.tag = 1000;
+
+//        /*
+//         如果dropDownMenu的tag值为2000，表示dropDownMenu已经打开，则隐藏dropDownMenu
+//         */
+//
+//        [dropDownMenu hideDropDownMenuWithBtnFrame:btnFrame];
+//        dropDownMenu.tag = 1000;
     }
 }
 
@@ -422,9 +475,22 @@
  */
 - (void)hideOtherDropDownMenu:(XDSDropDownMenu *)dropDownMenu{
     
-    CGRect btnFrame = self.btn_selected.frame;//如果按钮在UIIiew上用这个
-    [self.dropDownMenu hideDropDownMenuWithBtnFrame:btnFrame];
-    self.dropDownMenu.tag = 1000;
+    
+    if (dropDownMenu != self.dropDownMenu_online) {
+        CGRect btnFrame = self.btn_selected_online.frame;//如果按钮在UIIiew上用这个
+        
+        
+        [self.dropDownMenu_online hideDropDownMenuWithBtnFrame:btnFrame];
+        self.dropDownMenu_online.tag = 1000;
+    }
+    
+    if (dropDownMenu != self.dropDownMenu_offline) {
+        CGRect btnFrame = self.btn_selected_offline.frame;//如果按钮在UIIiew上用这个
+        btnFrame.origin.x = btnFrame.origin.x - 125;
+        [self.dropDownMenu_offline hideDropDownMenuWithBtnFrame:btnFrame];
+        self.dropDownMenu_offline.tag = 1000;
+    }
+    
 }
 
 

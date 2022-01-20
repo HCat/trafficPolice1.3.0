@@ -3,4 +3,70 @@
    uuid = "B971246E-7118-47A2-BA6C-1B90C1D9B542"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70BC3C9B-C936-44F1-B091-5A3B47E75F86"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/&#x4e3b;&#x9875;/Controllers/&#x5e38;&#x7528;&#x5e94;&#x7528;/MainCommonVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68087FAA-4D00-4191-A2D8-B3C7BCBDD9D3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/&#x4e3b;&#x9875;/Controllers/&#x6dfb;&#x52a0;&#x5e38;&#x7528;&#x529f;&#x80fd;/MainAddMoreListViewModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-command_list"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0172B41-36FF-4FF3-A4A0-E9540FA49BD7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Controllers/&#x4e3b;&#x9875;/Controllers/&#x6dfb;&#x52a0;&#x5e38;&#x7528;&#x529f;&#x80fd;/MainAddMoreListViewModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-command_list"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29722446-380B-44BF-99D7-45F3C8139543"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x79fb;&#x52a8;&#x91c7;&#x96c6;/Extra/XDSDropDownMenu/XDSDropDownMenu.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-hideDropDownMenuWithBtnFrame:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

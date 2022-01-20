@@ -33,6 +33,8 @@
 
 @property (nonatomic,copy)   NSString * cutImageUrl;          //裁剪车牌近照url
 
+@property (nonatomic,copy)   NSString * carTypeName;
+
 @end
 
 @interface ThroughManageSaveManger:LRBaseRequest

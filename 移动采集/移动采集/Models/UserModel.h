@@ -31,6 +31,7 @@
 @property (nonatomic,copy) NSString * orgCode;          //机构编码
 @property (nonatomic,copy) NSString * photoUrl;         //用户头像
 @property (nonatomic,strong) NSNumber * secRoadStatus;  //二级路段开关  0 关闭 1开启
+@property (nonatomic,strong) NSNumber * checkCollect;   //checkCollect :  1 有权限  0~~~~ 没权限
 
 @property (nonatomic,copy) NSArray *menus;          //可操作的菜单列表
 
@@ -87,6 +88,7 @@
     App采集违停权限： ILLEGAL_PARK_COLLECT
     App采集违停列表： ILLEGAL_PARK_LIST
     闯禁令管理列表    THROUGH_COLLECT_LIST
+    
  
 
 */
@@ -113,7 +115,7 @@
 + (BOOL)isPermissionForIllegalAdd;              //违停采集权限(石狮)
 + (BOOL)isPermissionForExpressRegulation;       //快递监管权限
 + (BOOL)isPermissionForExposure;                //违法曝光权限
-
++ (BOOL)isPermissionForStreet;                  //街道违法采集权限
 
 
 //获取列表权限
@@ -132,6 +134,8 @@
 + (BOOL)isPermissionForIllegalAddList;          //违章采集列表权限(石狮)
 + (BOOL)isPermissionForExposureList;            //违法曝光列表
 + (BOOL)isPermissionForThroughCollectList;      //闯禁令管理列表权限
++ (BOOL)isPermissionForStreetList;              //街道违法采集列表权限
+
 
 + (BOOL)isPermissionForIllegalReport;           //违停采集上报异常(晋江)
 + (BOOL)isPermissionForThroughReport;           //违反禁令上报异常权限
@@ -140,6 +144,7 @@
 + (BOOL)isPermissionForInhibitLineReport;       //违反禁止线上报异常权限
 + (BOOL)isPermissionForMotorBikeAddReport;      //摩托车上报异常权限
 + (BOOL)isPermissionForThroughCollectReport;    //闯禁令管理上报异常权限
++ (BOOL)isPermissionForStreetReport;            //街道违法采集上报异常权限
 
 
 //获取一些功能性权限

@@ -14,7 +14,7 @@
     
     if (self = [super init]) {
         self.arr_point = @[].mutableCopy;
-        self.arr_point_people = @[].mutableCopy;
+        //self.arr_point_people = @[].mutableCopy;
     }
     
     return self;
@@ -30,7 +30,7 @@
             @strongify(self);
             RACSignal * t_signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
-                DailyPatrolNewDetailManger * manger = [[DailyPatrolNewDetailManger alloc] init];
+                DailyPatrolDetailManger * manger = [[DailyPatrolDetailManger alloc] init];
                 manger.partrolId = self.partrolId;
                 manger.shiftId = self.shiftId;
                 [manger configLoadingTitle:@"加载"];

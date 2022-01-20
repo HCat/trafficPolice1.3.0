@@ -59,7 +59,7 @@
                             [subscriber sendNext:@"请求最后一条成功"];
                         }else{
                             [subscriber sendNext:@"加载成功"];
-                            self.start = @([self.start integerValue] + 1);
+                            self.start = @([self.start integerValue] + param.length);
                         }
                         
                     }else{

@@ -28,6 +28,7 @@
 #import "BottomView.h"
 #import "LRCameraVC.h"
 #import "ThroughManageShowList.h"
+#import "VehicleTypeVC.h"
 
 @interface ThroughManageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -62,6 +63,16 @@
 @property (nonatomic,strong) RACDisposable * disposable;
 
 @property (strong, nonatomic) ThroughManageViewModel * viewModel;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *lb_vehicleType_tip;
+@property (weak, nonatomic) IBOutlet UILabel *lb_vehicleType_title;
+@property (weak, nonatomic) IBOutlet UITextField *tf_vehicleType;
+@property (weak, nonatomic) IBOutlet UIImageView *image_vehicleType;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_addressRemark_top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_view_height;
+
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_scrollView_top;
@@ -113,8 +124,30 @@
     self.btn_commit.layer.cornerRadius = 5.f;
     self.btn_commit.layer.masksToBounds = YES;
     
+    if ([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"ZPJJ"] ){
+        
+        self.lb_vehicleType_tip.hidden = NO;
+        self.lb_vehicleType_title.hidden = NO;
+        self.tf_vehicleType.hidden = NO;
+        self.image_vehicleType.hidden = NO;
+        self.layout_addressRemark_top.constant = 110;
+        self.layout_view_height.constant = 708.5;
+        
+    }else{
+        
+        self.lb_vehicleType_tip.hidden = YES;
+        self.lb_vehicleType_title.hidden = YES;
+        self.tf_vehicleType.hidden = YES;
+        self.image_vehicleType.hidden = YES;
+        self.layout_addressRemark_top.constant = 20;
+        self.layout_view_height.constant = 628.5;
+        
+    }
+    
     
     [self.tf_roadName setDelegate:(id<UITextFieldDelegate> _Nullable)self];
+    [self.tf_vehicleType setDelegate:(id<UITextFieldDelegate> _Nullable)self];
+    
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 设置item的行间距和列间距
@@ -173,6 +206,15 @@
         if ([UserModel isPermissionForThroughCollect] == NO) {
             [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
             return;
+        }
+        
+        if ([[UserModel getUserModel].orgCode isEqualToString:@"000000"] || [[UserModel getUserModel].orgCode isEqualToString:@"ZPJJ"] ){
+            
+            if ([[UserModel getUserModel].checkCollect isEqualToNumber:@0]) {
+                [LRShowHUD showError:@"未配置设备编号" duration:1.5f];
+                return;
+            }
+            
         }
         
         [NetworkStatusMonitor StartWithBlock:^(NSInteger NetworkStatus) {
@@ -672,6 +714,29 @@
 }
 
 
+#pragma mark - 选择车辆类型按钮事件
+- (void)handlebtnVehicleTypeClicked{
+    
+    @weakify(self);
+    
+    VehicleTypeVC *t_searchLocationvc = [VehicleTypeVC new];
+    
+    t_searchLocationvc.vehicleTypeBlock = ^(CommonGetVehicleModel *model) {
+        @strongify(self);
+        self.tf_vehicleType.text = model.vehicleName;
+        self.viewModel.param.carTypeName = model.vehicleName;
+
+    };
+    
+    [self.navigationController pushViewController:t_searchLocationvc animated:YES];
+    
+}
+
+
+
+
+
+
 #pragma mark - 弹出提示框
 -(void)showAlertViewWithcontent:(NSString *)content leftTitle:(NSString *)leftTitle rightTitle:(NSString *)rightTitle block:(AlertViewDidSelectAction)selectAction{
 
@@ -801,6 +866,7 @@
     self.tf_roadName.text    = nil;
     self.tf_address.text     = nil;
     self.tf_carNo.text       = nil;
+    self.tf_vehicleType.text = nil;
     
 //    self.btn_userNumber.hidden = YES;
     
@@ -947,6 +1013,11 @@
     
     if (textField == self.tf_roadName) {
         [self handlebtnChoiceLocationClicked];
+        return NO;
+    }
+    
+    if (textField == self.tf_vehicleType) {
+        [self handlebtnVehicleTypeClicked];
         return NO;
     }
     

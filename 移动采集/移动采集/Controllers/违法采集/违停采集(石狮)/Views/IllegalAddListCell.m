@@ -9,6 +9,7 @@
 #import "IllegalAddListCell.h"
 #import "IllegalReportAbnormalVC.h"
 #import "IllegalAddListVC.h"
+#import "StreetAddListVC.h"
 #import "UserModel.h"
 
 @interface IllegalAddListCell ()
@@ -114,11 +115,21 @@
         
         if ([self.model.state isEqualToNumber:@1]){
             
-            if ([UserModel isPermissionForIllegalReport] == NO) {
-                [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
-                return;
+            if (self.isStreet) {
+                
+                if ([UserModel isPermissionForStreetReport] == NO) {
+                    [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                    return;
+                }
+            }else{
+                
+                if ([UserModel isPermissionForIllegalReport] == NO) {
+                    [LRShowHUD showError:@"请联系管理员授权" duration:1.5f];
+                    return;
+                }
+                
             }
-            
+                  
             
             IllegalReportAbnormalViewModel * viewModel = [[IllegalReportAbnormalViewModel alloc] init];
             viewModel.illegalPark = self.model;
@@ -133,8 +144,16 @@
             }];
             
             IllegalReportAbnormalVC * vc = [[IllegalReportAbnormalVC alloc] initWithViewModel:viewModel];
-            IllegalAddListVC * t_vc = (IllegalAddListVC *)[ShareFun findViewController:self withClass:[IllegalAddListVC class]];
-            [t_vc.navigationController pushViewController:vc animated:YES];
+            
+            if (self.isStreet) {
+                StreetAddListVC * t_vc = (StreetAddListVC *)[ShareFun findViewController:self withClass:[StreetAddListVC class]];
+                [t_vc.navigationController pushViewController:vc animated:YES];
+            }else{
+                IllegalAddListVC * t_vc = (IllegalAddListVC *)[ShareFun findViewController:self withClass:[IllegalAddListVC class]];
+                [t_vc.navigationController pushViewController:vc animated:YES];
+                
+            }
+            
             
         }else if ([self.model.state isEqualToNumber:@8]){
             

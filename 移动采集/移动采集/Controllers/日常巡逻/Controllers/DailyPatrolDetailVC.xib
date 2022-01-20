@@ -110,7 +110,7 @@
                     <rect key="frame" x="330" y="660" width="69" height="69"/>
                     <state key="normal" image="btn_dailyPatrol_takePictures"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNT-jk-AcI">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNT-jk-AcI">
                     <rect key="frame" x="344" y="53" width="55" height="30"/>
                     <color key="backgroundColor" red="0.14117647059999999" green="0.49019607840000001" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>

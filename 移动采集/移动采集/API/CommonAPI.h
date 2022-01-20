@@ -283,5 +283,22 @@
 @end
 
 
+#pragma mark - 获取车辆类型API
 
+@interface CommonGetVehicleModel : NSObject
+
+@property (nonatomic,copy) NSString * vehicleName;   //通用值名称
+@property (nonatomic,copy) NSString * vehicleName_pingyin; //路段拼音
+@property (nonatomic,assign) BOOL isSelected;        //是否被选中
+
+@end
+
+
+@interface CommonGetVehicleManger : LRBaseRequest
+
+
+/****** 返回数据 ******/
+@property (nonatomic, copy) NSArray<CommonGetVehicleModel * > * commonGetVehicleResponse; //路名信息
+
+@end
 

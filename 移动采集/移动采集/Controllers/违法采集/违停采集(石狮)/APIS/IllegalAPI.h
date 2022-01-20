@@ -37,6 +37,8 @@
 @property (nonatomic,strong) NSNumber * offtime;              //缓存时候的时间段
 
 
+@property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，1003:违反禁止线,2001:摩托车，信息录入2002 闯禁令:5010
+
 @end
 
 

@@ -32,8 +32,9 @@ LRSingletonH(Default)
 @property (nonatomic, assign) BOOL isInhibitLine;       //违反禁止线
 @property (nonatomic, assign) BOOL isTakeOut;           //外卖监管
 @property (nonatomic, assign) BOOL isIllegalExposure;   //违法录入
-@property (nonatomic, assign) BOOL isIllegal;              //违章采集(石狮)
+@property (nonatomic, assign) BOOL isIllegal;           //违章采集(石狮)
 @property (nonatomic, assign) BOOL isThroughManage;     //闯禁令管理
+@property (nonatomic, assign) BOOL isStreet;            //石狮街道采集
 
 
 @property (nonatomic, strong) LocationStorageModel *park;
@@ -48,7 +49,7 @@ LRSingletonH(Default)
 @property (nonatomic, strong) LocationStorageModel *illegalExposure;
 @property (nonatomic, strong) LocationStorageModel *illegal;            //石狮违停采集
 @property (nonatomic, strong) LocationStorageModel *throughManage;
-
+@property (nonatomic, strong) LocationStorageModel *street;
 
 
 

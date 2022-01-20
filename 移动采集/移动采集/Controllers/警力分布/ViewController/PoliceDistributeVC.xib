@@ -12,7 +12,8 @@
                 <outlet property="btn_radio" destination="5xu-ih-e9C" id="Bv8-qD-1wO"/>
                 <outlet property="btn_refresh" destination="cSA-M4-uun" id="Wu2-Hq-6B2"/>
                 <outlet property="btn_search" destination="ZBb-eX-9Px" id="v8R-gk-eef"/>
-                <outlet property="btn_selected" destination="28r-2J-rGR" id="p1C-LO-Eoz"/>
+                <outlet property="btn_selected_offline" destination="vxe-1p-Vnx" id="nUF-bE-uoT"/>
+                <outlet property="btn_selected_online" destination="28r-2J-rGR" id="Fp3-gV-0BR"/>
                 <outlet property="btn_usrLocation" destination="OzK-11-j66" id="AY7-kI-McH"/>
                 <outlet property="layout_topView_height" destination="hIY-E0-Pw1" id="YTc-eC-LI8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -72,7 +73,11 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xu-ih-e9C">
                     <rect key="frame" x="307" y="580" width="53" height="53"/>
-                    <state key="normal" image="btn_policeDis_ radio"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="Dkg-Gd-9ed"/>
+                        <constraint firstAttribute="height" constant="53" id="KpM-UO-ItH"/>
+                    </constraints>
+                    <state key="normal" image="广播"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSA-M4-uun">
                     <rect key="frame" x="307" y="72" width="55" height="30"/>
@@ -90,20 +95,37 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28r-2J-rGR">
-                    <rect key="frame" x="15" y="72" width="200" height="30"/>
-                    <color key="backgroundColor" red="0.14117647059999999" green="0.49019607840000001" blue="0.94117647059999998" alpha="1" colorSpace="deviceRGB"/>
+                    <rect key="frame" x="15" y="72" width="125" height="30"/>
+                    <color key="backgroundColor" red="0.14117647059999999" green="0.49019607840000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="slO-la-eDr"/>
-                        <constraint firstAttribute="width" constant="200" id="zjs-xl-N4Q"/>
+                        <constraint firstAttribute="width" constant="125" id="zjs-xl-N4Q"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
-                    <inset key="titleEdgeInsets" minX="-42" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="180" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title=" 在岗数：0 离岗数：0" image="btn_police_down">
+                    <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title=" 在岗数：0 " image="btn_police_down">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="handleBtnNumber:" destination="-1" eventType="touchUpInside" id="TXj-Cy-TPK"/>
+                        <action selector="handleBtnNumber_online:" destination="-1" eventType="touchUpInside" id="PKF-ap-fjR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxe-1p-Vnx">
+                    <rect key="frame" x="140" y="72" width="125" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="0VS-xK-9Ln"/>
+                        <constraint firstAttribute="width" constant="125" id="HsQ-Jv-ng7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                    <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="离岗数：0 " image="btn_police_down">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="handleBtnNumber_offline:" destination="-1" eventType="touchUpInside" id="6RL-T2-K9k"/>
                     </connections>
                 </button>
             </subviews>
@@ -111,11 +133,13 @@
             <constraints>
                 <constraint firstItem="5xu-ih-e9C" firstAttribute="centerY" secondItem="OzK-11-j66" secondAttribute="centerY" id="0Aa-ma-7DW"/>
                 <constraint firstAttribute="bottom" secondItem="OzK-11-j66" secondAttribute="bottom" constant="34" id="3iS-u2-TnP"/>
+                <constraint firstItem="vxe-1p-Vnx" firstAttribute="leading" secondItem="28r-2J-rGR" secondAttribute="trailing" id="5Id-Tr-0v1"/>
                 <constraint firstItem="Y7d-gV-Ui1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fuz-0Q-Eo5"/>
                 <constraint firstAttribute="trailing" secondItem="5xu-ih-e9C" secondAttribute="trailing" constant="15" id="FzI-gg-4Nn"/>
                 <constraint firstItem="OzK-11-j66" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Jg5-JL-XVN"/>
                 <constraint firstItem="Y7d-gV-Ui1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KtW-yv-ZId"/>
                 <constraint firstAttribute="trailing" secondItem="Y7d-gV-Ui1" secondAttribute="trailing" id="MLm-9x-f68"/>
+                <constraint firstItem="vxe-1p-Vnx" firstAttribute="top" secondItem="28r-2J-rGR" secondAttribute="top" id="S7u-58-hDZ"/>
                 <constraint firstItem="28r-2J-rGR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="VfV-PE-efq"/>
                 <constraint firstAttribute="trailing" secondItem="cSA-M4-uun" secondAttribute="trailing" constant="13" id="ae4-AC-L3N"/>
                 <constraint firstItem="28r-2J-rGR" firstAttribute="top" secondItem="Y7d-gV-Ui1" secondAttribute="bottom" constant="8" symbolic="YES" id="h74-Az-5zy"/>
@@ -125,10 +149,10 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_policeDis_ radio" width="53" height="53"/>
         <image name="btn_policeDis_userLocation" width="53" height="53"/>
         <image name="btn_police_down" width="10" height="6.5"/>
         <image name="icon_adressBook_search" width="13" height="13"/>
         <image name="nav_back" width="10" height="17"/>
+        <image name="广播" width="67" height="67"/>
     </resources>
 </document>

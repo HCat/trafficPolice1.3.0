@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, ParkType) {
     ParkTypeCarInfoAdd = 2002,      //车辆录入
     ParkTypeThrough = 2333,         //闯禁令
     ParkTypeThroughManage = 2335,   //闯禁令管理
+    ParkTypeStreet = 5012,          //街道采集
 };
 
 typedef NS_ENUM(NSUInteger, MessageType) {

@@ -86,18 +86,26 @@
                         
                     }
                     
+                    if (self.arr_people && self.arr_people.count > 0) {
+                        [self.arr_people removeAllObjects];
+                        
+                    }
+                    
                     if (manger.responseModel.code == CODE_SUCCESS) {
                         
                         for (PoliceLocationModel * model in manger.userGpsList) {
                             
-                            PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
-                            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
-                            annotation.coordinate = coordinate;
-                            annotation.title    = @"警员";
-                            annotation.subtitle = @"警员";
-                            annotation.policeModel = model;
-                            annotation.policeType = @1;
-                            [self.arr_point addObject:annotation];
+                            if ([model.isline isEqualToNumber:@1]) {
+                                PoliceDistributeAnnotation *annotation = [[PoliceDistributeAnnotation alloc] init];
+                                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([model.latitude doubleValue], [model.longitude doubleValue]);
+                                annotation.coordinate = coordinate;
+                                annotation.title    = @"警员";
+                                annotation.subtitle = @"警员";
+                                annotation.policeModel = model;
+                                annotation.policeType = @1;
+                                [self.arr_point addObject:annotation];
+                            }
+                           
                             [self.arr_people addObject:model];
                         }
                         

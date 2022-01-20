@@ -34,6 +34,7 @@
 @property (nonatomic,strong) NSNumber * type;                 //选填，默认1:违停，1001:朝向错误，1002:锁车，1003:违反禁止线,2001:摩托车，信息录入2002 闯禁令:5010
 @property (nonatomic,strong) NSNumber * state;                //异常状态:9
 @property (nonatomic,strong) NSNumber * offtime;              //缓存时候的时间段
+@property (nonatomic,strong) NSString * carTypeName;          //采集新增车辆类型 传中文名称  eg:小型汽车
 @end
 
 

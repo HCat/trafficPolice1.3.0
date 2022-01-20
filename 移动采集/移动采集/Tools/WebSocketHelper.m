@@ -175,7 +175,7 @@ LRSingletonM(Default)
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error{
     
-    LxPrintf(@"************ Websocket fail!***************");
+    //LxPrintf(@"************ Websocket fail!***************");
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self startServer];

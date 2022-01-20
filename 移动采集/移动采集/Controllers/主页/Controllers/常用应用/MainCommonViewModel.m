@@ -167,6 +167,11 @@
                                     menuModel.menuIcon = @"menu_dataAnalysis";
                                     [self.arr_items addObject:menuModel];
                                     
+                                }else if ([menuModel.menuCode isEqualToString:@"STREETPARK_MANAGE"]) {
+                                    //menuModel.funTitle = @"街道违法采集";
+                                    menuModel.menuIcon = @"menu_street";
+                                    [self.arr_items addObject:menuModel];
+                                    
                                 }
                                 
                                 

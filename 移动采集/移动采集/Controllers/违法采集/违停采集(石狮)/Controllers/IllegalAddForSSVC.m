@@ -24,7 +24,6 @@
 
 #import "IllegalRecordVC.h"
 #import "IllegalSecAddVC.h"
-#import "IllegalAddListVC.h"
 
 @interface IllegalAddForSSVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 

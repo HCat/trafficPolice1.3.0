@@ -34,10 +34,10 @@
     if (self) {
         CGRect btnRect = buttonFrame;//按钮在视图上的位置
         CGFloat height = 0;//菜单高度
-        if ( titleArr.count <= 4) {
+        if ( titleArr.count <= 6) {
             height = titleArr.count *40;
         }else{
-            height = 200;
+            height = 300;
         }
         
         self.titleList = [NSArray arrayWithArray:titleArr];
@@ -45,17 +45,17 @@
         
         //菜单视图的起始大小和位置
         if ([direction isEqualToString:@"up"]) {
-            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y-2, btnRect.size.width, 0);
+            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y-2, btnRect.size.width*2, 0);
         }else if ([direction isEqualToString:@"down"]) {
-            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y+btnRect.size.height+2, btnRect.size.width, 0);
+            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y+btnRect.size.height+2, btnRect.size.width*2, 0);
         }
         
         self.layer.masksToBounds = NO;
-        self.layer.cornerRadius = 8;
-        self.layer.shadowRadius = 5;
-        self.layer.shadowOpacity = 0.5;
+        self.layer.cornerRadius = 4;
+//        self.layer.shadowRadius = 5;
+//        self.layer.shadowOpacity = 0.5;
         
-        self.menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, btnRect.size.width, 0)];
+        self.menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, btnRect.size.width*2, 0)];
         self.menuTableView.delegate = self;
         self.menuTableView.dataSource = self;
         self.menuTableView.layer.cornerRadius = 5;
@@ -63,18 +63,18 @@
         self.menuTableView.separatorColor = [UIColor grayColor];
         self.menuTableView.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0);
         self.menuTableView.backgroundColor = [UIColor whiteColor];
-        self.menuTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, btnRect.size.width, 0.001)];//最后无分割线
+        self.menuTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, btnRect.size.width*2, 0.001)];//最后无分割线
         [self.menuTableView flashScrollIndicators];//显示滚动条
         
         [UIView beginAnimations:nil context:nil];//动画
         [UIView setAnimationDuration:0.5];
         //菜单视图的最终大小和位置
         if ([direction isEqualToString:@"up"]) {
-            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y-height-2, btnRect.size.width, height);
+            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y-height-2, btnRect.size.width*2, height);
         } else if([direction isEqualToString:@"down"]) {
-            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y+btnRect.size.height+2, btnRect.size.width, height);
+            self.frame = CGRectMake(btnRect.origin.x, btnRect.origin.y+btnRect.size.height+2, btnRect.size.width*2, height);
         }
-        self.menuTableView.frame = CGRectMake(0, 0, btnRect.size.width, height);
+        self.menuTableView.frame = CGRectMake(0, 0, btnRect.size.width*2, height);
         [UIView commitAnimations];
         [self addSubview:self.menuTableView];
     }
@@ -88,11 +88,11 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     if ([self.animationDirection isEqualToString:@"up"]) {
-        self.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y-2, btnFrame.size.width, 0);
+        self.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y-2, btnFrame.size.width*2, 0);
     }else if ([self.animationDirection isEqualToString:@"down"]) {
-        self.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y+btnFrame.size.height+2, btnFrame.size.width, 0);
+        self.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y+btnFrame.size.height+2, btnFrame.size.width*2, 0);
     }
-    self.menuTableView.frame = CGRectMake(0, 0, btnFrame.size.width, 0);
+    self.menuTableView.frame = CGRectMake(0, 0, btnFrame.size.width*2, 0);
     [UIView commitAnimations];
 }
 

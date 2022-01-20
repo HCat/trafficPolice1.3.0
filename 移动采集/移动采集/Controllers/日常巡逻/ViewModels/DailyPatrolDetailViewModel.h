@@ -25,9 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) NSMutableArray * arr_point;    //存储巡逻点
 @property(nonatomic, strong) NSArray * arr_people;   //存储路径点
-@property (nonatomic, strong) NSMutableArray * arr_point_people;           // 用来存储警员或者警车点数据
+//@property (nonatomic, strong) NSMutableArray * arr_point_people;           // 用来存储警员或者警车点数据
 //巡逻详情
-@property(nonatomic, strong) DailyPatrolNewDetailReponse * reponseModel;
+@property(nonatomic, strong) DailyPatrolDetailReponse * reponseModel;
 
 //巡逻q详情请求
 @property(nonatomic, strong) RACCommand * command_detail;

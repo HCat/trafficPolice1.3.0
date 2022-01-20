@@ -505,3 +505,41 @@
 
 @end
 
+
+#pragma mark - 获取路名API
+
+@implementation CommonGetVehicleModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"vehicleName" : @"name"
+             };
+}
+
+@end
+
+@implementation CommonGetVehicleManger
+
+//请求的url，不包括域名`域名通过YTKNetworkConfig配置`
+- (NSString *)requestUrl
+{
+    return URL_COMMON_GETVEHICLE;
+}
+
+//请求参数
+- (nullable id)requestArgument
+{
+    return nil;
+}
+
+//返回参数
+- (NSArray <CommonGetVehicleModel * > *)commonGetVehicleResponse{
+    
+    if (self.responseModel) {
+        _commonGetVehicleResponse = [NSArray modelArrayWithClass:[CommonGetVehicleModel class] json:self.responseJSONObject[@"data"]];
+        return _commonGetVehicleResponse;
+    }
+    
+    return nil;
+}
+
+@end

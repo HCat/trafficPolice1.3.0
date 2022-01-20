@@ -15,7 +15,7 @@
     
     if (self = [super init]) {
         
-        self.param = [[IllegalParkSaveParam alloc] init];
+        self.param = [[IllegalSaveParam alloc] init];
         self.arr_upImages =  [NSMutableArray array];
         [self.arr_upImages addObject:[NSNull null]];
         [self.arr_upImages addObject:[NSNull null]];

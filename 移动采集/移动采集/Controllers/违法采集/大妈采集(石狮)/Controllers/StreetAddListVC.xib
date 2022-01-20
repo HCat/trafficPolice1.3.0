@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StreetAddListVC">
+            <connections>
+                <outlet property="layout_viewSearchStatus_height" destination="gSt-wF-b0s" id="5ZL-wc-INl"/>
+                <outlet property="tableView" destination="xHR-2o-zLI" id="4m8-qb-y4f"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_status" destination="Bh2-7v-cvJ" id="QOL-80-4He"/>
+                <outlet property="view_status_inside" destination="5SG-Os-4Ay" id="TbP-V2-gdy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bh2-7v-cvJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5SG-Os-4Ay">
+                            <rect key="frame" x="15" y="10" width="345" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-L2-Mcj">
+                                    <rect key="frame" x="307" y="0.0" width="38" height="39"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="7Ix-sG-xO0"/>
+                                        <constraint firstAttribute="height" constant="39" id="7Ji-qi-Q6a"/>
+                                    </constraints>
+                                    <state key="normal" image="btn_IllegalSearch_close"/>
+                                    <connections>
+                                        <action selector="handleBtnSearchStatusClicked:" destination="-1" eventType="touchUpInside" id="W2R-QJ-uPF"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查询条件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhL-Jg-7Rm">
+                                    <rect key="frame" x="18" y="10.5" width="62" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="zIk-L2-Mcj" secondAttribute="trailing" id="GkM-H8-SDA"/>
+                                <constraint firstItem="vhL-Jg-7Rm" firstAttribute="leading" secondItem="5SG-Os-4Ay" secondAttribute="leading" constant="18" id="THu-nV-tkH"/>
+                                <constraint firstItem="zIk-L2-Mcj" firstAttribute="top" secondItem="5SG-Os-4Ay" secondAttribute="top" id="WuE-cq-NaK"/>
+                                <constraint firstItem="vhL-Jg-7Rm" firstAttribute="centerY" secondItem="zIk-L2-Mcj" secondAttribute="centerY" id="wz0-DI-BfQ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5SG-Os-4Ay" secondAttribute="trailing" constant="15" id="bIO-LK-aOX"/>
+                        <constraint firstItem="5SG-Os-4Ay" firstAttribute="leading" secondItem="Bh2-7v-cvJ" secondAttribute="leading" constant="15" id="dXA-Ie-HyR"/>
+                        <constraint firstAttribute="height" constant="106" id="gSt-wF-b0s"/>
+                        <constraint firstAttribute="bottom" secondItem="5SG-Os-4Ay" secondAttribute="bottom" constant="10" id="k8K-PY-uuv"/>
+                        <constraint firstItem="5SG-Os-4Ay" firstAttribute="top" secondItem="Bh2-7v-cvJ" secondAttribute="top" constant="10" id="tJH-qI-lhX"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xHR-2o-zLI" customClass="LRBaseTableView">
+                    <rect key="frame" x="0.0" y="106.5" width="375" height="561"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghq-HO-rp9">
+                    <rect key="frame" x="289" y="520" width="70" height="70"/>
+                    <state key="normal" image="btn_illegalList_add"/>
+                    <connections>
+                        <action selector="handleIllegalAdd:" destination="-1" eventType="touchUpInside" id="5fM-S2-Ax6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="xHR-2o-zLI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="8uD-3q-7xF"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Bh2-7v-cvJ" secondAttribute="trailing" id="Osh-5b-JLa"/>
+                <constraint firstItem="xHR-2o-zLI" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" constant="0.5" id="P12-8c-hz4"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="ghq-HO-rp9" secondAttribute="bottom" constant="77" id="Rio-HQ-MAZ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="xHR-2o-zLI" secondAttribute="trailing" id="fu0-EH-LUj"/>
+                <constraint firstItem="Bh2-7v-cvJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="jzc-gB-Ar2"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ghq-HO-rp9" secondAttribute="trailing" constant="16" id="mZz-hP-xNA"/>
+                <constraint firstItem="xHR-2o-zLI" firstAttribute="top" secondItem="Bh2-7v-cvJ" secondAttribute="bottom" constant="0.5" id="ts6-td-BIF"/>
+                <constraint firstItem="Bh2-7v-cvJ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="w7P-XX-Oi5"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="125"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_IllegalSearch_close" width="17" height="17.5"/>
+        <image name="btn_illegalList_add" width="70" height="70"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
